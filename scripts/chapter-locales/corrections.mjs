@@ -1,4 +1,4 @@
-import {locales} from './config.mjs';
+import {translationRowLocales as locales} from './config.mjs';
 
 // Each row is French, German, Italian, Dutch, Spanish, Portuguese, Arabic.
 // Match the English meaning, never the translated wording or answer position.
@@ -112,9 +112,9 @@ const spatialTerms = {
   Diamond:'Losange|Raute|Rombo|Ruit|Rombo|Losango|معين',
 };
 export function correctTerm(slug, locale, english) {
-  const bible = ['bible','catholic'].includes(slug) ? bibleNames[english] : undefined;
+  const bible = ['bible','catholic','nun'].includes(slug) ? bibleNames[english] : undefined;
   const spatial = ['oxford','cambridge'].includes(slug) ? spatialTerms[english] : undefined;
-  return lookup(terms[slug]?.[english] ?? spatial ?? bible ?? clinical[english], locale);
+  return lookup(terms[slug === 'nun' ? 'catholic' : slug]?.[english] ?? spatial ?? bible ?? clinical[english], locale);
 }
 
 // Full question rewrites remove idioms that do not translate literally.

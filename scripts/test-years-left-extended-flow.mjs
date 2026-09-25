@@ -5,13 +5,13 @@ import { chromium } from 'playwright-core';
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3198';
 const slug = process.env.QUIZ_TEST_SLUG ?? 'years-left';
 const locale = process.env.QUIZ_TEST_LOCALE ?? 'en';
+const fast = process.env.QUIZ_TEST_FAST === '1';
 const artifactPrefix = locale === 'en' ? slug : `${slug}-${locale}`;
-const root = `data/quizzes/${slug}/english-extended`;
+const root = `data/quizzes/${slug}`;
 const manifest = JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8'));
 const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
-const newChapters = ['personality', 'harvard', 'oxford', 'cambridge'].includes(slug);
-const textChapters = newChapters || ['treatments', 'anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq'].includes(slug);
+const textChapters = Object.values(manifest.structure.questions).every(question => question.presentation === 'text' && !question.image && !question.study);
 const testPages = new Map();
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 
@@ -20,6 +20,10 @@ async function run(width) {
   const height = (slug === 'vision' || textChapters) && width === 320 ? 568 : width < 500 ? 844 : 960;
   const context = await browser.newContext({ viewport: { width, height }, reducedMotion: reduced ? 'reduce' : 'no-preference' });
   const page = await context.newPage();
+  // The full locale matrix can advance through intentional answer delays. The
+  // normal mode still tests real timing and animations on representative flows.
+  if (fast) await page.clock.install();
+  const capture = async options => { if (!fast) await page.screenshot(options); };
   testPages.set(width, page);
   page.setDefaultTimeout(15_000);
   page.setDefaultNavigationTimeout(30_000);
@@ -65,9 +69,9 @@ async function run(width) {
   assert.equal(await page.evaluate(() => window.adCalls.length), 0);
   if ((slug === 'vision' || textChapters) && width === 320) {
     assert.equal(await landing.locator('.quiz-engine__primary').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'Start remains visible on a small phone');
-    await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-landing-small-phone.png`, animations: 'disabled' });
+    await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-small-phone.png`, animations: 'disabled' });
   }
-  await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
+  await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
   await landing.locator('.quiz-engine__primary').click();
   await page.locator('[data-question-id]').waitFor();
   let expectedRewards = 1;
@@ -83,6 +87,9 @@ async function run(width) {
     for (const [index, id] of stage.questionIds.entries()) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
+      // Drain the app's post-transition scroll frame before clicking an answer
+      // below the fold. Forced clicks can otherwise hit a moving coordinate.
+      if (fast) await page.clock.runFor(50);
       const logic = manifest.structure.questions[id];
       const answerIds = logic.answerIds;
       if (logic.study) {
@@ -91,7 +98,7 @@ async function run(width) {
         assert.equal(await question.locator('.quiz-engine__answer').count(), 0, 'study and answer phases remain separate');
         assert.deepEqual(await study.locator('.quiz-engine__study-items > strong').allTextContents(), copy.stages[stage.id].questions[id].study.items);
         assert.equal(await study.locator('.quiz-engine__study-items').evaluate(node => getComputedStyle(node).direction), 'ltr', 'study boards retain the left-to-right order used by the answer key');
-        if (index === 0 && ([0, 6, 7].includes(stageIndex) || slug === 'vision')) await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-study-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
+        if (index === 0 && ([0, 6, 7].includes(stageIndex) || slug === 'vision')) await capture({ path: `/tmp/${artifactPrefix}-engagement-study-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
         await study.getByRole('button', { name: copy.stages[stage.id].questions[id].study.continueLabel, exact: true }).click();
         await question.locator('.quiz-engine__answer').first().waitFor();
         assert.equal(await question.locator('.quiz-engine__study').count(), 0, 'the study cue is removed before answering');
@@ -134,11 +141,11 @@ async function run(width) {
           }), true, `${width}px ${id}: the entire puzzle board is visible without distortion`);
         }
         assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
-        if (index === 0 || id === 'vision-s9q3') await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });
+        if (index === 0 || id === 'vision-s9q3') await capture({ path: `/tmp/${artifactPrefix}-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });
       }
-      if (stageIndex === 0 && index === 0) await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-question-${width}.png`, animations: 'disabled' });
+      if (stageIndex === 0 && index === 0) await capture({ path: `/tmp/${artifactPrefix}-engagement-question-${width}.png`, animations: 'disabled' });
       if (locale === 'ar' && ['oxford-s10q1','cambridge-s9q4'].includes(id)) {
-        await page.screenshot({path:`/tmp/${artifactPrefix}-${id}-symbols-${width}.png`,animations:'disabled'});
+        await capture({path:`/tmp/${artifactPrefix}-${id}-symbols-${width}.png`,animations:'disabled'});
       }
       const correctIndex = answerIds.indexOf(logic.correctAnswerId);
       const choice = scored && (width === 320 || (width === 390 && stageIndex === 0))
@@ -150,6 +157,7 @@ async function run(width) {
         for (const [profile, weight] of Object.entries(logic.choiceMeanings[answerIds[choice]])) profileWeights[profile] += weight;
       }
       await question.locator('.quiz-engine__answer').nth(choice).click();
+      if (fast) await page.clock.fastForward(700);
       await question.waitFor({ state: 'detached' });
     }
     const checkpoint = page.locator('.quiz-engine__checkpoint');
@@ -168,7 +176,7 @@ async function run(width) {
       assert.equal(await checkpoint.locator('.quiz-engine__primary').isEnabled(), true, 'no animation lock on intermediate gates');
     }
     const animationNames = await checkpoint.locator('.quiz-engine__checkpoint-icon').evaluate(node => getComputedStyle(node).animationName);
-    assert.equal(animationNames, reduced ? 'none' : slug === 'years-left' ? 'years-clock-turn' : newChapters ? 'quiz-chapter-mark' : `${slug}-chapter-mark`);
+    assert.equal(animationNames, reduced ? 'none' : 'quiz-chapter-mark');
     assert.equal(await checkpoint.evaluate(node => node.getAnimations({ subtree: true }).every(animation => animation.effect.getTiming().iterations === 1)), true, 'checkpoint animations never loop');
     const button = checkpoint.locator('.quiz-engine__primary');
     await button.waitFor({ state: 'visible' });
@@ -183,7 +191,7 @@ async function run(width) {
       assert.deepEqual(await checkpoint.locator('.quiz-engine__checklist li').allTextContents(), copy.career.stages[stage.id].preAdChecks.map(item => `✓${item}`));
     }
     checkpoints.push({ chapter: stageIndex + 1, button: copy.career.stages[stage.id].preAdButton, animation: animationNames });
-    if ([0, 4, 8, 9].includes(stageIndex)) await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-checkpoint-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
+    if ([0, 4, 8, 9].includes(stageIndex)) await capture({ path: `/tmp/${artifactPrefix}-engagement-checkpoint-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
     if (stageIndex === 0 && width === 390) {
       rewardsBeforeReload += expectedRewards;
       await page.reload();
@@ -213,7 +221,7 @@ async function run(width) {
     age = Number(await result.locator('.quiz-engine__result-age strong').innerText());
     assert.ok(age >= 73 && age <= 95);
   }
-  await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-result-${width}.png`, animations: 'disabled' });
+  await capture({ path: `/tmp/${artifactPrefix}-engagement-result-${width}.png`, animations: 'disabled' });
   await result.locator('.quiz-engine__answer-review-unlock .quiz-engine__primary').click();
   if (slug === 'personality') {
     await result.locator('.quiz-engine__profile-chemistry').waitFor();
@@ -235,8 +243,10 @@ async function run(width) {
     for (const id of manifest.structure.stages[0].questionIds) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
+      if (fast) await page.clock.runFor(50);
       if (manifest.structure.questions[id].study) await question.getByRole('button', { name: copy.stages[manifest.structure.stages[0].id].questions[id].study.continueLabel, exact: true }).click();
       await question.locator('.quiz-engine__answer').first().click();
+      if (fast) await page.clock.fastForward(700);
       await question.waitFor({ state: 'detached' });
     }
     await page.locator('.quiz-engine__checkpoint .quiz-engine__primary').click();

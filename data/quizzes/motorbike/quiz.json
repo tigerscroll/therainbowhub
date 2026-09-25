@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "🏍️",
     "socialProofCount": 276000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "🏍️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "motorbike-s1q1",
+          "motorbike-s1q2",
+          "motorbike-s1q3",
+          "motorbike-s1q4",
+          "motorbike-s1q5",
+          "motorbike-s1q6",
+          "motorbike-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "motorbike-s2q1",
+          "motorbike-s2q2",
+          "motorbike-s2q3",
+          "motorbike-s2q4",
+          "motorbike-s2q5",
+          "motorbike-s2q6",
+          "motorbike-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "motorbike-s3q1",
+          "motorbike-s3q2",
+          "motorbike-s3q3",
+          "motorbike-s3q4",
+          "motorbike-s3q5",
+          "motorbike-s3q6",
+          "motorbike-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "motorbike-s4q1",
+          "motorbike-s4q2",
+          "motorbike-s4q3",
+          "motorbike-s4q4",
+          "motorbike-s4q5",
+          "motorbike-s4q6",
+          "motorbike-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "motorbike-s5q1",
+          "motorbike-s5q2",
+          "motorbike-s5q3",
+          "motorbike-s5q4",
+          "motorbike-s5q5",
+          "motorbike-s5q6",
+          "motorbike-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "motorbike-s6q1",
+          "motorbike-s6q2",
+          "motorbike-s6q3",
+          "motorbike-s6q4",
+          "motorbike-s6q5",
+          "motorbike-s6q6",
+          "motorbike-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "motorbike-s7q1",
+          "motorbike-s7q2",
+          "motorbike-s7q3",
+          "motorbike-s7q4",
+          "motorbike-s7q5",
+          "motorbike-s7q6",
+          "motorbike-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "motorbike-s8q1",
+          "motorbike-s8q2",
+          "motorbike-s8q3",
+          "motorbike-s8q4",
+          "motorbike-s8q5",
+          "motorbike-s8q6",
+          "motorbike-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "motorbike-s9q1",
+          "motorbike-s9q2",
+          "motorbike-s9q3",
+          "motorbike-s9q4",
+          "motorbike-s9q5",
+          "motorbike-s9q6",
+          "motorbike-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "motorbike-q1",
-          "motorbike-q2",
-          "motorbike-q3",
-          "motorbike-q4",
-          "motorbike-q5",
-          "motorbike-q6",
-          "motorbike-q7",
-          "motorbike-q8",
-          "motorbike-q9",
-          "motorbike-q10"
+          "motorbike-s10q1",
+          "motorbike-s10q2",
+          "motorbike-s10q3",
+          "motorbike-s10q4",
+          "motorbike-s10q5",
+          "motorbike-s10q6",
+          "motorbike-s10q7"
         ]
       }
     ],
     "questions": {
-      "motorbike-q1": {
+      "motorbike-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "machine_checks",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
-      },
-      "motorbike-q2": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "cornering_control",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
-      },
-      "motorbike-q3": {
-        "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "hazard_awareness",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "motorbike-q4": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a4",
-        "category": "braking_control",
+        "category": "machine_checks"
+      },
+      "motorbike-s1q2": {
+        "presentation": "text",
         "answerIds": [
-          "a4",
           "a1",
           "a2",
-          "a3"
-        ]
-      },
-      "motorbike-q5": {
-        "presentation": "text",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "hazard_awareness",
+        "category": "machine_checks"
+      },
+      "motorbike-s1q3": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "motorbike-q6": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "passenger_safety",
+        "category": "machine_checks"
+      },
+      "motorbike-s1q4": {
+        "presentation": "text",
         "answerIds": [
           "a1",
-          "a3",
           "a2",
+          "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2",
+        "category": "machine_checks"
       },
-      "motorbike-q7": {
+      "motorbike-s1q5": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a3",
-        "category": "cornering_control",
+        "category": "machine_checks"
+      },
+      "motorbike-s1q6": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "motorbike-q8": {
-        "presentation": "text",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
-        "category": "hazard_awareness",
-        "answerIds": [
-          "a1",
-          "a4",
-          "a2",
-          "a3"
-        ]
+        "category": "machine_checks"
       },
-      "motorbike-q9": {
+      "motorbike-s1q7": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "machine_checks",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
-      },
-      "motorbike-q10": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "rider_readiness",
+        "category": "machine_checks"
+      },
+      "motorbike-s2q1": {
+        "presentation": "text",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "machine_checks"
+      },
+      "motorbike-s2q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "machine_checks"
+      },
+      "motorbike-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "machine_checks"
+      },
+      "motorbike-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "machine_checks"
+      },
+      "motorbike-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "machine_checks"
+      },
+      "motorbike-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "machine_checks"
+      },
+      "motorbike-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "machine_checks"
+      },
+      "motorbike-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "braking_control"
+      },
+      "motorbike-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "braking_control"
+      },
+      "motorbike-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "braking_control"
+      },
+      "motorbike-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "braking_control"
+      },
+      "motorbike-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "braking_control"
+      },
+      "motorbike-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "braking_control"
+      },
+      "motorbike-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "braking_control"
+      },
+      "motorbike-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "cornering_control"
+      },
+      "motorbike-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cornering_control"
+      },
+      "motorbike-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "cornering_control"
+      },
+      "motorbike-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cornering_control"
+      },
+      "motorbike-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cornering_control"
+      },
+      "motorbike-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cornering_control"
+      },
+      "motorbike-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "cornering_control"
+      },
+      "motorbike-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "passenger_safety"
+      },
+      "motorbike-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "passenger_safety"
+      },
+      "motorbike-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "passenger_safety"
+      },
+      "motorbike-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "passenger_safety"
+      },
+      "motorbike-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "passenger_safety"
+      },
+      "motorbike-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "rider_readiness"
+      },
+      "motorbike-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "rider_readiness"
+      },
+      "motorbike-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "machine_checks"
+      },
+      "motorbike-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "machine_checks"
+      },
+      "motorbike-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "machine_checks"
+      },
+      "motorbike-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "machine_checks"
+      },
+      "motorbike-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "machine_checks"
+      },
+      "motorbike-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "machine_checks"
+      },
+      "motorbike-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "machine_checks"
+      },
+      "motorbike-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "rider_readiness"
+      },
+      "motorbike-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "rider_readiness"
+      },
+      "motorbike-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "rider_readiness"
+      },
+      "motorbike-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "rider_readiness"
+      },
+      "motorbike-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "rider_readiness"
+      },
+      "motorbike-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "rider_readiness"
+      },
+      "motorbike-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "rider_readiness"
+      },
+      "motorbike-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "hazard_awareness"
+      },
+      "motorbike-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "hazard_awareness"
       }
     },
     "checkpoint": {
@@ -264,35 +1039,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

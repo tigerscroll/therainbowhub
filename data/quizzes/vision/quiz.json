@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -16,7 +16,9 @@
     "published": "2026-08-15",
     "difficulty": "Hard",
     "icon": "👁️",
-    "socialProofCount": 203000
+    "socialProofCount": 203000,
+    "compactLanding": true,
+    "showSocialProof": false
   },
   "theme": {
     "preset": "editorial",
@@ -60,111 +62,144 @@
       "icon": "👁️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "vision-s1q1",
+          "vision-s1q2",
+          "vision-s1q3",
+          "vision-s1q4",
+          "vision-s1q5",
+          "vision-s1q6",
+          "vision-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "vision-s2q1",
+          "vision-s2q2",
+          "vision-s2q3",
+          "vision-s2q4",
+          "vision-s2q5",
+          "vision-s2q6",
+          "vision-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "vision-s3q1",
+          "vision-s3q2",
+          "vision-s3q3",
+          "vision-s3q4",
+          "vision-s3q5",
+          "vision-s3q6",
+          "vision-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "vision-s4q1",
+          "vision-s4q2",
+          "vision-s4q3",
+          "vision-s4q4",
+          "vision-s4q5",
+          "vision-s4q6",
+          "vision-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "vision-s5q1",
+          "vision-s5q2",
+          "vision-s5q3",
+          "vision-s5q4",
+          "vision-s5q5",
+          "vision-s5q6",
+          "vision-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "vision-s6q1",
+          "vision-s6q2",
+          "vision-s6q3",
+          "vision-s6q4",
+          "vision-s6q5",
+          "vision-s6q6",
+          "vision-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "vision-s7q1",
+          "vision-s7q2",
+          "vision-s7q3",
+          "vision-s7q4",
+          "vision-s7q5",
+          "vision-s7q6",
+          "vision-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "vision-s8q1",
+          "vision-s8q2",
+          "vision-s8q3",
+          "vision-s8q4",
+          "vision-s8q5",
+          "vision-s8q6",
+          "vision-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "vision-s9q1",
+          "vision-s9q2",
+          "vision-s9q3",
+          "vision-s9q4",
+          "vision-s9q5",
+          "vision-s9q6",
+          "vision-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "vision-r1q1",
-          "vision-r1q5",
-          "vision-r5q1",
-          "vision-r3q6",
-          "vision-r7q2",
-          "vision-r4q5",
-          "vision-r9q2",
-          "vision-r8q3",
-          "vision-r10q2",
-          "vision-r8q5"
+          "vision-s10q1",
+          "vision-s10q2",
+          "vision-s10q3",
+          "vision-s10q4",
+          "vision-s10q5",
+          "vision-s10q6",
+          "vision-s10q7"
         ]
       }
     ],
     "questions": {
-      "vision-r1q1": {
-        "presentation": "grid",
-        "visual": {
-          "columns": 2
-        },
+      "vision-s1q1": {
+        "presentation": "text",
         "correctAnswerId": "a2",
-        "category": "colour_contrast",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "vision-r1q5": {
-        "study": {
-          "presentation": "icons",
-          "durationMs": 1800,
-          "mode": "automatic"
-        },
-        "category": "visual_memory",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a1"
-      },
-      "vision-r5q1": {
-        "presentation": "spatial",
-        "visual": {},
-        "correctAnswerId": "a4",
-        "category": "spatial_orientation",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "vision-r3q6": {
-        "correctAnswerId": "a2",
-        "category": "attention_control",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "vision-r7q2": {
-        "presentation": "grid",
-        "visual": {
-          "columns": 2
-        },
-        "category": "attention_control",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ],
-        "correctAnswerId": "a1"
-      },
-      "vision-r4q5": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "🟣",
-          "a2": "🔵",
-          "a3": "🟢",
-          "a4": "🟡"
-        },
-        "correctAnswerId": "a4",
-        "category": "colour_contrast",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "vision-r9q2": {
-        "correctAnswerId": "a3",
         "category": "detail_detection",
         "answerIds": [
           "a1",
@@ -172,24 +207,222 @@
           "a3",
           "a4"
         ],
-        "protectedTokens": [
-          {
-            "path": "context",
-            "value": "F0CUS-M7Q2-2026",
-            "count": 1
-          },
-          {
-            "path": "context",
-            "value": "FOCUS-M7Q2-2026",
-            "count": 1
-          }
-        ]
-      },
-      "vision-r8q3": {
-        "presentation": "text",
         "image": {
-          "src": "/quizzes/vision/assets/icons/eye-tracking-maze.svg?v=20260819-2"
-        },
+          "src": "/quizzes/vision/assets/icons/en-s1q1.svg"
+        }
+      },
+      "vision-s1q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s1q2.svg"
+        }
+      },
+      "vision-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s1q3.svg"
+        }
+      },
+      "vision-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s1q4.svg"
+        }
+      },
+      "vision-s1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s1q5.svg"
+        }
+      },
+      "vision-s1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s1q6.svg"
+        }
+      },
+      "vision-s1q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s1q7.svg"
+        }
+      },
+      "vision-s2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s2q1.svg"
+        }
+      },
+      "vision-s2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s2q2.svg"
+        }
+      },
+      "vision-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s2q3.svg"
+        }
+      },
+      "vision-s2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s2q4.svg"
+        }
+      },
+      "vision-s2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s2q5.svg"
+        }
+      },
+      "vision-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s2q6.svg"
+        }
+      },
+      "vision-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s2q7.svg"
+        }
+      },
+      "vision-s3q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s3q1.svg"
+        }
+      },
+      "vision-s3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s3q2.svg"
+        }
+      },
+      "vision-s3q3": {
+        "presentation": "text",
         "correctAnswerId": "a3",
         "category": "pattern_tracking",
         "answerIds": [
@@ -197,105 +430,274 @@
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s3q3.svg"
+        }
       },
-      "vision-r10q2": {
-        "presentation": "code",
-        "visual": {
-          "columns": 2,
-          "separator": "•"
-        },
+      "vision-s3q4": {
+        "presentation": "text",
         "correctAnswerId": "a1",
-        "category": "detail_detection",
-        "reasoningSteps": 2,
+        "category": "pattern_tracking",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
         ],
-        "protectedTokens": [
-          {
-            "path": "visual.items.1",
-            "value": "K1P4",
-            "count": 1
-          },
-          {
-            "path": "visual.ariaLabel",
-            "value": "K1P4",
-            "count": 1
-          },
-          {
-            "path": "visual.items.0",
-            "value": "K7P4",
-            "count": 1
-          },
-          {
-            "path": "visual.ariaLabel",
-            "value": "K7P4",
-            "count": 1
-          },
-          {
-            "path": "visual.items.0",
-            "value": "M8Q2",
-            "count": 1
-          },
-          {
-            "path": "visual.items.1",
-            "value": "M8Q2",
-            "count": 1
-          },
-          {
-            "path": "visual.ariaLabel",
-            "value": "M8Q2",
-            "count": 2
-          },
-          {
-            "path": "visual.items.1",
-            "value": "M8Q2-K1P4-R6M3",
-            "count": 1
-          },
-          {
-            "path": "visual.items.0",
-            "value": "M8Q2-K7P4-R6N3",
-            "count": 1
-          },
-          {
-            "path": "visual.items.1",
-            "value": "R6M3",
-            "count": 1
-          },
-          {
-            "path": "visual.ariaLabel",
-            "value": "R6M3",
-            "count": 1
-          },
-          {
-            "path": "visual.items.0",
-            "value": "R6N3",
-            "count": 1
-          },
-          {
-            "path": "visual.ariaLabel",
-            "value": "R6N3",
-            "count": 1
-          }
-        ]
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s3q4.svg"
+        }
       },
-      "vision-r8q5": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "🌙",
-          "a2": "⚓",
-          "a3": "☀️",
-          "a4": "⭐"
-        },
-        "study": {
-          "presentation": "icons",
-          "durationMs": 1400,
-          "mode": "automatic"
-        },
-        "delay": 350,
+      "vision-s3q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s3q5.svg"
+        }
+      },
+      "vision-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s3q6.svg"
+        }
+      },
+      "vision-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s3q7.svg"
+        }
+      },
+      "vision-s4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s4q1.svg"
+        }
+      },
+      "vision-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s4q2.svg"
+        }
+      },
+      "vision-s4q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s4q3.svg"
+        }
+      },
+      "vision-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s4q4.svg"
+        }
+      },
+      "vision-s4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s4q5.svg"
+        }
+      },
+      "vision-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s4q6.svg"
+        }
+      },
+      "vision-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s4q7.svg"
+        }
+      },
+      "vision-s5q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s5q1.svg"
+        }
+      },
+      "vision-s5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s5q2.svg"
+        }
+      },
+      "vision-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s5q3.svg"
+        }
+      },
+      "vision-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s5q4.svg"
+        }
+      },
+      "vision-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s5q5.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s5q5-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s5q5-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s5q5-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s5q5-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s5q5-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s5q5-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s5q5-ar.svg"
+          }
+        }
+      },
+      "vision-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s5q6.svg"
+        }
+      },
+      "vision-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "colour_contrast",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s5q7.svg"
+        }
+      },
+      "vision-s6q1": {
+        "presentation": "text",
         "correctAnswerId": "a2",
         "category": "visual_memory",
         "answerIds": [
@@ -303,7 +705,565 @@
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s6q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s6q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s7q1.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s7q1-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s7q1-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s7q1-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s7q1-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s7q1-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s7q1-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s7q1-ar.svg"
+          }
+        }
+      },
+      "vision-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s7q2.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s7q2-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s7q2-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s7q2-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s7q2-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s7q2-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s7q2-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s7q2-ar.svg"
+          }
+        }
+      },
+      "vision-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s7q3.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s7q3-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s7q3-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s7q3-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s7q3-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s7q3-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s7q3-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s7q3-ar.svg"
+          }
+        }
+      },
+      "vision-s7q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s7q4.svg"
+        }
+      },
+      "vision-s7q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s7q5.svg"
+        }
+      },
+      "vision-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s7q6.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s7q6-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s7q6-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s7q6-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s7q6-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s7q6-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s7q6-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s7q6-ar.svg"
+          }
+        }
+      },
+      "vision-s7q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s7q7.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s7q7-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s7q7-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s7q7-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s7q7-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s7q7-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s7q7-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s7q7-ar.svg"
+          }
+        }
+      },
+      "vision-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s8q1.svg"
+        }
+      },
+      "vision-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s8q2.svg"
+        }
+      },
+      "vision-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s8q3.svg"
+        }
+      },
+      "vision-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s8q4.svg"
+        }
+      },
+      "vision-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s8q5.svg"
+        }
+      },
+      "vision-s8q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s8q6.svg"
+        }
+      },
+      "vision-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s8q7.svg"
+        }
+      },
+      "vision-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s9q1.svg"
+        }
+      },
+      "vision-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s9q2.svg"
+        }
+      },
+      "vision-s9q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s9q3.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s9q3-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s9q3-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s9q3-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s9q3-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s9q3-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s9q3-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s9q3-ar.svg"
+          }
+        }
+      },
+      "vision-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s9q4.svg"
+        }
+      },
+      "vision-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s9q5.svg"
+        }
+      },
+      "vision-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s9q6.svg"
+        }
+      },
+      "vision-s9q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "attention_control",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s9q7.svg"
+        }
+      },
+      "vision-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s10q1.svg"
+        }
+      },
+      "vision-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s10q2.svg"
+        }
+      },
+      "vision-s10q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "visual_memory",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false,
+          "presentation": "icons"
+        }
+      },
+      "vision-s10q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "detail_detection",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s10q4.svg",
+          "localizedSrc": {
+            "fr": "/quizzes/vision/assets/icons/en-s10q4-fr.svg",
+            "de": "/quizzes/vision/assets/icons/en-s10q4-de.svg",
+            "it": "/quizzes/vision/assets/icons/en-s10q4-it.svg",
+            "nl": "/quizzes/vision/assets/icons/en-s10q4-nl.svg",
+            "es": "/quizzes/vision/assets/icons/en-s10q4-es.svg",
+            "pt": "/quizzes/vision/assets/icons/en-s10q4-pt.svg",
+            "ar": "/quizzes/vision/assets/icons/en-s10q4-ar.svg"
+          }
+        }
+      },
+      "vision-s10q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "spatial_orientation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s10q5.svg"
+        }
+      },
+      "vision-s10q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s10q6.svg"
+        }
+      },
+      "vision-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "pattern_tracking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "image": {
+          "src": "/quizzes/vision/assets/icons/en-s10q7.svg"
+        }
       }
     },
     "checkpoint": {
@@ -366,35 +1326,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "🧑‍🍳",
     "socialProofCount": 123000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "id": "chef",
@@ -62,32 +63,255 @@
       "icon": "🧑‍🍳"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "chef-s1q1",
+          "chef-s1q2",
+          "chef-s1q3",
+          "chef-s1q4",
+          "chef-s1q5",
+          "chef-s1q6",
+          "chef-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "chef-s2q1",
+          "chef-s2q2",
+          "chef-s2q3",
+          "chef-s2q4",
+          "chef-s2q5",
+          "chef-s2q6",
+          "chef-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "chef-s3q1",
+          "chef-s3q2",
+          "chef-s3q3",
+          "chef-s3q4",
+          "chef-s3q5",
+          "chef-s3q6",
+          "chef-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "chef-s4q1",
+          "chef-s4q2",
+          "chef-s4q3",
+          "chef-s4q4",
+          "chef-s4q5",
+          "chef-s4q6",
+          "chef-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "chef-s5q1",
+          "chef-s5q2",
+          "chef-s5q3",
+          "chef-s5q4",
+          "chef-s5q5",
+          "chef-s5q6",
+          "chef-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "chef-s6q1",
+          "chef-s6q2",
+          "chef-s6q3",
+          "chef-s6q4",
+          "chef-s6q5",
+          "chef-s6q6",
+          "chef-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "chef-s7q1",
+          "chef-s7q2",
+          "chef-s7q3",
+          "chef-s7q4",
+          "chef-s7q5",
+          "chef-s7q6",
+          "chef-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "chef-s8q1",
+          "chef-s8q2",
+          "chef-s8q3",
+          "chef-s8q4",
+          "chef-s8q5",
+          "chef-s8q6",
+          "chef-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "chef-s9q1",
+          "chef-s9q2",
+          "chef-s9q3",
+          "chef-s9q4",
+          "chef-s9q5",
+          "chef-s9q6",
+          "chef-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "chef-r1q1",
-          "chef-r1q2",
-          "chef-r5q3",
-          "chef-r2q6",
-          "chef-r6q1",
-          "chef-r3q1",
-          "chef-r8q1",
-          "chef-r8q2",
-          "chef-r10q1",
-          "chef-r10q2"
+          "chef-s10q1",
+          "chef-s10q2",
+          "chef-s10q3",
+          "chef-s10q4",
+          "chef-s10q5",
+          "chef-s10q6",
+          "chef-s10q7"
         ]
       }
     ],
     "questions": {
-      "chef-r1q1": {
+      "chef-s1q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s1q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s1q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s2q4": {
         "presentation": "text",
         "correctAnswerId": "a2",
         "category": "kitchen_fundamentals",
-        "interactionStyle": "visual-identification",
         "answerIds": [
           "a1",
           "a2",
@@ -95,47 +319,10 @@
           "a4"
         ]
       },
-      "chef-r1q2": {
-        "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "ingredients_flavour",
-        "interactionStyle": "cause-and-effect",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "chef-r5q3": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "baking_pastry",
-        "interactionStyle": "sequence",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "chef-r2q6": {
+      "chef-s2q5": {
         "presentation": "text",
         "correctAnswerId": "a3",
-        "category": "safety_service",
-        "interactionStyle": "prioritisation",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "chef-r6q1": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "kitchen_maths",
-        "interactionStyle": "recipe-scaling",
+        "category": "kitchen_fundamentals",
         "answerIds": [
           "a1",
           "a2",
@@ -143,24 +330,65 @@
           "a4"
         ]
       },
-      "chef-r3q1": {
+      "chef-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s3q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s3q4": {
         "presentation": "text",
         "correctAnswerId": "a1",
         "category": "heat_methods",
-        "interactionStyle": "heat-diagnosis",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
-      },
-      "chef-r8q1": {
-        "presentation": "text",
-        "delay": 350,
-        "correctAnswerId": "a3",
-        "category": "kitchen_fundamentals",
-        "interactionStyle": "visual-identification",
         "answerIds": [
           "a1",
           "a2",
@@ -168,25 +396,10 @@
           "a4"
         ]
       },
-      "chef-r8q2": {
-        "presentation": "text",
-        "delay": 350,
-        "correctAnswerId": "a4",
-        "category": "ingredients_flavour",
-        "interactionStyle": "core-concept",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "chef-r10q1": {
+      "chef-s3q5": {
         "presentation": "text",
         "correctAnswerId": "a1",
-        "category": "kitchen_fundamentals",
-        "reasoningSteps": 2,
-        "interactionStyle": "synthesis",
+        "category": "heat_methods",
         "answerIds": [
           "a1",
           "a2",
@@ -194,15 +407,563 @@
           "a4"
         ]
       },
-      "chef-r10q2": {
+      "chef-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "ingredients_flavour",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "ingredients_flavour",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s4q3": {
         "presentation": "text",
         "correctAnswerId": "a2",
         "category": "ingredients_flavour",
-        "reasoningSteps": 2,
-        "interactionStyle": "synthesis",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "ingredients_flavour",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "ingredients_flavour",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "ingredients_flavour",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "ingredients_flavour",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s5q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s6q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s6q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s6q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s7q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s7q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s7q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "safety_service",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "safety_service",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "safety_service",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "safety_service",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "safety_service",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s8q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "safety_service",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "safety_service",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s9q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s9q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "kitchen_fundamentals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s10q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s10q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "baking_pastry",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s10q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s10q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "kitchen_maths",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "chef-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "heat_methods",
+        "answerIds": [
+          "a1",
+          "a2",
           "a3",
           "a4"
         ]
@@ -283,35 +1044,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

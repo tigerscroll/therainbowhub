@@ -6,13 +6,13 @@ import { expandQuizLocale } from '../../scripts/quiz-schema-v2.mjs';
 import { getChapterAnswers } from './engagement.ts';
 import { scoreQuiz } from './scoring.ts';
 
-const slugs = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq', 'harvard', 'oxford', 'cambridge'];
+const slugs = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq', 'harvard', 'oxford', 'cambridge', 'airforce', 'barrister', 'dentist', 'doctor', 'firefighter', 'flightattendant', 'italian', 'medical', 'motorbike', 'nun', 'pilot', 'police', 'socialworker', 'surgeon', 'teacher', 'train'];
 const read = (slug: string, file: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${file}`, 'utf8'));
 
 for (const slug of slugs) {
   const original = read(slug, 'en.json');
-  const manifest = read(slug, 'english-extended/quiz.json');
-  const copy = read(slug, 'english-extended/en.json');
+  const manifest = read(slug, 'quiz.json');
+  const copy = read(slug, 'en.json');
   const expanded = expandQuizLocale(manifest, copy, 'en');
   const questions = expanded.stages.flatMap((stage: { questions: any[] }) => stage.questions);
 
@@ -21,7 +21,7 @@ for (const slug of slugs) {
     assert.equal(copy.landing.intro, original.landing.intro);
     assert.equal(copy.landing.cta, 'Start');
     assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-    assert.deepEqual(manifest.activeLocales, JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales);
+    assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
     assert.equal(manifest.engine.localeParity, 'independent');
     assert.equal(manifest.engine.hardRefreshCheckpoints, false);
     assert.equal(manifest.listing.compactLanding, true);
@@ -39,9 +39,7 @@ for (const slug of slugs) {
       positions[question.correct]++;
     }
     assert.deepEqual(positions.sort(), [17, 17, 18, 18]);
-    // The English override leaves the source used by translated routes intact.
-    assert.equal(read(slug, 'quiz.json').template, 'single-stage-rewarded-v1');
-    assert.equal(Object.keys(read(slug, 'es.json').stages).length, 1);
+
   });
 
   test(`${slug}: checkpoints focus on the next topic and preserve the requested CTA sequence`, () => {
@@ -64,7 +62,7 @@ for (const slug of slugs) {
   test(`${slug}: questions use cross-region English and retain a complete answer key`, () => {
     const visibleQuestions = JSON.stringify(copy.stages);
     assert.doesNotMatch(visibleQuestions, /\b(?:NHS|A&E|Medicare|Medicaid|postcode|zip code|MOT|DMV)\b|(?<![\d,])(?:999|911|111|000)(?![\d,])|\d+\s*(?:cups?|tablespoons?|teaspoons?)\b/i);
-    const key = fs.readFileSync(`data/quizzes/${slug}/english-extended/ANSWER_KEY.md`, 'utf8');
+    const key = fs.readFileSync(`data/quizzes/${slug}/ANSWER_KEY.md`, 'utf8');
     for (const question of questions) assert.ok(key.includes(`| \`${question.id}\` | ${question.answers[question.correct]} |`), question.id);
   });
 
@@ -102,7 +100,7 @@ for (const slug of slugs) {
   });
 }
 
-const iq = expandQuizLocale(read('iq', 'english-extended/quiz.json'), read('iq', 'english-extended/en.json'), 'en');
+const iq = expandQuizLocale(read('iq', 'quiz.json'), read('iq', 'en.json'), 'en');
 const iqQuestions = Object.fromEntries(iq.stages.flatMap((stage: any) => stage.questions.map((question: any) => [question.id, question])));
 const iqAnswer = (id: string) => iqQuestions[id].answers[iqQuestions[id].correct];
 

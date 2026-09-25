@@ -1,4 +1,4 @@
-import {locales} from './config.mjs';
+import {translationRowLocales as locales} from './config.mjs';
 
 // Common-name/anatomical-name pairs collapse to the same word in several
 // languages. Identify the same structure by its location or function instead.

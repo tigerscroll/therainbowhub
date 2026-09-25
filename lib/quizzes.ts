@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import chapterLocales from "@/data/chapter-locales.json";
 
 import {
   getDefaultLocale,
@@ -86,7 +85,7 @@ const QUIZ_TEMPLATE_CONTRACTS = {
   },
 } as const;
 const sharedShellCss = fs.readFileSync(path.join(process.cwd(), "styles", "quiz-shell-contract.css"), "utf8");
-const SHARED_SHELL_CSS_HREF = `/styles/quiz-shell-contract.${createHash("sha256").update(sharedShellCss).digest("hex").slice(0, 12)}.css`;
+export const SHARED_SHELL_CSS_HREF = `/styles/quiz-shell-contract.${createHash("sha256").update(sharedShellCss).digest("hex").slice(0, 12)}.css`;
 
 export type QuizScoring = { type: "correct-answer" | "weighted-profile" | "hybrid-match" };
 export type QuizRewardedConfig = { start: boolean; stages: boolean; attempts: number; confirmStart: boolean };
@@ -1713,9 +1712,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const cacheKey = `${slug}:${locale}`;
   const cached = quizCache.get(cacheKey);
   if (cached) return cached;
-  const contentDirectory = chapterLocales.quizzes.includes(slug) && chapterLocales.locales.includes(locale)
-    ? path.join(directory(slug), "english-extended")
-    : directory(slug);
+  const contentDirectory = directory(slug);
   const manifest = validateManifest(json(path.join(contentDirectory, "quiz.json")), `${slug}/${locale}/quiz.json`);
   if (manifest.slug !== slug) throw new Error(`${slug}: folder and quiz id must match.`);
   manifest.listing.thumbnail = normalizeQuizAsset(ROOT, slug, manifest.listing.thumbnail);
@@ -1789,9 +1786,10 @@ export function getAllQuizzes(locale?: string, options: { includeFallback?: bool
 
 export type QuizRecommendation = {
   href: string;
+  icon?: string;
   summary: string;
   thumbnailAlt: string;
-  thumbnailUrl: string;
+  thumbnailUrl?: string;
   title: string;
 };
 
@@ -1812,9 +1810,14 @@ export function getQuizRecommendations(
     .slice(0, Math.max(0, limit))
     .map((candidate) => ({
       href: getHref(candidate.slug),
+      icon: candidate.cardIcon,
       summary: candidate.summary,
       thumbnailAlt: candidate.thumbnailAlt,
-      thumbnailUrl: `/quizzes/${candidate.slug}/assets/thumbnail-480.webp`,
+      thumbnailUrl: candidate.thumbnailUrl
+        ? candidate.thumbnailUrl.startsWith(`/quizzes/${candidate.slug}/`)
+          ? `/quizzes/${candidate.slug}/assets/thumbnail-480.webp`
+          : candidate.thumbnailUrl
+        : undefined,
       title: candidate.title,
     }));
 }

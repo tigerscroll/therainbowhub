@@ -5,14 +5,14 @@ import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 import type {Quiz} from '../../lib/quizzes.ts';
 import {scoreQuiz} from './scoring.ts';
 
-const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/english-extended/${file}.json`, 'utf8'));
+const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, 'utf8'));
 
 test('English Years Left has ten distinct seven-question chapters and a rewarded checkpoint after each', () => {
   const manifest = read('quiz');
   const copy = read('en');
   const quiz = expandQuizLocale(manifest, copy, 'en');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales);
+  assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
   assert.notEqual(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(quiz.stages.length, 10);
   assert.deepEqual(quiz.stages.map((stage: {questions: unknown[]}) => stage.questions.length), Array(10).fill(7));

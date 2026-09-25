@@ -14,8 +14,8 @@ const previewCss = process.env.QUIZ_TEST_CSS ? fs.readFileSync(process.env.QUIZ_
 const browser = await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless:true});
 
 async function check({slug, locale}) {
-  const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/english-extended/quiz.json`, 'utf8'));
-  const copy = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/english-extended/${locale}.json`, 'utf8'));
+  const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, 'utf8'));
+  const copy = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
   const context = await browser.newContext({viewport:{width:320,height:568},reducedMotion:'reduce'});
   const page = await context.newPage();
   page.setDefaultTimeout(10_000);

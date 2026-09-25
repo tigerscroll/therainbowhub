@@ -46,12 +46,12 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
     return buildMetadata({
       alternates: quizAlternates(quiz.slug),
       description: quiz.summary,
-      image: {
+      image: quiz.thumbnailUrl ? {
         alt: quiz.title,
         height: 540,
-        path: `/quizzes/${quiz.slug}/assets/thumbnail-960.webp`,
+        path: quiz.thumbnailUrl,
         width: 960,
-      },
+      } : undefined,
       path: getQuizPath(getDefaultLocale(), quiz.slug),
       title: quiz.title,
     });

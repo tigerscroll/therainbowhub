@@ -1,4 +1,4 @@
-import {locales} from './config.mjs';
+import {translationRowLocales as locales} from './config.mjs';
 
 // Clinical context is essential: a "current account" is a person's account
 // of events, a "chart" is a care record, and "change" is not money.
@@ -64,6 +64,6 @@ const ar = {
 };
 
 export function correctClinicalTerm(slug, locale, source) {
-  if (!['treatments', 'midwifery', 'nursing', 'paramedic'].includes(slug)) return undefined;
+  if (!['treatments', 'midwifery', 'nursing', 'paramedic', 'doctor', 'medical', 'surgeon', 'dentist'].includes(slug)) return undefined;
   return shared[source]?.split('|')[locales.indexOf(locale)] ?? (locale === 'ar' ? ar[source] : undefined);
 }

@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "🍝",
     "socialProofCount": 146000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,147 +62,910 @@
       "icon": "🍝"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "italian-s1q1",
+          "italian-s1q2",
+          "italian-s1q3",
+          "italian-s1q4",
+          "italian-s1q5",
+          "italian-s1q6",
+          "italian-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "italian-s2q1",
+          "italian-s2q2",
+          "italian-s2q3",
+          "italian-s2q4",
+          "italian-s2q5",
+          "italian-s2q6",
+          "italian-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "italian-s3q1",
+          "italian-s3q2",
+          "italian-s3q3",
+          "italian-s3q4",
+          "italian-s3q5",
+          "italian-s3q6",
+          "italian-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "italian-s4q1",
+          "italian-s4q2",
+          "italian-s4q3",
+          "italian-s4q4",
+          "italian-s4q5",
+          "italian-s4q6",
+          "italian-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "italian-s5q1",
+          "italian-s5q2",
+          "italian-s5q3",
+          "italian-s5q4",
+          "italian-s5q5",
+          "italian-s5q6",
+          "italian-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "italian-s6q1",
+          "italian-s6q2",
+          "italian-s6q3",
+          "italian-s6q4",
+          "italian-s6q5",
+          "italian-s6q6",
+          "italian-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "italian-s7q1",
+          "italian-s7q2",
+          "italian-s7q3",
+          "italian-s7q4",
+          "italian-s7q5",
+          "italian-s7q6",
+          "italian-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "italian-s8q1",
+          "italian-s8q2",
+          "italian-s8q3",
+          "italian-s8q4",
+          "italian-s8q5",
+          "italian-s8q6",
+          "italian-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "italian-s9q1",
+          "italian-s9q2",
+          "italian-s9q3",
+          "italian-s9q4",
+          "italian-s9q5",
+          "italian-s9q6",
+          "italian-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "italian-q1",
-          "italian-q2",
-          "italian-q3",
-          "italian-q4",
-          "italian-q5",
-          "italian-q6",
-          "italian-q7",
-          "italian-q8",
-          "italian-q9",
-          "italian-q10"
+          "italian-s10q1",
+          "italian-s10q2",
+          "italian-s10q3",
+          "italian-s10q4",
+          "italian-s10q5",
+          "italian-s10q6",
+          "italian-s10q7"
         ]
       }
     ],
     "questions": {
-      "italian-q1": {
+      "italian-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "classic_dishes",
-        "interactionStyle": "ingredient-identification",
         "answerIds": [
           "a1",
-          "a3",
           "a2",
+          "a3",
           "a4"
-        ]
-      },
-      "italian-q2": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a1",
-        "category": "classic_dishes",
-        "interactionStyle": "ingredient-identification",
+        "category": "classic_dishes"
+      },
+      "italian-s1q2": {
+        "presentation": "text",
         "answerIds": [
+          "a1",
           "a2",
           "a3",
-          "a4",
-          "a1"
-        ]
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "classic_dishes"
       },
-      "italian-q3": {
+      "italian-s1q3": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
-        "category": "ingredients",
-        "interactionStyle": "ingredient-identification",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ]
+        "category": "classic_dishes"
       },
-      "italian-q4": {
+      "italian-s1q4": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "regions",
-        "interactionStyle": "regional-knowledge",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
-      },
-      "italian-q5": {
-        "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "ingredients",
-        "interactionStyle": "ingredient-identification",
-        "answerIds": [
-          "a3",
-          "a1",
-          "a2",
-          "a4"
-        ]
-      },
-      "italian-q6": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "regions",
-        "interactionStyle": "regional-knowledge",
-        "answerIds": [
-          "a2",
-          "a3",
-          "a1",
-          "a4"
-        ]
-      },
-      "italian-q7": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a4",
-        "category": "pasta_language",
-        "interactionStyle": "translation",
+        "category": "classic_dishes"
+      },
+      "italian-s1q5": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3",
+        "category": "classic_dishes"
       },
-      "italian-q8": {
+      "italian-s1q6": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "pasta_language",
-        "interactionStyle": "pairing",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3",
+        "category": "classic_dishes"
       },
-      "italian-q9": {
+      "italian-s1q7": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "ingredients",
-        "interactionStyle": "ingredient-identification",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
+        "category": "classic_dishes"
       },
-      "italian-q10": {
+      "italian-s2q1": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "regions",
-        "reasoningSteps": 2,
-        "interactionStyle": "cultural-origin",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "pasta_language"
+      },
+      "italian-s2q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "pasta_language"
+      },
+      "italian-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "pasta_language"
+      },
+      "italian-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "pasta_language"
+      },
+      "italian-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "pasta_language"
+      },
+      "italian-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "pasta_language"
+      },
+      "italian-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "pasta_language"
+      },
+      "italian-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "ingredients"
+      },
+      "italian-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "ingredients"
+      },
+      "italian-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ingredients"
+      },
+      "italian-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "regions"
+      },
+      "italian-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "regions"
+      },
+      "italian-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "regions"
+      },
+      "italian-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "regions"
+      },
+      "italian-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "regions"
+      },
+      "italian-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "regions"
+      },
+      "italian-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "regions"
+      },
+      "italian-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "ingredients"
+      },
+      "italian-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ingredients"
+      },
+      "italian-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "ingredients"
+      },
+      "italian-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ingredients"
+      },
+      "italian-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ingredients"
+      },
+      "italian-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ingredients"
+      },
+      "italian-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "classic_dishes"
+      },
+      "italian-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "classic_dishes"
+      },
+      "italian-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "classic_dishes"
+      },
+      "italian-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "classic_dishes"
+      },
+      "italian-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "classic_dishes"
+      },
+      "italian-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "classic_dishes"
+      },
+      "italian-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "classic_dishes"
+      },
+      "italian-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "pasta_language"
+      },
+      "italian-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "pasta_language"
+      },
+      "italian-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "pasta_language"
+      },
+      "italian-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "pasta_language"
+      },
+      "italian-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "pasta_language"
+      },
+      "italian-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "pasta_language"
+      },
+      "italian-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "pasta_language"
+      },
+      "italian-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ingredients"
+      },
+      "italian-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "ingredients"
+      },
+      "italian-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ingredients"
+      },
+      "italian-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ingredients"
+      },
+      "italian-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ingredients"
+      },
+      "italian-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "classic_dishes"
+      },
+      "italian-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "classic_dishes"
+      },
+      "italian-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "classic_dishes"
+      },
+      "italian-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "classic_dishes"
+      },
+      "italian-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "classic_dishes"
+      },
+      "italian-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "classic_dishes"
+      },
+      "italian-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "classic_dishes"
       }
     },
     "checkpoint": {
@@ -267,35 +1031,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

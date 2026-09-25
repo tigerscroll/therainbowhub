@@ -1,203 +1,940 @@
 {
   "title": "Solo 1 de cada 10 supera este quiz de cultura católica",
   "eyebrow": "LA PRUEBA DE CONOCIMIENTOS CATÓLICOS",
-  "summary": "Diez preguntas ponen a prueba tus conocimientos sobre el culto católico, las Escrituras, la oración y el año litúrgico.",
+  "summary": "Explore el culto católico, las Escrituras, la oración y la tradición a través de un nuevo conjunto de pistas.",
   "landing": {
     "intro": "Explora la fe y la tradición.\n¿Cuánto recordarás?",
-    "cta": "Empezar el quiz"
+    "cta": "Empezar"
   },
   "about": {
-    "body": "Este quiz de entretenimiento contiene diez preguntas sobre el culto católico, los sacramentos, las Sagradas Escrituras, la oración y el año litúrgico.\n\nElige la mejor respuesta en cada caso. Las prácticas pueden variar entre los ritos católicos; las preguntas especifican el rito romano cuando es necesario.\n\nLa puntuación solo refleja el resultado obtenido en este breve quiz y no dice nada sobre la fe, la devoción o la posición de nadie dentro de la Iglesia.",
+    "body": "Explore el culto católico, los sacramentos, las Escrituras y las devociones familiares. Cada conjunto se centra en una parte diferente de la vida y tradición católica.\n\nElija una respuesta cada vez y luego consulte el perfil de su tema en el punto de control. Su resultado final incluye una revisión opcional de las respuestas perdidas.\n\nLas prácticas difieren entre los ritos católicos. Las preguntas especifican el rito romano cuando sea relevante. Esta puntuación de entretenimiento no mide la fe, la devoción o la posición de nadie en la Iglesia.",
     "howToPlay": {
       "steps": [
-        "Lee cada pregunta con atención.",
-        "Elige una respuesta entre las cuatro opciones.",
-        "Descubre tu puntuación después de la décima pregunta y luego desbloquea la revisión de las preguntas que respondiste incorrectamente."
+        "Lee las pistas y elige una respuesta.",
+        "Descubre tu perfil en este tema y pasa al siguiente reto.",
+        "Descubre tu resultado final y, si quieres, repasa las respuestas de las preguntas que fallaste."
       ]
     },
-    "disclaimer": "Solo para entretenimiento y cultura general. El quiz no es enseñanza religiosa ni un juicio sobre la fe."
+    "disclaimer": "Sólo para entretenimiento y aprendizaje general. Este cuestionario no es instrucción religiosa ni un juicio de fe."
   },
   "career": {
-    "resultProgressLabel": "Tu progreso",
+    "resultProgressLabel": "Tu reto",
     "stages": {
       "stage-1": {
-        "difficulty": "Cultura católica",
+        "difficulty": "LAS BASES DE LA FE CATÓLICA",
+        "preAdTitle": "Tus primeras pistas",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "Relaciona cada sacramento con su significado."
+        }
+      },
+      "stage-2": {
+        "difficulty": "LOS SACRAMENTOS",
+        "preAdTitle": "Una nueva mirada",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "Reconoce palabras y gestos de la misa en el rito romano."
+        }
+      },
+      "stage-3": {
+        "difficulty": "LA MISA",
+        "preAdTitle": "Los detalles cuentan",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "¿Sabes identificar lo que hay dentro de una iglesia?"
+        }
+      },
+      "stage-4": {
+        "difficulty": "DENTRO DE LA IGLESIA",
+        "preAdTitle": "Cambiemos de perspectiva",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "Relaciona los tiempos litúrgicos con sus celebraciones."
+        }
+      },
+      "stage-5": {
+        "difficulty": "TIEMPOS LITÚRGICOS Y FIESTAS",
+        "preAdTitle": "Una nueva pista",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "Las devociones conocidas también guardan detalles."
+        }
+      },
+      "stage-6": {
+        "difficulty": "ORACIÓN Y ROSARIO",
+        "preAdTitle": "Cada detalle importa",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "Sigue a María en los relatos de los Evangelios."
+        }
+      },
+      "stage-7": {
+        "difficulty": "MARÍA Y LOS EVANGELIOS",
+        "preAdTitle": "Conecta las pistas",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "Relaciona libros, autores y episodios bíblicos."
+        }
+      },
+      "stage-8": {
+        "difficulty": "CONEXIONES CON LA ESCRITURA",
+        "preAdTitle": "Mira desde otro ángulo",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "¿Qué responsabilidad corresponde a cada función?"
+        }
+      },
+      "stage-9": {
+        "difficulty": "LA VIDA DE LA IGLESIA",
+        "preAdTitle": "Llega el último reto",
+        "preAdCopy": "En este tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A CONTINUACIÓN",
+          "tagline": "La fe, el culto y la tradición se encuentran en el último reto."
+        }
+      },
+      "stage-10": {
+        "difficulty": "FE Y TRADICIÓN",
         "preAdTitle": "Tu resultado está listo",
-        "preAdCopy": "Tus diez respuestas están revisadas. Tu puntuación en el quiz de cultura católica está lista.",
+        "preAdCopy": "¿Has llegado al 80 %? Tu puntuación y tus puntos fuertes están listos.",
+        "preAdButton": "Ver mi resultado",
         "preAdChecks": [
-          "10 respuestas revisadas",
-          "Cinco áreas de conocimiento comparadas"
+          "Respuestas revisadas",
+          "Puntos fuertes comparados",
+          "Puntuación calculada"
         ]
       }
     }
   },
   "results": {
-    "name": "TU PUNTUACIÓN DE CULTURA CATÓLICA",
+    "name": "TU PUNTUACIÓN DE TRIVIA CATÓLICA",
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
         "title": "El erudito católico",
-        "copy": "Respondiste correctamente a nueve o diez preguntas: un resultado excelente en este breve quiz. Refleja tu desempeño en el quiz, no la fuerza de tu fe."
+        "copy": "Respondiste casi todas las preguntas correctamente. Sus resultados detallados muestran cómo esa precisión se transmitió a los temas de este desafío."
       },
       "profile-2": {
         "tier": "70–89%",
         "title": "El experto parroquial",
-        "copy": "Acertaste muchas preguntas sobre el culto católico, la oración y el año litúrgico. La revisión te ayudará a afinar los detalles que se te escaparon."
+        "copy": "Hiciste muchas conexiones precisas a lo largo de este desafío. Explore sus resultados detallados para ver qué temas fueron los más destacados."
       },
       "profile-3": {
         "tier": "50–69%",
         "title": "El observador informado",
-        "copy": "Demostraste conocimientos sobre el culto católico, la oración y el año litúrgico. Repasa las preguntas más difíciles para ver qué detalles te faltaron."
+        "copy": "Conectaste muchas de las pistas y hechos. Sus resultados detallados resaltan los temas que manejó mejor y los que merecen otra mirada."
       },
       "profile-4": {
         "tier": "30–49%",
         "title": "El alumno curioso",
-        "copy": "Algunas preguntas sobre el culto católico, la oración y el año litúrgico resultaron difíciles. La revisión de respuestas te ayudará a entender los puntos que fallaste."
+        "copy": "Encontró pistas útiles sobre varios temas. La revisión de respuestas puede ayudarle a resolver las preguntas que le llamaron la atención."
       },
       "profile-5": {
         "tier": "Menos del 30%",
         "title": "La puerta abierta",
-        "copy": "Este resultado señala aspectos del culto católico, la oración y el año litúrgico que puedes repasar. Consulta las respuestas para comprender cada solución."
+        "copy": "Algunos temas me resultaban más familiares que otros. Su revisión muestra las respuestas correctas y le brinda un punto de partida para otro intento."
       }
     },
     "dimensions": {
       "dimension-1": {
-        "label": "Culto y sacramentos"
+        "label": "Adoración y sacramentos"
       },
       "dimension-2": {
-        "label": "Jerarquía de la Iglesia"
+        "label": "liderazgo de la iglesia"
       },
       "dimension-3": {
-        "label": "Año litúrgico"
+        "label": "año litúrgico"
       },
       "dimension-4": {
         "label": "Oración y devoción"
       },
       "dimension-5": {
-        "label": "Sagradas Escrituras"
+        "label": "Escritura"
       }
     },
     "score": {
-      "passed": "¡Has superado el reto!",
+      "passed": "¡Has alcanzado el 80 %!",
       "finished": "Reto completado",
-      "strongest": "Área más sólida",
-      "trickiest": "Área más difícil",
-      "bestRound": "Tu mejor ronda",
+      "strongest": "Área de conocimiento más fuerte",
+      "trickiest": "Área de conocimiento más complicada",
+      "bestRound": "Tu mejor tema",
       "insights": {
         "overview": "Tu puntuación de un vistazo",
         "correct": "Respuestas correctas",
         "missed": "Respuestas incorrectas",
-        "target": "Respuestas correctas para alcanzar el 80 %",
-        "breakdown": "Tu resultado por categorías",
-        "snapshot": "Sobre tu resultado en el quiz",
+        "target": "Respuestas correctas para llegar al 80 %",
+        "breakdown": "Tus resultados por tema",
+        "snapshot": "Lo que muestra tu resultado",
         "targetReached": "Objetivo del 80 % alcanzado",
-        "targetRemaining": "Respuestas correctas que faltan para llegar al 80%"
+        "targetRemaining": "Faltan más respuestas correctas para llegar al 80 %."
       }
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Cultura católica",
+      "title": "Las bases de la fe católica",
       "questions": {
-        "catholic-q1": {
-          "question": "En el rito romano, ¿cómo se llama la celebración central de la Eucaristía?",
+        "catholic-s1q1": {
+          "question": "¿Cómo se llama comúnmente en el Rito Romano a la celebración central de la Eucaristía?",
+          "headerLabel": "LAS BASES DE LA FE CATÓLICA",
           "answers": {
-            "a1": "La misa",
-            "a2": "El rosario",
-            "a3": "El ángelus",
-            "a4": "El viacrucis"
-          },
-          "headerLabel": "CULTO"
+            "a1": "Misa",
+            "a2": "El Rosario",
+            "a3": "Vísperas",
+            "a4": "Una novena"
+          }
         },
-        "catholic-q2": {
-          "question": "¿De qué ciudad es también obispo el papa?",
+        "catholic-s1q2": {
+          "question": "¿Cuántos sacramentos reconoce la Iglesia católica?",
+          "headerLabel": "LAS BASES DE LA FE CATÓLICA",
+          "answers": {
+            "a1": "Seis",
+            "a2": "Siete",
+            "a3": "Cinco",
+            "a4": "doce"
+          }
+        },
+        "catholic-s1q3": {
+          "question": "¿El Papa es obispo de qué ciudad?",
+          "headerLabel": "LAS BASES DE LA FE CATÓLICA",
           "answers": {
             "a1": "Jerusalén",
-            "a2": "Roma",
-            "a3": "Asís",
-            "a4": "Belén"
-          },
-          "headerLabel": "JERARQUÍA DE LA IGLESIA"
+            "a2": "Asís",
+            "a3": "Belén",
+            "a4": "Roma"
+          }
         },
-        "catholic-q3": {
-          "question": "¿Cuántos sacramentos reconoce la Iglesia católica?",
+        "catholic-s1q4": {
+          "question": "¿Qué oración también se conoce como «la oración del Señor»?",
+          "headerLabel": "LAS BASES DE LA FE CATÓLICA",
           "answers": {
-            "a1": "Cinco",
-            "a2": "Seis",
-            "a3": "Siete",
-            "a4": "Ocho"
-          },
-          "headerLabel": "SACRAMENTOS"
+            "a1": "El Padre Nuestro",
+            "a2": "El Ángelus",
+            "a3": "El Avemaría",
+            "a4": "la gloria sea"
+          }
         },
-        "catholic-q4": {
-          "question": "En el rito romano, ¿qué tiempo litúrgico precede inmediatamente a la Navidad?",
+        "catholic-s1q5": {
+          "question": "¿Qué es un credo?",
+          "headerLabel": "LAS BASES DE LA FE CATÓLICA",
           "answers": {
-            "a1": "La Cuaresma",
-            "a2": "El tiempo pascual",
-            "a3": "El tiempo ordinario",
-            "a4": "El Adviento"
-          },
-          "headerLabel": "AÑO LITÚRGICO"
+            "a1": "Una declaración de creencia",
+            "a2": "Un vaso litúrgico",
+            "a3": "Un tipo de vestimenta",
+            "a4": "Un libro de cuentas parroquiales."
+          }
         },
-        "catholic-q5": {
-          "question": "¿Qué serie de misterios del rosario introdujo el papa Juan Pablo II en 2002?",
+        "catholic-s1q6": {
+          "question": "En la enseñanza católica, la Trinidad es Padre, Hijo y ¿quién?",
+          "headerLabel": "LAS BASES DE LA FE CATÓLICA",
           "answers": {
-            "a1": "Los misterios luminosos",
-            "a2": "Los misterios gozosos",
-            "a3": "Los misterios dolorosos",
-            "a4": "Los misterios gloriosos"
-          },
-          "headerLabel": "EL ROSARIO"
+            "a1": "Espíritu Santo",
+            "a2": "San Pedro",
+            "a3": "Virgen María",
+            "a4": "Arcángel Miguel"
+          }
         },
-        "catholic-q6": {
+        "catholic-s1q7": {
           "question": "¿Cuál es el primer libro de la Biblia católica?",
+          "headerLabel": "LAS BASES DE LA FE CATÓLICA",
           "answers": {
-            "a1": "Éxodo",
-            "a2": "Génesis",
-            "a3": "Salmos",
-            "a4": "Mateo"
-          },
-          "headerLabel": "SAGRADAS ESCRITURAS"
-        },
-        "catholic-q7": {
-          "question": "¿Qué sacramento fortalece la gracia bautismal y está relacionado con los dones del Espíritu Santo?",
+            "a1": "Mateo",
+            "a2": "Salmos",
+            "a3": "Génesis",
+            "a4": "Éxodo"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Los sacramentos",
+      "questions": {
+        "catholic-s2q1": {
+          "question": "¿Qué sacramento usa agua para marcar la entrada a la vida cristiana?",
+          "headerLabel": "LOS SACRAMENTOS",
           "answers": {
             "a1": "Unción de los enfermos",
-            "a2": "Orden sagrado",
+            "a2": "matrimonio",
+            "a3": "Orden sacerdotal",
+            "a4": "bautismo"
+          }
+        },
+        "catholic-s2q2": {
+          "question": "¿Qué sacramento también se conoce como Penitencia o Confesión?",
+          "headerLabel": "LOS SACRAMENTOS",
+          "answers": {
+            "a1": "Confirmación",
+            "a2": "Orden sacerdotal",
+            "a3": "reconciliación",
+            "a4": "matrimonio"
+          }
+        },
+        "catholic-s2q3": {
+          "question": "¿Qué sacramento se refiere al pacto matrimonial?",
+          "headerLabel": "LOS SACRAMENTOS",
+          "answers": {
+            "a1": "matrimonio",
+            "a2": "Unción de los enfermos",
             "a3": "Confirmación",
-            "a4": "Matrimonio"
-          },
-          "headerLabel": "FE Y PRÁCTICA"
+            "a4": "bautismo"
+          }
         },
-        "catholic-q8": {
-          "question": "¿Cuántas estaciones tiene tradicionalmente el viacrucis?",
+        "catholic-s2q4": {
+          "question": "¿Qué sacramento está asociado con el ministerio ordenado?",
+          "headerLabel": "LOS SACRAMENTOS",
           "answers": {
-            "a1": "Siete",
-            "a2": "Diez",
-            "a3": "Doce",
-            "a4": "Catorce"
-          },
-          "headerLabel": "DEVOCIÓN"
+            "a1": "reconciliación",
+            "a2": "bautismo solo",
+            "a3": "Orden sacerdotal",
+            "a4": "matrimonio"
+          }
         },
-        "catholic-q9": {
-          "question": "En el rito romano, ¿qué día comienza la Cuaresma?",
+        "catholic-s2q5": {
+          "question": "¿Qué sacramento está especialmente asociado con el fortalecimiento de la gracia bautismal?",
+          "headerLabel": "LOS SACRAMENTOS",
           "answers": {
-            "a1": "Miércoles de Ceniza",
-            "a2": "Domingo de Ramos",
-            "a3": "Viernes Santo",
-            "a4": "Pentecostés"
-          },
-          "headerLabel": "CALENDARIO LITÚRGICO"
+            "a1": "Confirmación",
+            "a2": "Penitencia",
+            "a3": "matrimonio",
+            "a4": "Unción de los enfermos"
+          }
         },
-        "catholic-q10": {
-          "question": "¿Qué acontecimiento conmemora Pentecostés?",
+        "catholic-s2q6": {
+          "question": "¿Qué sacramento se da para el apoyo espiritual de los enfermos graves?",
+          "headerLabel": "LOS SACRAMENTOS",
           "answers": {
-            "a1": "El nacimiento de Jesús",
-            "a2": "La venida del Espíritu Santo",
-            "a3": "El bautismo de Jesús",
+            "a1": "Unción de los enfermos",
+            "a2": "Confirmación",
+            "a3": "matrimonio",
+            "a4": "Orden sacerdotal"
+          }
+        },
+        "catholic-s2q7": {
+          "question": "¿Qué grupo está formado por los sacramentos de la iniciación cristiana?",
+          "headerLabel": "LOS SACRAMENTOS",
+          "answers": {
+            "a1": "Confirmación, Orden Sagrado y Unción",
+            "a2": "Penitencia, Matrimonio y Orden Sagrado",
+            "a3": "Bautismo, Confirmación y Eucaristía",
+            "a4": "Eucaristía, Matrimonio y Penitencia"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "La misa",
+      "questions": {
+        "catholic-s3q1": {
+          "question": "En una Misa de Rito Romano, ¿qué parte incluye las lecturas de las Escrituras?",
+          "headerLabel": "LA MISA",
+          "answers": {
+            "a1": "Sólo preparación de los obsequios.",
+            "a2": "Liturgia de la Palabra",
+            "a3": "La despedida",
+            "a4": "Ritos finales"
+          }
+        },
+        "catholic-s3q2": {
+          "question": "¿Qué pretende explicar la homilía?",
+          "headerLabel": "LA MISA",
+          "answers": {
+            "a1": "Sólo la parroquia financia",
+            "a2": "Las Escrituras y los misterios de la fe.",
+            "a3": "Sólo la historia del edificio.",
+            "a4": "El plan de asientos"
+          }
+        },
+        "catholic-s3q3": {
+          "question": "¿Qué profesión de fe se recita normalmente los domingos en la misa?",
+          "headerLabel": "LA MISA",
+          "answers": {
+            "a1": "La letanía de los santos",
+            "a2": "El Ángelus",
+            "a3": "El Credo",
+            "a4": "Las Estaciones de la Cruz"
+          }
+        },
+        "catholic-s3q4": {
+          "question": "¿Qué oración comienza con palabras que significan “Santo, santo, santo”?",
+          "headerLabel": "LA MISA",
+          "answers": {
+            "a1": "El Kyrie",
+            "a2": "la gloria",
+            "a3": "El Santo (Sanctus)",
+            "a4": "El Confiteor"
+          }
+        },
+        "catholic-s3q5": {
+          "question": "¿Qué significa la frase “Kyrie eleison”?",
+          "headerLabel": "LA MISA",
+          "answers": {
+            "a1": "Señor ten piedad",
+            "a2": "Levanten sus corazones",
+            "a3": "gracias a dios",
+            "a4": "La paz sea contigo"
+          }
+        },
+        "catholic-s3q6": {
+          "question": "En el Rito Romano, ¿qué oración introduce inmediatamente el Rito de la Comunión?",
+          "headerLabel": "LA MISA",
+          "answers": {
+            "a1": "El Memorario",
+            "a2": "El Ángelus",
+            "a3": "El Avemaría",
+            "a4": "El Padrenuestro"
+          }
+        },
+        "catholic-s3q7": {
+          "question": "¿Qué parte de la Misa envía a la congregación a vivir la fe?",
+          "headerLabel": "LA MISA",
+          "answers": {
+            "a1": "El canto de entrada",
+            "a2": "la primera lectura",
+            "a3": "La preparación de regalos.",
+            "a4": "La despedida"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Dentro de la iglesia",
+      "questions": {
+        "catholic-s4q1": {
+          "question": "¿Desde qué lugar elevado se proclaman las lecturas en una Misa de Rito Romano?",
+          "headerLabel": "DENTRO DE LA IGLESIA",
+          "answers": {
+            "a1": "la fuente",
+            "a2": "el ambón",
+            "a3": "El armario de la sacristía",
+            "a4": "el tabernáculo"
+          }
+        },
+        "catholic-s4q2": {
+          "question": "¿Cómo se llama la mesa que se utiliza para la celebración eucarística?",
+          "headerLabel": "DENTRO DE LA IGLESIA",
+          "answers": {
+            "a1": "el banco",
+            "a2": "El estante del atril",
+            "a3": "El puesto del coro",
+            "a4": "el altar"
+          }
+        },
+        "catholic-s4q3": {
+          "question": "¿Dónde se reserva la Eucaristía consagrada?",
+          "headerLabel": "DENTRO DE LA IGLESIA",
+          "answers": {
+            "a1": "el ambón",
+            "a2": "La pila bautismal",
+            "a3": "la caja de colección",
+            "a4": "el tabernáculo"
+          }
+        },
+        "catholic-s4q4": {
+          "question": "¿Qué indica la lámpara del santuario cerca del tabernáculo?",
+          "headerLabel": "DENTRO DE LA IGLESIA",
+          "answers": {
+            "a1": "Que un sermón está por comenzar",
+            "a2": "que la iglesia esta cerrada",
+            "a3": "que se planea una boda",
+            "a4": "La presencia de la Eucaristía reservada"
+          }
+        },
+        "catholic-s4q5": {
+          "question": "¿Cómo se llama la copa que se utiliza para el vino eucarístico?",
+          "headerLabel": "DENTRO DE LA IGLESIA",
+          "answers": {
+            "a1": "cáliz",
+            "a2": "Báculo",
+            "a3": "custodia",
+            "a4": "Incensario"
+          }
+        },
+        "catholic-s4q6": {
+          "question": "¿Qué prenda es normalmente la vestimenta exterior del sacerdote en una misa de rito romano?",
+          "headerLabel": "DENTRO DE LA IGLESIA",
+          "answers": {
+            "a1": "hacer frente",
+            "a2": "sotana",
+            "a3": "Casulla",
+            "a4": "Mitra"
+          }
+        },
+        "catholic-s4q7": {
+          "question": "¿Qué color se utiliza normalmente para el Tiempo Ordinario en el Rito Romano?",
+          "headerLabel": "DENTRO DE LA IGLESIA",
+          "answers": {
+            "a1": "rosa",
+            "a2": "Verde",
+            "a3": "rojo",
+            "a4": "violeta"
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Tiempos litúrgicos y fiestas",
+      "questions": {
+        "catholic-s5q1": {
+          "question": "¿Qué estación del Rito Romano prepara la Navidad?",
+          "headerLabel": "TIEMPOS LITÚRGICOS Y FIESTAS",
+          "answers": {
+            "a1": "Adviento",
+            "a2": "tiempo de pascua",
+            "a3": "Tiempo Ordinario después de Pascua",
+            "a4": "Cuaresma"
+          }
+        },
+        "catholic-s5q2": {
+          "question": "¿Qué evento se celebra la Navidad?",
+          "headerLabel": "TIEMPOS LITÚRGICOS Y FIESTAS",
+          "answers": {
+            "a1": "La Ascensión",
+            "a2": "El descenso del Espíritu Santo",
+            "a3": "El nacimiento de Jesús",
             "a4": "La Transfiguración"
-          },
-          "headerLabel": "PREGUNTA FINAL"
+          }
+        },
+        "catholic-s5q3": {
+          "question": "¿Qué día comienza la Cuaresma en el Rito Romano?",
+          "headerLabel": "TIEMPOS LITÚRGICOS Y FIESTAS",
+          "answers": {
+            "a1": "buen viernes",
+            "a2": "Domingo de Ramos",
+            "a3": "Jueves Santo",
+            "a4": "Miércoles de Ceniza"
+          }
+        },
+        "catholic-s5q4": {
+          "question": "¿Qué se celebra el Domingo de Resurrección?",
+          "headerLabel": "TIEMPOS LITÚRGICOS Y FIESTAS",
+          "answers": {
+            "a1": "La resurrección de Jesús",
+            "a2": "La Natividad de María",
+            "a3": "El bautismo de Jesús",
+            "a4": "El llamado de Pedro"
+          }
+        },
+        "catholic-s5q5": {
+          "question": "¿Qué evento se recuerda el Domingo de Ramos?",
+          "headerLabel": "TIEMPOS LITÚRGICOS Y FIESTAS",
+          "answers": {
+            "a1": "Las bodas de Caná",
+            "a2": "El nacimiento de Jesús en Belén",
+            "a3": "La huida a Egipto",
+            "a4": "La entrada de Jesús a Jerusalén"
+          }
+        },
+        "catholic-s5q6": {
+          "question": "¿Qué celebra la Ascensión?",
+          "headerLabel": "TIEMPOS LITÚRGICOS Y FIESTAS",
+          "answers": {
+            "a1": "Moisés recibiendo la Ley",
+            "a2": "Jesús siendo llevado al cielo",
+            "a3": "Peter dejando su barco de pesca",
+            "a4": "María visitando a Isabel"
+          }
+        },
+        "catholic-s5q7": {
+          "question": "¿Qué evento está asociado con Pentecostés?",
+          "headerLabel": "TIEMPOS LITÚRGICOS Y FIESTAS",
+          "answers": {
+            "a1": "La Anunciación",
+            "a2": "El descenso del Espíritu Santo",
+            "a3": "La última cena",
+            "a4": "El nacimiento de Juan el Bautista."
+          }
+        }
+      }
+    },
+    "stage-6": {
+      "title": "Oración y rosario",
+      "questions": {
+        "catholic-s6q1": {
+          "question": "¿Cuántas avemarías forman una decena del rosario?",
+          "headerLabel": "ORACIÓN Y ROSARIO",
+          "answers": {
+            "a1": "doce",
+            "a2": "diez",
+            "a3": "siete",
+            "a4": "quince"
+          }
+        },
+        "catholic-s6q2": {
+          "question": "¿Qué papa propuso los Misterios Luminosos en 2002?",
+          "headerLabel": "ORACIÓN Y ROSARIO",
+          "answers": {
+            "a1": "Pablo VI",
+            "a2": "Benedicto XVI",
+            "a3": "Juan XXIII",
+            "a4": "Juan Pablo II"
+          }
+        },
+        "catholic-s6q3": {
+          "question": "¿Qué conjunto de misterios del Rosario incluye la Natividad?",
+          "headerLabel": "ORACIÓN Y ROSARIO",
+          "answers": {
+            "a1": "Misterios dolorosos",
+            "a2": "Misterios gloriosos",
+            "a3": "Misterios luminosos",
+            "a4": "Misterios gozosos"
+          }
+        },
+        "catholic-s6q4": {
+          "question": "¿Qué conjunto de misterios incluye la Crucifixión?",
+          "headerLabel": "ORACIÓN Y ROSARIO",
+          "answers": {
+            "a1": "Misterios luminosos",
+            "a2": "Misterios gozosos",
+            "a3": "Misterios dolorosos",
+            "a4": "Misterios gloriosos"
+          }
+        },
+        "catholic-s6q5": {
+          "question": "¿Qué conjunto de misterios incluye la Resurrección?",
+          "headerLabel": "ORACIÓN Y ROSARIO",
+          "answers": {
+            "a1": "Misterios luminosos",
+            "a2": "Misterios gozosos",
+            "a3": "Misterios gloriosos",
+            "a4": "Misterios dolorosos"
+          }
+        },
+        "catholic-s6q6": {
+          "question": "¿Qué conjunto de misterios incluye la Transfiguración?",
+          "headerLabel": "ORACIÓN Y ROSARIO",
+          "answers": {
+            "a1": "Misterios gozosos",
+            "a2": "Misterios dolorosos",
+            "a3": "Misterios gloriosos",
+            "a4": "Misterios luminosos"
+          }
+        },
+        "catholic-s6q7": {
+          "question": "En la oración católica, ¿qué es la intercesión?",
+          "headerLabel": "ORACIÓN Y ROSARIO",
+          "answers": {
+            "a1": "Preparando un calendario litúrgico",
+            "a2": "Leer sólo en silencio",
+            "a3": "Orar por los demás",
+            "a4": "Nombrar el edificio de una iglesia"
+          }
+        }
+      }
+    },
+    "stage-7": {
+      "title": "María y los Evangelios",
+      "questions": {
+        "catholic-s7q1": {
+          "question": "¿Qué ángel trae la Anunciación a María?",
+          "headerLabel": "MARÍA Y LOS EVANGELIOS",
+          "answers": {
+            "a1": "Rafael",
+            "a2": "gabriel",
+            "a3": "uriel",
+            "a4": "miguel"
+          }
+        },
+        "catholic-s7q2": {
+          "question": "¿A quién visita María después de la Anunciación?",
+          "headerLabel": "MARÍA Y LOS EVANGELIOS",
+          "answers": {
+            "a1": "María Magdalena",
+            "a2": "Isabel",
+            "a3": "ana",
+            "a4": "marta"
+          }
+        },
+        "catholic-s7q3": {
+          "question": "¿De quién es el canto de alabanza conocido como Magnificat?",
+          "headerLabel": "MARÍA Y LOS EVANGELIOS",
+          "answers": {
+            "a1": "maria",
+            "a2": "Pedro",
+            "a3": "de tomás",
+            "a4": "pablo"
+          }
+        },
+        "catholic-s7q4": {
+          "question": "¿En qué boda les dice María a los sirvientes que sigan las instrucciones de Jesús?",
+          "headerLabel": "MARÍA Y LOS EVANGELIOS",
+          "answers": {
+            "a1": "Betania",
+            "a2": "Caná",
+            "a3": "Jericó",
+            "a4": "Emaús"
+          }
+        },
+        "catholic-s7q5": {
+          "question": "¿Quién es el esposo terrenal de María?",
+          "headerLabel": "MARÍA Y LOS EVANGELIOS",
+          "answers": {
+            "a1": "Simeón",
+            "a2": "Cleofás",
+            "a3": "Zacarías",
+            "a4": "José"
+          }
+        },
+        "catholic-s7q6": {
+          "question": "¿Quién bautiza a Jesús?",
+          "headerLabel": "MARÍA Y LOS EVANGELIOS",
+          "answers": {
+            "a1": "Santiago",
+            "a2": "Pedro",
+            "a3": "juan el bautista",
+            "a4": "andres"
+          }
+        },
+        "catholic-s7q7": {
+          "question": "¿Qué dos figuras aparecen con Jesús en la Transfiguración?",
+          "headerLabel": "MARÍA Y LOS EVANGELIOS",
+          "answers": {
+            "a1": "Pedro y Pablo",
+            "a2": "Moisés y Elías",
+            "a3": "David y Salomón",
+            "a4": "abraham e isaac"
+          }
+        }
+      }
+    },
+    "stage-8": {
+      "title": "Conexiones con la Escritura",
+      "questions": {
+        "catholic-s8q1": {
+          "question": "¿Qué nombres pertenecen a los cuatro escritores de los Evangelios?",
+          "headerLabel": "CONEXIONES CON LA ESCRITURA",
+          "answers": {
+            "a1": "Pedro, Pablo, Santiago y Judas",
+            "a2": "Mateo, Marcos, Lucas y Juan.",
+            "a3": "Lucas, Hechos, Romanos y Santiago",
+            "a4": "Moisés, David, Isaías y Jeremías"
+          }
+        },
+        "catholic-s8q2": {
+          "question": "¿Qué libro sigue a los evangelios en el Nuevo Testamento?",
+          "headerLabel": "CONEXIONES CON LA ESCRITURA",
+          "answers": {
+            "a1": "Hechos de los Apóstoles",
+            "a2": "Apocalipsis",
+            "a3": "Salmos",
+            "a4": "Génesis"
+          }
+        },
+        "catholic-s8q3": {
+          "question": "¿Qué apóstol escribe a los cristianos en Roma?",
+          "headerLabel": "CONEXIONES CON LA ESCRITURA",
+          "answers": {
+            "a1": "Felipe",
+            "a2": "tomás",
+            "a3": "andres",
+            "a4": "Pablo"
+          }
+        },
+        "catholic-s8q4": {
+          "question": "¿Qué libro contiene muchas de las oraciones y cánticos de la Biblia?",
+          "headerLabel": "CONEXIONES CON LA ESCRITURA",
+          "answers": {
+            "a1": "Salmos",
+            "a2": "Números",
+            "a3": "Hechos de los Apóstoles",
+            "a4": "jueces"
+          }
+        },
+        "catholic-s8q5": {
+          "question": "¿A qué apóstol se le dan las llaves del reino en Mateo 16?",
+          "headerLabel": "CONEXIONES CON LA ESCRITURA",
+          "answers": {
+            "a1": "Santiago",
+            "a2": "tomás",
+            "a3": "Juan",
+            "a4": "Pedro"
+          }
+        },
+        "catholic-s8q6": {
+          "question": "En Juan 6, ¿cómo se llama Jesús a sí mismo?",
+          "headerLabel": "CONEXIONES CON LA ESCRITURA",
+          "answers": {
+            "a1": "el pan de vida",
+            "a2": "Las tablas de piedra",
+            "a3": "El rey de Egipto",
+            "a4": "La torre de Babel"
+          }
+        },
+        "catholic-s8q7": {
+          "question": "¿Quién reconoce a Jesús resucitado diciendo “Señor mío y Dios mío”?",
+          "headerLabel": "CONEXIONES CON LA ESCRITURA",
+          "answers": {
+            "a1": "Herodes",
+            "a2": "Judas Iscariote",
+            "a3": "Pilato",
+            "a4": "tomás"
+          }
+        }
+      }
+    },
+    "stage-9": {
+      "title": "La vida de la Iglesia",
+      "questions": {
+        "catholic-s9q1": {
+          "question": "¿Qué es una diócesis, confiada normalmente a un obispo?",
+          "headerLabel": "LA VIDA DE LA IGLESIA",
+          "answers": {
+            "a1": "Un solo servicio de oración",
+            "a2": "Una medalla religiosa",
+            "a3": "Una comunidad eclesial local",
+            "a4": "Una colección de himnos."
+          }
+        },
+        "catholic-s9q2": {
+          "question": "¿Quién dirige normalmente una diócesis?",
+          "headerLabel": "LA VIDA DE LA IGLESIA",
+          "answers": {
+            "a1": "un obispo",
+            "a2": "un sacristán",
+            "a3": "un director de coro",
+            "a4": "un secretario parroquial"
+          }
+        },
+        "catholic-s9q3": {
+          "question": "¿Qué es una parroquia?",
+          "headerLabel": "LA VIDA DE LA IGLESIA",
+          "answers": {
+            "a1": "Un juego de cuentas del Rosario",
+            "a2": "Una comunidad local estable dentro de una diócesis",
+            "a3": "Una temporada antes de Pascua",
+            "a4": "Una especie de cáliz"
+          }
+        },
+        "catholic-s9q4": {
+          "question": "¿A qué ministro ordenado se le confía normalmente el cuidado pastoral de una parroquia?",
+          "headerLabel": "LA VIDA DE LA IGLESIA",
+          "answers": {
+            "a1": "un lector",
+            "a2": "Un catequista sin ordenación",
+            "a3": "un sacerdote",
+            "a4": "un director de coro"
+          }
+        },
+        "catholic-s9q5": {
+          "question": "¿Qué ministerio es uno de los tres grados del Orden Sagrado?",
+          "headerLabel": "LA VIDA DE LA IGLESIA",
+          "answers": {
+            "a1": "diácono",
+            "a2": "sacristán",
+            "a3": "Lector",
+            "a4": "organista"
+          }
+        },
+        "catholic-s9q6": {
+          "question": "¿A qué se refiere la sucesión apostólica?",
+          "headerLabel": "LA VIDA DE LA IGLESIA",
+          "answers": {
+            "a1": "Obispos que suceden a los apóstoles en su ministerio",
+            "a2": "La secuencia de los himnos durante la misa.",
+            "a3": "El orden de las iglesias a lo largo de una peregrinación",
+            "a4": "El orden de las lecturas en un servicio."
+          }
+        },
+        "catholic-s9q7": {
+          "question": "¿Qué título se refiere a la iglesia principal del obispo, que contiene su silla?",
+          "headerLabel": "LA VIDA DE LA IGLESIA",
+          "answers": {
+            "a1": "Ermita",
+            "a2": "Catedral",
+            "a3": "Convento",
+            "a4": "Seminario"
+          }
+        }
+      }
+    },
+    "stage-10": {
+      "title": "Fe y tradición",
+      "questions": {
+        "catholic-s10q1": {
+          "question": "¿Qué virtud teologal acompaña a la fe y la esperanza?",
+          "headerLabel": "FE Y TRADICIÓN",
+          "answers": {
+            "a1": "Templanza",
+            "a2": "Fortaleza",
+            "a3": "caridad",
+            "a4": "prudencia"
+          }
+        },
+        "catholic-s10q2": {
+          "question": "¿Qué término significa un viaje realizado con un propósito religioso?",
+          "headerLabel": "FE Y TRADICIÓN",
+          "answers": {
+            "a1": "absolución",
+            "a2": "Confirmación",
+            "a3": "peregrinación",
+            "a4": "ordenación"
+          }
+        },
+        "catholic-s10q3": {
+          "question": "¿Qué evento se recuerda en la institución de la Eucaristía?",
+          "headerLabel": "FE Y TRADICIÓN",
+          "answers": {
+            "a1": "La huida a Egipto",
+            "a2": "La Visitación",
+            "a3": "La última cena",
+            "a4": "El hallazgo en el Templo"
+          }
+        },
+        "catholic-s10q4": {
+          "question": "¿Qué par de sacramentos se describe como los sacramentos de curación?",
+          "headerLabel": "FE Y TRADICIÓN",
+          "answers": {
+            "a1": "Confirmación y Orden Sagrada",
+            "a2": "Penitencia y Unción de los Enfermos",
+            "a3": "Eucaristía y matrimonio",
+            "a4": "Bautismo y matrimonio"
+          }
+        },
+        "catholic-s10q5": {
+          "question": "¿A qué se refiere la Asunción en la enseñanza católica?",
+          "headerLabel": "FE Y TRADICIÓN",
+          "answers": {
+            "a1": "Jesús nace en Belén",
+            "a2": "Pedro recibiendo las llaves.",
+            "a3": "Moisés recibiendo la Ley",
+            "a4": "María siendo llevada a la gloria celestial"
+          }
+        },
+        "catholic-s10q6": {
+          "question": "¿Qué escena del Evangelio está vinculada al primer Misterio Gozoso?",
+          "headerLabel": "FE Y TRADICIÓN",
+          "answers": {
+            "a1": "La Transfiguración",
+            "a2": "La Anunciación",
+            "a3": "La Ascensión",
+            "a4": "La crucifixión"
+          }
+        },
+        "catholic-s10q7": {
+          "question": "¿Cuál de estos es un Misterio Luminoso del Rosario?",
+          "headerLabel": "FE Y TRADICIÓN",
+          "answers": {
+            "a1": "La coronación de María",
+            "a2": "El bautismo de Jesús en el Jordán.",
+            "a3": "El nacimiento de Jesús",
+            "a4": "El llevar la cruz"
+          }
         }
       }
     }

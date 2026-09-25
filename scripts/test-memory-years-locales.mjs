@@ -40,7 +40,7 @@ async function check(slug,locale){
     assert.deepEqual(await q.locator('.quiz-engine__answer strong').allTextContents(),manifest.structure.questions[id].answerIds.map(a=>expected.answers[a]),`${slug}/${locale}/${id}: answer mapping`);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`${slug}/${locale}/${id}: page overflow`);
     assert.equal(await page.locator(`[data-quiz-theme="${slug}"]`).evaluate(n=>n.scrollLeft),0,`${slug}/${locale}/${id}: internal horizontal scroll`);
-    if(['ar','he','ja','de'].includes(locale)&&id===stage.questionIds[0]){
+    if(['ar','de'].includes(locale)&&id===stage.questionIds[0]){
      await page.evaluate(async()=>{await Promise.all(document.getAnimations().filter(a=>Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a=>a.finished.catch(()=>{})));});
      const r=await q.evaluate(n=>{const r=n.getBoundingClientRect();return{x:r.x,right:r.right,width:innerWidth};});
      assert.ok(r.x>=-1&&r.right<=r.width+1,`${slug}/${locale}/${id}: clipped question`);

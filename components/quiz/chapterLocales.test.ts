@@ -4,8 +4,8 @@ import test from 'node:test';
 import {directionalParts} from './directionalText.ts';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 
-const scope = JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8'));
-const read = (slug: string, locale: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/english-extended/${locale}.json`, 'utf8'));
+const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5))};
+const read = (slug: string, locale: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 const questions = (copy: any): Record<string, any> => Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
 const sameWord = (a: string, b: string, locale: string) => assert.equal(a.toLocaleUpperCase(locale), b.toLocaleUpperCase(locale));
 

@@ -1,206 +1,943 @@
 {
   "title": "La maggior parte degli automobilisti non supera questo test di guida motociclistica",
   "eyebrow": "IL TEST DI GUIDA MOTOCICLISTICA",
-  "summary": "Dieci domande internazionali sulla sicurezza stradale verificano se il tuo istinto al volante funziona anche su due ruote.",
+  "summary": "Esplora la consapevolezza della motocicletta attraverso indizi, situazioni pratiche e nuove sfide.",
   "landing": {
     "intro": "Pensa oltre il manubrio.\nMetti alla prova la tua consapevolezza della strada.",
-    "cta": "Inizia il test"
+    "cta": "Inizia"
   },
   "about": {
-    "body": "Questo quiz di intrattenimento valuta principi generali di sicurezza motociclistica applicabili in molti Paesi. Evita segnali, norme sulle patenti, limiti di velocità e formulazioni legali specifici di un singolo luogo.\n\nScegli la risposta generalmente più sicura in ogni situazione. Moto, strade e leggi locali variano: segui sempre il manuale ufficiale, la formazione ricevuta e le istruzioni del produttore.\n\nSuperare il quiz non dimostra abilità pratica di guida e non sostituisce un corso motociclistico riconosciuto.",
+    "body": "Collega i fatti, cogli i dettagli e metti alla prova le tue conoscenze. Ogni gruppo di domande esplora un nuovo tema. Alla fine scopri il profilo che emerge dalle tue risposte, prima di passare alla prossima sfida.",
     "howToPlay": {
       "steps": [
-        "Leggi attentamente ogni domanda.",
-        "Scegli una risposta tra le quattro opzioni.",
-        "Dopo la decima domanda scopri il punteggio e consulta tutte le risposte."
+        "Leggi gli indizi e scegli una risposta.",
+        "Scopri il tuo profilo per questo tema, poi passa alla prossima sfida.",
+        "Scopri il risultato finale e, se vuoi, rivedi le risposte alle domande sbagliate."
       ]
     },
-    "disclaimer": "Solo per divertimento e cultura generale. Non è un esame ufficiale per la patente e non sostituisce un corso di guida motociclistica né le norme stradali locali."
+    "disclaimer": "Solo per intrattenimento e apprendimento generale. Non è un test di abilitazione né un sostituto dell'addestramento dei ciclisti professionisti e delle regole stradali locali."
   },
   "career": {
-    "resultProgressLabel": "I tuoi progressi",
+    "resultProgressLabel": "La tua sfida",
     "stages": {
       "stage-1": {
-        "difficulty": "Sicurezza in moto",
+        "difficulty": "CONOSCI LA MOTOCICLETTA",
+        "preAdTitle": "I primi indizi",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Prossimo tema: Controlli prima della guida. Saprai collegare gli indizi?"
+        }
+      },
+      "stage-2": {
+        "difficulty": "CONTROLLI PRIMA DELLA GUIDA",
+        "preAdTitle": "Un nuovo punto di vista",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Nuova sfida: Aderenza e fondo stradale. I dettagli faranno la differenza."
+        }
+      },
+      "stage-3": {
+        "difficulty": "ADERENZA E FONDO STRADALE",
+        "preAdTitle": "I dettagli contano",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Ora tocca a: Lo spazio per fermarsi. Cosa saprai riconoscere?"
+        }
+      },
+      "stage-4": {
+        "difficulty": "LO SPAZIO PER FERMARSI",
+        "preAdTitle": "Cambiamo prospettiva",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Prossimo tema: Valutare una curva. Saprai collegare gli indizi?"
+        }
+      },
+      "stage-5": {
+        "difficulty": "VALUTARE UNA CURVA",
+        "preAdTitle": "Una nuova pista",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Nuova sfida: Prevedere i pericoli. I dettagli faranno la differenza."
+        }
+      },
+      "stage-6": {
+        "difficulty": "PREVEDERE I PERICOLI",
+        "preAdTitle": "Ogni dettaglio conta",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Ora tocca a: Prepararsi al viaggio in moto. Cosa saprai riconoscere?"
+        }
+      },
+      "stage-7": {
+        "difficulty": "PREPARARSI AL VIAGGIO IN MOTO",
+        "preAdTitle": "Collega gli indizi",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Prossimo tema: Collegamenti meccanici. Saprai collegare gli indizi?"
+        }
+      },
+      "stage-8": {
+        "difficulty": "COLLEGAMENTI MECCANICI",
+        "preAdTitle": "Guarda da un’altra angolazione",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Nuova sfida: Distanze e quantità. I dettagli faranno la differenza."
+        }
+      },
+      "stage-9": {
+        "difficulty": "DISTANZE E QUANTITÀ",
+        "preAdTitle": "L’ultima sfida ti aspetta",
+        "preAdCopy": "Su questo tema: {profile}.",
+        "preAdButton": "Continua",
+        "next": {
+          "eyebrow": "PROSSIMA SFIDA",
+          "tagline": "Ora tocca a: Verificare prima di concludere. Cosa saprai riconoscere?"
+        }
+      },
+      "stage-10": {
+        "difficulty": "VERIFICARE PRIMA DI CONCLUDERE",
         "preAdTitle": "Il tuo risultato è pronto",
-        "preAdCopy": "Il punteggio finale e la revisione completa delle risposte sono pronti.",
+        "preAdCopy": "Hai raggiunto l’80%? Il punteggio e i tuoi punti di forza sono pronti.",
+        "preAdButton": "Vedi il risultato",
         "preAdChecks": [
-          "10 risposte verificate",
-          "Tutte le categorie confrontate"
+          "Risposte verificate",
+          "Punti di forza confrontati",
+          "Punteggio calcolato"
         ]
       }
     }
   },
   "results": {
-    "name": "IL TUO PUNTEGGIO NEL TEST DI GUIDA",
+    "name": "IL TUO PUNTEGGIO AL TEST DELLA MOTO",
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
         "title": "L’esperto di guida sicura",
-        "copy": "Risultato eccellente. Hai affrontato l’argomento con sicurezza e quasi nessuna domanda ti ha rallentato."
+        "copy": "Hai risposto correttamente a quasi tutte le domande. I tuoi risultati dettagliati mostrano come tale precisione sia stata applicata agli argomenti di questa sfida."
       },
       "profile-2": {
         "tier": "70–89%",
         "title": "Il motociclista attento",
-        "copy": "Hai risposto correttamente a diverse domande, mentre altre richiedevano più attenzione. Rivedi le spiegazioni per capire dove hai avuto dubbi."
+        "copy": "Hai creato molti collegamenti accurati durante questa sfida. Esplora i risultati dettagliati per vedere quali argomenti erano più forti."
       },
       "profile-3": {
         "tier": "50–69%",
         "title": "Il motociclista in crescita",
-        "copy": "Hai risposto correttamente a diverse domande, mentre altre richiedevano più attenzione. Rivedi le spiegazioni per capire dove hai avuto dubbi."
+        "copy": "Hai collegato molti degli indizi e dei fatti. I risultati dettagliati evidenziano gli argomenti che hai gestito meglio e quelli che meritano un'ulteriore occhiata."
       },
       "profile-4": {
         "tier": "30–49%",
         "title": "L’automobilista su due ruote",
-        "copy": "Alcune domande potrebbero averti sorpreso. Rivedi le risposte per scoprire cosa sapevi già e cosa puoi approfondire."
+        "copy": "Hai trovato indizi utili su diversi argomenti. La revisione delle risposte può aiutarti a risolvere le domande che ti hanno colto di sorpresa."
       },
       "profile-5": {
         "tier": "Sotto il 30%",
         "title": "Ritorno al campo di prova",
-        "copy": "Alcune domande potrebbero averti sorpreso. Rivedi le risposte per scoprire cosa sapevi già e cosa puoi approfondire."
+        "copy": "Alcuni argomenti erano più familiari di altri. La tua recensione mostra le risposte corrette e ti fornisce un punto di partenza per un altro tentativo."
       }
     },
     "dimensions": {
       "dimension-1": {
-        "label": "Controllo del mezzo"
+        "label": "Controlli macchina"
       },
       "dimension-2": {
-        "label": "Curve e controllo"
+        "label": "In curva e controllo"
       },
       "dimension-3": {
-        "label": "Percezione dei pericoli"
+        "label": "Consapevolezza del pericolo"
       },
       "dimension-4": {
         "label": "Controllo della frenata"
       },
       "dimension-5": {
-        "label": "Sicurezza del passeggero"
+        "label": "Sicurezza dei passeggeri"
       },
       "dimension-6": {
-        "label": "Prontezza del motociclista"
+        "label": "Prontezza del pilota"
       }
     },
     "score": {
-      "passed": "Hai superato la sfida!",
+      "passed": "Hai raggiunto l’80%!",
       "finished": "Sfida completata",
-      "strongest": "Area migliore",
-      "trickiest": "Area più difficile",
-      "bestRound": "La tua fase migliore",
+      "strongest": "Area di sicurezza più forte",
+      "trickiest": "L'area di sicurezza più complicata",
+      "bestRound": "Il tuo tema migliore",
       "insights": {
-        "overview": "Il tuo punteggio in sintesi",
+        "overview": "Il tuo punteggio a colpo d’occhio",
         "correct": "Risposte corrette",
         "missed": "Risposte errate",
-        "target": "Risposte corrette necessarie per raggiungere l’80%",
-        "breakdown": "Il risultato per categoria",
-        "snapshot": "Cosa indica il risultato",
+        "target": "Risposte corrette per raggiungere l’80%",
+        "breakdown": "I tuoi risultati per tema",
+        "snapshot": "Cosa rivela il risultato",
         "targetReached": "Obiettivo dell’80% raggiunto",
-        "targetRemaining": "Risposte corrette ancora necessarie per l’80%"
+        "targetRemaining": "Servono altre risposte corrette per raggiungere l’80%."
       }
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Test di guida motociclistica",
+      "title": "Conosci la motocicletta",
       "questions": {
-        "motorbike-q1": {
-          "question": "Quando è generalmente preferibile controllare la pressione degli pneumatici per ottenere un valore attendibile?",
+        "motorbike-s1q1": {
+          "question": "Cosa collega la trasmissione del motore alla ruota posteriore su una motocicletta con trasmissione a catena?",
+          "headerLabel": "CONOSCI LA MOTOCICLETTA",
           "answers": {
-            "a1": "Quando gli pneumatici sono freddi",
-            "a2": "Subito dopo una corsa veloce",
-            "a3": "Solo quando compare un avviso",
-            "a4": "Mentre si trasporta un passeggero"
-          },
-          "headerLabel": "CONTROLLO DEL MEZZO"
+            "a1": "Il tubo di scarico",
+            "a2": "Il cablaggio dei fari",
+            "a3": "Il tubo del freno anteriore",
+            "a4": "La catena di trasmissione"
+          }
         },
-        "motorbike-q2": {
-          "question": "Dove dovrebbe guardare in genere un motociclista mentre percorre una curva?",
+        "motorbike-s1q2": {
+          "question": "Cosa fa la frizione su una motocicletta manuale convenzionale?",
+          "headerLabel": "CONOSCI LA MOTOCICLETTA",
           "answers": {
-            "a1": "La ruota anteriore",
-            "a2": "Attraverso la curva, verso la traiettoria desiderata",
-            "a3": "Il bordo della strada",
-            "a4": "Il veicolo che segue"
-          },
-          "headerLabel": "IN CURVA"
+            "a1": "Collega e scollega la trasmissione del motore dalla trasmissione",
+            "a2": "Modifica il disegno del battistrada del pneumatico",
+            "a3": "Controlla solo il faro",
+            "a4": "Misura il livello del carburante"
+          }
         },
-        "motorbike-q3": {
-          "question": "Inizia a piovere durante il tragitto. Come deve cambiare la distanza dal veicolo che precede?",
+        "motorbike-s1q3": {
+          "question": "Qual è l'acceleratore utilizzato per controllare?",
+          "headerLabel": "CONOSCI LA MOTOCICLETTA",
           "answers": {
-            "a1": "Deve rimanere esattamente uguale",
-            "a2": "Deve diminuire",
-            "a3": "Deve aumentare",
-            "a4": "Conta solo ad alta velocità"
-          },
-          "headerLabel": "SUL BAGNATO"
+            "a1": "La larghezza del manubrio",
+            "a2": "Potenza erogata dal motore",
+            "a3": "Gonfiaggio pneumatici direttamente",
+            "a4": "Solo la luce del freno posteriore"
+          }
         },
-        "motorbike-q4": {
-          "question": "Su una moto moderna e in rettilineo, quale tecnica generale è più sicura per una frenata d’emergenza?",
+        "motorbike-s1q4": {
+          "question": "Cosa aiutano a gestire le molle delle sospensioni e gli ammortizzatori?",
+          "headerLabel": "CONOSCI LA MOTOCICLETTA",
           "answers": {
-            "a1": "Usare solo il freno posteriore",
-            "a2": "Azionare bruscamente solo il freno anteriore",
-            "a3": "Pompare ripetutamente entrambi i freni",
-            "a4": "Azionare entrambi i freni in modo progressivo mantenendo stabile la moto"
-          },
-          "headerLabel": "FRENATA D’EMERGENZA"
+            "a1": "La composizione chimica del carburante",
+            "a2": "Movimento delle ruote e risposta della motocicletta alla strada",
+            "a3": "La forma della targa",
+            "a4": "Il numero di marce"
+          }
         },
-        "motorbike-q5": {
-          "question": "Quale abitudine riduce maggiormente il rischio che un altro conducente non veda la moto?",
+        "motorbike-s1q5": {
+          "question": "Qual è il compito principale dei freni anteriori e posteriori?",
+          "headerLabel": "CONOSCI LA MOTOCICLETTA",
           "answers": {
-            "a1": "Evitare gli angoli ciechi e scegliere una posizione ben visibile",
-            "a2": "Restare accanto a un veicolo il più a lungo possibile",
-            "a3": "Supporre che il contatto visivo significhi essere stati visti",
-            "a4": "Tenere sempre accesi gli abbaglianti"
-          },
-          "headerLabel": "VISIBILITÀ"
+            "a1": "Sostituire il comando dello sterzo",
+            "a2": "Aumentare la cilindrata del motore",
+            "a3": "Ridurre la velocità attraverso la forza frenante controllata",
+            "a4": "Cambia la mescola del pneumatico"
+          }
         },
-        "motorbike-q6": {
-          "question": "Quale cambiamento importante deve aspettarsi chi trasporta un passeggero?",
+        "motorbike-s1q6": {
+          "question": "Cosa offre la trasmissione di una moto?",
+          "headerLabel": "CONOSCI LA MOTOCICLETTA",
           "answers": {
-            "a1": "La moto curverà e si fermerà esattamente allo stesso modo",
-            "a2": "Equilibrio, accelerazione e distanza di frenata possono cambiare",
-            "a3": "Le condizioni degli pneumatici diventano meno importanti",
-            "a4": "Il passeggero deve inclinarsi dalla parte opposta al motociclista"
-          },
-          "headerLabel": "SICUREZZA DEL PASSEGGERO"
+            "a1": "Protezione automatica da tutti i pericoli della strada",
+            "a2": "Un sostituto per gli pneumatici",
+            "a3": "Una fornitura di carburante illimitata",
+            "a4": "Diversi rapporti di trasmissione tra motore e ruota motrice"
+          }
         },
-        "motorbike-q7": {
-          "question": "Come si devono attraversare le strisce dipinte bagnate quando non è possibile evitarle?",
+        "motorbike-s1q7": {
+          "question": "Perché una moto ha bisogno di luci funzionanti?",
+          "headerLabel": "CONOSCI LA MOTOCICLETTA",
           "answers": {
-            "a1": "Accelerando bruscamente mentre si è inclinati",
-            "a2": "Frenando forte sulla striscia",
-            "a3": "Mantenendo la moto il più possibile verticale e procedendo con fluidità",
-            "a4": "Cambiando direzione bruscamente sulla striscia"
-          },
-          "headerLabel": "SUPERFICIE SCIVOLOSA"
+            "a1": "Per rendere superflua la frenata",
+            "a2": "Per aiutare il ciclista a vedere ed essere visto come richiesto",
+            "a3": "Per sostituire l'osservazione",
+            "a4": "Per garantire che ogni altro utente della strada se ne accorga"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Controlli prima della guida",
+      "questions": {
+        "motorbike-s2q1": {
+          "question": "Dove dovrebbe un pilota trovare la pressione dei pneumatici corretta per una motocicletta e caricare?",
+          "headerLabel": "CONTROLLI PRIMA DELLA GUIDA",
+          "answers": {
+            "a1": "Le indicazioni del produttore per quella motocicletta",
+            "a2": "Il numero su una bicicletta non correlata",
+            "a3": "Una pressione scelta dal colore del pneumatico",
+            "a4": "Un'ipotesi basata solo sul meteo"
+          }
         },
-        "motorbike-q8": {
-          "question": "Prima di spostarsi in una zona che lo specchietto potrebbe non mostrare, quale ultimo controllo è utile?",
+        "motorbike-s2q2": {
+          "question": "Uno pneumatico presenta danni visibili. Cosa è appropriato prima di guidare?",
+          "headerLabel": "CONTROLLI PRIMA DELLA GUIDA",
           "answers": {
-            "a1": "Uno sguardo al tachimetro",
-            "a2": "Uno sguardo alla ruota anteriore",
-            "a3": "Un controllo del livello del carburante",
-            "a4": "Un controllo diretto dell’angolo cieco, quando è sicuro farlo"
-          },
-          "headerLabel": "OSSERVAZIONE"
+            "a1": "Ignoralo se il motore si avvia",
+            "a2": "Coprire il danno con la vernice",
+            "a3": "Far valutare la sua sicurezza e risolvere il difetto",
+            "a4": "Ridurre invece il livello del carburante"
+          }
         },
-        "motorbike-q9": {
-          "question": "Dove si trova la specifica corretta per la regolazione della catena di trasmissione della propria moto?",
+        "motorbike-s2q3": {
+          "question": "Il controllo del freno sembra inaspettatamente diverso. Cosa dovrebbe fare il motociclista?",
+          "headerLabel": "CONTROLLI PRIMA DELLA GUIDA",
           "answers": {
-            "a1": "Nelle informazioni del produttore",
-            "a2": "In una stima basata su un’altra moto",
-            "a3": "Sul fianco dello pneumatico",
-            "a4": "Su un cartello stradale"
-          },
-          "headerLabel": "MANUTENZIONE"
+            "a1": "Guida più veloce per testarlo nel traffico",
+            "a2": "Investigare e risolvere il problema prima di fare affidamento su di esso",
+            "a3": "Supponiamo che tutte le modifiche siano innocue",
+            "a4": "Usa invece il corno"
+          }
         },
-        "motorbike-q10": {
-          "question": "Durante un lungo viaggio, un motociclista si accorge che la concentrazione sta calando. Qual è la scelta più sicura?",
+        "motorbike-s2q4": {
+          "question": "Perché controllare la catena di trasmissione secondo le istruzioni del produttore?",
+          "headerLabel": "CONTROLLI PRIMA DELLA GUIDA",
           "answers": {
-            "a1": "Aumentare la velocità per arrivare prima",
-            "a2": "Fermarsi in un luogo sicuro e fare una vera pausa",
-            "a3": "Seguire da vicino un altro veicolo",
-            "a4": "Aprire la visiera e continuare"
-          },
-          "headerLabel": "ULTIMA DECISIONE"
+            "a1": "Ogni catena ha la stessa regolazione",
+            "a2": "Una catena non si usura mai",
+            "a3": "Le sue condizioni e regolazioni influiscono sulla sicurezza del funzionamento",
+            "a4": "Conta solo il suo colore"
+          }
+        },
+        "motorbike-s2q5": {
+          "question": "Cosa bisogna controllare su uno specchio prima di partire?",
+          "headerLabel": "CONTROLLI PRIMA DELLA GUIDA",
+          "answers": {
+            "a1": "Riflette il tappo del carburante",
+            "a2": "È sicuro e regolato per un'utile visibilità posteriore",
+            "a3": "Mostra solo il volto del motociclista",
+            "a4": "La sua montatura è abbinata al casco"
+          }
+        },
+        "motorbike-s2q6": {
+          "question": "Viene visualizzato un simbolo di avvertenza il cui significato non è familiare. Dove dovrebbe essere controllato?",
+          "headerLabel": "CONTROLLI PRIMA DELLA GUIDA",
+          "answers": {
+            "a1": "Il manuale d'uso della motocicletta o supporto qualificato",
+            "a2": "Un’ipotesi basata solo sul colore del simbolo",
+            "a3": "La durata del viaggio",
+            "a4": "Solo il cruscotto di un veicolo non correlato"
+          }
+        },
+        "motorbike-s2q7": {
+          "question": "Perché verificare la presenza di perdite di liquidi prima di una corsa?",
+          "headerLabel": "CONTROLLI PRIMA DELLA GUIDA",
+          "answers": {
+            "a1": "Conta solo l'odore del carburante",
+            "a2": "Le perdite migliorano l'aderenza degli pneumatici",
+            "a3": "Ogni perdita è un modo normale per ridurre il peso",
+            "a4": "Potrebbero indicare un guasto e compromettere la sicurezza"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Aderenza e fondo stradale",
+      "questions": {
+        "motorbike-s3q1": {
+          "question": "Perché la ghiaia può ridurre l’aderenza di uno pneumatico da moto?",
+          "headerLabel": "ADERENZA E FONDO STRADALE",
+          "answers": {
+            "a1": "Aumenta permanentemente la larghezza del pneumatico",
+            "a2": "Rende ogni superficie identica",
+            "a3": "Può spostarsi tra il pneumatico e la superficie stradale",
+            "a4": "Elimina la necessità di frenare"
+          }
+        },
+        "motorbike-s3q2": {
+          "question": "Cosa può diventare la segnaletica stradale verniciata quando è bagnata?",
+          "headerLabel": "ADERENZA E FONDO STRADALE",
+          "answers": {
+            "a1": "Invisibile ad ogni ciclista",
+            "a2": "Più scivoloso delle superfici circostanti",
+            "a3": "Un sostituto della segnaletica stradale",
+            "a4": "Superfici ad alto grip garantite"
+          }
+        },
+        "motorbike-s3q3": {
+          "question": "Perché gli input bruschi di controllo possono essere rischiosi quando la presa è limitata?",
+          "headerLabel": "ADERENZA E FONDO STRADALE",
+          "answers": {
+            "a1": "Possono richiedere più trazione di quella disponibile",
+            "a2": "Impediscono qualsiasi trasferimento di peso",
+            "a3": "Rimuovono la massa della motocicletta",
+            "a4": "Aumentano sempre la trazione"
+          }
+        },
+        "motorbike-s3q4": {
+          "question": "Cosa succede all’aderenza disponibile quando gli pneumatici forniscono anche forza in curva?",
+          "headerLabel": "ADERENZA E FONDO STRADALE",
+          "answers": {
+            "a1": "La svolta non richiede trazione",
+            "a2": "Diventa disponibile una forza frenante illimitata",
+            "a3": "Le condizioni della strada non contano più",
+            "a4": "La frenata e la svolta condividono la trazione disponibile"
+          }
+        },
+        "motorbike-s3q5": {
+          "question": "Perché le condizioni degli pneumatici dovrebbero essere importanti in caso di pioggia?",
+          "headerLabel": "ADERENZA E FONDO STRADALE",
+          "answers": {
+            "a1": "Tutti gli pneumatici usurati aderiscono meglio sotto la pioggia",
+            "a2": "Il battistrada e le condizioni influiscono sulla rimozione dell'acqua e sull'aderenza",
+            "a3": "Conta solo il colore della moto",
+            "a4": "L’acqua rende irrilevante la condizione dei pneumatici"
+          }
+        },
+        "motorbike-s3q6": {
+          "question": "Un tratto di strada ombreggiato potrebbe essere ghiacciato. Qual è la risposta appropriata?",
+          "headerLabel": "ADERENZA E FONDO STRADALE",
+          "answers": {
+            "a1": "Supponiamo che l'ombra garantisca una pavimentazione asciutta",
+            "a2": "Ignorare la superficie se il cielo è sereno",
+            "a3": "Riconoscere il rischio di ridotta aderenza e adattare il piano",
+            "a4": "Utilizzare una sterzata improvvisa per testare la superficie"
+          }
+        },
+        "motorbike-s3q7": {
+          "question": "Perché un pilota dovrebbe concedere più margine su una superficie sconosciuta?",
+          "headerLabel": "ADERENZA E FONDO STRADALE",
+          "answers": {
+            "a1": "La presa disponibile e i pericoli potrebbero essere incerti",
+            "a2": "L'incertezza migliora le prestazioni di frenata",
+            "a3": "Una velocità familiare è sicura su ogni superficie",
+            "a4": "Le strade sconosciute hanno sempre più aderenza"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Lo spazio per fermarsi",
+      "questions": {
+        "motorbike-s4q1": {
+          "question": "Da cosa è composto lo spazio di arresto?",
+          "headerLabel": "LO SPAZIO PER FERMARSI",
+          "answers": {
+            "a1": "Solo la lunghezza della moto",
+            "a2": "Distanza percorsa durante la reazione più distanza percorsa durante la frenata",
+            "a3": "Solo la distanza dopo aver raggiunto una fermata",
+            "a4": "Solo il divario fino all'incrocio più vicino"
+          }
+        },
+        "motorbike-s4q2": {
+          "question": "A una velocità maggiore con lo stesso tempo di reazione, cosa succede alla distanza di reazione?",
+          "headerLabel": "LO SPAZIO PER FERMARSI",
+          "answers": {
+            "a1": "Aumenta",
+            "a2": "Resta zero",
+            "a3": "Dipende solo dal colore del casco",
+            "a4": "Diminuisce"
+          }
+        },
+        "motorbike-s4q3": {
+          "question": "Perché lasciare un adeguato spazio di seguito?",
+          "headerLabel": "LO SPAZIO PER FERMARSI",
+          "answers": {
+            "a1": "Per prevenire tutto il vento",
+            "a2": "Per concedere tempo e spazio per rispondere",
+            "a3": "Per sostituire il controllo della strada da percorrere",
+            "a4": "Per garantire che il veicolo che precede non freni mai"
+          }
+        },
+        "motorbike-s4q4": {
+          "question": "Cosa aiuta a prevenire il sistema di frenatura antibloccaggio durante la frenata?",
+          "headerLabel": "LO SPAZIO PER FERMARSI",
+          "answers": {
+            "a1": "Bloccaggio delle ruote in condizioni che rientrano nella sua capacità operativa",
+            "a2": "Ogni sbandata possibile in ogni situazione",
+            "a3": "Tutte le collisioni indipendentemente dalla velocità",
+            "a4": "La necessità di manutenzione dei pneumatici"
+          }
+        },
+        "motorbike-s4q5": {
+          "question": "Perché un sistema di frenata antibloccaggio non giustifica la guida troppo vicina?",
+          "headerLabel": "LO SPAZIO PER FERMARSI",
+          "answers": {
+            "a1": "Rende lo spazio di arresto sempre pari a zero",
+            "a2": "Non può eliminare il tempo di reazione o la necessità di spazio",
+            "a3": "Controlla tutti gli altri veicoli",
+            "a4": "Garantisce che la strada sia asciutta"
+          }
+        },
+        "motorbike-s4q6": {
+          "question": "Una pendenza in discesa può influire sull'arresto. Cosa dovrebbe fare un ciclista?",
+          "headerLabel": "LO SPAZIO PER FERMARSI",
+          "answers": {
+            "a1": "Ignorare la pendenza se si viaggia in linea retta",
+            "a2": "Supponiamo che la sosta in discesa sia sempre più breve",
+            "a3": "Tener conto delle condizioni e dei limiti della motocicletta",
+            "a4": "Utilizzare uno spazio fisso in ogni situazione"
+          }
+        },
+        "motorbike-s4q7": {
+          "question": "Perché la tecnica di frenata dovrebbe seguire un allenamento specifico per la moto?",
+          "headerLabel": "LO SPAZIO PER FERMARSI",
+          "answers": {
+            "a1": "Tutte le moto si comportano allo stesso modo",
+            "a2": "L’allenamento conta solo a passo d’uomo",
+            "a3": "Una tecnica rimuove ogni pericolo",
+            "a4": "La progettazione, il carico e le condizioni influenzano la risposta"
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Valutare una curva",
+      "questions": {
+        "motorbike-s5q1": {
+          "question": "Perché valutare una curva prima di affrontarla?",
+          "headerLabel": "VALUTARE UNA CURVA",
+          "answers": {
+            "a1": "Per evitare di guardare attraverso la curva",
+            "a2": "Per scegliere la velocità dal nome della strada",
+            "a3": "Giudicare il percorso visibile, le condizioni e la velocità adeguata",
+            "a4": "Per garantire che non ci siano pericoli invisibili"
+          }
+        },
+        "motorbike-s5q2": {
+          "question": "Una curva si stringe oltre la sezione visibile. Cosa c'era di incerto?",
+          "headerLabel": "VALUTARE UNA CURVA",
+          "answers": {
+            "a1": "Solo il colore della strada",
+            "a2": "Se la gravità esiste",
+            "a3": "Il numero di lettere su un cartello",
+            "a4": "Il percorso completo e la richiesta di svolta richiesta"
+          }
+        },
+        "motorbike-s5q3": {
+          "question": "Perché un ciclista dovrebbe evitare di fissare lo sguardo solo su un ostacolo vicino?",
+          "headerLabel": "VALUTARE UNA CURVA",
+          "answers": {
+            "a1": "Rende lo sterzo automaticamente preciso",
+            "a2": "Fa scomparire tutti gli ostacoli",
+            "a3": "Può ridurre la consapevolezza del percorso previsto e di altri pericoli",
+            "a4": "Elimina la necessità di scegliere un percorso"
+          }
+        },
+        "motorbike-s5q4": {
+          "question": "Cosa può cambiare un pezzo di ghiaia inaspettato all'interno di una curva?",
+          "headerLabel": "VALUTARE UNA CURVA",
+          "answers": {
+            "a1": "L'impugnatura disponibile",
+            "a2": "Le direzioni della bussola",
+            "a3": "Il numero di cilindri del motore",
+            "a4": "L'identità legale del motociclo"
+          }
+        },
+        "motorbike-s5q5": {
+          "question": "Perché la distanza visiva disponibile è rilevante per la selezione della velocità?",
+          "headerLabel": "VALUTARE UNA CURVA",
+          "answers": {
+            "a1": "Il ciclista ha bisogno di spazio per rispondere all'interno di ciò che può essere visto",
+            "a2": "La distanza visiva conta solo da fermi",
+            "a3": "Una velocità maggiore aumenta sempre la distanza visibile",
+            "a4": "Una strada nascosta è sempre chiara"
+          }
+        },
+        "motorbike-s5q6": {
+          "question": "Qual è un principio generale utile per controllare gli input attraverso una curva?",
+          "headerLabel": "VALUTARE UNA CURVA",
+          "answers": {
+            "a1": "Dovrebbero essere copiati da un veicolo diverso senza formazione",
+            "a2": "Dovrebbero essere sempre bruschi",
+            "a3": "Dovrebbero ignorare la superficie",
+            "a4": "Dovrebbero essere lisci e adeguati alla presa disponibile"
+          }
+        },
+        "motorbike-s5q7": {
+          "question": "Perché un percorso pianificato attraverso una curva deve rimanere adattabile?",
+          "headerLabel": "VALUTARE UNA CURVA",
+          "answers": {
+            "a1": "La vista iniziale contiene ogni dettaglio futuro",
+            "a2": "Altri utenti della strada o le condizioni del fondo potrebbero modificare la situazione",
+            "a3": "Un piano garantisce che nessun altro appaia",
+            "a4": "Le superfici stradali non cambiano mai"
+          }
+        }
+      }
+    },
+    "stage-6": {
+      "title": "Prevedere i pericoli",
+      "questions": {
+        "motorbike-s6q1": {
+          "question": "Un veicolo parcheggiato ha una persona all'interno in prossimità del traffico. Quale possibile pericolo dovrebbe prevedere un ciclista?",
+          "headerLabel": "PREVEDERE I PERICOLI",
+          "answers": {
+            "a1": "La strada si allarga automaticamente",
+            "a2": "Il veicolo diventa senza peso",
+            "a3": "L'assenza di qualsiasi necessità di osservazione",
+            "a4": "Una porta che si apre o il veicolo in movimento"
+          }
+        },
+        "motorbike-s6q2": {
+          "question": "Perché una motocicletta può essere difficile da notare per un altro conducente?",
+          "headerLabel": "PREVEDERE I PERICOLI",
+          "answers": {
+            "a1": "I conducenti vedono sempre ogni luce",
+            "a2": "Il suo profilo visivo più piccolo può essere meno evidente",
+            "a3": "Le moto sono invisibili per definizione",
+            "a4": "Una giacca luminosa garantisce il rilevamento"
+          }
+        },
+        "motorbike-s6q3": {
+          "question": "Un grosso veicolo blocca la vista di un incrocio. Cosa dovrebbe suggerire?",
+          "headerLabel": "PREVEDERE I PERICOLI",
+          "answers": {
+            "a1": "Niente può avvicinarsi dietro di esso",
+            "a2": "Potrebbero esserci dei pericoli nascosti al di là di esso",
+            "a3": "La visibilità non influisce più sulle decisioni",
+            "a4": "Il bivio è scomparso"
+          }
+        },
+        "motorbike-s6q4": {
+          "question": "Perché controllare gli angoli ciechi utilizzando il metodo di osservazione addestrato appropriato?",
+          "headerLabel": "PREVEDERE I PERICOLI",
+          "answers": {
+            "a1": "Solo la strada dietro può avere importanza",
+            "a2": "Un segnale crea un divario garantito",
+            "a3": "Gli specchi potrebbero non mostrare tutte le aree rilevanti",
+            "a4": "Gli specchi mostrano sempre l'ambiente completo"
+          }
+        },
+        "motorbike-s6q5": {
+          "question": "Un pedone distoglie lo sguardo dal traffico vicino al bordo della strada. Qual è il presupposto più sicuro?",
+          "headerLabel": "PREVEDERE I PERICOLI",
+          "answers": {
+            "a1": "Hanno visto ogni veicolo in avvicinamento",
+            "a2": "Hanno sicuramente concesso la priorità",
+            "a3": "Potrebbero non aver notato la moto",
+            "a4": "Non possono muoversi"
+          }
+        },
+        "motorbike-s6q6": {
+          "question": "Perché un ciclista dovrebbe essere cauto nel presupporre che il contatto visivo dimostri di essere stato visto?",
+          "headerLabel": "PREVEDERE I PERICOLI",
+          "answers": {
+            "a1": "Il contatto visivo modifica la forza frenante",
+            "a2": "Lo sguardo garantisce un divario sicuro",
+            "a3": "Il riconoscimento non ha mai importanza",
+            "a4": "Un altro utente della strada potrebbe guardare in quella direzione senza riconoscere il pericolo"
+          }
+        },
+        "motorbike-s6q7": {
+          "question": "Un varco si sta riducendo mentre un altro veicolo si avvicina. Cosa dovrebbe guidare la decisione?",
+          "headerLabel": "PREVEDERE I PERICOLI",
+          "answers": {
+            "a1": "Il presupposto che l'altro veicolo si fermerà",
+            "a2": "Il desiderio di evitare l'attesa",
+            "a3": "Solo la dimensione dello spazio originale",
+            "a4": "Velocità attuale, distanza e margine di sicurezza"
+          }
+        }
+      }
+    },
+    "stage-7": {
+      "title": "Prepararsi al viaggio in moto",
+      "questions": {
+        "motorbike-s7q1": {
+          "question": "Perché il trasporto di un passeggero influisce sulla manovrabilità della moto?",
+          "headerLabel": "PREPARARSI AL VIAGGIO IN MOTO",
+          "answers": {
+            "a1": "Dimezza sempre lo spazio di frenata",
+            "a2": "Elimina l'effetto della gravità",
+            "a3": "Cambia la distribuzione della massa e del peso",
+            "a4": "Rende irrilevante la pressione dei pneumatici"
+          }
+        },
+        "motorbike-s7q2": {
+          "question": "Cosa dovrebbe determinare se una motocicletta può trasportare un passeggero?",
+          "headerLabel": "PREPARARSI AL VIAGGIO IN MOTO",
+          "answers": {
+            "a1": "Solo la preferenza del passeggero",
+            "a2": "Solo la durata del viaggio",
+            "a3": "Solo se c'è spazio nel serbatoio del carburante",
+            "a4": "Il design, l'attrezzatura, le linee guida del produttore e le norme applicabili"
+          }
+        },
+        "motorbike-s7q3": {
+          "question": "Perché un passeggero dovrebbe ricevere un briefing chiaro prima della corsa?",
+          "headerLabel": "PREPARARSI AL VIAGGIO IN MOTO",
+          "answers": {
+            "a1": "I loro movimenti e le loro azioni possono influenzare la corsa",
+            "a2": "Rende superfluo l’allenamento del ciclista",
+            "a3": "Garantisce l'assenza di imprevisti",
+            "a4": "Sostituisce gli idonei dispositivi di protezione"
+          }
+        },
+        "motorbike-s7q4": {
+          "question": "Come devono essere trasportati i bagagli?",
+          "headerLabel": "PREPARARSI AL VIAGGIO IN MOTO",
+          "answers": {
+            "a1": "Secondo solo la borsa più grande disponibile",
+            "a2": "Senza stringere sulle parti in movimento",
+            "a3": "Dove blocca i controlli",
+            "a4": "In modo sicuro e seguendo la guida di caricamento della motocicletta"
+          }
+        },
+        "motorbike-s7q5": {
+          "question": "Perché un casco deve adattarsi correttamente?",
+          "headerLabel": "PREPARARSI AL VIAGGIO IN MOTO",
+          "answers": {
+            "a1": "Una vestibilità ampia garantisce una ventilazione senza rischi",
+            "a2": "Qualsiasi dimensione offre una protezione identica",
+            "a3": "La vestibilità è importante per la sua funzione protettiva",
+            "a4": "Solo il suo colore influisce sulla protezione"
+          }
+        },
+        "motorbike-s7q6": {
+          "question": "Un ciclista si sente molto stanco prima di un viaggio. Cosa è appropriato?",
+          "headerLabel": "PREPARARSI AL VIAGGIO IN MOTO",
+          "answers": {
+            "a1": "Affronta la stanchezza prima di guidare",
+            "a2": "Usa la fiducia come sostituto del riposo",
+            "a3": "Pedala più veloce per finire prima",
+            "a4": "Supponiamo che la fatica colpisca solo gli automobilisti"
+          }
+        },
+        "motorbike-s7q7": {
+          "question": "Un medicinale può causare sonnolenza. Cosa deve controllare il pilota?",
+          "headerLabel": "PREPARARSI AL VIAGGIO IN MOTO",
+          "answers": {
+            "a1": "Solo il colore della confezione",
+            "a2": "I consigli del medicinale e un'adeguata guida professionale prima della guida",
+            "a3": "Se il viaggio è familiare",
+            "a4": "Se un altro pilota lo ignora"
+          }
+        }
+      }
+    },
+    "stage-8": {
+      "title": "Collegamenti meccanici",
+      "questions": {
+        "motorbike-s8q1": {
+          "question": "Cos'è l'attrito?",
+          "headerLabel": "COLLEGAMENTI MECCANICI",
+          "answers": {
+            "a1": "La temperatura alla quale l'acqua congela",
+            "a2": "La distanza percorsa ogni ora",
+            "a3": "La massa di un oggetto",
+            "a4": "Una forza che si oppone al movimento relativo tra le superfici in contatto"
+          }
+        },
+        "motorbike-s8q2": {
+          "question": "Attorno a cosa ruota una leva?",
+          "headerLabel": "COLLEGAMENTI MECCANICI",
+          "answers": {
+            "a1": "Un isolante elettrico",
+            "a2": "Un manometro",
+            "a3": "Un iniettore di carburante",
+            "a4": "Un perno o un fulcro"
+          }
+        },
+        "motorbike-s8q3": {
+          "question": "Due ingranaggi esterni ingranati girano insieme. Se uno gira in senso orario, come gira l'altro?",
+          "headerLabel": "COLLEGAMENTI MECCANICI",
+          "answers": {
+            "a1": "La sua direzione non può cambiare",
+            "a2": "Deve restare fermo",
+            "a3": "In senso antiorario",
+            "a4": "In senso orario"
+          }
+        },
+        "motorbike-s8q4": {
+          "question": "Cosa cambia una puleggia in un semplice sistema a puleggia fissa?",
+          "headerLabel": "COLLEGAMENTI MECCANICI",
+          "answers": {
+            "a1": "La direzione della forza applicata",
+            "a2": "Il materiale della corda",
+            "a3": "La forza di gravità stessa",
+            "a4": "La massa del carico"
+          }
+        },
+        "motorbike-s8q5": {
+          "question": "Cosa descrive la pressione?",
+          "headerLabel": "COLLEGAMENTI MECCANICI",
+          "answers": {
+            "a1": "Forza agente su un'area",
+            "a2": "Distanza divisa per tempo",
+            "a3": "Massa moltiplicata per volume",
+            "a4": "Temperatura divisa per lunghezza"
+          }
+        },
+        "motorbike-s8q6": {
+          "question": "Cosa fa generalmente una molla quando viene compressa nel suo campo elastico?",
+          "headerLabel": "COLLEGAMENTI MECCANICI",
+          "answers": {
+            "a1": "Diventa senza peso",
+            "a2": "Crea carburante",
+            "a3": "Immagazzina energia e tende a ritornare alla forma originaria",
+            "a4": "Perde definitivamente ogni elasticità"
+          }
+        },
+        "motorbike-s8q7": {
+          "question": "Perché la lubrificazione può ridurre l’usura tra le parti in movimento?",
+          "headerLabel": "COLLEGAMENTI MECCANICI",
+          "answers": {
+            "a1": "Riduce il contatto diretto per attrito",
+            "a2": "Previene tutti i possibili guasti",
+            "a3": "Rende tutte le parti della stessa dimensione",
+            "a4": "Rimuove ogni carico"
+          }
+        }
+      }
+    },
+    "stage-9": {
+      "title": "Distanze e quantità",
+      "questions": {
+        "motorbike-s9q1": {
+          "question": "Una scatola di rifornimenti contiene 24 articoli. Ne vengono utilizzati sei. Quale frazione rimane?",
+          "headerLabel": "DISTANZE E QUANTITÀ",
+          "answers": {
+            "a1": "Un quarto",
+            "a2": "Tre quarti",
+            "a3": "Un terzo",
+            "a4": "Una metà"
+          }
+        },
+        "motorbike-s9q2": {
+          "question": "Un'attività inizia alle 14:35 e dura 50 minuti. Quando finisce?",
+          "headerLabel": "DISTANZE E QUANTITÀ",
+          "answers": {
+            "a1": "14:85",
+            "a2": "15:25",
+            "a3": "15:35",
+            "a4": "15:15"
+          }
+        },
+        "motorbike-s9q3": {
+          "question": "Quattro gruppi uguali condividono 36 elementi. Quanti elementi ci sono in ciascun gruppo?",
+          "headerLabel": "DISTANZE E QUANTITÀ",
+          "answers": {
+            "a1": "6",
+            "a2": "8",
+            "a3": "9",
+            "a4": "12"
+          }
+        },
+        "motorbike-s9q4": {
+          "question": "Una lettura sale da 40 a 50. Qual è l'incremento percentuale?",
+          "headerLabel": "DISTANZE E QUANTITÀ",
+          "answers": {
+            "a1": "20%",
+            "a2": "10%",
+            "a3": "25%",
+            "a4": "50%"
+          }
+        },
+        "motorbike-s9q5": {
+          "question": "Un piano utilizza una scala da 1 cm a 2 m. Che distanza rappresentano 6 cm?",
+          "headerLabel": "DISTANZE E QUANTITÀ",
+          "answers": {
+            "a1": "12 milioni",
+            "a2": "8 metri",
+            "a3": "60 m",
+            "a4": "3 milioni"
+          }
+        },
+        "motorbike-s9q6": {
+          "question": "Tre carichi pesano 12 kg, 15 kg e 18 kg. Qual è la loro massa totale?",
+          "headerLabel": "DISTANZE E QUANTITÀ",
+          "answers": {
+            "a1": "42 chilogrammi",
+            "a2": "35 chilogrammi",
+            "a3": "48 chilogrammi",
+            "a4": "45 chilogrammi"
+          }
+        },
+        "motorbike-s9q7": {
+          "question": "Una lista di controllo ha 20 elementi. Quattro rimangono incontrollati. Quale percentuale è completa?",
+          "headerLabel": "DISTANZE E QUANTITÀ",
+          "answers": {
+            "a1": "90%",
+            "a2": "80%",
+            "a3": "20%",
+            "a4": "75%"
+          }
+        }
+      }
+    },
+    "stage-10": {
+      "title": "Verificare prima di concludere",
+      "questions": {
+        "motorbike-s10q1": {
+          "question": "Due persone danno tempi diversi per lo stesso evento. Qual è il miglior passo successivo?",
+          "headerLabel": "VERIFICARE PRIMA DI CONCLUDERE",
+          "answers": {
+            "a1": "Confrontare ogni testimonianza con altre informazioni attendibili",
+            "a2": "Fai la media dei tempi e consideralo un dato di fatto",
+            "a3": "Scegli automaticamente l'oratore più sicuro",
+            "a4": "Eliminare entrambe le testimonianze senza verificarle"
+          }
+        },
+        "motorbike-s10q2": {
+          "question": "Quale affermazione registra un'osservazione piuttosto che un'ipotesi sul motivo?",
+          "headerLabel": "VERIFICARE PRIMA DI CONCLUDERE",
+          "answers": {
+            "a1": "La persona intendeva ingannare tutti",
+            "a2": "Alla persona non è mai importato dell'incontro",
+            "a3": "La persona se n'è andata perché colpevole",
+            "a4": "La persona ha lasciato la stanza alle 14:10"
+          }
+        },
+        "motorbike-s10q3": {
+          "question": "Una fotografia non ha data o luogo noto. Cosa bisogna verificare prima di affidarsi ad esso?",
+          "headerLabel": "VERIFICARE PRIMA DI CONCLUDERE",
+          "answers": {
+            "a1": "Se i suoi colori sono attraenti",
+            "a2": "A quante persone piace",
+            "a3": "Se corrisponde a una conclusione preferita",
+            "a4": "La sua origine e il contesto"
+          }
+        },
+        "motorbike-s10q4": {
+          "question": "L'affermazione è ripetuta da tre siti web, tutti citando una fonte anonima. Cosa mostra?",
+          "headerLabel": "VERIFICARE PRIMA DI CONCLUDERE",
+          "answers": {
+            "a1": "Prova che l'affermazione è accurata",
+            "a2": "Tre testimoni oculari indipendenti",
+            "a3": "Segnalazioni ripetute, non tre conferme indipendenti",
+            "a4": "Prova che non sono necessari ulteriori controlli"
+          }
+        },
+        "motorbike-s10q5": {
+          "question": "Tutti i visitatori autorizzati hanno un pass. Mira ha un lasciapassare. Cosa consegue solo da questa regola?",
+          "headerLabel": "VERIFICARE PRIMA DI CONCLUDERE",
+          "answers": {
+            "a1": "Nessun visitatore autorizzato ha pass",
+            "a2": "Ciò non prova che Mira sia un visitatore autorizzato",
+            "a3": "Mira deve essere un visitatore autorizzato",
+            "a4": "Mira non può essere un visitatore autorizzato"
+          }
+        },
+        "motorbike-s10q6": {
+          "question": "Un nuovo fatto affidabile contraddice la tua spiegazione iniziale. Qual è la risposta appropriata?",
+          "headerLabel": "VERIFICARE PRIMA DI CONCLUDERE",
+          "answers": {
+            "a1": "Riconsiderare la spiegazione",
+            "a2": "Tratta la tua prima idea come immutabile",
+            "a3": "Modificare il fatto per adattarlo alla spiegazione",
+            "a4": "Nascondi il nuovo fatto"
+          }
+        },
+        "motorbike-s10q7": {
+          "question": "Un rapporto dice che un evento si è verificato dopo una modifica. Questa tempistica da sola dimostra il cambiamento che l’ha causato?",
+          "headerLabel": "VERIFICARE PRIMA DI CONCLUDERE",
+          "answers": {
+            "a1": "No; possono esistere altre spiegazioni",
+            "a2": "Sì; se il rapporto è sufficientemente lungo",
+            "a3": "No; gli eventi precedenti non possono mai causare quelli successivi",
+            "a4": "Sì; la sequenza dimostra sempre la causa"
+          }
         }
       }
     }

@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "🩺",
     "socialProofCount": 236000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "🩺"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "surgeon-s1q1",
+          "surgeon-s1q2",
+          "surgeon-s1q3",
+          "surgeon-s1q4",
+          "surgeon-s1q5",
+          "surgeon-s1q6",
+          "surgeon-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "surgeon-s2q1",
+          "surgeon-s2q2",
+          "surgeon-s2q3",
+          "surgeon-s2q4",
+          "surgeon-s2q5",
+          "surgeon-s2q6",
+          "surgeon-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "surgeon-s3q1",
+          "surgeon-s3q2",
+          "surgeon-s3q3",
+          "surgeon-s3q4",
+          "surgeon-s3q5",
+          "surgeon-s3q6",
+          "surgeon-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "surgeon-s4q1",
+          "surgeon-s4q2",
+          "surgeon-s4q3",
+          "surgeon-s4q4",
+          "surgeon-s4q5",
+          "surgeon-s4q6",
+          "surgeon-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "surgeon-s5q1",
+          "surgeon-s5q2",
+          "surgeon-s5q3",
+          "surgeon-s5q4",
+          "surgeon-s5q5",
+          "surgeon-s5q6",
+          "surgeon-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "surgeon-s6q1",
+          "surgeon-s6q2",
+          "surgeon-s6q3",
+          "surgeon-s6q4",
+          "surgeon-s6q5",
+          "surgeon-s6q6",
+          "surgeon-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "surgeon-s7q1",
+          "surgeon-s7q2",
+          "surgeon-s7q3",
+          "surgeon-s7q4",
+          "surgeon-s7q5",
+          "surgeon-s7q6",
+          "surgeon-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "surgeon-s8q1",
+          "surgeon-s8q2",
+          "surgeon-s8q3",
+          "surgeon-s8q4",
+          "surgeon-s8q5",
+          "surgeon-s8q6",
+          "surgeon-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "surgeon-s9q1",
+          "surgeon-s9q2",
+          "surgeon-s9q3",
+          "surgeon-s9q4",
+          "surgeon-s9q5",
+          "surgeon-s9q6",
+          "surgeon-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "surgeon-q1",
-          "surgeon-q2",
-          "surgeon-q3",
-          "surgeon-q4",
-          "surgeon-q5",
-          "surgeon-q6",
-          "surgeon-q7",
-          "surgeon-q8",
-          "surgeon-q9",
-          "surgeon-q10"
+          "surgeon-s10q1",
+          "surgeon-s10q2",
+          "surgeon-s10q3",
+          "surgeon-s10q4",
+          "surgeon-s10q5",
+          "surgeon-s10q6",
+          "surgeon-s10q7"
         ]
       }
     ],
     "questions": {
-      "surgeon-q1": {
+      "surgeon-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "anatomy",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
       },
-      "surgeon-q2": {
+      "surgeon-s1q2": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "surgical_safety",
         "answerIds": [
           "a1",
+          "a2",
           "a3",
-          "a4",
-          "a2"
-        ]
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "anatomy"
       },
-      "surgeon-q3": {
+      "surgeon-s1q3": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a3",
-        "category": "surgical_safety",
+        "category": "anatomy"
+      },
+      "surgeon-s1q4": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "surgeon-q4": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a4",
-        "category": "surgical_techniques",
+        "category": "anatomy"
+      },
+      "surgeon-s1q5": {
+        "presentation": "text",
         "answerIds": [
-          "a4",
           "a1",
           "a2",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "anatomy"
       },
-      "surgeon-q5": {
+      "surgeon-s1q6": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "anatomy"
+      },
+      "surgeon-s1q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "anatomy",
+        "category": "anatomy"
+      },
+      "surgeon-s2q1": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "surgeon-q6": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "surgical_techniques",
+        "category": "anatomy"
+      },
+      "surgeon-s2q2": {
+        "presentation": "text",
         "answerIds": [
           "a1",
-          "a3",
           "a2",
+          "a3",
           "a4"
-        ]
-      },
-      "surgeon-q7": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a3",
-        "category": "complications",
+        "category": "anatomy"
+      },
+      "surgeon-s2q3": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "surgeon-q8": {
-        "presentation": "text",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
-        "category": "perioperative_care",
-        "answerIds": [
-          "a1",
-          "a4",
-          "a2",
-          "a3"
-        ]
+        "category": "anatomy"
       },
-      "surgeon-q9": {
+      "surgeon-s2q4": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "complications",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3",
+        "category": "anatomy"
       },
-      "surgeon-q10": {
+      "surgeon-s2q5": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a2",
-        "category": "perioperative_care",
+        "category": "anatomy"
+      },
+      "surgeon-s2q6": {
+        "presentation": "text",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
+      },
+      "surgeon-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
+      },
+      "surgeon-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "surgical_techniques"
+      },
+      "surgeon-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "surgical_techniques"
+      },
+      "surgeon-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "surgical_techniques"
+      },
+      "surgeon-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "surgical_techniques"
+      },
+      "surgeon-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "surgical_techniques"
+      },
+      "surgeon-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "surgical_techniques"
+      },
+      "surgeon-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "surgical_techniques"
+      },
+      "surgeon-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "surgical_safety"
+      },
+      "surgeon-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "surgical_safety"
+      },
+      "surgeon-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "surgical_safety"
+      },
+      "surgeon-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "surgical_safety"
+      },
+      "surgeon-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "surgical_safety"
+      },
+      "surgeon-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "surgical_safety"
+      },
+      "surgeon-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "surgical_safety"
+      },
+      "surgeon-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "surgical_safety"
+      },
+      "surgeon-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "surgical_safety"
+      },
+      "surgeon-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "surgical_safety"
+      },
+      "surgeon-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "surgical_safety"
+      },
+      "surgeon-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "surgical_safety"
+      },
+      "surgeon-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "surgical_safety"
+      },
+      "surgeon-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "surgical_safety"
+      },
+      "surgeon-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "complications"
+      },
+      "surgeon-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "complications"
+      },
+      "surgeon-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "complications"
+      },
+      "surgeon-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "complications"
+      },
+      "surgeon-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "complications"
+      },
+      "surgeon-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "complications"
+      },
+      "surgeon-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "complications"
+      },
+      "surgeon-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "perioperative_care"
+      },
+      "surgeon-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "perioperative_care"
+      },
+      "surgeon-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "perioperative_care"
+      },
+      "surgeon-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "perioperative_care"
+      },
+      "surgeon-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "perioperative_care"
+      },
+      "surgeon-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "perioperative_care"
+      },
+      "surgeon-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "perioperative_care"
+      },
+      "surgeon-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "perioperative_care"
+      },
+      "surgeon-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "perioperative_care"
+      },
+      "surgeon-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "perioperative_care"
+      },
+      "surgeon-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "perioperative_care"
+      },
+      "surgeon-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "perioperative_care"
+      },
+      "surgeon-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "perioperative_care"
+      },
+      "surgeon-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "perioperative_care"
+      },
+      "surgeon-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "complications"
+      },
+      "surgeon-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "complications"
+      },
+      "surgeon-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "complications"
+      },
+      "surgeon-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "complications"
+      },
+      "surgeon-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "complications"
+      },
+      "surgeon-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "complications"
+      },
+      "surgeon-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "complications"
+      },
+      "surgeon-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "perioperative_care"
+      },
+      "surgeon-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "perioperative_care"
+      },
+      "surgeon-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "perioperative_care"
+      },
+      "surgeon-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "perioperative_care"
+      },
+      "surgeon-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "perioperative_care"
+      },
+      "surgeon-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "perioperative_care"
+      },
+      "surgeon-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "perioperative_care"
       }
     },
     "checkpoint": {
@@ -258,35 +1033,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

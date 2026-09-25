@@ -1,4 +1,4 @@
-import {locales} from './config.mjs';
+import {translationRowLocales as locales} from './config.mjs';
 
 const rows = {
   'treatments-s1q4': 'En psychothérapie, que signifie le sigle TCC ?|Wofür steht die Abkürzung KVT in der Psychotherapie?|In psicoterapia, che cosa significa la sigla TCC?|Waar staat de afkorting CGT voor in de psychotherapie?|En psicoterapia, ¿qué significa la sigla TCC?|Na psicoterapia, o que significa a sigla TCC?|إلى أي أسلوب في العلاج النفسي يشير الاختصار الإنجليزي CBT؟',

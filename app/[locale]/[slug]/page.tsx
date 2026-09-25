@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: LocalizedArticlePageProps): P
       return buildMetadata({
         alternates: localizedQuizAlternates(locale, quiz.slug),
         description: quiz.summary,
-        image: {
+        image: quiz.thumbnailUrl ? {
           alt: quiz.title,
           height: 540,
-          path: `/quizzes/${quiz.slug}/assets/thumbnail-960.webp`,
+          path: quiz.thumbnailUrl,
           width: 960,
-        },
+        } : undefined,
         locale,
         path: getQuizPath(locale, quiz.slug),
         title: quiz.title,

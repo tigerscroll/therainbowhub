@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import {localizeVisionImages} from './chapter-locales/vision-images.mjs';
 
 const root = 'data/quizzes/vision';
-const out = `${root}/english-extended`;
+const out = `${root}`;
 const manifest = JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8'));
 const copy = JSON.parse(fs.readFileSync(`${root}/en.json`, 'utf8'));
 const ink = '#163654';
@@ -249,7 +249,7 @@ assert.equal(puzzles.length,70);
 assert.equal(new Set(puzzles.map(puzzle => puzzle.question)).size,70);
 assert.deepEqual(chapters.map((_,i) => puzzles.filter(puzzle => puzzle.round === i+1).length),Array(10).fill(7));
 manifest.template = 'ten-stage-seven-question-v1';
-manifest.activeLocales = JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales;
+manifest.activeLocales = fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort();
 manifest.engine.localeParity = 'independent';
 manifest.listing.compactLanding = true;
 manifest.listing.showSocialProof = false;

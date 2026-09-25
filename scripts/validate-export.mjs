@@ -49,6 +49,7 @@ if (!fs.existsSync(outputRoot)) {
 
   for (const slug of slugs) {
     const quizConfig = JSON.parse(fs.readFileSync(path.join(quizRoot, slug, "quiz.json"), "utf8"));
+    const hasCustomTheme = fs.existsSync(path.join(quizRoot, slug, "theme.css"));
     if (quizConfig.activeLocales && (
       quizConfig.activeLocales.length !== locales.length
       || locales.some((locale) => !quizConfig.activeLocales.includes(locale))
@@ -70,7 +71,7 @@ if (!fs.existsSync(outputRoot)) {
       if (!html.includes("data-quiz-shell-contract") || !html.includes(shellHref)) {
         addError(`${route}: shared cacheable shell stylesheet is not linked.`);
       }
-      if (!html.includes(`data-quiz-css=\"${slug}\"`) || !new RegExp(`/quizzes/${slug}/theme(?:\\.\\d+)?\\.css\\?v=`).test(html)) {
+      if (hasCustomTheme && (!html.includes(`data-quiz-css=\"${slug}\"`) || !new RegExp(`/quizzes/${slug}/theme(?:\\.\\d+)?\\.css\\?v=`).test(html))) {
         addError(`${route}: versioned quiz theme stylesheet is not linked.`);
       }
       if (/data-quiz-shell-contract[^>]*>[^<]*<style/i.test(html) || html.includes("data-quiz-shell-styles")) {
@@ -89,17 +90,36 @@ if (!fs.existsSync(outputRoot)) {
         const asset = assetFile(url);
         if (asset && !fs.existsSync(asset)) addError(`${route}: referenced asset is missing from export: ${url}`);
       }
+      for (const match of html.matchAll(/<meta\b[^>]*(?:name|property)=\"(?:og:image|twitter:image)\"[^>]*content=\"([^\"]+)\"/gi)) {
+        const asset = assetFile(match[1]);
+        if (asset && !fs.existsSync(asset)) addError(`${route}: page metadata image is missing from export: ${match[1]}`);
+      }
     }
   }
 
   const publicQuizRoot = path.join(root, "public", "quizzes");
   const exportedQuizRoot = path.join(outputRoot, "quizzes");
-  const expected = slugs.join("\n");
-  for (const [label, directory] of [["prepared", publicQuizRoot], ["exported", exportedQuizRoot]]) {
-    const actual = fs.existsSync(directory)
-      ? fs.readdirSync(directory, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name).sort().join("\n")
-      : "";
-    if (actual !== expected) addError(`${label} quiz assets do not exactly match the active quiz manifests.`);
+  // JSON-only quizzes use the shared shell and need no per-quiz asset folder.
+  // Preparation validates declared assets; every prepared file must be exported.
+  const assetDirectories = (directory) => fs.existsSync(directory)
+    ? fs.readdirSync(directory, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name).sort()
+    : [];
+  const preparedSlugs = assetDirectories(publicQuizRoot);
+  const exportedSlugs = assetDirectories(exportedQuizRoot);
+  for (const slug of new Set([...preparedSlugs, ...exportedSlugs])) {
+    if (!slugs.includes(slug)) addError(`Quiz assets remain for an inactive quiz: ${slug}.`);
+  }
+  if (preparedSlugs.join("\n") !== exportedSlugs.join("\n")) {
+    addError("Exported quiz asset folders do not match the prepared assets.");
+  }
+  const assetFiles = (directory, prefix = "") => fs.existsSync(directory)
+    ? fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+      const relative = path.join(prefix, entry.name);
+      return entry.isDirectory() ? assetFiles(path.join(directory, entry.name), relative) : [relative];
+    }).sort()
+    : [];
+  if (assetFiles(publicQuizRoot).join("\n") !== assetFiles(exportedQuizRoot).join("\n")) {
+    addError("Exported quiz asset files do not exactly match the prepared assets.");
   }
 
   for (const directory of [path.join(root, "public", "styles"), path.join(outputRoot, "styles")]) {

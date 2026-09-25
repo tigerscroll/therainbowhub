@@ -8,8 +8,9 @@ import type { ArticleIcon, ArticleManifest } from "@/components/article/articleS
 import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import { SiteShell } from "@/components/SiteShell";
 import { getArticleBySlug, getArticleLocales } from "@/lib/articles";
+import { editorialArticleAvatars, editorialArticleTheme } from "@/lib/articleThemes";
 import { getTranslations, isSupportedLocale, type SupportedLocale } from "@/lib/i18n";
-import { getQuizBySlug, type QuizTheme } from "@/lib/quizzes";
+import { getQuizBySlug, SHARED_SHELL_CSS_HREF, type QuizTheme } from "@/lib/quizzes";
 import { absoluteUrl, buildMetadata, getArticlePath } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -123,9 +124,11 @@ export function buildArticleMetadata(article: ArticleManifest, initialSection?: 
 export function ArticleTemplate({ article, initialSection }: { article: ArticleManifest; initialSection?: number }) {
   if (!isSupportedLocale(article.locale)) notFound();
   const locale: SupportedLocale = article.locale;
-  const referenceQuiz = getQuizBySlug(article.referenceQuizSlug, locale)
-    ?? getQuizBySlug(article.referenceQuizSlug, "en");
-  if (!referenceQuiz) notFound();
+  const referenceQuiz = article.referenceQuizSlug
+    ? getQuizBySlug(article.referenceQuizSlug, locale) ?? getQuizBySlug(article.referenceQuizSlug, "en")
+    : undefined;
+  const referenceTheme = article.referenceTheme === "editorial" ? editorialArticleTheme : referenceQuiz?.theme;
+  if (!referenceTheme) notFound();
   const translations = getTranslations(locale);
   const articleBasePath = getArticlePath(locale, article.routeSlug ?? article.slug);
   const currentArticlePath = getArticleChapterPath(articleBasePath, initialSection);
@@ -139,11 +142,11 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
     return [availableLocale, getArticleChapterPath(localizedBasePath, localizedSection)];
   })) as Partial<Record<SupportedLocale, string>>;
   const colors: QuizTheme["colors"] = {
-    ...referenceQuiz.theme.colors,
+    ...referenceTheme.colors,
     ...article.theme.colors,
   };
   const articleTheme: QuizTheme = {
-    ...referenceQuiz.theme,
+    ...referenceTheme,
     id: article.theme.id,
     colors,
     header: article.theme.header,
@@ -180,9 +183,9 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
       />
       <style dangerouslySetInnerHTML={{ __html: `html,body{background:${articleTheme.colors.page}}` }} />
       <ExperienceThemeBoundary
-        shellCssHref={referenceQuiz.shellCssHref}
+        shellCssHref={SHARED_SHELL_CSS_HREF}
         theme={articleTheme}
-        themeCssHref={referenceQuiz.themeCssHref}
+        themeCssHref={referenceQuiz?.themeCssHref}
       >
         <ArticleExperience
           articlePath={articleBasePath}
@@ -190,7 +193,7 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
           adNote={article.landing.cta.adNote}
           articleLocale={locale}
           articleSlug={article.slug}
-          avatars={referenceQuiz.landing.socialAvatars}
+          avatars={referenceQuiz?.landing.socialAvatars ?? editorialArticleAvatars}
           ctaLabel={article.landing.cta.label}
           ctaIcon={article.landing.cta.icon}
           disclaimer={article.disclaimer}

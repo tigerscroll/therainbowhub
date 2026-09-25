@@ -6,8 +6,8 @@ import {scoreQuiz} from './scoring.ts';
 import {getChapterAnswers} from './engagement.ts';
 
 const read = (slug: string, file: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${file}.json`, 'utf8'));
-const manifest = read('personality', 'english-extended/quiz');
-const copy = read('personality', 'english-extended/en');
+const manifest = read('personality', 'quiz');
+const copy = read('personality', 'en');
 const quiz = {
   engine: {scoring: {type: 'weighted-profile'}},
   questions: manifest.structure.stages.flatMap((stage: any, stageIndex: number) => stage.questionIds.map((id: string) => ({
@@ -55,7 +55,7 @@ test('Personality can reach every match and each checkpoint uses only its curren
 });
 
 function answer(slug: string, id: string) {
-  const logic = read(slug, 'english-extended/quiz'), content = read(slug, 'english-extended/en');
+  const logic = read(slug, 'quiz'), content = read(slug, 'en');
   const stage = logic.structure.stages.find((stage: any) => stage.questionIds.includes(id));
   return content.stages[stage.id].questions[id].answers[logic.structure.questions[id].correctAnswerId];
 }
@@ -79,30 +79,30 @@ test('Oxford truth puzzle has exactly one consistent solution', () => {
 });
 
 test('localized university puzzles preserve theatrical meaning and Arabic symbol labels', () => {
-  const scope = JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8'));
+  const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5))};
   const plays: Record<string, string> = {fr:'Pièce de théâtre',de:'Theaterstück',it:'Opera teatrale',nl:'Toneelstuk',es:'Obra de teatro',pt:'Peça de teatro',ar:'مسرحية'};
-  const logic = read('oxford', 'english-extended/quiz');
+  const logic = read('oxford', 'quiz');
   for (const locale of scope.locales.filter((l: string) => l !== 'en')) {
-    const content = read('oxford', `english-extended/${locale}`);
+    const content = read('oxford', `${locale}`);
     assert.equal(content.stages['stage-1'].questions['oxford-s1q2'].answers[logic.structure.questions['oxford-s1q2'].correctAnswerId], plays[locale]);
   }
-  const content = read('oxford', 'english-extended/ar');
+  const content = read('oxford', 'ar');
   assert.match(content.stages['stage-10'].questions['oxford-s10q1'].question, /A.*B.*B.*A.*C.*C.*B/);
 });
 
 test('native reasoning keeps physical quantities, correlations and named candidates meaningful', () => {
   const masses: Record<string,string> = {fr:'La masse',de:'Masse',it:'La massa',nl:'Massa',es:'La masa',pt:'Massa',ar:'الكتلة'};
   const associations: Record<string,RegExp> = {fr:/association/,de:/Zusammenhang/,it:/associazione/,nl:/samenhang/,es:/asociación/,pt:/associação/,ar:/ارتباط/};
-  const oxford = read('oxford','english-extended/quiz'), cambridge = read('cambridge','english-extended/quiz');
-  const english = read('oxford','english-extended/en');
+  const oxford = read('oxford','quiz'), cambridge = read('cambridge','quiz');
+  const english = read('oxford','en');
   const massId = Object.entries(english.stages['stage-1'].questions['oxford-s1q3'].answers).find(([,value]) => value === 'Mass')![0];
   for (const locale of Object.keys(masses)) {
-    const copy = read('oxford',`english-extended/${locale}`);
+    const copy = read('oxford',`${locale}`);
     assert.equal(copy.stages['stage-1'].questions['oxford-s1q3'].answers[massId],masses[locale]);
     const candidate = copy.stages['stage-10'].questions['oxford-s10q2'];
     const correct = candidate.answers[oxford.structure.questions['oxford-s10q2'].correctAnswerId];
     assert.ok(candidate.question.includes(correct),`${locale}: the correct candidate is named in the question`);
-    const correlation = read('cambridge',`english-extended/${locale}`).stages['stage-7'].questions['cambridge-s7q2'];
+    const correlation = read('cambridge',`${locale}`).stages['stage-7'].questions['cambridge-s7q2'];
     assert.match(correlation.answers[cambridge.structure.questions['cambridge-s7q2'].correctAnswerId],associations[locale]);
   }
 });

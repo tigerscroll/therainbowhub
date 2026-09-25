@@ -1,35 +1,125 @@
 {
   "title": "Which Country Matches Your Personality?",
   "eyebrow": "YOUR IDEAL COUNTRY MATCH",
-  "summary": "Ten lifestyle choices reveal whether your personality most closely matches Italy, Japan, Australia or Sweden.",
+  "summary": "Explore the preferences behind your everyday choices and discover your country-inspired personality match.",
   "landing": {
     "intro": "Follow what feels like you.\nDiscover your country-inspired match.",
-    "cta": "Find My Country"
+    "cta": "Start"
   },
   "about": {
-    "body": "This ten-question entertainment quiz is adapted from the linked Times of India country-personality challenge. Each choice adds a signal for Italy, Japan, Australia or Sweden.\n\nChoose the answer that feels most natural rather than the one that sounds most impressive. Your strongest overall pattern determines the final country match.\n\nThe result describes a playful lifestyle archetype, not nationality, ancestry, citizenship, cultural identity or a relocation recommendation. Source-question concepts and images are reproduced from Times of India with the permission stated by the site owner commissioning this quiz.",
+    "body": "Explore how you connect with people, arrange your day, follow your curiosity and respond when plans change. Choose what feels natural, without trying to earn a particular result.\n\nEach checkpoint shows the country-inspired style leading that topic. Your final match combines all your choices, with an optional preference breakdown. A short rewarded ad opens the quiz, with another opportunity at each checkpoint and for the optional breakdown. Your progress is saved on this device.\n\nThe questions are authored for this entertainment challenge. Italy, Japan, Australia and Sweden name playful lifestyle archetypes; the result does not determine nationality, ancestry, cultural identity or where anyone should live.",
     "howToPlay": {
       "steps": [
-        "Answer ten quick questions about your habits and preferences.",
-        "Choose the option that feels most like you without overthinking it.",
-        "Reveal the country and personality style matched to your choices."
+        "Choose the answer that feels most like you. There are no right or wrong answers.",
+        "See the country-inspired style leading each topic, then explore another side of yourself.",
+        "Reveal your overall country match and optionally explore the preference breakdown."
       ]
     },
     "disclaimer": "For entertainment and self-reflection only. This quiz does not determine nationality, identity or where anyone should live."
   },
   "career": {
-    "resultProgressLabel": "Your progress",
+    "resultProgressLabel": "Your challenge",
     "stages": {
       "stage-1": {
-        "difficulty": "Personality Match",
+        "difficulty": "FIRST IMPRESSIONS",
+        "preAdTitle": "Your first style snapshot",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "The small choices in your day tell their own story."
+        }
+      },
+      "stage-2": {
+        "difficulty": "YOUR DAILY RHYTHM",
+        "preAdTitle": "Your everyday style",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "Your favourite people may recognise the next answers."
+        }
+      },
+      "stage-3": {
+        "difficulty": "PEOPLE AND CONNECTION",
+        "preAdTitle": "Your connection snapshot",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "What would a space designed around you look like?"
+        }
+      },
+      "stage-4": {
+        "difficulty": "A SPACE THAT FITS",
+        "preAdTitle": "Your surroundings speak",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "Comfort and curiosity can pull in different directions."
+        }
+      },
+      "stage-5": {
+        "difficulty": "FOLLOW YOUR CURIOSITY",
+        "preAdTitle": "A curious side appears",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "The next choices bring everyone to the table."
+        }
+      },
+      "stage-6": {
+        "difficulty": "AROUND THE TABLE",
+        "preAdTitle": "Your shared moments",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "Your approach to a project reveals another side."
+        }
+      },
+      "stage-7": {
+        "difficulty": "MAKE SOMETHING HAPPEN",
+        "preAdTitle": "Your working style",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "What you choose when nobody is directing you matters too."
+        }
+      },
+      "stage-8": {
+        "difficulty": "TIME THAT IS YOURS",
+        "preAdTitle": "Your free-time signature",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "A change of plan can reveal a fresh preference."
+        }
+      },
+      "stage-9": {
+        "difficulty": "WHEN PLANS CHANGE",
+        "preAdTitle": "A different side of you",
+        "preAdCopy": "This side of you leans towards: {profile}.",
+        "preAdButton": "Continue",
+        "next": {
+          "eyebrow": "UP NEXT",
+          "tagline": "A few final instincts will complete your match."
+        }
+      },
+      "stage-10": {
+        "difficulty": "YOUR FINAL INSTINCTS",
         "preAdTitle": "Your country match is ready",
-        "preAdCopy": "Your ten choices have created a clear country-personality match.",
+        "preAdCopy": "Your choices have come together. Discover your country-inspired match and the preferences behind it.",
+        "preAdButton": "See My Result",
         "preAdChecks": [
-          "10 choices analysed",
-          "Four country profiles compared",
-          "Your closest match prepared"
-        ],
-        "preAdButton": "Reveal My Country"
+          "Preferences connected",
+          "Country-inspired styles compared",
+          "Your closest match ready"
+        ]
       }
     }
   },
@@ -126,137 +216,752 @@
   },
   "stages": {
     "stage-1": {
-      "title": "Your Country Match",
+      "title": "First Impressions",
       "questions": {
-        "personality-q1": {
-          "image": {
-            "alt": "Friends greeting one another warmly"
-          },
-          "question": "How do you greet someone new?",
+        "personality-s1q1": {
+          "question": "You arrive at a small gathering. What draws you in first?",
+          "headerLabel": "FIRST IMPRESSIONS",
           "answers": {
-            "a1": "Warm hug",
-            "a2": "Friendly wave",
-            "a3": "Respectful bow",
-            "a4": "Casual nod"
-          },
-          "headerLabel": "FIRST IMPRESSION"
+            "a1": "A quiet spot beside someone I know",
+            "a2": "An interesting detail in the room",
+            "a3": "An activity I can join",
+            "a4": "A warm conversation"
+          }
         },
-        "personality-q2": {
-          "image": {
-            "alt": "A bright landscape under changing skies"
-          },
-          "question": "What kind of weather makes you happiest?",
+        "personality-s1q2": {
+          "question": "A new neighbour introduces themselves. What feels natural?",
+          "headerLabel": "FIRST IMPRESSIONS",
           "answers": {
-            "a1": "Warm breezes",
-            "a2": "Bright sunshine",
-            "a3": "Chilly air",
-            "a4": "Cool and crisp"
-          },
-          "headerLabel": "PERFECT WEATHER"
+            "a1": "Offer a friendly welcome without pressure",
+            "a2": "Invite them to stay and talk",
+            "a3": "Remember a detail they mention",
+            "a4": "Suggest exploring the area together"
+          }
         },
-        "personality-q3": {
-          "image": {
-            "alt": "A relaxed Sunday scene outdoors"
-          },
-          "question": "How do you usually spend your Sundays?",
+        "personality-s1q3": {
+          "question": "Which invitation would you open first?",
+          "headerLabel": "FIRST IMPRESSIONS",
           "answers": {
-            "a1": "Outdoor adventures",
-            "a2": "Staying cosy inside",
-            "a3": "Quiet reflection",
-            "a4": "Long family meals"
-          },
-          "headerLabel": "SUNDAY STYLE"
+            "a1": "Dinner with a lively group",
+            "a2": "A relaxed afternoon with a close friend",
+            "a3": "A day out somewhere new",
+            "a4": "A demonstration by a skilled maker"
+          }
         },
-        "personality-q4": {
-          "image": {
-            "alt": "Morning coffee beside a peaceful window"
-          },
-          "question": "What is your ideal way to start the day?",
+        "personality-s1q4": {
+          "question": "What makes a place feel welcoming to you?",
+          "headerLabel": "FIRST IMPRESSIONS",
           "answers": {
-            "a1": "Strong coffee",
-            "a2": "Gentle walk",
-            "a3": "Ocean air",
-            "a4": "Calm meditation"
-          },
-          "headerLabel": "MORNING RHYTHM"
+            "a1": "Space to move and try things",
+            "a2": "Thoughtful details that show care",
+            "a3": "People who include me in the conversation",
+            "a4": "A calm atmosphere where I can settle"
+          }
         },
-        "personality-q5": {
-          "image": {
-            "alt": "A colourful table filled with different dishes"
-          },
-          "question": "Which type of food excites you most?",
+        "personality-s1q5": {
+          "question": "Someone asks what you enjoy. Which answer feels closest?",
+          "headerLabel": "FIRST IMPRESSIONS",
           "answers": {
-            "a1": "Refined flavours",
-            "a2": "Simple and hearty",
-            "a3": "Fresh seafood",
-            "a4": "Comfort classics"
-          },
-          "headerLabel": "FOOD INSTINCT"
+            "a1": "Bringing people together",
+            "a2": "Getting deeply interested in something",
+            "a3": "Finding the next experience",
+            "a4": "Making everyday life feel balanced"
+          }
         },
-        "personality-q6": {
-          "image": {
-            "alt": "Gallery wall with varied styles of art"
-          },
-          "question": "What kind of art draws you in?",
+        "personality-s1q6": {
+          "question": "Which first impression stays with you longest?",
+          "headerLabel": "FIRST IMPRESSIONS",
           "answers": {
-            "a1": "Timeless classics",
-            "a2": "Clean simplicity",
-            "a3": "Bold expression",
-            "a4": "Delicate details"
-          },
-          "headerLabel": "CREATIVE TASTE"
+            "a1": "Someone’s sense of possibility",
+            "a2": "Someone’s reassuring ease",
+            "a3": "Someone’s quiet attention",
+            "a4": "Someone’s warmth"
+          }
         },
-        "personality-q7": {
-          "image": {
-            "alt": "Four different drinks arranged together"
-          },
-          "question": "What is your drink of choice?",
+        "personality-s1q7": {
+          "question": "You have a free seat beside you. What do you hope happens?",
+          "headerLabel": "FIRST IMPRESSIONS",
           "answers": {
-            "a1": "Cold beer",
-            "a2": "Wine",
-            "a3": "Hot cocoa",
-            "a4": "Green tea"
-          },
-          "headerLabel": "DRINK OF CHOICE"
+            "a1": "An easy conversation begins",
+            "a2": "Someone shares an unusual insight",
+            "a3": "A spontaneous plan takes shape",
+            "a4": "We enjoy comfortable silence"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Your Daily Rhythm",
+      "questions": {
+        "personality-s2q1": {
+          "question": "There is no rush this morning. What comes first?",
+          "headerLabel": "YOUR DAILY RHYTHM",
+          "answers": {
+            "a1": "Breakfast with someone I enjoy",
+            "a2": "A peaceful start at my own pace",
+            "a3": "A small ritual done with care",
+            "a4": "Fresh air and a change of scene"
+          }
         },
-        "personality-q8": {
-          "image": {
-            "alt": "Friends celebrating a special occasion"
-          },
-          "question": "How do you like to celebrate big moments?",
+        "personality-s2q2": {
+          "question": "A short break appears in your day. How do you use it?",
+          "headerLabel": "YOUR DAILY RHYTHM",
           "answers": {
-            "a1": "Loud and lively",
-            "a2": "Intimate and cosy",
-            "a3": "Easygoing fun",
-            "a4": "Meaningful rituals"
-          },
-          "headerLabel": "CELEBRATION STYLE"
+            "a1": "Check in with someone",
+            "a2": "Get outside and move",
+            "a3": "Focus on a small personal interest",
+            "a4": "Sit somewhere calm"
+          }
         },
-        "personality-q9": {
-          "image": {
-            "alt": "A montage of forests, coastline, temples and countryside"
-          },
-          "question": "Which scenery feels most like home?",
+        "personality-s2q3": {
+          "question": "Which kind of routine suits you best?",
+          "headerLabel": "YOUR DAILY RHYTHM",
           "answers": {
-            "a1": "Quiet forests",
-            "a2": "Open coastline",
-            "a3": "Historic temples",
-            "a4": "Rolling countryside"
-          },
-          "headerLabel": "SENSE OF HOME"
+            "a1": "One that leaves enough breathing space",
+            "a2": "One with regular shared moments",
+            "a3": "One with room for surprises",
+            "a4": "One with meaningful little rituals"
+          }
         },
-        "personality-q10": {
-          "image": {
-            "alt": "Traveller looking across a distant landscape"
-          },
-          "question": "What is your travel style?",
+        "personality-s2q4": {
+          "question": "You are choosing a route for a walk. Which appeals most?",
+          "headerLabel": "YOUR DAILY RHYTHM",
           "answers": {
-            "a1": "Active exploring",
-            "a2": "Slow wandering",
-            "a3": "Cultural immersion",
-            "a4": "Iconic sights"
-          },
-          "headerLabel": "FINAL DESTINATION"
+            "a1": "Through a quiet green space",
+            "a2": "Past familiar faces and meeting places",
+            "a3": "Along a path I have not tried",
+            "a4": "Past something interesting to examine"
+          }
+        },
+        "personality-s2q5": {
+          "question": "What makes an ordinary weekday feel satisfying?",
+          "headerLabel": "YOUR DAILY RHYTHM",
+          "answers": {
+            "a1": "Trying something different",
+            "a2": "A comfortable balance of effort and rest",
+            "a3": "A good conversation",
+            "a4": "Doing one thing with real care"
+          }
+        },
+        "personality-s2q6": {
+          "question": "An unexpected hour becomes free. Your first instinct is to…",
+          "headerLabel": "YOUR DAILY RHYTHM",
+          "answers": {
+            "a1": "Return to a project I care about",
+            "a2": "Enjoy having nothing urgent to do",
+            "a3": "See what is happening nearby",
+            "a4": "Find someone to spend it with"
+          }
+        },
+        "personality-s2q7": {
+          "question": "Which evening rhythm sounds best?",
+          "headerLabel": "YOUR DAILY RHYTHM",
+          "answers": {
+            "a1": "Time for a focused hobby",
+            "a2": "Food and stories around a table",
+            "a3": "An outing that could go anywhere",
+            "a4": "A gentle routine before bed"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "People and Connection",
+      "questions": {
+        "personality-s3q1": {
+          "question": "A friend has good news. How would you celebrate?",
+          "headerLabel": "PEOPLE AND CONNECTION",
+          "answers": {
+            "a1": "Make time for a relaxed conversation",
+            "a2": "Prepare a thoughtful personal gesture",
+            "a3": "Suggest a memorable experience",
+            "a4": "Bring people together to share it"
+          }
+        },
+        "personality-s3q2": {
+          "question": "Your group is choosing an activity. Which would you suggest?",
+          "headerLabel": "PEOPLE AND CONNECTION",
+          "answers": {
+            "a1": "Cooking something together",
+            "a2": "Learning a careful craft",
+            "a3": "A gentle walk and a quiet meal",
+            "a4": "Exploring somewhere outdoors"
+          }
+        },
+        "personality-s3q3": {
+          "question": "What do you value most in shared time?",
+          "headerLabel": "PEOPLE AND CONNECTION",
+          "answers": {
+            "a1": "Attention and thoughtfulness",
+            "a2": "Warmth and expression",
+            "a3": "Ease and mutual space",
+            "a4": "Playfulness and freedom"
+          }
+        },
+        "personality-s3q4": {
+          "question": "A friend visits after a long time away. What do you plan?",
+          "headerLabel": "PEOPLE AND CONNECTION",
+          "answers": {
+            "a1": "A new place we can discover",
+            "a2": "A meal with plenty of time to talk",
+            "a3": "An unhurried afternoon with no demands",
+            "a4": "Something linked to an interest they mentioned"
+          }
+        },
+        "personality-s3q5": {
+          "question": "Which compliment would feel most like you?",
+          "headerLabel": "PEOPLE AND CONNECTION",
+          "answers": {
+            "a1": "You notice what others miss",
+            "a2": "You make people feel included",
+            "a3": "You make life feel full of possibility",
+            "a4": "You make things feel calmer"
+          }
+        },
+        "personality-s3q6": {
+          "question": "At a group meal, which role do you drift towards?",
+          "headerLabel": "PEOPLE AND CONNECTION",
+          "answers": {
+            "a1": "Suggesting what we could do afterwards",
+            "a2": "Noticing who might need something",
+            "a3": "Keeping the conversation flowing",
+            "a4": "Helping everyone feel at ease"
+          }
+        },
+        "personality-s3q7": {
+          "question": "What kind of friendship moment stays with you?",
+          "headerLabel": "PEOPLE AND CONNECTION",
+          "answers": {
+            "a1": "A small gesture that showed real understanding",
+            "a2": "Being together without needing to fill the silence",
+            "a3": "An adventure we had not planned",
+            "a4": "Laughing over a story we all remember"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "A Space That Fits",
+      "questions": {
+        "personality-s4q1": {
+          "question": "Which room would you choose for a free afternoon?",
+          "headerLabel": "A SPACE THAT FITS",
+          "answers": {
+            "a1": "A simple room with a restful atmosphere",
+            "a2": "A welcoming room made for conversation",
+            "a3": "An open room leading straight outdoors",
+            "a4": "A space full of carefully chosen details"
+          }
+        },
+        "personality-s4q2": {
+          "question": "You can add one thing to a room. What do you choose?",
+          "headerLabel": "A SPACE THAT FITS",
+          "answers": {
+            "a1": "Something for an active hobby",
+            "a2": "A beautifully made object",
+            "a3": "A table that brings people together",
+            "a4": "Soft lighting and a comfortable seat"
+          }
+        },
+        "personality-s4q3": {
+          "question": "What catches your eye at a small market?",
+          "headerLabel": "A SPACE THAT FITS",
+          "answers": {
+            "a1": "Something simple I would use every day",
+            "a2": "An object made with great precision",
+            "a3": "Something I have never tried",
+            "a4": "Something with a story to share"
+          }
+        },
+        "personality-s4q4": {
+          "question": "Which view would you like from a window?",
+          "headerLabel": "A SPACE THAT FITS",
+          "answers": {
+            "a1": "A carefully tended garden",
+            "a2": "A peaceful forest",
+            "a3": "A lively square",
+            "a4": "A wide coastline"
+          }
+        },
+        "personality-s4q5": {
+          "question": "What makes a temporary place feel like yours?",
+          "headerLabel": "A SPACE THAT FITS",
+          "answers": {
+            "a1": "Finding a comfortable routine",
+            "a2": "Sharing it with good company",
+            "a3": "Arranging a few personal details",
+            "a4": "Using it as a base to explore"
+          }
+        },
+        "personality-s4q6": {
+          "question": "You are choosing a keepsake. Which matters most?",
+          "headerLabel": "A SPACE THAT FITS",
+          "answers": {
+            "a1": "The skill that went into making it",
+            "a2": "The adventure it reminds me of",
+            "a3": "The people and moments it represents",
+            "a4": "How naturally it fits into daily life"
+          }
+        },
+        "personality-s4q7": {
+          "question": "How would you describe your ideal surroundings?",
+          "headerLabel": "A SPACE THAT FITS",
+          "answers": {
+            "a1": "Thoughtfully arranged",
+            "a2": "Calm and easy to live in",
+            "a3": "Open and full of possibilities",
+            "a4": "Full of character and welcome"
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Follow Your Curiosity",
+      "questions": {
+        "personality-s5q1": {
+          "question": "You discover an unfamiliar hobby. What makes you try it?",
+          "headerLabel": "FOLLOW YOUR CURIOSITY",
+          "answers": {
+            "a1": "I can enjoy it with others",
+            "a2": "It looks like a new adventure",
+            "a3": "It could become a relaxing part of life",
+            "a4": "I want to understand how it works"
+          }
+        },
+        "personality-s5q2": {
+          "question": "Which workshop would you book?",
+          "headerLabel": "FOLLOW YOUR CURIOSITY",
+          "answers": {
+            "a1": "Making a meal to share",
+            "a2": "Learning a precise handcraft",
+            "a3": "Creating something useful and simple",
+            "a4": "Trying an outdoor skill"
+          }
+        },
+        "personality-s5q3": {
+          "question": "A museum gives you a free hour. Where do you begin?",
+          "headerLabel": "FOLLOW YOUR CURIOSITY",
+          "answers": {
+            "a1": "With something completely unfamiliar",
+            "a2": "With the finest details of one object",
+            "a3": "With a quiet area I can enjoy slowly",
+            "a4": "With stories about people’s lives"
+          }
+        },
+        "personality-s5q4": {
+          "question": "What keeps you interested in a new project?",
+          "headerLabel": "FOLLOW YOUR CURIOSITY",
+          "answers": {
+            "a1": "How well it fits my own pace",
+            "a2": "The satisfaction of improving it",
+            "a3": "The chance to share it",
+            "a4": "The surprises along the way"
+          }
+        },
+        "personality-s5q5": {
+          "question": "Which kind of question do you ask most naturally?",
+          "headerLabel": "FOLLOW YOUR CURIOSITY",
+          "answers": {
+            "a1": "Who is part of this story?",
+            "a2": "How could this make daily life easier?",
+            "a3": "What could we try next?",
+            "a4": "How was this made?"
+          }
+        },
+        "personality-s5q6": {
+          "question": "A guide offers several optional stops. Which do you choose?",
+          "headerLabel": "FOLLOW YOUR CURIOSITY",
+          "answers": {
+            "a1": "A quiet place with time to take it in",
+            "a2": "A place with a detailed tradition to learn",
+            "a3": "A place where we can meet local people",
+            "a4": "A place away from the usual route"
+          }
+        },
+        "personality-s5q7": {
+          "question": "You find something you love. What happens next?",
+          "headerLabel": "FOLLOW YOUR CURIOSITY",
+          "answers": {
+            "a1": "I tell someone who might love it too",
+            "a2": "I learn more about its details",
+            "a3": "I look for another experience like it",
+            "a4": "I make room for it in my routine"
+          }
+        }
+      }
+    },
+    "stage-6": {
+      "title": "Around the Table",
+      "questions": {
+        "personality-s6q1": {
+          "question": "What makes a meal memorable?",
+          "headerLabel": "AROUND THE TABLE",
+          "answers": {
+            "a1": "The conversation around it",
+            "a2": "The care in its preparation",
+            "a3": "Feeling comfortable and unhurried",
+            "a4": "Trying a flavour I have never known"
+          }
+        },
+        "personality-s6q2": {
+          "question": "You are planning a meal for friends. What gets your attention first?",
+          "headerLabel": "AROUND THE TABLE",
+          "answers": {
+            "a1": "Trying something new together",
+            "a2": "Making everyone feel welcome",
+            "a3": "Adding a thoughtful personal touch",
+            "a4": "Keeping it simple enough to enjoy"
+          }
+        },
+        "personality-s6q3": {
+          "question": "Which place would you choose for a relaxed lunch?",
+          "headerLabel": "AROUND THE TABLE",
+          "answers": {
+            "a1": "A calm place with a comfortable atmosphere",
+            "a2": "A small place known for careful preparation",
+            "a3": "A lively place with familiar faces",
+            "a4": "Somewhere new on an unplanned outing"
+          }
+        },
+        "personality-s6q4": {
+          "question": "A shared recipe needs one final touch. What do you suggest?",
+          "headerLabel": "AROUND THE TABLE",
+          "answers": {
+            "a1": "An unexpected flavour to try",
+            "a2": "Keeping what already works well",
+            "a3": "Something that makes it feel generous",
+            "a4": "A small detail that brings it together"
+          }
+        },
+        "personality-s6q5": {
+          "question": "What is your favourite part of hosting?",
+          "headerLabel": "AROUND THE TABLE",
+          "answers": {
+            "a1": "Bringing different people together",
+            "a2": "Seeing an ordinary evening become an adventure",
+            "a3": "Creating a setting where nobody feels rushed",
+            "a4": "Remembering what each guest likes"
+          }
+        },
+        "personality-s6q6": {
+          "question": "A meal runs longer than planned. How does that feel?",
+          "headerLabel": "AROUND THE TABLE",
+          "answers": {
+            "a1": "I am happy if everyone feels comfortable",
+            "a2": "Good conversation is worth the time",
+            "a3": "I wonder where we could go next",
+            "a4": "I enjoy noticing how the evening unfolds"
+          }
+        },
+        "personality-s6q7": {
+          "question": "You can choose a food-related experience. Which one?",
+          "headerLabel": "AROUND THE TABLE",
+          "answers": {
+            "a1": "Learning a technique from a skilled cook",
+            "a2": "Exploring unfamiliar dishes",
+            "a3": "Making a simple favourite at home",
+            "a4": "A long meal with stories and laughter"
+          }
+        }
+      }
+    },
+    "stage-7": {
+      "title": "Make Something Happen",
+      "questions": {
+        "personality-s7q1": {
+          "question": "You begin a small project with friends. What role feels natural?",
+          "headerLabel": "MAKE SOMETHING HAPPEN",
+          "answers": {
+            "a1": "Keep the plan manageable",
+            "a2": "Build a shared sense of excitement",
+            "a3": "Work through the details",
+            "a4": "Get the first experiment moving"
+          }
+        },
+        "personality-s7q2": {
+          "question": "A project goes well. Which part gives you most satisfaction?",
+          "headerLabel": "MAKE SOMETHING HAPPEN",
+          "answers": {
+            "a1": "The shared feeling of achievement",
+            "a2": "The new ground we explored",
+            "a3": "The way it fitted around real life",
+            "a4": "The care visible in the result"
+          }
+        },
+        "personality-s7q3": {
+          "question": "You need to explain an idea. How do you begin?",
+          "headerLabel": "MAKE SOMETHING HAPPEN",
+          "answers": {
+            "a1": "Keep the explanation simple and calm",
+            "a2": "Tell a story people can relate to",
+            "a3": "Show what we could try",
+            "a4": "Choose one clear example with useful detail"
+          }
+        },
+        "personality-s7q4": {
+          "question": "An afternoon of work is yours to arrange. What appeals most?",
+          "headerLabel": "MAKE SOMETHING HAPPEN",
+          "answers": {
+            "a1": "A mix of tasks with room to improvise",
+            "a2": "A quiet stretch for careful focus",
+            "a3": "A steady pace with proper breaks",
+            "a4": "Time to exchange ideas with others"
+          }
+        },
+        "personality-s7q5": {
+          "question": "What usually draws you into a shared plan?",
+          "headerLabel": "MAKE SOMETHING HAPPEN",
+          "answers": {
+            "a1": "The chance to do something well",
+            "a2": "A clear plan that feels sustainable",
+            "a3": "The people involved",
+            "a4": "The possibility of something new"
+          }
+        },
+        "personality-s7q6": {
+          "question": "A small obstacle appears. What is your first instinct?",
+          "headerLabel": "MAKE SOMETHING HAPPEN",
+          "answers": {
+            "a1": "Try another route",
+            "a2": "Pause and find the simplest next step",
+            "a3": "Talk it through together",
+            "a4": "Look closely at what caused it"
+          }
+        },
+        "personality-s7q7": {
+          "question": "Which result would make you proud?",
+          "headerLabel": "MAKE SOMETHING HAPPEN",
+          "answers": {
+            "a1": "Something people enjoyed together",
+            "a2": "Something we had never attempted",
+            "a3": "Something useful that makes life easier",
+            "a4": "Something made with real care"
+          }
+        }
+      }
+    },
+    "stage-8": {
+      "title": "Time That Is Yours",
+      "questions": {
+        "personality-s8q1": {
+          "question": "A whole afternoon is free. What sounds best?",
+          "headerLabel": "TIME THAT IS YOURS",
+          "answers": {
+            "a1": "Enjoy a peaceful day at home or nearby",
+            "a2": "Spend it with people I enjoy",
+            "a3": "Head out without a fixed route",
+            "a4": "Give a favourite interest my full attention"
+          }
+        },
+        "personality-s8q2": {
+          "question": "Which small escape would you choose?",
+          "headerLabel": "TIME THAT IS YOURS",
+          "answers": {
+            "a1": "A place with quiet nature and a gentle pace",
+            "a2": "A place with open paths and new experiences",
+            "a3": "A place with warmth and lively conversation",
+            "a4": "A place with art and traditions to explore"
+          }
+        },
+        "personality-s8q3": {
+          "question": "You have one extra day on a trip. What do you do?",
+          "headerLabel": "TIME THAT IS YOURS",
+          "answers": {
+            "a1": "Go somewhere we did not plan to visit",
+            "a2": "Explore one subject in more depth",
+            "a3": "Slow down and enjoy where I already am",
+            "a4": "Return to people or places that welcomed me"
+          }
+        },
+        "personality-s8q4": {
+          "question": "Which activity helps a day feel like your own?",
+          "headerLabel": "TIME THAT IS YOURS",
+          "answers": {
+            "a1": "Trying a new route or activity",
+            "a2": "Losing myself in a careful task",
+            "a3": "Having time without demands",
+            "a4": "Sharing something I love"
+          }
+        },
+        "personality-s8q5": {
+          "question": "A friend offers to plan your day. What would you ask for?",
+          "headerLabel": "TIME THAT IS YOURS",
+          "answers": {
+            "a1": "A surprise with room for adventure",
+            "a2": "A relaxed plan with space between things",
+            "a3": "Something thoughtful and interesting",
+            "a4": "Good company and places to talk"
+          }
+        },
+        "personality-s8q6": {
+          "question": "What do you most enjoy bringing back from a day out?",
+          "headerLabel": "TIME THAT IS YOURS",
+          "answers": {
+            "a1": "A feeling of being refreshed",
+            "a2": "A story about someone I met",
+            "a3": "A memory of something unexpected",
+            "a4": "A new detail or skill I learned"
+          }
+        },
+        "personality-s8q7": {
+          "question": "Your ideal free day ends with…",
+          "headerLabel": "TIME THAT IS YOURS",
+          "answers": {
+            "a1": "One more good conversation",
+            "a2": "A sense of calm and enough rest",
+            "a3": "A moment to appreciate what I discovered",
+            "a4": "An idea for the next outing"
+          }
+        }
+      }
+    },
+    "stage-9": {
+      "title": "When Plans Change",
+      "questions": {
+        "personality-s9q1": {
+          "question": "Rain changes an outdoor plan. What would you suggest?",
+          "headerLabel": "WHEN PLANS CHANGE",
+          "answers": {
+            "a1": "Try an interesting indoor activity",
+            "a2": "Find somewhere welcoming to gather",
+            "a3": "Turn it into a different adventure",
+            "a4": "Enjoy a slower day without pressure"
+          }
+        },
+        "personality-s9q2": {
+          "question": "A familiar place changes. What do you notice first?",
+          "headerLabel": "WHEN PLANS CHANGE",
+          "answers": {
+            "a1": "How people respond to it",
+            "a2": "Whether it still feels comfortable",
+            "a3": "The new possibilities",
+            "a4": "The new details"
+          }
+        },
+        "personality-s9q3": {
+          "question": "Someone suggests doing things differently. What interests you most?",
+          "headerLabel": "WHEN PLANS CHANGE",
+          "answers": {
+            "a1": "The chance to experiment",
+            "a2": "The thinking behind the idea",
+            "a3": "How it could bring people together",
+            "a4": "Whether it makes things simpler"
+          }
+        },
+        "personality-s9q4": {
+          "question": "You have to choose at the last minute. What guides you?",
+          "headerLabel": "WHEN PLANS CHANGE",
+          "answers": {
+            "a1": "The detail that feels most meaningful",
+            "a2": "The option I have not tried before",
+            "a3": "What would create a good shared moment",
+            "a4": "What feels calm and manageable"
+          }
+        },
+        "personality-s9q5": {
+          "question": "A day takes an unexpected turn. What helps you enjoy it?",
+          "headerLabel": "WHEN PLANS CHANGE",
+          "answers": {
+            "a1": "Finding something interesting in it",
+            "a2": "The company I am with",
+            "a3": "Letting go of unnecessary demands",
+            "a4": "Treating it as a new experience"
+          }
+        },
+        "personality-s9q6": {
+          "question": "A plan has too many competing ideas. What do you contribute?",
+          "headerLabel": "WHEN PLANS CHANGE",
+          "answers": {
+            "a1": "A careful comparison of the details",
+            "a2": "A suggestion to test something quickly",
+            "a3": "A simpler plan with room to breathe",
+            "a4": "A conversation that brings everyone in"
+          }
+        },
+        "personality-s9q7": {
+          "question": "Which kind of change would you welcome most?",
+          "headerLabel": "WHEN PLANS CHANGE",
+          "answers": {
+            "a1": "A better balance in everyday life",
+            "a2": "More chances to try new things",
+            "a3": "More room to explore an interest deeply",
+            "a4": "More meaningful time with people"
+          }
+        }
+      }
+    },
+    "stage-10": {
+      "title": "Your Final Instincts",
+      "questions": {
+        "personality-s10q1": {
+          "question": "Which invitation feels most like your next chapter?",
+          "headerLabel": "YOUR FINAL INSTINCTS",
+          "answers": {
+            "a1": "See where this leads",
+            "a2": "Make yourself comfortable",
+            "a3": "Take a closer look",
+            "a4": "Come and share the moment"
+          }
+        },
+        "personality-s10q2": {
+          "question": "Choose the memory you would most like to create.",
+          "headerLabel": "YOUR FINAL INSTINCTS",
+          "answers": {
+            "a1": "A peaceful moment I can return to",
+            "a2": "A table full of people laughing",
+            "a3": "A day that went somewhere unexpected",
+            "a4": "A small discovery that stays with me"
+          }
+        },
+        "personality-s10q3": {
+          "question": "What would you want more of in an ordinary week?",
+          "headerLabel": "YOUR FINAL INSTINCTS",
+          "answers": {
+            "a1": "Connection",
+            "a2": "Meaningful attention",
+            "a3": "Possibility",
+            "a4": "Balance"
+          }
+        },
+        "personality-s10q4": {
+          "question": "Which kind of place could you return to again and again?",
+          "headerLabel": "YOUR FINAL INSTINCTS",
+          "answers": {
+            "a1": "Somewhere with another path to explore",
+            "a2": "Somewhere that rewards a closer look",
+            "a3": "Somewhere I feel warmly included",
+            "a4": "Somewhere I can slow down"
+          }
+        },
+        "personality-s10q5": {
+          "question": "Which quality would you want a visitor to notice about your life?",
+          "headerLabel": "YOUR FINAL INSTINCTS",
+          "answers": {
+            "a1": "Its ease",
+            "a2": "Its openness",
+            "a3": "Its warmth",
+            "a4": "Its thoughtfulness"
+          }
+        },
+        "personality-s10q6": {
+          "question": "A day has gone exactly your way. What mattered most?",
+          "headerLabel": "YOUR FINAL INSTINCTS",
+          "answers": {
+            "a1": "I had room to enjoy the pace",
+            "a2": "I discovered something new",
+            "a3": "I gave something my full attention",
+            "a4": "I felt connected to people"
+          }
+        },
+        "personality-s10q7": {
+          "question": "Choose the phrase that feels most like you today.",
+          "headerLabel": "YOUR FINAL INSTINCTS",
+          "answers": {
+            "a1": "Life is richer when it is shared",
+            "a2": "Small details give life meaning",
+            "a3": "There is always something new to discover",
+            "a4": "Enough space makes the good things clearer"
+          }
         }
       }
     }

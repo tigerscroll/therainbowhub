@@ -25,4 +25,6 @@ Add `data/articles/<slug>/<locale>.json`. Keep `slug` as the stable content iden
 
 The manifest owns metadata, the reference shell, theme colours, header colours, landing title and intro, icon, social proof, landing CTA, rewarded-ad notes, chapter content, chapter CTAs, sources, safety copy, and localized UI labels. Icons may be an emoji, an existing preset, or an image asset.
 
+Use `referenceTheme: "editorial"` for the independent shared article theme, or `referenceQuizSlug` to borrow an existing quiz's theme. Set exactly one. An independent theme keeps an article available when an unrelated quiz is removed; article-specific colours and header settings still override the base theme.
+
 Use the shared renderer unless an existing reusable schema field genuinely cannot express the content. Do not add a per-article route wrapper or a hardcoded slug list.

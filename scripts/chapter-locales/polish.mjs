@@ -1,4 +1,5 @@
-import {bibleBooks} from '../round-expansion/bible-book-names.mjs';
+import {polishRemaining} from './remaining-corrections.mjs';
+import {bibleBooks} from './bible-book-names.mjs';
 import {correctTerm, applyQuestionCorrections} from './corrections.mjs';
 import {polishPortuguese} from './portuguese.mjs';
 import {polishWordPuzzles} from './word-puzzles.mjs';
@@ -12,6 +13,7 @@ import {polishYearsLeftResults} from './years-left-results.mjs';
 import {polishAdditional} from './additional-corrections.mjs';
 import {polishNativeAdditional} from './native-additional.mjs';
 import {correctUniversityCurrency} from './university-currency.mjs';
+import {polishCatalogue} from './catalogue-native.mjs';
 
 export function walk(value, callback, parts = []) {
   if (typeof value === 'string') return callback(value, parts);
@@ -33,7 +35,7 @@ export function polishCopy(slug, locale, copy, source, manifest) {
       value = value.replaceAll(number, native);
     }
     value = value.replace(/(\d)(m[Ll]|g|kg)\b/g, '$1 $2').replace(/\bml\b/g, 'mL');
-    if (['bible', 'catholic'].includes(slug) && parts.includes('answers') && bibleBooks[locale]?.[original]) value = bibleBooks[locale][original];
+    if (['bible', 'catholic', 'nun'].includes(slug) && parts.includes('answers') && bibleBooks[locale]?.[original]) value = bibleBooks[locale][original];
     return value.replaceAll('\u200b', '');
   });
   applyQuestionCorrections(copy, locale);
@@ -41,6 +43,7 @@ export function polishCopy(slug, locale, copy, source, manifest) {
   if (slug === 'treatments') polishTreatments(copy, source, locale);
   if (slug === 'iq') polishWordPuzzles(copy, manifest, locale);
   if (locale === 'pt') polishPortuguese(slug, copy, manifest);
+  polishRemaining(slug, locale, copy, source);
   polishAdditional(slug, locale, copy, source);
   polishNativeAdditional(slug, locale, copy, source);
   if (slug === 'years-left') {
@@ -55,4 +58,5 @@ export function polishCopy(slug, locale, copy, source, manifest) {
     if (parts.includes('answers') && /^\d[\d,.]* g$/.test(original ?? '')) value = `${original.replace(/,/g, '').slice(0, -2)} غ`;
     return value;
   });
+  polishCatalogue(slug, locale, copy, source, manifest);
 }

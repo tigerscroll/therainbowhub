@@ -24,7 +24,7 @@ try {
     const page=await context.newPage();
     page.setDefaultTimeout(10_000);
     for (const [slug,ids] of Object.entries(selections)) {
-      const manifest=JSON.parse(fs.readFileSync(`data/quizzes/${slug}/english-extended/quiz.json`));
+      const manifest=JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`));
       const order=manifest.structure.stages.flatMap(stage=>stage.questionIds);
       const key=`rainbowhub:quiz-progress:v4:${slug}:ar`;
       await page.goto(`${base}/ar/${slug}?test_keep=1`);

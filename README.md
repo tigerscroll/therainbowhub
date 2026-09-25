@@ -1,71 +1,69 @@
 # Rainbow Hub quiz engine
 
-Each quiz is one folder:
+The standard quiz is **10 themed rounds × 7 questions**. All quizzes use the same chapter layout, automatic answer advancement, topic-profile checkpoints and final result screen. The supported languages are English, French, German, Italian, Dutch, Spanish, Portuguese and Arabic.
+
+## Add a quiz
+
+Add one folder under `data/quizzes/`:
 
 ```text
-data/quizzes/my-quiz/
-  quiz.json
-  en.json
+my-quiz/
+  quiz.json       # Shared structure, scoring, listing and theme
+  en.json         # Visible English content
   fr.json
-  theme.css        # optional
-  assets/          # optional thumbnail, artwork and avatar images
+  de.json
+  it.json
+  nl.json
+  es.json
+  pt.json
+  ar.json
+  theme.css       # Optional custom styling
+  assets/         # Optional artwork
 ```
 
-`quiz.json` contains engine, listing, estimate and theme settings. Locale files contain visible translated content and stable scoring identifiers. Page metadata uses concise, route-safe versions of the editorial title and summary when necessary.
+Folders containing `quiz.json` are discovered automatically. The home page, routes, recommendations, sitemap, assets and validation use this catalogue. There is no quiz registration list and no runner code to edit. Rebuild the static site after adding or changing content.
 
-Quiz-specific text belongs in the quiz folder. `landing.cta` controls that quiz's start button in each locale. Shared runner labels such as Continue, Loading ad, Restart and About This Quiz live once in `data/i18n/<locale>.json`; every quiz reuses them and validation rejects missing labels. An `about` block only needs `body` and an optional `disclaimer`—there is no custom About title to maintain.
+For an authoring scaffold:
 
-## Quiz types
+```sh
+npm run create:quiz -- my-quiz --title "My Quiz"
+```
 
-Set `engine.scoring` in `quiz.json`:
+This creates the 70-question English structure. Replace its placeholder questions, answers, result profiles and artwork, then add the seven translated JSON files. The scaffold is a starting point, not finished quiz content.
 
-- `correct-answer` for knowledge tests. Use an answer array and `correct` index.
-- `weighted-profile` for personality tests. Use an answer map from visible answer to profile id or weight map.
+## JSON structure
 
-Every question can choose a folder-configured `presentation`:
+Use `schemaVersion: 2` and `template: "ten-stage-seven-question-v1"` in `quiz.json`. The manifest defines ten stages with seven stable question IDs each. Each question has four stable answer IDs; the locale files provide the corresponding visible question and answer text.
 
-- `text` for two to four standard choices.
-- `icons` with one localized `icons` entry per choice.
-- `scale` for five discrete, keyboard-accessible stops.
-- `memory-cue` with three or four `memoryItems` and a localized `continueLabel`.
-- `sequence` for ordered visual items.
-- `grid` for 2×2 or 3×3 visual matrices.
-- `code` for two to six displayed rules.
-- `spatial` for arrows and shape transformations.
+- Knowledge quizzes use `engine.scoring: "correct-answer"`, `correctAnswerId` and a result category.
+- Personality quizzes use `engine.scoring: "weighted-profile"` and `choiceMeanings` keyed by answer ID.
+- Each locale has matching `stages`, `career.stages`, result profiles and dimensions. Translation must preserve IDs and scoring meanings, adapting wordplay and terminology where necessary.
 
-Any scored question may also include a localized `study` block. A study cue displays two to eight text or icon items before the answer phase, supports a timed automatic transition or a timed manual Continue, and never adds another question to the progress or score denominator. Questions may set `delay` (200–600ms), `correct` for hidden objective scoring, `category` for score summaries, and `calibration` values for restrained final adjustment. The engine default is `engine.advanceDelayMs` (200–600ms).
+See an existing normal quiz folder for a complete example. English headlines and landing subtitles stay in `en.json`; translations stay alongside it. There are no alternate edition directories.
 
-Set `engine.flow` to `linear` or `staged`. Set `advance` to `automatic` or `manual`, and `feedback` to `instant`, `selection-only`, or `after-results`.
+The shared template supplies the flow, checkpoint layout, finite animations, reduced-motion support and question transitions. Only the question transitions between answers; the topic heading stays mounted. Checkpoints preview the completed topic and tease the next one, without showing the overall journey length. Result sharing is disabled.
 
-For rewarded gates, add `engine.rewarded` with `start`, `stages` and `attempts`. The engine requests Google rewarded inventory itself from GAM path `/22677279144/rewarded`; AssertiveYield remains responsible for yield/performance tracking. Only genuine no-fill or unavailable responses count toward the retry limit. Closing an ad before the reward is granted automatically requests another ad and keeps the user at the same gate until a reward is completed.
+English buttons are `Start`, `Continue` and `See My Result`; the UI adds the arrows. Shared labels such as loading and restart live in `data/i18n/<locale>.json`. Topic titles, questions, result text and checkpoint copy belong in the quiz locale JSON.
 
-Set the Cloudflare build variable `LANDER=on` to show the shared one-time rewarded-ad instruction inside the landing shell before the first ad. Set `LANDER=off` and redeploy to bypass it. The default is `on`; `NEXT_PUBLIC_LANDER` is accepted as a fallback for build systems that expose only public-prefixed variables.
+The existing Start rewarded ad, ten chapter reward opportunities and optional result-review reward use the shared runner. Ad inventory is requested from the configured rewarded unit. Browser tests mock delivery; they do not verify live advertising inventory.
 
-Set `engine.checkpoint` to `ai` when the locale files provide the compact `checkpoint` copy block. Reveals can be fixed or react to trend, answer consistency, cumulative score, strongest category, or whether a configured target is achieved, reachable, or unreachable. This creates a localized analysis screen after every stage without editing the runner.
+## Presentation and language
 
-Correct-answer quizzes can set `engine.targetRatio` and a localized `results.score` block. The runner then provides percentage, exact score, strongest and trickiest category, best round, target-aware finish copy and the quiz disclaimer without quiz-specific result code.
+Questions can use text, icons, sequences, grids, codes, spatial artwork or study cues. A study cue is part of a question, not an extra scored interaction. Numeric examples must state units, and answer keys must agree with localized diagrams and recall cues.
 
-An optional `engine.estimate` keeps entertainment estimates quiz-folder controlled: base and clamp ages, profile adjustments, brain boundaries and final-calibration limit. No estimate logic or content needs to be added to the runner.
+Use English that readers in the UK, Australia, Canada and US can understand. Portuguese should use vocabulary shared by Brazil and Portugal or explain both names when needed. Arabic uses native prose with isolated Latin puzzle codes and arithmetic; ordered memory boards retain the visual order used by the answer key.
 
-## Theme and landing page
+Normal colors, typography, layout and artwork are configured in `quiz.json`. Optional `theme.css` is discovered automatically. Scope its selectors under `[data-quiz-theme="my-quiz"]`.
 
-All normal customisation is in `quiz.json`: colors, typography, texture, artwork, header colors and landing/question/result layouts. No engine code changes are needed. The optional `theme.header` block accepts `background`, `text`, `border` and `shadow`; the shared header is 50px on desktop and 40px on mobile/tablet.
-
-If a quiz needs art direction beyond those settings, add `theme.css` inside that quiz folder. It is discovered automatically—there is no theme registry to edit. Scope every selector under `[data-quiz-theme="<slug>"]` so it cannot affect the shared site header or footer.
-
-To create another quiz, copy one quiz folder, change its slug/config/content, and add or remove locale files. Relative paths such as `assets/thumbnail.jpg` are loaded from that folder automatically. The shared runner does not need to be edited.
-
-## Saved progress
-
-Quiz progress is saved for 30 minutes in `localStorage`, separately for every quiz and locale. Answers, memory-cue completion, the current question, checkpoint and result screen are restored after refreshes and browser restarts during that window. A synchronous pre-paint restore prevents the server landing from flashing before the saved screen. Ad-loading screens are never persisted: reloading during an ad returns to the safe question/checkpoint that launched it. A structural content signature rejects incompatible progress after a quiz changes, and Restart clears that quiz's saved progress and returns to its landing.
-
-## Add a language
-
-Add one entry to `localeOptions` in `lib/i18n.ts`, add `data/i18n/<locale>.json` and `data/info-pages/<locale>.json`, then add `<locale>.json` to each translated quiz folder. Routes and language menus are generated from that registry.
+Quiz progress is saved locally for 30 minutes per quiz and language. A structural signature rejects incompatible saved progress after content changes. Restart clears the current quiz's saved session.
 
 ## Check the site
 
-```bash
+```sh
 npm run lint
 npm run build
+npm run preview -- 3198
+npm run test:chapter-flows
 ```
+
+Run lint and build sequentially because both prepare public assets. Build validates all quiz content and exports the static site to `out/`. The [localization workflow](scripts/chapter-locales/README.md) describes optional authoring tools and the browser test matrix. JSON files are the runtime source; building the site never calls a translation service.

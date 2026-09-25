@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "⚕️",
     "socialProofCount": 217000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "⚕️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "medical-s1q1",
+          "medical-s1q2",
+          "medical-s1q3",
+          "medical-s1q4",
+          "medical-s1q5",
+          "medical-s1q6",
+          "medical-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "medical-s2q1",
+          "medical-s2q2",
+          "medical-s2q3",
+          "medical-s2q4",
+          "medical-s2q5",
+          "medical-s2q6",
+          "medical-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "medical-s3q1",
+          "medical-s3q2",
+          "medical-s3q3",
+          "medical-s3q4",
+          "medical-s3q5",
+          "medical-s3q6",
+          "medical-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "medical-s4q1",
+          "medical-s4q2",
+          "medical-s4q3",
+          "medical-s4q4",
+          "medical-s4q5",
+          "medical-s4q6",
+          "medical-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "medical-s5q1",
+          "medical-s5q2",
+          "medical-s5q3",
+          "medical-s5q4",
+          "medical-s5q5",
+          "medical-s5q6",
+          "medical-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "medical-s6q1",
+          "medical-s6q2",
+          "medical-s6q3",
+          "medical-s6q4",
+          "medical-s6q5",
+          "medical-s6q6",
+          "medical-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "medical-s7q1",
+          "medical-s7q2",
+          "medical-s7q3",
+          "medical-s7q4",
+          "medical-s7q5",
+          "medical-s7q6",
+          "medical-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "medical-s8q1",
+          "medical-s8q2",
+          "medical-s8q3",
+          "medical-s8q4",
+          "medical-s8q5",
+          "medical-s8q6",
+          "medical-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "medical-s9q1",
+          "medical-s9q2",
+          "medical-s9q3",
+          "medical-s9q4",
+          "medical-s9q5",
+          "medical-s9q6",
+          "medical-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "medical-q1",
-          "medical-q2",
-          "medical-q3",
-          "medical-q4",
-          "medical-q5",
-          "medical-q6",
-          "medical-q7",
-          "medical-q8",
-          "medical-q9",
-          "medical-q10"
+          "medical-s10q1",
+          "medical-s10q2",
+          "medical-s10q3",
+          "medical-s10q4",
+          "medical-s10q5",
+          "medical-s10q6",
+          "medical-s10q7"
         ]
       }
     ],
     "questions": {
-      "medical-q1": {
+      "medical-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "physiology",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
       },
-      "medical-q2": {
+      "medical-s1q2": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "cell_biology",
         "answerIds": [
           "a1",
+          "a2",
           "a3",
-          "a4",
-          "a2"
-        ]
-      },
-      "medical-q3": {
-        "presentation": "text",
+          "a4"
+        ],
         "correctAnswerId": "a3",
-        "category": "pharmacology",
+        "category": "anatomy"
+      },
+      "medical-s1q3": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "medical-q4": {
-        "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "microbiology",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
-      },
-      "medical-q5": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a1",
-        "category": "physiology",
+        "category": "anatomy"
+      },
+      "medical-s1q4": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4",
+        "category": "anatomy"
       },
-      "medical-q6": {
+      "medical-s1q5": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "physiology",
         "answerIds": [
           "a1",
-          "a3",
           "a2",
+          "a3",
           "a4"
-        ]
-      },
-      "medical-q7": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a3",
-        "category": "anatomy",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ]
+        "category": "anatomy"
       },
-      "medical-q8": {
+      "medical-s1q6": {
         "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "anatomy",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
-      },
-      "medical-q9": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "clinical_safety",
-        "answerIds": [
-          "a2",
-          "a1",
           "a3",
           "a4"
-        ]
-      },
-      "medical-q10": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "physiology",
+        "category": "anatomy"
+      },
+      "medical-s1q7": {
+        "presentation": "text",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
+      },
+      "medical-s2q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cell_biology"
+      },
+      "medical-s2q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "cell_biology"
+      },
+      "medical-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cell_biology"
+      },
+      "medical-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cell_biology"
+      },
+      "medical-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cell_biology"
+      },
+      "medical-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "cell_biology"
+      },
+      "medical-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "cell_biology"
+      },
+      "medical-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
+      },
+      "medical-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "anatomy"
+      },
+      "medical-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "anatomy"
+      },
+      "medical-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "anatomy"
+      },
+      "medical-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "anatomy"
+      },
+      "medical-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "anatomy"
+      },
+      "medical-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "anatomy"
+      },
+      "medical-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "physiology"
+      },
+      "medical-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "physiology"
+      },
+      "medical-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "physiology"
+      },
+      "medical-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "physiology"
+      },
+      "medical-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "physiology"
+      },
+      "medical-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "physiology"
+      },
+      "medical-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "physiology"
+      },
+      "medical-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "microbiology"
+      },
+      "medical-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "microbiology"
+      },
+      "medical-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "microbiology"
+      },
+      "medical-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "microbiology"
+      },
+      "medical-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "microbiology"
+      },
+      "medical-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "microbiology"
+      },
+      "medical-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "microbiology"
+      },
+      "medical-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "pharmacology"
+      },
+      "medical-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "pharmacology"
+      },
+      "medical-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "pharmacology"
+      },
+      "medical-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "pharmacology"
+      },
+      "medical-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "pharmacology"
+      },
+      "medical-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "pharmacology"
+      },
+      "medical-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "pharmacology"
+      },
+      "medical-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_safety"
+      },
+      "medical-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "clinical_safety"
+      },
+      "medical-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "clinical_safety"
+      },
+      "medical-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "clinical_safety"
+      },
+      "medical-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_safety"
+      },
+      "medical-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "clinical_safety"
+      },
+      "medical-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_safety"
+      },
+      "medical-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "physiology"
+      },
+      "medical-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "physiology"
+      },
+      "medical-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "physiology"
+      },
+      "medical-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "physiology"
+      },
+      "medical-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "physiology"
+      },
+      "medical-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "physiology"
+      },
+      "medical-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "physiology"
+      },
+      "medical-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "clinical_safety"
+      },
+      "medical-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_safety"
+      },
+      "medical-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "clinical_safety"
+      },
+      "medical-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "clinical_safety"
+      },
+      "medical-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_safety"
+      },
+      "medical-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "clinical_safety"
+      },
+      "medical-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "clinical_safety"
+      },
+      "medical-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "clinical_safety"
+      },
+      "medical-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "clinical_safety"
+      },
+      "medical-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "clinical_safety"
+      },
+      "medical-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "clinical_safety"
+      },
+      "medical-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "clinical_safety"
+      },
+      "medical-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "clinical_safety"
+      },
+      "medical-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "clinical_safety"
       }
     },
     "checkpoint": {
@@ -259,35 +1034,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

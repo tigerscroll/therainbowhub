@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "🛩️",
     "socialProofCount": 205000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "🛩️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "airforce-s1q1",
+          "airforce-s1q2",
+          "airforce-s1q3",
+          "airforce-s1q4",
+          "airforce-s1q5",
+          "airforce-s1q6",
+          "airforce-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "airforce-s2q1",
+          "airforce-s2q2",
+          "airforce-s2q3",
+          "airforce-s2q4",
+          "airforce-s2q5",
+          "airforce-s2q6",
+          "airforce-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "airforce-s3q1",
+          "airforce-s3q2",
+          "airforce-s3q3",
+          "airforce-s3q4",
+          "airforce-s3q5",
+          "airforce-s3q6",
+          "airforce-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "airforce-s4q1",
+          "airforce-s4q2",
+          "airforce-s4q3",
+          "airforce-s4q4",
+          "airforce-s4q5",
+          "airforce-s4q6",
+          "airforce-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "airforce-s5q1",
+          "airforce-s5q2",
+          "airforce-s5q3",
+          "airforce-s5q4",
+          "airforce-s5q5",
+          "airforce-s5q6",
+          "airforce-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "airforce-s6q1",
+          "airforce-s6q2",
+          "airforce-s6q3",
+          "airforce-s6q4",
+          "airforce-s6q5",
+          "airforce-s6q6",
+          "airforce-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "airforce-s7q1",
+          "airforce-s7q2",
+          "airforce-s7q3",
+          "airforce-s7q4",
+          "airforce-s7q5",
+          "airforce-s7q6",
+          "airforce-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "airforce-s8q1",
+          "airforce-s8q2",
+          "airforce-s8q3",
+          "airforce-s8q4",
+          "airforce-s8q5",
+          "airforce-s8q6",
+          "airforce-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "airforce-s9q1",
+          "airforce-s9q2",
+          "airforce-s9q3",
+          "airforce-s9q4",
+          "airforce-s9q5",
+          "airforce-s9q6",
+          "airforce-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "airforce-q1",
-          "airforce-q2",
-          "airforce-q3",
-          "airforce-q4",
-          "airforce-q5",
-          "airforce-q6",
-          "airforce-q7",
-          "airforce-q8",
-          "airforce-q9",
-          "airforce-q10"
+          "airforce-s10q1",
+          "airforce-s10q2",
+          "airforce-s10q3",
+          "airforce-s10q4",
+          "airforce-s10q5",
+          "airforce-s10q6",
+          "airforce-s10q7"
         ]
       }
     ],
     "questions": {
-      "airforce-q1": {
+      "airforce-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "flight_basics",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_basics"
       },
-      "airforce-q2": {
+      "airforce-s1q2": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "instruments",
         "answerIds": [
           "a1",
+          "a2",
           "a3",
-          "a4",
-          "a2"
-        ]
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "flight_basics"
       },
-      "airforce-q3": {
+      "airforce-s1q3": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a3",
-        "category": "flight_controls",
+        "category": "flight_basics"
+      },
+      "airforce-s1q4": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "airforce-q4": {
-        "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "navigation",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
-      },
-      "airforce-q5": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "flight_basics",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "airforce-q6": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "navigation",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ]
-      },
-      "airforce-q7": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a3",
-        "category": "navigation",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ]
+        "category": "flight_basics"
       },
-      "airforce-q8": {
+      "airforce-s1q5": {
         "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "flight_controls",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
-      },
-      "airforce-q9": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "flight_physics",
-        "answerIds": [
-          "a2",
-          "a1",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_basics"
       },
-      "airforce-q10": {
+      "airforce-s1q6": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_basics"
+      },
+      "airforce-s1q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a2",
-        "category": "flight_physics",
+        "category": "flight_basics"
+      },
+      "airforce-s2q1": {
+        "presentation": "text",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_controls"
+      },
+      "airforce-s2q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_controls"
+      },
+      "airforce-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_controls"
+      },
+      "airforce-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "flight_controls"
+      },
+      "airforce-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "flight_controls"
+      },
+      "airforce-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_controls"
+      },
+      "airforce-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_controls"
+      },
+      "airforce-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "instruments"
+      },
+      "airforce-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "instruments"
+      },
+      "airforce-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "instruments"
+      },
+      "airforce-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "instruments"
+      },
+      "airforce-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "instruments"
+      },
+      "airforce-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "instruments"
+      },
+      "airforce-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "instruments"
+      },
+      "airforce-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "navigation"
+      },
+      "airforce-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "navigation"
+      },
+      "airforce-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "navigation"
+      },
+      "airforce-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "navigation"
+      },
+      "airforce-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "navigation"
+      },
+      "airforce-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "navigation"
+      },
+      "airforce-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "navigation"
+      },
+      "airforce-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "navigation"
+      },
+      "airforce-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "navigation"
+      },
+      "airforce-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "navigation"
+      },
+      "airforce-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "navigation"
+      },
+      "airforce-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "navigation"
+      },
+      "airforce-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "navigation"
+      },
+      "airforce-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "navigation"
+      },
+      "airforce-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "flight_physics"
+      },
+      "airforce-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "flight_physics"
+      },
+      "airforce-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "flight_physics"
+      },
+      "airforce-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_physics"
+      },
+      "airforce-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_physics"
+      },
+      "airforce-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_physics"
+      },
+      "airforce-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "flight_physics"
+      },
+      "airforce-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_physics"
+      },
+      "airforce-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "flight_physics"
+      },
+      "airforce-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "flight_physics"
+      },
+      "airforce-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "flight_physics"
+      },
+      "airforce-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_physics"
+      },
+      "airforce-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "flight_physics"
+      },
+      "airforce-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_physics"
+      },
+      "airforce-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "navigation"
+      },
+      "airforce-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "navigation"
+      },
+      "airforce-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "navigation"
+      },
+      "airforce-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "navigation"
+      },
+      "airforce-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "navigation"
+      },
+      "airforce-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "navigation"
+      },
+      "airforce-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "navigation"
+      },
+      "airforce-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "instruments"
+      },
+      "airforce-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "instruments"
+      },
+      "airforce-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "instruments"
+      },
+      "airforce-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "instruments"
+      },
+      "airforce-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "instruments"
+      },
+      "airforce-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "instruments"
+      },
+      "airforce-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "instruments"
+      },
+      "airforce-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "flight_basics"
+      },
+      "airforce-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_basics"
+      },
+      "airforce-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_basics"
+      },
+      "airforce-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "flight_basics"
+      },
+      "airforce-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "flight_basics"
+      },
+      "airforce-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "flight_basics"
+      },
+      "airforce-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "flight_basics"
       }
     },
     "checkpoint": {
@@ -258,35 +1033,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

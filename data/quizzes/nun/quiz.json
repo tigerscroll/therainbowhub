@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "✝️",
     "socialProofCount": 166000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "✝️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "nun-s1q1",
+          "nun-s1q2",
+          "nun-s1q3",
+          "nun-s1q4",
+          "nun-s1q5",
+          "nun-s1q6",
+          "nun-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "nun-s2q1",
+          "nun-s2q2",
+          "nun-s2q3",
+          "nun-s2q4",
+          "nun-s2q5",
+          "nun-s2q6",
+          "nun-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "nun-s3q1",
+          "nun-s3q2",
+          "nun-s3q3",
+          "nun-s3q4",
+          "nun-s3q5",
+          "nun-s3q6",
+          "nun-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "nun-s4q1",
+          "nun-s4q2",
+          "nun-s4q3",
+          "nun-s4q4",
+          "nun-s4q5",
+          "nun-s4q6",
+          "nun-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "nun-s5q1",
+          "nun-s5q2",
+          "nun-s5q3",
+          "nun-s5q4",
+          "nun-s5q5",
+          "nun-s5q6",
+          "nun-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "nun-s6q1",
+          "nun-s6q2",
+          "nun-s6q3",
+          "nun-s6q4",
+          "nun-s6q5",
+          "nun-s6q6",
+          "nun-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "nun-s7q1",
+          "nun-s7q2",
+          "nun-s7q3",
+          "nun-s7q4",
+          "nun-s7q5",
+          "nun-s7q6",
+          "nun-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "nun-s8q1",
+          "nun-s8q2",
+          "nun-s8q3",
+          "nun-s8q4",
+          "nun-s8q5",
+          "nun-s8q6",
+          "nun-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "nun-s9q1",
+          "nun-s9q2",
+          "nun-s9q3",
+          "nun-s9q4",
+          "nun-s9q5",
+          "nun-s9q6",
+          "nun-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "nun-q1",
-          "nun-q2",
-          "nun-q3",
-          "nun-q4",
-          "nun-q5",
-          "nun-q6",
-          "nun-q7",
-          "nun-q8",
-          "nun-q9",
-          "nun-q10"
+          "nun-s10q1",
+          "nun-s10q2",
+          "nun-s10q3",
+          "nun-s10q4",
+          "nun-s10q5",
+          "nun-s10q6",
+          "nun-s10q7"
         ]
       }
     ],
     "questions": {
-      "nun-q1": {
+      "nun-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "vows",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
-      },
-      "nun-q2": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "formation",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
-      },
-      "nun-q3": {
-        "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "orders_traditions",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "nun-q4": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a4",
-        "category": "daily_life",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
+        "category": "vows"
       },
-      "nun-q5": {
+      "nun-s1q2": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "orders_traditions",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "nun-q6": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "orders_traditions",
+        "category": "vows"
+      },
+      "nun-s1q3": {
+        "presentation": "text",
         "answerIds": [
           "a1",
+          "a2",
           "a3",
-          "a2",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2",
+        "category": "vows"
       },
-      "nun-q7": {
+      "nun-s1q4": {
         "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "vows",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "nun-q8": {
-        "presentation": "text",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
-        "category": "daily_life",
+        "category": "vows"
+      },
+      "nun-s1q5": {
+        "presentation": "text",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "vows"
       },
-      "nun-q9": {
+      "nun-s1q6": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "formation",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
+        "category": "vows"
       },
-      "nun-q10": {
+      "nun-s1q7": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "daily_life",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4",
+        "category": "vows"
+      },
+      "nun-s2q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formation"
+      },
+      "nun-s2q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formation"
+      },
+      "nun-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formation"
+      },
+      "nun-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "daily_life"
+      },
+      "nun-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "daily_life"
+      },
+      "nun-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "orders_traditions"
+      },
+      "nun-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "orders_traditions"
+      },
+      "nun-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "orders_traditions"
+      },
+      "nun-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "orders_traditions"
+      },
+      "nun-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "daily_life"
+      },
+      "nun-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "daily_life"
+      },
+      "nun-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "daily_life"
+      },
+      "nun-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "daily_life"
+      },
+      "nun-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "daily_life"
+      },
+      "nun-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "formation"
+      },
+      "nun-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formation"
+      },
+      "nun-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formation"
+      },
+      "nun-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formation"
+      },
+      "nun-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formation"
+      },
+      "nun-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formation"
+      },
+      "nun-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "orders_traditions"
+      },
+      "nun-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "orders_traditions"
+      },
+      "nun-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "orders_traditions"
+      },
+      "nun-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "orders_traditions"
+      },
+      "nun-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "orders_traditions"
+      },
+      "nun-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "orders_traditions"
       }
     },
     "checkpoint": {
@@ -252,35 +1027,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

@@ -30,7 +30,7 @@ async function check(locale){
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,`${locale}/${id}: page overflow`);
     assert.equal(await page.locator('[data-quiz-theme="vision"]').evaluate(n=>n.scrollLeft),0,`${locale}/${id}: internal horizontal scroll`);
     if(await q.locator('.quiz-engine__visual').count())assert.equal(await q.locator('.quiz-engine__visual').evaluate(n=>getComputedStyle(n).direction),'ltr',`${locale}/${id}: puzzle order`);
-    if(['ar','he','ja','de'].includes(locale)&&['vision-r1q1','vision-r10q2'].includes(id)){
+    if(['ar','de'].includes(locale)&&['vision-r1q1','vision-r10q2'].includes(id)){
      await page.evaluate(async () => {await Promise.all(document.getAnimations().filter(a => Number.isFinite(a.effect?.getComputedTiming().endTime)).map(a => a.finished.catch(()=>{})));});
      const bounds=await q.evaluate(n=>{const r=n.getBoundingClientRect();return{x:r.x,right:r.right,width:innerWidth,scrollX};});
      if(bounds.x < -1 || bounds.right > bounds.width+1) console.error(await q.evaluate(n=>{const out=[];for(let p=n;p;p=p.parentElement){const r=p.getBoundingClientRect(),s=getComputedStyle(p);out.push({tag:p.tagName,class:p.className,x:r.x,width:r.width,scrollWidth:p.scrollWidth,scrollLeft:p.scrollLeft,overflow:s.overflow,padding:s.padding,margin:s.margin,transform:s.transform});}return out;}));

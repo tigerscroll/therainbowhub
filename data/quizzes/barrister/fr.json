@@ -1,200 +1,937 @@
 {
   "title": "Seuls 6 % des adultes peuvent réussir cet examen d’entrée au barreau",
   "eyebrow": "LE TEST DE RAISONNEMENT EN SALLE D’AUDIENCE",
-  "summary": "Dix questions sur le vocabulaire judiciaire, les précédents, la preuve et la déontologie.",
+  "summary": "Explorez le raisonnement juridique et le plaidoyer à travers des indices, des situations pratiques et de nouveaux défis.",
   "landing": {
     "intro": "Pouvez-vous suivre les preuves ?\nFaites valoir vos arguments les plus solides.",
-    "cta": "Commencer le test"
+    "cta": "Commencer"
   },
   "about": {
-    "body": "Ce quiz de dix questions explore des notions judiciaires utilisées dans les systèmes de common law, notamment le rôle du barrister, un avocat spécialisé dans la représentation en justice. Les règles et les termes varient selon les juridictions, et certains principes ne s’appliquent pas partout. Il s’agit d’un quiz de culture générale, pas d’un véritable examen d’admission.\n\nChoisissez une réponse par question. Après avoir découvert votre score, vous pourrez débloquer un corrigé présentant les bonnes réponses aux questions que vous avez manquées.",
+    "body": "Reliez les faits, repérez les détails et mettez vos connaissances à l’épreuve. Chaque série aborde un nouveau thème. À la fin de chaque série, découvrez le profil qui se dessine dans vos réponses avant de poursuivre le défi.",
     "howToPlay": {
       "steps": [
-        "Répondez à dix questions de droit de difficulté croissante.",
-        "Choisissez la notion juridique ou la réponse la plus appropriée à la situation.",
-        "Découvrez votre score, puis débloquez le corrigé de toutes vos erreurs."
+        "Lisez les indices et choisissez une réponse.",
+        "Découvrez votre profil pour ce thème, puis passez à un nouveau défi.",
+        "Découvrez votre résultat final et consultez, si vous le souhaitez, les réponses aux questions manquées."
       ]
     },
     "disclaimer": "Pour le divertissement et l'apprentissage général uniquement. Il ne s’agit pas d’un examen d’admission au barreau, d’une qualification juridique ou d’un conseil juridique. Les lois et règles professionnelles varient selon les juridictions."
   },
   "career": {
-    "resultProgressLabel": "Votre progression",
+    "resultProgressLabel": "Mon défi",
     "stages": {
       "stage-1": {
-        "difficulty": "Défi de raisonnement juridique",
-        "preAdTitle": "Votre résultat au quiz est prêt",
-        "preAdCopy": "Vos dix réponses ont été vérifiées. Votre score de raisonnement juridique est prêt.",
+        "difficulty": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
+        "preAdTitle": "Les premiers indices",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "À suivre : Suivre les éléments de preuve. Saurez-vous relier les indices ?"
+        }
+      },
+      "stage-2": {
+        "difficulty": "SUIVRE LES ÉLÉMENTS DE PREUVE",
+        "preAdTitle": "Un nouveau regard",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "Nouveau défi : Règles et précédents. Les détails feront la différence."
+        }
+      },
+      "stage-3": {
+        "difficulty": "RÈGLES ET PRÉCÉDENTS",
+        "preAdTitle": "Les détails comptent",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "À découvrir : Poser des questions claires. Que saurez-vous reconnaître ?"
+        }
+      },
+      "stage-4": {
+        "difficulty": "POSER DES QUESTIONS CLAIRES",
+        "preAdTitle": "Changeons de perspective",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "À suivre : Le discernement professionnel. Saurez-vous relier les indices ?"
+        }
+      },
+      "stage-5": {
+        "difficulty": "LE DISCERNEMENT PROFESSIONNEL",
+        "preAdTitle": "Une nouvelle piste",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "Nouveau défi : Documents et dossiers. Les détails feront la différence."
+        }
+      },
+      "stage-6": {
+        "difficulty": "DOCUMENTS ET DOSSIERS",
+        "preAdTitle": "À chaque détail son rôle",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "À découvrir : Raisonnement à partir de règles. Que saurez-vous reconnaître ?"
+        }
+      },
+      "stage-7": {
+        "difficulty": "RAISONNEMENT À PARTIR DE RÈGLES",
+        "preAdTitle": "Les indices se rejoignent",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "À suivre : Temps et quantités. Saurez-vous relier les indices ?"
+        }
+      },
+      "stage-8": {
+        "difficulty": "TEMPS ET QUANTITÉS",
+        "preAdTitle": "Un autre angle",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "Nouveau défi : Construire une argumentation. Les détails feront la différence."
+        }
+      },
+      "stage-9": {
+        "difficulty": "CONSTRUIRE UNE ARGUMENTATION",
+        "preAdTitle": "Place au dernier défi",
+        "preAdCopy": "Sur ce thème : {profile}.",
+        "preAdButton": "Continuer",
+        "next": {
+          "eyebrow": "À SUIVRE",
+          "tagline": "À découvrir : Révision d'une décision. Que saurez-vous reconnaître ?"
+        }
+      },
+      "stage-10": {
+        "difficulty": "RÉVISION D'UNE DÉCISION",
+        "preAdTitle": "Le résultat est prêt",
+        "preAdCopy": "Ai-je atteint 80 % ? Mon score et mes points forts sont prêts.",
+        "preAdButton": "Voir mon résultat",
         "preAdChecks": [
-          "10 réponses vérifiées",
-          "Quatre domaines juridiques comparés"
+          "Réponses vérifiées",
+          "Points forts comparés",
+          "Score calculé"
         ]
       }
     }
   },
   "results": {
-    "name": "VOTRE SCORE DE RAISONNEMENT JURIDIQUE",
+    "name": "VOTRE NOTE DE RAISONNEMENT DANS LA SALLE D'AUDIENCE",
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
         "title": "L'as du prétoire",
-        "copy": "Vous avez répondu correctement à neuf ou dix questions : vous maîtrisez bien les notions abordées dans ce quiz. Ce score porte uniquement sur ces dix questions et ne constitue pas une qualification juridique."
+        "copy": "Vous avez répondu correctement à presque toutes les questions. Vos résultats détaillés montrent comment cette précision s'est répercutée sur les sujets de ce défi."
       },
       "profile-2": {
         "tier": "80–89%",
         "title": "L'orateur persuasif",
-        "copy": "Vous avez répondu correctement à huit questions sur dix et atteint l’objectif de 80 % de ce quiz. Débloquez le corrigé pour revenir sur vos deux erreurs."
+        "copy": "Vous avez établi de nombreux liens précis tout au long de ce défi. Explorez vos résultats détaillés pour voir quels sujets ont été les plus forts."
       },
       "profile-3": {
         "tier": "60–79%",
         "title": "L'analyste juridique affûté",
-        "copy": "Vous avez bien répondu à plusieurs questions sur le droit. Le corrigé vous aidera à comprendre celles qui vous ont demandé plus de réflexion."
+        "copy": "Vous avez relié de nombreux indices et faits. Vos résultats détaillés mettent en évidence les sujets que vous avez le mieux traités et ceux qui méritent un nouvel examen."
       },
       "profile-4": {
         "tier": "40–59%",
         "title": "L'élève prometteur",
-        "copy": "Certaines notions de droit vous étaient moins familières. Consultez le corrigé pour découvrir les bonnes réponses et poursuivre votre apprentissage."
+        "copy": "Vous avez trouvé des indices utiles sur plusieurs sujets. L’examen des réponses peut vous aider à répondre aux questions qui vous ont surpris."
       },
       "profile-5": {
         "tier": "En dessous de 40 %",
         "title": "Commencer par les bases",
-        "copy": "Certaines notions de droit vous étaient moins familières. Consultez le corrigé pour découvrir les bonnes réponses et poursuivre votre apprentissage."
+        "copy": "Certains sujets étaient plus familiers que d’autres. Votre avis montre les bonnes réponses et vous donne un point de départ pour une autre tentative."
       }
     },
     "dimensions": {
       "dimension-1": {
-        "label": "Notions judiciaires de base"
+        "label": "Bases de la salle d'audience"
       },
       "dimension-2": {
-        "label": "Précédents et raisonnement"
+        "label": "Précédent et raisonnement"
       },
       "dimension-3": {
-        "label": "Preuve et plaidoirie"
+        "label": "Preuve et plaidoyer"
       },
       "dimension-4": {
-        "label": "Déontologie"
+        "label": "Principes professionnels"
       }
     },
     "score": {
-      "passed": "Vous avez réussi ce quiz de raisonnement juridique !",
-      "finished": "Quiz de raisonnement juridique terminé",
-      "strongest": "Domaine le mieux réussi",
-      "trickiest": "Domaine le plus difficile",
-      "bestRound": "Votre meilleur tour",
+      "passed": "Vous avez atteint 80 % !",
+      "finished": "Défi terminé",
+      "strongest": "Domaine juridique le plus fort",
+      "trickiest": "Domaine juridique le plus délicat",
+      "bestRound": "Votre meilleur thème",
       "insights": {
-        "overview": "Votre score de raisonnement juridique en un coup d’œil",
-        "correct": "Bonnes réponses",
+        "overview": "Votre score en un coup d’œil",
+        "correct": "Réponses correctes",
         "missed": "Réponses incorrectes",
-        "target": "Bonnes réponses nécessaires pour atteindre 80 %",
-        "breakdown": "La répartition de vos connaissances juridiques",
-        "snapshot": "Ce que suggère votre résultat",
+        "target": "Bonnes réponses pour atteindre 80 %",
+        "breakdown": "Vos résultats par thème",
+        "snapshot": "Ce que révèle ce résultat",
         "targetReached": "Objectif de 80 % atteint",
-        "targetRemaining": "Bonnes réponses encore nécessaires pour atteindre 80 %"
+        "targetRemaining": "Il manque encore des bonnes réponses pour atteindre 80 %."
       }
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Défi de raisonnement juridique",
+      "title": "À l'intérieur de la salle d'audience",
       "questions": {
-        "barrister-q1": {
-          "question": "Dans un procès pénal, à qui incombe normalement la charge de prouver la culpabilité de l’accusé ?",
+        "barrister-s1q1": {
+          "question": "Quel est le principal objectif de la présentation d’une preuve lors d’une audience ?",
+          "headerLabel": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
           "answers": {
-            "a1": "L’accusation",
-            "a2": "L'accusé",
-            "a3": "Le jury",
-            "a4": "Le greffier du tribunal"
-          },
-          "headerLabel": "NOTIONS JUDICIAIRES DE BASE"
+            "a1": "Pour remplacer la question en cours de décision",
+            "a2": "Pour aider à établir des faits pertinents",
+            "a3": "Pour prouver sa popularité",
+            "a4": "Pour récompenser le discours le plus long"
+          }
         },
-        "barrister-q2": {
-          "question": "Quel principe veut qu’une personne accusée soit considérée comme innocente tant que sa culpabilité n’est pas prouvée ?",
+        "barrister-s1q2": {
+          "question": "Qu’est-ce qu’on demande généralement à un témoin de décrire ?",
+          "headerLabel": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
           "answers": {
-            "a1": "Responsabilité sans faute",
-            "a2": "La présomption d'innocence",
-            "a3": "L’interdiction d’être jugé deux fois pour les mêmes faits",
-            "a4": "La connaissance d’office de certains faits"
-          },
-          "headerLabel": "PRINCIPES FONDAMENTAUX"
+            "a1": "Informations pertinentes à l'affaire examinée",
+            "a2": "Seul ce que l'avocat souhaite était vrai",
+            "a3": "Un verdict final garanti",
+            "a4": "Suppositions privées présentées comme une observation directe"
+          }
         },
-        "barrister-q3": {
-          "question": "Comment appelle-t-on une décision de justice antérieure qui peut guider le traitement d’une affaire similaire ?",
+        "barrister-s1q3": {
+          "question": "Qu’est-ce que le contre-interrogatoire lors d’une audience contradictoire ?",
+          "headerLabel": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
           "answers": {
-            "a1": "Un affidavit",
-            "a2": "Un acte d'accusation",
-            "a3": "Un précédent",
-            "a4": "Un règlement amiable"
-          },
-          "headerLabel": "JURISPRUDENCE"
+            "a1": "Rédiger la décision du juge",
+            "a2": "Interroger un témoin cité par une autre partie",
+            "a3": "Rejeter automatiquement chaque document",
+            "a4": "Choisir les meubles"
+          }
         },
-        "barrister-q4": {
-          "question": "Comment appelle-t-on communément l’interrogatoire d’un témoin par la partie adverse ?",
+        "barrister-s1q4": {
+          "question": "Qu'est-ce qu'une question directrice ?",
+          "headerLabel": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
           "answers": {
-            "a1": "Interrogatoire principal",
-            "a2": "Contrôle judiciaire",
-            "a3": "Communication des éléments de preuve",
-            "a4": "Contre-interrogatoire"
-          },
-          "headerLabel": "PLAIDOIRIE"
+            "a1": "Chaque invitation ouverte à décrire un événement",
+            "a2": "Une question qui suggère la réponse souhaitée",
+            "a3": "Une question qui n'a pas de mots",
+            "a4": "Toute question posée en premier"
+          }
         },
-        "barrister-q5": {
-          "question": "Quel terme latin décrit la raison juridique essentielle à la décision d’un tribunal ?",
+        "barrister-s1q5": {
+          "question": "Quelle est la différence entre une allégation et un constat ?",
+          "headerLabel": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
           "answers": {
-            "a1": "Ratio decidendi",
-            "a2": "Habeas corpus",
-            "a3": "Bona fide",
-            "a4": "Prima facie"
-          },
-          "headerLabel": "PRÉCÉDENT"
+            "a1": "Une découverte n'est qu'une rumeur",
+            "a2": "Une allégation est une réclamation ; une constatation est une détermination après examen",
+            "a3": "Une allégation prouve automatiquement un fait",
+            "a4": "Ils veulent toujours dire exactement la même chose"
+          }
         },
-        "barrister-q6": {
-          "question": "Comment appelle-t-on une observation du juge qui n’est pas nécessaire à la décision ?",
+        "barrister-s1q6": {
+          "question": "À quoi doit se relier une argumentation finale ?",
+          "headerLabel": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
           "answers": {
-            "a1": "Une ordonnance contraignante",
-            "a2": "Obiter dictum",
-            "a3": "Un plaidoyer de culpabilité",
-            "a4": "Une cause d'action"
-          },
-          "headerLabel": "RAISONNEMENT JURIDIQUE"
+            "a1": "Les preuves pertinentes et les questions ou règles applicables",
+            "a2": "Seule la popularité personnelle de l’orateur",
+            "a3": "Des histoires sans rapport et sans lien",
+            "a4": "Réclamations délibérément cachées du dossier"
+          }
         },
-        "barrister-q7": {
-          "question": "En common law, comment appelle-t-on généralement une déclaration faite hors du témoignage à l’audience et présentée pour prouver la véracité de son contenu ?",
+        "barrister-s1q7": {
+          "question": "Un témoin n’a pas vu un événement mais en a entendu parler plus tard. Quelle distinction compte ?",
+          "headerLabel": "À L'INTÉRIEUR DE LA SALLE D'AUDIENCE",
           "answers": {
-            "a1": "Privilège de non-divulgation",
-            "a2": "Préclusion",
-            "a3": "Ouï-dire",
-            "a4": "Atténuation de la peine"
-          },
-          "headerLabel": "PREUVE"
+            "a1": "Aucune distinction ne pourra jamais avoir d'importance",
+            "a2": "Uniquement la couleur des vêtements du témoin",
+            "a3": "Seule la vitesse de parole du témoin",
+            "a4": "Observation directe versus information provenant de quelqu'un d'autre"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Suivre les éléments de preuve",
+      "questions": {
+        "barrister-s2q1": {
+          "question": "Deux personnes donnent des horaires différents pour le même événement. Quelle est la meilleure prochaine étape ?",
+          "headerLabel": "SUIVRE LES ÉLÉMENTS DE PREUVE",
+          "answers": {
+            "a1": "Choisissez automatiquement l'orateur le plus confiant",
+            "a2": "Faites la moyenne des temps et appelez cela un fait",
+            "a3": "Comparer chaque témoignage à d’autres informations fiables",
+            "a4": "Supprimer les deux témoignages sans vérification"
+          }
         },
-        "barrister-q8": {
-          "question": "Quelle question suggère le plus clairement la réponse attendue par celui qui interroge ?",
+        "barrister-s2q2": {
+          "question": "Quelle déclaration consigne une observation plutôt qu’une hypothèse sur le motif ?",
+          "headerLabel": "SUIVRE LES ÉLÉMENTS DE PREUVE",
           "answers": {
-            "a1": "Que s'est-il passé ensuite ?",
-            "a2": "Où étiez-vous ?",
-            "a3": "Comment était la pièce ?",
-            "a4": "Le feu était rouge quand vous avez traversé, n’est-ce pas ?"
-          },
-          "headerLabel": "INTERROGATOIRE DES TÉMOINS"
+            "a1": "La personne ne s'est jamais souciée de la réunion",
+            "a2": "La personne avait l'intention d'induire tout le monde en erreur",
+            "a3": "La personne a quitté la chambre à 14h10",
+            "a4": "La personne est partie parce qu'elle était coupable"
+          }
         },
-        "barrister-q9": {
-          "question": "En droit public, sur quoi porte principalement le contrôle juridictionnel d’une décision ?",
+        "barrister-s2q3": {
+          "question": "Une photographie n’a ni date ni lieu connu. Que faut-il vérifier avant de s'y fier ?",
+          "headerLabel": "SUIVRE LES ÉLÉMENTS DE PREUVE",
           "answers": {
-            "a1": "La légalité d’une décision d’une autorité publique",
-            "a2": "Si un jury a choisi le meilleur témoin",
-            "a3": "Si un contrat a généré des bénéfices",
-            "a4": "Si chaque appel devrait être accueilli"
-          },
-          "headerLabel": "DROIT PUBLIC"
+            "a1": "Si ses couleurs sont attrayantes",
+            "a2": "Si cela correspond à une conclusion privilégiée",
+            "a3": "Son origine et son contexte",
+            "a4": "Combien de personnes l'aiment"
+          }
         },
-        "barrister-q10": {
-          "question": "Là où elle s’applique, qu’exige en principe la « cab-rank rule » d’un barrister qui y est soumis, sous réserve des règles professionnelles et de leurs exceptions ?",
+        "barrister-s2q4": {
+          "question": "Cette affirmation est répétée par trois sites Web, citant tous une source anonyme. Qu'est-ce que cela montre ?",
+          "headerLabel": "SUIVRE LES ÉLÉMENTS DE PREUVE",
           "answers": {
-            "a1": "Accepter uniquement les affaires populaires",
-            "a2": "Accepter les mandats appropriés, quelle que soit l’identité du client ou la popularité de sa cause",
-            "a3": "Garantir une issue favorable",
-            "a4": "Travailler uniquement devant les tribunaux pénaux"
-          },
-          "headerLabel": "DERNIÈRE QUESTION D'ÉTHIQUE"
+            "a1": "Rapports répétés, pas trois confirmations indépendantes",
+            "a2": "Trois témoins oculaires indépendants",
+            "a3": "Preuve qu'aucune vérification supplémentaire n'est nécessaire",
+            "a4": "Preuve que la déclaration est exacte"
+          }
+        },
+        "barrister-s2q5": {
+          "question": "Tous les visiteurs autorisés disposent d'un laissez-passer. Mira a un laissez-passer. Que découle de cette seule règle ?",
+          "headerLabel": "SUIVRE LES ÉLÉMENTS DE PREUVE",
+          "answers": {
+            "a1": "Aucun visiteur autorisé n'a de laissez-passer",
+            "a2": "Mira doit être un visiteur autorisé",
+            "a3": "Mira ne peut pas être un visiteur autorisé",
+            "a4": "Cela ne prouve pas que Mira est une visiteuse autorisée"
+          }
+        },
+        "barrister-s2q6": {
+          "question": "Un nouveau fait fiable contredit votre explication initiale. Quelle réaction est appropriée ?",
+          "headerLabel": "SUIVRE LES ÉLÉMENTS DE PREUVE",
+          "answers": {
+            "a1": "Traitez votre première idée comme immuable",
+            "a2": "Reconsidérez l’explication",
+            "a3": "Cacher le nouveau fait",
+            "a4": "Changer le fait pour l'adapter à l'explication"
+          }
+        },
+        "barrister-s2q7": {
+          "question": "Un rapport indique qu'un événement s'est produit après un changement. Ce timing prouve-t-il à lui seul que le changement l’a causé ?",
+          "headerLabel": "SUIVRE LES ÉLÉMENTS DE PREUVE",
+          "answers": {
+            "a1": "Oui ; si le rapport est suffisamment long",
+            "a2": "Oui ; la séquence prouve toujours la cause",
+            "a3": "Non ; d'autres explications peuvent exister",
+            "a4": "Non ; les événements antérieurs ne peuvent jamais en provoquer d’autres"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Règles et précédents",
+      "questions": {
+        "barrister-s3q1": {
+          "question": "Dans un exercice fondé sur des précédents, pourquoi comparer des faits importants entre des affaires ?",
+          "headerLabel": "RÈGLES ET PRÉCÉDENTS",
+          "answers": {
+            "a1": "Pour éviter de lire la règle",
+            "a2": "Pour évaluer si le raisonnement précédent s’applique",
+            "a3": "Pour garantir que les noms sont identiques",
+            "a4": "Pour choisir automatiquement le document le plus ancien"
+          }
+        },
+        "barrister-s3q2": {
+          "question": "Une règle hypothétique interdit les véhicules à l'exception des véhicules d'urgence en service. Qu’est-ce qui est expressément exclu ?",
+          "headerLabel": "RÈGLES ET PRÉCÉDENTS",
+          "answers": {
+            "a1": "Un véhicule d'urgence en service",
+            "a2": "Chaque véhicule stationné",
+            "a3": "Chaque voiture privée",
+            "a4": "Tout véhicule avec une peinture brillante"
+          }
+        },
+        "barrister-s3q3": {
+          "question": "Une règle exige un préavis écrit au moins 5 jours avant une réunion. Le préavis est donné 2 jours avant. Est-ce que cela satisfait à la règle de timing indiquée ?",
+          "headerLabel": "RÈGLES ET PRÉCÉDENTS",
+          "answers": {
+            "a1": "La règle ne nécessite aucun préavis",
+            "a2": "Oui, parce que 2 est inférieur à 5",
+            "a3": "Non, l'avis est trop tard",
+            "a4": "Oui, tout préavis suffit"
+          }
+        },
+        "barrister-s3q4": {
+          "question": "Une décision antérieure concerne un contrat signé. Une nouvelle affaire concerne un projet non signé. Qu’est-ce qui peut avoir de l’importance ?",
+          "headerLabel": "RÈGLES ET PRÉCÉDENTS",
+          "answers": {
+            "a1": "Uniquement si les formats de papier correspondent",
+            "a2": "Seulement si les noms riment",
+            "a3": "La différence de signature est-elle importante pour le raisonnement ?",
+            "a4": "Rien ; tous les documents sont juridiquement identiques"
+          }
+        },
+        "barrister-s3q5": {
+          "question": "Qu’implique la distinction d’un précédent ?",
+          "headerLabel": "RÈGLES ET PRÉCÉDENTS",
+          "answers": {
+            "a1": "Expliquer une différence pertinente qui limite son application",
+            "a2": "Faire comme si la décision n'existait pas",
+            "a3": "Modification de ses faits enregistrés",
+            "a4": "Utiliser son titre sans le lire"
+          }
+        },
+        "barrister-s3q6": {
+          "question": "Une règle fournie indique qu'un appel doit être déposé avant 16h00. Il est déposé à 16h20 sans exception déclarée. Que suit cet exercice ?",
+          "headerLabel": "RÈGLES ET PRÉCÉDENTS",
+          "answers": {
+            "a1": "Il manque le délai indiqué",
+            "a2": "C'est exactement à l'heure",
+            "a3": "Il est tôt",
+            "a4": "Le délai n'a aucun sens"
+          }
+        },
+        "barrister-s3q7": {
+          "question": "Un résumé du cas omet le motif de la décision. Qu’est-ce qu’il est le plus utile d’examiner ensuite ?",
+          "headerLabel": "RÈGLES ET PRÉCÉDENTS",
+          "answers": {
+            "a1": "Une opinion sans rapport et sans source",
+            "a2": "Uniquement la police utilisée dans le résumé",
+            "a3": "Uniquement le nombre de personnes qui l'ont partagé",
+            "a4": "Le raisonnement du tribunal dans la décision elle-même"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Poser des questions claires",
+      "questions": {
+        "barrister-s4q1": {
+          "question": "Quelle question invite une personne à décrire un événement avec ses propres mots ?",
+          "headerLabel": "POSER DES QUESTIONS CLAIRES",
+          "answers": {
+            "a1": "\"Cela s'est passé exactement comme je l'ai dit, n'est-ce pas ?\"",
+            "a2": "\"Que s'est-il passé ensuite?\"",
+            "a3": "\"Pourquoi en es-tu définitivement la cause ?\"",
+            "a4": "« Tu étais en colère, n'est-ce pas ? »"
+          }
+        },
+        "barrister-s4q2": {
+          "question": "Quelqu’un fait une pause en décrivant un événement difficile. Quelle est une réponse utile ?",
+          "headerLabel": "POSER DES QUESTIONS CLAIRES",
+          "answers": {
+            "a1": "Traitez la pause comme une preuve de malhonnêteté",
+            "a2": "Posez plusieurs questions sans rapport à la fois",
+            "a3": "Prévoyez du temps et offrez une opportunité calme de continuer",
+            "a4": "Remplissez immédiatement les informations manquantes"
+          }
+        },
+        "barrister-s4q3": {
+          "question": "Qu’est-ce que l’écoute active ?",
+          "headerLabel": "POSER DES QUESTIONS CLAIRES",
+          "answers": {
+            "a1": "Accepter automatiquement chaque déclaration",
+            "a2": "Parler plus fort que l'autre personne",
+            "a3": "Planifier votre prochain discours en ignorant la réponse",
+            "a4": "Être attentif et vérifier votre compréhension"
+          }
+        },
+        "barrister-s4q4": {
+          "question": "Un terme n’est pas familier à l’auditeur. Qu'est-ce qui aide ?",
+          "headerLabel": "POSER DES QUESTIONS CLAIRES",
+          "answers": {
+            "a1": "Supposons que le silence prouve la compréhension",
+            "a2": "Expliquez-le en utilisant des mots clairs et familiers",
+            "a3": "Répétez un jargon plus inexpliqué",
+            "a4": "Rendre l'explication volontairement plus longue"
+          }
+        },
+        "barrister-s4q5": {
+          "question": "Deux personnes utilisent le même mot différemment. Que faut-il clarifier ?",
+          "headerLabel": "POSER DES QUESTIONS CLAIRES",
+          "answers": {
+            "a1": "Quel mot est le plus long",
+            "a2": "Quelle personne parle plus vite",
+            "a3": "Ce que chacun entend par le mot",
+            "a4": "Rien ; des mots identiques signifient toujours des idées identiques"
+          }
+        },
+        "barrister-s4q6": {
+          "question": "Quelle réponse vérifie la compréhension sans supposer un accord ?",
+          "headerLabel": "POSER DES QUESTIONS CLAIRES",
+          "answers": {
+            "a1": "\"Il n'est pas nécessaire d'expliquer davantage\"",
+            "a2": "\"Je sais déjà ce que tu voulais dire\"",
+            "a3": "\"Tu es d'accord parce que tu as hoché la tête\"",
+            "a4": "\"Ai-je bien compris votre préoccupation?\""
+          }
+        },
+        "barrister-s4q7": {
+          "question": "Une barrière linguistique affecte une discussion importante. Quel est le soutien le plus fort ?",
+          "headerLabel": "POSER DES QUESTIONS CLAIRES",
+          "answers": {
+            "a1": "Remplacer chaque phrase par des abréviations",
+            "a2": "Utiliser un enfant pour traduire des détails sensibles",
+            "a3": "Un interprète qualifié approprié",
+            "a4": "Deviner à partir des seuls gestes"
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Le discernement professionnel",
+      "questions": {
+        "barrister-s5q1": {
+          "question": "Une décision affecte un ami proche. Que doit reconnaître un professionnel ?",
+          "headerLabel": "LE DISCERNEMENT PROFESSIONNEL",
+          "answers": {
+            "a1": "Une garantie d’impartialité",
+            "a2": "Une dispense automatique de procédure",
+            "a3": "Un éventuel conflit d’intérêts",
+            "a4": "Une raison pour cacher la relation"
+          }
+        },
+        "barrister-s5q2": {
+          "question": "Quelle approche traite équitablement des cas comparables ?",
+          "headerLabel": "LE DISCERNEMENT PROFESSIONNEL",
+          "answers": {
+            "a1": "Changer les critères après avoir vu le nom de chaque personne",
+            "a2": "Choisissez en fonction de votre popularité personnelle",
+            "a3": "Utiliser l’apparence comme seul critère",
+            "a4": "Appliquer les critères pertinents de manière cohérente et tenir compte des différences pertinentes"
+          }
+        },
+        "barrister-s5q3": {
+          "question": "Un enregistrement privé est utile pour une tâche. Qu’est-ce qui devrait déterminer l’accès ?",
+          "headerLabel": "LE DISCERNEMENT PROFESSIONNEL",
+          "answers": {
+            "a1": "Si le fichier est facile à ouvrir",
+            "a2": "Curiosité générale",
+            "a3": "Si la personne est bien connue",
+            "a4": "Finalité autorisée et règles d’accès applicables"
+          }
+        },
+        "barrister-s5q4": {
+          "question": "Vous découvrez une erreur dans votre propre rapport. Qu’est-ce qui soutient la responsabilité ?",
+          "headerLabel": "LE DISCERNEMENT PROFESSIONNEL",
+          "answers": {
+            "a1": "Supprimer les enregistrements justificatifs",
+            "a2": "Corrigez-le de manière transparente grâce au processus approprié",
+            "a3": "Laisse-le parce que personne ne l'a remarqué",
+            "a4": "Blâmer tranquillement une autre personne"
+          }
+        },
+        "barrister-s5q5": {
+          "question": "Qu’exige un accord éclairé dans une discussion significative ?",
+          "headerLabel": "LE DISCERNEMENT PROFESSIONNEL",
+          "answers": {
+            "a1": "Une signature sans aucune explication",
+            "a2": "Une décision prise par un observateur indépendant",
+            "a3": "Des informations pertinentes et une opportunité de comprendre et de choisir",
+            "a4": "Une promesse que les questions sont interdites"
+          }
+        },
+        "barrister-s5q6": {
+          "question": "Un cadeau pourrait influencer une décision professionnelle. Quelle est la réponse appropriée ?",
+          "headerLabel": "LE DISCERNEMENT PROFESSIONNEL",
+          "answers": {
+            "a1": "Suivre la politique en matière de conflits d'intérêts et de cadeaux",
+            "a2": "Cacher le cadeau du dossier",
+            "a3": "Accepter en secret pour éviter toute gêne",
+            "a4": "Promettre un traitement favorable"
+          }
+        },
+        "barrister-s5q7": {
+          "question": "Une règle s’applique à tout le monde dans un processus. Une personne populaire demande une exception privée. Qu'est-ce qui est approprié ?",
+          "headerLabel": "LE DISCERNEMENT PROFESSIONNEL",
+          "answers": {
+            "a1": "Utiliser le processus autorisé pour toute exception",
+            "a2": "Détruire les preuves de la demande",
+            "a3": "Changer la règle uniquement pour cette personne sans explication",
+            "a4": "Accordez-le sans enregistrer la raison"
+          }
+        }
+      }
+    },
+    "stage-6": {
+      "title": "Documents et dossiers",
+      "questions": {
+        "barrister-s6q1": {
+          "question": "Deux enregistrements décrivent le même événement mais donnent des dates différentes. Que faut-il faire ?",
+          "headerLabel": "DOCUMENTS ET DOSSIERS",
+          "answers": {
+            "a1": "Vérifiez la divergence par rapport aux informations originales fiables",
+            "a2": "Faites la moyenne des dates et traitez cela comme vérifié",
+            "a3": "Supprimer les deux dates",
+            "a4": "Choisissez automatiquement la date ultérieure"
+          }
+        },
+        "barrister-s6q2": {
+          "question": "Quelle note sépare une affirmation d’un fait vérifié ?",
+          "headerLabel": "DOCUMENTS ET DOSSIERS",
+          "answers": {
+            "a1": "\"Tout le monde sait ce qui s'est passé\"",
+            "a2": "\"Lee rapporte que la porte était ouverte ; cela n'a pas encore été vérifié\"",
+            "a3": "\"Aucun contrôle n'est nécessaire car l'histoire est détaillée\"",
+            "a4": "\"La porte était certainement ouverte parce que Lee l'avait dit\""
+          }
+        },
+        "barrister-s6q3": {
+          "question": "Pourquoi enregistrer qui a fourni des informations ?",
+          "headerLabel": "DOCUMENTS ET DOSSIERS",
+          "answers": {
+            "a1": "Ainsi sa source peut être évaluée et suivie",
+            "a2": "Pour que toutes les informations soient automatiquement vraies",
+            "a3": "Prouver que chaque source est indépendante",
+            "a4": "Pour supprimer le besoin de dates"
+          }
+        },
+        "barrister-s6q4": {
+          "question": "Un document est un brouillon. Qu'est-ce que cela signifie?",
+          "headerLabel": "DOCUMENTS ET DOSSIERS",
+          "answers": {
+            "a1": "C'est forcément faux",
+            "a2": "Cela peut encore changer avant d'être finalisé",
+            "a3": "Il ne peut pas contenir d'informations utiles",
+            "a4": "Chaque déclaration a été légalement certifiée"
+          }
+        },
+        "barrister-s6q5": {
+          "question": "Un dossier a été révisé plusieurs fois. Qu'est-ce qui permet d'identifier la version actuelle ?",
+          "headerLabel": "DOCUMENTS ET DOSSIERS",
+          "answers": {
+            "a1": "Quelle que soit la copie la plus facile à trouver",
+            "a2": "Une version claire et un dossier d’approbation",
+            "a3": "Le nom de fichier le plus long seul",
+            "a4": "La police la plus attrayante"
+          }
+        },
+        "barrister-s6q6": {
+          "question": "Une entrée est manquante dans un enregistrement. Qu’est-ce que cela établit en soi ?",
+          "headerLabel": "DOCUMENTS ET DOSSIERS",
+          "answers": {
+            "a1": "Les informations n'y sont pas enregistrées",
+            "a2": "L'événement n'a certainement pas eu lieu",
+            "a3": "Toutes les autres entrées ne sont pas fiables",
+            "a4": "L'événement s'est définitivement produit"
+          }
+        },
+        "barrister-s6q7": {
+          "question": "Pourquoi conserver un document original lors d’une correction autorisée ?",
+          "headerLabel": "DOCUMENTS ET DOSSIERS",
+          "answers": {
+            "a1": "Pour garantir que l'original était correct",
+            "a2": "Pour garder le changement traçable",
+            "a3": "Pour rendre le disque plus difficile à comprendre",
+            "a4": "Pour empêcher quiconque de voir la correction"
+          }
+        }
+      }
+    },
+    "stage-7": {
+      "title": "Raisonnement à partir de règles",
+      "questions": {
+        "barrister-s7q1": {
+          "question": "Une règle dit : seuls les membres peuvent entrer. Sam n'est pas membre. Que suit cette règle ?",
+          "headerLabel": "RAISONNEMENT À PARTIR DE RÈGLES",
+          "answers": {
+            "a1": "Sam ne peut pas entrer",
+            "a2": "Sam peut entrer si la file d'attente est courte",
+            "a3": "La règle ne dit rien sur Sam",
+            "a4": "Sam doit être admis en premier"
+          }
+        },
+        "barrister-s7q2": {
+          "question": "Toute demande approuvée porte une signature. Cette demande n’en porte aucune. Que peut-on en déduire ?",
+          "headerLabel": "RAISONNEMENT À PARTIR DE RÈGLES",
+          "answers": {
+            "a1": "Il est automatiquement approuvé",
+            "a2": "Chaque candidature signée est approuvée",
+            "a3": "Aucune demande ne porte de signature",
+            "a4": "Il n'est pas approuvé selon la règle indiquée"
+          }
+        },
+        "barrister-s7q3": {
+          "question": "Un service ouvre uniquement le lundi, mercredi et vendredi. Quel jour est définitivement exclu ?",
+          "headerLabel": "RAISONNEMENT À PARTIR DE RÈGLES",
+          "answers": {
+            "a1": "mardi",
+            "a2": "mercredi",
+            "a3": "vendredi",
+            "a4": "lundi"
+          }
+        },
+        "barrister-s7q4": {
+          "question": "La salle A ou la salle B est réservée, mais pas les deux. La salle A est réservée. Qu'est-ce qui suit ?",
+          "headerLabel": "RAISONNEMENT À PARTIR DE RÈGLES",
+          "answers": {
+            "a1": "La chambre B est également réservée",
+            "a2": "La chambre B n'est pas réservée",
+            "a3": "La réservation doit être annulée",
+            "a4": "Aucune des deux chambres n'est réservée"
+          }
+        },
+        "barrister-s7q5": {
+          "question": "Une règle nécessite à la fois un formulaire et une preuve d’identité. Seul le formulaire est présent. Que manque-t-il?",
+          "headerLabel": "RAISONNEMENT À PARTIR DE RÈGLES",
+          "answers": {
+            "a1": "Un document non mentionné dans le règlement",
+            "a2": "Preuve d'identité",
+            "a3": "Rien ; une seule exigence suffit",
+            "a4": "Une deuxième copie du formulaire"
+          }
+        },
+        "barrister-s7q6": {
+          "question": "Une politique stipule que chaque demande urgente est examinée aujourd'hui. Cette demande a été examinée aujourd'hui. Que pouvez-vous conclure ?",
+          "headerLabel": "RAISONNEMENT À PARTIR DE RÈGLES",
+          "answers": {
+            "a1": "Cela ne pouvait pas être urgent",
+            "a2": "Aucune demande urgente n'a été examinée",
+            "a3": "ça devait être urgent",
+            "a4": "C'était peut-être urgent ou non"
+          }
+        },
+        "barrister-s7q7": {
+          "question": "Trois rencontres se succèdent : Ana avant Bo, et Bo avant Cam. Qui se réunit en dernier ?",
+          "headerLabel": "RAISONNEMENT À PARTIR DE RÈGLES",
+          "answers": {
+            "a1": "Cam",
+            "a2": "Ana",
+            "a3": "Bo",
+            "a4": "La commande ne peut pas être déterminée"
+          }
+        }
+      }
+    },
+    "stage-8": {
+      "title": "Temps et quantités",
+      "questions": {
+        "barrister-s8q1": {
+          "question": "Une boîte de fournitures contient 24 articles. Six sont utilisés. Quelle fraction reste-t-il ?",
+          "headerLabel": "TEMPS ET QUANTITÉS",
+          "answers": {
+            "a1": "Un tiers",
+            "a2": "Un quart",
+            "a3": "Une moitié",
+            "a4": "Trois quarts"
+          }
+        },
+        "barrister-s8q2": {
+          "question": "Une tâche commence à 14h35 et dure 50 minutes. Quand est-ce que ça se termine ?",
+          "headerLabel": "TEMPS ET QUANTITÉS",
+          "answers": {
+            "a1": "15:35",
+            "a2": "14:85",
+            "a3": "15:15",
+            "a4": "15:25"
+          }
+        },
+        "barrister-s8q3": {
+          "question": "Quatre groupes égaux partagent 36 éléments. Combien y a-t-il d’éléments dans chaque groupe ?",
+          "headerLabel": "TEMPS ET QUANTITÉS",
+          "answers": {
+            "a1": "6",
+            "a2": "12",
+            "a3": "9",
+            "a4": "8"
+          }
+        },
+        "barrister-s8q4": {
+          "question": "Une lecture passe de 40 à 50. Quel est le pourcentage d’augmentation ?",
+          "headerLabel": "TEMPS ET QUANTITÉS",
+          "answers": {
+            "a1": "25%",
+            "a2": "50%",
+            "a3": "20%",
+            "a4": "10%"
+          }
+        },
+        "barrister-s8q5": {
+          "question": "Un plan utilise une échelle de 1 cm à 2 m. Quelle distance représente 6 cm ?",
+          "headerLabel": "TEMPS ET QUANTITÉS",
+          "answers": {
+            "a1": "8 m",
+            "a2": "3 m",
+            "a3": "60 m",
+            "a4": "12 m"
+          }
+        },
+        "barrister-s8q6": {
+          "question": "Trois charges pèsent 12 kg, 15 kg et 18 kg. Quelle est leur masse totale ?",
+          "headerLabel": "TEMPS ET QUANTITÉS",
+          "answers": {
+            "a1": "35 kg",
+            "a2": "48 kg",
+            "a3": "42 kg",
+            "a4": "45 kg"
+          }
+        },
+        "barrister-s8q7": {
+          "question": "Une liste de contrôle comporte 20 éléments. Quatre restent incontrôlés. Quel pourcentage est complet ?",
+          "headerLabel": "TEMPS ET QUANTITÉS",
+          "answers": {
+            "a1": "90%",
+            "a2": "80%",
+            "a3": "20%",
+            "a4": "75%"
+          }
+        }
+      }
+    },
+    "stage-9": {
+      "title": "Construire une argumentation",
+      "questions": {
+        "barrister-s9q1": {
+          "question": "Quel argument répond directement à une réclamation selon laquelle une livraison était en retard ?",
+          "headerLabel": "CONSTRUIRE UNE ARGUMENTATION",
+          "answers": {
+            "a1": "Le nombre de mots dans le titre du contrat",
+            "a2": "Un relevé de livraison fiable indiquant la date et l'heure pertinentes",
+            "a3": "Le sport préféré du coursier",
+            "a4": "Une description d'une livraison sans rapport"
+          }
+        },
+        "barrister-s9q2": {
+          "question": "Un argument fort contient une hypothèse faible. Qu'est-ce qui l'améliore ?",
+          "headerLabel": "CONSTRUIRE UNE ARGUMENTATION",
+          "answers": {
+            "a1": "Répétez la conclusion plus fort",
+            "a2": "Cacher l'hypothèse au lecteur",
+            "a3": "Testez l’hypothèse et abordez ses limites",
+            "a4": "Remplacez les preuves en toute confiance"
+          }
+        },
+        "barrister-s9q3": {
+          "question": "Qu'est-ce qu'une concession dans un argument ?",
+          "headerLabel": "CONSTRUIRE UNE ARGUMENTATION",
+          "answers": {
+            "a1": "Accepter un point tout en expliquant sa signification ou ses limites",
+            "a2": "Abandonner automatiquement chaque réclamation",
+            "a3": "Refuser d’aborder un point opposé",
+            "a4": "Modification d'une cotation sans divulgation"
+          }
+        },
+        "barrister-s9q4": {
+          "question": "Quel est le problème d’attaquer l’apparence d’un orateur plutôt que son témoignage ?",
+          "headerLabel": "CONSTRUIRE UNE ARGUMENTATION",
+          "answers": {
+            "a1": "Cela prouve toujours que l'affirmation est fausse",
+            "a2": "Il ne précise pas si les preuves étayent l'affirmation.",
+            "a3": "Cela remplace le besoin de faits pertinents",
+            "a4": "Il fixe la date de l’événement"
+          }
+        },
+        "barrister-s9q5": {
+          "question": "Une citation est exacte mais omet une phrase qui en change le sens. Que faut-il vérifier ?",
+          "headerLabel": "CONSTRUIRE UNE ARGUMENTATION",
+          "answers": {
+            "a1": "Si la version raccourcie est plus dramatique",
+            "a2": "Uniquement la hauteur de l'enceinte",
+            "a3": "Le contexte environnant",
+            "a4": "Seulement le nombre de guillemets"
+          }
+        },
+        "barrister-s9q6": {
+          "question": "Quelle affirmation exprime honnêtement une limitation ?",
+          "headerLabel": "CONSTRUIRE UNE ARGUMENTATION",
+          "answers": {
+            "a1": "\"Ce dossier confirme la date, mais pas qui était présent\"",
+            "a2": "« L’incertitude ne doit jamais être évoquée »",
+            "a3": "« Les informations manquantes peuvent être présumées en notre faveur »",
+            "a4": "\"Ce record prouve tous les faits controversés\""
+          }
+        },
+        "barrister-s9q7": {
+          "question": "Une conclusion va au-delà de ce que montrent les preuves. Quelle est la meilleure révision ?",
+          "headerLabel": "CONSTRUIRE UNE ARGUMENTATION",
+          "answers": {
+            "a1": "Décrire la conclusion comme certaine sans explication",
+            "a2": "Ajoutez des adjectifs plus forts",
+            "a3": "Supprimer entièrement les preuves",
+            "a4": "Limitez-vous à ce que les preuves peuvent étayer"
+          }
+        }
+      }
+    },
+    "stage-10": {
+      "title": "Révision d'une décision",
+      "questions": {
+        "barrister-s10q1": {
+          "question": "Un plan fixe un objectif mais aucun moyen de le vérifier. Que manque-t-il?",
+          "headerLabel": "RÉVISION D'UNE DÉCISION",
+          "answers": {
+            "a1": "Une mesure appropriée du progrès",
+            "a2": "Une couleur de page différente",
+            "a3": "Un titre plus long",
+            "a4": "Une échéance sans rapport"
+          }
+        },
+        "barrister-s10q2": {
+          "question": "Une décision est basée sur une ancienne évaluation et les circonstances ont changé. Que faut-il ?",
+          "headerLabel": "RÉVISION D'UNE DÉCISION",
+          "answers": {
+            "a1": "Une décision basée uniquement sur la mémoire",
+            "a2": "Suppression des nouvelles informations",
+            "a3": "Répétition automatique de l'ancienne décision",
+            "a4": "Une revue utilisant des informations actuelles"
+          }
+        },
+        "barrister-s10q3": {
+          "question": "À quoi sert notamment la supervision ou la consultation professionnelle ?",
+          "headerLabel": "RÉVISION D'UNE DÉCISION",
+          "answers": {
+            "a1": "Pour garantir que personne ne peut se tromper",
+            "a2": "Pour remplacer toutes les preuves pertinentes",
+            "a3": "Pour éviter la responsabilité de chaque action",
+            "a4": "Réfléchir aux décisions difficiles et améliorer la pratique"
+          }
+        },
+        "barrister-s10q4": {
+          "question": "Une tâche nécessite une expertise que vous n’avez pas. Quelle est la réponse appropriée ?",
+          "headerLabel": "RÉVISION D'UNE DÉCISION",
+          "answers": {
+            "a1": "Choisissez la réponse la plus rapide quel que soit le risque",
+            "a2": "Faire semblant d'avoir le diplôme",
+            "a3": "Rechercher des conseils ou une référence appropriés dans le cadre du processus",
+            "a4": "Devinez sans révéler d’incertitude"
+          }
+        },
+        "barrister-s10q5": {
+          "question": "Deux membres de l'équipe pensent que l'autre fera un appel de suivi. De quoi faut-il se mettre d’accord ?",
+          "headerLabel": "RÉVISION D'UNE DÉCISION",
+          "answers": {
+            "a1": "Rien ; on finira par deviner",
+            "a2": "Uniquement le titre du fichier",
+            "a3": "Qui est responsable et quand l’action est due",
+            "a4": "Seulement quel téléphone est le plus récent"
+          }
+        },
+        "barrister-s10q6": {
+          "question": "Une solution a fonctionné une fois. Cela garantit-il qu’il conviendra à tous les cas futurs ?",
+          "headerLabel": "RÉVISION D'UNE DÉCISION",
+          "answers": {
+            "a1": "Oui ; si la solution est facile à retenir",
+            "a2": "Oui ; un succès établit une règle universelle",
+            "a3": "Non ; les circonstances pertinentes peuvent différer",
+            "a4": "Non ; les idées réussies ne peuvent jamais être réutilisées"
+          }
+        },
+        "barrister-s10q7": {
+          "question": "Qu’est-ce qui rend les commentaires utiles à l’amélioration ?",
+          "headerLabel": "RÉVISION D'UNE DÉCISION",
+          "answers": {
+            "a1": "Une affirmation selon laquelle le changement est impossible",
+            "a2": "Une insulte personnelle sans exemple",
+            "a3": "Seulement une vague étiquette",
+            "a4": "Observations spécifiques et prochaine étape claire"
+          }
         }
       }
     }

@@ -53,7 +53,8 @@ export type ArticleManifest = {
   locale: string;
   path: string;
   routeSlug?: string;
-  referenceQuizSlug: string;
+  referenceQuizSlug?: string;
+  referenceTheme?: "editorial";
   metadata: {
     dateModified?: string;
     description: string;
@@ -200,7 +201,8 @@ export function isArticleManifest(value: unknown): value is ArticleManifest {
     && (typeof manifest.routeSlug === "undefined"
       || (isString(manifest.routeSlug) && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(manifest.routeSlug)))
     && manifest.path === `/${manifest.routeSlug ?? manifest.slug}`
-    && isString(manifest.referenceQuizSlug)
+    && ((isString(manifest.referenceQuizSlug) && manifest.referenceTheme === undefined)
+      || (manifest.referenceTheme === "editorial" && manifest.referenceQuizSlug === undefined))
     && Boolean(metadata)
     && typeof metadata === "object"
     && isString(metadata.description)

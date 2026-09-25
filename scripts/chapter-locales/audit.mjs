@@ -12,15 +12,12 @@ function strings(value, parts = [], result = []) {
   return result;
 }
 for (const slug of slugs) {
-  const root = `data/quizzes/${slug}/english-extended`, manifest = read(`${root}/quiz.json`), english = read(`${root}/en.json`);
+  const root = `data/quizzes/${slug}`, manifest = read(`${root}/quiz.json`), english = read(`${root}/en.json`);
   for (const locale of locales) try {
     const copy = read(`${root}/${locale}.json`), expanded = expandQuizLocale(manifest, copy, locale);
     assert.equal(copy.landing.cta, ui[locale].start);
     assert.equal(copy.results.share, undefined);
     assert.deepEqual(expanded.stages.map(stage => stage.questions.length), Array(10).fill(7));
-    const original = read(`data/quizzes/${slug}/${locale}.json`);
-    assert.equal(copy.title, original.title, 'Preserve native headline');
-    assert.equal(copy.landing.intro, original.landing.intro.replaceAll('\u200b', ''), 'Preserve native subtitle');
     for (const [index, stage] of manifest.structure.stages.entries()) {
       const checkpoint = copy.career.stages[stage.id];
       assert.equal(checkpoint.preAdButton, index === 9 ? ui[locale].result : ui[locale].next);
@@ -40,9 +37,10 @@ for (const slug of slugs) {
       const placeholders = text => [...(text?.matchAll(/\{[^{}]+\}/g) ?? [])].map(match => match[0]).sort();
       assert.deepEqual(placeholders(value), placeholders(source), `${parts.join('.')}: placeholders`);
       const sharedDutchPhrase = locale === 'nl' && source === 'In warm water';
+      const namedTerm = parts.includes('answers') && ((slug === 'italian' && ['Pesto alla genovese', 'Risotto alla milanese', 'Trentino-Alto Adige'].includes(source)) || (slug === 'nun' && source === 'Dominic de Guzmán'));
       const nameSequence = slug === 'iq' && parts.includes('iq-s7q1') && parts.includes('answers');
       const isSentence = (source?.match(/\b[A-Za-z]{2,}\b/g)?.length ?? 0) >= 3;
-      if (isSentence && value === source && !sharedDutchPhrase && !nameSequence && !/^[A-Z0-9\s.,:;→–—-]+$/.test(source)) failures.push(`${slug}/${locale}/${parts.join('.')}: English sentence remains: ${source}`);
+      if (isSentence && value === source && !sharedDutchPhrase && !nameSequence && !namedTerm && !/^[A-Z0-9\s.,:;→–—-]+$/.test(source)) failures.push(`${slug}/${locale}/${parts.join('.')}: English sentence remains: ${source}`);
       for (const match of source?.matchAll(/(?=\b([A-Za-z][A-Za-z’']*(?:\s+[A-Za-z][A-Za-z’']*){3})\b)/g) ?? []) {
         const phrase = match[1];
         if (locale === 'nl' && phrase === 'credits per week plus') continue;

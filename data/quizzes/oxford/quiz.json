@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "slug": "oxford",
   "engine": {
-    "localeParity": "strict",
+    "localeParity": "independent",
     "scoring": "correct-answer",
     "targetRatio": 0.8,
     "tieBreaks": {
@@ -17,7 +17,8 @@
     "difficulty": "Expert",
     "icon": "🎓",
     "socialProofCount": 112000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,133 +62,910 @@
       "icon": "◈"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "final",
+        "difficultyLevel": "foundation",
         "questionIds": [
           "oxford-s1q1",
+          "oxford-s1q2",
+          "oxford-s1q3",
+          "oxford-s1q4",
+          "oxford-s1q5",
           "oxford-s1q6",
+          "oxford-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "oxford-s2q1",
           "oxford-s2q2",
+          "oxford-s2q3",
           "oxford-s2q4",
+          "oxford-s2q5",
+          "oxford-s2q6",
+          "oxford-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "oxford-s3q1",
+          "oxford-s3q2",
           "oxford-s3q3",
-          "oxford-s3q7",
+          "oxford-s3q4",
+          "oxford-s3q5",
+          "oxford-s3q6",
+          "oxford-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "oxford-s4q1",
+          "oxford-s4q2",
           "oxford-s4q3",
           "oxford-s4q4",
+          "oxford-s4q5",
+          "oxford-s4q6",
+          "oxford-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "oxford-s5q1",
+          "oxford-s5q2",
+          "oxford-s5q3",
+          "oxford-s5q4",
+          "oxford-s5q5",
           "oxford-s5q6",
           "oxford-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "oxford-s6q1",
+          "oxford-s6q2",
+          "oxford-s6q3",
+          "oxford-s6q4",
+          "oxford-s6q5",
+          "oxford-s6q6",
+          "oxford-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "oxford-s7q1",
+          "oxford-s7q2",
+          "oxford-s7q3",
+          "oxford-s7q4",
+          "oxford-s7q5",
+          "oxford-s7q6",
+          "oxford-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "oxford-s8q1",
+          "oxford-s8q2",
+          "oxford-s8q3",
+          "oxford-s8q4",
+          "oxford-s8q5",
+          "oxford-s8q6",
+          "oxford-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "oxford-s9q1",
+          "oxford-s9q2",
+          "oxford-s9q3",
+          "oxford-s9q4",
+          "oxford-s9q5",
+          "oxford-s9q6",
+          "oxford-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "oxford-s10q1",
+          "oxford-s10q2",
+          "oxford-s10q3",
+          "oxford-s10q4",
+          "oxford-s10q5",
+          "oxford-s10q6",
+          "oxford-s10q7"
         ]
       }
     ],
     "questions": {
       "oxford-s1q1": {
-        "correctAnswerId": "a2",
-        "category": "verbal_reasoning",
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s1q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s1q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s1q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s1q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "verbal_reasoning"
       },
       "oxford-s1q6": {
-        "correctAnswerId": "a1",
-        "category": "quantitative_reasoning",
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s1q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s2q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "verbal_reasoning"
       },
       "oxford-s2q2": {
-        "correctAnswerId": "a3",
-        "category": "quantitative_reasoning",
+        "presentation": "text",
         "answerIds": [
-          "a3",
           "a1",
           "a2",
+          "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "verbal_reasoning"
       },
       "oxford-s2q4": {
-        "correctAnswerId": "a4",
-        "category": "critical_reasoning",
+        "presentation": "text",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "verbal_reasoning"
+      },
+      "oxford-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formal_logic"
+      },
+      "oxford-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
       },
       "oxford-s3q3": {
-        "correctAnswerId": "a4",
-        "category": "formal_logic",
+        "presentation": "text",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formal_logic"
+      },
+      "oxford-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
+      },
+      "oxford-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "formal_logic"
+      },
+      "oxford-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "formal_logic"
       },
       "oxford-s3q7": {
-        "presentation": "spatial",
-        "visual": {
-          "columns": 3,
-          "separator": "→"
-        },
-        "correctAnswerId": "a1",
-        "category": "spatial_reasoning",
+        "presentation": "text",
         "answerIds": [
+          "a1",
           "a2",
-          "a4",
           "a3",
-          "a1"
-        ]
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
+      },
+      "oxford-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "quantitative_reasoning"
+      },
+      "oxford-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "quantitative_reasoning"
       },
       "oxford-s4q3": {
-        "correctAnswerId": "a2",
-        "category": "information_analysis",
+        "presentation": "text",
         "answerIds": [
           "a1",
-          "a3",
           "a2",
+          "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "quantitative_reasoning"
       },
       "oxford-s4q4": {
-        "correctAnswerId": "a3",
-        "category": "formal_logic",
+        "presentation": "text",
         "answerIds": [
-          "a3",
           "a1",
           "a2",
+          "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3",
+        "category": "quantitative_reasoning"
+      },
+      "oxford-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "quantitative_reasoning"
+      },
+      "oxford-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "quantitative_reasoning"
+      },
+      "oxford-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "quantitative_reasoning"
+      },
+      "oxford-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "critical_reasoning"
+      },
+      "oxford-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "critical_reasoning"
+      },
+      "oxford-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "critical_reasoning"
+      },
+      "oxford-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "critical_reasoning"
+      },
+      "oxford-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "critical_reasoning"
       },
       "oxford-s5q6": {
-        "correctAnswerId": "a1",
-        "category": "information_analysis",
-        "reasoningSteps": 2,
+        "presentation": "text",
         "answerIds": [
-          "a2",
-          "a3",
-          "a4",
-          "a1"
-        ]
-      },
-      "oxford-s5q7": {
-        "correctAnswerId": "a2",
-        "category": "formal_logic",
-        "reasoningSteps": 2,
-        "answerIds": [
-          "a3",
           "a1",
           "a2",
+          "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4",
+        "category": "critical_reasoning"
+      },
+      "oxford-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "critical_reasoning"
+      },
+      "oxford-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "information_analysis"
+      },
+      "oxford-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "information_analysis"
+      },
+      "oxford-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "information_analysis"
+      },
+      "oxford-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "information_analysis"
+      },
+      "oxford-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "information_analysis"
+      },
+      "oxford-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "information_analysis"
+      },
+      "oxford-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "information_analysis"
+      },
+      "oxford-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formal_logic"
+      },
+      "oxford-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "formal_logic"
+      },
+      "oxford-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formal_logic"
+      },
+      "oxford-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
+      },
+      "oxford-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
+      },
+      "oxford-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "formal_logic"
+      },
+      "oxford-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "formal_logic"
+      },
+      "oxford-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "critical_reasoning"
+      },
+      "oxford-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "critical_reasoning"
+      },
+      "oxford-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "critical_reasoning"
+      },
+      "oxford-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "critical_reasoning"
+      },
+      "oxford-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "critical_reasoning"
+      },
+      "oxford-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "critical_reasoning"
+      },
+      "oxford-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "critical_reasoning"
+      },
+      "oxford-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
+      },
+      "oxford-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
+      },
+      "oxford-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "quantitative_reasoning"
+      },
+      "oxford-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "quantitative_reasoning"
+      },
+      "oxford-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "spatial_reasoning"
+      },
+      "oxford-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "information_analysis"
+      },
+      "oxford-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "formal_logic"
       }
     },
     "checkpoint": {
@@ -250,35 +1028,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

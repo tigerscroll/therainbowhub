@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "📚",
     "socialProofCount": 209000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "📚"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "teacher-s1q1",
+          "teacher-s1q2",
+          "teacher-s1q3",
+          "teacher-s1q4",
+          "teacher-s1q5",
+          "teacher-s1q6",
+          "teacher-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "teacher-s2q1",
+          "teacher-s2q2",
+          "teacher-s2q3",
+          "teacher-s2q4",
+          "teacher-s2q5",
+          "teacher-s2q6",
+          "teacher-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "teacher-s3q1",
+          "teacher-s3q2",
+          "teacher-s3q3",
+          "teacher-s3q4",
+          "teacher-s3q5",
+          "teacher-s3q6",
+          "teacher-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "teacher-s4q1",
+          "teacher-s4q2",
+          "teacher-s4q3",
+          "teacher-s4q4",
+          "teacher-s4q5",
+          "teacher-s4q6",
+          "teacher-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "teacher-s5q1",
+          "teacher-s5q2",
+          "teacher-s5q3",
+          "teacher-s5q4",
+          "teacher-s5q5",
+          "teacher-s5q6",
+          "teacher-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "teacher-s6q1",
+          "teacher-s6q2",
+          "teacher-s6q3",
+          "teacher-s6q4",
+          "teacher-s6q5",
+          "teacher-s6q6",
+          "teacher-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "teacher-s7q1",
+          "teacher-s7q2",
+          "teacher-s7q3",
+          "teacher-s7q4",
+          "teacher-s7q5",
+          "teacher-s7q6",
+          "teacher-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "teacher-s8q1",
+          "teacher-s8q2",
+          "teacher-s8q3",
+          "teacher-s8q4",
+          "teacher-s8q5",
+          "teacher-s8q6",
+          "teacher-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "teacher-s9q1",
+          "teacher-s9q2",
+          "teacher-s9q3",
+          "teacher-s9q4",
+          "teacher-s9q5",
+          "teacher-s9q6",
+          "teacher-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "teacher-q1",
-          "teacher-q2",
-          "teacher-q3",
-          "teacher-q4",
-          "teacher-q5",
-          "teacher-q6",
-          "teacher-q7",
-          "teacher-q8",
-          "teacher-q9",
-          "teacher-q10"
+          "teacher-s10q1",
+          "teacher-s10q2",
+          "teacher-s10q3",
+          "teacher-s10q4",
+          "teacher-s10q5",
+          "teacher-s10q6",
+          "teacher-s10q7"
         ]
       }
     ],
     "questions": {
-      "teacher-q1": {
+      "teacher-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "teaching_learning",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
-      },
-      "teacher-q2": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "communication",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
-      },
-      "teacher-q3": {
-        "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "assessment",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "teacher-q4": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a4",
-        "category": "safeguarding",
+        "category": "teaching_learning"
+      },
+      "teacher-s1q2": {
+        "presentation": "text",
         "answerIds": [
-          "a4",
           "a1",
           "a2",
-          "a3"
-        ]
-      },
-      "teacher-q5": {
-        "presentation": "text",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "teaching_learning",
+        "category": "teaching_learning"
+      },
+      "teacher-s1q3": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "teacher-q6": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "numeracy_literacy",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ]
-      },
-      "teacher-q7": {
-        "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "teaching_learning",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "teacher-q8": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a4",
-        "category": "assessment",
-        "answerIds": [
-          "a1",
-          "a4",
-          "a2",
-          "a3"
-        ]
+        "category": "teaching_learning"
       },
-      "teacher-q9": {
+      "teacher-s1q4": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "communication",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3",
+        "category": "teaching_learning"
       },
-      "teacher-q10": {
+      "teacher-s1q5": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a2",
-        "category": "numeracy_literacy",
+        "category": "teaching_learning"
+      },
+      "teacher-s1q6": {
+        "presentation": "text",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "teaching_learning"
+      },
+      "teacher-s1q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "teaching_learning"
+      },
+      "teacher-s2q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "teacher-s2q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "teacher-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "teacher-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "teacher-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "teacher-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "teacher-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "teacher-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "communication"
+      },
+      "teacher-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "communication"
+      },
+      "teacher-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "communication"
+      },
+      "teacher-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "communication"
+      },
+      "teacher-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "communication"
+      },
+      "teacher-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "communication"
+      },
+      "teacher-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "communication"
+      },
+      "teacher-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
+      },
+      "teacher-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "teaching_learning"
+      },
+      "teacher-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
+      },
+      "teacher-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
+      },
+      "teacher-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "teaching_learning"
+      },
+      "teacher-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "teaching_learning"
+      },
+      "teacher-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "teaching_learning"
+      },
+      "teacher-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "communication"
+      },
+      "teacher-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "communication"
+      },
+      "teacher-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "communication"
+      },
+      "teacher-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "communication"
+      },
+      "teacher-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "communication"
+      },
+      "teacher-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "communication"
+      },
+      "teacher-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "communication"
+      },
+      "teacher-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "safeguarding"
+      },
+      "teacher-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "safeguarding"
+      },
+      "teacher-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "safeguarding"
+      },
+      "teacher-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "safeguarding"
+      },
+      "teacher-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "safeguarding"
+      },
+      "teacher-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "safeguarding"
+      },
+      "teacher-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "safeguarding"
+      },
+      "teacher-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "teacher-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "assessment"
+      },
+      "teacher-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "teacher-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "teacher-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "teacher-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "teacher-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "teacher-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "numeracy_literacy"
+      },
+      "teacher-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
+      },
+      "teacher-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "teaching_learning"
+      },
+      "teacher-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
+      },
+      "teacher-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "teaching_learning"
+      },
+      "teacher-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
+      },
+      "teacher-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
+      },
+      "teacher-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "teaching_learning"
       }
     },
     "checkpoint": {
@@ -258,35 +1033,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

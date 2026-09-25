@@ -15,18 +15,9 @@ function strings(value: unknown): string[] {
 
 test("relationship results never describe a sporting match in the ad note", () => {
   const files = fs.readdirSync("data/i18n").filter((file) => file.endsWith(".json"));
-  assert.equal(files.length, 30);
+  assert.equal(files.length, 8);
   for (const file of files) {
     const note = read(file.slice(0, -5)).results.matchBreakdown.adNote as string;
     assert.doesNotMatch(note, /podział meczu|mérkőzés|otteluerittely|utakmica|rozpis zápas|разбивка на мача|แยกรายละเอียดการแข่งขัน|maç dökümü|розбивка матчів|trận đấu/u, file);
   }
-});
-
-test("reviewed high-visibility translations retain their intended meaning and tone", () => {
-  assert.doesNotMatch(read("ro").home.headlinePrefix, /ascuțit/u);
-  assert.doesNotMatch(JSON.stringify(read("ro")), /Alegeți|Vedeți rezultatele|Reporniți|Începeți|atingeți/u);
-  assert.doesNotMatch(JSON.stringify(read("hu")), /Válassza|Tekintse|Fedezze|Próbáljon|mérkőzés/u);
-  assert.doesNotMatch(strings(read("fil")).join(" "), /mag-stack up|\b(?:stage|breakdown|home|quiz)\b/iu);
-  assert.match(read("pl").results.matchBreakdown.adNote, /dopasowania/u);
-  assert.match(read("sr").results.fullBreakdown.adNote, /резултати/u);
 });

@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "slug": "paramedic",
   "engine": {
-    "localeParity": "strict",
+    "localeParity": "independent",
     "scoring": "correct-answer",
     "targetRatio": 0.8,
     "tieBreaks": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "🚑",
     "socialProofCount": 149000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "id": "paramedic",
@@ -62,101 +63,343 @@
       "icon": "🚑"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "paramedic-s1q1",
+          "paramedic-s1q2",
+          "paramedic-s1q3",
+          "paramedic-s1q4",
+          "paramedic-s1q5",
+          "paramedic-s1q6",
+          "paramedic-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "paramedic-s2q1",
+          "paramedic-s2q2",
+          "paramedic-s2q3",
+          "paramedic-s2q4",
+          "paramedic-s2q5",
+          "paramedic-s2q6",
+          "paramedic-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "paramedic-s3q1",
+          "paramedic-s3q2",
+          "paramedic-s3q3",
+          "paramedic-s3q4",
+          "paramedic-s3q5",
+          "paramedic-s3q6",
+          "paramedic-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "paramedic-s4q1",
+          "paramedic-s4q2",
+          "paramedic-s4q3",
+          "paramedic-s4q4",
+          "paramedic-s4q5",
+          "paramedic-s4q6",
+          "paramedic-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "paramedic-s5q1",
+          "paramedic-s5q2",
+          "paramedic-s5q3",
+          "paramedic-s5q4",
+          "paramedic-s5q5",
+          "paramedic-s5q6",
+          "paramedic-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "paramedic-s6q1",
+          "paramedic-s6q2",
+          "paramedic-s6q3",
+          "paramedic-s6q4",
+          "paramedic-s6q5",
+          "paramedic-s6q6",
+          "paramedic-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "paramedic-s7q1",
+          "paramedic-s7q2",
+          "paramedic-s7q3",
+          "paramedic-s7q4",
+          "paramedic-s7q5",
+          "paramedic-s7q6",
+          "paramedic-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "paramedic-s8q1",
+          "paramedic-s8q2",
+          "paramedic-s8q3",
+          "paramedic-s8q4",
+          "paramedic-s8q5",
+          "paramedic-s8q6",
+          "paramedic-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "paramedic-s9q1",
+          "paramedic-s9q2",
+          "paramedic-s9q3",
+          "paramedic-s9q4",
+          "paramedic-s9q5",
+          "paramedic-s9q6",
+          "paramedic-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "paramedic-r1q1",
-          "paramedic-r1q5",
-          "paramedic-r5q4",
-          "paramedic-r2q4",
-          "paramedic-r1q4",
-          "paramedic-r6q2",
-          "paramedic-r5q6",
-          "paramedic-r3q3",
-          "paramedic-r10q4",
-          "paramedic-r10q2"
+          "paramedic-s10q1",
+          "paramedic-s10q2",
+          "paramedic-s10q3",
+          "paramedic-s10q4",
+          "paramedic-s10q5",
+          "paramedic-s10q6",
+          "paramedic-s10q7"
         ]
       }
     ],
     "questions": {
-      "paramedic-r1q1": {
-        "presentation": "icons",
-        "icons": {
-          "a1": "🫀",
-          "a2": "🫁",
-          "a3": "🧠",
-          "a4": "🦴"
-        },
+      "paramedic-s1q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s1q2": {
+        "presentation": "text",
         "correctAnswerId": "a1",
         "category": "anatomy_physiology",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
         ]
       },
-      "paramedic-r1q5": {
-        "correctAnswerId": "a3",
-        "category": "communication_handover",
+      "paramedic-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "anatomy_physiology",
         "answerIds": [
           "a1",
-          "a3",
           "a2",
+          "a3",
           "a4"
         ]
       },
-      "paramedic-r5q4": {
-        "presentation": "code",
-        "visual": {
-          "columns": 1
-        },
+      "paramedic-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s1q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s3q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s3q2": {
+        "presentation": "text",
         "correctAnswerId": "a2",
         "category": "observation_vitals",
         "answerIds": [
           "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
-      },
-      "paramedic-r2q4": {
-        "correctAnswerId": "a2",
-        "category": "anatomy_physiology",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
-      },
-      "paramedic-r1q4": {
-        "correctAnswerId": "a2",
-        "category": "scene_safety",
-        "answerIds": [
           "a2",
-          "a1",
           "a3",
           "a4"
         ]
       },
-      "paramedic-r6q2": {
-        "correctAnswerId": "a4",
-        "category": "communication_handover",
+      "paramedic-s3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
+          "a3",
+          "a4"
         ]
       },
-      "paramedic-r5q6": {
+      "paramedic-s3q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s3q5": {
+        "presentation": "text",
         "correctAnswerId": "a1",
-        "category": "reasoning_priorities",
+        "category": "observation_vitals",
         "answerIds": [
           "a1",
           "a2",
@@ -164,11 +407,52 @@
           "a4"
         ]
       },
-      "paramedic-r3q3": {
-        "presentation": "spatial",
-        "visual": {
-          "columns": 1
-        },
+      "paramedic-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s4q3": {
+        "presentation": "text",
         "correctAnswerId": "a3",
         "category": "numeracy_measurement",
         "answerIds": [
@@ -178,10 +462,10 @@
           "a4"
         ]
       },
-      "paramedic-r10q4": {
-        "correctAnswerId": "a1",
-        "category": "scene_safety",
-        "reasoningSteps": 2,
+      "paramedic-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "numeracy_measurement",
         "answerIds": [
           "a1",
           "a2",
@@ -189,20 +473,499 @@
           "a4"
         ]
       },
-      "paramedic-r10q2": {
-        "presentation": "grid",
-        "visual": {
-          "columns": 2,
-          "separator": "•"
-        },
+      "paramedic-s4q5": {
+        "presentation": "text",
         "correctAnswerId": "a4",
-        "category": "observation_vitals",
-        "reasoningSteps": 2,
+        "category": "numeracy_measurement",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s5q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "communication_handover",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s6q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s6q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s6q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s7q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s7q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s7q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation_vitals",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s8q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "anatomy_physiology",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s9q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s9q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s10q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s10q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "scene_safety",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s10q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "numeracy_measurement",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s10q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "paramedic-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "reasoning_priorities",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
         ]
       }
     },
@@ -281,35 +1044,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

@@ -1,69 +1,160 @@
 {
   "title": "Apenas 3% podem passar neste teste de culinária italiana",
   "eyebrow": "A MESA ITALIANA",
-  "summary": "Dez perguntas testam os seus conhecimentos sobre ingredientes, regiões, massas e pratos clássicos de Itália.",
+  "summary": "Explore a culinária italiana através de pistas, situações práticas e novos desafios.",
   "landing": {
     "intro": "Conhece o menu?\nExperimente a Itália.",
-    "cta": "Começar o teste"
+    "cta": "Começar"
   },
   "about": {
-    "body": "Este teste de entretenimento tem dez perguntas sobre pratos famosos, origens regionais, ingredientes tradicionais e o significado de nomes conhecidos da cozinha italiana. Começa pelos clássicos e torna-se mais exigente até à última pergunta.\n\nEscolha uma resposta de cada vez. As respostas certas só serão reveladas no final, pelo que todas as escolhas fazem parte do mesmo desafio culinário.",
+    "body": "Relacione as informações, observe os detalhes e teste os seus conhecimentos. Cada grupo de perguntas explora um novo tema. No fim de cada grupo, descubra o perfil que as suas respostas revelam antes de continuar o desafio.",
     "howToPlay": {
       "steps": [
-        "Responda dez perguntas sobre a autêntica culinária italiana.",
-        "Escolha uma resposta para cada prato, ingrediente ou pista regional.",
-      "Veja a pontuação final e desbloqueie a revisão completa das respostas."
+        "Leia as pistas e escolha uma resposta.",
+        "Descubra o seu perfil neste tema e avance para um novo desafio.",
+        "Veja o resultado final e, se quiser, consulte as respostas corretas às perguntas em que errou."
       ]
     },
-    "disclaimer": "Apenas para entretenimento e aprendizagem geral. As receitas regionais e as tradições familiares podem variar, e este questionário não determina conhecimentos culinários profissionais."
+    "disclaimer": "Apenas para entretenimento e aprendizado geral. As receitas regionais e as tradições familiares podem variar, e este questionário não determina conhecimentos culinários profissionais."
   },
   "career": {
-    "resultProgressLabel": "O seu progresso",
+    "resultProgressLabel": "O seu desafio",
     "stages": {
       "stage-1": {
-        "difficulty": "Desafio Culinário",
-        "preAdTitle": "A sua pontuação de cozinha italiana está pronta",
-        "preAdCopy": "As suas dez respostas foram verificadas. Está na altura de revelar o resultado.",
+        "difficulty": "RECONHEÇA O PRATO",
+        "preAdTitle": "As primeiras pistas",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "A seguir: Os formatos de massa. Consegue ligar as pistas?"
+        }
+      },
+      "stage-2": {
+        "difficulty": "OS FORMATOS DE MASSA",
+        "preAdTitle": "Um novo olhar",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "Novo desafio: Ingredientes essenciais. Os detalhes fazem a diferença."
+        }
+      },
+      "stage-3": {
+        "difficulty": "INGREDIENTES ESSENCIAIS",
+        "preAdTitle": "Os detalhes importam",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "Vamos explorar: Os sabores das regiões. O que vai reconhecer?"
+        }
+      },
+      "stage-4": {
+        "difficulty": "OS SABORES DAS REGIÕES",
+        "preAdTitle": "Outro ponto de vista",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "A seguir: Molhos e sabor. Consegue ligar as pistas?"
+        }
+      },
+      "stage-5": {
+        "difficulty": "MOLHOS E SABOR",
+        "preAdTitle": "Uma nova pista",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "Novo desafio: Pão e massa. Os detalhes fazem a diferença."
+        }
+      },
+      "stage-6": {
+        "difficulty": "PÃO E MASSA",
+        "preAdTitle": "Cada detalhe conta",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "Vamos explorar: A hora da sobremesa. O que vai reconhecer?"
+        }
+      },
+      "stage-7": {
+        "difficulty": "A HORA DA SOBREMESA",
+        "preAdTitle": "Hora de ligar as pistas",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "A seguir: Ler o menu. Consegue ligar as pistas?"
+        }
+      },
+      "stage-8": {
+        "difficulty": "LER O MENU",
+        "preAdTitle": "Um ângulo diferente",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "Novo desafio: Cálculos de receita. Os detalhes fazem a diferença."
+        }
+      },
+      "stage-9": {
+        "difficulty": "CÁLCULOS DE RECEITA",
+        "preAdTitle": "O último desafio",
+        "preAdCopy": "Neste tema: {profile}.",
+        "preAdButton": "Continuar",
+        "next": {
+          "eyebrow": "A SEGUIR",
+          "tagline": "Vamos explorar: Ligar os sabores. O que vai reconhecer?"
+        }
+      },
+      "stage-10": {
+        "difficulty": "LIGAR OS SABORES",
+        "preAdTitle": "O resultado está pronto",
+        "preAdCopy": "Atingiu 80%? A pontuação e os pontos fortes estão prontos.",
+        "preAdButton": "Ver meu resultado",
         "preAdChecks": [
-          "10 respostas verificadas",
-          "Quatro temas de cozinha italiana avaliados"
-        ],
-        "preAdButton": "Ver a pontuação"
+          "Respostas verificadas",
+          "Pontos fortes comparados",
+          "Pontuação calculada"
+        ]
       }
     }
   },
   "results": {
-    "name": "A SUA PONTUAÇÃO DE COZINHA ITALIANA",
+    "name": "SUA PONTUAÇÃO DE COZINHA ITALIANA",
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
         "title": "O Mestre da Cozinha",
-      "copy": "Conhece a cozinha italiana muito além dos pratos turísticos. Acertou nos ingredientes, nas regiões e nas tradições, incluindo pormenores que escapam a muitos apreciadores."
+        "copy": "Você respondeu quase todas as perguntas corretamente. Seus resultados detalhados mostram como essa precisão foi transmitida aos tópicos deste desafio."
       },
       "profile-2": {
         "tier": "80–89%",
         "title": "O especialista em cozinha italiana",
-        "copy": "Conhece bem os molhos clássicos e as especialidades regionais. Reveja as respostas para descobrir que detalhes ainda pode aperfeiçoar."
+        "copy": "Você fez muitas conexões precisas neste desafio. Explore seus resultados detalhados para ver quais tópicos foram mais fortes."
       },
       "profile-3": {
         "tier": "70–79%",
-      "title": "Cliente habitual da trattoria",
-      "copy": "Reconheceu vários pratos e ingredientes. A revisão mostra os pormenores que ainda vale a pena descobrir."
+        "title": "Cliente habitual da trattoria",
+        "copy": "Você conectou muitas das pistas e fatos. Seus resultados detalhados destacam os tópicos que você abordou melhor e aqueles que valem a pena dar uma olhada."
       },
       "profile-4": {
         "tier": "60–69%",
         "title": "O amante confiante da comida",
-      "copy": "Já conhece alguns clássicos italianos. Consulte a revisão para descobrir os ingredientes e as tradições que lhe escaparam."
+        "copy": "Você encontrou pistas úteis sobre vários tópicos. A revisão das respostas pode ajudá-lo a resolver as perguntas que o surpreenderam."
       },
       "profile-5": {
         "tier": "50–59%",
         "title": "O Aprendiz Faminto",
-      "copy": "Identificou alguns sabores familiares. A revisão ajuda a distinguir os pratos, as regiões e os ingredientes."
+        "copy": "Alguns tópicos eram mais familiares do que outros. Sua análise mostra as respostas corretas e fornece um ponto de partida para outra tentativa."
       },
       "profile-6": {
         "tier": "Abaixo de 50%",
         "title": "O explorador de menus",
-        "copy": "Este desafio introduziu algumas ideias desconhecidas. Use a revisão das respostas para explorar o que sabia e o que pode aprender a seguir."
+        "copy": "Este desafio trouxe uma mistura de ideias familiares e desconhecidas. Use a revisão das respostas para explorar as pistas que você perdeu."
       }
     },
     "dimensions": {
@@ -81,126 +172,771 @@
       }
     },
     "score": {
-      "passed": "Passou no desafio da culinária italiana!",
-      "finished": "Desafio da culinária italiana concluído",
+      "passed": "Atingiu 80%!",
+      "finished": "Desafio concluído",
       "strongest": "Área de culinária mais forte",
       "trickiest": "Área de culinária mais complicada",
-      "bestRound": "A sua melhor etapa",
+      "bestRound": "O seu melhor tema",
       "insights": {
-        "overview": "Resumo da sua pontuação culinária",
+        "overview": "A sua pontuação num relance",
         "correct": "Respostas corretas",
         "missed": "Respostas incorretas",
-        "target": "Respostas corretas necessárias para atingir 80%",
-        "breakdown": "Os seus resultados por tema de cozinha italiana",
-      "snapshot": "O que sugere o seu resultado",
-        "targetReached": "Meta de 80% atingida",
-        "targetRemaining": "Mais respostas corretas necessárias para 80%"
+        "target": "Respostas corretas para atingir 80%",
+        "breakdown": "Os seus resultados por tema",
+        "snapshot": "O que o resultado revela",
+        "targetReached": "Objetivo de 80% atingido",
+        "targetRemaining": "Faltam mais respostas corretas para atingir 80%."
       }
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Desafio da Cozinha Italiana",
+      "title": "Reconheça o prato",
       "questions": {
-        "italian-q1": {
-          "question": "Quais são os três ingredientes principais de uma pizza Margherita clássica?",
+        "italian-s1q1": {
+          "question": "Qual grão é a base do risoto?",
+          "headerLabel": "RECONHEÇA O PRATO",
           "answers": {
-            "a1": "Tomate, ricota e orégãos",
-            "a2": "Mozarela, azeitonas e manjericão",
-            "a3": "Tomate, mozarela e manjericão",
-            "a4": "Tomate, parmesão e alecrim"
-          },
-          "headerLabel": "OS CLÁSSICOS"
+            "a1": "Arroz",
+            "a2": "Aveia",
+            "a3": "Centeio",
+            "a4": "Apenas cevada"
+          }
         },
-        "italian-q2": {
-          "question": "Que produto de porco curado se usa habitualmente na carbonara à romana?",
+        "italian-s1q2": {
+          "question": "Qual é o principal ingrediente amiláceo da polenta tradicional?",
+          "headerLabel": "RECONHEÇA O PRATO",
           "answers": {
-            "a1": "Guanciale",
-            "a2": "Prosciutto cotto",
-            "a3": "Mortadela",
-            "a4": "Speck"
-          },
-          "headerLabel": "MASSA ROMANA"
+            "a1": "Farinha de milho",
+            "a2": "Amido de batata",
+            "a3": "Lentilhas moídas",
+            "a4": "Farinha de arroz"
+          }
         },
-        "italian-q3": {
-          "question": "O que dá ao risotto alla Milanese a sua cor dourada característica?",
+        "italian-s1q3": {
+          "question": "Qual prato é feito com camadas de massa e recheio ou molho?",
+          "headerLabel": "RECONHEÇA O PRATO",
           "answers": {
-            "a1": "Cúrcuma",
-            "a2": "Abóbora",
-            "a3": "Gema de ovo",
-            "a4": "Açafrão"
-          },
-          "headerLabel": "INGREDIENTE DE ASSINATURA"
+            "a1": "Bruscheta",
+            "a2": "Risoto",
+            "a3": "Panna cotta",
+            "a4": "Lasanha"
+          }
         },
-        "italian-q4": {
-          "question": "De que região italiana vem o pesto alla Genovese?",
+        "italian-s1q4": {
+          "question": "O que é minestrone?",
+          "headerLabel": "RECONHEÇA O PRATO",
           "answers": {
-            "a1": "Toscana",
-            "a2": "Ligúria",
-            "a3": "Úmbria",
-            "a4": "Calábria"
-          },
-          "headerLabel": "ORIGENS REGIONAIS"
+            "a1": "Um presunto curado",
+            "a2": "Um queijo duro",
+            "a3": "Uma sobremesa de café congelado",
+            "a4": "Uma sopa de legumes com variações regionais"
+          }
         },
-        "italian-q5": {
-          "question": "Qual queijo fornece tradicionalmente o ‘cacio’ no cacio e pepe?",
+        "italian-s1q5": {
+          "question": "Que base é normalmente usada para preparar bruschetta?",
+          "headerLabel": "RECONHEÇA O PRATO",
           "answers": {
-            "a1": "Taleggio",
-            "a2": "Gorgonzola",
-            "a3": "Pecorino Romano",
-            "a4": "Asiago"
-          },
-          "headerLabel": "CONHECIMENTO DE QUEIJO"
+            "a1": "Uma folha de gelatina",
+            "a2": "Uma tigela de arroz doce",
+            "a3": "Pão torrado ou grelhado",
+            "a4": "Uma camada de massa cru"
+          }
         },
-        "italian-q6": {
-          "question": "A que ilha estão os cannoli mais associados?",
+        "italian-s1q6": {
+          "question": "Qual prato normalmente combina tomate, mozzarella e manjericão?",
+          "headerLabel": "RECONHEÇA O PRATO",
+          "answers": {
+            "a1": "Risoto à milanesa",
+            "a2": "Tiramisù",
+            "a3": "Salada caprese",
+            "a4": "Polenta"
+          }
+        },
+        "italian-s1q7": {
+          "question": "O que é uma frittata?",
+          "headerLabel": "RECONHEÇA O PRATO",
+          "answers": {
+            "a1": "Um prato à base de ovo cozinhado com vários recheios possíveis",
+            "a2": "Um sorvete cítrico",
+            "a3": "Um tipo de tubo de massa seca",
+            "a4": "Uma salsicha curada"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Os formatos de massa",
+      "questions": {
+        "italian-s2q1": {
+          "question": "Qual formato de massa consiste em fios longos e finos?",
+          "headerLabel": "OS FORMATOS DE MASSA",
+          "answers": {
+            "a1": "Espaguete",
+            "a2": "Conchiglie",
+            "a3": "Penne",
+            "a4": "Farfalle"
+          }
+        },
+        "italian-s2q2": {
+          "question": "Que formato de massa lembra pequenos laços ou borboletas?",
+          "headerLabel": "OS FORMATOS DE MASSA",
+          "answers": {
+            "a1": "Rigatoni",
+            "a2": "Folhas de lasanha",
+            "a3": "Espaguete",
+            "a4": "Farfalle"
+          }
+        },
+        "italian-s2q3": {
+          "question": "Qual formato de massa lembra orelhas pequenas?",
+          "headerLabel": "OS FORMATOS DE MASSA",
+          "answers": {
+            "a1": "Orecchiette",
+            "a2": "Penne",
+            "a3": "tagliatelle",
+            "a4": "Bucatini"
+          }
+        },
+        "italian-s2q4": {
+          "question": "Qual massa é uma fita larga e plana?",
+          "headerLabel": "OS FORMATOS DE MASSA",
+          "answers": {
+            "a1": "Orzo",
+            "a2": "Capelini",
+            "a3": "Pappardelle",
+            "a4": "Ditalini"
+          }
+        },
+        "italian-s2q5": {
+          "question": "Qual massa consiste em pequenos pacotes recheados?",
+          "headerLabel": "OS FORMATOS DE MASSA",
+          "answers": {
+            "a1": "Penne",
+            "a2": "Espaguete",
+            "a3": "Fusilli",
+            "a4": "Ravióli"
+          }
+        },
+        "italian-s2q6": {
+          "question": "Qual massa tem formato de torções ou espirais?",
+          "headerLabel": "OS FORMATOS DE MASSA",
+          "answers": {
+            "a1": "tagliatelle",
+            "a2": "Fusilli",
+            "a3": "Canelone",
+            "a4": "Folhas de lasanha"
+          }
+        },
+        "italian-s2q7": {
+          "question": "Que massa consiste em tubos grandes, muitas vezes preenchidos antes de serem assados?",
+          "headerLabel": "OS FORMATOS DE MASSA",
+          "answers": {
+            "a1": "Farfalle",
+            "a2": "Canelone",
+            "a3": "Orzo",
+            "a4": "Capelini"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Ingredientes essenciais",
+      "questions": {
+        "italian-s3q1": {
+          "question": "O que é ricota?",
+          "headerLabel": "INGREDIENTES ESSENCIAIS",
+          "answers": {
+            "a1": "Um produto lácteo fresco tradicionalmente feito de soro de leite",
+            "a2": "Um tipo de vinagre",
+            "a3": "Uma carne curada",
+            "a4": "Uma erva seca"
+          }
+        },
+        "italian-s3q2": {
+          "question": "O que é panceta?",
+          "headerLabel": "INGREDIENTES ESSENCIAIS",
+          "answers": {
+            "a1": "Barriga de porco curada",
+            "a2": "Um queijo de ovelha fresco",
+            "a3": "Uma conserva cítrica",
+            "a4": "Uma variedade de arroz"
+          }
+        },
+        "italian-s3q3": {
+          "question": "Do que é feito o guanciale?",
+          "headerLabel": "INGREDIENTES ESSENCIAIS",
+          "answers": {
+            "a1": "Pernil de cordeiro",
+            "a2": "Bochecha ou papada de porco",
+            "a3": "Ombro de boi",
+            "a4": "Peito de peru"
+          }
+        },
+        "italian-s3q4": {
+          "question": "A que se refere tradicionalmente o pecorino?",
+          "headerLabel": "INGREDIENTES ESSENCIAIS",
+          "answers": {
+            "a1": "Um molho de tomate",
+            "a2": "Queijo feito com leite de ovelha",
+            "a3": "Queijo feito apenas de arroz",
+            "a4": "Um peixe curado"
+          }
+        },
+        "italian-s3q5": {
+          "question": "Qual erva é fundamental para o pesto alla genovese?",
+          "headerLabel": "INGREDIENTES ESSENCIAIS",
+          "answers": {
+            "a1": "endro",
+            "a2": "Alecrim sozinho",
+            "a3": "Menta sozinha",
+            "a4": "Manjericão"
+          }
+        },
+        "italian-s3q6": {
+          "question": "O que é mascarpone?",
+          "headerLabel": "INGREDIENTES ESSENCIAIS",
+          "answers": {
+            "a1": "Um formato de massa seca",
+            "a2": "Um tipo de arroz",
+            "a3": "Um laticínio italiano rico e macio",
+            "a4": "Uma salsicha curada"
+          }
+        },
+        "italian-s3q7": {
+          "question": "De que é feito o azeite virgem extra?",
+          "headerLabel": "INGREDIENTES ESSENCIAIS",
+          "answers": {
+            "a1": "Apenas amêndoas",
+            "a2": "Azeitonas",
+            "a3": "Sementes de girassol",
+            "a4": "Uvas"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Os sabores das regiões",
+      "questions": {
+        "italian-s4q1": {
+          "question": "Pesto alla genovese está associado a qual região italiana?",
+          "headerLabel": "OS SABORES DAS REGIÕES",
           "answers": {
             "a1": "Sicília",
+            "a2": "Piemonte",
+            "a3": "Úmbria",
+            "a4": "Ligúria"
+          }
+        },
+        "italian-s4q2": {
+          "question": "A pizza napolitana tradicional está associada a qual cidade?",
+          "headerLabel": "OS SABORES DAS REGIÕES",
+          "answers": {
+            "a1": "Milão",
+            "a2": "Nápoles",
+            "a3": "Turim",
+            "a4": "Veneza"
+          }
+        },
+        "italian-s4q3": {
+          "question": "Risoto alla milanese está associado a qual cidade?",
+          "headerLabel": "OS SABORES DAS REGIÕES",
+          "answers": {
+            "a1": "Gênova",
+            "a2": "Milão",
+            "a3": "Palermo",
+            "a4": "Bari"
+          }
+        },
+        "italian-s4q4": {
+          "question": "Orecchiette estão especialmente associados a qual região?",
+          "headerLabel": "OS SABORES DAS REGIÕES",
+          "answers": {
+            "a1": "Vale de Aosta",
+            "a2": "Trentino-Alto Ádige",
+            "a3": "Ligúria",
+            "a4": "Apúlia"
+          }
+        },
+        "italian-s4q5": {
+          "question": "Os cannoli estão especialmente associados a qual ilha?",
+          "headerLabel": "OS SABORES DAS REGIÕES",
+          "answers": {
+            "a1": "Sicília",
+            "a2": "Capri",
+            "a3": "Elba",
+            "a4": "Sardenha"
+          }
+        },
+        "italian-s4q6": {
+          "question": "A Piadina está fortemente associada a qual área?",
+          "headerLabel": "OS SABORES DAS REGIÕES",
+          "answers": {
+            "a1": "Sicília",
+            "a2": "Romanha",
+            "a3": "Vale de Aosta",
+            "a4": "Sardenha"
+          }
+        },
+        "italian-s4q7": {
+          "question": "Pane carasau é um pão tradicional de que ilha?",
+          "headerLabel": "OS SABORES DAS REGIÕES",
+          "answers": {
+            "a1": "Ísquia",
             "a2": "Sardenha",
-            "a3": "Capri",
+            "a3": "Sicília",
             "a4": "Elba"
-          },
-          "headerLabel": "REGIÕES DOCES"
-        },
-        "italian-q7": {
-          "question": "A que se refere o nome da massa ‘orecchiette’?",
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Molhos e sabor",
+      "questions": {
+        "italian-s5q1": {
+          "question": "O que dá ao pesto alla genovese grande parte da sua cor verde?",
+          "headerLabel": "MOLHOS E SABOR",
           "answers": {
-            "a1": "Conchas minúsculas",
-            "a2": "Pequenas fitas",
-            "a3": "Chapéus pequenos",
-            "a4": "Orelhas pequenas"
-          },
-          "headerLabel": "LÍNGUA DA MASSA"
+            "a1": "Folhas de manjericão",
+            "a2": "Azeitonas pretas",
+            "a3": "Cascas de tomate",
+            "a4": "Açafrão"
+          }
         },
-        "italian-q8": {
-          "question": "Que tipo de massa se serve tradicionalmente com ragù alla Bolognese em Bolonha?",
+        "italian-s5q2": {
+          "question": "Como começa um molho bechamel clássico?",
+          "headerLabel": "MOLHOS E SABOR",
           "answers": {
-            "a1": "Esparguete",
-            "a2": "Tagliatelle",
-            "a3": "Penne",
-            "a4": "Linguine"
-          },
-          "headerLabel": "O PAR CERTO"
+            "a1": "Chantilly e café",
+            "a2": "Apenas azeite e vinagre",
+            "a3": "Apenas ovos crus e açúcar",
+            "a4": "Uma mistura de manteiga e farinha com leite adicionado"
+          }
         },
-        "italian-q9": {
-          "question": "Que erva é colocada sobre a vitela no clássico saltimbocca alla Romana?",
+        "italian-s5q3": {
+          "question": "Numa tradicional carbonara romana, quais os ingredientes que formam o molho característico?",
+          "headerLabel": "MOLHOS E SABOR",
           "answers": {
-            "a1": "Sálvia",
+            "a1": "Apenas creme e cogumelos",
+            "a2": "Ovos e queijo duro ralado com gordura de porco derretida e água de massa",
+            "a3": "Somente tomate e manjericão",
+            "a4": "Manteiga e geléia"
+          }
+        },
+        "italian-s5q4": {
+          "question": "O que aglio e olio significa no nome de um prato de massa?",
+          "headerLabel": "MOLHOS E SABOR",
+          "answers": {
+            "a1": "Alho e óleo",
+            "a2": "Creme e cogumelos",
+            "a3": "Tomate e queijo",
+            "a4": "Manteiga e sálvia"
+          }
+        },
+        "italian-s5q5": {
+          "question": "O que dá ao molho arrabbiata o seu sabor picante característico?",
+          "headerLabel": "MOLHOS E SABOR",
+          "answers": {
+            "a1": "Açúcar",
+            "a2": "Baunilha",
+            "a3": "Leite",
+            "a4": "Pimenta picante"
+          }
+        },
+        "italian-s5q6": {
+          "question": "O que é ragù na culinária italiana?",
+          "headerLabel": "MOLHOS E SABOR",
+          "answers": {
+            "a1": "Um tipo de grão de café",
+            "a2": "Um molho cozido lentamente, geralmente à base de carne",
+            "a3": "Um único formato de massa",
+            "a4": "Uma bebida de fruta congelada"
+          }
+        },
+        "italian-s5q7": {
+          "question": "Por que pode ajudar adicionar ao molho um pouco da água de cozedura da massa, rica em amido?",
+          "headerLabel": "MOLHOS E SABOR",
+          "answers": {
+            "a1": "Garante que um prato não contém sal",
+            "a2": "Remove todo o sabor",
+            "a3": "Pode ajudar a ligar o molho e a fazê-lo aderir à massa",
+            "a4": "Transforma todo molho em queijo"
+          }
+        }
+      }
+    },
+    "stage-6": {
+      "title": "Pão e massa",
+      "questions": {
+        "italian-s6q1": {
+          "question": "O que dá a uma massa típica de pizza com fermento grande parte do seu crescimento?",
+          "headerLabel": "PÃO E MASSA",
+          "answers": {
+            "a1": "Azeite virando farinha",
+            "a2": "Gás produzido pela fermentação das leveduras",
+            "a3": "Cristais de sal se expandindo no ar",
+            "a4": "A cor da farinha"
+          }
+        },
+        "italian-s6q2": {
+          "question": "O que amassar a massa de trigo ajuda a desenvolver?",
+          "headerLabel": "PÃO E MASSA",
+          "answers": {
+            "a1": "Uma camada de gelo",
+            "a2": "Um aroma de café",
+            "a3": "Uma casca de queijo duro",
+            "a4": "Uma rede de glúten"
+          }
+        },
+        "italian-s6q3": {
+          "question": "O que é focaccia?",
+          "headerLabel": "PÃO E MASSA",
+          "answers": {
+            "a1": "Um chocolate recheado",
+            "a2": "Uma sopa de arroz",
+            "a3": "Um pão achatado italiano geralmente feito com azeite",
+            "a4": "Uma espécie de presunto curado"
+          }
+        },
+        "italian-s6q4": {
+          "question": "Por que se deixa a massa de uma receita de pasta repousar antes de a estender?",
+          "headerLabel": "PÃO E MASSA",
+          "answers": {
+            "a1": "Para converter ovos em fermento",
+            "a2": "Para remover todos os vestígios de amido",
+            "a3": "Para permitir hidratação e relaxamento da massa",
+            "a4": "Para deixar a farinha permanentemente seca"
+          }
+        },
+        "italian-s6q5": {
+          "question": "Do que é feita a semolina?",
+          "headerLabel": "PÃO E MASSA",
+          "answers": {
+            "a1": "Azeitonas moídas",
+            "a2": "Manjericão seco",
+            "a3": "Trigo moído grosseiramente, geralmente trigo duro",
+            "a4": "Queijo em pó"
+          }
+        },
+        "italian-s6q6": {
+          "question": "Como é melhor descrito o nhoque?",
+          "headerLabel": "PÃO E MASSA",
+          "answers": {
+            "a1": "Um tipo de café expresso",
+            "a2": "Tubos de massa ocos sempre longos",
+            "a3": "Apenas fatias de carne curada",
+            "a4": "Bolinhos pequenos com ingredientes que variam de acordo com a receita"
+          }
+        },
+        "italian-s6q7": {
+          "question": "Porque é que uma receita especifica uma temperatura de forno?",
+          "headerLabel": "PÃO E MASSA",
+          "answers": {
+            "a1": "Determina a região de origem do prato",
+            "a2": "Substitui verificar se os alimentos estão cozidos",
+            "a3": "O calor afeta o cozimento, a textura e o escurecimento",
+            "a4": "Todas as temperaturas produzem resultados idênticos"
+          }
+        }
+      }
+    },
+    "stage-7": {
+      "title": "A hora da sobremesa",
+      "questions": {
+        "italian-s7q1": {
+          "question": "Que sobremesa costuma levar biscoitos leves embebidos em café e mascarpone?",
+          "headerLabel": "A HORA DA SOBREMESA",
+          "answers": {
+            "a1": "granita",
+            "a2": "Tiramisù",
+            "a3": "Cannoli",
+            "a4": "Panna cotta"
+          }
+        },
+        "italian-s7q2": {
+          "question": "O que panna cotta significa literalmente?",
+          "headerLabel": "A HORA DA SOBREMESA",
+          "answers": {
+            "a1": "Creme cozido",
+            "a2": "Café congelado",
+            "a3": "Maçã frita",
+            "a4": "Pão doce"
+          }
+        },
+        "italian-s7q3": {
+          "question": "O que são canolis?",
+          "headerLabel": "A HORA DA SOBREMESA",
+          "answers": {
+            "a1": "Tubos de massa crocante com recheio doce",
+            "a2": "Almôndegas pequenas salgadas",
+            "a3": "Apenas bolos de arroz redondos",
+            "a4": "Fitas de massa planas"
+          }
+        },
+        "italian-s7q4": {
+          "question": "O que é granita?",
+          "headerLabel": "A HORA DA SOBREMESA",
+          "answers": {
+            "a1": "Um queijo envelhecido",
+            "a2": "Um prato de massa assada",
+            "a3": "Uma sobremesa semicongelada com textura cristalina gelada",
+            "a4": "Uma salsicha curada"
+          }
+        },
+        "italian-s7q5": {
+          "question": "Qual pão italiano festivo tem tradicionalmente um formato alto e abobadado e geralmente contém frutas secas?",
+          "headerLabel": "A HORA DA SOBREMESA",
+          "answers": {
+            "a1": "Focaccia",
+            "a2": "Painel carasau",
+            "a3": "Panetone",
+            "a4": "Ciabatta"
+          }
+        },
+        "italian-s7q6": {
+          "question": "Na preparação de um affogato, o que se costuma verter sobre o gelato?",
+          "headerLabel": "A HORA DA SOBREMESA",
+          "answers": {
+            "a1": "Molho de tomate",
+            "a2": "Salmoura de azeitona",
+            "a3": "Caldo de legumes",
+            "a4": "Café expresso"
+          }
+        },
+        "italian-s7q7": {
+          "question": "Qual ingrediente dá ao amaretti de amêndoa seu sabor característico?",
+          "headerLabel": "A HORA DA SOBREMESA",
+          "answers": {
+            "a1": "Azeitonas pretas",
+            "a2": "Amêndoas ou sementes semelhantes com sabor a amêndoa",
+            "a3": "Açafrão",
+            "a4": "Manjericão"
+          }
+        }
+      }
+    },
+    "stage-8": {
+      "title": "Ler o menu",
+      "questions": {
+        "italian-s8q1": {
+          "question": "Num menu italiano, o que são antepastos?",
+          "headerLabel": "LER O MENU",
+          "answers": {
+            "a1": "Entradas servidas antes dos pratos principais",
+            "a2": "Apenas sobremesas",
+            "a3": "Apenas vegetais laterais",
+            "a4": "Apenas bebidas quentes"
+          }
+        },
+        "italian-s8q2": {
+          "question": "Qual categoria geralmente inclui massas e risotos?",
+          "headerLabel": "LER O MENU",
+          "answers": {
+            "a1": "Contorni",
+            "a2": "Primi piatti",
+            "a3": "Bevande",
+            "a4": "Dolci"
+          }
+        },
+        "italian-s8q3": {
+          "question": "A que contorni comumente se refere?",
+          "headerLabel": "LER O MENU",
+          "answers": {
+            "a1": "Só massa recheada",
+            "a2": "Sobremesas",
+            "a3": "Apenas aperitivos",
+            "a4": "Acompanhamentos"
+          }
+        },
+        "italian-s8q4": {
+          "question": "O que dolci significa em um menu?",
+          "headerLabel": "LER O MENU",
+          "answers": {
+            "a1": "Pratos de peixe",
+            "a2": "Somente pães",
+            "a3": "Molhos picantes",
+            "a4": "Sobremesas ou doces"
+          }
+        },
+        "italian-s8q5": {
+          "question": "O que al dente descreve?",
+          "headerLabel": "LER O MENU",
+          "answers": {
+            "a1": "Um prato sempre servido frio",
+            "a2": "Um molho feito apenas de tomate",
+            "a3": "Massa cozida com alguma firmeza ao ser mordida",
+            "a4": "Massa completamente crua no centro"
+          }
+        },
+        "italian-s8q6": {
+          "question": "O que significa al forno?",
+          "headerLabel": "LER O MENU",
+          "answers": {
+            "a1": "Cozido no forno",
+            "a2": "Sólido congelado",
+            "a3": "Cozido apenas em água",
+            "a4": "Servido cru"
+          }
+        },
+        "italian-s8q7": {
+          "question": "O que ripieno significa na descrição de um alimento?",
+          "headerLabel": "LER O MENU",
+          "answers": {
+            "a1": "Sempre amargo",
+            "a2": "Sem nenhum tempero",
+            "a3": "Recheado",
+            "a4": "Sempre grelhado"
+          }
+        }
+      }
+    },
+    "stage-9": {
+      "title": "Cálculos de receita",
+      "questions": {
+        "italian-s9q1": {
+          "question": "Uma receita de massa usa 400 g para quatro porções iguais. Quanto é isso por porção?",
+          "headerLabel": "CÁLCULOS DE RECEITA",
+          "answers": {
+            "a1": "80 g",
+            "a2": "100 g",
+            "a3": "125 g",
+            "a4": "160 g"
+          }
+        },
+        "italian-s9q2": {
+          "question": "Uma receita de molho usa 600 g de tomate. Qual quantidade é necessária para metade da receita?",
+          "headerLabel": "CÁLCULOS DE RECEITA",
+          "answers": {
+            "a1": "200 g",
+            "a2": "300 g",
+            "a3": "1200 g",
+            "a4": "400 g"
+          }
+        },
+        "italian-s9q3": {
+          "question": "Uma massa repousa durante 40 minutos a partir das 11:25. A que horas termina o repouso?",
+          "headerLabel": "CÁLCULOS DE RECEITA",
+          "answers": {
+            "a1": "12:05",
+            "a2": "12:25",
+            "a3": "11:55",
+            "a4": "12:15"
+          }
+        },
+        "italian-s9q4": {
+          "question": "Três pizzas idênticas são cortadas em oito fatias cada. Quantas fatias são?",
+          "headerLabel": "CÁLCULOS DE RECEITA",
+          "answers": {
+            "a1": "21",
+            "a2": "32",
+            "a3": "18",
+            "a4": "24"
+          }
+        },
+        "italian-s9q5": {
+          "question": "Uma receita precisa de 250 mL de caldo para cada lote. Quanto é necessário para três lotes?",
+          "headerLabel": "CÁLCULOS DE RECEITA",
+          "answers": {
+            "a1": "650 mL",
+            "a2": "1000 mL",
+            "a3": "500 mL",
+            "a4": "750 mL"
+          }
+        },
+        "italian-s9q6": {
+          "question": "Uma porção de 500 g de queijo é reduzida em 150 g. Quanto resta?",
+          "headerLabel": "CÁLCULOS DE RECEITA",
+          "answers": {
+            "a1": "650 g",
+            "a2": "250 g",
+            "a3": "350 g",
+            "a4": "400 g"
+          }
+        },
+        "italian-s9q7": {
+          "question": "Uma receita rende seis porções. Por que fator se devem multiplicar as quantidades para obter nove porções iguais?",
+          "headerLabel": "CÁLCULOS DE RECEITA",
+          "answers": {
+            "a1": "2",
+            "a2": "3",
+            "a3": "1,5",
+            "a4": "0,5"
+          }
+        }
+      }
+    },
+    "stage-10": {
+      "title": "Ligar os sabores",
+      "questions": {
+        "italian-s10q1": {
+          "question": "Um prato que combina arroz, açafrão e a tradição culinária milanesa. Qual é a melhor combinação?",
+          "headerLabel": "LIGAR OS SABORES",
+          "answers": {
+            "a1": "Salada caprese",
+            "a2": "Pesto alla genovese",
+            "a3": "Cannoli",
+            "a4": "Risoto à milanesa"
+          }
+        },
+        "italian-s10q2": {
+          "question": "Uma receita pede longos fios ocos de massa. Qual forma é a melhor combinação?",
+          "headerLabel": "LIGAR OS SABORES",
+          "answers": {
+            "a1": "Bucatini",
+            "a2": "Orecchiette",
+            "a3": "Folhas de lasanha",
+            "a4": "Farfalle"
+          }
+        },
+        "italian-s10q3": {
+          "question": "Um prato precisa de um queijo tradicionalmente feito com leite de ovelha. Qual é a melhor combinação?",
+          "headerLabel": "LIGAR OS SABORES",
+          "answers": {
+            "a1": "Ricota de leite de vaca",
+            "a2": "Mascarpone",
+            "a3": "Pecorino",
+            "a4": "Mussarela de leite de vaca"
+          }
+        },
+        "italian-s10q4": {
+          "question": "Um menu descreve uma sobremesa de creme cozido que solidifica com uma textura macia. Qual é a melhor correspondência?",
+          "headerLabel": "LIGAR OS SABORES",
+          "answers": {
+            "a1": "Minestrone",
+            "a2": "Bruscheta",
+            "a3": "Panna cotta",
+            "a4": "Polenta"
+          }
+        },
+        "italian-s10q5": {
+          "question": "Um molho para massa leva manjericão, azeite, alho, frutos secos e queijo duro. A que família clássica de molhos corresponde?",
+          "headerLabel": "LIGAR OS SABORES",
+          "answers": {
+            "a1": "Pesto",
+            "a2": "Arrabbiata",
+            "a3": "Bechamel",
+            "a4": "Carbonara"
+          }
+        },
+        "italian-s10q6": {
+          "question": "Um convidado evita trigo. Qual ingrediente da massa seca comum precisa de atenção?",
+          "headerLabel": "LIGAR OS SABORES",
+          "answers": {
+            "a1": "Sêmola de trigo duro",
             "a2": "Manjericão",
-            "a3": "Alecrim",
-            "a4": "Salsa"
-          },
-          "headerLabel": "TRADIÇÃO ROMANA"
+            "a3": "Azeite",
+            "a4": "Tomates"
+          }
         },
-        "italian-q10": {
-          "question": "A pasta alla Norma recebeu o nome de uma ópera de que compositor?",
+        "italian-s10q7": {
+          "question": "Duas versões regionais de um prato utilizam ingredientes diferentes. Qual é a conclusão mais precisa?",
+          "headerLabel": "LIGAR OS SABORES",
           "answers": {
-            "a1": "Giacomo Puccini",
-            "a2": "Vincenzo Bellini",
-            "a3": "Giuseppe Verdi",
-            "a4": "Gioachino Rossini"
-          },
-          "headerLabel": "CURSO FINAL"
+            "a1": "Os nomes regionais nunca se relacionam com tradições alimentares",
+            "a2": "A culinária italiana inclui variações regionais e familiares",
+            "a3": "Apenas uma família pode cozinhar o prato",
+            "a4": "Todos os pratos italianos têm receitas idênticas"
+          }
         }
       }
     }

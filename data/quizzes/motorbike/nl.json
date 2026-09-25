@@ -1,206 +1,943 @@
 {
   "title": "De meeste automobilisten slagen niet voor deze motorrijtest",
   "eyebrow": "DE MOTORRIJTEST",
-  "summary": "Tien wereldwijd toepasbare vragen over verkeersveiligheid testen of je rijinstinct ook op twee wielen werkt.",
+  "summary": "Ontdek het motorbewustzijn door middel van aanwijzingen, praktische situaties en nieuwe uitdagingen.",
   "landing": {
     "intro": "Denk verder dan het stuur.\nTest je verkeersbewustzijn.",
-    "cta": "Start de test"
+    "cta": "Begin"
   },
   "about": {
-    "body": "Deze quiz test algemene principes van motorveiligheid die in veel landen gelden. Landspecifieke borden, rijbewijsregels, snelheidslimieten en juridische formuleringen worden vermeden.\n\nKies in elke situatie het algemeen veiligste antwoord. Motoren, wegen en plaatselijke wetten verschillen; volg altijd het officiële handboek, je opleiding en de instructies van de fabrikant.\n\nSlagen voor deze quiz bewijst geen praktische rijvaardigheid en vervangt geen erkende motoropleiding.",
+    "body": "Leg verbanden, ontdek details en test je kennis. Elke reeks vragen verkent een nieuw onderwerp. Daarna zie je welk profiel bij je antwoorden past, voordat je verdergaat met een nieuwe uitdaging.",
     "howToPlay": {
       "steps": [
-        "Lees elke vraag zorgvuldig.",
-        "Kies één antwoord uit de vier opties.",
-        "Bekijk na vraag tien je score en alle goede antwoorden."
+        "Lees de aanwijzingen en kies een antwoord.",
+        "Bekijk je profiel voor dit onderwerp en ga verder met een nieuwe uitdaging.",
+        "Bekijk je eindresultaat en bekijk desgewenst de goede antwoorden bij vragen die je fout had."
       ]
     },
-    "disclaimer": "Alleen voor amusement en algemene kennis. Dit is geen officieel rijexamen en vervangt geen motoropleiding of plaatselijke verkeersregels."
+    "disclaimer": "Alleen voor amusement en algemeen leren. Geen rijbewijstest of vervanging van professionele rijtraining en lokale verkeersregels."
   },
   "career": {
-    "resultProgressLabel": "Je voortgang",
+    "resultProgressLabel": "Jouw uitdaging",
     "stages": {
       "stage-1": {
-        "difficulty": "Motorveiligheid",
-        "preAdTitle": "Je resultaat staat klaar",
-        "preAdCopy": "Je eindscore en het volledige antwoordenoverzicht staan klaar.",
+        "difficulty": "KEN DE MOTORFIETS",
+        "preAdTitle": "Je eerste aanwijzingen",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Hierna: Controles vóór het rijden. Kun jij de aanwijzingen verbinden?"
+        }
+      },
+      "stage-2": {
+        "difficulty": "CONTROLES VÓÓR HET RIJDEN",
+        "preAdTitle": "Een nieuwe kijk",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Nieuwe uitdaging: Grip en wegdek. Let goed op de details."
+        }
+      },
+      "stage-3": {
+        "difficulty": "GRIP EN WEGDEK",
+        "preAdTitle": "Het zit in de details",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Verder met: Ruimte om te stoppen. Wat herken jij?"
+        }
+      },
+      "stage-4": {
+        "difficulty": "RUIMTE OM TE STOPPEN",
+        "preAdTitle": "Tijd voor een ander perspectief",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Hierna: Een bocht inschatten. Kun jij de aanwijzingen verbinden?"
+        }
+      },
+      "stage-5": {
+        "difficulty": "EEN BOCHT INSCHATTEN",
+        "preAdTitle": "Een nieuw spoor",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Nieuwe uitdaging: Gevaren voorzien. Let goed op de details."
+        }
+      },
+      "stage-6": {
+        "difficulty": "GEVAREN VOORZIEN",
+        "preAdTitle": "Elk detail telt",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Verder met: Klaar voor de motorrit. Wat herken jij?"
+        }
+      },
+      "stage-7": {
+        "difficulty": "KLAAR VOOR DE MOTORRIT",
+        "preAdTitle": "Verbind de aanwijzingen",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Hierna: Mechanische verbindingen. Kun jij de aanwijzingen verbinden?"
+        }
+      },
+      "stage-8": {
+        "difficulty": "MECHANISCHE VERBINDINGEN",
+        "preAdTitle": "Een andere invalshoek",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Nieuwe uitdaging: Afstanden en hoeveelheden. Let goed op de details."
+        }
+      },
+      "stage-9": {
+        "difficulty": "AFSTANDEN EN HOEVEELHEDEN",
+        "preAdTitle": "Klaar voor de laatste uitdaging?",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "preAdButton": "Verder",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Verder met: Controleren vóór je concludeert. Wat herken jij?"
+        }
+      },
+      "stage-10": {
+        "difficulty": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+        "preAdTitle": "Je resultaat is bekend",
+        "preAdCopy": "80% gehaald? Je score en sterke punten zijn bekend.",
+        "preAdButton": "Bekijk mijn resultaat",
         "preAdChecks": [
-          "10 antwoorden gecontroleerd",
-          "Alle categorieën vergeleken"
+          "Antwoorden gecontroleerd",
+          "Sterke punten vergeleken",
+          "Score berekend"
         ]
       }
     }
   },
   "results": {
-    "name": "JE SCORE VOOR DE MOTORRIJTEST",
+    "name": "UW MOTORFIETSTESTSCORE",
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
         "title": "De expert in verkeersinzicht",
-        "copy": "Uitstekend resultaat. Je beheerste dit onderwerp en liet je door bijna geen enkele vraag tegenhouden."
+        "copy": "Je hebt bijna elke vraag goed beantwoord. Uit uw gedetailleerde resultaten blijkt hoe die nauwkeurigheid werd doorgevoerd in de onderwerpen in deze uitdaging."
       },
       "profile-2": {
         "tier": "70–89%",
         "title": "De oplettende motorrijder",
-        "copy": "Je wist al het een en ander over motorfietsen, maar sommige vragen bleven lastig. In het antwoordenoverzicht zie je welke onderwerpen je nog eens kunt bekijken."
+        "copy": "Je hebt tijdens deze uitdaging veel nauwkeurige verbanden gelegd. Bekijk uw gedetailleerde resultaten om te zien welke onderwerpen het sterkst waren."
       },
       "profile-3": {
         "tier": "50–69%",
         "title": "De motorrijder in ontwikkeling",
-        "copy": "Je wist al het een en ander over motorfietsen, maar sommige vragen bleven lastig. In het antwoordenoverzicht zie je welke onderwerpen je nog eens kunt bekijken."
+        "copy": "Je hebt veel van de aanwijzingen en feiten met elkaar verbonden. Uw gedetailleerde resultaten benadrukken de onderwerpen die u het beste heeft behandeld en de onderwerpen die de moeite waard zijn om nog eens te bekijken."
       },
       "profile-4": {
         "tier": "30–49%",
         "title": "De automobilist op twee wielen",
-        "copy": "Sommige vragen over motorfietsen waren nieuw voor je. Bekijk de juiste antwoorden om verder te leren."
+        "copy": "Je hebt nuttige aanwijzingen gevonden over verschillende onderwerpen. De antwoordenoverzicht kan u helpen de vragen te beantwoorden die u opvielen."
       },
       "profile-5": {
         "tier": "Onder 30%",
         "title": "Terug naar het oefenterrein",
-        "copy": "Sommige vragen over motorfietsen waren nieuw voor je. Bekijk de juiste antwoorden om verder te leren."
+        "copy": "Sommige onderwerpen waren bekender dan andere. Uw beoordeling toont de juiste antwoorden en geeft u een startpunt voor een nieuwe poging."
       }
     },
     "dimensions": {
       "dimension-1": {
-        "label": "Motorcontrole"
+        "label": "Machinecontroles"
       },
       "dimension-2": {
-        "label": "Bochten en beheersing"
+        "label": "Bochten en controle"
       },
       "dimension-3": {
-        "label": "Gevarenherkenning"
+        "label": "Gevarenbewustzijn"
       },
       "dimension-4": {
-        "label": "Rembeheersing"
+        "label": "Controle van het remmen"
       },
       "dimension-5": {
-        "label": "Passagiersveiligheid"
+        "label": "Veiligheid van passagiers"
       },
       "dimension-6": {
-        "label": "Alertheid van de motorrijder"
+        "label": "Gereedheid van de rijder"
       }
     },
     "score": {
-      "passed": "Je bent geslaagd voor de uitdaging!",
+      "passed": "Je hebt 80% gehaald!",
       "finished": "Uitdaging voltooid",
-      "strongest": "Sterkste onderdeel",
-      "trickiest": "Moeilijkste onderdeel",
-      "bestRound": "Je beste ronde",
+      "strongest": "Sterkste veiligheidsgebied",
+      "trickiest": "Het lastigste veiligheidsgebied",
+      "bestRound": "Je beste onderwerp",
       "insights": {
         "overview": "Je score in één oogopslag",
         "correct": "Goede antwoorden",
-        "missed": "Fout beantwoorde vragen",
-        "target": "Juiste antwoorden nodig voor 80%",
-        "breakdown": "Je resultaat per categorie",
+        "missed": "Foute antwoorden",
+        "target": "Goede antwoorden voor 80%",
+        "breakdown": "Je resultaten per onderwerp",
         "snapshot": "Wat je resultaat laat zien",
-        "targetReached": "Doel van 80% behaald",
-        "targetRemaining": "Nog benodigde goede antwoorden voor 80%"
+        "targetReached": "Doel van 80% gehaald",
+        "targetRemaining": "Er zijn nog goede antwoorden nodig om 80% te halen."
       }
     }
   },
   "stages": {
     "stage-1": {
-      "title": "Motorrijtest",
+      "title": "Ken de motorfiets",
       "questions": {
-        "motorbike-q1": {
-          "question": "Wanneer kun je de bandenspanning doorgaans het beste controleren voor een betrouwbare meting?",
+        "motorbike-s1q1": {
+          "question": "Wat verbindt de aandrijving van de motor met het achterwiel van een kettingaangedreven motorfiets?",
+          "headerLabel": "KEN DE MOTORFIETS",
           "answers": {
-            "a1": "Wanneer de banden koud zijn",
-            "a2": "Direct na een snelle rit",
-            "a3": "Alleen wanneer er een waarschuwing verschijnt",
-            "a4": "Tijdens het vervoer van een passagier"
-          },
-          "headerLabel": "MOTORCONTROLE"
+            "a1": "De uitlaatpijp",
+            "a2": "De koplampbedrading",
+            "a3": "De voorremslang",
+            "a4": "De aandrijfketting"
+          }
         },
-        "motorbike-q2": {
-          "question": "Waar moet een motorrijder tijdens een bocht doorgaans naar kijken?",
+        "motorbike-s1q2": {
+          "question": "Wat doet de koppeling op een conventionele handgeschakelde motorfiets?",
+          "headerLabel": "KEN DE MOTORFIETS",
           "answers": {
-            "a1": "Naar het voorwiel",
-            "a2": "Door de bocht, in de richting van de gekozen rijlijn",
-            "a3": "Naar de rand van de weg",
-            "a4": "Naar het achteropkomende voertuig"
-          },
-          "headerLabel": "BOCHTEN"
+            "a1": "Verbindt en ontkoppelt de motoraandrijving van de transmissie",
+            "a2": "Verandert het loopvlakpatroon van de band",
+            "a3": "Bedient alleen de koplamp",
+            "a4": "Meet het brandstofniveau"
+          }
         },
-        "motorbike-q3": {
-          "question": "Het begint te regenen tijdens de rit. Wat moet er gebeuren met de afstand tot de voorligger?",
+        "motorbike-s1q3": {
+          "question": "Waar wordt het gaspedaal voor gebruikt?",
+          "headerLabel": "KEN DE MOTORFIETS",
           "answers": {
-            "a1": "Die moet precies hetzelfde blijven",
-            "a2": "Die moet kleiner worden",
-            "a3": "Die moet groter worden",
-            "a4": "Die is alleen belangrijk bij hoge snelheid"
-          },
-          "headerLabel": "NATTE WEG"
+            "a1": "De breedte van het stuur",
+            "a2": "Motorvermogen",
+            "a3": "Banden direct oppompen",
+            "a4": "Alleen het achterremlicht"
+          }
         },
-        "motorbike-q4": {
-          "question": "Welke algemene techniek is bij een noodstop op een moderne motorfiets en een rechte weg het veiligst?",
+        "motorbike-s1q4": {
+          "question": "Waarmee helpen ophangingsveren en dempers?",
+          "headerLabel": "KEN DE MOTORFIETS",
           "answers": {
-            "a1": "Alleen de achterrem gebruiken",
-            "a2": "Meteen alleen de voorrem gebruiken",
-            "a3": "Beide remmen herhaaldelijk pompend bedienen",
-            "a4": "Beide remmen geleidelijk bedienen en de motor stabiel houden"
-          },
-          "headerLabel": "NOODSTOP"
+            "a1": "De chemische samenstelling van de brandstof",
+            "a2": "Wielbeweging en de reactie van de motorfiets op de weg",
+            "a3": "De vorm van de kentekenplaat",
+            "a4": "Het aantal versnellingen"
+          }
         },
-        "motorbike-q5": {
-          "question": "Welke gewoonte verkleint de kans dat een andere bestuurder de motor over het hoofd ziet?",
+        "motorbike-s1q5": {
+          "question": "Wat is de belangrijkste taak van de voor- en achterremmen?",
+          "headerLabel": "KEN DE MOTORFIETS",
           "answers": {
-            "a1": "Blijf uit dode hoeken en kies een goed zichtbare positie",
-            "a2": "Blijf zo lang mogelijk naast een voertuig rijden",
-            "a3": "Ga ervan uit dat oogcontact betekent dat de bestuurder je hebt gezien",
-            "a4": "Rijd voortdurend met groot licht"
-          },
-          "headerLabel": "ZICHTBAARHEID"
+            "a1": "Stuurbediening vervangen",
+            "a2": "Vergroot de cilinderinhoud",
+            "a3": "Verlaag de snelheid door gecontroleerde remkracht",
+            "a4": "Verander de bandencompound"
+          }
         },
-        "motorbike-q6": {
-          "question": "Met welke belangrijke verandering moet een motorrijder rekening houden bij het meenemen van een passagier?",
+        "motorbike-s1q6": {
+          "question": "Wat biedt de transmissie van een motorfiets?",
+          "headerLabel": "KEN DE MOTORFIETS",
           "answers": {
-            "a1": "De motor stuurt en stopt precies hetzelfde",
-            "a2": "Balans, acceleratie en remweg kunnen veranderen",
-            "a3": "De staat van de banden wordt minder belangrijk",
-            "a4": "De passagier moet de andere kant op leunen dan de motorrijder"
-          },
-          "headerLabel": "PASSAGIERSVEILIGHEID"
+            "a1": "Automatische bescherming tegen alle gevaren op de weg",
+            "a2": "Een vervanging voor banden",
+            "a3": "Een onbeperkte brandstoftoevoer",
+            "a4": "Verschillende overbrengingsverhoudingen tussen motor en aangedreven wiel"
+          }
         },
-        "motorbike-q7": {
-          "question": "Hoe kun je natte wegmarkeringen het veiligst oversteken als je ze niet kunt vermijden?",
+        "motorbike-s1q7": {
+          "question": "Waarom heeft een motorfiets werkende verlichting nodig?",
+          "headerLabel": "KEN DE MOTORFIETS",
           "answers": {
-            "a1": "Scherp versnellen terwijl de motor overhelt",
-            "a2": "Hard remmen op de markering",
-            "a3": "De motor zo recht mogelijk houden en vloeiend rijden",
-            "a4": "Abrupt van richting veranderen op de markering"
-          },
-          "headerLabel": "GLADDE MARKERINGEN"
+            "a1": "Om remmen overbodig te maken",
+            "a2": "Om de rijder te helpen zien en gezien worden zoals vereist",
+            "a3": "Ter vervanging van observatie",
+            "a4": "Om te garanderen dat iedere andere weggebruiker het opmerkt"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Controles vóór het rijden",
+      "questions": {
+        "motorbike-s2q1": {
+          "question": "Waar moet een rijder de juiste bandenspanning voor een motorfiets en belading vinden?",
+          "headerLabel": "CONTROLES VÓÓR HET RIJDEN",
+          "answers": {
+            "a1": "De richtlijnen van de fabrikant voor die motorfiets",
+            "a2": "Het nummer op een niet-gerelateerde fiets",
+            "a3": "Een druk gekozen uit de kleur van de band",
+            "a4": "Een gok die alleen gebaseerd is op het weer"
+          }
         },
-        "motorbike-q8": {
-          "question": "Welke laatste controle is waardevol voordat je naar een plek rijdt die mogelijk niet in de spiegel te zien is?",
+        "motorbike-s2q2": {
+          "question": "Een band heeft zichtbare schade. Wat is geschikt voordat u gaat rijden?",
+          "headerLabel": "CONTROLES VÓÓR HET RIJDEN",
           "answers": {
-            "a1": "Een blik op de snelheidsmeter",
-            "a2": "Een blik op het voorwiel",
-            "a3": "Een controle van het brandstofniveau",
-            "a4": "Een directe controle van de dode hoek wanneer dat veilig kan"
-          },
-          "headerLabel": "WAARNEMING"
+            "a1": "Negeer het als de motor start",
+            "a2": "Bedek de schade met verf",
+            "a3": "Laat de veiligheid beoordelen en verhelp het defect",
+            "a4": "Verlaag in plaats daarvan het brandstofniveau"
+          }
         },
-        "motorbike-q9": {
-          "question": "Waar vind je de juiste specificatie voor het afstellen van de aandrijfketting van je motor?",
+        "motorbike-s2q3": {
+          "question": "Een rembediening voelt onverwacht anders aan. Wat moet de berijder doen?",
+          "headerLabel": "CONTROLES VÓÓR HET RIJDEN",
           "answers": {
-            "a1": "In de informatie van de fabrikant",
-            "a2": "Door te gokken op basis van een andere motor",
-            "a3": "Op de zijkant van de band",
-            "a4": "Op een verkeersbord"
-          },
-          "headerLabel": "ONDERHOUD"
+            "a1": "Rij sneller om het in het verkeer te testen",
+            "a2": "Onderzoek het probleem en los het op voordat u erop vertrouwt",
+            "a3": "Ga ervan uit dat alle veranderingen onschadelijk zijn",
+            "a4": "Gebruik in plaats daarvan de hoorn"
+          }
         },
-        "motorbike-q10": {
-          "question": "Een motorrijder merkt tijdens een lange rit dat de concentratie afneemt. Wat is de veiligste reactie?",
+        "motorbike-s2q4": {
+          "question": "Waarom de aandrijfketting controleren volgens de instructies van de fabrikant?",
+          "headerLabel": "CONTROLES VÓÓR HET RIJDEN",
           "answers": {
-            "a1": "Sneller rijden om eerder klaar te zijn",
-            "a2": "Op een veilige plek stoppen en een goede pauze nemen",
-            "a3": "Dicht achter een ander voertuig rijden",
-            "a4": "Het vizier openen en doorgaan"
-          },
-          "headerLabel": "LAATSTE VEILIGHEIDSVRAAG"
+            "a1": "Elke ketting heeft dezelfde aanpassing",
+            "a2": "Een ketting slijt nooit",
+            "a3": "De toestand en afstelling ervan beïnvloeden een veilige werking",
+            "a4": "Alleen de kleur is belangrijk"
+          }
+        },
+        "motorbike-s2q5": {
+          "question": "Wat moet er aan een spiegel worden gecontroleerd voordat u vertrekt?",
+          "headerLabel": "CONTROLES VÓÓR HET RIJDEN",
+          "answers": {
+            "a1": "Het weerspiegelt de tankdop",
+            "a2": "Het is veilig en afgesteld voor nuttig zicht naar achteren",
+            "a3": "Het toont alleen het gezicht van de rijder",
+            "a4": "Het frame past bij de helm"
+          }
+        },
+        "motorbike-s2q6": {
+          "question": "Er verschijnt een waarschuwingssymbool waarvan de betekenis onbekend is. Waar moet het gecontroleerd worden?",
+          "headerLabel": "CONTROLES VÓÓR HET RIJDEN",
+          "answers": {
+            "a1": "De gebruikershandleiding van de motorfiets of gekwalificeerde ondersteuning",
+            "a2": "Alleen al een gok op basis van de kleur van het symbool",
+            "a3": "De lengte van de reis",
+            "a4": "Alleen het dashboard van een niet-gerelateerd voertuig"
+          }
+        },
+        "motorbike-s2q7": {
+          "question": "Waarom controleren op vloeistoflekkage vóór een rit?",
+          "headerLabel": "CONTROLES VÓÓR HET RIJDEN",
+          "answers": {
+            "a1": "Alleen de geur van brandstof is van belang",
+            "a2": "Lekkages verbeteren de grip van de banden",
+            "a3": "Elk lek is een normale manier om gewicht te verminderen",
+            "a4": "Ze kunnen wijzen op een storing en kunnen de veiligheid beïnvloeden"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Grip en wegdek",
+      "questions": {
+        "motorbike-s3q1": {
+          "question": "Waarom kan los grind de grip van een motorband verminderen?",
+          "headerLabel": "GRIP EN WEGDEK",
+          "answers": {
+            "a1": "Het vergroot de bandbreedte permanent",
+            "a2": "Het maakt elk oppervlak identiek",
+            "a3": "Het kan zich verplaatsen tussen de band en het wegdek",
+            "a4": "Het elimineert de noodzaak om te remmen"
+          }
+        },
+        "motorbike-s3q2": {
+          "question": "Wat kunnen geschilderde wegmarkeringen worden als ze nat zijn?",
+          "headerLabel": "GRIP EN WEGDEK",
+          "answers": {
+            "a1": "Onzichtbaar voor iedere rijder",
+            "a2": "Gladder dan omliggende oppervlakken",
+            "a3": "Ter vervanging van verkeersborden",
+            "a4": "Gegarandeerd gripvaste oppervlakken"
+          }
+        },
+        "motorbike-s3q3": {
+          "question": "Waarom kunnen abrupte controle-inputs riskant zijn als de grip beperkt is?",
+          "headerLabel": "GRIP EN WEGDEK",
+          "answers": {
+            "a1": "Ze kunnen meer tractie eisen dan er beschikbaar is",
+            "a2": "Ze voorkomen elke gewichtsoverdracht",
+            "a3": "Ze verwijderen de massa van de motorfiets",
+            "a4": "Ze vergroten altijd de tractie"
+          }
+        },
+        "motorbike-s3q4": {
+          "question": "Wat gebeurt er met de beschikbare grip als banden ook kracht in de bochten leveren?",
+          "headerLabel": "GRIP EN WEGDEK",
+          "answers": {
+            "a1": "Voor het draaien is geen tractie nodig",
+            "a2": "Er komt onbeperkte remkracht beschikbaar",
+            "a3": "De staat van de weg doet er niet meer toe",
+            "a4": "Remmen en draaien delen de beschikbare tractie"
+          }
+        },
+        "motorbike-s3q5": {
+          "question": "Waarom zou de staat van de banden ertoe doen bij nat weer?",
+          "headerLabel": "GRIP EN WEGDEK",
+          "answers": {
+            "a1": "Alle versleten banden hebben een betere grip bij regen",
+            "a2": "Profiel en conditie beïnvloeden de waterafvoer en grip",
+            "a3": "Alleen de kleur van de motorfiets is van belang",
+            "a4": "Water maakt de staat van de banden irrelevant"
+          }
+        },
+        "motorbike-s3q6": {
+          "question": "Op een schaduwrijk stuk weg kan het glad zijn. Wat is een verstandige reactie?",
+          "headerLabel": "GRIP EN WEGDEK",
+          "answers": {
+            "a1": "Ga ervan uit dat schaduw een droge bestrating garandeert",
+            "a2": "Negeer het oppervlak als de lucht helder is",
+            "a3": "Herken het risico op verminderde grip en pas het plan aan",
+            "a4": "Gebruik plotselinge besturing om het oppervlak te testen"
+          }
+        },
+        "motorbike-s3q7": {
+          "question": "Waarom zou een rijder meer marge toestaan op een onbekende ondergrond?",
+          "headerLabel": "GRIP EN WEGDEK",
+          "answers": {
+            "a1": "De beschikbare grip en gevaren kunnen onzeker zijn",
+            "a2": "Onzekerheid verbetert de remprestaties",
+            "a3": "Een vertrouwde snelheid is veilig op elke ondergrond",
+            "a4": "Onbekende wegen hebben altijd meer grip"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Ruimte om te stoppen",
+      "questions": {
+        "motorbike-s4q1": {
+          "question": "Waaruit bestaat de remafstand?",
+          "headerLabel": "RUIMTE OM TE STOPPEN",
+          "answers": {
+            "a1": "Alleen de lengte van de motorfiets",
+            "a2": "Afgelegde afstand tijdens het reageren plus de afgelegde afstand tijdens het remmen",
+            "a3": "Alleen de afstand na het bereiken van een halte",
+            "a4": "Alleen het gat naar het dichtstbijzijnde kruispunt"
+          }
+        },
+        "motorbike-s4q2": {
+          "question": "Wat gebeurt er met de reactieafstand bij een hogere snelheid en dezelfde reactietijd?",
+          "headerLabel": "RUIMTE OM TE STOPPEN",
+          "answers": {
+            "a1": "Het neemt toe",
+            "a2": "Het blijft nul",
+            "a3": "Het hangt alleen af van de helmkleur",
+            "a4": "Het neemt af"
+          }
+        },
+        "motorbike-s4q3": {
+          "question": "Waarom een geschikte volgende kloof achterlaten?",
+          "headerLabel": "RUIMTE OM TE STOPPEN",
+          "answers": {
+            "a1": "Om alle wind te voorkomen",
+            "a2": "Om tijd en ruimte te geven om te reageren",
+            "a3": "Ter vervanging van het controleren van de weg die voor u ligt",
+            "a4": "Om te garanderen dat het voertuig vóór u nooit remt"
+          }
+        },
+        "motorbike-s4q4": {
+          "question": "Wat helpt een antiblokkeersysteem te voorkomen tijdens het remmen?",
+          "headerLabel": "RUIMTE OM TE STOPPEN",
+          "answers": {
+            "a1": "Wielblokkering onder omstandigheden die binnen zijn operationele mogelijkheden vallen",
+            "a2": "Elke mogelijke slip in elke situatie",
+            "a3": "Alle botsingen, ongeacht de snelheid",
+            "a4": "De noodzaak van bandenonderhoud"
+          }
+        },
+        "motorbike-s4q5": {
+          "question": "Waarom rechtvaardigt een antiblokkeersysteem niet dat er te dichtbij gereden wordt?",
+          "headerLabel": "RUIMTE OM TE STOPPEN",
+          "answers": {
+            "a1": "Hierdoor is de remafstand altijd nul",
+            "a2": "Het kan de reactietijd of de behoefte aan ruimte niet wegnemen",
+            "a3": "Het bestuurt alle andere voertuigen",
+            "a4": "Het garandeert dat de weg droog is"
+          }
+        },
+        "motorbike-s4q6": {
+          "question": "Een afdaling kan het stoppen beïnvloeden. Wat moet een ruiter doen?",
+          "headerLabel": "RUIMTE OM TE STOPPEN",
+          "answers": {
+            "a1": "Negeer de helling als u in een rechte lijn reist",
+            "a2": "Ga ervan uit dat het stoppen bij een afdaling altijd korter is",
+            "a3": "Houd rekening met de omstandigheden en de beperkingen van de motorfiets",
+            "a4": "Gebruik in elke situatie een vaste opening"
+          }
+        },
+        "motorbike-s4q7": {
+          "question": "Waarom zou remtechniek een motorspecifieke training moeten volgen?",
+          "headerLabel": "RUIMTE OM TE STOPPEN",
+          "answers": {
+            "a1": "Alle motorfietsen gedragen zich hetzelfde",
+            "a2": "Trainen is alleen van belang op loopsnelheid",
+            "a3": "Eén techniek elimineert elk gevaar",
+            "a4": "Ontwerp, belading en omstandigheden zijn van invloed op de respons"
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Een bocht inschatten",
+      "questions": {
+        "motorbike-s5q1": {
+          "question": "Waarom een bocht beoordelen voordat u deze inrijdt?",
+          "headerLabel": "EEN BOCHT INSCHATTEN",
+          "answers": {
+            "a1": "Om te voorkomen dat je door de bocht kijkt",
+            "a2": "Om de snelheid te kiezen uit de naam van de weg",
+            "a3": "Om het zichtbare pad, de omstandigheden en de juiste snelheid te beoordelen",
+            "a4": "Om te garanderen dat er geen onzichtbare gevaren zijn"
+          }
+        },
+        "motorbike-s5q2": {
+          "question": "Een bocht wordt strakker dan het zichtbare gedeelte. Wat was onzeker?",
+          "headerLabel": "EEN BOCHT INSCHATTEN",
+          "answers": {
+            "a1": "Alleen de kleur van de weg",
+            "a2": "Of zwaartekracht bestaat",
+            "a3": "Het aantal letters op een bord",
+            "a4": "Het volledige pad en de vereiste draaiende vraag"
+          }
+        },
+        "motorbike-s5q3": {
+          "question": "Waarom moet een rijder vermijden zijn blik alleen op één obstakel in de buurt te richten?",
+          "headerLabel": "EEN BOCHT INSCHATTEN",
+          "answers": {
+            "a1": "Het maakt het sturen automatisch nauwkeurig",
+            "a2": "Het laat alle obstakels verdwijnen",
+            "a3": "Het kan het bewustzijn van het beoogde pad en andere gevaren verminderen",
+            "a4": "Het neemt de noodzaak weg om een pad te kiezen"
+          }
+        },
+        "motorbike-s5q4": {
+          "question": "Wat kan een onverwacht stukje grind in een bocht veranderen?",
+          "headerLabel": "EEN BOCHT INSCHATTEN",
+          "answers": {
+            "a1": "De beschikbare grip",
+            "a2": "De kompasrichtingen",
+            "a3": "Het aantal cilinders van de motor",
+            "a4": "De juridische identiteit van de motorfiets"
+          }
+        },
+        "motorbike-s5q5": {
+          "question": "Waarom is de beschikbare zichtafstand relevant voor de snelheidsselectie?",
+          "headerLabel": "EEN BOCHT INSCHATTEN",
+          "answers": {
+            "a1": "De rijder heeft ruimte nodig om te reageren binnen wat gezien kan worden",
+            "a2": "De zichtafstand is alleen van belang als u stilstaat",
+            "a3": "Een hogere snelheid vergroot altijd de zichtbare afstand",
+            "a4": "Een verborgen weg is altijd duidelijk"
+          }
+        },
+        "motorbike-s5q6": {
+          "question": "Wat is een bruikbaar algemeen principe voor stuurinvoer door een bocht?",
+          "headerLabel": "EEN BOCHT INSCHATTEN",
+          "answers": {
+            "a1": "Ze moeten zonder training uit een ander voertuig worden gekopieerd",
+            "a2": "Ze moeten altijd abrupt zijn",
+            "a3": "Ze moeten het oppervlak negeren",
+            "a4": "Ze moeten glad zijn en passen bij de beschikbare grip"
+          }
+        },
+        "motorbike-s5q7": {
+          "question": "Waarom moet een gepland traject door een bocht aanpasbaar blijven?",
+          "headerLabel": "EEN BOCHT INSCHATTEN",
+          "answers": {
+            "a1": "Het eerste beeld bevat elk toekomstig detail",
+            "a2": "Andere weggebruikers of wegomstandigheden kunnen de situatie veranderen",
+            "a3": "Een plan garandeert dat niemand anders verschijnt",
+            "a4": "Het wegdek verandert nooit"
+          }
+        }
+      }
+    },
+    "stage-6": {
+      "title": "Gevaren voorzien",
+      "questions": {
+        "motorbike-s6q1": {
+          "question": "Een geparkeerd voertuig heeft een persoon in de buurt van verkeer. Op welk mogelijk gevaar moet een rijder anticiperen?",
+          "headerLabel": "GEVAREN VOORZIEN",
+          "answers": {
+            "a1": "De weg wordt automatisch breder",
+            "a2": "Het voertuig wordt gewichtloos",
+            "a3": "De afwezigheid van enige noodzaak om te observeren",
+            "a4": "Een deur die opengaat of het voertuig beweegt"
+          }
+        },
+        "motorbike-s6q2": {
+          "question": "Waarom kan het voor een andere bestuurder moeilijk zijn om een motorfiets op te merken?",
+          "headerLabel": "GEVAREN VOORZIEN",
+          "answers": {
+            "a1": "Chauffeurs zien altijd elk licht",
+            "a2": "Het kleinere visuele profiel kan minder opvallend zijn",
+            "a3": "Motoren zijn per definitie onzichtbaar",
+            "a4": "Een helder jasje garandeert detectie"
+          }
+        },
+        "motorbike-s6q3": {
+          "question": "Een groot voertuig blokkeert het zicht op een kruispunt. Wat zou dat moeten voorstellen?",
+          "headerLabel": "GEVAREN VOORZIEN",
+          "answers": {
+            "a1": "Erachter kan niets naderen",
+            "a2": "Daarachter kunnen gevaren schuilgaan",
+            "a3": "Zichtbaarheid heeft geen invloed meer op beslissingen",
+            "a4": "Het kruispunt is verdwenen"
+          }
+        },
+        "motorbike-s6q4": {
+          "question": "Waarom blinde vlekken controleren met behulp van de juiste getrainde observatiemethode?",
+          "headerLabel": "GEVAREN VOORZIEN",
+          "answers": {
+            "a1": "Alleen de weg erachter kan er toe doen",
+            "a2": "Een signaal creëert een gegarandeerde kloof",
+            "a3": "Spiegels tonen mogelijk niet elk relevant gebied",
+            "a4": "Spiegels tonen altijd de volledige omgeving"
+          }
+        },
+        "motorbike-s6q5": {
+          "question": "Een voetganger kijkt weg van het verkeer nabij de wegrand. Wat is de veiligere veronderstelling?",
+          "headerLabel": "GEVAREN VOORZIEN",
+          "answers": {
+            "a1": "Ze hebben elk naderend voertuig gezien",
+            "a2": "Ze hebben zeker voorrang verleend",
+            "a3": "Mogelijk hebben ze de motorfiets niet opgemerkt",
+            "a4": "Ze kunnen niet bewegen"
+          }
+        },
+        "motorbike-s6q6": {
+          "question": "Waarom moet een rijder voorzichtig zijn als hij aanneemt dat oogcontact bewijst dat hij of zij gezien is?",
+          "headerLabel": "GEVAREN VOORZIEN",
+          "answers": {
+            "a1": "Oogcontact verandert de remkracht",
+            "a2": "Kijken garandeert een veilige opening",
+            "a3": "Erkenning doet er nooit toe",
+            "a4": "Een andere weggebruiker kan in die richting kijken zonder het gevaar te herkennen"
+          }
+        },
+        "motorbike-s6q7": {
+          "question": "Er ontstaat een gat als er een ander voertuig nadert. Waar moet de beslissing op gebaseerd zijn?",
+          "headerLabel": "GEVAREN VOORZIEN",
+          "answers": {
+            "a1": "De veronderstelling dat het andere voertuig stopt",
+            "a2": "Een wens om wachten te vermijden",
+            "a3": "Alleen de grootte van de oorspronkelijke opening",
+            "a4": "Actuele snelheid, afstand en een veilige marge"
+          }
+        }
+      }
+    },
+    "stage-7": {
+      "title": "Klaar voor de motorrit",
+      "questions": {
+        "motorbike-s7q1": {
+          "question": "Waarom heeft het vervoeren van een passagier invloed op het rijgedrag van de motorfiets?",
+          "headerLabel": "KLAAR VOOR DE MOTORRIT",
+          "answers": {
+            "a1": "Het halveert altijd de remweg",
+            "a2": "Het elimineert het effect van de zwaartekracht",
+            "a3": "Het verandert de massa- en gewichtsverdeling",
+            "a4": "Het maakt de bandenspanning irrelevant"
+          }
+        },
+        "motorbike-s7q2": {
+          "question": "Wat moet bepalen of een motorfiets een passagier kan vervoeren?",
+          "headerLabel": "KLAAR VOOR DE MOTORRIT",
+          "answers": {
+            "a1": "Alleen al de voorkeur van de passagier",
+            "a2": "Alleen al de lengte van de reis",
+            "a3": "Alleen of er ruimte is op de brandstoftank",
+            "a4": "Het ontwerp, de uitrusting, de richtlijnen van de fabrikant en de toepasselijke regels"
+          }
+        },
+        "motorbike-s7q3": {
+          "question": "Waarom moet een passagier vóór de rit een duidelijke briefing krijgen?",
+          "headerLabel": "KLAAR VOOR DE MOTORRIT",
+          "answers": {
+            "a1": "Hun bewegingen en acties kunnen de rit beïnvloeden",
+            "a2": "Het maakt de training van de ruiter overbodig",
+            "a3": "Het garandeert geen onverwachte gebeurtenissen",
+            "a4": "Het vervangt geschikte beschermingsmiddelen"
+          }
+        },
+        "motorbike-s7q4": {
+          "question": "Hoe moet bagage vervoerd worden?",
+          "headerLabel": "KLAAR VOOR DE MOTORRIT",
+          "answers": {
+            "a1": "Volgens alleen de grootste beschikbare tas",
+            "a2": "Losjes over bewegende delen",
+            "a3": "Waar het controles blokkeert",
+            "a4": "Veilig en binnen de laadgeleiding van de motorfiets"
+          }
+        },
+        "motorbike-s7q5": {
+          "question": "Waarom moet een helm goed passen?",
+          "headerLabel": "KLAAR VOOR DE MOTORRIT",
+          "answers": {
+            "a1": "Een losse pasvorm garandeert ventilatie zonder risico",
+            "a2": "Elke maat geeft identieke bescherming",
+            "a3": "Pasvorm is belangrijk voor de beschermende functie ervan",
+            "a4": "Alleen de kleur heeft invloed op de bescherming"
+          }
+        },
+        "motorbike-s7q6": {
+          "question": "Een rijder voelt zich vóór een reis erg moe. Wat is gepast?",
+          "headerLabel": "KLAAR VOOR DE MOTORRIT",
+          "answers": {
+            "a1": "Behandel de vermoeidheid voordat u gaat rijden",
+            "a2": "Gebruik vertrouwen als vervanging voor rust",
+            "a3": "Rijd sneller om eerder te finishen",
+            "a4": "Ga ervan uit dat vermoeidheid alleen automobilisten treft"
+          }
+        },
+        "motorbike-s7q7": {
+          "question": "Een geneesmiddel kan slaperigheid veroorzaken. Waar moet de berijder op letten?",
+          "headerLabel": "KLAAR VOOR DE MOTORRIT",
+          "answers": {
+            "a1": "Alleen de kleur van het pakket",
+            "a2": "Het advies van het geneesmiddel en passende professionele begeleiding voordat u gaat rijden",
+            "a3": "Of de reis bekend is",
+            "a4": "Of een andere rijder het negeert"
+          }
+        }
+      }
+    },
+    "stage-8": {
+      "title": "Mechanische verbindingen",
+      "questions": {
+        "motorbike-s8q1": {
+          "question": "Wat is wrijving?",
+          "headerLabel": "MECHANISCHE VERBINDINGEN",
+          "answers": {
+            "a1": "De temperatuur waarbij water bevriest",
+            "a2": "De afstand die per uur wordt afgelegd",
+            "a3": "De massa van een object",
+            "a4": "Een kracht die de relatieve beweging tussen contactoppervlakken tegenwerkt"
+          }
+        },
+        "motorbike-s8q2": {
+          "question": "Waar draait een hefboom omheen?",
+          "headerLabel": "MECHANISCHE VERBINDINGEN",
+          "answers": {
+            "a1": "Een elektrische isolator",
+            "a2": "Een manometer",
+            "a3": "Een brandstofinjector",
+            "a4": "Een draaipunt of draaipunt"
+          }
+        },
+        "motorbike-s8q3": {
+          "question": "Twee in elkaar grijpende externe tandwielen draaien samen. Als de een met de klok mee draait, hoe draait de ander dan?",
+          "headerLabel": "MECHANISCHE VERBINDINGEN",
+          "answers": {
+            "a1": "De richting ervan kan niet veranderen",
+            "a2": "Het moet stil blijven",
+            "a3": "Tegen de klok in",
+            "a4": "Met de klok mee"
+          }
+        },
+        "motorbike-s8q4": {
+          "question": "Wat verandert een katrol in een eenvoudig systeem met vaste katrollen?",
+          "headerLabel": "MECHANISCHE VERBINDINGEN",
+          "answers": {
+            "a1": "De richting van de uitgeoefende kracht",
+            "a2": "Het materiaal van het touw",
+            "a3": "De zwaartekracht zelf",
+            "a4": "De massa van de lading"
+          }
+        },
+        "motorbike-s8q5": {
+          "question": "Wat beschrijft druk?",
+          "headerLabel": "MECHANISCHE VERBINDINGEN",
+          "answers": {
+            "a1": "Kracht die over een gebied inwerkt",
+            "a2": "Afstand gedeeld door tijd",
+            "a3": "Massa vermenigvuldigd met volume",
+            "a4": "Temperatuur gedeeld door lengte"
+          }
+        },
+        "motorbike-s8q6": {
+          "question": "Wat doet een veer doorgaans wanneer hij wordt samengedrukt binnen zijn elastische bereik?",
+          "headerLabel": "MECHANISCHE VERBINDINGEN",
+          "answers": {
+            "a1": "Wordt gewichtloos",
+            "a2": "Creëert brandstof",
+            "a3": "Slaat energie op en heeft de neiging terug te keren naar zijn oorspronkelijke vorm",
+            "a4": "Verliest definitief alle elasticiteit"
+          }
+        },
+        "motorbike-s8q7": {
+          "question": "Waarom kan smering de slijtage tussen bewegende delen verminderen?",
+          "headerLabel": "MECHANISCHE VERBINDINGEN",
+          "answers": {
+            "a1": "Het vermindert direct wrijvingscontact",
+            "a2": "Het voorkomt alle mogelijke storingen",
+            "a3": "Het zorgt ervoor dat alle onderdelen even groot zijn",
+            "a4": "Het neemt elke last weg"
+          }
+        }
+      }
+    },
+    "stage-9": {
+      "title": "Afstanden en hoeveelheden",
+      "questions": {
+        "motorbike-s9q1": {
+          "question": "Een voorraaddoos bevat 24 artikelen. Er worden er zes gebruikt. Welk deel blijft over?",
+          "headerLabel": "AFSTANDEN EN HOEVEELHEDEN",
+          "answers": {
+            "a1": "Een kwart",
+            "a2": "Driekwart",
+            "a3": "Een derde",
+            "a4": "Eén helft"
+          }
+        },
+        "motorbike-s9q2": {
+          "question": "Een taak begint om 14:35 uur en duurt 50 minuten. Wanneer is het klaar?",
+          "headerLabel": "AFSTANDEN EN HOEVEELHEDEN",
+          "answers": {
+            "a1": "14:85",
+            "a2": "15:25",
+            "a3": "15:35",
+            "a4": "15:15"
+          }
+        },
+        "motorbike-s9q3": {
+          "question": "Vier gelijke groepen delen 36 items. Hoeveel items zitten er in elke groep?",
+          "headerLabel": "AFSTANDEN EN HOEVEELHEDEN",
+          "answers": {
+            "a1": "6",
+            "a2": "8",
+            "a3": "9",
+            "a4": "12"
+          }
+        },
+        "motorbike-s9q4": {
+          "question": "Een waarde stijgt van 40 naar 50. Wat is de procentuele stijging?",
+          "headerLabel": "AFSTANDEN EN HOEVEELHEDEN",
+          "answers": {
+            "a1": "20%",
+            "a2": "10%",
+            "a3": "25%",
+            "a4": "50%"
+          }
+        },
+        "motorbike-s9q5": {
+          "question": "Een plattegrond gebruikt een schaal van 1 cm tot 2 m. Welke afstand vertegenwoordigt 6 cm?",
+          "headerLabel": "AFSTANDEN EN HOEVEELHEDEN",
+          "answers": {
+            "a1": "12 m",
+            "a2": "8 m",
+            "a3": "60 m",
+            "a4": "3 meter"
+          }
+        },
+        "motorbike-s9q6": {
+          "question": "Drie ladingen wegen 12 kg, 15 kg en 18 kg. Wat is hun totale massa?",
+          "headerLabel": "AFSTANDEN EN HOEVEELHEDEN",
+          "answers": {
+            "a1": "42 kg",
+            "a2": "35 kg",
+            "a3": "48 kg",
+            "a4": "45 kg"
+          }
+        },
+        "motorbike-s9q7": {
+          "question": "Een checklist heeft 20 items. Vier blijven ongecontroleerd. Welk percentage is voltooid?",
+          "headerLabel": "AFSTANDEN EN HOEVEELHEDEN",
+          "answers": {
+            "a1": "90%",
+            "a2": "80%",
+            "a3": "20%",
+            "a4": "75%"
+          }
+        }
+      }
+    },
+    "stage-10": {
+      "title": "Controleren vóór je concludeert",
+      "questions": {
+        "motorbike-s10q1": {
+          "question": "Twee mensen geven verschillende tijden op voor hetzelfde evenement. Wat is de beste volgende stap?",
+          "headerLabel": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+          "answers": {
+            "a1": "Vergelijk elk verslag met andere betrouwbare informatie",
+            "a2": "Gemiddelde de tijden en noem dat een feit",
+            "a3": "Kies automatisch de meer zelfverzekerde spreker",
+            "a4": "Verwijder beide verslagen zonder controle"
+          }
+        },
+        "motorbike-s10q2": {
+          "question": "Welke uitspraak geeft eerder een observatie weer dan een aanname over het motief?",
+          "headerLabel": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+          "answers": {
+            "a1": "De persoon was van plan iedereen te misleiden",
+            "a2": "De persoon gaf nooit om de ontmoeting",
+            "a3": "De persoon vertrok omdat hij schuldig was",
+            "a4": "De persoon verliet de kamer om 14:10 uur"
+          }
+        },
+        "motorbike-s10q3": {
+          "question": "Een foto heeft geen bekende datum of locatie. Wat moet worden gecontroleerd voordat u erop vertrouwt?",
+          "headerLabel": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+          "answers": {
+            "a1": "Of de kleuren aantrekkelijk zijn",
+            "a2": "Hoeveel mensen vinden het leuk",
+            "a3": "Of het overeenkomt met een voorkeursconclusie",
+            "a4": "De oorsprong en context"
+          }
+        },
+        "motorbike-s10q4": {
+          "question": "Een claim wordt herhaald door drie websites, die allemaal één naamloze bron citeren. Wat laat dat zien?",
+          "headerLabel": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+          "answers": {
+            "a1": "Bewijs dat de bewering juist is",
+            "a2": "Drie onafhankelijke ooggetuigen",
+            "a3": "Herhaalde rapportage, niet drie onafhankelijke bevestigingen",
+            "a4": "Een bewijs dat er geen verdere controle nodig is"
+          }
+        },
+        "motorbike-s10q5": {
+          "question": "Alle geautoriseerde bezoekers hebben een pas. Mira heeft een pas. Wat volgt er alleen al uit die regel?",
+          "headerLabel": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+          "answers": {
+            "a1": "Er zijn geen geautoriseerde bezoekers in het bezit van een pas",
+            "a2": "Het bewijst niet dat Mira een geautoriseerde bezoeker is",
+            "a3": "Mira moet een geautoriseerde bezoeker zijn",
+            "a4": "Mira kan geen geautoriseerde bezoeker zijn"
+          }
+        },
+        "motorbike-s10q6": {
+          "question": "Een nieuw betrouwbaar feit is in tegenspraak met uw oorspronkelijke verklaring. Wat is een verstandige reactie?",
+          "headerLabel": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+          "answers": {
+            "a1": "Heroverweeg de uitleg",
+            "a2": "Behandel je eerste idee als onveranderlijk",
+            "a3": "Verander het feit zodat het bij de uitleg past",
+            "a4": "Verberg het nieuwe feit"
+          }
+        },
+        "motorbike-s10q7": {
+          "question": "Volgens een rapport heeft een gebeurtenis plaatsgevonden na een verandering. Bewijst die timing alleen al dat de verandering dit heeft veroorzaakt?",
+          "headerLabel": "CONTROLEREN VÓÓR JE CONCLUDEERT",
+          "answers": {
+            "a1": "Nee; Er kunnen ook andere verklaringen bestaan",
+            "a2": "Ja; als het rapport lang genoeg is",
+            "a3": "Nee; eerdere gebeurtenissen kunnen nooit latere gebeurtenissen veroorzaken",
+            "a4": "Ja; volgorde bewijst altijd de oorzaak"
+          }
         }
       }
     }

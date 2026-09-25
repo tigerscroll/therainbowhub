@@ -9,6 +9,8 @@ const cacheDir = process.env.CHAPTER_TRANSLATION_CACHE;
 if (!cacheDir || !path.isAbsolute(cacheDir)) throw Error('Set CHAPTER_TRANSLATION_CACHE to an absolute task cache directory.');
 fs.mkdirSync(cacheDir, {recursive: true});
 const chosen = process.env.LOCALES?.split(',') ?? locales;
+const selected = process.env.QUIZZES?.split(',') ?? slugs;
+if (selected.some(slug => !slugs.includes(slug))) throw Error('Unknown chapter quiz');
 if (chosen.some(locale => !locales.includes(locale))) throw Error('Unknown chapter locale');
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const write = (file, value) => { fs.writeFileSync(`${file}.tmp`, JSON.stringify(value, null, 2) + '\n'); fs.renameSync(`${file}.tmp`, file); };
@@ -71,10 +73,10 @@ async function translate(locale, values, attempt = 0) {
 
 function seed(locale) {
   const tasks = {};
-  for (const slug of slugs) {
+  for (const slug of selected) {
     const root = `data/quizzes/${slug}`;
-    const manifest = read(`${root}/english-extended/quiz.json`);
-    const source = adaptSource(slug, read(`${root}/english-extended/en.json`), manifest, locale);
+    const manifest = read(`${root}/quiz.json`);
+    const source = adaptSource(slug, read(`${root}/en.json`), manifest, locale);
     const original = read(`${root}/en.json`), native = read(`${root}/${locale}.json`);
     const existing = new Map();
     // Match the complete English question before reusing its reviewed native
@@ -122,7 +124,7 @@ async function run(locale) {
   if (batch.length) batches.push(batch);
   console.log(`${locale}: ${needed.length} strings, ${batches.length} batches`);
   if (process.env.EXPORT_ONLY) {
-    write(path.join(cacheDir, `${locale}.payload.json`), {destination: 'https://translate.googleapis.com/translate_a/single', sourceLanguage: 'en', targetLanguage: locale, quizSlugs: slugs, strings: needed});
+    write(path.join(cacheDir, `${locale}.payload.json`), {destination: 'https://translate.googleapis.com/translate_a/single', sourceLanguage: 'en', targetLanguage: locale, quizSlugs: selected, strings: needed});
     return;
   }
   if (process.env.DRY_RUN) return;
@@ -133,7 +135,8 @@ async function run(locale) {
     if (index % 10 === 0 || index === batches.length - 1) console.log(`${locale}: ${index + 1}/${batches.length}`);
     await pause(300);
   }
-  const result = {};
+  const draftFile = path.join(cacheDir, `${locale}.draft.json`);
+  const result = fs.existsSync(draftFile) ? read(draftFile) : {};
   for (const [slug, task] of Object.entries(tasks)) {
     const copy = structuredClone(task.source);
     const set = (parts, value) => {parts.slice(0,-1).reduce((object, key) => object[key], copy)[parts.at(-1)] = value;};
@@ -142,7 +145,7 @@ async function run(locale) {
     result[slug] = copy;
   }
   write(path.join(cacheDir, `${locale}.draft.json`), result);
-  console.log(`${locale}: ${slugs.length} draft quizzes complete`);
+  console.log(`${locale}: ${selected.length} draft quizzes complete`);
 }
 const queue = [...chosen], failures = [];
 async function worker() {while (queue.length) {const locale = queue.shift(); try {await run(locale);} catch (error) {failures.push(locale); console.error(error.stack);}}}

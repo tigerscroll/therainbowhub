@@ -10,7 +10,9 @@ function RecommendationCard({ recommendation }: { recommendation: QuizRecommenda
   return (
     <a className="quiz-engine__recommendation" href={recommendation.href}>
       <span className="quiz-engine__recommendation-thumbnail">
-        <img alt={recommendation.thumbnailAlt} decoding="async" loading="lazy" src={recommendation.thumbnailUrl} />
+        {recommendation.thumbnailUrl
+          ? <img alt={recommendation.thumbnailAlt} decoding="async" loading="lazy" src={recommendation.thumbnailUrl} />
+          : <span aria-hidden="true" className="quiz-engine__recommendation-icon">{recommendation.icon ?? "🧩"}</span>}
       </span>
       <div className="quiz-engine__recommendation-copy">
         <h3>{recommendation.title}</h3>

@@ -5,7 +5,7 @@ export default {
   slug: 'mechanic',
   summary: 'Read the dashboard, connect vehicle systems and put your workshop reasoning to the test.',
   about: 'Explore vehicle systems, warning signs, measurement and fault-finding through a mix of practical questions. Each set focuses on a new part of the car or a new kind of clue.\n\nChoose the answer supported by the information shown. See your topic profile at each checkpoint, then reveal your overall result and optionally review missed answers.\n\nQuestions avoid national road rules, inspection standards and assumptions about one make or model. Diagnostic clues suggest areas to investigate; they do not prove a fault without testing. Vehicles differ, so manufacturer guidance matters.',
-  references: 'The retained question bank comes from the project’s reviewed worldwide Mechanic edition. See [its manufacturer and safety references](../SOURCES.md). Added questions use broad component functions and self-contained measurements; no DIY high-voltage procedures are included.',
+  references: 'The retained question bank comes from the project’s reviewed worldwide Mechanic edition. See [its manufacturer and safety references](SOURCES.md). Added questions use broad component functions and self-contained measurements; no DIY high-voltage procedures are included.',
   rounds: [
     { title: 'Dashboard Detective', category: 'diagnosis_safety', checkpoint: 'Your dashboard snapshot', feedback: 'Dashboard clues: {profile}. Look beneath the warning lights.', teaser: 'Match engine parts with the jobs they do.', questions: [
       old('r1q1'),old('r1q2'),old('r1q3'),old('r1q4'),old('r1q5'),old('r1q6'),

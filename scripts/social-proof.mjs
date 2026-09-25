@@ -1,55 +1,10 @@
-export const SOCIAL_PROOF_COUNTS = Object.freeze({
-  treatments: 0,
-  airforce: 205000,
-  adhd: 289000,
-  alzheimers: 295000,
-  anatomy: 169000,
-  actors: 191000,
-  autism: 283000,
-  barrister: 181000,
-  bible: 163000,
-  cambridge: 94000,
-  chef: 123000,
-  dentist: 174000,
-  dementia: 251000,
-  depression: 291000,
-  doctor: 224000,
-  firefighter: 268000,
-  flightattendant: 193000,
-  grammar: 176000,
-  grossquiz: 219000,
-  harvard: 108000,
-  historicalfigures: 157000,
-  iq: 212000,
-  italian: 146000,
-  lovers: 227000,
-  cataract: 239000,
-  maculardegeneration: 246000,
-  prostatetest: 262000,
-  marry: 184000,
-  mechanic: 87000,
-  medical: 217000,
-  memory: 241000,
-  midwifery: 76000,
-  nursing: 138000,
-  nun: 166000,
-  obsolete: 198000,
-  ocd: 287000,
-  oxford: 112000,
-  paramedic: 149000,
-  pilot: 231000,
-  police: 214000,
-  raf: 152000,
-  socialworker: 196000,
-  songs: 273000,
-  surgeon: 236000,
-  teacher: 209000,
-  tools: 221000,
-  train: 188000,
-  vision: 203000,
-  word: 186000,
-  personality: 274000,
-  catholic: 275000,
-  motorbike: 276000,
-  "years-left": 267000,
-});
+import fs from 'node:fs';
+import path from 'node:path';
+import {getQuizSlugs} from './quiz-catalogue.mjs';
+
+// Counts belong to their quiz manifest. Adding a quiz never edits this module.
+const root = path.join(process.cwd(), 'data/quizzes');
+export const SOCIAL_PROOF_COUNTS = Object.freeze(Object.fromEntries(getQuizSlugs(root).map(slug => {
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, slug, 'quiz.json'), 'utf8'));
+  return [slug, manifest.listing?.socialProofCount];
+})));

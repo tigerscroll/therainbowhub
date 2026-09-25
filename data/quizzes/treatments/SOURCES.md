@@ -1,73 +1,80 @@
-# Treatments source record
+# Treatments: worldwide English, ten-round edition
 
-## Current worldwide English edition — 24 September 2026
+Reviewed 24 September 2026. English `/treatments` uses this separate 70-question edition. The original title and landing subtitle are preserved exactly. Other locales retain their existing content.
 
-English `/treatments` uses the separate [ten-round, 70-question edition](english-extended/SOURCES.md), with the original title and landing subtitle. That record maps every answer to its reference. The shared manifest and translations below are retained for the other locales.
+The questions are original general-knowledge prompts. References establish definitions and mechanisms, not treatment recommendations for an individual. There are no dosage, eligibility, cost, referral, insurance, emergency-number or country-specific access questions. US and UK reference sites are used for concepts that apply internationally. Physical therapy/physiotherapy and radiation therapy/radiotherapy are paired on first introduction; other wording uses plain English and generic terms.
 
-## Ten-question translated edition — 23 September 2026
+The answer key below records the fact check independently of display position. A passing score is 56/70. Checkpoint profiles use only the completed round; scores do not assess a healthcare qualification. False options are quiz distractors.
 
-The root `quiz.json` lists all 30 locales and contains one stage of ten text-only questions. Non-English routes use that structure; the English route loads `english-extended` instead. The earlier 30-question English version documented below is historical. None of the questions offers individual treatment advice.
-
-The active question set draws on these general definitions and principles, not on claims that every treatment is equally effective or suitable for a particular person:
-
-| Current question IDs | Reference |
-|---|---|
-| `treatments-r1q1` | [NHS: Physiotherapy](https://www.nhs.uk/tests-and-treatments/physiotherapy/) |
-| `treatments-r1q2` | [NCCIH: Acupuncture](https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety) |
-| `treatments-r2q1` | [NHS: Kidney disease treatment](https://www.nhs.uk/conditions/kidney-disease/treatment/) |
-| `treatments-r2q2` | [NHS: Insulin](https://www.nhs.uk/medicines/insulin/insulin-for-type-1-diabetes/) |
-| `treatments-r3q1`, `treatments-r4q2` | [NCI: Chemotherapy](https://www.cancer.gov/about-cancer/treatment/types/chemotherapy), [NCI: Radiation therapy](https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy) |
-| `treatments-r3q2`, `treatments-r5q1` | [NHS: Occupational therapy](https://www.nhs.uk/tests-and-treatments/occupational-therapy/) |
-| `treatments-r4q1` | [NHS: CBT](https://www.nhs.uk/tests-and-treatments/cognitive-behavioural-therapy-cbt/) |
-| `treatments-r5q2` | [NHS: Swallowing problems](https://www.nhs.uk/symptoms/swallowing-problems-dysphagia/) |
-
-## Archived English five-round edition — 22 September 2026
-
-This archived English edition used 30 original/adapted text-only questions in five six-question rounds. The old source order and answer key below describe the **legacy ten-question edition**, not this archived 30-question edition. Its stable IDs extended from `treatments-r1q1` through `treatments-r5q6`. The English headline did not claim an unmeasured 16% pass rate.
-
-At the time, only `en` was active because the five-round structure was English-only. The 29 translation files and ten images were retained for a later migration; those translations were not activated against the incompatible 30-question metadata. That historical edition did not use the photographs in the question or landing flows; the hub listing thumbnail was retained. The current ten-question global edition also uses text-only questions.
-
-Fact-check references consulted 22 September 2026 (UTC). These support definitions and general principles, not personal care recommendations or claims that all listed approaches have equal evidence:
-
-| Questions | Reference |
-|---|---|
-| r1q1, r3q6, r5q4 | [NHS: Physiotherapy](https://www.nhs.uk/tests-and-treatments/physiotherapy/) — movement, exercise/manual care/advice and hydrotherapy |
-| r1q2 | [NCCIH: Acupuncture](https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety) — fine-needle technique |
-| r1q3, r4q1, r5q6 | [NHS: CBT](https://www.nhs.uk/tests-and-treatments/cognitive-behavioural-therapy-cbt/) — talking therapy, thoughts and actions |
-| r1q4, r3q1, r4q2 | [NCI: Chemotherapy](https://www.cancer.gov/about-cancer/treatment/types/chemotherapy) — drug treatment and different delivery routes |
-| r1q5, r4q4 | [NCCIH: Cupping](https://www.nccih.nih.gov/health/cupping) — suction; limited evidence for pain, not proof of cure |
-| r1q6 | [NHS: Blood transfusion](https://www.nhs.uk/tests-and-treatments/blood-transfusion/) — donor blood components through a vein |
-| r2q1 | [NHS: Kidney disease treatment](https://www.nhs.uk/conditions/kidney-disease/treatment/) — dialysis removes waste and excess fluid |
-| r2q2 | [NHS: Insulin](https://www.nhs.uk/medicines/insulin/insulin-for-type-1-diabetes/) — glucose use |
-| r2q3, r3q5 | [NHS: Antibiotics](https://www.nhs.uk/medicines/antibiotics/) — action against bacteria, not viruses |
-| r2q4 | [NHS: TENS](https://www.nhs.uk/tests-and-treatments/transcutaneous-electrical-nerve-stimulation-tens/) — weak electrical current |
-| r2q5 | [NCI: Immunotherapy](https://www.cancer.gov/about-cancer/treatment/types/immunotherapy) — helping the immune system fight cancer |
-| r2q6, r3q4 | [NHS: General anaesthesia](https://www.nhs.uk/tests-and-treatments/general-anaesthesia/), [NHS: Local anaesthesia](https://www.nhs.uk/tests-and-treatments/local-anaesthesia/) — unconsciousness versus local numbing |
-| r3q1, r3q3, r4q5 | [NCI: Radiotherapy](https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy), [NHS: Physiotherapy](https://www.nhs.uk/tests-and-treatments/physiotherapy/) — radiation versus ultrasound sound waves; cancer-cell DNA damage |
-| r3q2, r4q3, r5q1 | [NHS: Occupational therapy](https://www.nhs.uk/tests-and-treatments/occupational-therapy/) — everyday activities beyond paid employment |
-| r3q5 | [NHS: Vaccination](https://www.nhs.uk/vaccinations/why-vaccination-is-important-and-the-safest-way-to-protect-yourself/) — preparing immunity |
-| r4q6 | [NCI: Types of cancer treatment](https://www.cancer.gov/about-cancer/treatment/types) — combinations of approaches |
-| r5q2 | [NHS: Swallowing problems](https://www.nhs.uk/symptoms/swallowing-problems-dysphagia/) — speech and language therapy |
-| r5q3 | [NHS: Coronary artery bypass](https://www.nhs.uk/tests-and-treatments/coronary-artery-bypass-graft/how-its-done/) — grafted route around a blockage |
-| r5q5 | [NHS: Palliative care](https://www.nhs.uk/tests-and-treatments/end-of-life-care/what-it-involves-and-when-it-starts/) — comfort, symptoms and quality of life |
-
-Round 4's false statements are distractors, not advice. Question accuracy is not a clinical qualification. No dosages, treatment-selection advice or procedural instructions are supplied.
-
-## Legacy ten-question edition
-
-Source: https://www.logcabindaily.com/post/medical_treatments_quiz_can_you_identify_these_common_therapies/1/
-
-First ten questions, option order and correct answers verified in the source UI on 2026-09-19. Permission to reproduce was stated by the user. Images are the original source artwork, resized without cropping and encoded as WebP. No generated replacements.
-
-- Question 1: https://www.logcabindaily.com/processed_images/2d7a2efb3d70c17e00.jpg
-- Question 2: https://www.logcabindaily.com/processed_images/d563ed552890cf4600.jpg
-- Question 3: https://www.logcabindaily.com/processed_images/acba6d8d9050ce8600.jpg
-- Question 4: https://www.logcabindaily.com/processed_images/3c03b796b399c7c700.jpg
-- Question 5: https://www.logcabindaily.com/processed_images/18abd750a39f8a1200.jpg
-- Question 6: https://www.logcabindaily.com/processed_images/8353f15f53d3edcb00.jpg
-- Question 7: https://www.logcabindaily.com/processed_images/07875c44c7e1e07500.jpg
-- Question 8: https://www.logcabindaily.com/processed_images/c3cb5ed3d43f444200.jpg
-- Question 9: https://www.logcabindaily.com/processed_images/748a9354213d372200.jpg
-- Question 10: https://www.logcabindaily.com/processed_images/d2ca2510bbd89fd000.jpg
-
-Terminology cross-checks: https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/cognitive-behavioural-therapy-cbt/ ; https://www.cancer.gov/about-cancer/treatment/types/chemotherapy ; https://www.nccih.nih.gov/health/cupping
+| Question | Correct concept | Reference |
+|---|---|---|
+| `treatments-s1q1` | Physical therapy (physiotherapy) | [NHS: Physiotherapy](https://www.nhs.uk/tests-and-treatments/physiotherapy/) |
+| `treatments-s1q2` | Acupuncture | [NCCIH: Acupuncture](https://www.nccih.nih.gov/health/acupuncture-effectiveness-and-safety) |
+| `treatments-s1q3` | Glucose (sugar) | [NHS: Insulin](https://www.nhs.uk/medicines/insulin/insulin-for-type-1-diabetes/) |
+| `treatments-s1q4` | Cognitive behavioral therapy | [NHS: Cognitive behavioural therapy](https://www.nhs.uk/tests-and-treatments/cognitive-behavioural-therapy-cbt/) |
+| `treatments-s1q5` | A blood transfusion | [NHS: Blood transfusion](https://www.nhs.uk/tests-and-treatments/blood-transfusion/) |
+| `treatments-s1q6` | Radiation therapy (radiotherapy) | [NCI: Radiation Therapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy) |
+| `treatments-s1q7` | Occupational therapy | [NHS: Occupational therapy](https://www.nhs.uk/tests-and-treatments/occupational-therapy/) |
+| `treatments-s2q1` | Bacterial infections | [NHS: Antibiotics](https://www.nhs.uk/medicines/antibiotics/) |
+| `treatments-s2q2` | Cholesterol | [NHS: Statins](https://www.nhs.uk/medicines/statins/) |
+| `treatments-s2q3` | Blood clot formation | [NHS: Anticoagulants](https://www.nhs.uk/medicines/anticoagulants/) |
+| `treatments-s2q4` | Histamine | [NHS: Antihistamines](https://www.nhs.uk/medicines/antihistamines/) |
+| `treatments-s2q5` | The airways | [NHS: About salbutamol inhalers](https://www.nhs.uk/medicines/salbutamol-inhaler/about-salbutamol-inhalers/) |
+| `treatments-s2q6` | Nausea and vomiting | [NCI: Antiemetic definition](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/antiemetic) |
+| `treatments-s2q7` | Urine production | [NHS: Chronic kidney disease treatment](https://www.nhs.uk/conditions/kidney-disease/treatment/) |
+| `treatments-s3q1` | Waste and extra fluid | [NIDDK: Hemodialysis](https://www.niddk.nih.gov/health-information/kidney-disease/kidney-failure/hemodialysis) |
+| `treatments-s3q2` | Oxygen | [NHS: Oxygen therapy](https://www.nhs.uk/tests-and-treatments/home-oxygen-treatment/) |
+| `treatments-s3q3` | Air pressure helps keep the airway open | [NHS: Sleep apnea](https://www.nhs.uk/conditions/sleep-apnoea/) |
+| `treatments-s3q4` | A vein | [NCI: Chemotherapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/chemotherapy) |
+| `treatments-s3q5` | Blood clotting | [NHS: Blood transfusion](https://www.nhs.uk/tests-and-treatments/blood-transfusion/) |
+| `treatments-s3q6` | A skin graft | [South Tees Hospitals: Skin grafting](https://www.southtees.nhs.uk/resources/skin-grafting-and-donor-site-care/) |
+| `treatments-s3q7` | A pacemaker | [NHS: Pacemakers](https://www.nhs.uk/tests-and-treatments/pacemaker-implantation/) |
+| `treatments-s4q1` | Thoughts, feelings and actions | [NHS: Cognitive behavioural therapy](https://www.nhs.uk/tests-and-treatments/cognitive-behavioural-therapy-cbt/) |
+| `treatments-s4q2` | Listening and helping a person explore solutions | [NHS: Counseling](https://www.nhs.uk/tests-and-treatments/counselling/) |
+| `treatments-s4q3` | Relationships with other people | [NHS: Talking therapies](https://www.nhs.uk/tests-and-treatments/talking-therapies/) |
+| `treatments-s4q4` | EMDR | [NHS: Talking therapies](https://www.nhs.uk/tests-and-treatments/talking-therapies/) |
+| `treatments-s4q5` | A therapist supports work with learning materials | [NHS: Talking therapies](https://www.nhs.uk/tests-and-treatments/talking-therapies/) |
+| `treatments-s4q6` | Current thoughts and feelings | [NHS: Talking therapies](https://www.nhs.uk/tests-and-treatments/talking-therapies/) |
+| `treatments-s4q7` | Partners in a relationship | [NHS: Talking therapies](https://www.nhs.uk/tests-and-treatments/talking-therapies/) |
+| `treatments-s5q1` | Medicines | [NCI: Chemotherapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/chemotherapy) |
+| `treatments-s5q2` | A machine outside the body | [NCI: Radiation Therapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy) |
+| `treatments-s5q3` | The immune system | [NCI: Immunotherapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/immunotherapy) |
+| `treatments-s5q4` | Specific proteins involved in cancer growth | [NCI: Targeted Therapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/targeted-therapies) |
+| `treatments-s5q5` | Hormones | [NCI: Hormone Therapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/hormone-therapy) |
+| `treatments-s5q6` | The cells that produce blood cells | [NCI: Stem Cell Transplants in Cancer Treatment](https://www.cancer.gov/about-cancer/treatment/types/stem-cell-transplant) |
+| `treatments-s5q7` | Inside the body, in or near the cancer | [NCI: Radiation Therapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy) |
+| `treatments-s6q1` | In warm water | [NHS: Physiotherapy](https://www.nhs.uk/tests-and-treatments/physiotherapy/) |
+| `treatments-s6q2` | Hands-on treatment of muscles and joints | [NHS: Physiotherapy](https://www.nhs.uk/tests-and-treatments/physiotherapy/) |
+| `treatments-s6q3` | Swallowing | [NHS: Swallowing problems](https://www.nhs.uk/symptoms/swallowing-problems-dysphagia/) |
+| `treatments-s6q4` | The heart | [MedlinePlus: Cardiac Rehabilitation](https://medlineplus.gov/cardiacrehabilitation.html) |
+| `treatments-s6q5` | Occupational therapy | [NHS: Occupational therapy](https://www.nhs.uk/tests-and-treatments/occupational-therapy/) |
+| `treatments-s6q6` | A prosthesis | [NHS: Amputation and rehabilitation](https://www.nhs.uk/tests-and-treatments/amputation/) |
+| `treatments-s6q7` | The lungs | [NHLBI: Pulmonary Rehabilitation](https://www.nhlbi.nih.gov/health/pulmonary-rehabilitation) |
+| `treatments-s7q1` | Unconscious and unable to feel the procedure | [NHS: General anesthesia](https://www.nhs.uk/tests-and-treatments/general-anaesthesia/) |
+| `treatments-s7q2` | It numbs a specific area without requiring unconsciousness | [NHS: Local anesthesia](https://www.nhs.uk/tests-and-treatments/local-anaesthesia/) |
+| `treatments-s7q3` | A new route for blood around a blocked artery | [NHS: Coronary artery bypass surgery](https://www.nhs.uk/tests-and-treatments/coronary-artery-bypass-graft/how-its-done/) |
+| `treatments-s7q4` | Widens a narrowed blood vessel | [NHLBI: Getting a Stent](https://www.nhlbi.nih.gov/health/stents/during) |
+| `treatments-s7q5` | Help hold an artery open | [NHLBI: What Are Stents?](https://www.nhlbi.nih.gov/health/stents) |
+| `treatments-s7q6` | A camera | [NHS: Laparoscopy](https://www.nhs.uk/tests-and-treatments/laparoscopy/) |
+| `treatments-s7q7` | Manufactured joint components | [NHS: Hip replacement](https://www.nhs.uk/tests-and-treatments/hip-replacement/what-is-a-hip-replacement/) |
+| `treatments-s8q1` | They act on bacteria, not the cold virus | [NHS: Antibiotics](https://www.nhs.uk/medicines/antibiotics/) |
+| `treatments-s8q2` | Some types are taken by mouth | [NCI: Chemotherapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/chemotherapy) |
+| `treatments-s8q3` | It can help people of different ages with daily life | [NHS: Occupational therapy](https://www.nhs.uk/tests-and-treatments/occupational-therapy/) |
+| `treatments-s8q4` | No; it helps people explore their own solutions | [NHS: Counseling](https://www.nhs.uk/tests-and-treatments/counselling/) |
+| `treatments-s8q5` | Cups create suction on the skin | [NCCIH: Cupping](https://www.nccih.nih.gov/health/cupping) |
+| `treatments-s8q6` | A mild electrical current | [NHS: TENS](https://www.nhs.uk/tests-and-treatments/transcutaneous-electrical-nerve-stimulation-tens/) |
+| `treatments-s8q7` | It does not establish that it is safe | [NCCIH: Natural Does Not Necessarily Mean Safer, or Better](https://www.nccih.nih.gov/health/know-science/natural-doesnt-mean-better) |
+| `treatments-s9q1` | Peritoneal dialysis | [NIDDK: Peritoneal Dialysis](https://www.niddk.nih.gov/health-information/kidney-disease/kidney-failure/peritoneal-dialysis) |
+| `treatments-s9q2` | A nasogastric tube | [MedlinePlus: Nasogastric feeding tube](https://medlineplus.gov/ency/patientinstructions/000182.htm) |
+| `treatments-s9q3` | Cataract surgery | [NEI: Cataract Surgery](https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/cataracts/cataract-surgery) |
+| `treatments-s9q4` | Oxygen | [NCI: Stem Cell Transplants in Cancer Treatment](https://www.cancer.gov/about-cancer/treatment/types/stem-cell-transplant) |
+| `treatments-s9q5` | Questioning an unhelpful thought | [NHS: Cognitive behavioural therapy](https://www.nhs.uk/tests-and-treatments/cognitive-behavioural-therapy-cbt/) |
+| `treatments-s9q6` | A cochlear implant | [NIDCD: Cochlear Implants](https://www.nidcd.nih.gov/health/cochlear-implants) |
+| `treatments-s9q7` | A nebulizer | [MedlinePlus: Nebulizers](https://medlineplus.gov/ency/patientinstructions/000006.htm) |
+| `treatments-s10q1` | Before the main treatment | [NCI: Hormone Therapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/hormone-therapy) |
+| `treatments-s10q2` | Lower the chance of the cancer returning | [NCI: Hormone Therapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/hormone-therapy) |
+| `treatments-s10q3` | Hemodialysis | [NIDDK: Hemodialysis](https://www.niddk.nih.gov/health-information/kidney-disease/kidney-failure/hemodialysis) |
+| `treatments-s10q4` | To apply the skills in everyday situations | [NHS: Cognitive behavioural therapy](https://www.nhs.uk/tests-and-treatments/cognitive-behavioural-therapy-cbt/) |
+| `treatments-s10q5` | The person receiving the transplant | [NCI: Stem Cell Transplants in Cancer Treatment](https://www.cancer.gov/about-cancer/treatment/types/stem-cell-transplant) |
+| `treatments-s10q6` | Releasing brakes on an immune response | [NCI: Immunotherapy to Treat Cancer](https://www.cancer.gov/about-cancer/treatment/types/immunotherapy) |
+| `treatments-s10q7` | It can improve comfort alongside treatment aimed at a cure | [NCI: Palliative Care in Cancer](https://www.cancer.gov/about-cancer/advanced-cancer/care-choices/palliative-care-fact-sheet) |

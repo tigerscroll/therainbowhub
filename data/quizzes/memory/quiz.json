@@ -2,42 +2,20 @@
   "schemaVersion": 2,
   "slug": "memory",
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ],
   "engine": {
     "scoring": "correct-answer",
     "hardRefreshCheckpoints": false,
     "targetRatio": 0.8,
-    "localeParity": "strict",
+    "localeParity": "independent",
     "tieBreaks": {
       "categories": "harder-correct",
       "bestRound": "later"
@@ -48,7 +26,9 @@
     "published": "2026-08-12",
     "difficulty": "Hard",
     "icon": "🧠",
-    "socialProofCount": 241000
+    "socialProofCount": 241000,
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -92,150 +72,916 @@
       "icon": "🧠"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "memory-s1q1",
+          "memory-s1q2",
+          "memory-s1q3",
+          "memory-s1q4",
+          "memory-s1q5",
+          "memory-s1q6",
+          "memory-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "memory-s2q1",
+          "memory-s2q2",
+          "memory-s2q3",
+          "memory-s2q4",
+          "memory-s2q5",
+          "memory-s2q6",
+          "memory-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "memory-s3q1",
+          "memory-s3q2",
+          "memory-s3q3",
+          "memory-s3q4",
+          "memory-s3q5",
+          "memory-s3q6",
+          "memory-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "memory-s4q1",
+          "memory-s4q2",
+          "memory-s4q3",
+          "memory-s4q4",
+          "memory-s4q5",
+          "memory-s4q6",
+          "memory-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "memory-s5q1",
+          "memory-s5q2",
+          "memory-s5q3",
+          "memory-s5q4",
+          "memory-s5q5",
+          "memory-s5q6",
+          "memory-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "memory-s6q1",
+          "memory-s6q2",
+          "memory-s6q3",
+          "memory-s6q4",
+          "memory-s6q5",
+          "memory-s6q6",
+          "memory-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "memory-s7q1",
+          "memory-s7q2",
+          "memory-s7q3",
+          "memory-s7q4",
+          "memory-s7q5",
+          "memory-s7q6",
+          "memory-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "memory-s8q1",
+          "memory-s8q2",
+          "memory-s8q3",
+          "memory-s8q4",
+          "memory-s8q5",
+          "memory-s8q6",
+          "memory-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "memory-s9q1",
+          "memory-s9q2",
+          "memory-s9q3",
+          "memory-s9q4",
+          "memory-s9q5",
+          "memory-s9q6",
+          "memory-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "memory-r1q1",
-          "memory-r1q4",
-          "memory-r2q2",
-          "memory-r2q3",
-          "memory-r3q1",
-          "memory-r3q7",
-          "memory-r4q1",
-          "memory-r4q2",
-          "memory-r5q2",
-          "memory-r5q4"
+          "memory-s10q1",
+          "memory-s10q2",
+          "memory-s10q3",
+          "memory-s10q4",
+          "memory-s10q5",
+          "memory-s10q6",
+          "memory-s10q7"
         ]
       }
     ],
     "questions": {
-      "memory-r1q1": {
-        "study": {
-          "mode": "manual",
-          "rewarded": false
-        },
-        "correctAnswerId": "a1",
-        "category": "visual",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r1q4": {
-        "correctAnswerId": "a4",
-        "category": "word_recall",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r2q2": {
-        "correctAnswerId": "a2",
-        "category": "working_memory",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r2q3": {
-        "correctAnswerId": "a3",
-        "category": "attention",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r3q1": {
-        "study": {
-          "mode": "manual",
-          "rewarded": false
-        },
-        "correctAnswerId": "a1",
-        "category": "association",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r3q7": {
-        "correctAnswerId": "a3",
-        "category": "association",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r4q1": {
-        "study": {
-          "mode": "manual",
-          "rewarded": false
-        },
-        "correctAnswerId": "a1",
-        "category": "association",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "memory-r4q2": {
-        "correctAnswerId": "a2",
-        "category": "attention",
+      "memory-s1q1": {
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
         ],
-        "protectedTokens": [
-          {
-            "path": "question",
-            "value": "B7RK",
-            "count": 1
-          },
-          {
-            "path": "answers.a2",
-            "value": "B7KR",
-            "count": 1
-          }
-        ]
+        "correctAnswerId": "a1",
+        "category": "visual",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
       },
-      "memory-r5q2": {
-        "correctAnswerId": "a2",
-        "category": "numbers",
+      "memory-s1q2": {
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a3",
+        "category": "attention"
       },
-      "memory-r5q4": {
+      "memory-s1q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "word_recall"
+      },
+      "memory-s1q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "word_recall",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s1q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "numbers"
+      },
+      "memory-s1q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "working_memory"
+      },
+      "memory-s1q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "visual"
+      },
+      "memory-s2q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "word_recall",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s2q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "word_recall"
+      },
+      "memory-s2q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "working_memory"
+      },
+      "memory-s2q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "word_recall",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s2q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "word_recall"
+      },
+      "memory-s2q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "working_memory"
+      },
+      "memory-s2q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "attention"
+      },
+      "memory-s3q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "numbers",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s3q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "working_memory"
+      },
+      "memory-s3q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "attention"
+      },
+      "memory-s3q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "visual",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s3q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "working_memory"
+      },
+      "memory-s3q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "visual"
+      },
+      "memory-s3q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "working_memory"
+      },
+      "memory-s4q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
         "category": "association",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s4q2": {
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2",
+        "category": "association"
+      },
+      "memory-s4q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "attention"
+      },
+      "memory-s4q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "association",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s4q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "association"
+      },
+      "memory-s4q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "association"
+      },
+      "memory-s4q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "association"
+      },
+      "memory-s5q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "visual",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s5q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "numbers"
+      },
+      "memory-s5q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "attention"
+      },
+      "memory-s5q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "numbers",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s5q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "association"
+      },
+      "memory-s5q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "association"
+      },
+      "memory-s5q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "word_recall"
+      },
+      "memory-s6q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "association",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s6q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "association"
+      },
+      "memory-s6q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "attention"
+      },
+      "memory-s6q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "visual",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s6q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "association"
+      },
+      "memory-s6q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "visual"
+      },
+      "memory-s6q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "visual"
+      },
+      "memory-s7q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "working_memory",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s7q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "working_memory"
+      },
+      "memory-s7q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "working_memory"
+      },
+      "memory-s7q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "working_memory",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s7q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "working_memory"
+      },
+      "memory-s7q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "word_recall"
+      },
+      "memory-s7q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "working_memory"
+      },
+      "memory-s8q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "association",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s8q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "numbers"
+      },
+      "memory-s8q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "attention"
+      },
+      "memory-s8q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "numbers",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s8q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "association"
+      },
+      "memory-s8q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "numbers"
+      },
+      "memory-s8q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "association"
+      },
+      "memory-s9q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "word_recall",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s9q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "word_recall"
+      },
+      "memory-s9q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "working_memory"
+      },
+      "memory-s9q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "numbers",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s9q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "association"
+      },
+      "memory-s9q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "numbers"
+      },
+      "memory-s9q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "visual"
+      },
+      "memory-s10q1": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "association",
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "memory-s10q2": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "visual"
+      },
+      "memory-s10q3": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "association"
+      },
+      "memory-s10q4": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "visual"
+      },
+      "memory-s10q5": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "working_memory"
+      },
+      "memory-s10q6": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "association"
+      },
+      "memory-s10q7": {
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "visual"
       }
     },
     "checkpoint": {

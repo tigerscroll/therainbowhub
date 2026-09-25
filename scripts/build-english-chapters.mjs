@@ -1,18 +1,21 @@
-// Authored English-only content. Rebuild without changing root manifests or translations.
+// Authoring tool: rebuild the shared manifest and English copy in the normal quiz folder.
+// Regenerate and review translated JSON whenever question content or structure changes.
 import assert from 'node:assert/strict';
+import remaining from './english-chapters/remaining.mjs';
+import {remainingSlugs} from './english-chapters/remaining-shared.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { activeLocales, slugs as localizedSlugs } from './chapter-locales/config.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const slugs = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq', 'harvard', 'oxford', 'cambridge', 'personality'];
+const slugs = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq', 'harvard', 'oxford', 'cambridge', 'personality', ...remainingSlugs];
 const levels = ['foundation', 'foundation', 'developing', 'developing', 'skilled', 'skilled', 'advanced', 'advanced', 'advanced', 'final'];
 const args = process.argv.slice(2);
 for (const slug of args) assert.ok(slugs.includes(slug), `Unsupported English chapter quiz: ${slug}`);
 
 for (const slug of args.length ? args : slugs) {
-  const { default: content } = await import(`./english-chapters/${slug}.mjs`);
+  const content = remaining[slug] ?? (await import(`./english-chapters/${slug}.mjs`)).default;
   const dir = path.join(root, 'data/quizzes', slug);
   const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'quiz.json'), 'utf8'));
   const copy = JSON.parse(fs.readFileSync(path.join(dir, 'en.json'), 'utf8'));
@@ -121,7 +124,7 @@ for (const slug of args.length ? args : slugs) {
   assert.equal(key.length, 70);
   assert.equal(copy.title, originalTitle);
   assert.equal(copy.landing.intro, originalIntro);
-  const out = path.join(dir, 'english-extended');
+  const out = dir;
   fs.mkdirSync(out, { recursive: true });
   for (const [name, data] of [['quiz', manifest], ['en', copy]]) fs.writeFileSync(path.join(out, `${name}.json`), JSON.stringify(data, null, 2) + '\n');
   if (weighted) {

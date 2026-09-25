@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "🤝",
     "socialProofCount": 196000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "🤝"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "socialworker-s1q1",
+          "socialworker-s1q2",
+          "socialworker-s1q3",
+          "socialworker-s1q4",
+          "socialworker-s1q5",
+          "socialworker-s1q6",
+          "socialworker-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "socialworker-s2q1",
+          "socialworker-s2q2",
+          "socialworker-s2q3",
+          "socialworker-s2q4",
+          "socialworker-s2q5",
+          "socialworker-s2q6",
+          "socialworker-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "socialworker-s3q1",
+          "socialworker-s3q2",
+          "socialworker-s3q3",
+          "socialworker-s3q4",
+          "socialworker-s3q5",
+          "socialworker-s3q6",
+          "socialworker-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "socialworker-s4q1",
+          "socialworker-s4q2",
+          "socialworker-s4q3",
+          "socialworker-s4q4",
+          "socialworker-s4q5",
+          "socialworker-s4q6",
+          "socialworker-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "socialworker-s5q1",
+          "socialworker-s5q2",
+          "socialworker-s5q3",
+          "socialworker-s5q4",
+          "socialworker-s5q5",
+          "socialworker-s5q6",
+          "socialworker-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "socialworker-s6q1",
+          "socialworker-s6q2",
+          "socialworker-s6q3",
+          "socialworker-s6q4",
+          "socialworker-s6q5",
+          "socialworker-s6q6",
+          "socialworker-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "socialworker-s7q1",
+          "socialworker-s7q2",
+          "socialworker-s7q3",
+          "socialworker-s7q4",
+          "socialworker-s7q5",
+          "socialworker-s7q6",
+          "socialworker-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "socialworker-s8q1",
+          "socialworker-s8q2",
+          "socialworker-s8q3",
+          "socialworker-s8q4",
+          "socialworker-s8q5",
+          "socialworker-s8q6",
+          "socialworker-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "socialworker-s9q1",
+          "socialworker-s9q2",
+          "socialworker-s9q3",
+          "socialworker-s9q4",
+          "socialworker-s9q5",
+          "socialworker-s9q6",
+          "socialworker-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "socialworker-q1",
-          "socialworker-q2",
-          "socialworker-q3",
-          "socialworker-q4",
-          "socialworker-q5",
-          "socialworker-q6",
-          "socialworker-q7",
-          "socialworker-q8",
-          "socialworker-q9",
-          "socialworker-q10"
+          "socialworker-s10q1",
+          "socialworker-s10q2",
+          "socialworker-s10q3",
+          "socialworker-s10q4",
+          "socialworker-s10q5",
+          "socialworker-s10q6",
+          "socialworker-s10q7"
         ]
       }
     ],
     "questions": {
-      "socialworker-q1": {
+      "socialworker-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "communication",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
-      },
-      "socialworker-q2": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "ethics",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
+        "category": "communication"
       },
-      "socialworker-q3": {
+      "socialworker-s1q2": {
         "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "ethics",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a2",
+        "category": "communication"
       },
-      "socialworker-q4": {
+      "socialworker-s1q3": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "communication"
+      },
+      "socialworker-s1q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
-        "category": "communication",
+        "category": "communication"
+      },
+      "socialworker-s1q5": {
+        "presentation": "text",
         "answerIds": [
-          "a4",
           "a1",
           "a2",
-          "a3"
-        ]
-      },
-      "socialworker-q5": {
-        "presentation": "text",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "assessment",
+        "category": "communication"
+      },
+      "socialworker-s1q6": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "socialworker-q6": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "professional_practice",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ]
-      },
-      "socialworker-q7": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a3",
-        "category": "safeguarding",
+        "category": "communication"
+      },
+      "socialworker-s1q7": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "communication"
       },
-      "socialworker-q8": {
+      "socialworker-s2q1": {
         "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "professional_practice",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
       },
-      "socialworker-q9": {
+      "socialworker-s2q2": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "ethics",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
+        "category": "assessment"
       },
-      "socialworker-q10": {
+      "socialworker-s2q3": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "assessment",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "socialworker-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "socialworker-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "socialworker-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "socialworker-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "socialworker-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ethics"
+      },
+      "socialworker-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ethics"
+      },
+      "socialworker-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ethics"
+      },
+      "socialworker-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ethics"
+      },
+      "socialworker-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ethics"
+      },
+      "socialworker-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ethics"
+      },
+      "socialworker-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ethics"
+      },
+      "socialworker-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "safeguarding"
+      },
+      "socialworker-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "safeguarding"
+      },
+      "socialworker-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "safeguarding"
+      },
+      "socialworker-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "safeguarding"
+      },
+      "socialworker-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "safeguarding"
+      },
+      "socialworker-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "safeguarding"
+      },
+      "socialworker-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "safeguarding"
+      },
+      "socialworker-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "socialworker-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "socialworker-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "socialworker-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "assessment"
+      },
+      "socialworker-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "assessment"
+      },
+      "socialworker-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "assessment"
+      },
+      "socialworker-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "assessment"
+      },
+      "socialworker-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_practice"
+      },
+      "socialworker-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_practice"
+      },
+      "socialworker-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "professional_practice"
+      },
+      "socialworker-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "professional_practice"
+      },
+      "socialworker-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_practice"
+      },
+      "socialworker-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "professional_practice"
+      },
+      "socialworker-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_practice"
+      },
+      "socialworker-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_practice"
+      },
+      "socialworker-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "professional_practice"
+      },
+      "socialworker-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_practice"
+      },
+      "socialworker-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_practice"
+      },
+      "socialworker-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "professional_practice"
+      },
+      "socialworker-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_practice"
+      },
+      "socialworker-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_practice"
+      },
+      "socialworker-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "socialworker-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "socialworker-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "socialworker-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "socialworker-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "assessment"
+      },
+      "socialworker-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "assessment"
+      },
+      "socialworker-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "assessment"
+      },
+      "socialworker-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ethics"
+      },
+      "socialworker-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "ethics"
+      },
+      "socialworker-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ethics"
+      },
+      "socialworker-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "ethics"
+      },
+      "socialworker-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "ethics"
+      },
+      "socialworker-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "ethics"
+      },
+      "socialworker-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "ethics"
+      },
+      "socialworker-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_practice"
+      },
+      "socialworker-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_practice"
+      },
+      "socialworker-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_practice"
+      },
+      "socialworker-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_practice"
+      },
+      "socialworker-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_practice"
+      },
+      "socialworker-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_practice"
+      },
+      "socialworker-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "professional_practice"
       }
     },
     "checkpoint": {
@@ -258,35 +1033,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

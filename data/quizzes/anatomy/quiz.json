@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Medium",
     "icon": "🫀",
     "socialProofCount": 169000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,48 +62,220 @@
       "icon": "🫀"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "anatomy-s1q1",
+          "anatomy-s1q2",
+          "anatomy-s1q3",
+          "anatomy-s1q4",
+          "anatomy-s1q5",
+          "anatomy-s1q6",
+          "anatomy-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "anatomy-s2q1",
+          "anatomy-s2q2",
+          "anatomy-s2q3",
+          "anatomy-s2q4",
+          "anatomy-s2q5",
+          "anatomy-s2q6",
+          "anatomy-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "anatomy-s3q1",
+          "anatomy-s3q2",
+          "anatomy-s3q3",
+          "anatomy-s3q4",
+          "anatomy-s3q5",
+          "anatomy-s3q6",
+          "anatomy-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "anatomy-s4q1",
+          "anatomy-s4q2",
+          "anatomy-s4q3",
+          "anatomy-s4q4",
+          "anatomy-s4q5",
+          "anatomy-s4q6",
+          "anatomy-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "anatomy-s5q1",
+          "anatomy-s5q2",
+          "anatomy-s5q3",
+          "anatomy-s5q4",
+          "anatomy-s5q5",
+          "anatomy-s5q6",
+          "anatomy-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "anatomy-s6q1",
+          "anatomy-s6q2",
+          "anatomy-s6q3",
+          "anatomy-s6q4",
+          "anatomy-s6q5",
+          "anatomy-s6q6",
+          "anatomy-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "anatomy-s7q1",
+          "anatomy-s7q2",
+          "anatomy-s7q3",
+          "anatomy-s7q4",
+          "anatomy-s7q5",
+          "anatomy-s7q6",
+          "anatomy-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "anatomy-s8q1",
+          "anatomy-s8q2",
+          "anatomy-s8q3",
+          "anatomy-s8q4",
+          "anatomy-s8q5",
+          "anatomy-s8q6",
+          "anatomy-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "anatomy-s9q1",
+          "anatomy-s9q2",
+          "anatomy-s9q3",
+          "anatomy-s9q4",
+          "anatomy-s9q5",
+          "anatomy-s9q6",
+          "anatomy-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "anatomy-q1",
-          "anatomy-q2",
-          "anatomy-q3",
-          "anatomy-q4",
-          "anatomy-q5",
-          "anatomy-q6",
-          "anatomy-q7",
-          "anatomy-q8",
-          "anatomy-q9",
-          "anatomy-q10"
+          "anatomy-s10q1",
+          "anatomy-s10q2",
+          "anatomy-s10q3",
+          "anatomy-s10q4",
+          "anatomy-s10q5",
+          "anatomy-s10q6",
+          "anatomy-s10q7"
         ]
       }
     ],
     "questions": {
-      "anatomy-q1": {
-        "correctAnswerId": "a1",
+      "anatomy-s1q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
         "category": "organs",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
         ]
       },
-      "anatomy-q2": {
-        "correctAnswerId": "a2",
-        "category": "body_systems",
+      "anatomy-s1q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "organs",
         "answerIds": [
           "a1",
+          "a2",
           "a3",
-          "a4",
-          "a2"
+          "a4"
         ]
       },
-      "anatomy-q3": {
+      "anatomy-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s1q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s2q1": {
+        "presentation": "text",
         "correctAnswerId": "a3",
         "category": "skeletal",
         "answerIds": [
@@ -112,17 +285,8 @@
           "a4"
         ]
       },
-      "anatomy-q4": {
-        "correctAnswerId": "a4",
-        "category": "organs",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
-      },
-      "anatomy-q5": {
+      "anatomy-s2q2": {
+        "presentation": "text",
         "correctAnswerId": "a1",
         "category": "skeletal",
         "answerIds": [
@@ -132,52 +296,673 @@
           "a4"
         ]
       },
-      "anatomy-q6": {
-        "correctAnswerId": "a2",
+      "anatomy-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
         "category": "skeletal",
         "answerIds": [
           "a1",
-          "a3",
           "a2",
+          "a3",
           "a4"
         ]
       },
-      "anatomy-q7": {
+      "anatomy-s2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "skeletal",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "skeletal",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "skeletal",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "skeletal",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s3q1": {
+        "presentation": "text",
         "correctAnswerId": "a3",
         "category": "body_systems",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "anatomy-q8": {
-        "correctAnswerId": "a4",
-        "category": "organs",
-        "answerIds": [
-          "a1",
-          "a4",
-          "a2",
-          "a3"
-        ]
-      },
-      "anatomy-q9": {
-        "correctAnswerId": "a1",
-        "category": "body_systems",
-        "answerIds": [
-          "a2",
-          "a1",
           "a3",
           "a4"
         ]
       },
-      "anatomy-q10": {
+      "anatomy-s3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s3q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s3q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s4q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s5q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s5q2": {
+        "presentation": "text",
         "correctAnswerId": "a2",
         "category": "organs",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s6q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s6q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s6q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s7q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s7q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s7q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s8q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "organs",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s9q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s9q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s10q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s10q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s10q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s10q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "anatomy-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "body_systems",
+        "answerIds": [
+          "a1",
+          "a2",
           "a3",
           "a4"
         ]
@@ -236,35 +1021,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

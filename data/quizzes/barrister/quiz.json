@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "⚖️",
     "socialProofCount": 181000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "⚖️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "barrister-s1q1",
+          "barrister-s1q2",
+          "barrister-s1q3",
+          "barrister-s1q4",
+          "barrister-s1q5",
+          "barrister-s1q6",
+          "barrister-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "barrister-s2q1",
+          "barrister-s2q2",
+          "barrister-s2q3",
+          "barrister-s2q4",
+          "barrister-s2q5",
+          "barrister-s2q6",
+          "barrister-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "barrister-s3q1",
+          "barrister-s3q2",
+          "barrister-s3q3",
+          "barrister-s3q4",
+          "barrister-s3q5",
+          "barrister-s3q6",
+          "barrister-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "barrister-s4q1",
+          "barrister-s4q2",
+          "barrister-s4q3",
+          "barrister-s4q4",
+          "barrister-s4q5",
+          "barrister-s4q6",
+          "barrister-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "barrister-s5q1",
+          "barrister-s5q2",
+          "barrister-s5q3",
+          "barrister-s5q4",
+          "barrister-s5q5",
+          "barrister-s5q6",
+          "barrister-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "barrister-s6q1",
+          "barrister-s6q2",
+          "barrister-s6q3",
+          "barrister-s6q4",
+          "barrister-s6q5",
+          "barrister-s6q6",
+          "barrister-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "barrister-s7q1",
+          "barrister-s7q2",
+          "barrister-s7q3",
+          "barrister-s7q4",
+          "barrister-s7q5",
+          "barrister-s7q6",
+          "barrister-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "barrister-s8q1",
+          "barrister-s8q2",
+          "barrister-s8q3",
+          "barrister-s8q4",
+          "barrister-s8q5",
+          "barrister-s8q6",
+          "barrister-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "barrister-s9q1",
+          "barrister-s9q2",
+          "barrister-s9q3",
+          "barrister-s9q4",
+          "barrister-s9q5",
+          "barrister-s9q6",
+          "barrister-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "barrister-q1",
-          "barrister-q2",
-          "barrister-q3",
-          "barrister-q4",
-          "barrister-q5",
-          "barrister-q6",
-          "barrister-q7",
-          "barrister-q8",
-          "barrister-q9",
-          "barrister-q10"
+          "barrister-s10q1",
+          "barrister-s10q2",
+          "barrister-s10q3",
+          "barrister-s10q4",
+          "barrister-s10q5",
+          "barrister-s10q6",
+          "barrister-s10q7"
         ]
       }
     ],
     "questions": {
-      "barrister-q1": {
+      "barrister-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "courtroom_basics",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
-      },
-      "barrister-q2": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "courtroom_basics",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
+        "category": "courtroom_basics"
       },
-      "barrister-q3": {
+      "barrister-s1q2": {
         "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "precedent_reasoning",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "courtroom_basics"
       },
-      "barrister-q4": {
+      "barrister-s1q3": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "courtroom_basics"
+      },
+      "barrister-s1q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "courtroom_basics"
+      },
+      "barrister-s1q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "courtroom_basics"
+      },
+      "barrister-s1q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "courtroom_basics"
+      },
+      "barrister-s1q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
-        "category": "evidence_advocacy",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
+        "category": "courtroom_basics"
       },
-      "barrister-q5": {
+      "barrister-s2q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "precedent_reasoning",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "barrister-q6": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "precedent_reasoning",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ]
-      },
-      "barrister-q7": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a3",
-        "category": "evidence_advocacy",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s2q2": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
       },
-      "barrister-q8": {
+      "barrister-s2q3": {
         "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "evidence_advocacy",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
       },
-      "barrister-q9": {
+      "barrister-s2q4": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a1",
-        "category": "courtroom_basics",
-        "answerIds": [
-          "a2",
-          "a1",
-          "a3",
-          "a4"
-        ]
+        "category": "evidence_advocacy"
       },
-      "barrister-q10": {
+      "barrister-s2q5": {
         "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "professional_principles",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a4",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_principles"
+      },
+      "barrister-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_principles"
+      },
+      "barrister-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_principles"
+      },
+      "barrister-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "professional_principles"
+      },
+      "barrister-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_principles"
+      },
+      "barrister-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_principles"
+      },
+      "barrister-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_principles"
+      },
+      "barrister-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "precedent_reasoning"
+      },
+      "barrister-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "evidence_advocacy"
+      },
+      "barrister-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "professional_principles"
+      },
+      "barrister-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_principles"
+      },
+      "barrister-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_principles"
+      },
+      "barrister-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_principles"
+      },
+      "barrister-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_principles"
+      },
+      "barrister-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "professional_principles"
+      },
+      "barrister-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "professional_principles"
       }
     },
     "checkpoint": {
@@ -252,35 +1027,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

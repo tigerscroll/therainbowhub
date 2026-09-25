@@ -3,7 +3,7 @@
   "slug": "personality",
   "engine": {
     "scoring": "weighted-profile",
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -12,7 +12,8 @@
     "difficulty": "Quick",
     "icon": "🌍",
     "socialProofCount": 274000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -62,32 +63,327 @@
       }
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "personality-s1q1",
+          "personality-s1q2",
+          "personality-s1q3",
+          "personality-s1q4",
+          "personality-s1q5",
+          "personality-s1q6",
+          "personality-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "personality-s2q1",
+          "personality-s2q2",
+          "personality-s2q3",
+          "personality-s2q4",
+          "personality-s2q5",
+          "personality-s2q6",
+          "personality-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "personality-s3q1",
+          "personality-s3q2",
+          "personality-s3q3",
+          "personality-s3q4",
+          "personality-s3q5",
+          "personality-s3q6",
+          "personality-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "personality-s4q1",
+          "personality-s4q2",
+          "personality-s4q3",
+          "personality-s4q4",
+          "personality-s4q5",
+          "personality-s4q6",
+          "personality-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "personality-s5q1",
+          "personality-s5q2",
+          "personality-s5q3",
+          "personality-s5q4",
+          "personality-s5q5",
+          "personality-s5q6",
+          "personality-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "personality-s6q1",
+          "personality-s6q2",
+          "personality-s6q3",
+          "personality-s6q4",
+          "personality-s6q5",
+          "personality-s6q6",
+          "personality-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "personality-s7q1",
+          "personality-s7q2",
+          "personality-s7q3",
+          "personality-s7q4",
+          "personality-s7q5",
+          "personality-s7q6",
+          "personality-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "personality-s8q1",
+          "personality-s8q2",
+          "personality-s8q3",
+          "personality-s8q4",
+          "personality-s8q5",
+          "personality-s8q6",
+          "personality-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "personality-s9q1",
+          "personality-s9q2",
+          "personality-s9q3",
+          "personality-s9q4",
+          "personality-s9q5",
+          "personality-s9q6",
+          "personality-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "personality-q1",
-          "personality-q2",
-          "personality-q3",
-          "personality-q4",
-          "personality-q5",
-          "personality-q6",
-          "personality-q7",
-          "personality-q8",
-          "personality-q9",
-          "personality-q10"
+          "personality-s10q1",
+          "personality-s10q2",
+          "personality-s10q3",
+          "personality-s10q4",
+          "personality-s10q5",
+          "personality-s10q6",
+          "personality-s10q7"
         ]
       }
     ],
     "questions": {
-      "personality-q1": {
+      "personality-s1q1": {
         "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q01.webp"
-        },
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s1q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s1q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s1q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s1q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s1q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s1q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s2q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s2q2": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
@@ -109,68 +405,542 @@
           }
         }
       },
-      "personality-q2": {
+      "personality-s2q3": {
         "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q02.webp"
-        },
         "answerIds": [
-          "a2",
-          "a3",
-          "a4",
-          "a1"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "italy": 1
-          },
-          "a2": {
-            "australia": 1
-          },
-          "a3": {
-            "japan": 1
-          },
-          "a4": {
-            "sweden": 1
-          }
-        }
-      },
-      "personality-q3": {
-        "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q03.webp"
-        },
-        "answerIds": [
-          "a3",
-          "a4",
-          "a1",
-          "a2"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "australia": 1
-          },
-          "a2": {
-            "sweden": 1
-          },
-          "a3": {
-            "japan": 1
-          },
-          "a4": {
-            "italy": 1
-          }
-        }
-      },
-      "personality-q4": {
-        "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q04.webp"
-        },
-        "answerIds": [
-          "a4",
           "a1",
           "a2",
-          "a3"
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
         ],
         "choiceMeanings": {
           "a1": {
@@ -187,11 +957,514 @@
           }
         }
       },
-      "personality-q5": {
+      "personality-s5q6": {
         "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q05.webp"
-        },
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "sweden": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s8q7": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
@@ -213,68 +1486,36 @@
           }
         }
       },
-      "personality-q6": {
+      "personality-s9q1": {
         "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q06.webp"
-        },
         "answerIds": [
-          "a2",
-          "a3",
-          "a4",
-          "a1"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "italy": 1
-          },
-          "a2": {
-            "sweden": 1
-          },
-          "a3": {
-            "australia": 1
-          },
-          "a4": {
-            "japan": 1
-          }
-        }
-      },
-      "personality-q7": {
-        "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q07.webp"
-        },
-        "answerIds": [
-          "a3",
-          "a4",
-          "a1",
-          "a2"
-        ],
-        "choiceMeanings": {
-          "a1": {
-            "australia": 1
-          },
-          "a2": {
-            "italy": 1
-          },
-          "a3": {
-            "sweden": 1
-          },
-          "a4": {
-            "japan": 1
-          }
-        }
-      },
-      "personality-q8": {
-        "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q08.webp"
-        },
-        "answerIds": [
-          "a4",
           "a1",
           "a2",
-          "a3"
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
         ],
         "choiceMeanings": {
           "a1": {
@@ -291,11 +1532,100 @@
           }
         }
       },
-      "personality-q9": {
+      "personality-s9q3": {
         "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q09.webp"
-        },
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "australia": 1
+          }
+        }
+      },
+      "personality-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "japan": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "sweden": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s9q7": {
+        "presentation": "text",
         "answerIds": [
           "a1",
           "a2",
@@ -317,26 +1647,161 @@
           }
         }
       },
-      "personality-q10": {
+      "personality-s10q1": {
         "presentation": "text",
-        "image": {
-          "src": "/quizzes/personality/assets/items/q10.webp"
-        },
         "answerIds": [
+          "a1",
           "a2",
           "a3",
-          "a4",
-          "a1"
+          "a4"
         ],
         "choiceMeanings": {
           "a1": {
             "australia": 1
           },
           "a2": {
-            "italy": 1
+            "sweden": 1
           },
           "a3": {
             "japan": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "italy": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "australia": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "sweden": 1
+          }
+        }
+      },
+      "personality-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "italy": 1
+          },
+          "a4": {
+            "japan": 1
+          }
+        }
+      },
+      "personality-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "sweden": 1
+          },
+          "a2": {
+            "australia": 1
+          },
+          "a3": {
+            "japan": 1
+          },
+          "a4": {
+            "italy": 1
+          }
+        }
+      },
+      "personality-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "choiceMeanings": {
+          "a1": {
+            "italy": 1
+          },
+          "a2": {
+            "japan": 1
+          },
+          "a3": {
+            "australia": 1
           },
           "a4": {
             "sweden": 1
@@ -402,35 +1867,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

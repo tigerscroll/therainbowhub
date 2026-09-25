@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "✝️",
     "socialProofCount": 275000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,50 +62,857 @@
       "icon": "✝️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "catholic-s1q1",
+          "catholic-s1q2",
+          "catholic-s1q3",
+          "catholic-s1q4",
+          "catholic-s1q5",
+          "catholic-s1q6",
+          "catholic-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "catholic-s2q1",
+          "catholic-s2q2",
+          "catholic-s2q3",
+          "catholic-s2q4",
+          "catholic-s2q5",
+          "catholic-s2q6",
+          "catholic-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "catholic-s3q1",
+          "catholic-s3q2",
+          "catholic-s3q3",
+          "catholic-s3q4",
+          "catholic-s3q5",
+          "catholic-s3q6",
+          "catholic-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "catholic-s4q1",
+          "catholic-s4q2",
+          "catholic-s4q3",
+          "catholic-s4q4",
+          "catholic-s4q5",
+          "catholic-s4q6",
+          "catholic-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "catholic-s5q1",
+          "catholic-s5q2",
+          "catholic-s5q3",
+          "catholic-s5q4",
+          "catholic-s5q5",
+          "catholic-s5q6",
+          "catholic-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "catholic-s6q1",
+          "catholic-s6q2",
+          "catholic-s6q3",
+          "catholic-s6q4",
+          "catholic-s6q5",
+          "catholic-s6q6",
+          "catholic-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "catholic-s7q1",
+          "catholic-s7q2",
+          "catholic-s7q3",
+          "catholic-s7q4",
+          "catholic-s7q5",
+          "catholic-s7q6",
+          "catholic-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "catholic-s8q1",
+          "catholic-s8q2",
+          "catholic-s8q3",
+          "catholic-s8q4",
+          "catholic-s8q5",
+          "catholic-s8q6",
+          "catholic-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "catholic-s9q1",
+          "catholic-s9q2",
+          "catholic-s9q3",
+          "catholic-s9q4",
+          "catholic-s9q5",
+          "catholic-s9q6",
+          "catholic-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "catholic-q1",
-          "catholic-q2",
-          "catholic-q3",
-          "catholic-q4",
-          "catholic-q5",
-          "catholic-q6",
-          "catholic-q7",
-          "catholic-q8",
-          "catholic-q9",
-          "catholic-q10"
+          "catholic-s10q1",
+          "catholic-s10q2",
+          "catholic-s10q3",
+          "catholic-s10q4",
+          "catholic-s10q5",
+          "catholic-s10q6",
+          "catholic-s10q7"
         ]
       }
     ],
     "questions": {
-      "catholic-q1": {
+      "catholic-s1q1": {
         "presentation": "text",
         "correctAnswerId": "a1",
         "category": "worship_sacraments",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
         ]
       },
-      "catholic-q2": {
+      "catholic-s1q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "church_leadership",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s1q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s3q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s3q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s3q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s4q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "worship_sacraments",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s5q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "liturgical_year",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "liturgical_year",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "liturgical_year",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "liturgical_year",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "liturgical_year",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "liturgical_year",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "liturgical_year",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s6q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s6q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s6q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s7q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s7q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s7q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s8q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "scripture",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "church_leadership",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "church_leadership",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s9q3": {
         "presentation": "text",
         "correctAnswerId": "a2",
         "category": "church_leadership",
         "answerIds": [
           "a1",
+          "a2",
           "a3",
-          "a4",
-          "a2"
+          "a4"
         ]
       },
-      "catholic-q3": {
+      "catholic-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "church_leadership",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "church_leadership",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "church_leadership",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s9q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "church_leadership",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s10q3": {
         "presentation": "text",
         "correctAnswerId": "a3",
         "category": "worship_sacraments",
@@ -115,79 +923,46 @@
           "a4"
         ]
       },
-      "catholic-q4": {
-        "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "liturgical_year",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
-      },
-      "catholic-q5": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "prayer_devotion",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "catholic-q6": {
+      "catholic-s10q4": {
         "presentation": "text",
         "correctAnswerId": "a2",
-        "category": "scripture",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ]
-      },
-      "catholic-q7": {
-        "presentation": "text",
-        "correctAnswerId": "a3",
         "category": "worship_sacraments",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
+          "a3",
+          "a4"
         ]
       },
-      "catholic-q8": {
+      "catholic-s10q5": {
         "presentation": "text",
         "correctAnswerId": "a4",
         "category": "prayer_devotion",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
-      },
-      "catholic-q9": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "liturgical_year",
-        "answerIds": [
-          "a2",
-          "a1",
           "a3",
           "a4"
         ]
       },
-      "catholic-q10": {
+      "catholic-s10q6": {
         "presentation": "text",
         "correctAnswerId": "a2",
-        "category": "scripture",
+        "category": "prayer_devotion",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "catholic-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "prayer_devotion",
+        "answerIds": [
+          "a1",
+          "a2",
           "a3",
           "a4"
         ]
@@ -258,35 +1033,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

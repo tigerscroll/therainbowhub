@@ -9,8 +9,8 @@ import { scoreQuiz } from './scoring.ts';
 const root = 'data/quizzes/treatments/';
 const read = (file: string) => JSON.parse(fs.readFileSync(root + file, 'utf8'));
 const original = read('en.json');
-const manifest = read('english-extended/quiz.json');
-const copy = read('english-extended/en.json');
+const manifest = read('quiz.json');
+const copy = read('en.json');
 const expanded = expandQuizLocale(manifest, copy, 'en');
 const questions = expanded.stages.flatMap((stage: { questions: any[] }) => stage.questions);
 
@@ -19,7 +19,7 @@ test('English treatments preserves the title and subtitle in a ten-by-seven chap
   assert.equal(copy.landing.intro, original.landing.intro);
   assert.equal(copy.landing.cta, 'Start');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales);
+  assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
   assert.equal(manifest.engine.localeParity, 'independent');
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   assert.equal(manifest.listing.compactLanding, true);
@@ -56,7 +56,7 @@ test('Treatments uses worldwide English and every answer has a checked primary r
   assert.match(visibleContent, /Physical therapy \(physiotherapy\)/);
   assert.match(visibleContent, /Radiation therapy \(radiotherapy\)/);
   assert.match(copy.about.disclaimer, /not medical advice/i);
-  const record = fs.readFileSync(root + 'english-extended/SOURCES.md', 'utf8');
+  const record = fs.readFileSync(root + 'SOURCES.md', 'utf8');
   const rows = [...record.matchAll(/^\| `(treatments-s\d+q\d+)` \| (.+?) \| \[.+?\]\((https:\/\/[^)]+)\) \|$/gm)];
   assert.equal(rows.length, 70);
   const evidence = new Map(rows.map(([, id, answer, url]) => [id, { answer, url }]));

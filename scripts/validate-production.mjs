@@ -10,7 +10,7 @@ const errors = [];
 const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
 const quizRecommendationsSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizRecommendations.tsx"), "utf8");
 const quizDataSource = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
-const multilingualLocaleFiles = ["ar.json", "bg.json", "cs.json", "da.json", "de.json", "el.json", "en.json", "es.json", "fi.json", "fil.json", "fr.json", "he.json", "hr.json", "hu.json", "id.json", "it.json", "ja.json", "ms.json", "nb.json", "nl.json", "pl.json", "pt.json", "ro.json", "sk.json", "sr.json", "sv.json", "th.json", "tr.json", "uk.json", "vi.json"];
+const multilingualLocaleFiles = fs.readdirSync(path.join(rootDir, "data/i18n")).filter(file => /^[a-z]{2,3}\.json$/.test(file)).sort();
 
 if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
   errors.push("The shared landing page must not render a quiz eyebrow above its title.");
@@ -327,8 +327,8 @@ for (const file of fs.readdirSync(infoRoot).filter((name) => name.endsWith(".jso
 }
 
 const quizRoot = path.join(rootDir, "data", "quizzes");
-if (new Set(Object.values(SOCIAL_PROOF_COUNTS)).size !== Object.values(SOCIAL_PROOF_COUNTS).length) {
-  addError("Every quiz must have a different stable social-proof count.");
+if (new Set(Object.values(SOCIAL_PROOF_COUNTS).filter(count => count > 0)).size !== Object.values(SOCIAL_PROOF_COUNTS).filter(count => count > 0).length) {
+  addError("Positive social-proof counts must be unique; disabled counts may be zero.");
 }
 for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!entry.isDirectory() || !fs.existsSync(path.join(quizRoot, entry.name, "quiz.json"))) continue;
@@ -352,8 +352,9 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   }
   const expectedStageCount = templateContract.stageCount;
   const expectedQuestionsPerStage = templateContract.questionsPerStage;
-  if (quizConfig.listing?.socialProofCount !== SOCIAL_PROOF_COUNTS[entry.name]) {
-    addError(`Quiz manifest must use its shared stable social-proof count: data/quizzes/${entry.name}/quiz.json`);
+  const proofCount = quizConfig.listing?.socialProofCount;
+  if (!Number.isInteger(proofCount) || !(proofCount >= 1000 || (proofCount === 0 && quizConfig.listing.showSocialProof === false))) {
+    addError(`Quiz social proof needs a valid count, or zero with social proof disabled: data/quizzes/${entry.name}/quiz.json`);
   }
   if (JSON.stringify(quizConfig.theme?.layout) !== JSON.stringify({ landing: "split", questions: "card", results: "immersive" })) {
     addError(`Quiz layout must use the shared landing/question/result template: data/quizzes/${entry.name}/quiz.json`);
@@ -373,7 +374,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (!englishContent.career || obsoleteCareerKeys.some((key) => englishContent.career[key] !== undefined)) {
       addError(`Shared shell behavior must not be duplicated in locale content: data/quizzes/${entry.name}/en.json`);
     }
-    if (!englishContent.career?.stages?.slice(0, -1).every((stage) => stage.preAdButton === undefined && stage.preAdChecks === undefined && stage.next?.button === undefined)) {
+    if (!englishContent.career?.stages?.slice(0, -1).every((stage) => Boolean(stage.preAdButton?.trim()) && stage.preAdChecks === undefined && stage.next?.button === undefined)) {
       addError(`Every quiz must use the shared intermediate Continue checkpoint: data/quizzes/${entry.name}/en.json`);
     }
     if (englishContent.career?.stages?.at(-1)?.preAdChecks?.length !== 3) {
@@ -395,9 +396,12 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   }
   const themeRelativePath = `data/quizzes/${entry.name}/theme.css`;
   const themePath = path.join(rootDir, themeRelativePath);
-  requireFile(themeRelativePath);
-  requireFile(`public/quizzes/${entry.name}/assets/thumbnail-480.webp`);
-  requireFile(`public/quizzes/${entry.name}/assets/thumbnail-960.webp`);
+  // The shared shell and manifest theme are sufficient for JSON-only quizzes.
+  // Responsive images are generated only when a local thumbnail is supplied.
+  if (typeof quizConfig.listing?.thumbnail === "string" && !quizConfig.listing.thumbnail.startsWith("/")) {
+    requireFile(`public/quizzes/${entry.name}/assets/thumbnail-480.webp`);
+    requireFile(`public/quizzes/${entry.name}/assets/thumbnail-960.webp`);
+  }
 
   if (!fs.existsSync(themePath)) continue;
   const themeCss = fs.readFileSync(themePath, "utf8");

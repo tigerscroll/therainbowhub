@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Hard",
     "icon": "✈️",
     "socialProofCount": 193000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,136 +62,910 @@
       "icon": "✈️"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "flightattendant-s1q1",
+          "flightattendant-s1q2",
+          "flightattendant-s1q3",
+          "flightattendant-s1q4",
+          "flightattendant-s1q5",
+          "flightattendant-s1q6",
+          "flightattendant-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "flightattendant-s2q1",
+          "flightattendant-s2q2",
+          "flightattendant-s2q3",
+          "flightattendant-s2q4",
+          "flightattendant-s2q5",
+          "flightattendant-s2q6",
+          "flightattendant-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "flightattendant-s3q1",
+          "flightattendant-s3q2",
+          "flightattendant-s3q3",
+          "flightattendant-s3q4",
+          "flightattendant-s3q5",
+          "flightattendant-s3q6",
+          "flightattendant-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "flightattendant-s4q1",
+          "flightattendant-s4q2",
+          "flightattendant-s4q3",
+          "flightattendant-s4q4",
+          "flightattendant-s4q5",
+          "flightattendant-s4q6",
+          "flightattendant-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "flightattendant-s5q1",
+          "flightattendant-s5q2",
+          "flightattendant-s5q3",
+          "flightattendant-s5q4",
+          "flightattendant-s5q5",
+          "flightattendant-s5q6",
+          "flightattendant-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "flightattendant-s6q1",
+          "flightattendant-s6q2",
+          "flightattendant-s6q3",
+          "flightattendant-s6q4",
+          "flightattendant-s6q5",
+          "flightattendant-s6q6",
+          "flightattendant-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "flightattendant-s7q1",
+          "flightattendant-s7q2",
+          "flightattendant-s7q3",
+          "flightattendant-s7q4",
+          "flightattendant-s7q5",
+          "flightattendant-s7q6",
+          "flightattendant-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "flightattendant-s8q1",
+          "flightattendant-s8q2",
+          "flightattendant-s8q3",
+          "flightattendant-s8q4",
+          "flightattendant-s8q5",
+          "flightattendant-s8q6",
+          "flightattendant-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "flightattendant-s9q1",
+          "flightattendant-s9q2",
+          "flightattendant-s9q3",
+          "flightattendant-s9q4",
+          "flightattendant-s9q5",
+          "flightattendant-s9q6",
+          "flightattendant-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "flightattendant-q1",
-          "flightattendant-q2",
-          "flightattendant-q3",
-          "flightattendant-q4",
-          "flightattendant-q5",
-          "flightattendant-q6",
-          "flightattendant-q7",
-          "flightattendant-q8",
-          "flightattendant-q9",
-          "flightattendant-q10"
+          "flightattendant-s10q1",
+          "flightattendant-s10q2",
+          "flightattendant-s10q3",
+          "flightattendant-s10q4",
+          "flightattendant-s10q5",
+          "flightattendant-s10q6",
+          "flightattendant-s10q7"
         ]
       }
     ],
     "questions": {
-      "flightattendant-q1": {
+      "flightattendant-s1q1": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "service_safety",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
-      },
-      "flightattendant-q2": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "service_safety",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a4",
-          "a2"
-        ]
+        "category": "service_safety"
       },
-      "flightattendant-q3": {
+      "flightattendant-s1q2": {
         "presentation": "text",
-        "correctAnswerId": "a3",
-        "category": "emergencies",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "service_safety"
       },
-      "flightattendant-q4": {
+      "flightattendant-s1q3": {
         "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "service_safety"
+      },
+      "flightattendant-s1q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
         "correctAnswerId": "a4",
-        "category": "emergencies",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
+        "category": "service_safety"
       },
-      "flightattendant-q5": {
+      "flightattendant-s1q5": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "cabin_systems",
         "answerIds": [
           "a1",
           "a2",
           "a3",
           "a4"
-        ]
-      },
-      "flightattendant-q6": {
-        "presentation": "text",
-        "correctAnswerId": "a2",
-        "category": "crew_coordination",
-        "answerIds": [
-          "a1",
-          "a3",
-          "a2",
-          "a4"
-        ]
-      },
-      "flightattendant-q7": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a3",
-        "category": "emergencies",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a4",
-          "a3"
-        ]
+        "category": "service_safety"
       },
-      "flightattendant-q8": {
+      "flightattendant-s1q6": {
         "presentation": "text",
-        "correctAnswerId": "a4",
-        "category": "emergencies",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
-      },
-      "flightattendant-q9": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "cabin_systems",
-        "answerIds": [
-          "a2",
-          "a1",
           "a3",
           "a4"
-        ]
-      },
-      "flightattendant-q10": {
-        "presentation": "text",
+        ],
         "correctAnswerId": "a2",
-        "category": "service_safety",
+        "category": "service_safety"
+      },
+      "flightattendant-s1q7": {
+        "presentation": "text",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
-        ]
+        ],
+        "correctAnswerId": "a1",
+        "category": "service_safety"
+      },
+      "flightattendant-s2q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "service_safety"
+      },
+      "flightattendant-s2q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "service_safety"
+      },
+      "flightattendant-s2q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "service_safety"
+      },
+      "flightattendant-s2q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "service_safety"
+      },
+      "flightattendant-s2q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "service_safety"
+      },
+      "flightattendant-s2q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "service_safety"
+      },
+      "flightattendant-s2q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "service_safety"
+      },
+      "flightattendant-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s3q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s3q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s3q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s3q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s3q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s3q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s4q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s4q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s4q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s4q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s4q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s4q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s4q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s5q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "emergencies"
+      },
+      "flightattendant-s5q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "emergencies"
+      },
+      "flightattendant-s5q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "emergencies"
+      },
+      "flightattendant-s5q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "emergencies"
+      },
+      "flightattendant-s5q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "emergencies"
+      },
+      "flightattendant-s5q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "emergencies"
+      },
+      "flightattendant-s5q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "emergencies"
+      },
+      "flightattendant-s6q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "service_safety"
+      },
+      "flightattendant-s6q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "service_safety"
+      },
+      "flightattendant-s6q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "service_safety"
+      },
+      "flightattendant-s6q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "service_safety"
+      },
+      "flightattendant-s6q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "service_safety"
+      },
+      "flightattendant-s6q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "service_safety"
+      },
+      "flightattendant-s6q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "service_safety"
+      },
+      "flightattendant-s7q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s7q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s7q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s7q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s7q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s7q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s7q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "cabin_systems"
+      },
+      "flightattendant-s8q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s8q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s8q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s8q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s8q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s8q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s8q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s9q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s9q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s9q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s9q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s9q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s9q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s9q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "crew_coordination"
+      },
+      "flightattendant-s10q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "emergencies"
+      },
+      "flightattendant-s10q2": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "emergencies"
+      },
+      "flightattendant-s10q3": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a2",
+        "category": "emergencies"
+      },
+      "flightattendant-s10q4": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a4",
+        "category": "emergencies"
+      },
+      "flightattendant-s10q5": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "emergencies"
+      },
+      "flightattendant-s10q6": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a3",
+        "category": "emergencies"
+      },
+      "flightattendant-s10q7": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "correctAnswerId": "a1",
+        "category": "emergencies"
       }
     },
     "checkpoint": {
@@ -252,35 +1027,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

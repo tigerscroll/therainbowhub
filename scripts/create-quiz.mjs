@@ -23,11 +23,11 @@ const icon = option("icon") ?? "🧩";
 const requestedCount = Number(option("social-proof"));
 const socialProofCount = Number.isInteger(requestedCount) && requestedCount > 0
   ? requestedCount
-  : Math.ceil((Math.max(...Object.values(SOCIAL_PROOF_COUNTS)) + 1000) / 1000) * 1000;
-if (Object.values(SOCIAL_PROOF_COUNTS).includes(socialProofCount)) abort(`Social-proof count ${socialProofCount} is already used.`);
+  : 0;
+if (socialProofCount > 0 && Object.values(SOCIAL_PROOF_COUNTS).includes(socialProofCount)) abort(`Social-proof count ${socialProofCount} is already used.`);
 
-const stageIds = ["stage-1"];
-const questionIds = Array.from({ length: 10 }, (_, index) => `${slug}-q${String(index + 1).padStart(2, "0")}`);
+const stageIds = Array.from({length: 10}, (_, index) => `stage-${index + 1}`);
+const questionIds = Array.from({ length: 70 }, (_, index) => `${slug}-s${Math.floor(index / 7) + 1}q${index % 7 + 1}`);
 const categories = Array.from({ length: 5 }, (_, index) => `category_${index + 1}`);
 const resultMins = [0.9, 0.8, 0.7, 0.6, 0.5, 0];
 const answerIds = ["a1", "a2", "a3", "a4"];
@@ -35,18 +35,18 @@ const answerIds = ["a1", "a2", "a3", "a4"];
 const manifest = {
   schemaVersion: 2,
   slug,
-  engine: { scoring: "correct-answer", targetRatio: 0.8, tieBreaks: { categories: "harder-correct", bestRound: "later" } },
-  listing: { thumbnail: "assets/thumbnail.png", published: new Date().toISOString().slice(0, 10), difficulty: "Hard", icon, socialProofCount },
+  engine: { scoring: "correct-answer", hardRefreshCheckpoints: false, localeParity: "independent", targetRatio: 0.8, tieBreaks: { categories: "harder-correct", bestRound: "later" } },
+  listing: { thumbnail: "assets/thumbnail.png", published: new Date().toISOString().slice(0, 10), difficulty: "Hard", icon, socialProofCount, compactLanding: true, showSocialProof: false },
   theme: {
     id: slug, preset: "editorial", layout: { landing: "split", questions: "card", results: "immersive" },
     colors: { page: "#eee9df", pageAlt: "#d8d0c3", surface: "#fffaf1", surfaceRaised: "#f7f0e5", text: "#242320", muted: "#746e65", primary: "#315f53", primaryText: "#fffaf1", border: "#b9aea0", correct: "#39735a", incorrect: "#ad4f42" },
     typography: { heading: "sans", body: "sans" }, shape: { cardRadius: "24px", buttonRadius: "14px" }, effects: { shadow: "soft", texture: "grain" },
     header: { background: "#243b36", text: "#fffaf1", border: "#b99152", shadow: "0 8px 26px rgba(20,27,25,.24)" }, artwork: { icon },
   },
-  template: "single-stage-rewarded-v1",
+  template: "ten-stage-seven-question-v1",
   structure: {
-    stages: [{ id: "stage-1", difficultyLevel: "final", questionIds }],
-    questions: Object.fromEntries(questionIds.map((id, index) => [id, { presentation: "text", correctAnswerId: answerIds[[0, 1, 2, 3, 0, 1, 2, 3, 0, 1][index]], category: categories[index % 5], interactionStyle: ["core-concept", "applied-scenario", "reasoning"][index % 3], answerIds }])),
+    stages: stageIds.map((id, index) => ({id, difficultyLevel: index === 9 ? "final" : "developing", questionIds: questionIds.slice(index * 7, (index + 1) * 7)})),
+    questions: Object.fromEntries(questionIds.map((id, index) => [id, { presentation: "text", correctAnswerId: answerIds[index % 4], category: categories[index % 5], interactionStyle: ["core-concept", "applied-scenario", "reasoning"][index % 3], answerIds }])),
     results: {
       profiles: resultMins.map((min, index) => ({ key: `profile-${index + 1}`, min })),
       dimensions: categories.map((category, index) => ({ key: `dimension-${index + 1}`, categories: [category] })),
@@ -60,16 +60,20 @@ const content = {
   summary: "A fast, escalating challenge designed to test your judgement from the first question to the final reveal.",
   landing: { intro: "Put your instincts to the test and see whether you can hold your nerve as the questions become harder.", cta: "Start" },
   about: {
-    body: "This entertainment quiz contains ten carefully selected questions in one focused challenge.\n\nChoose the single answer best supported by each question. Correctness remains hidden until the final result.\n\nYour result is a snapshot of this quiz performance, not a formal assessment.",
-    howToPlay: { steps: ["Complete ten carefully selected questions.", "Choose one answer each time. Correctness remains hidden.", "Reveal your score and answer review at the end."] },
+    body: "Explore a sequence of themed challenges, each with a fresh set of clues.\n\nChoose the single answer best supported by each question. Correctness remains hidden until the final result.\n\nYour result is a snapshot of this quiz performance, not a formal assessment.",
+    howToPlay: { steps: ["Choose the answer best supported by each question.", "See your topic profile at each checkpoint and continue to a new challenge.", "Reveal your score and answer review at the end."] },
     disclaimer: "For entertainment and general learning only. This quiz is not a formal assessment.",
   },
   career: {
-    resultProgressLabel: "Challenge progress",
-    stages: { "stage-1": {
-      difficulty: "Final Challenge", preAdTitle: "Your results are ready", preAdCopy: "Your score and skill breakdown are ready to reveal.",
-      preAdChecks: ["10 answers checked", "Five skill areas compared"],
-    } },
+    resultProgressLabel: "Your challenge",
+    stages: Object.fromEntries(stageIds.map((id, index) => [id, {
+      difficulty: `TOPIC ${index + 1}`,
+      preAdTitle: index === 9 ? "Your result is ready" : "Your topic profile",
+      preAdCopy: index === 9 ? "Did you reach 80%? Your score and strengths are ready." : "Your profile for this topic: {profile}.",
+      preAdButton: index === 9 ? "See My Result" : "Continue",
+      ...(index === 9 ? {preAdChecks: ["Answers checked", "Topic strengths compared", "Score calculated"]}
+        : {next: {eyebrow: "UP NEXT", tagline: "A fresh set of clues awaits."}}),
+    }])),
   },
   results: {
     name: "YOUR SCORE",
@@ -77,10 +81,13 @@ const content = {
     dimensions: Object.fromEntries(categories.map((_, index) => [`dimension-${index + 1}`, { label: `Skill area ${index + 1}` }])),
     score: { passed: "You reached the challenge target!", finished: "Challenge complete", strongest: "Strongest area", trickiest: "Trickiest area", bestRound: "Best section", insights: { overview: "Your score at a glance", correct: "Correct answers", missed: "Questions missed", target: "Correct answers for 80%", breakdown: "Your skill breakdown", snapshot: "What your result suggests", targetReached: "80% challenge reached", targetRemaining: "More correct answers needed for 80%" } },
   },
-  stages: { "stage-1": {
-    title: "Challenge",
-    questions: Object.fromEntries(questionIds.map((id, index) => [id, { headerLabel: `QUESTION TYPE ${index + 1}`, question: `Replace with a unique question for ${id}.`, answers: Object.fromEntries(answerIds.map((answerId, answerIndex) => [answerId, `Unique option ${answerIndex + 1} for ${id}`])) }])),
-  } },
+  stages: Object.fromEntries(stageIds.map((stageId, stageIndex) => [stageId, {
+    title: `Topic ${stageIndex + 1}`,
+    questions: Object.fromEntries(questionIds.slice(stageIndex * 7, (stageIndex + 1) * 7).map(id => [id, {
+      headerLabel: `TOPIC ${stageIndex + 1}`, question: `Replace with a unique question for ${id}.`,
+      answers: Object.fromEntries(answerIds.map((answerId, index) => [answerId, `Unique option ${index + 1} for ${id}`])),
+    }])),
+  }])),
 };
 
 fs.mkdirSync(path.join(directory, "assets"), { recursive: true });
@@ -89,11 +96,4 @@ fs.writeFileSync(path.join(directory, "en.json"), `${JSON.stringify(content, nul
 fs.writeFileSync(path.join(directory, "theme.css"), `[data-quiz-theme="${slug}"] {\n  --quiz-flow-background: linear-gradient(180deg, color-mix(in srgb, var(--quiz-surface) 97%, white), var(--quiz-surface));\n}\n\n[data-quiz-theme="${slug}"] .quiz-engine__landing,\n[data-quiz-theme="${slug}"] .quiz-engine__continuous-shell {\n  border-color: color-mix(in srgb, var(--quiz-primary) 22%, var(--quiz-border));\n}\n`);
 await sharp({ create: { width: 1600, height: 900, channels: 3, background: "#315f53" } }).png().toFile(path.join(directory, "assets", "thumbnail.png"));
 
-if (quizRoot === path.join(process.cwd(), "data", "quizzes")) {
-  const socialFile = path.join(process.cwd(), "scripts", "social-proof.mjs");
-  const source = fs.readFileSync(socialFile, "utf8");
-  const updated = source.replace("\n});\n", `\n  ${JSON.stringify(slug)}: ${socialProofCount},\n});\n`);
-  if (updated === source) abort("Could not update scripts/social-proof.mjs; remove the new quiz folder and retry.");
-  fs.writeFileSync(socialFile, updated);
-}
-console.log(`Created schema-v2 quiz scaffold at ${directory}. Replace placeholder copy and thumbnail art before shipping.`);
+console.log(`Created schema-v2 quiz scaffold at ${directory}. Replace placeholder copy and thumbnail art, then add fr/de/it/nl/es/pt/ar JSON copies before shipping. The folder is discovered automatically.`);

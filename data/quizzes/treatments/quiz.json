@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Medium",
     "icon": "🩺",
     "socialProofCount": 0,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,28 +62,142 @@
       "icon": "🩺"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "treatments-s1q1",
+          "treatments-s1q2",
+          "treatments-s1q3",
+          "treatments-s1q4",
+          "treatments-s1q5",
+          "treatments-s1q6",
+          "treatments-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "treatments-s2q1",
+          "treatments-s2q2",
+          "treatments-s2q3",
+          "treatments-s2q4",
+          "treatments-s2q5",
+          "treatments-s2q6",
+          "treatments-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "treatments-s3q1",
+          "treatments-s3q2",
+          "treatments-s3q3",
+          "treatments-s3q4",
+          "treatments-s3q5",
+          "treatments-s3q6",
+          "treatments-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "treatments-s4q1",
+          "treatments-s4q2",
+          "treatments-s4q3",
+          "treatments-s4q4",
+          "treatments-s4q5",
+          "treatments-s4q6",
+          "treatments-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "treatments-s5q1",
+          "treatments-s5q2",
+          "treatments-s5q3",
+          "treatments-s5q4",
+          "treatments-s5q5",
+          "treatments-s5q6",
+          "treatments-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "treatments-s6q1",
+          "treatments-s6q2",
+          "treatments-s6q3",
+          "treatments-s6q4",
+          "treatments-s6q5",
+          "treatments-s6q6",
+          "treatments-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "treatments-s7q1",
+          "treatments-s7q2",
+          "treatments-s7q3",
+          "treatments-s7q4",
+          "treatments-s7q5",
+          "treatments-s7q6",
+          "treatments-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "treatments-s8q1",
+          "treatments-s8q2",
+          "treatments-s8q3",
+          "treatments-s8q4",
+          "treatments-s8q5",
+          "treatments-s8q6",
+          "treatments-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "treatments-s9q1",
+          "treatments-s9q2",
+          "treatments-s9q3",
+          "treatments-s9q4",
+          "treatments-s9q5",
+          "treatments-s9q6",
+          "treatments-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "treatments-r1q1",
-          "treatments-r1q2",
-          "treatments-r2q1",
-          "treatments-r2q2",
-          "treatments-r3q1",
-          "treatments-r3q2",
-          "treatments-r4q1",
-          "treatments-r4q2",
-          "treatments-r5q1",
-          "treatments-r5q2"
+          "treatments-s10q1",
+          "treatments-s10q2",
+          "treatments-s10q3",
+          "treatments-s10q4",
+          "treatments-s10q5",
+          "treatments-s10q6",
+          "treatments-s10q7"
         ]
       }
     ],
     "questions": {
-      "treatments-r1q1": {
+      "treatments-s1q1": {
         "presentation": "text",
         "correctAnswerId": "a2",
         "category": "rehabilitation",
@@ -93,7 +208,7 @@
           "a4"
         ]
       },
-      "treatments-r1q2": {
+      "treatments-s1q2": {
         "presentation": "text",
         "correctAnswerId": "a4",
         "category": "complementary",
@@ -104,7 +219,29 @@
           "a4"
         ]
       },
-      "treatments-r2q1": {
+      "treatments-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s1q5": {
         "presentation": "text",
         "correctAnswerId": "a3",
         "category": "hospital",
@@ -115,20 +252,9 @@
           "a4"
         ]
       },
-      "treatments-r2q2": {
+      "treatments-s1q6": {
         "presentation": "text",
-        "correctAnswerId": "a1",
-        "category": "medicine",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3",
-          "a4"
-        ]
-      },
-      "treatments-r3q1": {
-        "presentation": "text",
-        "correctAnswerId": "a1",
+        "correctAnswerId": "a2",
         "category": "cancer",
         "answerIds": [
           "a1",
@@ -137,9 +263,9 @@
           "a4"
         ]
       },
-      "treatments-r3q2": {
+      "treatments-s1q7": {
         "presentation": "text",
-        "correctAnswerId": "a3",
+        "correctAnswerId": "a1",
         "category": "rehabilitation",
         "answerIds": [
           "a1",
@@ -148,7 +274,161 @@
           "a4"
         ]
       },
-      "treatments-r4q1": {
+      "treatments-s2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s3q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s3q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s3q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s4q1": {
         "presentation": "text",
         "correctAnswerId": "a4",
         "category": "talking",
@@ -159,7 +439,73 @@
           "a4"
         ]
       },
-      "treatments-r4q2": {
+      "treatments-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s4q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s5q1": {
         "presentation": "text",
         "correctAnswerId": "a2",
         "category": "cancer",
@@ -170,7 +516,106 @@
           "a4"
         ]
       },
-      "treatments-r5q1": {
+      "treatments-s5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s6q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s6q4": {
         "presentation": "text",
         "correctAnswerId": "a2",
         "category": "rehabilitation",
@@ -181,10 +626,340 @@
           "a4"
         ]
       },
-      "treatments-r5q2": {
+      "treatments-s6q5": {
         "presentation": "text",
         "correctAnswerId": "a1",
         "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s7q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s7q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s7q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "complementary",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s8q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "complementary",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s9q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "rehabilitation",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s9q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "medicine",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s10q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "hospital",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s10q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "talking",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s10q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s10q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "cancer",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "treatments-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "hospital",
         "answerIds": [
           "a1",
           "a2",
@@ -244,40 +1019,18 @@
       ],
       "score": {
         "showPercentage": true,
-        "showBestRound": false
+        "showBestRound": true
       }
     }
   },
   "activeLocales": [
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
     "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

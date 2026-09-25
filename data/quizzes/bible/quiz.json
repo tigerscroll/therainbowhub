@@ -8,7 +8,7 @@
       "categories": "harder-correct",
       "bestRound": "later"
     },
-    "localeParity": "strict",
+    "localeParity": "independent",
     "hardRefreshCheckpoints": false
   },
   "listing": {
@@ -17,7 +17,8 @@
     "difficulty": "Medium",
     "icon": "📖",
     "socialProofCount": 163000,
-    "showSocialProof": false
+    "showSocialProof": false,
+    "compactLanding": true
   },
   "theme": {
     "preset": "editorial",
@@ -61,70 +62,651 @@
       "icon": "📖"
     }
   },
-  "template": "single-stage-rewarded-v1",
+  "template": "ten-stage-seven-question-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "bible-s1q1",
+          "bible-s1q2",
+          "bible-s1q3",
+          "bible-s1q4",
+          "bible-s1q5",
+          "bible-s1q6",
+          "bible-s1q7"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "bible-s2q1",
+          "bible-s2q2",
+          "bible-s2q3",
+          "bible-s2q4",
+          "bible-s2q5",
+          "bible-s2q6",
+          "bible-s2q7"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "bible-s3q1",
+          "bible-s3q2",
+          "bible-s3q3",
+          "bible-s3q4",
+          "bible-s3q5",
+          "bible-s3q6",
+          "bible-s3q7"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "bible-s4q1",
+          "bible-s4q2",
+          "bible-s4q3",
+          "bible-s4q4",
+          "bible-s4q5",
+          "bible-s4q6",
+          "bible-s4q7"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "bible-s5q1",
+          "bible-s5q2",
+          "bible-s5q3",
+          "bible-s5q4",
+          "bible-s5q5",
+          "bible-s5q6",
+          "bible-s5q7"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "bible-s6q1",
+          "bible-s6q2",
+          "bible-s6q3",
+          "bible-s6q4",
+          "bible-s6q5",
+          "bible-s6q6",
+          "bible-s6q7"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "bible-s7q1",
+          "bible-s7q2",
+          "bible-s7q3",
+          "bible-s7q4",
+          "bible-s7q5",
+          "bible-s7q6",
+          "bible-s7q7"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "bible-s8q1",
+          "bible-s8q2",
+          "bible-s8q3",
+          "bible-s8q4",
+          "bible-s8q5",
+          "bible-s8q6",
+          "bible-s8q7"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "bible-s9q1",
+          "bible-s9q2",
+          "bible-s9q3",
+          "bible-s9q4",
+          "bible-s9q5",
+          "bible-s9q6",
+          "bible-s9q7"
+        ]
+      },
+      {
+        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "bible-q1",
-          "bible-q2",
-          "bible-q3",
-          "bible-q4",
-          "bible-q5",
-          "bible-q6",
-          "bible-q7",
-          "bible-q8",
-          "bible-q9",
-          "bible-q10"
+          "bible-s10q1",
+          "bible-s10q2",
+          "bible-s10q3",
+          "bible-s10q4",
+          "bible-s10q5",
+          "bible-s10q6",
+          "bible-s10q7"
         ]
       }
     ],
     "questions": {
-      "bible-q1": {
+      "bible-s1q1": {
+        "presentation": "text",
         "correctAnswerId": "a1",
-        "category": "foundations",
+        "category": "people",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
           "a3",
           "a4"
         ]
       },
-      "bible-q2": {
+      "bible-s1q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s1q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s3q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s3q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s3q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s4q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "people",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s5q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "foundations",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "foundations",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "foundations",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "foundations",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "foundations",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "foundations",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "foundations",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s6q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s6q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s6q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s7q4": {
+        "presentation": "text",
         "correctAnswerId": "a3",
         "category": "new_testament",
         "answerIds": [
           "a1",
           "a2",
-          "a4",
-          "a3"
-        ]
-      },
-      "bible-q3": {
-        "correctAnswerId": "a2",
-        "category": "foundations",
-        "answerIds": [
-          "a1",
           "a3",
-          "a2",
           "a4"
         ]
       },
-      "bible-q4": {
+      "bible-s7q5": {
+        "presentation": "text",
         "correctAnswerId": "a4",
-        "category": "people",
-        "answerIds": [
-          "a4",
-          "a1",
-          "a2",
-          "a3"
-        ]
-      },
-      "bible-q5": {
-        "correctAnswerId": "a1",
-        "category": "foundations",
+        "category": "new_testament",
         "answerIds": [
           "a1",
           "a2",
@@ -132,9 +714,21 @@
           "a4"
         ]
       },
-      "bible-q6": {
+      "bible-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s7q7": {
+        "presentation": "text",
         "correctAnswerId": "a3",
-        "category": "foundations",
+        "category": "new_testament",
         "answerIds": [
           "a1",
           "a2",
@@ -142,42 +736,233 @@
           "a4"
         ]
       },
-      "bible-q7": {
-        "correctAnswerId": "a2",
-        "category": "people",
+      "bible-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "new_testament",
         "answerIds": [
           "a1",
+          "a2",
           "a3",
-          "a4",
-          "a2"
+          "a4"
         ]
       },
-      "bible-q8": {
+      "bible-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s8q6": {
+        "presentation": "text",
         "correctAnswerId": "a4",
         "category": "new_testament",
         "answerIds": [
           "a1",
-          "a4",
           "a2",
-          "a3"
-        ]
-      },
-      "bible-q9": {
-        "correctAnswerId": "a1",
-        "category": "people",
-        "answerIds": [
-          "a2",
-          "a1",
           "a3",
           "a4"
         ]
       },
-      "bible-q10": {
+      "bible-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s9q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s9q7": {
+        "presentation": "text",
         "correctAnswerId": "a2",
         "category": "new_testament",
         "answerIds": [
-          "a2",
           "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s10q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s10q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s10q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s10q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "bible-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "new_testament",
+        "answerIds": [
+          "a1",
+          "a2",
           "a3",
           "a4"
         ]
@@ -236,35 +1021,13 @@
     }
   },
   "activeLocales": [
-    "en",
     "ar",
-    "bg",
-    "cs",
-    "da",
     "de",
-    "el",
+    "en",
     "es",
-    "fi",
-    "fil",
     "fr",
-    "he",
-    "hr",
-    "hu",
-    "id",
     "it",
-    "ja",
-    "ms",
-    "nb",
     "nl",
-    "pl",
-    "pt",
-    "ro",
-    "sk",
-    "sr",
-    "sv",
-    "th",
-    "tr",
-    "uk",
-    "vi"
+    "pt"
   ]
 }

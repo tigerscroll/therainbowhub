@@ -1,4 +1,4 @@
-import {locales} from './config.mjs';
+import {translationRowLocales as locales} from './config.mjs';
 
 const rows = {
   'Top left': 'En haut à gauche|Oben links|In alto a sinistra|Linksboven|Arriba a la izquierda|Em cima, à esquerda|أعلى اليسار',

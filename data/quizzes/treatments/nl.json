@@ -1,63 +1,155 @@
 {
   "title": "Kunt u 80% scoren op deze behandelquiz?",
   "eyebrow": "DE QUIZ OVER MEDISCHE BEHANDELINGEN",
-  "summary": "Tien bekende therapieën. Kun jij ze allemaal matchen met wat ze daadwerkelijk doen?",
+  "summary": "Herken de namen, verbind de aanwijzingen en scheid bekende behandelingen van veelvoorkomende verwisselingen. Kun jij 80% bereiken?",
   "landing": {
     "intro": "Ken je deze behandelingen?\nTest je kennis.",
-    "cta": "Start de quiz"
+    "cta": "Begin"
   },
   "about": {
-    "body": "Tien bekende therapieën. Kun jij ze allemaal matchen met wat ze daadwerkelijk doen?\n\nDe vragen gaan over namen en algemene werkingsprincipes van behandelingen, niet over welke zorg een bepaalde persoon nodig heeft. Een bekende naam zegt niet of een behandeling werkt of geschikt is. De inhoud is gecontroleerd aan de hand van informatie van de NHS, het National Cancer Institute en NCCIH.",
+    "body": "Herken namen van behandelingen, ontdek hoe ze werken en verbind de aanwijzingen in korte scenario's. Elke ronde brengt een nieuw onderwerp en feedback op uw antwoorden. Uw algehele score en gedetailleerde resultaten over het onderwerp verschijnen aan het einde.\n\nKies bij elke vraag één antwoord. Snelheid verandert nooit je score. Een korte advertentie met beloning opent de quiz, en bij elk rondetussenresultaat wordt een andere aangeboden om door te gaan of uw resultaat te onthullen. De optionele antwoordenoverzicht heeft een eigen beloonde advertentie. De voortgang wordt op dit apparaat opgeslagen.\n\nVragen verkennen algemene behandelingsconcepten. Ze beschrijven wat behandelingen zijn, in plaats van zorg voor een individu te kiezen. Bekende namen bevestigen de effectiviteit of geschiktheid niet. De feiten werden getoetst aan de volksgezondheid en medische referenties.",
     "howToPlay": {
       "steps": [
-        "Druk op ‘Start de quiz’, bekijk een korte advertentie en begin.",
-        "Kies het antwoord dat de behandeling het beste beschrijft.",
-        "Bekijk je score en neem daarna je onjuiste antwoorden door."
+        "Lees de aanwijzingen en kies een antwoord.",
+        "Bekijk je profiel voor dit onderwerp en ga verder met een nieuwe uitdaging.",
+        "Bekijk je eindresultaat en bekijk desgewenst de goede antwoorden bij vragen die je fout had."
       ]
     },
-    "disclaimer": "Alleen voor vermaak en algemene kennis. Deze quiz geeft geen medisch advies, beoordeelt geen klinische vaardigheden en geeft geen bevoegdheid om zorg te verlenen. Bespreek behandelkeuzes met een gekwalificeerde zorgverlener."
+    "disclaimer": "Alleen voor amusement en algemeen leren. Dit is geen medisch advies, een klinische beoordeling of een gezondheidszorgkwalificatie. Vraag een gekwalificeerde beroepsbeoefenaar in de gezondheidszorg naar behandelbeslissingen."
   },
   "career": {
-    "resultProgressLabel": "Je voortgang",
+    "resultProgressLabel": "Jouw uitdaging",
     "stages": {
       "stage-1": {
-        "difficulty": "Medische behandelingen",
-        "preAdTitle": "Je resultaat staat klaar",
-        "preAdCopy": "Je tien antwoorden zijn nagekeken. Bekijk je score en ontdek over welke behandelingen je het meest wist.",
+        "difficulty": "HERKEN DE BEHANDELING",
+        "preAdTitle": "Je eerste aanwijzingen",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Je kent de namen. Weet je ook waarvoor elke behandeling dient?"
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-2": {
+        "difficulty": "GENEESMIDDELEN",
+        "preAdTitle": "Een nieuwe kijk",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Een masker, een filter, een klein implantaat. Wat doet elk daarvan?"
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-3": {
+        "difficulty": "ZORG IN HET ZIEKENHUIS",
+        "preAdTitle": "Het zit in de details",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Kun je de aanpak herkennen aan één aanwijzing?"
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-4": {
+        "difficulty": "GESPREKSTHERAPIEËN",
+        "preAdTitle": "Tijd voor een ander perspectief",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Geneesmiddelen, bestraling en afweer: zoek de verschillen."
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-5": {
+        "difficulty": "KANKERBEHANDELING",
+        "preAdTitle": "Een nieuw spoor",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Bewegen, spreken en dagelijkse taken vragen om andere hulp."
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-6": {
+        "difficulty": "BEWEGEN EN HERSTELLEN",
+        "preAdTitle": "Elk detail telt",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Wat hebben een ballon, een camera en een transplantaat gemeen?"
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-7": {
+        "difficulty": "CHIRURGIE",
+        "preAdTitle": "Verbind de aanwijzingen",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Een bekende naam kan tot verwarring leiden."
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-8": {
+        "difficulty": "FEIT OF VERWARRING?",
+        "preAdTitle": "Een andere invalshoek",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "De naam van de behandeling ontbreekt. Kun jij die vinden?"
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-9": {
+        "difficulty": "VERBIND DE AANWIJZINGEN",
+        "preAdTitle": "Klaar voor de laatste uitdaging?",
+        "preAdCopy": "Bij dit onderwerp: {profile}.",
+        "next": {
+          "eyebrow": "HIERNA",
+          "tagline": "Bekende ideeën komen terug in nieuwe vragen."
+        },
+        "preAdButton": "Verder"
+      },
+      "stage-10": {
+        "difficulty": "DE LAATSTE MIX",
+        "preAdTitle": "Je resultaat is bekend",
+        "preAdCopy": "80% gehaald? Je score en sterke punten zijn bekend.",
         "preAdChecks": [
-          "10 antwoorden gecontroleerd",
-          "Drie themagebieden vergeleken"
-        ]
+          "Antwoorden gecontroleerd",
+          "Sterke punten vergeleken",
+          "Score berekend"
+        ],
+        "preAdButton": "Bekijk mijn resultaat"
       }
     }
   },
   "results": {
-    "name": "JE SCORE IN DE QUIZ OVER MEDISCHE BEHANDELINGEN",
+    "name": "UW MEDISCHE BEHANDELINGEN SCORE",
     "profiles": {
       "profile-1": {
         "tier": "90–100%",
         "title": "Uitstekende kennis",
-        "copy": "Je koppelde namen, werkwijzen en praktijksituaties heel nauwkeurig aan elkaar. Een uitstekend resultaat in deze algemene kennisquiz."
+        "copy": "Je hebt behandelingsnamen, -methoden en -scenario's met indrukwekkende nauwkeurigheid met elkaar verbonden. Dat is een sterk resultaat op deze uitdaging van algemene kennis."
       },
       "profile-2": {
         "tier": "80–89%",
         "title": "Sterke kennis",
-        "copy": "Je hebt de uitdaging gehaald en kent de behandelingen goed. Bekijk je onjuiste antwoorden om je kennis verder aan te vullen."
+        "copy": "Je bent geslaagd voor deze uitdaging met een goed begrip van de behandelnamen. Bekijk degene die je hebt gemist om het plaatje compleet te maken."
       },
       "profile-3": {
         "tier": "60–79%",
         "title": "Een goede basis",
-        "copy": "Je had meer dan de helft van de vragen goed. Sommige behandelingen met vergelijkbare namen brachten je in de war."
+        "copy": "Je wist meer dan de helft van de antwoorden, maar een paar soortgelijk klinkende therapieën vielen je op."
       },
       "profile-4": {
         "tier": "40–59%",
         "title": "Nieuwsgierig om te leren",
-        "copy": "Sommige namen kende je al, andere waren moeilijker te plaatsen. In het antwoordoverzicht zie je welke termen je door elkaar haalde."
+        "copy": "Sommige namen waren bekend; andere waren moeilijker te plaatsen. Uit uw antwoordoverzicht blijkt welke termen u door elkaar heeft gehaald."
       },
       "profile-5": {
         "tier": "Onder de 40%",
         "title": "Een nieuw begin",
-        "copy": "Veel namen waren nieuw voor je. Dat biedt een goed startpunt: bekijk de antwoorden om je kennis uit te breiden."
+        "copy": "Sommige behandelnamen waren onbekend, en dat is een nuttig uitgangspunt. Bekijk uw gemiste antwoorden om uw kennis op te bouwen."
       }
     },
     "dimensions": {
@@ -68,35 +160,35 @@
         "label": "Medicijnen en ziekenhuiszorg"
       },
       "dimension-3": {
-        "label": "Gesprekstherapieën"
+        "label": "Pratende therapieën"
       }
     },
     "score": {
-      "passed": "Je hebt de quiz over medische behandelingen gehaald!",
-      "finished": "Uitdaging medische behandelingen voltooid",
+      "passed": "Je hebt 80% gehaald!",
+      "finished": "Uitdaging voltooid",
       "strongest": "Sterkste onderwerp",
       "trickiest": "Lastigste onderwerp",
-      "bestRound": "Je beste ronde",
-      "disclaimer": "Alleen voor vermaak en algemene kennis. Je score geeft aan hoe je deze quiz hebt gemaakt, beoordeelt geen klinische kennis en geeft je geen bevoegdheid om zorg te verlenen.",
+      "bestRound": "Je beste onderwerp",
+      "disclaimer": "Alleen voor amusement en algemeen leren. Uw score weerspiegelt uw antwoorden op deze quiz; het beoordeelt de klinische kennis niet en kwalificeert u niet om gezondheidszorg te verlenen.",
       "insights": {
         "overview": "Je score in één oogopslag",
-        "correct": "Juiste antwoorden",
-        "missed": "Onjuiste antwoorden",
-        "target": "Juiste antwoorden voor 80%",
+        "correct": "Goede antwoorden",
+        "missed": "Foute antwoorden",
+        "target": "Goede antwoorden voor 80%",
         "breakdown": "Je resultaten per onderwerp",
-        "snapshot": "Wat je resultaat doet vermoeden",
-        "targetReached": "Doel van 80% bereikt",
-        "targetRemaining": "Meer juiste antwoorden nodig voor 80%"
+        "snapshot": "Wat je resultaat laat zien",
+        "targetReached": "Doel van 80% gehaald",
+        "targetRemaining": "Er zijn nog goede antwoorden nodig om 80% te halen."
       }
     }
   },
   "stages": {
     "stage-1": {
-      "title": "De medische behandelingenquiz",
+      "title": "Herken de behandeling",
       "questions": {
-        "treatments-r1q1": {
-          "question": "Welke behandeling gebruikt persoonlijke oefeningen om iemand te helpen weer beter te bewegen?",
-          "headerLabel": "Herken de behandeling",
+        "treatments-s1q1": {
+          "question": "Welke therapie helpt de beweging te herstellen door middel van beweging?",
+          "headerLabel": "HERKEN DE BEHANDELING",
           "answers": {
             "a1": "Chemotherapie",
             "a2": "Fysiotherapie",
@@ -104,94 +196,739 @@
             "a4": "Radiotherapie"
           }
         },
-        "treatments-r1q2": {
-          "question": "Bij welke behandeling worden dunne naalden op bepaalde punten ingebracht?",
-          "headerLabel": "Herken de behandeling",
+        "treatments-s1q2": {
+          "question": "Welke praktijk is bekend voor het plaatsen van dunne naalden in de huid?",
+          "headerLabel": "HERKEN DE BEHANDELING",
           "answers": {
-            "a1": "Cupping",
+            "a1": "Cuppen",
             "a2": "Hydrotherapie",
-            "a3": "Bloedtransfusie",
+            "a3": "Masseren",
             "a4": "Acupunctuur"
           }
         },
-        "treatments-r2q1": {
-          "question": "Wat verwijdert dialyse uit het bloed?",
-          "headerLabel": "Zo werkt het",
+        "treatments-s1q3": {
+          "question": "Insuline helpt het lichaam welke stof te gebruiken voor energie?",
+          "headerLabel": "HERKEN DE BEHANDELING",
           "answers": {
-            "a1": "Alle zuurstof van het lichaam",
-            "a2": "Alleen rode bloedcellen",
-            "a3": "Afvalproducten en overtollig vocht",
-            "a4": "Alleen ziektebestrijdende antilichamen"
+            "a1": "Cholesterol",
+            "a2": "Glucose (suiker)",
+            "a3": "Kalk",
+            "a4": "Zuurstof"
           }
         },
-        "treatments-r2q2": {
-          "question": "Waar helpt insuline het lichaam bij?",
-          "headerLabel": "Zo werkt het",
+        "treatments-s1q4": {
+          "question": "Waar staat de afkorting CGT voor in de psychotherapie?",
+          "headerLabel": "HERKEN DE BEHANDELING",
           "answers": {
-            "a1": "Glucose gebruiken als energiebron",
-            "a2": "Botten langer maken",
-            "a3": "Beschadigde rode bloedcellen vervangen",
-            "a4": "Geluid omzetten in zenuwsignalen"
+            "a1": "Cognitieve gedragstherapie",
+            "a2": "Hartademhalingstraining",
+            "a3": "Klinische evenwichtstherapie",
+            "a4": "Gecombineerde bloedbehandeling"
           }
         },
-        "treatments-r3q1": {
-          "question": "Welke combinatie maakt het juiste onderscheid tussen chemotherapie en radiotherapie?",
-          "headerLabel": "Zoek het verschil",
+        "treatments-s1q5": {
+          "question": "Gedoneerde bloedbestanddelen komen in de ader van een patiënt terecht. Hoe heet dit?",
+          "headerLabel": "HERKEN DE BEHANDELING",
           "answers": {
-            "a1": "Chemotherapie: medicijnen; radiotherapie: bestraling",
-            "a2": "Chemotherapie: bestraling; radiotherapie: medicijnen",
-            "a3": "Chemotherapie: lichaamsbeweging; radiotherapie: chirurgie",
-            "a4": "Chemotherapie: chirurgie; radiotherapie: lichaamsbeweging"
+            "a1": "Een niertransplantatie",
+            "a2": "Een huidtransplantatie",
+            "a3": "Een bloedtransfusie",
+            "a4": "Een bloeddruktest"
           }
         },
-        "treatments-r3q2": {
-          "question": "Wat is het belangrijkste doel van ergotherapie?",
-          "headerLabel": "Zoek het verschil",
+        "treatments-s1q6": {
+          "question": "Welke kankerbehandeling maakt gebruik van hoogenergetische straling?",
+          "headerLabel": "HERKEN DE BEHANDELING",
           "answers": {
-            "a1": "Sollicitanten en werkgevers bij elkaar brengen",
-            "a2": "Het meten van prestaties op het werk",
-            "a3": "Mensen helpen dagelijkse activiteiten uit te voeren",
-            "a4": "Medisch personeel leren opereren"
+            "a1": "Ergotherapie",
+            "a2": "Radiotherapie",
+            "a3": "Hydrotherapie",
+            "a4": "Acupunctuur"
           }
         },
-        "treatments-r4q1": {
-          "question": "Welke uitspraak over CGT is juist?",
-          "headerLabel": "Feit of verwarring?",
+        "treatments-s1q7": {
+          "question": "Welke therapie helpt mensen bij het beheren van alledaagse taken?",
+          "headerLabel": "HERKEN DE BEHANDELING",
           "answers": {
-            "a1": "Het vervangt alle gedachten door positieve slogans",
-            "a2": "Het is een medicijn dat geïnjecteerd moet worden",
-            "a3": "Het werkt zonder enige deelname van de persoon",
-            "a4": "Het onderzoekt verbanden tussen gedachten, gevoelens en acties"
+            "a1": "Ergotherapie",
+            "a2": "Chemotherapie",
+            "a3": "Zuurstof therapie",
+            "a4": "Radiotherapie"
+          }
+        }
+      }
+    },
+    "stage-2": {
+      "title": "Geneesmiddelen",
+      "questions": {
+        "treatments-s2q1": {
+          "question": "Antibiotica werken tegen welk type infectie?",
+          "headerLabel": "GENEESMIDDELEN",
+          "answers": {
+            "a1": "Virale infecties",
+            "a2": "Bacteriële infecties",
+            "a3": "Schimmelinfecties",
+            "a4": "Alle infecties evenveel"
           }
         },
-        "treatments-r4q2": {
-          "question": "Welke uitspraak over chemotherapie is juist?",
-          "headerLabel": "Feit of verwarring?",
+        "treatments-s2q2": {
+          "question": "Waar worden statines voornamelijk voor gebruikt?",
+          "headerLabel": "GENEESMIDDELEN",
           "answers": {
-            "a1": "Chemotherapie kan alleen via een ader worden gegeven",
-            "a2": "Sommige chemomedicijnen worden als tabletten of capsules ingenomen",
-            "a3": "Chemotherapie heeft nooit invloed op gezonde cellen",
-            "a4": "Chemotherapie is een andere naam voor radiotherapie"
+            "a1": "Bloed zuurstof",
+            "a2": "Lichaamstemperatuur",
+            "a3": "Maagzuur",
+            "a4": "Cholesterol"
           }
         },
-        "treatments-r5q1": {
-          "question": "Een therapeut helpt iemand na een ziekte weer te oefenen met aankleden en dagelijkse activiteiten aan te passen. Welke therapie is dit?",
-          "headerLabel": "Verbind de aanwijzingen",
+        "treatments-s2q3": {
+          "question": "Anticoagulantia zijn ontworpen om wat te verminderen?",
+          "headerLabel": "GENEESMIDDELEN",
           "answers": {
-            "a1": "Radiotherapie",
-            "a2": "Ergotherapie",
+            "a1": "Botgroei",
+            "a2": "Breedte van de luchtwegen",
+            "a3": "Vorming van bloedstolsels",
+            "a4": "Insuline productie"
+          }
+        },
+        "treatments-s2q4": {
+          "question": "Antihistaminica verlichten allergische symptomen door de effecten van wat te blokkeren?",
+          "headerLabel": "GENEESMIDDELEN",
+          "answers": {
+            "a1": "Insuline",
+            "a2": "Hemoglobine",
+            "a3": "Kalk",
+            "a4": "Histamine"
+          }
+        },
+        "treatments-s2q5": {
+          "question": "Wat helpt een luchtwegverwijder te openen?",
+          "headerLabel": "GENEESMIDDELEN",
+          "answers": {
+            "a1": "De slagaders",
+            "a2": "De traanbuisjes",
+            "a3": "De maaguitlaat",
+            "a4": "De luchtwegen"
+          }
+        },
+        "treatments-s2q6": {
+          "question": "Welk probleem wordt onder controle gebracht door een anti-emetisch geneesmiddel?",
+          "headerLabel": "GENEESMIDDELEN",
+          "answers": {
+            "a1": "Hoog cholesterol",
+            "a2": "Misselijkheid en braken",
+            "a3": "Bloedstolsels",
+            "a4": "Gezamenlijke stijfheid"
+          }
+        },
+        "treatments-s2q7": {
+          "question": "Diuretica helpen het lichaam extra vocht te verliezen, voornamelijk door wat te verhogen?",
+          "headerLabel": "GENEESMIDDELEN",
+          "answers": {
+            "a1": "Productie van rode bloedcellen",
+            "a2": "Maagzuurproductie",
+            "a3": "Urineproductie",
+            "a4": "Insuline productie"
+          }
+        }
+      }
+    },
+    "stage-3": {
+      "title": "Zorg in het ziekenhuis",
+      "questions": {
+        "treatments-s3q1": {
+          "question": "Wat helpt dialyse uit het bloed te verwijderen?",
+          "headerLabel": "ZORG IN HET ZIEKENHUIS",
+          "answers": {
+            "a1": "Alleen zuurstof",
+            "a2": "Alleen antilichamen",
+            "a3": "Alle bloedcellen",
+            "a4": "Afval en extra vocht"
+          }
+        },
+        "treatments-s3q2": {
+          "question": "Voorgeschreven zuurstoftherapie is bedoeld om te helpen als het bloed te weinig heeft. Waarvan?",
+          "headerLabel": "ZORG IN HET ZIEKENHUIS",
+          "answers": {
+            "a1": "Glucose",
+            "a2": "Zuurstof",
+            "a3": "Kalk",
+            "a4": "Cholesterol"
+          }
+        },
+        "treatments-s3q3": {
+          "question": "Hoe helpt een CPAP-apparaat bij obstructieve slaapapneu?",
+          "headerLabel": "ZORG IN HET ZIEKENHUIS",
+          "answers": {
+            "a1": "Elektrische pulsen stimuleren het hart",
+            "a2": "Een filter verwijdert afvalstoffen uit het bloed",
+            "a3": "Een medicijn stopt maagzuur",
+            "a4": "Luchtdruk helpt de luchtweg open te houden"
+          }
+        },
+        "treatments-s3q4": {
+          "question": "Waar wordt een behandeling rechtstreeks toegediend bij een infuus met de aanduiding ‘i.v.’?",
+          "headerLabel": "ZORG IN HET ZIEKENHUIS",
+          "answers": {
+            "a1": "Een spier",
+            "a2": "De maag",
+            "a3": "Een gewricht",
+            "a4": "Een ader"
+          }
+        },
+        "treatments-s3q5": {
+          "question": "Welk proces ondersteunt een bloedplaatjestransfusie het meest direct?",
+          "headerLabel": "ZORG IN HET ZIEKENHUIS",
+          "answers": {
+            "a1": "Vertering van voedsel",
+            "a2": "Bloedstolling",
+            "a3": "Geluiden horen",
+            "a4": "Licht scherpstellen"
+          }
+        },
+        "treatments-s3q6": {
+          "question": "Een chirurg beweegt gezonde huid om een beschadigd gebied te bedekken. Hoe heet dit?",
+          "headerLabel": "ZORG IN HET ZIEKENHUIS",
+          "answers": {
+            "a1": "Een stentplaatsing",
+            "a2": "Een bloedtransfusie",
+            "a3": "Een gewrichtsvervanging",
+            "a4": "Een huidtransplantatie"
+          }
+        },
+        "treatments-s3q7": {
+          "question": "Welk apparaat zendt kleine elektrische signalen uit om de hartslag te helpen reguleren?",
+          "headerLabel": "ZORG IN HET ZIEKENHUIS",
+          "answers": {
+            "a1": "Een vernevelaar",
+            "a2": "Een dialysemachine",
+            "a3": "Een insulinepen",
+            "a4": "Een pacemaker"
+          }
+        }
+      }
+    },
+    "stage-4": {
+      "title": "Gesprekstherapieën",
+      "questions": {
+        "treatments-s4q1": {
+          "question": "CGT kijkt goed naar de verbanden tussen welke drie dingen?",
+          "headerLabel": "GESPREKSTHERAPIEËN",
+          "answers": {
+            "a1": "Botten, spieren en pezen",
+            "a2": "Bloed, zuurstof en glucose",
+            "a3": "Voedsel, vitaminen en mineralen",
+            "a4": "Gedachten, gevoelens en daden"
+          }
+        },
+        "treatments-s4q2": {
+          "question": "Wat is een centraal onderdeel van counseling?",
+          "headerLabel": "GESPREKSTHERAPIEËN",
+          "answers": {
+            "a1": "Het kiezen van alle beslissingen van de persoon",
+            "a2": "Luisteren en iemand helpen oplossingen te verkennen",
+            "a3": "Alleen fysieke fitheid controleren",
+            "a4": "Alleen bloedchemie meten"
+          }
+        },
+        "treatments-s4q3": {
+          "question": "Interpersoonlijke therapie richt zich vooral op problemen waarbij wat betrokken is?",
+          "headerLabel": "GESPREKSTHERAPIEËN",
+          "answers": {
+            "a1": "De beweging van gewrichten",
+            "a2": "Bloedsuikerspiegels",
+            "a3": "De stroom van zuurstof",
+            "a4": "Relaties met andere mensen"
+          }
+        },
+        "treatments-s4q4": {
+          "question": "Welke therapie kan het werken aan traumatische herinneringen combineren met geleide oogbewegingen?",
+          "headerLabel": "GESPREKSTHERAPIEËN",
+          "answers": {
+            "a1": "EMDR",
+            "a2": "Dialyse",
+            "a3": "Hydrotherapie",
+            "a4": "Radiotherapie"
+          }
+        },
+        "treatments-s4q5": {
+          "question": "Wat maakt de ondersteuning bij begeleide zelfhulp ‘geleid’?",
+          "headerLabel": "GESPREKSTHERAPIEËN",
+          "answers": {
+            "a1": "Een machine kiest de antwoorden van de persoon",
+            "a2": "Er is geen sprake van professionele ondersteuning",
+            "a3": "Een therapeut ondersteunt het werken met leermiddelen",
+            "a4": "De persoon neemt alleen een medicijn"
+          }
+        },
+        "treatments-s4q6": {
+          "question": "Op mindfulness gebaseerde cognitieve therapie legt de nadruk op het opmerken van wat?",
+          "headerLabel": "GESPREKSTHERAPIEËN",
+          "answers": {
+            "a1": "Alleen gebeurtenissen uit de kindertijd",
+            "a2": "Huidige gedachten en gevoelens",
+            "a3": "Alleen de mening van anderen",
+            "a4": "Alleen fysieke inspanningsresultaten"
+          }
+        },
+        "treatments-s4q7": {
+          "question": "Wie werkt er bij relatietherapie doorgaans samen met de therapeut?",
+          "headerLabel": "GESPREKSTHERAPIEËN",
+          "answers": {
+            "a1": "Een chirurgisch team",
+            "a2": "Bloeddonoren",
+            "a3": "Een apotheekteam",
+            "a4": "Partners in een relatie"
+          }
+        }
+      }
+    },
+    "stage-5": {
+      "title": "Kankerbehandeling",
+      "questions": {
+        "treatments-s5q1": {
+          "question": "Waarmee wordt kanker voornamelijk behandeld met chemotherapie?",
+          "headerLabel": "KANKERBEHANDELING",
+          "answers": {
+            "a1": "Oefeningsroutines",
+            "a2": "Geneesmiddelen",
+            "a3": "Donorgewrichten",
+            "a4": "Geluidsversterking"
+          }
+        },
+        "treatments-s5q2": {
+          "question": "Waar komt de straling vandaan bij uitwendige straalbehandeling?",
+          "headerLabel": "KANKERBEHANDELING",
+          "answers": {
+            "a1": "Een ingeslikt oefensupplement",
+            "a2": "Een getransplanteerde nier",
+            "a3": "Een machine buiten het lichaam",
+            "a4": "Een bloeddrukmanchet"
+          }
+        },
+        "treatments-s5q3": {
+          "question": "Immunotherapie tegen kanker helpt welk lichaamssysteem tegen kanker werkt?",
+          "headerLabel": "KANKERBEHANDELING",
+          "answers": {
+            "a1": "Alleen het spijsverteringsstelsel",
+            "a2": "Alleen het balanssysteem",
+            "a3": "Alleen het hoorsysteem",
+            "a4": "Het immuunsysteem"
+          }
+        },
+        "treatments-s5q4": {
+          "question": "Waar is gerichte kankertherapie op gericht?",
+          "headerLabel": "KANKERBEHANDELING",
+          "answers": {
+            "a1": "Elk bot in het lichaam evenveel",
+            "a2": "Alleen de oppervlaktetemperatuur van de huid",
+            "a3": "Alleen de hoeveelheid water in het bloed",
+            "a4": "Specifieke eiwitten die betrokken zijn bij de groei van kanker"
+          }
+        },
+        "treatments-s5q5": {
+          "question": "Hormoontherapie kan worden gebruikt bij kanker waarvan de groei afhangt van welke stoffen?",
+          "headerLabel": "KANKERBEHANDELING",
+          "answers": {
+            "a1": "Geluidsgolven",
+            "a2": "Gezamenlijke beweging",
+            "a3": "Luchtdruk",
+            "a4": "Hormonen"
+          }
+        },
+        "treatments-s5q6": {
+          "question": "Wat kan een bloedstamceltransplantatie na een intensieve kankerbehandeling herstellen?",
+          "headerLabel": "KANKERBEHANDELING",
+          "answers": {
+            "a1": "De natuurlijke lens van het oog",
+            "a2": "Het oppervlak van een versleten verbinding",
+            "a3": "De cellen die bloedcellen produceren",
+            "a4": "De vorm van het buitenoor"
+          }
+        },
+        "treatments-s5q7": {
+          "question": "Waar wordt bij brachytherapie een vaste stralingsbron geplaatst?",
+          "headerLabel": "KANKERBEHANDELING",
+          "answers": {
+            "a1": "Alleen boven de huid, in een scanner",
+            "a2": "In een apparaat dat de bloeddruk meet",
+            "a3": "In het lichaam, in of nabij de kanker",
+            "a4": "In een machine die bloed filtert"
+          }
+        }
+      }
+    },
+    "stage-6": {
+      "title": "Bewegen en herstellen",
+      "questions": {
+        "treatments-s6q1": {
+          "question": "Bij revalidatie houdt hydrotherapie gewoonlijk in dat u waar traint?",
+          "headerLabel": "BEWEGEN EN HERSTELLEN",
+          "answers": {
+            "a1": "In warm water",
+            "a2": "In een stralingsscanner",
+            "a3": "Onder algemene anesthesie",
+            "a4": "In een zuurstofkamer"
+          }
+        },
+        "treatments-s6q2": {
+          "question": "Wat wordt bedoeld met ‘manuele therapie’ in de fysiotherapie?",
+          "headerLabel": "BEWEGEN EN HERSTELLEN",
+          "answers": {
+            "a1": "Hands-on behandeling van spieren en gewrichten",
+            "a2": "Behandeling uitsluitend machinaal uitgevoerd",
+            "a3": "Medicijnen nemen uit een geschreven grafiek",
+            "a4": "Een operatie waarbij een gewricht wordt vervangen"
+          }
+        },
+        "treatments-s6q3": {
+          "question": "Bij welk probleem kan een logopedist ook helpen?",
+          "headerLabel": "BEWEGEN EN HERSTELLEN",
+          "answers": {
+            "a1": "Slikken",
+            "a2": "Bloed filteren",
+            "a3": "Controle van het hartritme",
+            "a4": "Een troebele ooglens vervangen"
+          }
+        },
+        "treatments-s6q4": {
+          "question": "Oefening en educatie bij hartrevalidatie ondersteunen welk orgaan?",
+          "headerLabel": "BEWEGEN EN HERSTELLEN",
+          "answers": {
+            "a1": "Het oog",
+            "a2": "Het hart",
+            "a3": "Het oor",
+            "a4": "De blaas"
+          }
+        },
+        "treatments-s6q5": {
+          "question": "Een therapeut past het keukengerei aan, zodat iemand zelfstandiger kan eten. Welke aanpak is dit?",
+          "headerLabel": "BEWEGEN EN HERSTELLEN",
+          "answers": {
+            "a1": "Ergotherapie",
+            "a2": "Radiotherapie",
             "a3": "Dialyse",
-            "a4": "Acupunctuur"
+            "a4": "Chemotherapie"
           }
         },
-        "treatments-r5q2": {
-          "question": "Een zorgverlener helpt mensen met slikproblemen. Bij welk vakgebied hoort deze therapie?",
-          "headerLabel": "Verbind de aanwijzingen",
+        "treatments-s6q6": {
+          "question": "Hoe heet een kunstlid dat na een amputatie wordt aangebracht?",
+          "headerLabel": "BEWEGEN EN HERSTELLEN",
           "answers": {
-            "a1": "Logopedie",
-            "a2": "Radiografie",
-            "a3": "Chiropractische zorg",
-            "a4": "Farmacie"
+            "a1": "Een pacemaker",
+            "a2": "Een stent",
+            "a3": "Een katheter",
+            "a4": "Een prothese"
+          }
+        },
+        "treatments-s6q7": {
+          "question": "Bij longrevalidatie worden oefeningen en ademhalingsvaardigheden aangeleerd voor welke organen?",
+          "headerLabel": "BEWEGEN EN HERSTELLEN",
+          "answers": {
+            "a1": "De tanden",
+            "a2": "De longen",
+            "a3": "De ogen",
+            "a4": "Alleen de huid"
+          }
+        }
+      }
+    },
+    "stage-7": {
+      "title": "Chirurgie",
+      "questions": {
+        "treatments-s7q1": {
+          "question": "Wat is de beoogde toestand tijdens algemene anesthesie?",
+          "headerLabel": "CHIRURGIE",
+          "answers": {
+            "a1": "Bewusteloos en niet in staat om de procedure te voelen",
+            "a2": "Volledig alert met één vinger verdoofd",
+            "a3": "Wakker zonder verandering in gevoel",
+            "a4": "Kan tijdens de operatie bewegen"
+          }
+        },
+        "treatments-s7q2": {
+          "question": "Waarin verschilt lokale anesthesie van algemene anesthesie?",
+          "headerLabel": "CHIRURGIE",
+          "answers": {
+            "a1": "Het vervangt altijd de noodzaak van een operatie",
+            "a2": "Het werkt alleen door het zuurstofniveau te verhogen",
+            "a3": "Het elimineert de noodzaak van monitoring",
+            "a4": "Het verdooft een specifiek gebied zonder dat bewusteloosheid nodig is"
+          }
+        },
+        "treatments-s7q3": {
+          "question": "Wat biedt een transplantaat bij een coronaire bypassoperatie?",
+          "headerLabel": "CHIRURGIE",
+          "answers": {
+            "a1": "Een nieuwe route voor lucht door de neus",
+            "a2": "Een nieuwe route voor bloed rond een geblokkeerde slagader",
+            "a3": "Een filter dat afvalstoffen uit het bloed verwijdert",
+            "a4": "Een vervanging voor de elektrische signalen van het hart"
+          }
+        },
+        "treatments-s7q4": {
+          "question": "Wat doet de ballon tijdens ballonangioplastiek?",
+          "headerLabel": "CHIRURGIE",
+          "answers": {
+            "a1": "Vervangt een beschadigde hartklep",
+            "a2": "Verwijdt een vernauwd bloedvat",
+            "a3": "Filtert afval uit de bloedbaan",
+            "a4": "Verwijdert vocht uit de longen"
+          }
+        },
+        "treatments-s7q5": {
+          "question": "Wat is de rol van een coronaire stent?",
+          "headerLabel": "CHIRURGIE",
+          "answers": {
+            "a1": "Vervang een ontbrekende hartklep",
+            "a2": "Genereer nieuwe rode bloedcellen",
+            "a3": "Help een slagader open te houden",
+            "a4": "Meet voortdurend de bloedsuikerspiegel"
+          }
+        },
+        "treatments-s7q6": {
+          "question": "Bij laparoscopische chirurgie worden meestal kleine sneetjes gemaakt, en welk kijkinstrument?",
+          "headerLabel": "CHIRURGIE",
+          "answers": {
+            "a1": "Een camera",
+            "a2": "Een gehoorapparaat",
+            "a3": "Een bloeddrukmanchet",
+            "a4": "Een dialysefilter"
+          }
+        },
+        "treatments-s7q7": {
+          "question": "Waarmee worden bij een heupprothese beschadigde gewrichtsdelen vervangen?",
+          "headerLabel": "CHIRURGIE",
+          "answers": {
+            "a1": "Het hele been van een donor",
+            "a2": "Alleen een externe wandelstok",
+            "a3": "Vervaardigde gezamenlijke componenten",
+            "a4": "Een injectie van rode bloedcellen"
+          }
+        }
+      }
+    },
+    "stage-8": {
+      "title": "Feit of verwarring?",
+      "questions": {
+        "treatments-s8q1": {
+          "question": "Waarom behandelen antibiotica een gewone virale verkoudheid niet?",
+          "headerLabel": "FEIT OF VERWARRING?",
+          "answers": {
+            "a1": "Ze werken op bacteriën, niet op het verkoudheidsvirus",
+            "a2": "Ze werken alleen op gebroken botten",
+            "a3": "Ze zijn een vorm van straling",
+            "a4": "Ze werken alleen tijdens de operatie"
+          }
+        },
+        "treatments-s8q2": {
+          "question": "Welke bewering over de toediening van chemotherapie is waar?",
+          "headerLabel": "FEIT OF VERWARRING?",
+          "answers": {
+            "a1": "Elk type moet worden ingeademd",
+            "a2": "Sommige soorten worden via de mond ingenomen",
+            "a3": "Elk type is een injectie in een gewricht",
+            "a4": "Er kan geen type in een ader worden toegediend"
+          }
+        },
+        "treatments-s8q3": {
+          "question": "Welke uitspraak over ergotherapie is waar?",
+          "headerLabel": "FEIT OF VERWARRING?",
+          "answers": {
+            "a1": "Het is alleen bedoeld voor mensen met betaalde banen",
+            "a2": "Het kan mensen van verschillende leeftijden helpen met het dagelijks leven",
+            "a3": "Het is een andere naam voor chirurgie",
+            "a4": "Het is slechts een test van de werkprestaties"
+          }
+        },
+        "treatments-s8q4": {
+          "question": "Betekent counseling doorgaans dat u precies wordt verteld wat u moet doen?",
+          "headerLabel": "FEIT OF VERWARRING?",
+          "answers": {
+            "a1": "Ja; de therapeut neemt elke levensbeslissing",
+            "a2": "Ja; persoonlijke doelen worden nooit besproken",
+            "a3": "Nee; het helpt mensen hun eigen oplossingen te verkennen",
+            "a4": "Nee; er is helemaal geen sprake van discussie"
+          }
+        },
+        "treatments-s8q5": {
+          "question": "Welke omschrijving identificeert cupping?",
+          "headerLabel": "FEIT OF VERWARRING?",
+          "answers": {
+            "a1": "Naalden leveren insuline onder de huid",
+            "a2": "Cups creëren zuigkracht op de huid",
+            "a3": "Een machine filtert afval uit bloed",
+            "a4": "Een apparaat stuurt geluid naar een gehoorzenuw"
+          }
+        },
+        "treatments-s8q6": {
+          "question": "Welk soort signaal gebruikt TENS voor pijnverlichting?",
+          "headerLabel": "FEIT OF VERWARRING?",
+          "answers": {
+            "a1": "Een milde elektrische stroom",
+            "a2": "Een straal kankerbehandelingsstraling",
+            "a3": "Een dosis donorbloedcellen",
+            "a4": "Een uitbarsting van zuurstof onder hoge druk"
+          }
+        },
+        "treatments-s8q7": {
+          "question": "Een product wordt omschreven als ‘natuurlijk’. Wat zegt dat alleen al over de veiligheid ervan?",
+          "headerLabel": "FEIT OF VERWARRING?",
+          "answers": {
+            "a1": "Er wordt niet aangetoond dat het veilig is",
+            "a2": "Het kan geen bijwerkingen veroorzaken",
+            "a3": "Het is veilig bij elke dosis",
+            "a4": "Het kan geen wisselwerking hebben met medicijnen"
+          }
+        }
+      }
+    },
+    "stage-9": {
+      "title": "Verbind de aanwijzingen",
+      "questions": {
+        "treatments-s9q1": {
+          "question": "Bij een dialysebehandeling wordt het slijmvlies van de buik als filter gebruikt. Welk type is het?",
+          "headerLabel": "VERBIND DE AANWIJZINGEN",
+          "answers": {
+            "a1": "Hemodialyse",
+            "a2": "Peritoneale dialyse",
+            "a3": "Bloedtransfusie",
+            "a4": "Niertransplantatie"
+          }
+        },
+        "treatments-s9q2": {
+          "question": "Een voedingssonde gaat via de neus naar de maag. Hoe heet het?",
+          "headerLabel": "VERBIND DE AANWIJZINGEN",
+          "answers": {
+            "a1": "Een neus-maagsonde",
+            "a2": "Een coronaire stent",
+            "a3": "Een dialysekatheter",
+            "a4": "Een cochleair implantaat"
+          }
+        },
+        "treatments-s9q3": {
+          "question": "Een troebele ooglens wordt vervangen door een kunstlens. Welke operatie is dit?",
+          "headerLabel": "VERBIND DE AANWIJZINGEN",
+          "answers": {
+            "a1": "Een staaroperatie",
+            "a2": "Hoornvliestransplantatie",
+            "a3": "Laserontharing",
+            "a4": "Heup vervanging"
+          }
+        },
+        "treatments-s9q4": {
+          "question": "Het vervangen van lage niveaus van rode bloedcellen helpt het vermogen van het bloed om wat te vervoeren te herstellen?",
+          "headerLabel": "VERBIND DE AANWIJZINGEN",
+          "answers": {
+            "a1": "Zuurstof",
+            "a2": "Geluidsgolven",
+            "a3": "Elektrische instructies voor spieren",
+            "a4": "Lichtsignalen naar de hersenen"
+          }
+        },
+        "treatments-s9q5": {
+          "question": "Welke vaardigheid wordt bij CGT toegepast bij het overwegen van een andere verklaring voor een verontrustende gebeurtenis?",
+          "headerLabel": "VERBIND DE AANWIJZINGEN",
+          "answers": {
+            "a1": "Bloeddruk meten",
+            "a2": "Het vergroten van de spierkracht",
+            "a3": "Een nutteloze gedachte in twijfel trekken",
+            "a4": "Een medicijndosis aanpassen"
+          }
+        },
+        "treatments-s9q6": {
+          "question": "Welk apparaat stimuleert de gehoorzenuw, in plaats van alleen maar het geluid te versterken?",
+          "headerLabel": "VERBIND DE AANWIJZINGEN",
+          "answers": {
+            "a1": "Een cochleair implantaat",
+            "a2": "Een conventioneel hoortoestel",
+            "a3": "Een oorthermometer",
+            "a4": "Een hoofdtelefoon met ruisonderdrukking"
+          }
+        },
+        "treatments-s9q7": {
+          "question": "Een apparaat verandert vloeibaar medicijn in een nevel die iemand inademt. Welk apparaat is dat?",
+          "headerLabel": "VERBIND DE AANWIJZINGEN",
+          "answers": {
+            "a1": "Een pacemaker",
+            "a2": "Een glucosemeter",
+            "a3": "Een vernevelaar",
+            "a4": "Een dialysefilter"
+          }
+        }
+      }
+    },
+    "stage-10": {
+      "title": "De laatste mix",
+      "questions": {
+        "treatments-s10q1": {
+          "question": "Wanneer wordt in de kankerzorg een “neoadjuvante” behandeling gegeven?",
+          "headerLabel": "DE LAATSTE MIX",
+          "answers": {
+            "a1": "Vóór de hoofdbehandeling",
+            "a2": "Pas nadat alle behandelingen zijn beëindigd",
+            "a3": "Alleen tijdens een bloedtransfusie",
+            "a4": "Pas nadat de kanker terugkeert"
+          }
+        },
+        "treatments-s10q2": {
+          "question": "“Adjuvante” kankerbehandeling wordt toegevoegd na de hoofdbehandeling, voornamelijk om wat te doen?",
+          "headerLabel": "DE LAATSTE MIX",
+          "answers": {
+            "a1": "Garandeer dat er geen follow-up nodig is",
+            "a2": "Vervang elke vorm van symptoomverlichting",
+            "a3": "Verlaag de kans dat de kanker terugkeert",
+            "a4": "Maak alle toekomstige behandelingen overbodig"
+          }
+        },
+        "treatments-s10q3": {
+          "question": "Bij welke dialysemethode wordt het bloed door een filter buiten het lichaam geleid?",
+          "headerLabel": "DE LAATSTE MIX",
+          "answers": {
+            "a1": "Peritoneale dialyse",
+            "a2": "Niertransplantatie",
+            "a3": "Hemodialyse",
+            "a4": "Zuurstof therapie"
+          }
+        },
+        "treatments-s10q4": {
+          "question": "Waarom zou een CGT-therapeut kunnen voorstellen om tussen de sessies door te oefenen?",
+          "headerLabel": "DE LAATSTE MIX",
+          "answers": {
+            "a1": "Ter vervanging van elke toekomstige therapiesessie",
+            "a2": "Om de bloedchemie thuis te meten",
+            "a3": "Om de vaardigheden toe te passen in alledaagse situaties",
+            "a4": "Om ervoor te zorgen dat er nooit emoties worden gevoeld"
+          }
+        },
+        "treatments-s10q5": {
+          "question": "Bij een stamceltransplantatie betekent ‘autoloog’ dat de cellen van wie afkomstig zijn?",
+          "headerLabel": "DE LAATSTE MIX",
+          "answers": {
+            "a1": "De persoon die de transplantatie krijgt",
+            "a2": "Alleen een niet-verwante donor",
+            "a3": "Alleen een eeneiige tweeling",
+            "a4": "Elk dier met bijpassend bloed"
+          }
+        },
+        "treatments-s10q6": {
+          "question": "Door wat te doen kunnen immuuncheckpointremmers kanker helpen bestrijden?",
+          "headerLabel": "DE LAATSTE MIX",
+          "answers": {
+            "a1": "Bloed vervangen door donorplasma",
+            "a2": "Het gebied rond een tumor verdoven",
+            "a3": "Het loslaten van de rem op een immuunreactie",
+            "a4": "Een nieuwe route rond een slagader creëren"
+          }
+        },
+        "treatments-s10q7": {
+          "question": "Welke uitspraak over palliatieve zorg is juist?",
+          "headerLabel": "DE LAATSTE MIX",
+          "answers": {
+            "a1": "Het is alleen een andere naam voor chemotherapie",
+            "a2": "Het beperkt zich tot de laatste uren van het leven",
+            "a3": "Het kan het comfort verbeteren naast een behandeling gericht op genezing",
+            "a4": "Het betekent dat alle andere behandelingen moeten stoppen"
           }
         }
       }

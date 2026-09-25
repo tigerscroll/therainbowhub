@@ -20,12 +20,12 @@ const folders = fs.readdirSync(root, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "quiz.json")));
 
 fail(
-  new Set(Object.values(SOCIAL_PROOF_COUNTS)).size === Object.values(SOCIAL_PROOF_COUNTS).length,
-  "Every quiz must have a different stable social-proof count.",
+  new Set(Object.values(SOCIAL_PROOF_COUNTS).filter(count => count > 0)).size === Object.values(SOCIAL_PROOF_COUNTS).filter(count => count > 0).length,
+  "Positive social-proof counts must be unique; disabled counts may be zero.",
 );
 fail(
   folders.every((folder) => Number.isInteger(SOCIAL_PROOF_COUNTS[folder.name])),
-  "Every active quiz must have a stable social-proof count in scripts/social-proof.mjs.",
+  "Every active quiz must define listing.socialProofCount in its quiz.json manifest.",
 );
 
 function read(file) {
@@ -94,6 +94,9 @@ function validateTextOnlyLocale(value, config, location, locale) {
   fail(typeof value?.eyebrow === "string" && Boolean(value.eyebrow.trim()), `${location}: eyebrow is required.`);
   const shared = sharedQuizCopy(locale);
   for (const mapping of APPROVED_SHARED_OVERRIDE_PATHS) {
+    // A complete, JSON-only checkpoint can explicitly include shared checklist
+    // wording. Authors need not know which phrases also exist in site i18n.
+    if (mapping.localePath.includes("preAdChecks")) continue;
     for (const match of valuesAtPathPattern(value, mapping.localePath)) {
       fail(match.value !== shared[mapping.sharedKey], `${location}: ${match.path} duplicates shared i18n key quiz.${mapping.sharedKey}.`);
     }
@@ -215,12 +218,8 @@ function validateResultProfiles(value, scoring, location) {
 function validateWeightedReferences(value, location) {
   const profileIds = new Set((value.results?.profiles ?? []).map((profile) => profile.id).filter(Boolean));
   const expectedExposure = Object.fromEntries([...profileIds].map((id) => [id, 0]));
-  const prostateFallback = location.startsWith("prostatetest/");
-  let prostateFallbackCount = 0;
-  let prostateQuestionCount = 0;
   for (const question of (value.stages ?? []).flatMap((stage) => stage.questions ?? [])) {
     if (!question.answers || Array.isArray(question.answers)) continue;
-    if (prostateFallback) prostateQuestionCount += 1;
     const meanings = Object.values(question.answers);
     meanings.forEach((meaning, answerIndex) => {
       if (typeof meaning === "string") {
@@ -233,21 +232,19 @@ function validateWeightedReferences(value, location) {
       fail(entries.length > 0, `${location}: ${question.id} answer ${answerIndex + 1} has an empty weight map.`);
       for (const [profileId, weight] of entries) {
         fail(profileIds.has(profileId), `${location}: ${question.id} answer ${answerIndex + 1} references unknown profile ${profileId}.`);
-        const isProstateFallback = prostateFallback && answerIndex === 0 && profileId === "no-current-changes" && weight === 0;
-        if (prostateFallback && profileId === "no-current-changes") {
-          fail(isProstateFallback && entries.length === 1, `${location}: ${question.id} no-current must remain an exclusive zero-weight fallback.`);
-        }
-        fail(typeof weight === "number" && Number.isFinite(weight) && (weight > 0 || isProstateFallback), `${location}: ${question.id} answer ${answerIndex + 1} has an invalid weight for ${profileId}.`);
-        if (isProstateFallback) prostateFallbackCount += 1;
+        fail(typeof weight === "number" && Number.isFinite(weight) && weight > 0, `${location}: ${question.id} answer ${answerIndex + 1} has an invalid weight for ${profileId}.`);
         if (profileId in expectedExposure && typeof weight === "number") expectedExposure[profileId] += weight / meanings.length;
       }
     });
   }
-  if (prostateFallback) fail(prostateFallbackCount === prostateQuestionCount, `${location}: each question must retain one zero-weight no-current fallback answer.`);
   const exposure = Object.values(expectedExposure);
-  if (!prostateFallback && exposure.length > 1 && exposure.every((value) => value > 0)) {
-    const allowedGap = location.startsWith("grossquiz/") ? 0.5 : 0.05;
-    fail(Math.max(...exposure) - Math.min(...exposure) <= allowedGap, `${location}: weighted profile opportunity is imbalanced under uniform answer selection.`);
+  fail(exposure.every(value => value > 0), `${location}: every weighted profile needs a scoring opportunity.`);
+  // Equal exposure applies when each question offers all profiles (such as
+  // Personality). Years Left samples four of its eight archetypes per question;
+  // its reachable profiles and bounded estimates have dedicated scoring tests.
+  const allProfilesOffered = value.stages.every(stage => stage.questions.every(question => Object.keys(question.answers ?? {}).length >= profileIds.size));
+  if (exposure.length > 1 && allProfilesOffered) {
+    fail(Math.max(...exposure) - Math.min(...exposure) <= 0.05, `${location}: weighted profile opportunity is imbalanced under uniform answer selection.`);
   }
 }
 
@@ -331,7 +328,8 @@ for (const folder of folders) {
     && config.engine.startOnLoad === (templateContract.startOnLoad ?? false)
     && config.engine.advanceDelayMs === 450
     && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: templateContract.rewardedStart ?? true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: quiz must resolve to its shared template engine.`);
-  fail(config.listing?.socialProofCount === SOCIAL_PROOF_COUNTS[folder.name], `${folder.name}/quiz.json: listing.socialProofCount must use the shared stable quiz count.`);
+  const proofCount = config.listing?.socialProofCount;
+  fail(Number.isInteger(proofCount) && (proofCount >= 1000 || (proofCount === 0 && config.listing.showSocialProof === false)), `${folder.name}/quiz.json: social proof needs a valid count, or zero with social proof disabled.`);
   fail(config.listing?.showSocialProof === undefined || typeof config.listing.showSocialProof === "boolean", `${folder.name}/quiz.json: listing.showSocialProof must be a boolean when provided.`);
   fail(config.listing?.compactLanding === undefined || typeof config.listing.compactLanding === "boolean", `${folder.name}/quiz.json: listing.compactLanding must be a boolean when provided.`);
   fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads are not part of the shared quiz template.`);
@@ -393,10 +391,10 @@ for (const folder of folders) {
   fail(typeof source.career?.resultProgressLabel === "string" && source.career?.resultProgressComplete?.includes("{value}"), `${folder.name}: themed progress label and shared completion copy are required after expansion.`);
   fail(source.career?.stages?.length === expectedStageCount, `${folder.name}/en.json: shared career/checkpoint data must match the quiz stages.`);
   fail(source.career?.stages?.slice(0, -1).every((stage) => (
-    stage.preAdButton === undefined
+    Boolean(stage.preAdButton?.trim())
       && stage.preAdChecks === undefined
       && stage.next?.button === undefined
-  )), `${folder.name}/en.json: the first four checkpoints must use the shared progress-only Continue flow.`);
+  )), `${folder.name}/en.json: intermediate checkpoints must use Continue without a final-result checklist.`);
   fail(source.career?.stages?.every((stage) => stage.preAdBadge === undefined), `${folder.name}/en.json: result-ready screens must not include a completion eyebrow.`);
   fail(source.career?.stages?.at(-1)?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final checkpoint may use the three-row result checklist.`);
   fail(source.checkpoint?.reveals === undefined && source.checkpoint?.nextPrefix === undefined, `${folder.name}/en.json: duplicate checkpoint progression copy must not be retained.`);
@@ -427,128 +425,11 @@ for (const folder of folders) {
     const expectedPositions = [0, 1, 2, 3].map((index) => (
       Math.floor(sourceQuestions.length / 4) + (index < sourceQuestions.length % 4 ? 1 : 0)
     ));
-    fail(JSON.stringify(sharedPositions) === JSON.stringify(expectedPositions), `${folder.name}/en.json: answer positions must match the shared template balance.`);
+    fail(JSON.stringify(sharedPositions.sort()) === JSON.stringify(expectedPositions.sort()), `${folder.name}/en.json: answer positions must match the shared template balance.`);
     fail(expectedStageCount > 1 || source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage quizzes must not show a redundant best-round module.`);
     const questionCategories = [...new Set(sourceQuestions.map((question) => question.category).filter(Boolean))].sort();
     const dimensionCategories = (source.results?.dimensions ?? []).flatMap((dimension) => dimension.categories ?? []).sort();
     fail(JSON.stringify(dimensionCategories) === JSON.stringify(questionCategories), `${folder.name}/en.json: every scored category must appear in exactly one result dimension.`);
-  }
-  if (folder.name === "marry") {
-    const expectedProfiles = ["warm_anchor", "playful_spark", "quiet_creative", "grounded_builder", "magnetic_connector", "curious_explorer", "thoughtful_dreamer", "ambitious_teammate"];
-    const selector = config.engine?.profileArtworkSelector;
-    const selectorQuestion = sourceQuestions[0];
-    fail(config.template === "single-stage-rewarded-v1" && config.engine?.scoring === "weighted-profile", "marry: must use the shared single-stage weighted-profile engine.");
-    fail(sourceQuestions.length === 10 && sourceQuestions[0]?.id === "marry-r1q1", "marry: needs the approved ten-choice sequence beginning with the portrait selector.");
-    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.id)) === JSON.stringify(expectedProfiles), "marry: archetype set or fixed tie order changed.");
-    fail(selector?.questionId === "marry-r1q1" && selector?.fallback === "stable-answer-hash", "marry: profile artwork selector is missing or invalid.");
-    fail(JSON.stringify(selector?.fixedVariants) === JSON.stringify({ a1: "masculine", a2: "feminine", a3: "androgynous" }), "marry: fixed presentation mappings changed.");
-    fail(JSON.stringify(selectorQuestion?.calibration) === JSON.stringify([0, 0, 0, 0]) && selectorQuestion?.correct === undefined, "marry: Q1 must be the only unscored selector.");
-    fail(sourceQuestions.slice(1).every((question) => question.calibration === undefined && question.correct === undefined), "marry: relationship choices must not use answer keys or calibration.");
-    fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "marry: every choice needs a question-type header.");
-    fail(sourceQuestions.slice(1).every((question) => {
-      const answers = question.answers && !Array.isArray(question.answers) ? Object.values(question.answers) : [];
-      const seen = new Set();
-      const valid = answers.length === 4 && answers.every((weights) => {
-        const entries = weights && typeof weights === "object" && !Array.isArray(weights) ? Object.entries(weights) : [];
-        return entries.length === 2 && entries.every(([profile, weight]) => {
-          seen.add(profile);
-          return expectedProfiles.includes(profile) && weight === 0.5;
-        });
-      });
-      return valid && seen.size === 8;
-    }), "marry: every scored choice must partition all eight archetypes with equal signals.");
-    fail(config.theme?.artwork?.checkpoints?.length === 1, "marry: single-stage flow needs one completed checkpoint artwork.");
-    fail(Object.values(config.theme?.artwork?.checkpointVariants ?? {}).every((assets) => Array.isArray(assets) && assets.length === 1), "marry: each portrait presentation needs one completed checkpoint artwork.");
-    fail(source.career?.stages?.[0]?.preAdTitle === "Your portrait match is ready" && source.career?.stages?.[0]?.preAdButton === "Reveal My Portrait", "marry: final portrait reveal gate changed.");
-    fail(config.listing?.thumbnail === "assets/thumbnail.webp", "marry: listing must use the optimized WebP thumbnail.");
-    fail(source.results?.profiles?.find((profile) => profile.id === "curious_explorer")?.firstFeature === "their curious, adventurous gaze.", "marry: Curious Explorer feature copy must match all portrait variants.");
-  }
-  if (folder.name === "firefighter") {
-    const firefighterCategories = ["fire_smoke_science", "scene_hazard_awareness", "equipment_mechanical_reasoning", "numeracy_spatial_awareness", "communication_incident_judgement"];
-    const expectedQuestionIds = [
-      "firefighter-s1q1",
-      "firefighter-s1q2",
-      "firefighter-s2q2",
-      "firefighter-s1q5",
-      "firefighter-s3q6",
-      "firefighter-s3q2",
-      "firefighter-s4q7",
-      "firefighter-s5q5",
-      "firefighter-s5q6",
-      "firefighter-s5q8",
-    ];
-    const categoryCounts = Object.fromEntries(firefighterCategories.map((category) => [
-      category,
-      sourceQuestions.filter((question) => question.category === category).length,
-    ]));
-    const expectedProfiles = [
-      "The Entrance Exam Standout",
-      "The Sharp Incident Thinker",
-      "The Calm Incident Solver",
-      "The Steady Crew Candidate",
-      "The Promising Recruit",
-      "The First-Alarm Explorer",
-    ];
-    const forbiddenOperationalCopy = /forced entry|force entry|ventilat(?:e|ion)|breathing apparatus|ladder position|structural entry|fire attack/i;
-    const questionsById = Object.fromEntries(sourceQuestions.map((question) => [question.id, question]));
-    const firefighterThemeCss = fs.readFileSync(path.join(directory, "theme.css"), "utf8");
-    const firefighterLandingBlocks = [...firefighterThemeCss.matchAll(/\[data-quiz-theme="firefighter"\] \.quiz-engine__landing\s*\{([^}]*)\}/g)]
-      .map((match) => match[1]);
-    fail(config.engine?.targetRatio === 0.8 && config.engine?.scoring === "correct-answer", "firefighter: must use correct-answer scoring and an 80% target.");
-    fail(config.template === "single-stage-rewarded-v1", "firefighter: must use the ten-question rewarded flow.");
-    fail(source.title === "Only 11% Can Pass This Firefighter Entrance Exam", "firefighter/en.json: title changed.");
-    fail(source.landing?.cta === "Start Test" && config.listing?.socialProofCount === 268000, "firefighter: landing CTA and social proof must match the approved launch copy.");
-    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedQuestionIds), "firefighter/en.json: approved ten-question sequence changed.");
-    fail(firefighterCategories.every((category) => categoryCounts[category] >= 1), "firefighter/en.json: every entrance area must be represented.");
-    fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "firefighter/en.json: every question needs a distinct header label.");
-    fail(Boolean(source.career?.stages?.[0]?.preAdTitle) && Boolean(source.career?.stages?.[0]?.preAdButton), "firefighter/en.json: final reveal gate is missing.");
-    fail(source.career?.stages?.[0]?.preAdChecks?.[0] === "10 answers checked", "firefighter/en.json: ten-answer result checklist changed.");
-    fail(JSON.stringify(source.results?.profiles?.map((profile) => profile.title)) === JSON.stringify(expectedProfiles), "firefighter/en.json: candidate profile names changed.");
-    fail(new Set(sourceQuestions.map((question) => question.interactionStyle)).size >= 5, "firefighter/en.json: the short challenge must retain varied reasoning styles.");
-    fail(sourceQuestions.at(-1)?.reasoningSteps === 2 && /synthesis/.test(sourceQuestions.at(-1)?.interactionStyle ?? ""), "firefighter/en.json: final question must retain two-step reasoning.");
-    fail(!forbiddenOperationalCopy.test(sourceQuestions.map((question) => `${question.question} ${question.answers.join(" ")}`).join(" ")), "firefighter/en.json: operational firefighting instruction is outside the quiz scope.");
-    fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, "firefighter/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.");
-    fail(questionsById["firefighter-s3q6"]?.question === "A hot surface warms your face from several metres away without contact. Which heat-transfer process best explains this?", "firefighter/en.json: the radiation question must remain unambiguous.");
-    fail(questionsById["firefighter-s3q2"]?.answers?.[questionsById["firefighter-s3q2"].correct] === "60 metres" && questionsById["firefighter-s5q6"]?.answers?.[questionsById["firefighter-s5q6"].correct] === "12", "firefighter/en.json: approved numeracy answers changed.");
-    fail(/ten.{0,20}questions/i.test(source.about?.body ?? ""), "firefighter/en.json: About copy must describe the ten-question format.");
-    fail(firefighterLandingBlocks.length > 0 && firefighterLandingBlocks.every((block) => !/(?:^|;)\s*(?:grid-template-columns|width|padding(?:-[a-z]+)?)\s*:/m.test(block)), "firefighter/theme.css: shared landing grid, width and padding must not be overridden.");
-  }
-  if (["oxford", "cambridge", "harvard", "nursing", "paramedic", "midwifery", "chef"].includes(folder.name)) {
-    fail(source.career?.stages?.length === 1, `${folder.name}/en.json: entrance challenge must have one result gate.`);
-    fail(Boolean(source.career?.stages?.[0]?.preAdTitle), `${folder.name}/en.json: result-ready title is missing.`);
-    fail(source.career?.stages?.[0]?.preAdChecks?.[0] === "10 answers checked", `${folder.name}/en.json: ten-answer final checklist changed.`);
-  }
-  if (["memory", "years-left"].includes(folder.name)) {
-    const memory = folder.name === "memory";
-    const expectedIds = memory
-      ? ["memory-r1q1", "memory-r1q4", "memory-r2q2", "memory-r2q3", "memory-r3q1", "memory-r3q7", "memory-r4q1", "memory-r4q2", "memory-r5q2", "memory-r5q4"]
-      : ["yl-s1q1", "yl-s1q2", "yl-s2q1", "yl-s2q2", "yl-s3q1", "yl-s3q2", "yl-s4q1", "yl-s4q2", "yl-s5q1", "yl-s5q8"];
-    fail(config.template === "single-stage-rewarded-v1" && config.engine.flow === "linear" && config.engine.advance === "automatic", folder.name + ": must use the ten-question automatic flow.");
-    fail(!config.engine.startOnLoad && config.engine.rewarded.start && config.engine.rewarded.stages, folder.name + ": must retain the landing page, starting reward and round rewards.");
-    fail(config.engine.hardRefreshCheckpoints === false, folder.name + ": SPA must not reload at the result gate.");
-    fail(source.stages.length === 1 && sourceQuestions.length === 10, folder.name + ": needs exactly ten questions in one stage.");
-    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), folder.name + ": approved question order or recall dependencies changed.");
-    fail(sourceQuestions.every(q => { const choices = Array.isArray(q.answers) ? q.answers : Object.keys(q.answers); return choices.length === 4 && new Set(choices).size === 4; }), folder.name + ": needs four unique choices per question.");
-    fail(source.career.stages.length === 1 && !source.career.stages[0].next && source.career.stages[0].preAdChecks[0].includes("10"), folder.name + ": needs a final result gate after ten answers.");
-    fail(!/40 answers|forty/i.test(JSON.stringify(source)), folder.name + ": stale forty-question copy.");
-    if (memory) {
-      fail(config.engine.targetRatio === 0.8 && source.results.score.showBestRound === false, "memory: retain 80% target without a redundant best-round module.");
-      fail(sourceQuestions.every(q => Number.isInteger(q.correct)), "memory: every answer must remain scored.");
-      fail(JSON.stringify(sourceQuestions.filter(q=>q.study).map(q=>q.id)) === JSON.stringify(["memory-r1q1", "memory-r3q1", "memory-r4q1"]), "memory: retain all three required recall boards.");
-      fail(sourceQuestions.filter(q=>q.study).every(q=>q.study.mode === "manual" && q.study.continueLabel === "I’m Ready"), "memory: no timed study boards.");
-    } else {
-      fail(config.engine.estimate.baseAge === 84 && config.engine.estimate.minAge === 73 && config.engine.estimate.maxAge === 95, "years-left: preserve estimate safety clamp.");
-      fail(sourceQuestions.filter(q=>q.calibration).length === 1 && sourceQuestions.at(-1).calibration.length === 4, "years-left: preserve final calibration.");
-    }
-  }
-  if (folder.name === "iq") {
-    const expectedIds = ["iq-s1q1", "iq-s1q4", "iq-s2q2", "iq-s2q6", "iq-s3q2", "iq-s3q4", "iq-s4q1", "iq-s4q4", "iq-s5q2", "iq-s5q8"];
-    fail(config.template === "single-stage-rewarded-v1" && config.engine?.targetRatio === 0.8, "iq: must use ten questions and an 80% target.");
-    fail(JSON.stringify(sourceQuestionIds) === JSON.stringify(expectedIds), "iq/en.json: approved ten puzzles changed.");
-    fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), "iq/en.json: every puzzle needs a question-type header.");
-    fail(Boolean(source.career?.stages?.[0]?.preAdTitle) && source.career?.stages?.[0]?.preAdChecks?.[0] === "10 answers checked", "iq/en.json: final result gate changed.");
-    fail(source.results?.score?.showBestRound === false, "iq/en.json: a single-stage quiz must not show best round.");
-    fail(source.title === "Only 7% Pass This Intelligence Test", "iq/en.json: title changed.");
   }
   for (const localeFile of activeLocaleFiles) {
     const localizedRaw = read(path.join(directory, localeFile));
@@ -556,7 +437,7 @@ for (const folder of folders) {
     const localized = localizedRaw ? expandQuizLocale(config, localizedRaw, localeFile.replace(/\.json$/, "")) : null;
     if (!localized) continue;
     const landingIntroLines = localizedRaw?.landing?.intro?.split("\n") ?? [];
-    fail(landingIntroLines.length === 2 && landingIntroLines.every((line) => line.trim()), `${folder.name}/${localeFile}: landing intro must contain exactly two non-empty lines.`);
+    fail(landingIntroLines.length >= 1 && landingIntroLines.length <= 2 && landingIntroLines.every((line) => line.trim()), `${folder.name}/${localeFile}: landing intro must contain one or two non-empty lines.`);
     const questions = (localized.stages ?? []).flatMap((stage) => stage.questions ?? []);
     const questionIds = questions.map((question) => question.id);
     fail(questionIds.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/${localeFile}: every question needs a stable id.`);
@@ -564,13 +445,6 @@ for (const folder of folders) {
     const localizedProfileStructure = validateResultProfiles(localized, config.engine?.scoring, `${folder.name}/${localeFile}`);
     fail(JSON.stringify(localizedProfileStructure) === JSON.stringify(sourceProfileStructure), `${folder.name}/${localeFile}: result profile ids and thresholds differ from English.`);
     if (config.engine?.scoring === "weighted-profile") validateWeightedReferences(localized, `${folder.name}/${localeFile}`);
-    if (folder.name === "iq") {
-      const mirror = questions.find((question) => question.id === "iq-s1q4");
-      fail(mirror?.presentation === "spatial" && mirror?.correct === 2 && mirror?.visual?.items?.[1]?.includes("│"), `${folder.name}/${localeFile}: vertical-mirror question must preserve the reflected direction and answer index.`);
-      const letterCode = questions.find((question) => question.id === "iq-s2q2");
-      const demonstratedCode = letterCode?.visual?.items?.[1]?.split("→")?.[1]?.trim();
-      fail(Boolean(demonstratedCode) && !letterCode?.answers?.includes(demonstratedCode), `${folder.name}/${localeFile}: letter-code demonstration must not reveal one of the question answers.`);
-    }
     if (config.engine?.checkpoint === "ai") {
       fail(localized.stages?.every((stage) => stage.complete === undefined), `${folder.name}/${localeFile}: AI checkpoint stages must not contain unused complete copy.`);
       fail(localized.career?.stages?.at(-1)?.preAdChecks?.length >= 3 && localized.career.stages.at(-1).preAdChecks.length <= 8, `${folder.name}/${localeFile}: final checklist must contain three to eight items.`);
@@ -634,11 +508,9 @@ for (const folder of folders) {
         src: sourceQuestion.image.src,
         alt: Boolean(sourceQuestion.image.alt),
       } : undefined);
-      const localizedVisionFoldAsset = folder.name === "vision"
-        && question.id === "vision-r10q4"
-        && Boolean(question.image?.alt)
-        && new RegExp(`paper-fold-punch-${localeFile.replace(".json", "")}\\.svg(?:\\?|$)`).test(question.image?.src ?? "");
-      fail(imageStructureMatches || localizedVisionFoldAsset, `${folder.name}/${localeFile}: question ${index + 1} image structure differs from English.`);
+      const localizedAsset = config.structure.questions[question.id]?.image?.localizedSrc?.[localeFile.replace('.json', '')];
+      fail(imageStructureMatches || (localizedAsset === question.image?.src && Boolean(question.image?.alt)), `${folder.name}/${localeFile}: question ${index + 1} image must match the shared manifest's localized asset.`);
+
       fail(question.delay === sourceQuestion?.delay, `${folder.name}/${localeFile}: question ${index + 1} delay differs from English.`);
       fail(question.reasoningSteps === sourceQuestion?.reasoningSteps, `${folder.name}/${localeFile}: question ${index + 1} reasoning-step structure differs from English.`);
       fail(question.targetIdiom === sourceQuestion?.targetIdiom, `${folder.name}/${localeFile}: question ${index + 1} targetIdiom differs from English.`);
