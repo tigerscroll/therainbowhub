@@ -6,7 +6,7 @@ import { expandQuizLocale } from '../../scripts/quiz-schema-v2.mjs';
 import { getChapterAnswers } from './engagement.ts';
 import { scoreQuiz } from './scoring.ts';
 
-const slugs = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq'];
+const slugs = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq', 'harvard', 'oxford', 'cambridge'];
 const read = (slug: string, file: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${file}`, 'utf8'));
 
 for (const slug of slugs) {
@@ -21,7 +21,7 @@ for (const slug of slugs) {
     assert.equal(copy.landing.intro, original.landing.intro);
     assert.equal(copy.landing.cta, 'Start');
     assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-    assert.deepEqual(manifest.activeLocales, ['en']);
+    assert.deepEqual(manifest.activeLocales, JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales);
     assert.equal(manifest.engine.localeParity, 'independent');
     assert.equal(manifest.engine.hardRefreshCheckpoints, false);
     assert.equal(manifest.listing.compactLanding, true);

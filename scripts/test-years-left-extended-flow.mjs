@@ -4,11 +4,14 @@ import { chromium } from 'playwright-core';
 
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3198';
 const slug = process.env.QUIZ_TEST_SLUG ?? 'years-left';
+const locale = process.env.QUIZ_TEST_LOCALE ?? 'en';
+const artifactPrefix = locale === 'en' ? slug : `${slug}-${locale}`;
 const root = `data/quizzes/${slug}/english-extended`;
 const manifest = JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8'));
-const copy = JSON.parse(fs.readFileSync(`${root}/en.json`, 'utf8'));
+const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
-const textChapters = ['treatments', 'anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq'].includes(slug);
+const newChapters = ['personality', 'harvard', 'oxford', 'cambridge'].includes(slug);
+const textChapters = newChapters || ['treatments', 'anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq'].includes(slug);
 const testPages = new Map();
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 
@@ -51,18 +54,20 @@ async function run(width) {
       },
     };
   });
-  await page.goto(`${base}/${slug}?test_keep=1`);
+  await page.goto(`${base}/${locale === 'en' ? '' : `${locale}/`}${slug}?test_keep=1`);
+  assert.equal(await page.locator('html').getAttribute('lang'), locale);
+  if (locale === 'ar') assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   const landing = page.locator('.quiz-engine__landing');
   await landing.waitFor();
   assert.equal(await landing.locator('h1').innerText(), copy.title);
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
-  assert.match(await landing.locator('.quiz-engine__primary').innerText(), /^Start\s*→?$/);
+  assert.equal((await landing.locator('.quiz-engine__primary').innerText()).replace(/[→←]/g, '').trim(), copy.landing.cta);
   assert.equal(await page.evaluate(() => window.adCalls.length), 0);
   if ((slug === 'vision' || textChapters) && width === 320) {
     assert.equal(await landing.locator('.quiz-engine__primary').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'Start remains visible on a small phone');
-    await page.screenshot({ path: `/tmp/${slug}-engagement-landing-small-phone.png`, animations: 'disabled' });
+    await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-landing-small-phone.png`, animations: 'disabled' });
   }
-  await page.screenshot({ path: `/tmp/${slug}-engagement-landing-${width}.png`, animations: 'disabled' });
+  await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
   await landing.locator('.quiz-engine__primary').click();
   await page.locator('[data-question-id]').waitFor();
   let expectedRewards = 1;
@@ -85,8 +90,9 @@ async function run(width) {
         await study.waitFor();
         assert.equal(await question.locator('.quiz-engine__answer').count(), 0, 'study and answer phases remain separate');
         assert.deepEqual(await study.locator('.quiz-engine__study-items > strong').allTextContents(), copy.stages[stage.id].questions[id].study.items);
-        if (index === 0 && ([0, 6, 7].includes(stageIndex) || slug === 'vision')) await page.screenshot({ path: `/tmp/${slug}-engagement-study-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
-        await study.getByRole('button', { name: 'I’m Ready', exact: true }).click();
+        assert.equal(await study.locator('.quiz-engine__study-items').evaluate(node => getComputedStyle(node).direction), 'ltr', 'study boards retain the left-to-right order used by the answer key');
+        if (index === 0 && ([0, 6, 7].includes(stageIndex) || slug === 'vision')) await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-study-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
+        await study.getByRole('button', { name: copy.stages[stage.id].questions[id].study.continueLabel, exact: true }).click();
         await question.locator('.quiz-engine__answer').first().waitFor();
         assert.equal(await question.locator('.quiz-engine__study').count(), 0, 'the study cue is removed before answering');
         if ((stageIndex === 2 || (slug === 'vision' && stageIndex === 5)) && index === 0 && width === 390) {
@@ -100,6 +106,10 @@ async function run(width) {
         }
       }
       assert.deepEqual(await question.locator('.quiz-engine__answer strong').allTextContents(), answerIds.map(answerId => copy.stages[stage.id].questions[id].answers[answerId]));
+      const header = page.locator('.quiz-engine__progress-head');
+      assert.equal(await header.evaluate(node => node.getAnimations({subtree: true}).length), 0, 'the progress heading never fades between questions');
+      if (index === 0) await header.evaluate(node => { window.quizTestProgressHeader = node.firstElementChild; });
+      else assert.equal(await header.evaluate(node => window.quizTestProgressHeader === node.firstElementChild), true, 'the heading stays mounted as the question changes');
       assert.equal(await question.locator('.quiz-engine__answer').evaluateAll(nodes => nodes.every(node => getComputedStyle(node).animationName === 'none')), true, 'answers appear immediately');
       assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), 0, 'questions do not reveal the journey length');
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'questions add no ad requests');
@@ -117,16 +127,19 @@ async function run(width) {
           await page.waitForFunction(src => {
             const img = document.querySelector('[data-question-id] .quiz-engine__question-image img');
             return img?.complete && img.naturalWidth > 0 && img.getAttribute('src').endsWith(src);
-          }, logic.image.src);
+          }, logic.image.localizedSrc?.[locale] ?? logic.image.src);
           assert.equal(await picture.evaluate(node => {
             const bounds = node.getBoundingClientRect();
             return bounds.left >= 0 && bounds.right <= innerWidth && Math.abs(bounds.width / bounds.height - node.naturalWidth / node.naturalHeight) < .02;
           }), true, `${width}px ${id}: the entire puzzle board is visible without distortion`);
         }
         assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
-        if (index === 0 || id === 'vision-s9q3') await page.screenshot({ path: `/tmp/vision-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });
+        if (index === 0 || id === 'vision-s9q3') await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });
       }
-      if (stageIndex === 0 && index === 0) await page.screenshot({ path: `/tmp/${slug}-engagement-question-${width}.png`, animations: 'disabled' });
+      if (stageIndex === 0 && index === 0) await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-question-${width}.png`, animations: 'disabled' });
+      if (locale === 'ar' && ['oxford-s10q1','cambridge-s9q4'].includes(id)) {
+        await page.screenshot({path:`/tmp/${artifactPrefix}-${id}-symbols-${width}.png`,animations:'disabled'});
+      }
       const correctIndex = answerIds.indexOf(logic.correctAnswerId);
       const choice = scored && (width === 320 || (width === 390 && stageIndex === 0))
         ? correctIndex
@@ -147,14 +160,15 @@ async function run(width) {
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'gate waits for a click');
     assert.doesNotMatch(await checkpoint.innerText(), /\{profile\}/);
     if (stageIndex < 9) {
-      const leadingKey = scored
+      const leadingId = scored
         ? [...manifest.structure.results.profiles].sort((a, b) => b.min - a.min).find(profile => chapterCorrect / stage.questionIds.length >= profile.min).key
         : Object.entries(profileWeights).sort((a, b) => b[1] - a[1])[0][0];
+      const leadingKey = scored ? leadingId : manifest.structure.results.profiles.find(profile => profile.id === leadingId).key;
       assert.equal(await checkpoint.locator('.quiz-engine__checkpoint-profile').innerText(), copy.results.profiles[leadingKey].title, 'preview is based only on this chapter');
       assert.equal(await checkpoint.locator('.quiz-engine__primary').isEnabled(), true, 'no animation lock on intermediate gates');
     }
     const animationNames = await checkpoint.locator('.quiz-engine__checkpoint-icon').evaluate(node => getComputedStyle(node).animationName);
-    assert.equal(animationNames, reduced ? 'none' : slug === 'years-left' ? 'years-clock-turn' : `${slug}-chapter-mark`);
+    assert.equal(animationNames, reduced ? 'none' : slug === 'years-left' ? 'years-clock-turn' : newChapters ? 'quiz-chapter-mark' : `${slug}-chapter-mark`);
     assert.equal(await checkpoint.evaluate(node => node.getAnimations({ subtree: true }).every(animation => animation.effect.getTiming().iterations === 1)), true, 'checkpoint animations never loop');
     const button = checkpoint.locator('.quiz-engine__primary');
     await button.waitFor({ state: 'visible' });
@@ -169,7 +183,7 @@ async function run(width) {
       assert.deepEqual(await checkpoint.locator('.quiz-engine__checklist li').allTextContents(), copy.career.stages[stage.id].preAdChecks.map(item => `✓${item}`));
     }
     checkpoints.push({ chapter: stageIndex + 1, button: copy.career.stages[stage.id].preAdButton, animation: animationNames });
-    if ([0, 4, 8, 9].includes(stageIndex)) await page.screenshot({ path: `/tmp/${slug}-engagement-checkpoint-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
+    if ([0, 4, 8, 9].includes(stageIndex)) await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-checkpoint-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
     if (stageIndex === 0 && width === 390) {
       rewardsBeforeReload += expectedRewards;
       await page.reload();
@@ -195,14 +209,20 @@ async function run(width) {
     assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(), `${totalCorrect} / 70`);
     assert.equal(await result.locator('.quiz-engine__result-percentage strong').innerText(), `${Math.round(totalCorrect / 70 * 100)}%`);
     assert.equal(await result.locator('h2').first().innerText(), totalCorrect >= 56 ? copy.results.score.passed : copy.results.score.finished);
-  } else {
+  } else if (slug === 'years-left') {
     age = Number(await result.locator('.quiz-engine__result-age strong').innerText());
     assert.ok(age >= 73 && age <= 95);
   }
-  await page.screenshot({ path: `/tmp/${slug}-engagement-result-${width}.png`, animations: 'disabled' });
+  await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-result-${width}.png`, animations: 'disabled' });
   await result.locator('.quiz-engine__answer-review-unlock .quiz-engine__primary').click();
-  await result.locator('.quiz-engine__answer-review').waitFor();
-  assert.equal(await result.locator('.quiz-engine__answer-review article').count(), scored ? 70 - totalCorrect : 70);
+  if (slug === 'personality') {
+    await result.locator('.quiz-engine__profile-chemistry').waitFor();
+    assert.equal(await result.locator('.quiz-engine__dimension').count(), 4);
+    assert.equal(await result.locator('.quiz-engine__profile-traits > span').count(), 3);
+  } else {
+    await result.locator('.quiz-engine__answer-review').waitFor();
+    assert.equal(await result.locator('.quiz-engine__answer-review article').count(), scored ? 70 - totalCorrect : 70);
+  }
   expectedRewards++;
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'optional breakdown keeps its existing reward');
   if (width === 390) {
@@ -215,7 +235,7 @@ async function run(width) {
     for (const id of manifest.structure.stages[0].questionIds) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
-      if (manifest.structure.questions[id].study) await question.getByRole('button', { name: 'I’m Ready', exact: true }).click();
+      if (manifest.structure.questions[id].study) await question.getByRole('button', { name: copy.stages[manifest.structure.stages[0].id].questions[id].study.continueLabel, exact: true }).click();
       await question.locator('.quiz-engine__answer').first().click();
       await question.waitFor({ state: 'detached' });
     }
@@ -224,7 +244,7 @@ async function run(width) {
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 6, 'unavailable checkpoint ads do not strand the user');
   }
   assert.deepEqual(errors, []);
-  fs.writeFileSync(`/tmp/${slug}-engagement-browser-${width}.json`, JSON.stringify({ width, reducedMotion: reduced, chapters: checkpoints, age, totalCorrect: scored ? totalCorrect : undefined, result: 'PASS' }, null, 2));
+  fs.writeFileSync(`/tmp/${artifactPrefix}-engagement-browser-${width}.json`, JSON.stringify({ width, reducedMotion: reduced, chapters: checkpoints, age, totalCorrect: scored ? totalCorrect : undefined, result: 'PASS' }, null, 2));
   await context.close();
   console.log(`${width}px PASS: 70 questions, 10 chapter gates, truthful previews, mobile CTA visibility, single-play animations and no sharing`);
 }
@@ -233,11 +253,11 @@ try {
   const results = await Promise.allSettled((process.env.QUIZ_TEST_WIDTHS ?? '320,390,1440').split(',').map(Number).map(width => run(width).catch(async error => {
     console.error(`${slug} ${width}px: ${error.stack ?? error}`);
     const page = testPages.get(width);
-    if (page && !page.isClosed()) await page.screenshot({ path: `/tmp/${slug}-engagement-failure-${width}.png`, animations: 'disabled', timeout: 5_000 }).catch(() => {});
+    if (page && !page.isClosed()) await page.screenshot({ path: `/tmp/${artifactPrefix}-engagement-failure-${width}.png`, animations: 'disabled', timeout: 5_000 }).catch(() => {});
     throw error;
   })));
   const failures = results.filter(result => result.status === 'rejected');
-  if (failures.length) throw new AggregateError(failures.map(result => result.reason), 'English extended browser checks failed');
+  if (failures.length) throw new AggregateError(failures.map(result => result.reason), 'Chapter browser checks failed');
 } finally {
   console.log(`${slug}: closing test browser`);
   await browser.close();

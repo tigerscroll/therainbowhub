@@ -2,7 +2,7 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 
-const supported = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq'];
+const supported = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq', 'harvard', 'oxford', 'cambridge', 'personality'];
 const slugs = process.argv.slice(2).length ? process.argv.slice(2) : supported;
 if (slugs.some(slug => !supported.includes(slug))) throw new Error('Unknown English chapter quiz');
 const queue = [...slugs];

@@ -510,6 +510,10 @@
   height: 100%;
 }
 
+[dir="rtl"] .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__primary-arrow svg {
+  transform: scaleX(-1);
+}
+
 /* Every landing uses the same start affordance, regardless of legacy theme rules. */
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__primary > .quiz-engine__primary-icon {
   display: inline-flex !important;
@@ -717,7 +721,7 @@
 /* Keep each chapter's button and ad note together on short phones. */
 @media (max-width: 700px) and (max-height: 640px) {
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] {
-    padding-block: 18px !important;
+    padding-block: 14px !important;
   }
 
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-icon {
@@ -733,6 +737,27 @@
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__career-checklist {
     margin-top: 12px !important;
     margin-bottom: 12px !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] > h2 {
+    font-size: 26px !important;
+    line-height: 1.08 !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-copy {
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__career-checklist li {
+    padding: 8px 11px !important;
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+  }
+
+  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
+    min-height: 56px !important;
+    font-size: 18px !important;
   }
 }
 
@@ -919,7 +944,7 @@
   background: color-mix(in srgb, var(--quiz-primary) 11%, var(--quiz-surface-raised));
   color: var(--quiz-primary);
   text-align: center;
-  animation: quizChapterIn .28s ease-out both;
+  animation: none;
 }
 
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__question-context {
@@ -940,3 +965,73 @@
 }
 
 .quiz-engine__checkpoint-profile { color: var(--quiz-text); }
+
+/* Keep coordinates and short equations together; long puzzle sequences can
+   still wrap within narrow cards without losing their reading direction. */
+.quiz-text__literal { overflow-wrap: anywhere; }
+.quiz-text__literal--atomic { white-space: nowrap; }
+.quiz-text__literal--alphabet {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: clamp(14px, 4vw, 18px);
+  line-height: 1.6;
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Shared chapter animation for the country and university challenges. */
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-icon {
+  animation: quiz-chapter-mark .6s cubic-bezier(.22, 1, .36, 1) both;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] > h2 {
+  animation: quizChapterIn .3s .06s ease-out both;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-copy {
+  animation: quizChapterIn .34s .12s ease-out both;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-next {
+  animation: quizChapterIn .36s .18s ease-out both;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__question-shell--chapters .quiz-engine__question h1 {
+  animation: quizChapterIn .28s ease-out both;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__question-shell--chapters .quiz-engine__answer {
+  animation: none;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 28%, rgba(255,255,255,.2) 50%, transparent 72%);
+  animation: quiz-chapter-shine .75s .35s ease-out both;
+}
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__ai-panel::after,
+.quiz-theme:is([data-quiz-theme="personality"], [data-quiz-theme="harvard"], [data-quiz-theme="oxford"], [data-quiz-theme="cambridge"]) .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__ai-top > span {
+  animation: none;
+}
+@keyframes quiz-chapter-mark {
+  from { opacity: 0; transform: scale(.8); }
+  60% { opacity: 1; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes quiz-chapter-shine {
+  from { transform: translateX(-100%); opacity: 0; }
+  25% { opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quiz-theme .quiz-engine__question-shell--chapters *,
+  .quiz-theme .quiz-engine__checkpoint[data-chapter-flow] *,
+  .quiz-theme .quiz-engine__checkpoint[data-chapter-flow] *::after,
+  .quiz-theme .quiz-engine__checkpoint[data-chapter-flow] *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}

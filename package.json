@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs && next build && node scripts/validate-export.mjs",
+    "build": "node scripts/prepare-quiz-assets.mjs && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/chapter-locales/audit.mjs && node scripts/validate-production.mjs && next build && node scripts/validate-export.mjs",
     "preview": "node scripts/serve-export.mjs",
     "start": "next start",
-    "lint": "node scripts/prepare-quiz-assets.mjs && tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/validate-production.mjs",
+    "lint": "node scripts/prepare-quiz-assets.mjs && tsc --noEmit --incremental false && npm test && node scripts/validate-quizzes.mjs && node scripts/validate-localizations.mjs && node scripts/chapter-locales/audit.mjs && node scripts/validate-production.mjs",
     "test": "node --experimental-strip-types --test components/article/*.test.ts components/quiz/*.test.ts",
     "validate": "node scripts/validate-quizzes.mjs",
     "validate:quizzes": "node scripts/validate-quizzes.mjs",
@@ -16,6 +16,8 @@
     "validate:export": "node scripts/validate-export.mjs",
     "validate:localizations": "node scripts/validate-localizations.mjs",
     "validate:all-locales": "node scripts/validate-localizations.mjs --require-all-locales",
+    "validate:chapter-locales": "node scripts/chapter-locales/audit.mjs",
+    "test:chapter-flows": "node scripts/test-chapter-locales.mjs",
     "visual:test": "node scripts/visual-regression.mjs",
     "visual:update": "node scripts/visual-regression.mjs --update",
     "create:quiz": "node scripts/create-quiz.mjs"

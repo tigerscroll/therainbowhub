@@ -17,7 +17,7 @@ const normalize = (text: string) => text.toUpperCase().replace(/[^A-Z0-9]/g, '')
 test('English memory has ten seven-question chapters, self-paced cues and no advertised length', () => {
   const expanded = expandQuizLocale(manifest, copy, 'en');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, ['en']);
+  assert.deepEqual(manifest.activeLocales, JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales);
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   assert.deepEqual(expanded.stages.map((stage: {questions: unknown[]}) => stage.questions.length), Array(10).fill(7));
   assert.deepEqual(copy.landing, { intro: 'Think your memory is sharp? Put it to the test.', cta: 'Start' });

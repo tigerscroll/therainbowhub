@@ -1,0 +1,128 @@
+import {additionalTitles} from './additional-topics.mjs';
+// Authored topic labels: idiomatic nouns, no literal "bench", "vault", or
+// financial "foundations" metaphors. The ten labels match the English topic order.
+const rows = {
+  'years-left': {
+    fr: 'Le réveil|Dans ton assiette|Ton rythme quotidien|Savoir déconnecter|Face à la pression|Ton entourage|Tes habitudes|Ce qui t’anime|Ton avenir|Le dernier portrait',
+    de: 'Der Morgen|Essen und Energie|Das Alltagstempo|Abschalten|Unter Druck|Menschen im Leben|Gewohnheiten|Innere Motivation|Der Blick nach vorn|Das Gesamtbild',
+    it: 'Il risveglio|Cibo ed energia|Il ritmo quotidiano|Staccare la spina|Sotto pressione|Le persone vicine|Le abitudini|La tua energia interiore|Il tuo futuro|Il quadro completo',
+    nl: 'Je ochtend|Voeding en energie|Je dagelijkse tempo|Tot rust komen|Onder druk|De mensen om je heen|Je gewoontes|Wat je bezielt|Je toekomst|Het totaalbeeld',
+    es: 'Al despertar|Alimentación y energía|Tu ritmo diario|Desconectar|Bajo presión|Tu entorno|Tus hábitos|Lo que te motiva|Tu futuro|El retrato final',
+    pt: 'Ao acordar|Alimentação e energia|O ritmo do dia a dia|Hora de desligar|Sob pressão|As pessoas à sua volta|Os hábitos|A motivação interior|O futuro|O retrato final',
+    ar: 'بداية يومك|غذاؤك وطاقتك|إيقاع حياتك اليومية|وقت الراحة|تحت الضغط|الأشخاص في حياتك|عاداتك اليومية|ما يمنحك الحماس|صورتك في المستقبل|الصورة الكاملة',
+  },
+  memory: {
+    fr: 'Mémoire en un regard|La suite de mots|Mémoriser les motifs|Personnes et associations|Détails du voyage|Couleurs et associations|Changer l’ordre|Repérer les détails|Souvenirs croisés|Le dernier défi mémoire',
+    de: 'Einprägen auf einen Blick|Die Wortfolge|Muster merken|Personen und Zuordnungen|Reisedetails|Farben zuordnen|Die Reihenfolge ändern|Details im Blick|Erinnerungen kombinieren|Die letzte Gedächtnisaufgabe',
+    it: 'Memoria a colpo d’occhio|La sequenza di parole|Ricordare gli schemi|Persone e abbinamenti|Dettagli del viaggio|Colori e abbinamenti|Cambiare l’ordine|Caccia ai dettagli|Ricordi incrociati|L’ultima prova di memoria',
+    nl: 'Onthouden in één oogopslag|De woordenreeks|Patronen onthouden|Personen en koppelingen|Reisdetails|Kleuren koppelen|De volgorde veranderen|Oog voor detail|Herinneringen combineren|De laatste geheugenuitdaging',
+    es: 'Memoria de un vistazo|La secuencia de palabras|Recordar patrones|Personas y parejas|Detalles del viaje|Colores y asociaciones|Cambiar el orden|Detectar detalles|Recuerdos combinados|El último reto de memoria',
+    pt: 'Memória num instante|A sequência de palavras|Memorizar padrões|Pessoas e associações|Detalhes da viagem|Cores e associações|Mudar a ordem|Atenção aos detalhes|Mistura de memórias|O último desafio de memória',
+    ar: 'ذاكرة من نظرة واحدة|تسلسل الكلمات|تذكّر الأنماط|أشخاص وأشياء|تفاصيل الرحلة|ألوان وأرقام|تغيير الترتيب|الانتباه للتفاصيل|ذكريات متداخلة|تحدي الذاكرة الأخير',
+  },
+  treatments: {
+    fr: 'Reconnaître le traitement|Les médicaments|Les soins à l’hôpital|Les psychothérapies|Les soins en cancérologie|Mouvement et rééducation|La chirurgie|Vrai ou confusion ?|Relier les indices|Le défi final',
+    de: 'Behandlungen erkennen|Medikamente|Hilfe im Krankenhaus|Psychotherapie|Krebsbehandlung|Bewegung und Rehabilitation|Chirurgie|Fakt oder Verwechslung?|Hinweise verbinden|Die letzte Kombination',
+    it: 'Riconoscere il trattamento|I farmaci|Le cure in ospedale|Le psicoterapie|Le cure oncologiche|Movimento e recupero|La chirurgia|Fatti o equivoci?|Collegare gli indizi|La sfida finale',
+    nl: 'Herken de behandeling|Geneesmiddelen|Zorg in het ziekenhuis|Gesprekstherapieën|Kankerbehandeling|Bewegen en herstellen|Chirurgie|Feit of verwarring?|Verbind de aanwijzingen|De laatste mix',
+    es: 'Reconocer el tratamiento|Los medicamentos|La atención hospitalaria|Las psicoterapias|La atención oncológica|Movimiento y recuperación|La cirugía|¿Hecho o confusión?|Conectar las pistas|El reto final',
+    pt: 'Reconhecer o tratamento|Os medicamentos|Cuidados no hospital|As psicoterapias|Cuidados oncológicos|Movimento e recuperação|A cirurgia|Verdade ou confusão?|Ligar as pistas|O desafio final',
+    ar: 'تعرّف على العلاج|الأدوية|الرعاية في المستشفى|العلاج النفسي بالكلام|رعاية مرضى السرطان|الحركة والتعافي|داخل الجراحة|حقيقة أم التباس؟|اربط الأدلة|التحدي الأخير',
+  },
+  vision: {
+    fr: 'Au premier regard|Repérer le signal|Les motifs en mouvement|Reflets et rotations|Indices de couleur|Mémoire visuelle|Comparer les codes|Les formes cachées|Presque identiques|Le défi final',
+    de: 'Auf den ersten Blick|Signale finden|Muster in Bewegung|Spiegeln und Drehen|Farben als Hinweise|Visuelles Gedächtnis|Codes vergleichen|Versteckte Formen|Fast gleich|Die letzte Kombination',
+    it: 'A prima vista|Cerca il segnale|Schemi in movimento|Riflessi e rotazioni|Indizi di colore|Memoria visiva|Confrontare i codici|Forme nascoste|Quasi identici|La sfida finale',
+    nl: 'Op het eerste gezicht|Zoek het signaal|Bewegende patronen|Spiegelen en draaien|Kleuren als aanwijzing|Visueel geheugen|Codes vergelijken|Verborgen vormen|Bijna hetzelfde|De laatste mix',
+    es: 'A primera vista|Busca la señal|Patrones en movimiento|Reflejos y giros|Pistas de color|Memoria visual|Comparar códigos|Formas ocultas|Casi iguales|El reto final',
+    pt: 'À primeira vista|Encontrar o sinal|Padrões em movimento|Reflexos e rotações|Pistas nas cores|Memória visual|Comparar códigos|Formas escondidas|Quase iguais|O desafio final',
+    ar: 'النظرة الأولى|البحث عن الإشارة|أنماط متحركة|انعكاسات ودوران|دلائل الألوان|الذاكرة البصرية|مقارنة الرموز|أشكال خفية|متشابهة تقريبًا|التحدي الأخير',
+  },
+  anatomy: {
+    fr: 'Les bases du corps|Os et articulations|Le corps en mouvement|Le cœur et le sang|La respiration|Le trajet des aliments|Le cerveau et les signaux|À l’intérieur de l’œil|Filtration et hormones|Relier les connaissances',
+    de: 'Grundlagen des Körpers|Knochen und Gelenke|Der Körper in Bewegung|Herz und Blut|Die Atmung|Der Weg der Nahrung|Gehirn und Signale|Im Inneren des Auges|Filterung und Hormone|Anatomische Zusammenhänge',
+    it: 'Le basi del corpo|Ossa e articolazioni|Il corpo in movimento|Cuore e sangue|La respirazione|Il percorso del cibo|Cervello e segnali|Dentro l’occhio|Filtri e ormoni|Collegamenti anatomici',
+    nl: 'De basis van het lichaam|Botten en gewrichten|Het lichaam in beweging|Hart en bloed|De ademhaling|De weg van het voedsel|Hersenen en signalen|Binnen in het oog|Filtering en hormonen|Anatomische verbanden',
+    es: 'Las bases del cuerpo|Huesos y articulaciones|El cuerpo en movimiento|Corazón y sangre|La respiración|El recorrido de los alimentos|Cerebro y señales|Dentro del ojo|Filtros y hormonas|Conexiones anatómicas',
+    pt: 'As bases do corpo|Ossos e articulações|O corpo em movimento|Coração e sangue|A respiração|O percurso dos alimentos|Cérebro e sinais|Por dentro do olho|Filtração e regulação|Relações na anatomia',
+    ar: 'أساسيات الجسم|العظام والمفاصل|الجسم والحركة|القلب والدم|التنفس|رحلة الطعام|الدماغ والإشارات|داخل العين|الترشيح والهرمونات|روابط في علم التشريح',
+  },
+  bible: {
+    fr: 'Au commencement|La sortie d’Égypte|Juges et rois|Courage et fidélité|Poésie et sagesse|Les débuts de l’Évangile|Personnes et miracles|Les paraboles|Croix et résurrection|L’Église des premiers temps',
+    de: 'Am Anfang|Der Auszug aus Ägypten|Richter und Könige|Mut und Treue|Dichtung und Weisheit|Der Beginn des Evangeliums|Menschen und Wunder|Die Gleichnisse|Kreuz und Auferstehung|Die frühe Kirche',
+    it: 'In principio|L’uscita dall’Egitto|Giudici e re|Coraggio e fedeltà|Poesia e sapienza|Gli inizi del Vangelo|Persone e miracoli|Le parabole|Croce e risurrezione|La Chiesa delle origini',
+    nl: 'In het begin|De uittocht uit Egypte|Rechters en koningen|Moed en trouw|Poëzie en wijsheid|Het begin van het evangelie|Mensen en wonderen|De gelijkenissen|Kruis en opstanding|De vroege kerk',
+    es: 'En el principio|La salida de Egipto|Jueces y reyes|Valor y lealtad|Poesía y sabiduría|El inicio del Evangelio|Personas y milagros|Las parábolas|Cruz y resurrección|La Iglesia primitiva',
+    pt: 'No princípio|A saída do Egito|Juízes e reis|Coragem e lealdade|Poesia e sabedoria|O início do Evangelho|Pessoas e milagres|As parábolas|Cruz e ressurreição|A Igreja primitiva',
+    ar: 'في البدء|الخروج من مصر|القضاة والملوك|الشجاعة والوفاء|الشعر والحكمة|بدايات الإنجيل|أشخاص ومعجزات|الأمثال|الصليب والقيامة|الكنيسة الأولى',
+  },
+  chef: {
+    fr: 'Les ustensiles|La préparation|Chaleur et cuisson|Goût et équilibre|Sauces et textures|La pâtisserie|Les calculs en cuisine|L’hygiène en cuisine|Organisation et service|Les choix en cuisine',
+    de: 'Küchenwerkzeuge|Die Vorbereitung|Hitze und Garmethoden|Geschmack und Balance|Soßen und Konsistenz|Backen|Rechnen in der Küche|Sicher arbeiten|Zeitplanung und Servieren|Entscheidungen in der Küche',
+    it: 'Gli utensili|La preparazione|Calore e cottura|Gusto ed equilibrio|Salse e consistenze|La pasticceria|I calcoli in cucina|La sicurezza in cucina|Organizzazione e servizio|Le scelte in cucina',
+    nl: 'Keukengerei|De voorbereiding|Warmte en bereiding|Smaak en balans|Sauzen en structuur|Bakken|Rekenen in de keuken|Veilig werken|Planning en serveren|Keuzes in de keuken',
+    es: 'Los utensilios|La preparación|Calor y cocción|Sabor y equilibrio|Salsas y texturas|La repostería|Los cálculos en la cocina|La seguridad en la cocina|Organización y servicio|Las decisiones en la cocina',
+    pt: 'Os utensílios|A preparação|Calor e técnicas|Sabor e equilíbrio|Molhos e texturas|Massas e forno|Cálculos na cozinha|Segurança na cozinha|Organização e serviço|Decisões na cozinha',
+    ar: 'أدوات المطبخ|تحضير المكونات|الحرارة وطرق الطهي|النكهة والتوازن|الصلصات والقوام|العجين والمخبوزات|حسابات المطبخ|سلامة المطبخ|التنظيم والتقديم|قرارات في المطبخ',
+  },
+  catholic: {
+    fr: 'Les bases de la foi catholique|Les sacrements|La messe|À l’intérieur de l’église|Temps liturgiques et fêtes|Prière et rosaire|Marie et les Évangiles|Les liens avec l’Écriture|La vie de l’Église|Foi et tradition',
+    de: 'Grundlagen des katholischen Glaubens|Die Sakramente|Die Messe|Im Kirchenraum|Kirchenjahr und Feste|Gebet und Rosenkranz|Maria und die Evangelien|Biblische Zusammenhänge|Das Leben der Kirche|Glaube und Tradition',
+    it: 'Le basi della fede cattolica|I sacramenti|La Messa|Dentro la chiesa|Tempi liturgici e feste|Preghiera e Rosario|Maria e i Vangeli|Collegamenti con la Scrittura|La vita della Chiesa|Fede e tradizione',
+    nl: 'De basis van het katholieke geloof|De sacramenten|De mis|In het kerkgebouw|Het kerkelijk jaar|Gebed en rozenkrans|Maria en de evangeliën|Verbanden in de Schrift|Het leven van de kerk|Geloof en traditie',
+    es: 'Las bases de la fe católica|Los sacramentos|La misa|Dentro de la iglesia|Tiempos litúrgicos y fiestas|Oración y rosario|María y los Evangelios|Conexiones con la Escritura|La vida de la Iglesia|Fe y tradición',
+    pt: 'As bases da fé católica|Os sacramentos|A missa|Dentro da igreja|Tempos litúrgicos e festas|Oração e rosário|Maria e os Evangelhos|Relações com as Escrituras|A vida da Igreja|Fé e tradição',
+    ar: 'أساسيات الإيمان الكاثوليكي|الأسرار المقدسة|القداس|داخل الكنيسة|المواسم الليتورجية والأعياد|الصلاة والمسبحة|مريم والأناجيل|روابط في الكتاب المقدس|حياة الكنيسة|الإيمان والتقليد',
+  },
+  mechanic: {
+    fr: 'Les voyants du tableau de bord|À l’intérieur du moteur|Freinage et adhérence|Les circuits électriques|Fluides et refroidissement|Transmission et direction|Les calculs à l’atelier|Le raisonnement du diagnostic|La sécurité à l’atelier|Le diagnostic final',
+    de: 'Warnleuchten verstehen|Im Inneren des Motors|Bremsen und Bodenhaftung|Elektrische Verbindungen|Flüssigkeiten und Kühlung|Antrieb und Lenkung|Rechnen in der Werkstatt|Fehler systematisch suchen|Sicherheit in der Werkstatt|Die letzte Diagnose',
+    it: 'Le spie del cruscotto|Dentro il motore|Freni e aderenza|I circuiti elettrici|Liquidi e raffreddamento|Trasmissione e sterzo|I calcoli in officina|Il ragionamento diagnostico|La sicurezza in officina|La diagnosi finale',
+    nl: 'Waarschuwingslampjes|Binnen in de motor|Remmen en grip|Elektrische verbindingen|Vloeistoffen en koeling|Aandrijving en besturing|Rekenen in de werkplaats|Storingen onderzoeken|Veiligheid in de werkplaats|De laatste diagnose',
+    es: 'Los avisos del tablero|Dentro del motor|Frenos y adherencia|Los circuitos eléctricos|Líquidos y refrigeración|Transmisión y dirección|Los cálculos en el taller|El razonamiento del diagnóstico|La seguridad en el taller|El diagnóstico final',
+    pt: 'Os avisos do painel|Dentro do motor|Reduzir a velocidade e manter a aderência|Ligações elétricas|Líquidos e arrefecimento|Transmissão e direção|Cálculos na oficina|O raciocínio do diagnóstico|Segurança na oficina|O diagnóstico final',
+    ar: 'إشارات لوحة القيادة|داخل المحرك|الفرامل والتماسك|التوصيلات الكهربائية|السوائل والتبريد|نقل الحركة والتوجيه|حسابات الورشة|التفكير التشخيصي|سلامة الورشة|التشخيص الأخير',
+  },
+  midwifery: {
+    fr: 'Les bases de la grossesse|Le suivi prénatal|Lire le dossier|Le déroulement de l’accouchement|Les premiers instants|Alimentation et bien-être|Hygiène et sécurité des soins|Une communication respectueuse|Les mesures en maternité|Croiser les observations',
+    de: 'Grundlagen der Schwangerschaft|Vorsorge vor der Geburt|Die Dokumentation verstehen|Der Geburtsverlauf|Die ersten Augenblicke|Ernährung und Wohlbefinden|Hygiene und sichere Versorgung|Respektvoll kommunizieren|Rechnen in der Geburtshilfe|Beobachtungen verbinden',
+    it: 'Le basi della gravidanza|L’assistenza prenatale|Leggere la documentazione|Il decorso del parto|I primi momenti|Alimentazione e benessere|Igiene e cure sicure|Comunicare con rispetto|Le misure in ostetricia|Collegare le osservazioni',
+    nl: 'De basis van zwangerschap|Zorg vóór de geboorte|Het dossier lezen|Het verloop van de bevalling|De eerste momenten|Voeding en welzijn|Hygiëne en veilige zorg|Respectvol communiceren|Rekenen in de geboortezorg|Observaties combineren',
+    es: 'Las bases del embarazo|La atención prenatal|Leer el registro clínico|El desarrollo del parto|Los primeros momentos|Alimentación y bienestar|Higiene y atención segura|Comunicación respetuosa|Los cálculos en maternidad|Relacionar las observaciones',
+    pt: 'As bases da gravidez|Cuidados antes do nascimento|Ler as anotações clínicas|A evolução do parto|Os primeiros momentos|Alimentação e bem-estar|Higiene e cuidados seguros|Comunicar com respeito|Cálculos nos cuidados maternos|Relacionar as observações',
+    ar: 'أساسيات الحمل|الرعاية قبل الولادة|قراءة السجل الصحي|مراحل الولادة|اللحظات الأولى|التغذية والعافية|النظافة والرعاية الآمنة|التواصل باحترام|الحسابات في رعاية الأمومة|ربط الملاحظات',
+  },
+  nursing: {
+    fr: 'Les bases du corps|Repérer les changements|Hygiène et sécurité des soins|La relation humaine|Les mesures du quotidien|Lire le dossier|Confort et participation|Des transmissions claires|Le raisonnement clinique|Croiser les observations',
+    de: 'Grundlagen des Körpers|Veränderungen bemerken|Hygiene und sichere Pflege|Die menschliche Verbindung|Messen im Alltag|Die Dokumentation verstehen|Wohlbefinden und Beteiligung|Eine klare Übergabe|Klinisches Denken|Beobachtungen verbinden',
+    it: 'Le basi del corpo|Notare i cambiamenti|Igiene e cure sicure|La relazione umana|Le misure quotidiane|Leggere la documentazione|Benessere e partecipazione|Un passaggio di consegne chiaro|Il ragionamento clinico|Collegare le osservazioni',
+    nl: 'De basis van het lichaam|Veranderingen opmerken|Hygiëne en veilige zorg|Menselijk contact|Dagelijkse metingen|Het dossier lezen|Comfort en betrokkenheid|Een heldere overdracht|Klinisch redeneren|Observaties combineren',
+    es: 'Las bases del cuerpo|Detectar cambios|Higiene y atención segura|La relación humana|Las mediciones diarias|Leer el registro clínico|Bienestar y participación|Un relevo claro|El razonamiento clínico|Relacionar las observaciones',
+    pt: 'As bases do corpo|Notar as mudanças|Higiene e cuidados seguros|A relação humana|Medições do dia a dia|Ler as anotações clínicas|Conforto e participação|Transmitir informações com clareza|O raciocínio clínico|Relacionar as observações',
+    ar: 'أساسيات الجسم|ملاحظة التغيّرات|النظافة والرعاية الآمنة|التواصل الإنساني|القياسات اليومية|قراءة السجل الصحي|الراحة والمشاركة|تسليم المعلومات بوضوح|التفكير السريري|ربط الملاحظات',
+  },
+  paramedic: {
+    fr: 'Les bases du corps|Évaluer les lieux|Repérer les changements|Temps et quantités|Communiquer clairement|Matériel et protection|Lire le dossier|Les bases de l’évaluation|Décider en équipe|La vue d’ensemble',
+    de: 'Grundlagen des Körpers|Die Einsatzstelle einschätzen|Veränderungen bemerken|Zeit und Mengen|Klar kommunizieren|Ausrüstung und Schutz|Die Dokumentation verstehen|Grundlagen der Beurteilung|Entscheidungen im Team|Das Gesamtbild',
+    it: 'Le basi del corpo|Valutare la scena|Notare i cambiamenti|Tempi e quantità|Comunicare con chiarezza|Attrezzature e protezione|Leggere la documentazione|Le basi della valutazione|Le decisioni di squadra|Il quadro completo',
+    nl: 'De basis van het lichaam|De situatie beoordelen|Veranderingen opmerken|Tijd en hoeveelheden|Duidelijk communiceren|Materiaal en bescherming|Het dossier lezen|De basis van beoordelen|Beslissen als team|Het totaalbeeld',
+    es: 'Las bases del cuerpo|Evaluar el entorno|Detectar cambios|Tiempo y cantidades|Comunicación clara|Equipos y protección|Leer el registro clínico|Las bases de la evaluación|Decisiones en equipo|La visión de conjunto',
+    pt: 'As bases do corpo|Avaliar o local|Notar as mudanças|Tempo e quantidades|Comunicação clara|Equipamentos e proteção|Ler as anotações clínicas|As bases da avaliação|Decisões em conjunto|A visão de conjunto',
+    ar: 'أساسيات الجسم|تقييم موقع الحادث|ملاحظة التغيّرات|الوقت والكميات|التواصل بوضوح|المعدات والحماية|قراءة السجل الصحي|أساسيات التقييم|قرارات الفريق|الصورة الكاملة',
+  },
+  iq: {
+    fr: 'Trouver la règle|Les liens entre les nombres|Les liens entre les mots|Suivre la logique|Rotations et directions|Observer les codes|Trouver le bon ordre|Les machines à calculer|Deux règles à la fois|Relier les indices',
+    de: 'Das Muster finden|Zahlen verknüpfen|Wörter verknüpfen|Der Logik folgen|Drehungen und Richtungen|Codes genau ansehen|Die richtige Reihenfolge|Rechenmaschinen|Zwei Regeln zugleich|Hinweise verbinden',
+    it: 'Trovare la regola|Relazioni tra numeri|Relazioni tra parole|Seguire la logica|Rotazioni e direzioni|Osservare i codici|Trovare l’ordine|Le macchine di calcolo|Due regole insieme|Collegare gli indizi',
+    nl: 'Vind het patroon|Verbanden tussen getallen|Verbanden tussen woorden|Volg de logica|Draaien en richtingen|Codes goed bekijken|Zoek de juiste volgorde|Rekenmachines|Twee regels tegelijk|Verbind de aanwijzingen',
+    es: 'Encontrar el patrón|Relaciones entre números|Relaciones entre palabras|Seguir la lógica|Giros y direcciones|Observar los códigos|Encontrar el orden|Las máquinas de cálculo|Dos reglas a la vez|Conectar las pistas',
+    pt: 'Encontrar o padrão|Relações entre números|Relações entre palavras|Seguir a lógica|Rotações e direções|Observar os códigos|Encontrar a ordem|Máquinas de cálculo|Duas regras ao mesmo tempo|Ligar as pistas',
+    ar: 'اكتشف النمط|علاقات بين الأرقام|علاقات بين الكلمات|اتبع المنطق|الدوران والاتجاهات|تدقيق الرموز|اكتشف الترتيب|آلات الحساب|قاعدتان معًا|اربط الأدلة',
+  },
+};
+
+export const stageTitles = Object.fromEntries(Object.entries({...rows, ...additionalTitles}).map(([slug, languages]) => [slug, Object.fromEntries(Object.entries(languages).map(([locale, text]) => {
+  const values = text.split('|');
+  if (values.length !== 10) throw Error(`${slug}/${locale}: exactly ten native topic titles required`);
+  return [locale, values];
+}))]));

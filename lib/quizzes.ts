@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import chapterLocales from "@/data/chapter-locales.json";
 
 import {
   getDefaultLocale,
@@ -1712,7 +1713,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const cacheKey = `${slug}:${locale}`;
   const cached = quizCache.get(cacheKey);
   if (cached) return cached;
-  const contentDirectory = ["years-left", "memory", "treatments", "vision", "anatomy", "bible", "chef", "catholic", "mechanic", "midwifery", "nursing", "paramedic", "iq"].includes(slug) && locale === "en"
+  const contentDirectory = chapterLocales.quizzes.includes(slug) && chapterLocales.locales.includes(locale)
     ? path.join(directory(slug), "english-extended")
     : directory(slug);
   const manifest = validateManifest(json(path.join(contentDirectory, "quiz.json")), `${slug}/${locale}/quiz.json`);

@@ -1,0 +1,76 @@
+# English personality preference map
+
+Rebuild with `node scripts/build-english-chapters.mjs personality`. Each answer contributes one point to one playful country-inspired style. All four styles have equal opportunities in every question. Display positions are shuffled. A tied score uses the existing stable profile order. These are entertainment archetypes, not claims about people or national identity.
+
+| Question | Answer ID → style |
+| --- | --- |
+| `personality-s1q1` | a1 → sweden; a2 → japan; a3 → australia; a4 → italy |
+| `personality-s1q2` | a1 → sweden; a2 → italy; a3 → japan; a4 → australia |
+| `personality-s1q3` | a1 → italy; a2 → sweden; a3 → australia; a4 → japan |
+| `personality-s1q4` | a1 → australia; a2 → japan; a3 → italy; a4 → sweden |
+| `personality-s1q5` | a1 → italy; a2 → japan; a3 → australia; a4 → sweden |
+| `personality-s1q6` | a1 → australia; a2 → sweden; a3 → japan; a4 → italy |
+| `personality-s1q7` | a1 → italy; a2 → japan; a3 → australia; a4 → sweden |
+| `personality-s2q1` | a1 → italy; a2 → sweden; a3 → japan; a4 → australia |
+| `personality-s2q2` | a1 → italy; a2 → australia; a3 → japan; a4 → sweden |
+| `personality-s2q3` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s2q4` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s2q5` | a1 → australia; a2 → sweden; a3 → italy; a4 → japan |
+| `personality-s2q6` | a1 → japan; a2 → sweden; a3 → australia; a4 → italy |
+| `personality-s2q7` | a1 → japan; a2 → italy; a3 → australia; a4 → sweden |
+| `personality-s3q1` | a1 → sweden; a2 → japan; a3 → australia; a4 → italy |
+| `personality-s3q2` | a1 → italy; a2 → japan; a3 → sweden; a4 → australia |
+| `personality-s3q3` | a1 → japan; a2 → italy; a3 → sweden; a4 → australia |
+| `personality-s3q4` | a1 → australia; a2 → italy; a3 → sweden; a4 → japan |
+| `personality-s3q5` | a1 → japan; a2 → italy; a3 → australia; a4 → sweden |
+| `personality-s3q6` | a1 → australia; a2 → japan; a3 → italy; a4 → sweden |
+| `personality-s3q7` | a1 → japan; a2 → sweden; a3 → australia; a4 → italy |
+| `personality-s4q1` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s4q2` | a1 → australia; a2 → japan; a3 → italy; a4 → sweden |
+| `personality-s4q3` | a1 → sweden; a2 → japan; a3 → australia; a4 → italy |
+| `personality-s4q4` | a1 → japan; a2 → sweden; a3 → italy; a4 → australia |
+| `personality-s4q5` | a1 → sweden; a2 → italy; a3 → japan; a4 → australia |
+| `personality-s4q6` | a1 → japan; a2 → australia; a3 → italy; a4 → sweden |
+| `personality-s4q7` | a1 → japan; a2 → sweden; a3 → australia; a4 → italy |
+| `personality-s5q1` | a1 → italy; a2 → australia; a3 → sweden; a4 → japan |
+| `personality-s5q2` | a1 → italy; a2 → japan; a3 → sweden; a4 → australia |
+| `personality-s5q3` | a1 → australia; a2 → japan; a3 → sweden; a4 → italy |
+| `personality-s5q4` | a1 → sweden; a2 → japan; a3 → italy; a4 → australia |
+| `personality-s5q5` | a1 → italy; a2 → sweden; a3 → australia; a4 → japan |
+| `personality-s5q6` | a1 → sweden; a2 → japan; a3 → italy; a4 → australia |
+| `personality-s5q7` | a1 → italy; a2 → japan; a3 → australia; a4 → sweden |
+| `personality-s6q1` | a1 → italy; a2 → japan; a3 → sweden; a4 → australia |
+| `personality-s6q2` | a1 → australia; a2 → italy; a3 → japan; a4 → sweden |
+| `personality-s6q3` | a1 → sweden; a2 → japan; a3 → italy; a4 → australia |
+| `personality-s6q4` | a1 → australia; a2 → sweden; a3 → italy; a4 → japan |
+| `personality-s6q5` | a1 → italy; a2 → australia; a3 → sweden; a4 → japan |
+| `personality-s6q6` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s6q7` | a1 → japan; a2 → australia; a3 → sweden; a4 → italy |
+| `personality-s7q1` | a1 → sweden; a2 → italy; a3 → japan; a4 → australia |
+| `personality-s7q2` | a1 → italy; a2 → australia; a3 → sweden; a4 → japan |
+| `personality-s7q3` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s7q4` | a1 → australia; a2 → japan; a3 → sweden; a4 → italy |
+| `personality-s7q5` | a1 → japan; a2 → sweden; a3 → italy; a4 → australia |
+| `personality-s7q6` | a1 → australia; a2 → sweden; a3 → italy; a4 → japan |
+| `personality-s7q7` | a1 → italy; a2 → australia; a3 → sweden; a4 → japan |
+| `personality-s8q1` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s8q2` | a1 → sweden; a2 → australia; a3 → italy; a4 → japan |
+| `personality-s8q3` | a1 → australia; a2 → japan; a3 → sweden; a4 → italy |
+| `personality-s8q4` | a1 → australia; a2 → japan; a3 → sweden; a4 → italy |
+| `personality-s8q5` | a1 → australia; a2 → sweden; a3 → japan; a4 → italy |
+| `personality-s8q6` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s8q7` | a1 → italy; a2 → sweden; a3 → japan; a4 → australia |
+| `personality-s9q1` | a1 → japan; a2 → italy; a3 → australia; a4 → sweden |
+| `personality-s9q2` | a1 → italy; a2 → sweden; a3 → australia; a4 → japan |
+| `personality-s9q3` | a1 → australia; a2 → japan; a3 → italy; a4 → sweden |
+| `personality-s9q4` | a1 → japan; a2 → australia; a3 → italy; a4 → sweden |
+| `personality-s9q5` | a1 → japan; a2 → italy; a3 → sweden; a4 → australia |
+| `personality-s9q6` | a1 → japan; a2 → australia; a3 → sweden; a4 → italy |
+| `personality-s9q7` | a1 → sweden; a2 → australia; a3 → japan; a4 → italy |
+| `personality-s10q1` | a1 → australia; a2 → sweden; a3 → japan; a4 → italy |
+| `personality-s10q2` | a1 → sweden; a2 → italy; a3 → australia; a4 → japan |
+| `personality-s10q3` | a1 → italy; a2 → japan; a3 → australia; a4 → sweden |
+| `personality-s10q4` | a1 → australia; a2 → japan; a3 → italy; a4 → sweden |
+| `personality-s10q5` | a1 → sweden; a2 → australia; a3 → italy; a4 → japan |
+| `personality-s10q6` | a1 → sweden; a2 → australia; a3 → japan; a4 → italy |
+| `personality-s10q7` | a1 → italy; a2 → japan; a3 → australia; a4 → sweden |

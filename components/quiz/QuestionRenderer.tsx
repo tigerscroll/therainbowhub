@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
 
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
+import { QuizText } from './QuizText';
 
 type QuestionRendererProps = {
   answer?: number;
@@ -144,7 +145,7 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
               ) : null}
               {!hasAnswerIcons && question.presentation !== "scale" ? <span>{answerLabels?.[index] ?? String.fromCharCode(65 + index)}</span> : null}
               {question.presentation === "scale" ? <span className="quiz-engine__scale-dot" aria-hidden="true" /> : null}
-              <strong>{choice}</strong>
+              <strong><QuizText text={choice} /></strong>
             </>
           );
           const sharedProps = {
@@ -200,11 +201,11 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
       {study.mode === "automatic" && started ? <div aria-hidden="true" className="quiz-engine__study-progress"><i style={{ animationDuration: `${study.durationMs}ms` }} /></div> : null}
       {study.instruction ? <p>{study.instruction}</p> : null}
       {showStudyBoard ? (
-        <div className="quiz-engine__study-items" aria-label={study.ariaLabel ?? study.items.join(", ")}>
-          {study.items.map((item, index) => <strong key={`${item}-${index}`}>{item}</strong>)}
+        <div className="quiz-engine__study-items" dir="ltr" aria-label={study.ariaLabel ?? study.items.join(", ")}>
+          {study.items.map((item, index) => <strong key={`${item}-${index}`}><QuizText text={item} /></strong>)}
         </div>
       ) : (
-        <div aria-hidden="true" className="quiz-engine__study-items quiz-engine__study-items--ready">
+        <div aria-hidden="true" className="quiz-engine__study-items quiz-engine__study-items--ready" dir="ltr">
           {study.items.map((_, index) => <strong key={`ready-${index}`}><span>?</span></strong>)}
         </div>
       )}

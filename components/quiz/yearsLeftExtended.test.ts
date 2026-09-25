@@ -12,7 +12,7 @@ test('English Years Left has ten distinct seven-question chapters and a rewarded
   const copy = read('en');
   const quiz = expandQuizLocale(manifest, copy, 'en');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, ['en']);
+  assert.deepEqual(manifest.activeLocales, JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales);
   assert.notEqual(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(quiz.stages.length, 10);
   assert.deepEqual(quiz.stages.map((stage: {questions: unknown[]}) => stage.questions.length), Array(10).fill(7));

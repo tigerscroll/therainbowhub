@@ -2,6 +2,7 @@
 // deterministic SVG boards and human-readable answer key together.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {localizeVisionImages} from './chapter-locales/vision-images.mjs';
 
 const root = 'data/quizzes/vision';
 const out = `${root}/english-extended`;
@@ -248,7 +249,7 @@ assert.equal(puzzles.length,70);
 assert.equal(new Set(puzzles.map(puzzle => puzzle.question)).size,70);
 assert.deepEqual(chapters.map((_,i) => puzzles.filter(puzzle => puzzle.round === i+1).length),Array(10).fill(7));
 manifest.template = 'ten-stage-seven-question-v1';
-manifest.activeLocales = ['en'];
+manifest.activeLocales = JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales;
 manifest.engine.localeParity = 'independent';
 manifest.listing.compactLanding = true;
 manifest.listing.showSocialProof = false;
@@ -320,6 +321,7 @@ for (const [index,puzzle] of puzzles.entries()) {
   manifest.structure.questions[puzzle.id] = logic;
   copy.stages[stageId].questions[puzzle.id] = words;
 }
+localizeVisionImages(manifest);
 for (const [name,data] of [['quiz',manifest],['en',copy]]) fs.writeFileSync(`${out}/${name}.json`,`${JSON.stringify(data,null,2)}\n`);
 fs.writeFileSync(`${out}/ANSWER_KEY.md`, '# English Vision puzzle key\n\nThe title and subtitle are preserved from the original English landing page. These are authored entertainment puzzles, not eyesight measurements. SVG geometry is fixed so the correct answer does not depend on emoji rendering, except in the self-paced icon-memory cues. Left/right and clockwise refer to the displayed board.\n\nRebuild with `node scripts/build-vision-english.mjs`.\n\n| Question | Correct answer | Reason |\n| --- | --- | --- |\n' + puzzles.map(puzzle=>`| ${puzzle.id} | ${puzzle.answer} | ${puzzle.rationale} |`).join('\n')+'\n');
 console.log(`Built ${puzzles.length} Vision questions, ${puzzles.filter(puzzle=>puzzle.study).length} self-paced snapshots and ${puzzles.filter(puzzle=>puzzle.svg?.startsWith('<svg')).length} SVG boards.`);

@@ -23,7 +23,7 @@ test('English Vision preserves its headline and intro in ten seven-question roun
   assert.equal(copy.landing.intro, original.landing.intro);
   assert.equal(copy.landing.cta, 'Start');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, ['en']);
+  assert.deepEqual(manifest.activeLocales, JSON.parse(fs.readFileSync('data/chapter-locales.json', 'utf8')).locales);
   assert.equal(manifest.engine.localeParity, 'independent');
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   assert.equal(manifest.listing.compactLanding, true);

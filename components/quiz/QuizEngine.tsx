@@ -9,6 +9,7 @@ import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, STORAGE_VERSION } from "./progressStorage";
 import { QuestionRenderer } from "./QuestionRenderer";
+import { QuizText } from "./QuizText";
 import { QuizAbout } from "./QuizAbout";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
@@ -750,10 +751,10 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
                 {incorrectQuestions.map((question) => (
                   <article key={question.id}>
                     <span>{quiz.stages[question.stage]}</span>
-                    <h4>{question.prompt}</h4>
+                    <h4><QuizText text={question.prompt} /></h4>
                     <dl>
-                      <div><dt>{translations.quiz.yourAnswer}</dt><dd>{question.choices[answers[question.id]] ?? "—"}</dd></div>
-                      <div><dt>{translations.quiz.correctAnswer}</dt><dd>{question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]}</dd></div>
+                      <div><dt>{translations.quiz.yourAnswer}</dt><dd><QuizText text={question.choices[answers[question.id]] ?? "—"} /></dd></div>
+                      <div><dt>{translations.quiz.correctAnswer}</dt><dd><QuizText text={question.answerIndex === undefined ? "—" : question.choices[question.answerIndex]} /></dd></div>
                     </dl>
                   </article>
                 ))}
@@ -786,8 +787,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
                 return (
                   <article data-impact={direction} key={question.id}>
                     <span>{label}</span>
-                    <h4>{question.prompt}</h4>
-                    <dl><div><dt>{estimateReviewUnlockCopy.yourChoice}</dt><dd>{question.choices[choiceIndex]}</dd></div></dl>
+                    <h4><QuizText text={question.prompt} /></h4>
+                    <dl><div><dt>{estimateReviewUnlockCopy.yourChoice}</dt><dd><QuizText text={question.choices[choiceIndex]} /></dd></div></dl>
                     <p>{copy}</p>
                   </article>
                 );
@@ -864,7 +865,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         {!isChapterFlow ? <span>{quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
           : translations.quiz.progressComplete.replace("{value}", String(progress))}</span> : null}
-        <strong key={currentQuestion.id}>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
+        <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
       </div>
       {!isChapterFlow ? (
         <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
@@ -872,8 +873,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         </div>
       ) : null}
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
-        {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context">{currentQuestion.context}</p> : null}
-        <h1 key={currentQuestion.id}>{currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt}</h1>
+        {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context"><QuizText text={currentQuestion.context} /></p> : null}
+        <h1 key={currentQuestion.id}><QuizText text={currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt} /></h1>
       <QuestionRenderer
         answer={selectedAnswer}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
