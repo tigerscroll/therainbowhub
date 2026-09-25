@@ -521,7 +521,7 @@
   text-align: center;
 }
 
-/* Five six-question rounds, using the shared progress-only checkpoint flow. */
+/* Keep visual reading order stable in every locale. */
 [data-quiz-theme="vision"] .quiz-engine__visual,
 [data-quiz-theme="vision"] .quiz-engine__study-items {
   direction: ltr;
@@ -583,4 +583,87 @@
   from { transform: translateX(-100%); opacity: 0; }
   25% { opacity: 1; }
   to { transform: translateX(100%); opacity: 0; }
+}
+
+/* English chapters use the shared checkpoint geometry and a single focus pulse. */
+[data-quiz-theme="vision"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-icon {
+  animation: vision-chapter-mark .6s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+[data-quiz-theme="vision"] .quiz-engine__checkpoint[data-chapter-flow] > h2 {
+  animation: quizChapterIn .3s .06s ease-out both;
+}
+
+[data-quiz-theme="vision"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-copy {
+  animation: quizChapterIn .34s .12s ease-out both;
+}
+
+[data-quiz-theme="vision"] .quiz-engine__checkpoint[data-chapter-flow] .quiz-engine__checkpoint-next {
+  animation: quizChapterIn .36s .18s ease-out both;
+}
+
+[data-quiz-theme="vision"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+[data-quiz-theme="vision"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 28%, rgba(255,255,255,.2) 50%, transparent 72%);
+  animation: vision-chapter-shine .75s .35s ease-out both;
+}
+
+[data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__question-image {
+  width: min(100%, 480px);
+  margin-inline: auto;
+}
+
+[data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__question-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+/* The choice itself identifies the tile; a second A/B/C/D badge competes with it. */
+[data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__answer {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  text-align: center;
+}
+
+[data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__answer > span {
+  display: none;
+}
+
+[data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__answer strong {
+  min-width: 0;
+  text-wrap: balance;
+}
+
+@keyframes vision-chapter-mark {
+  from { opacity: 0; transform: scale(.8); }
+  60% { opacity: 1; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes vision-chapter-shine {
+  from { transform: translateX(-100%); opacity: 0; }
+  25% { opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-quiz-theme="vision"] *,
+  [data-quiz-theme="vision"] *::before,
+  [data-quiz-theme="vision"] *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

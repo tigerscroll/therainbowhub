@@ -12,7 +12,8 @@ const browser = await chromium.launch({ executablePath: '/Applications/Google Ch
 
 async function run(width) {
   const reduced = width === 320;
-  const context = await browser.newContext({ viewport: { width, height: width < 500 ? 844 : 960 }, reducedMotion: reduced ? 'reduce' : 'no-preference' });
+  const height = slug === 'vision' && width === 320 ? 568 : width < 500 ? 844 : 960;
+  const context = await browser.newContext({ viewport: { width, height }, reducedMotion: reduced ? 'reduce' : 'no-preference' });
   const page = await context.newPage();
   const errors = [];
   let documents = 0;
@@ -52,6 +53,10 @@ async function run(width) {
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
   assert.match(await landing.locator('.quiz-engine__primary').innerText(), /^Start\s*→?$/);
   assert.equal(await page.evaluate(() => window.adCalls.length), 0);
+  if (slug === 'vision' && width === 320) {
+    assert.equal(await landing.locator('.quiz-engine__primary').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'Start remains visible on a small phone');
+    await page.screenshot({ path: '/tmp/vision-engagement-landing-small-phone.png', animations: 'disabled' });
+  }
   await page.screenshot({ path: `/tmp/${slug}-engagement-landing-${width}.png`, animations: 'disabled' });
   await landing.locator('.quiz-engine__primary').click();
   await page.locator('[data-question-id]').waitFor();
@@ -75,11 +80,11 @@ async function run(width) {
         await study.waitFor();
         assert.equal(await question.locator('.quiz-engine__answer').count(), 0, 'study and answer phases remain separate');
         assert.deepEqual(await study.locator('.quiz-engine__study-items > strong').allTextContents(), copy.stages[stage.id].questions[id].study.items);
-        if (index === 0 && [0, 6, 7].includes(stageIndex)) await page.screenshot({ path: `/tmp/${slug}-engagement-study-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
+        if (index === 0 && ([0, 6, 7].includes(stageIndex) || slug === 'vision')) await page.screenshot({ path: `/tmp/${slug}-engagement-study-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
         await study.getByRole('button', { name: 'I’m Ready', exact: true }).click();
         await question.locator('.quiz-engine__answer').first().waitFor();
         assert.equal(await question.locator('.quiz-engine__study').count(), 0, 'the study cue is removed before answering');
-        if (stageIndex === 2 && index === 0 && width === 390) {
+        if ((stageIndex === 2 || (slug === 'vision' && stageIndex === 5)) && index === 0 && width === 390) {
           rewardsBeforeReload += expectedRewards;
           await page.reload();
           reloads++;
@@ -98,6 +103,23 @@ async function run(width) {
         assert.equal(await question.locator('img,.quiz-engine__visual,.quiz-engine__question-image').count(), 0, 'treatments stays text-only');
         assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
         assert.equal(await question.locator('.quiz-engine__answers').evaluate(node => getComputedStyle(node).gridTemplateColumns.trim().split(/\s+/).length), 1);
+      }
+      if (slug === 'vision') {
+        assert.equal(await question.locator('.quiz-engine__answer > span').evaluateAll(nodes => nodes.every(node => getComputedStyle(node).display === 'none')), true, 'diagram labels do not compete with extra answer letters');
+        if (logic.image) {
+          const picture = question.locator('.quiz-engine__question-image img');
+          await picture.waitFor();
+          await page.waitForFunction(src => {
+            const img = document.querySelector('[data-question-id] .quiz-engine__question-image img');
+            return img?.complete && img.naturalWidth > 0 && img.getAttribute('src').endsWith(src);
+          }, logic.image.src);
+          assert.equal(await picture.evaluate(node => {
+            const bounds = node.getBoundingClientRect();
+            return bounds.left >= 0 && bounds.right <= innerWidth && Math.abs(bounds.width / bounds.height - node.naturalWidth / node.naturalHeight) < .02;
+          }), true, `${width}px ${id}: the entire puzzle board is visible without distortion`);
+        }
+        assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
+        if (index === 0 || id === 'vision-s9q3') await page.screenshot({ path: `/tmp/vision-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });
       }
       if (stageIndex === 0 && index === 0) await page.screenshot({ path: `/tmp/${slug}-engagement-question-${width}.png`, animations: 'disabled' });
       const correctIndex = answerIds.indexOf(logic.correctAnswerId);
@@ -135,6 +157,10 @@ async function run(width) {
     assert.equal(await button.locator('.quiz-engine__primary-arrow svg').count(), 1, 'Continue and See My Result both have an arrow');
     const geometry = await button.evaluate(node => ({ top: node.getBoundingClientRect().top, bottom: node.getBoundingClientRect().bottom, viewport: innerHeight }));
     assert.ok(geometry.top >= 0 && geometry.bottom <= geometry.viewport, `checkpoint ${stageIndex + 1} CTA visible without scrolling: ${JSON.stringify(geometry)}`);
+    if (slug === 'vision' && stageIndex === 9) {
+      assert.deepEqual(await checkpoint.locator('.quiz-engine__checklist li').allTextContents(), copy.career.stages[stage.id].preAdChecks.map(item => `✓${item}`));
+      assert.equal(await checkpoint.locator('.quiz-engine__ad-note').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'final ad note remains visible with the result button');
+    }
     checkpoints.push({ chapter: stageIndex + 1, button: copy.career.stages[stage.id].preAdButton, animation: animationNames });
     if ([0, 4, 8, 9].includes(stageIndex)) await page.screenshot({ path: `/tmp/${slug}-engagement-checkpoint-${stageIndex + 1}-${width}.png`, animations: 'disabled' });
     if (stageIndex === 0 && width === 390) {
