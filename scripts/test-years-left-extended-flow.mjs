@@ -122,8 +122,7 @@ async function run(width) {
       assert.deepEqual(await question.locator('.quiz-engine__answer strong').allTextContents(), answerIds.map(answerId => copy.stages[stage.id].questions[id].answers[answerId]));
       const header = page.locator('.quiz-engine__progress-head');
       assert.equal(await header.evaluate(node => node.getAnimations({subtree: true}).length), 0, 'the progress heading never fades between questions');
-      if (index === 0) await header.evaluate(node => { window.quizTestProgressHeader = node.firstElementChild; });
-      else assert.equal(await header.evaluate(node => window.quizTestProgressHeader === node.firstElementChild), true, 'the heading stays mounted as the question changes');
+      assert.equal(await question.locator('a.quiz-engine__answer[data-quiz-interstitial="true"]').count(), answerIds.length, 'every choice is a genuine eligible answer link');
       assert.equal(await question.locator('.quiz-engine__answer').evaluateAll(nodes => nodes.every(node => getComputedStyle(node).animationName === 'none')), true, 'answers appear immediately');
       assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), 0, 'questions do not reveal the journey length');
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'questions add no ad requests');
@@ -214,13 +213,13 @@ async function run(width) {
   const result = page.locator('.quiz-engine__results');
   await result.waitFor();
   const opportunities = await page.evaluate(() => JSON.parse(sessionStorage.getItem('quiz-test-opportunities') ?? '[]'));
-  assert.equal(opportunities.length, 11, 'Start plus ten checkpoint links are eligible opportunities');
+  assert.equal(opportunities.length, 81, 'Start, seventy answer links and ten checkpoint links are eligible opportunities');
   assert.equal(opportunities.every(click => click.approved && click.format === 'INTERSTITIAL' && click.path === '/22677279144/display'), true);
   assert.equal(opportunities.every(click => new URL(click.href).searchParams.get('test_keep') === '1'), true, 'attribution query survives every link');
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => Object.values(ad.config.interstitial.triggers).every(value => value === false))), true, 'all non-link triggers are disabled');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'INTERSTITIAL' && ad.path === '/22677279144/display')), true);
-  assert.equal(documents, initialDocuments + 20 + reloads, 'checkpoint entry and continuation reload, but individual questions do not');
+  assert.equal(documents, initialDocuments + 80 + reloads, 'each answer and checkpoint continuation loads a new document');
   assert.equal(await result.locator('.quiz-engine__result-share').count(), 0);
   let age;
   if (scored) {

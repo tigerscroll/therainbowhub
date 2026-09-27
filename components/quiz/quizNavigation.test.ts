@@ -1,6 +1,18 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getQuizNavigationHref, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress } from "./quizNavigation.ts";
+import { getQuizAnswerDestination, getQuizNavigationHref, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress } from "./quizNavigation.ts";
+
+test("answer links advance exactly once and preserve checkpoint/final destinations", () => {
+  const questions = Array.from({ length: 70 }, (_, index) => ({ stage: Math.floor(index / 7) }));
+  for (let index = 0; index < questions.length; index++) {
+    const destination = getQuizAnswerDestination(questions, index, true);
+    assert.equal(destination.questionIndex, Math.min(index + 1, 69));
+    assert.equal(destination.screen, index === 69 ? "preparing" : index % 7 === 6 ? "checkpoint" : "question");
+    assert.equal(destination.transition, index % 7 === 6 ? `checkpoint-${Math.floor(index / 7) + 1}` : `question-${index + 2}`);
+  }
+  assert.equal(getQuizAnswerDestination(questions, 6, false).screen, "question");
+  assert.throws(() => getQuizAnswerDestination(questions, 70, true));
+});
 
 test("changing checkpoint navigation preserves an existing attempt but changing questions does not", () => {
   const previous = { engine: { hardRefreshCheckpoints: false, scoring: "correct" }, questions: ["q1"] };

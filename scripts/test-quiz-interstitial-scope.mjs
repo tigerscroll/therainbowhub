@@ -46,7 +46,9 @@ try {
   await page.locator('.quiz-engine__landing a.quiz-engine__primary').click();
   await page.locator('[data-question-id]').waitFor();
   assert.equal(new URL(page.url()).searchParams.get('fbclid'), 'scope-test');
-  assert.equal(await page.locator('[data-quiz-interstitial="true"]').count(), 0, 'answer/study screens are not ad opportunities');
+  assert.equal(await page.locator('a.quiz-engine__answer').count(), 0, 'study screen has no answer-link opportunities yet');
+  await page.locator('.quiz-engine__study .quiz-engine__primary').click();
+  assert.ok(await page.locator('a.quiz-engine__answer[data-quiz-interstitial="true"]').count() > 0, 'actual answers are eligible links');
   assert.deepEqual(errors, []);
   await context.close();
 

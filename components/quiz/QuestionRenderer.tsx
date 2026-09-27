@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useState, type CSSProperties, type MouseEvent } from "react";
 
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
 import { QuizText } from './QuizText';
 
 type QuestionRendererProps = {
   answer?: number;
+  answerHref: string;
   answerLabels?: string[];
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => boolean | void;
@@ -16,6 +17,21 @@ type QuestionRendererProps = {
   studyBusyLabel?: string;
   studyComplete: boolean;
 };
+
+function followAnswer(event: MouseEvent<HTMLAnchorElement>, choice: number, onAnswer: QuestionRendererProps["onAnswer"]) {
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.currentTarget.getAttribute("aria-disabled") === "true") {
+    event.preventDefault();
+    return;
+  }
+  if (onAnswer(choice) !== true) {
+    event.preventDefault();
+    event.currentTarget.setAttribute("data-google-interstitial", "false");
+    return;
+  }
+  event.currentTarget.setAttribute("aria-disabled", "true");
+  event.currentTarget.setAttribute("data-selected", "true");
+  event.currentTarget.blur();
+}
 
 function QuestionVisual({ question }: { question: QuizQuestion }) {
   const visual = question.visual;
@@ -117,7 +133,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
-function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, answerHref, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -159,20 +175,17 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
           };
 
           return (
-            <button
+            <a
               {...sharedProps}
               aria-checked={question.presentation === "scale" ? selected : undefined}
-              disabled={answer !== undefined}
+              data-quiz-interstitial="true"
+              href={answerHref}
               key={`${question.id}-${question.choiceIds[index]}`}
-              onClick={(event) => {
-                event.currentTarget.blur();
-                onAnswer(index);
-              }}
+              onClick={(event) => followAnswer(event, index, onAnswer)}
               role={question.presentation === "scale" ? "radio" : undefined}
-              type="button"
             >
               {content}
-            </button>
+            </a>
           );
         })}
       </div>
@@ -230,7 +243,7 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
   );
 }
 
-function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps) {
+function MemoryCueQuestion({ answer, answerHref, onAnswer, question }: QuestionRendererProps) {
   const [ready, setReady] = useState(false);
   useLayoutEffect(() => {
     setReady(false);
@@ -243,9 +256,9 @@ function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps
       <div className="quiz-engine__memory-items" aria-label={question.memoryItems?.join(", ")}>
         {question.memoryItems?.map((item) => <strong key={item}>{item}</strong>)}
       </div>
-      <button className="quiz-engine__primary" disabled={!ready || answer !== undefined} onClick={() => onAnswer(0)} type="button">
+      <a className="quiz-engine__primary" aria-disabled={!ready || answer !== undefined || undefined} data-quiz-interstitial={ready ? "true" : undefined} href={ready ? answerHref : undefined} onClick={(event) => followAnswer(event, 0, onAnswer)} tabIndex={ready ? 0 : -1}>
         {question.continueLabel}
-      </button>
+      </a>
     </div>
   );
 }

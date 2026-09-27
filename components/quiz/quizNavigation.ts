@@ -4,6 +4,21 @@ export function getQuizNavigationHref(pathname: string, search: string, transiti
   return `${pathname}?${params.toString()}`;
 }
 
+export function getQuizAnswerDestination(questions: { stage: number }[], index: number, staged: boolean) {
+  const current = questions[index];
+  if (!current) throw new Error("Invalid quiz question index");
+  const next = questions[index + 1];
+  if (!next || (staged && next.stage !== current.stage)) {
+    return {
+      questionIndex: next ? index + 1 : index,
+      completedStage: current.stage,
+      screen: next ? "checkpoint" as const : "preparing" as const,
+      transition: `checkpoint-${current.stage + 1}`,
+    };
+  }
+  return { questionIndex: index + 1, completedStage: undefined, screen: "question" as const, transition: `question-${index + 2}` };
+}
+
 export function quizProgressSignaturesMatch(saved: unknown, current: string) {
   if (typeof saved !== "string") return false;
   if (saved === current) return true;

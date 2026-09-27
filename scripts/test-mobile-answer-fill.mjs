@@ -21,7 +21,7 @@ try {
       const question = document.querySelector('.quiz-engine__question');
       const shell = document.querySelector('.quiz-engine__question-shell');
       const answers = question.querySelector('.quiz-engine__answers');
-      const buttons = [...answers.querySelectorAll('button')];
+      const buttons = [...answers.querySelectorAll('.quiz-engine__answer')];
       const box = answers.getBoundingClientRect();
       const questionBox = question.getBoundingClientRect();
       const styles = getComputedStyle(question);

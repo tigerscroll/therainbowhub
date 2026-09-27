@@ -181,7 +181,7 @@ const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz",
 const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
 const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
 const quizInterstitialText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizInterstitial.tsx"), "utf8");
-for (const declaration of ["useQuizInterstitial()", 'navigationMode="document"', "href={getQuizNavigationHref", "onAnswer={answerQuestion}", "data-quiz-interstitial=", "reloadAtCheckpoint("]) {
+for (const declaration of ["useQuizInterstitial()", 'navigationMode="document"', "href={getQuizNavigationHref", "onAnswer={answerQuestion}", "data-quiz-interstitial=", "answerHref={getQuizNavigationHref", "saveNextScreen(destination.questionIndex, nextCompletedStage, destination.screen, nextAnswers)"]) {
   if (!quizEngineText.includes(declaration)) addError(`Quiz interstitial-navigation contract is missing: ${declaration}`);
 }
 if (/useRewardedGate|runRewardedGate|requestRewardedAd/.test(quizEngineText)) {

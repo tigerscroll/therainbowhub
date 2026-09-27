@@ -29,11 +29,14 @@ test("quiz interstitials use display while article rewarded ads keep their place
   const articleGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
   assert.match(articleGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
 });
-test("quizzes save state and reload at checkpoint boundaries", () => {
+test("answer links synchronously save the selected answer and destination before navigation", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
-  assert.match(source, /window\.location\.assign\(getQuizNavigationHref/);
-  assert.match(source, /if \(reloadAtCheckpoint\(/);
-  assert.doesNotMatch(source, /hardRefreshCheckpoints && reloadAtCheckpoint/);
+  const renderer = fs.readFileSync("components/quiz/QuestionRenderer.tsx", "utf8");
+  assert.match(source, /saveNextScreen\(destination.questionIndex, nextCompletedStage, destination.screen, nextAnswers\)/);
+  assert.match(source, /answerNavigationPending.current = true/);
+  assert.match(renderer, /href=\{answerHref\}/);
+  assert.match(renderer, /data-quiz-interstitial="true"/);
+  assert.doesNotMatch(source, /window.setTimeout\(moveForward/);
 });
 test("interstitials are scoped to the quiz engine and use their own placement", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");

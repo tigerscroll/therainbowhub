@@ -4,7 +4,7 @@ import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type C
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useQuizInterstitial } from "./QuizInterstitial";
-import { getQuizNavigationHref, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress } from "./quizNavigation";
+import { getQuizAnswerDestination, getQuizNavigationHref, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress } from "./quizNavigation";
 import { prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
@@ -91,6 +91,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
   const [navigationSearch, setNavigationSearch] = useState("");
   const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
   const landingShellRef = useRef<HTMLElement | null>(null);
+  const answerNavigationPending = useRef(false);
   const preloadedArtwork = useRef(new Set<string>());
   const progressSignature = useMemo(
     () => JSON.stringify({
@@ -149,6 +150,14 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
 
+  useEffect(() => {
+    const restoreFromBackCache = (event: PageTransitionEvent) => {
+      if (event.persisted && answerNavigationPending.current) window.location.reload();
+    };
+    window.addEventListener("pageshow", restoreFromBackCache);
+    return () => window.removeEventListener("pageshow", restoreFromBackCache);
+  }, []);
+
   useLayoutEffect(() => {
     setNavigationSearch(window.location.search);
     try {
@@ -176,7 +185,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
   }, [progressSignature, quiz, storageKey]);
 
   useEffect(() => {
-    if (!hydrated || screen === "landing") return;
+    if (!hydrated || screen === "landing" || answerNavigationPending.current) return;
     const saved: SavedProgress = {
       version: STORAGE_VERSION,
       signature: progressSignature,
@@ -237,12 +246,12 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
   }
 
-  function saveNextScreen(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: SavedScreen) {
+  function saveNextScreen(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: SavedScreen, nextAnswers = answers) {
     const saved: SavedProgress = {
       version: STORAGE_VERSION,
       signature: progressSignature,
       answers: Object.fromEntries(quiz.questions.flatMap((question) => {
-        const selectedIndex = answers[question.id];
+        const selectedIndex = nextAnswers[question.id];
         const answerId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
         return answerId ? [[question.id, answerId]] : [];
       })),
@@ -255,44 +264,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
     };
     return writeQuizProgress(storageKey, JSON.stringify(saved));
   }
-
-  function reloadAtCheckpoint(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: "preparing" | "checkpoint") {
-    if (!saveNextScreen(nextQuestionIndex, nextCompletedStage, nextScreen)) return false;
-    window.location.assign(getQuizNavigationHref(window.location.pathname, window.location.search, `checkpoint-${nextCompletedStage + 1}`));
-    return true;
-  }
-
-  function moveForward() {
-    const nextIndex = questionIndex + 1;
-    if (nextIndex >= quiz.questions.length) {
-      if (reloadAtCheckpoint(questionIndex, currentStage, "preparing")) return;
-      setCompletedStage(currentStage);
-      setScreen("preparing");
-      scrollToTop();
-      return;
-    }
-
-    const nextQuestion = quiz.questions[nextIndex];
-    if (quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage) {
-      if (reloadAtCheckpoint(nextIndex, currentStage, "checkpoint")) return;
-      setQuestionIndex(nextIndex);
-      setCompletedStage(currentStage);
-      setScreen("checkpoint");
-    } else {
-      setQuestionIndex(nextIndex);
-      setScreen("question");
-    }
-    scrollToTop();
-  }
-
-  useEffect(() => {
-    if (screen !== "question" || selectedAnswer === undefined || quiz.engine.flow.advance !== "automatic") return;
-    const delay = currentQuestion.advanceDelayMs ?? quiz.engine.advanceDelayMs;
-    const timer = window.setTimeout(moveForward, quiz.engine.flow.feedback === "instant" ? 800 : delay);
-    return () => window.clearTimeout(timer);
-    // moveForward intentionally uses the current question state.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedAnswer, screen, currentQuestion?.advanceDelayMs, quiz.engine.advanceDelayMs]);
 
   useEffect(() => {
     if (screen !== "preparing") return;
@@ -322,9 +293,20 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
   }, [completedStage, quiz.stages.length, screen]);
 
   function answerQuestion(choiceIndex: number) {
-    if (!currentQuestion || selectedAnswer !== undefined) return false;
-    setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
-    return true;
+    if (!currentQuestion || answerNavigationPending.current || !Number.isInteger(choiceIndex) || !currentQuestion.choiceIds[choiceIndex]) return false;
+    const nextAnswers = { ...answers, [currentQuestion.id]: choiceIndex };
+    const destination = getQuizAnswerDestination(quiz.questions, questionIndex, quiz.engine.flow.type === "staged");
+    const nextCompletedStage = destination.completedStage ?? completedStage;
+    if (saveNextScreen(destination.questionIndex, nextCompletedStage, destination.screen, nextAnswers)) {
+      answerNavigationPending.current = true;
+      return true;
+    }
+    setAnswers(nextAnswers);
+    setQuestionIndex(destination.questionIndex);
+    setCompletedStage(nextCompletedStage);
+    setScreen(destination.screen);
+    scrollToTop();
+    return false;
   }
 
   function completeStudy() {
@@ -783,6 +765,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
         <h1 key={currentQuestion.id}><QuizText text={currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt} /></h1>
       <QuestionRenderer
         answer={selectedAnswer}
+          answerHref={getQuizNavigationHref("", navigationSearch, getQuizAnswerDestination(quiz.questions, questionIndex, quiz.engine.flow.type === "staged").transition)}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
           onAnswer={answerQuestion}
@@ -792,19 +775,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
           studyBusyLabel={translations.quiz.start}
           studyComplete={studyComplete}
         />
-        {quiz.engine.flow.advance === "manual" ? (
-          <button
-            aria-hidden={selectedAnswer === undefined || undefined}
-            className="quiz-engine__primary quiz-engine__next-question"
-            data-ready={selectedAnswer !== undefined}
-            disabled={selectedAnswer === undefined}
-            onClick={moveForward}
-            tabIndex={selectedAnswer === undefined ? -1 : undefined}
-            type="button"
-          >
-            {questionIndex === quiz.questions.length - 1 ? translations.results.viewResults : quiz.nextQuestionLabel ?? translations.quiz.continue}
-          </button>
-        ) : null}
       </article>
     </section>
     <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
