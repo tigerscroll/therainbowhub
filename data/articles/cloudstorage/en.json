@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "layout": "plain",
+  "slug": "cloudstorage",
+  "locale": "en",
+  "path": "/cloudstorage",
+  "referenceTheme": "editorial",
+  "metadata": {
+    "schemaType": "Article",
+    "title": "A Comprehensive Guide To Cloud Storage Including Google Cloud and Google Workspace",
+    "description": "Cloud storage guide to Google Cloud and Google Workspace: business storage, pricing, backup, security, data migration and disaster recovery."
+  },
+  "theme": {
+    "id": "cloudstorage-article",
+    "colors": {
+      "page": "#ffffff",
+      "surface": "#ffffff",
+      "surfaceRaised": "#f7f9fb",
+      "text": "#20252b",
+      "muted": "#586370",
+      "primary": "#275898",
+      "primaryText": "#ffffff",
+      "border": "#dce1e6"
+    },
+    "header": { "background": "#ffffff", "border": "#dce1e6", "shadow": "none", "text": "#20252b" }
+  },
+  "landing": {
+    "title": "A Comprehensive Guide To Cloud Storage Including Google Cloud and Google Workspace",
+    "intro": "You need somewhere to keep your files. The harder question is whether that means a shared folder for your team, a backup of your laptop, or storage behind a website. Those are different jobs, and choosing the wrong service can make a simple task surprisingly expensive.",
+    "icon": { "kind": "emoji", "value": "☁️" },
+    "socialProofCount": "",
+    "socialProofLabel": "",
+    "socialProofVisible": false,
+    "cta": { "label": "Read the guide", "adNote": "", "showIcon": false }
+  },
+  "gatePlacement": "bottom-only",
+  "disclaimer": "Product features, storage allowances and prices can change. Check the provider's current terms before buying a plan or moving important data.",
+  "sources": [
+    { "label": "Google Cloud Storage", "url": "https://cloud.google.com/storage" },
+    { "label": "Google Workspace plans", "url": "https://workspace.google.com/pricing.html" }
+  ],
+  "sections": [{
+    "title": "Choosing and using cloud storage",
+    "intro": "A practical guide to files, teamwork and application storage.",
+    "points": [
+      {
+        "title": "What cloud storage actually does",
+        "paragraphs": [
+          "Cloud storage keeps data on a provider's systems rather than only on a device you own. You access it over a network, usually through an app, a browser or software that connects to the service. It makes sharing easier and reduces your dependence on a single laptop or hard drive.",
+          "There are several kinds. File storage behaves like folders on a shared drive. Object storage holds items such as photos, videos and backup files in containers, usually called buckets. Block storage supplies disks for systems such as virtual machines. For most people, the first decision is simpler: do you want an everyday file app, or storage that software will use?"
+        ],
+        "sources": [{ "label": "Google's explanation of cloud storage", "url": "https://cloud.google.com/learn/what-is-cloud-storage" }]
+      },
+      {
+        "title": "Google Cloud and Google Workspace are not the same thing",
+        "paragraphs": [
+          "Google Workspace is the collection of work tools that includes Gmail, Drive, Docs, Sheets and Meet. Drive is where people organise files, share them and work on documents together. If you want colleagues to edit a proposal or find a client folder, this is the sort of service you are looking for.",
+          "Google Cloud is a platform for building and running software. Its Cloud Storage service holds objects in buckets associated with a project. A website might use it for uploaded images; a data team might use it for datasets. It is not a replacement for the familiar Drive document editor, and a Workspace storage allowance does not give you the same allowance in Google Cloud Storage."
+        ],
+        "sources": [
+          { "label": "Cloud Storage overview", "url": "https://docs.cloud.google.com/storage/docs/introduction" },
+          { "label": "Workspace features", "url": "https://workspace.google.com/pricing.html" }
+        ]
+      },
+      {
+        "title": "Using Google Workspace for a team",
+        "paragraphs": [
+          "Start with the files people actually use. Decide who needs to edit them, who only needs to read them, and whether anyone outside the business needs access. A clear folder structure is more useful than a complicated naming policy nobody follows.",
+          "Shared drives are particularly useful for team material. Their files belong to the team rather than an individual, so the work stays available when a member leaves. That is a better home for a department's documents than relying on one person's My Drive. Check that your edition supports the access and management features you need.",
+          "Workspace editions provide different storage allowances. Google describes the business plans as pooled storage across the organisation. Check the current allowance and the administrator's limits, rather than assuming every user has an unlimited personal allocation."
+        ],
+        "sources": [
+          { "label": "How shared drives work", "url": "https://support.google.com/a/users/answer/9310351" },
+          { "label": "Current Workspace storage allowances", "url": "https://workspace.google.com/pricing.html" }
+        ]
+      },
+      {
+        "title": "Google Workspace Business storage: choosing a plan",
+        "paragraphs": [
+          "Google currently lists Business Starter with 30 GB of pooled storage per user, Business Standard with 2 TB, and Business Plus with 5 TB. These are different from buying an object-storage bucket. Check the live plan comparison for your country, commitment length and required features before choosing.",
+          "For a small business, work backwards from the files you have and the files you expect to create. A team mostly writing documents has different needs from a design studio keeping years of source video. Do not buy a larger plan only because its storage number looks reassuring. Also check sharing controls, administration, meeting features and the process for removing former employees.",
+          "Give someone responsibility for storage housekeeping. Agree where completed projects go, how long duplicates are kept, and who can approve external sharing. A larger allowance delays a messy-folder problem; it does not solve it."
+        ],
+        "sources": [{ "label": "Compare Google Workspace Business plans", "url": "https://workspace.google.com/pricing.html" }]
+      },
+      {
+        "title": "Using Google Cloud Storage for an application",
+        "paragraphs": [
+          "A typical setup starts with a Google Cloud project and a bucket. You choose where the bucket's data will be stored, decide how access is granted, and upload objects. Applications can then read and write data through Google's tools or APIs.",
+          "Choose a location with your workload in mind. Keeping storage close to the systems using it can help with performance and transfer costs. If data-location requirements matter to your organisation, check them before uploading anything. Start with a small sample and test the actual upload, download and deletion behaviour before moving the whole collection."
+        ],
+        "sources": [{ "label": "Projects, buckets and objects", "url": "https://docs.cloud.google.com/storage/docs/introduction" }]
+      },
+      {
+        "title": "Regional, dual-region and multi-region cloud storage",
+        "paragraphs": [
+          "A regional bucket keeps object data in a chosen region. Dual-region storage uses two regions, while a multi-region covers a broader geographical area. These choices affect redundancy, where data is held, performance and cost. More locations are not automatically better for every workload.",
+          "For a small application, begin by identifying where its servers run and where its customers are. For a business with strict recovery requirements, examine replication and availability as well as geography. Do not assume a label such as multi-region answers every disaster-recovery question: your application, access controls and recovery procedure still need to work.",
+          "Write down why you chose a location. That makes later decisions about cloud migration, data residency and transfer charges easier to review than a bucket created with whatever setting happened to be selected."
+        ],
+        "sources": [{ "label": "Google Cloud bucket locations", "url": "https://docs.cloud.google.com/storage/docs/locations" }]
+      },
+      {
+        "title": "Choose storage around how often you need the data",
+        "paragraphs": [
+          "In Google Cloud Storage, Standard is generally the straightforward choice for frequently accessed data. Nearline, Coldline and Archive are designed for progressively less frequent access. These are storage classes, not different file formats.",
+          "A cheaper storage rate can come with retrieval charges and a minimum storage duration. Deleting or replacing data too early can still cost money. Archive is not automatically the best choice just because a file is old: an old video that visitors watch every day is still frequently accessed data. Lifecycle rules or Autoclass can help manage transitions, but review how they fit your usage before enabling them."
+        ],
+        "sources": [{ "label": "Cloud Storage classes and trade-offs", "url": "https://docs.cloud.google.com/storage/docs/storage-classes" }]
+      },
+      {
+        "title": "Look beyond the price per gigabyte",
+        "paragraphs": [
+          "For a file-sharing service, compare the subscription, storage allowance and features your team needs. For application storage, also look at operations, retrieval and data transfer. A bucket of rarely downloaded backups has a different cost profile from the same amount of video served to thousands of visitors.",
+          "Estimate a normal month and a busy month. Include retained copies and deleted data that remain billable during a recovery period. Check the live pricing page for your location and storage class; a single headline rate is not a useful estimate of the whole bill.",
+          "Set billing alerts before putting an application into use. An alerts-only Google Cloud budget monitors spending; it does not automatically stop usage when the budget is reached."
+        ],
+        "sources": [
+          { "label": "Cloud Storage pricing", "url": "https://cloud.google.com/storage/pricing" },
+          { "label": "Budgets and budget alerts", "url": "https://docs.cloud.google.com/billing/docs/how-to/budgets" }
+        ]
+      },
+      {
+        "title": "Cloud storage cost optimisation without unpleasant surprises",
+        "paragraphs": [
+          "Start by separating working data, backups, archived projects and temporary files. One retention policy rarely suits all four. Temporary exports may be disposable after a short period; a customer's original upload may not be.",
+          "Object Lifecycle Management can change an object's storage class or delete it when specified conditions are met. That makes it useful for controlling storage growth, but a deletion rule is still a deletion rule. Test it on a small, non-critical collection before applying it broadly. Check how it interacts with recovery settings and retained versions.",
+          "Review costs after a representative month, not just after a quiet trial. A change that saves on stored data can cost more if it increases retrieval or transfer. Keep the person managing storage and the person reviewing the bill in the same conversation."
+        ],
+        "sources": [{ "label": "Object Lifecycle Management", "url": "https://docs.cloud.google.com/storage/docs/lifecycle" }]
+      },
+      {
+        "title": "A practical way to estimate Google Cloud Storage pricing",
+        "paragraphs": [
+          "For a useful estimate, collect four numbers: average data stored, how much is downloaded, how many read and write operations occur, and how much older or deleted data remains retained. Match each to the applicable location, storage class and published charge. Add any separate services your design uses.",
+          "Consider a photo website that uploads new pictures every day. Its stored collection grows, but visitor downloads may grow faster. Compare that with a monthly backup collection: there may be fewer routine downloads, but a full restore can produce a substantial one-off retrieval workload. Use both examples when testing your estimate, rather than treating a terabyte as a fixed monthly bill.",
+          "Record assumptions next to the estimate. If download volume doubles, you should be able to see which parts of the budget change without rebuilding the calculation from scratch."
+        ],
+        "sources": [{ "label": "Storage, operations, retrieval and transfer charges", "url": "https://cloud.google.com/storage/pricing" }]
+      },
+      {
+        "title": "Keep access narrower than you think you need",
+        "paragraphs": [
+          "For team documents, share with named people or groups when possible and review access when roles change. A public link is convenient, but it is a poor default for private business information.",
+          "In Google Cloud Storage, use Identity and Access Management to grant the permissions each person or application needs. A service that only reads files should not also be able to delete them. Do not put account credentials in a public website or a shared document. Someone should own the task of reviewing access, not just the task of uploading files."
+        ],
+        "sources": [{ "label": "Cloud Storage access control", "url": "https://docs.cloud.google.com/storage/docs/access-control/iam" }]
+      },
+      {
+        "title": "Cloud storage security and encryption",
+        "paragraphs": [
+          "Google Cloud Storage encrypts data at rest by default. That protects stored data, but it does not undo overly broad permissions or prevent someone with valid access from copying a file. Encryption and access control solve different problems.",
+          "For enterprise cloud storage, ask who manages encryption keys, how access is removed, and what happens if credentials are compromised. Advanced key-management arrangements can be appropriate, but they also introduce responsibilities. A team should understand its recovery and operational requirements before choosing a more complex setup.",
+          "Protect administrator accounts carefully, keep application credentials out of source code, and avoid giving everyone administrative rights to make setup quicker. A useful security review follows a real file: who uploads it, who can read it, who can share it, and who can delete it?"
+        ],
+        "sources": [{ "label": "Standard Cloud Storage encryption", "url": "https://docs.cloud.google.com/storage/docs/encryption/default-keys" }]
+      },
+      {
+        "title": "Business data protection, retention and audit trails",
+        "paragraphs": [
+          "Some businesses need records to remain available for a defined period and need evidence of how those records were accessed. Those requirements should be written down before selecting an enterprise storage product. A provider's feature list is not, by itself, proof that your organisation has met its obligations.",
+          "Google Cloud Storage supports retention policies, including Bucket Lock. Locking a policy is irreversible: you cannot simply shorten it later when storage becomes expensive. Test the intended policy and have the responsible people review it before locking anything.",
+          "Audit logging needs attention too. Cloud Storage Admin Activity logs are enabled by default, but Data Access audit logs are not written unless enabled. Decide which activity you need to record and who will review it. Logs that nobody checks are less useful than a small, well-understood monitoring process."
+        ],
+        "sources": [
+          { "label": "Retention policies and Bucket Lock", "url": "https://docs.cloud.google.com/storage/docs/bucket-lock" },
+          { "label": "Cloud Storage audit logging", "url": "https://docs.cloud.google.com/storage/docs/audit-logging" }
+        ]
+      },
+      {
+        "title": "Google Workspace data loss prevention",
+        "paragraphs": [
+          "On supported Workspace editions, data loss prevention for Drive can apply rules that detect sensitive information and control sharing. That can help reduce accidental disclosure of business data. Availability depends on the edition; do not assume every Workspace Business subscription includes the same controls.",
+          "Before buying a plan for a security feature, describe the situation it must prevent. Is the problem a document shared publicly, a contractor retaining access, or sensitive content copied outside the business? Then test the control with a harmless sample. Also check how legitimate sharing is handled so a protective rule does not unexpectedly stop everyday work."
+        ],
+        "sources": [{ "label": "Data loss prevention for Drive", "url": "https://knowledge.workspace.google.com/admin/security/about-dlp-for-drive" }]
+      },
+      {
+        "title": "Sync is useful, but it is not your whole backup plan",
+        "paragraphs": [
+          "Sync keeps copies aligned. That can also mean an unwanted change follows you from one device to another. Drive for desktop offers streaming and mirroring, but neither should be treated as proof that an independent, recoverable backup exists.",
+          "For important data, decide how far back you need to recover and test the process. Google Cloud Storage soft delete can retain deleted objects for a configured recovery period; retained objects still cost money. Recovery features are helpful, but they only protect you within their settings and limits. Keep a separate backup where the consequences of losing the main account or collection would be serious."
+        ],
+        "sources": [
+          { "label": "Streaming and mirroring in Drive", "url": "https://support.google.com/drive/answer/13401938" },
+          { "label": "Cloud Storage soft delete", "url": "https://docs.cloud.google.com/storage/docs/soft-delete" }
+        ]
+      },
+      {
+        "title": "Cloud backup services and disaster recovery planning",
+        "paragraphs": [
+          "When comparing business cloud backup services, ask about two practical limits: how much recent work could be lost, and how long it would take to get working again. These are often called the recovery point objective and recovery time objective. A daily backup and a four-hour restore may be perfectly adequate for one business and unacceptable for another.",
+          "Test more than the ability to download one file. Check whether a restore preserves folder organisation, permissions and the document formats your team uses. For an application, check that the restored files work with its other systems. Give a second person enough information to perform the recovery if the usual administrator is unavailable.",
+          "Keep backup access separate enough that a mistake or compromised account in the main system cannot easily destroy every copy. Agree how failed backup jobs are reported and who responds. The most useful backup is not the one with the biggest storage allowance; it is the one you have successfully restored."
+        ]
+      },
+      {
+        "title": "Google Workspace backup is different from Google Vault",
+        "paragraphs": [
+          "Google Vault is designed for information governance and legal discovery, not as a general-purpose backup service. Google explicitly says Vault is not a backup or archive tool. Buying a Workspace edition with Vault does not remove the need to think about operational recovery.",
+          "If you are evaluating Google Workspace backup software, list the services it must cover and try its recovery process. Restoring a deleted Drive file, recovering a user's mailbox and rebuilding an entire shared collection are different tasks. Ask what happens after an employee leaves, how long copies remain available, and whether restoring data requires the same administrator account that was lost or compromised.",
+          "Do not assume that a successful export means a quick restore. Test a realistic recovery before cancelling an existing backup arrangement."
+        ],
+        "sources": [{ "label": "Google Vault's backup limitations", "url": "https://knowledge.workspace.google.com/vault/getting-started/google-vault-faq" }]
+      },
+      {
+        "title": "Move files in a small, checked batch first",
+        "paragraphs": [
+          "Before a migration, remove obvious duplicates and identify who owns the files. Try a representative folder first: a few large files, a few shared documents, and anything people need offline.",
+          "Check that the right people can open and edit the files, that sharing has not become broader than intended, and that you can retrieve a usable copy. Keep the old data until those checks are complete. Moving everything on Friday and discovering on Monday that nobody has access is an avoidable problem."
+        ]
+      },
+      {
+        "title": "Cloud data migration and managed storage services",
+        "paragraphs": [
+          "For larger object-storage migrations, Google offers Storage Transfer Service. It supports transfers from several sources, including other cloud storage systems and on-premises storage. Check the supported source, permission requirements and transfer method before assuming a migration can be handled with a single button.",
+          "A migration plan should identify what changes while the copy is running. If people keep editing or uploading files, decide how the final changes will reach the destination and when you will switch systems. Validate the destination before deleting the source. Keep a rollback route until the new setup has been used successfully.",
+          "A managed cloud storage provider or migration consultant can help when the team lacks time or specialist knowledge. Ask for a clear scope: which data will move, how completeness will be checked, who configures security, what downtime is expected, and who owns the accounts afterwards. Include ongoing support and the eventual cost of moving away, not only the initial migration quote."
+        ],
+        "sources": [{ "label": "Storage Transfer Service overview", "url": "https://docs.cloud.google.com/storage-transfer/docs/overview" }]
+      },
+      {
+        "title": "Questions to ask before signing up",
+        "paragraphs": [
+          "Ask who needs the storage and how they will use it. For people working on documents, test sharing, search and offline access. For applications, test uploads, reads, deletes and the permission model. Make the trial resemble normal work rather than a polished demonstration.",
+          "Ask what the bill includes. Does a subscription cover every user? What happens when storage grows? For object storage, what would frequent downloads or a large restore cost? Ask how support works when a problem occurs outside normal office hours.",
+          "Ask how you would leave. Check the export formats, transfer process, access to your own data and any costs of downloading it. Keep an inventory of the accounts and credentials you control. A cloud storage solution should solve today's problem without making tomorrow's move unnecessarily difficult."
+        ]
+      },
+      {
+        "title": "Which option makes sense for you?",
+        "paragraphs": [
+          "For everyday documents and teamwork, start with a file service such as Google Drive in Workspace. For images, uploads, datasets or backup objects used by software, investigate Google Cloud Storage. A business may reasonably use both: Drive for its people, buckets for its applications.",
+          "The right choice is the one that fits how the data will be used, who must access it, and how you will recover it. Get those three things clear before worrying about the largest storage allowance or the lowest advertised rate."
+        ]
+      }
+    ]
+  }]
+}

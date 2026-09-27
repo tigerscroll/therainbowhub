@@ -28,3 +28,9 @@ The manifest owns metadata, the reference shell, theme colours, header colours, 
 Use `referenceTheme: "editorial"` for the independent shared article theme, or `referenceQuizSlug` to borrow an existing quiz's theme. Set exactly one. An independent theme keeps an article available when an unrelated quiz is removed; article-specific colours and header settings still override the base theme.
 
 Use the shared renderer unless an existing reusable schema field genuinely cannot express the content. Do not add a per-article route wrapper or a hardcoded slug list.
+
+## Plain articles and optional quizzes
+
+Set `layout: "plain"` for a readable, single-column article without a landing screen or article ad gates. All section content is exported as HTML. Points may include `sources: [{ label, url }]` for references alongside the text.
+
+Any article can display an existing quiz above its content through `?q=<quiz-slug>`, for example `/cloudstorage?q=years-left`. Only a single slug in the current locale's quiz catalogue is accepted; absent, repeated or unknown values leave the article unchanged. The selected quiz loads on demand from a static `/quiz-data/<locale>/<slug>.json` payload and uses the existing QuizEngine, progress storage and rewarded placement. No iframe, duplicated site header, interstitial or new ad unit is created. The article remains readable if the optional quiz cannot load. Its metadata and canonical URL remain those of the article. Plain articles use the compact, neutral footer. Article text is server-rendered, with headline and articleBody structured data, index/follow metadata, Open Graph article tags and a generated sitemap entry.

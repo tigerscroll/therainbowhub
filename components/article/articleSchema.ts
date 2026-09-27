@@ -4,6 +4,7 @@ export type ArticleCallout = {
 };
 
 export type ArticlePoint = {
+  sources?: ArticleSource[];
   callouts?: ArticleCallout[];
   numberLabel?: string;
   image?: {
@@ -49,6 +50,7 @@ export type ArticleIcon =
 
 export type ArticleManifest = {
   version: 1;
+  layout?: "gated" | "plain";
   slug: string;
   locale: string;
   path: string;
@@ -126,6 +128,7 @@ function isArticlePoint(value: unknown): value is ArticlePoint {
   if (!value || typeof value !== "object") return false;
   const point = value as Partial<ArticlePoint>;
   return isString(point.title)
+    && (point.sources === undefined || (Array.isArray(point.sources) && point.sources.every(isArticleSource)))
     && (typeof point.numberLabel === "undefined" || isString(point.numberLabel))
     && Array.isArray(point.paragraphs)
     && point.paragraphs.every(isString)
@@ -195,6 +198,7 @@ export function isArticleManifest(value: unknown): value is ArticleManifest {
   const ui = manifest.ui;
 
   return manifest.version === 1
+    && (manifest.layout === undefined || manifest.layout === "gated" || manifest.layout === "plain")
     && isString(manifest.slug)
     && isString(manifest.locale)
     && isString(manifest.path)

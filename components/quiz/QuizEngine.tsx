@@ -17,6 +17,7 @@ import { scoreQuiz, type QuizAnswers } from "./scoring";
 import { getChapterAnswers } from "./engagement";
 
 type QuizEngineProps = {
+  scrollTargetId?: string;
   locale: SupportedLocale;
   quiz: Quiz;
   recommendations: QuizRecommendation[];
@@ -78,7 +79,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
   return { ...saved, answers } as RestoredProgress;
 }
 
-export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
+export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, startInstructionEnabled, translations }: QuizEngineProps) {
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -173,11 +174,13 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       removeQuizProgress(storageKey);
     } finally {
       setHydrated(true);
-      document.documentElement.classList.remove("quiz-resuming");
-      document.documentElement.style.removeProperty("background");
-      document.body.style.removeProperty("background");
+      if (!scrollTargetId) {
+        document.documentElement.classList.remove("quiz-resuming");
+        document.documentElement.style.removeProperty("background");
+        document.body.style.removeProperty("background");
+      }
     }
-  }, [progressSignature, quiz, storageKey]);
+  }, [progressSignature, quiz, scrollTargetId, storageKey]);
 
   useEffect(() => {
     if (!hydrated || screen === "landing") return;
@@ -248,6 +251,12 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   }, [showStartPrompt, startInstructionEnabled]);
 
   function scrollToTop() {
+    if (scrollTargetId) {
+      const scroll = () => document.getElementById(scrollTargetId)?.scrollIntoView({ block: "start", behavior: "instant" });
+      scroll();
+      window.requestAnimationFrame(scroll);
+      return;
+    }
     window.scrollTo({ top: 0, behavior: "auto" });
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
   }
@@ -279,7 +288,10 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   }
 
   async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
-    await runGate(onComplete, { scrollAfter });
+    await runGate(() => {
+      onComplete();
+      if (scrollTargetId && scrollAfter) scrollToTop();
+    }, { scrollAfter: scrollAfter && !scrollTargetId });
   }
 
   function moveForward() {

@@ -53,7 +53,7 @@ const server = http.createServer((request, response) => {
   }
 
   const status = resolveRequest(pathname) ? 200 : 404;
-  const isArticlePayload = file.startsWith(path.join(root, "article-data") + path.sep);
+  const isArticlePayload = ["article-data", "quiz-data"].some(directory => file.startsWith(path.join(root, directory) + path.sep));
   response.writeHead(status, {
     "Cache-Control": "no-cache",
     "Content-Type": isArticlePayload

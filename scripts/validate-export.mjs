@@ -134,13 +134,14 @@ if (!fs.existsSync(outputRoot)) {
     .map((entry) => {
       const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, entry.name, "en.json"), "utf8"));
       return {
+        layout: manifest.layout,
         pointCounts: manifest.sections.map((section) => section.points.length),
         routeSlug: manifest.routeSlug ?? manifest.slug,
         slug: manifest.slug,
       };
     });
 
-  for (const { pointCounts, routeSlug, slug } of articles) {
+  for (const { layout, pointCounts, routeSlug, slug } of articles) {
     const sectionCount = pointCounts.length;
     const articleFile = routeFile(`/${routeSlug}`);
     if (!articleFile) {
@@ -204,8 +205,11 @@ if (!fs.existsSync(outputRoot)) {
         }
       }
       const firstPointTitle = payload.points?.[0]?.title;
-      if (firstPointTitle && html.includes(firstPointTitle)) {
+      if (layout !== "plain" && firstPointTitle && html.includes(firstPointTitle)) {
         addError(`/${routeSlug}: locked section content leaked into the initial article payload.`);
+      }
+      if (layout === "plain" && firstPointTitle && !html.includes(firstPointTitle)) {
+        addError(`/${routeSlug}: readable article content must be exported without an ad gate.`);
       }
     }
   }

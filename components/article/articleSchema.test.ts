@@ -70,13 +70,15 @@ test("every article locale file is a complete validated manifest", () => {
       if (!isArticleManifest(value)) continue;
       assert.equal(value.slug, slug);
       assert.equal(value.locale, locale);
-      assert.notEqual(value.landing.socialProofVisible, false, `${slug}/${locale} should show the shared social-proof unit`);
-      assert.ok(value.landing.socialProofCount.trim().length > 0, `${slug}/${locale} needs social-proof copy`);
-      assert.ok(value.landing.socialProofLabel.trim().length > 0, `${slug}/${locale} needs a social-proof label`);
-      if (locale === "en") {
-        assert.equal(value.landing.cta.adNote, "One short ad, then continue.", `${slug}/${locale} needs the shared CTA note`);
-        assert.equal(value.landing.cta.showIcon, true, `${slug}/${locale} should show the shared CTA arrow`);
-        assert.equal(/[→›]$/.test(value.landing.cta.label.trim()), false, `${slug}/${locale} should let the shell render its CTA arrow`);
+      if (value.layout !== "plain") {
+        assert.notEqual(value.landing.socialProofVisible, false, `${slug}/${locale} should show the shared social-proof unit`);
+        assert.ok(value.landing.socialProofCount.trim().length > 0, `${slug}/${locale} needs social-proof copy`);
+        assert.ok(value.landing.socialProofLabel.trim().length > 0, `${slug}/${locale} needs a social-proof label`);
+        if (locale === "en") {
+          assert.equal(value.landing.cta.adNote, "One short ad, then continue.", `${slug}/${locale} needs the shared CTA note`);
+          assert.equal(value.landing.cta.showIcon, true, `${slug}/${locale} should show the shared CTA arrow`);
+          assert.equal(/[→›]$/.test(value.landing.cta.label.trim()), false, `${slug}/${locale} should let the shell render its CTA arrow`);
+        }
       }
       value.sections.forEach((section, index) => {
         if (index < value.sections.length - 1) {

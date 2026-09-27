@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 
 import { ArticleExperience } from "@/components/article/ArticleExperience";
+import { ArticleQuiz } from "@/components/article/ArticleQuiz";
+import { PlainArticle } from "@/components/article/PlainArticle";
 import { getArticleChapterPath } from "@/components/article/articleRouting";
 import type { ArticleIcon, ArticleManifest } from "@/components/article/articleSchema";
 import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
@@ -10,7 +12,7 @@ import { SiteShell } from "@/components/SiteShell";
 import { getArticleBySlug, getArticleLocales } from "@/lib/articles";
 import { editorialArticleAvatars, editorialArticleTheme } from "@/lib/articleThemes";
 import { getTranslations, isSupportedLocale, type SupportedLocale } from "@/lib/i18n";
-import { getQuizBySlug, SHARED_SHELL_CSS_HREF, type QuizTheme } from "@/lib/quizzes";
+import { getAllQuizzes, getQuizBySlug, SHARED_SHELL_CSS_HREF, type QuizTheme } from "@/lib/quizzes";
 import { absoluteUrl, buildMetadata, getArticlePath } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -93,6 +95,7 @@ function getArticleContentVersion(article: ArticleManifest) {
 
 export function buildArticleMetadata(article: ArticleManifest, initialSection?: number): Metadata {
   if (!isSupportedLocale(article.locale)) return {};
+  if (article.layout === "plain") initialSection = undefined;
   const locales = getArticleLocales(article.slug).filter(isSupportedLocale);
   const languages = Object.fromEntries(locales.map((locale) => {
     const localizedArticle = getArticleBySlug(article.slug, locale);
@@ -112,17 +115,23 @@ export function buildArticleMetadata(article: ArticleManifest, initialSection?: 
     getArticlePath(article.locale, article.routeSlug ?? article.slug),
     initialSection,
   );
-  return buildMetadata({
+  const metadata = buildMetadata({
     alternates: { canonical: absoluteUrl(articlePath), languages },
     description: article.metadata.description,
     locale: article.locale,
     path: articlePath,
     title: article.metadata.title,
   });
+  return {
+    ...metadata,
+    robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+    openGraph: { ...metadata.openGraph, type: "article" },
+  };
 }
 
 export function ArticleTemplate({ article, initialSection }: { article: ArticleManifest; initialSection?: number }) {
   if (!isSupportedLocale(article.locale)) notFound();
+  if (article.layout === "plain") initialSection = undefined;
   const locale: SupportedLocale = article.locale;
   const referenceQuiz = article.referenceQuizSlug
     ? getQuizBySlug(article.referenceQuizSlug, locale) ?? getQuizBySlug(article.referenceQuizSlug, "en")
@@ -155,9 +164,14 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
     "@context": "https://schema.org",
     "@type": article.metadata.schemaType,
     name: article.metadata.title,
+    headline: article.metadata.title,
     description: article.metadata.description,
     inLanguage: article.locale,
     url: absoluteUrl(currentArticlePath),
+    mainEntityOfPage: { "@type": "WebPage", "@id": absoluteUrl(currentArticlePath) },
+    ...(article.layout === "plain" ? {
+      articleBody: [article.landing.intro, ...article.sections.flatMap(section => section.points.flatMap(point => [point.title, ...point.paragraphs]))].join("\n\n"),
+    } : {}),
     ...(article.metadata.dateModified ? { dateModified: article.metadata.dateModified } : {}),
     ...(article.metadata.lastReviewed ? { lastReviewed: article.metadata.lastReviewed } : {}),
     publisher: {
@@ -172,6 +186,7 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
     <SiteShell
       availableLocales={availableLocales}
       currentPath={currentArticlePath}
+      footerVariant={article.layout === "plain" ? "simple" : "default"}
       locale={locale}
       localePaths={localePaths}
       quizTheme={articleTheme}
@@ -182,6 +197,10 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
         type="application/ld+json"
       />
       <style dangerouslySetInnerHTML={{ __html: `html,body{background:${articleTheme.colors.page}}` }} />
+      <Suspense fallback={null}>
+        <ArticleQuiz locale={locale} slugs={getAllQuizzes(locale).map(quiz => quiz.slug)} translations={translations} />
+      </Suspense>
+      {article.layout === "plain" ? <PlainArticle article={article} /> : (
       <ExperienceThemeBoundary
         shellCssHref={SHARED_SHELL_CSS_HREF}
         theme={articleTheme}
@@ -212,6 +231,7 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
           ui={article.ui}
         />
       </ExperienceThemeBoundary>
+      )}
     </SiteShell>
   );
 }
