@@ -11,6 +11,14 @@ test("full-document navigation has no page-load fade or cross-document transitio
   assert.doesNotMatch(css, /@view-transition|site-page-in|site-page-out/);
 });
 
+test("restoring a quiz keeps its matching shell visible without flashing landing content", () => {
+  const css = fs.readFileSync("styles/quiz-engine.css", "utf8");
+  assert.doesNotMatch(css, /\.quiz-resuming\s+\.quiz-theme\s*\{[^}]*visibility:\s*hidden/);
+  assert.match(css, /\.quiz-resuming \.quiz-engine__landing > \*,\s*\.quiz-resuming \.quiz-engine__about \{ visibility: hidden; \}/);
+  assert.match(css, /\.quiz-resuming \.quiz-engine__landing \{ pointer-events: none; \}/);
+  assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
+});
+
 test("display-ad components and request code are absent site-wide", () => {
   assert.equal(fs.existsSync("components/quiz/QuestionDisplayAd.tsx"), false);
   for (const directory of ["components", "lib", "app"]) {

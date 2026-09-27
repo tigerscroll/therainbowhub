@@ -9,7 +9,11 @@
   color: var(--quiz-text);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
 }
-.quiz-resuming .quiz-theme { visibility: hidden; }
+/* Keep the server-rendered shell as a still placeholder until saved progress
+   restores. Hide its landing content, not the card and themed background. */
+.quiz-resuming .quiz-engine__landing > *,
+.quiz-resuming .quiz-engine__about { visibility: hidden; }
+.quiz-resuming .quiz-engine__landing { pointer-events: none; }
 
 .quiz-theme[data-heading="serif"] h1,
 .quiz-theme[data-heading="serif"] h2 { font-family: Georgia, "Times New Roman", serif; }
@@ -63,7 +67,7 @@
  * containers; the site owns their width, alignment and distance from the
  * header so every current and future quiz begins from the same frame.
  */
-.quiz-theme[data-quiz-theme]:has(.quiz-engine__landing) {
+:where(html:not(.quiz-resuming)) .quiz-theme[data-quiz-theme]:has(.quiz-engine__landing) {
   padding-top: var(--quiz-shell-header-gap) !important;
 }
 .quiz-theme[data-quiz-theme] .quiz-engine__landing,
@@ -556,7 +560,7 @@ body.quiz-reward-prompt-open { overflow: hidden !important; overscroll-behavior:
     --quiz-shell-header-gap: 6px;
     --quiz-shell-side-gutter: 6px;
   }
-  .quiz-theme[data-quiz-theme]:has(.quiz-engine__landing) {
+  :where(html:not(.quiz-resuming)) .quiz-theme[data-quiz-theme]:has(.quiz-engine__landing) {
     padding: var(--quiz-shell-header-gap) var(--quiz-shell-side-gutter) 28px !important;
   }
   .quiz-theme[data-quiz-theme] .quiz-engine__landing,
