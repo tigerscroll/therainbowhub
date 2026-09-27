@@ -28,7 +28,7 @@ test("display-ad components and request code are absent site-wide", () => {
     }
   }
 });
-test("Mechanic uses automatic questions with SPA checkpoint navigation", () => {
+test("Mechanic uses the automatic rewarded-only flow", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
   assert.equal(manifest.template, "ten-stage-seven-question-v1");
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
@@ -36,37 +36,35 @@ test("Mechanic uses automatic questions with SPA checkpoint navigation", () => {
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("quiz interstitials use display while article rewarded ads keep their placement", () => {
+test("quizzes and articles use only the rewarded placement", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
-  assert.match(config, /quizInterstitialAdUnitPath: "\/22677279144\/display"/);
+  assert.doesNotMatch(config, /quizInterstitialAdUnitPath|22677279144\/display/);
   const articleGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
   assert.match(articleGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
 });
-test("answer links synchronously save the selected answer before SPA navigation", () => {
+test("answers remain buttons and do not trigger ads or link navigation", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   const renderer = fs.readFileSync("components/quiz/QuestionRenderer.tsx", "utf8");
-  assert.match(source, /navigateQuiz\(destination.questionIndex, nextCompletedStage, destination.screen, destination.transition, nextAnswers\)/);
-  assert.match(source, /writeQuizHistoryProgress\(storageKey, saved, href\)/);
-  assert.match(source, /navigationMode="spa"/);
-  assert.doesNotMatch(source, /prepareFullPageNavigation|window.location.reload/);
-  assert.match(source, /answerNavigationPending.current = true/);
-  assert.match(renderer, /href=\{answerHref\}/);
-  assert.match(renderer, /data-quiz-interstitial="true"/);
-  assert.match(renderer, /event.preventDefault\(\)/);
-  assert.doesNotMatch(source, /window.setTimeout\(moveForward/);
+  assert.match(source, /window.setTimeout\(moveForward/);
+  assert.match(renderer, /<button/);
+  assert.match(renderer, /disabled=\{answer !== undefined\}/);
+  assert.doesNotMatch(renderer, /answerHref|data-quiz-interstitial|followAnswer/);
+  const answerHandler = source.slice(source.indexOf("function answerQuestion("), source.indexOf("function completeStudy("));
+  assert.doesNotMatch(answerHandler, /runRewardedGate|window\.location|pushState/);
 });
-test("interstitials are scoped to the quiz engine and use their own placement", () => {
+test("Start, checkpoints and result breakdowns restore rewarded gates; interstitials are removed", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
-  const runtime = fs.readFileSync("components/quiz/QuizInterstitial.tsx", "utf8");
-  assert.match(engine, /useQuizInterstitial\(\)/);
-  assert.doesNotMatch(engine, /useRewardedGate|runRewardedGate|requestRewardedAd/);
-  assert.match(runtime, /siteConfig.quizInterstitialAdUnitPath/);
-  assert.match(runtime, /OutOfPageFormat\?\.INTERSTITIAL/);
-  assert.match(runtime, /data-google-interstitial/);
-  assert.match(runtime, /navBar: false, unhideWindow: false, inactivity: false/);
-  for (const path of ["components/RootDocument.tsx", "components/article/ArticleExperience.tsx"]) {
-    assert.doesNotMatch(fs.readFileSync(path, "utf8"), /useQuizInterstitial|INTERSTITIAL/);
+  assert.match(engine, /useRewardedGate/);
+  assert.match(engine, /runRewardedGate\(beginQuiz\)/);
+  assert.match(engine, /runRewardedGate\(next\)/);
+  assert.match(engine, /runRewardedGate\(\(\) => setReviewUnlocked\(true\)/);
+  assert.equal(fs.existsSync("components/quiz/QuizInterstitial.tsx"), false);
+  for (const directory of ["components", "lib", "app"]) {
+    for (const path of fs.readdirSync(directory, { recursive: true })) {
+      if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
+      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /INTERSTITIAL|useQuizInterstitial|data-quiz-interstitial|22677279144\/display/, `${directory}/${path}`);
+    }
   }
 });
 test("Years Left keeps each choice's score and calibration regardless of answer order", () => {

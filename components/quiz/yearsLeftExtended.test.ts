@@ -9,7 +9,7 @@ import {scoreQuiz} from './scoring.ts';
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, 'utf8'));
 const englishManifest = () => resolveQuizLocaleManifest(read('quiz'), 'en');
 
-test('English Years Left has ten distinct ten-question chapters and a SPA checkpoint after each', () => {
+test('English Years Left has ten distinct ten-question chapters and a rewarded checkpoint after each', () => {
   const manifest = englishManifest();
   const copy = read('en');
   const quiz = expandQuizLocale(manifest, copy, 'en');

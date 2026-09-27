@@ -18,7 +18,6 @@ type ExperienceLandingProps = {
   intro: string;
   href?: string;
   navigationMode?: "document" | "spa";
-  interstitialOpportunity?: boolean;
   onStart: () => boolean | void;
   showCtaIcon?: boolean;
   showSocialProof?: boolean;
@@ -63,7 +62,6 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   intro,
   href,
   navigationMode = "document",
-  interstitialOpportunity = false,
   onStart,
   showCtaIcon = true,
   showSocialProof = true,
@@ -87,8 +85,6 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
         {showSocialProof ? <SocialProof avatars={avatars} text={socialProofText} /> : null}
         {href && !busy ? (
           <a
-            data-quiz-interstitial={interstitialOpportunity ? "true" : undefined}
-            data-google-interstitial={interstitialOpportunity ? undefined : "false"}
             className="quiz-engine__primary"
             href={href}
             onClick={(event) => {
@@ -100,17 +96,12 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
               event.currentTarget.href = destination.toString();
               if (navigationMode === "spa") {
                 event.preventDefault();
-                if (event.detail > 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-                  event.currentTarget.setAttribute("data-google-interstitial", "false");
-                  return;
-                }
                 if (onStart() !== false) window.history.pushState(null, "", destination);
                 return;
               }
               prepareFullPageNavigation(event.currentTarget);
               if (onStart() === false) {
                 cancelFullPageNavigation(event.currentTarget);
-                event.currentTarget.setAttribute("data-google-interstitial", "false");
                 event.preventDefault();
               }
             }}

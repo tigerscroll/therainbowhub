@@ -10,7 +10,7 @@ try {
       const page = await context.newPage();
       await page.route('**/*', route => new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort());
       await page.goto(`${base}/${slug}`);
-      await page.locator('.quiz-engine__landing a.quiz-engine__primary').click();
+      await page.locator('.quiz-engine__landing button.quiz-engine__primary').click();
       const question = page.locator('[data-question-id]');
       await question.waitFor();
       const id = await question.getAttribute('data-question-id');
@@ -22,7 +22,7 @@ try {
       });
       const blockScripts = route => route.abort();
       await page.route('**/_next/static/**/*.js', blockScripts);
-      await page.locator('a.quiz-engine__answer').first().click();
+      await page.locator('button.quiz-engine__answer').first().click();
       await page.waitForFunction(previousId => document.querySelector('[data-question-id]')?.getAttribute('data-question-id') !== previousId, id);
       await page.reload({waitUntil: 'domcontentloaded'});
       await page.waitForLoadState('domcontentloaded');
@@ -52,7 +52,7 @@ try {
       await page.locator('[data-question-id]').waitFor();
       assert.notEqual(await page.locator('[data-question-id]').getAttribute('data-question-id'), id, 'saved answer advances correctly');
       assert.equal(await page.evaluate(() => document.documentElement.classList.contains('quiz-resuming')), false);
-      assert.equal(await page.locator('a.quiz-engine__answer').count(), 4);
+      assert.equal(await page.locator('button.quiz-engine__answer').count(), 4);
       console.log(`${slug}/${width}px PASS: matching visible resume shell, hidden stale content and restored next question.`);
       await context.close();
     }

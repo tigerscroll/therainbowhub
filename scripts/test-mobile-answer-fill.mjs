@@ -11,7 +11,7 @@ try {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(`${base}${route}`);
-    await page.locator('.quiz-engine__landing a.quiz-engine__primary').click();
+    await page.locator('.quiz-engine__landing button.quiz-engine__primary').click();
     await page.locator('[data-question-id]').waitFor();
     const studyButton = page.locator('.quiz-engine__study .quiz-engine__primary');
     if (await studyButton.count()) await studyButton.click();
