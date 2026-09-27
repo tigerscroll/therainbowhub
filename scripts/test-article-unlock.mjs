@@ -74,16 +74,21 @@ try {
     assert.ok(adBox.y >= titleBox.y + titleBox.height, 'ad appears below the article headline');
     assert.ok(adBox.y + adBox.height <= introBox.y, 'ad appears before the introduction');
     assert.equal(await page.locator('header > h1 + .article-display + .plain-article__intro').count(), 1, 'ad is directly between title and introduction');
-    assert.equal(await page.locator('.article-display').count(), 3, 'exactly three display placements');
-    const planTitleBox = await page.getByRole('heading', { name: 'Start with a plan, not an earnings promise', exact: true }).boundingBox();
-    const abovePlanAdBox = await page.locator('.article-display__slot').nth(1).boundingBox();
-    assert.ok(abovePlanAdBox.y >= introBox.y + introBox.height, 'second ad follows the introduction');
-    assert.ok(abovePlanAdBox.y + abovePlanAdBox.height <= planTitleBox.y, 'second ad is above Start with a plan');
-    const lastPreviewParagraph = await page.locator('p').filter({ hasText: 'The guide below walks through checking access' }).boundingBox();
-    const belowPreviewAdBox = await page.locator('.article-display__slot').nth(2).boundingBox();
-    const teaserBox = await page.locator('.article-unlock__teaser').boundingBox();
-    assert.ok(belowPreviewAdBox.y >= lastPreviewParagraph.y + lastPreviewParagraph.height, 'third ad follows the paragraph ending a particular income');
-    assert.ok(belowPreviewAdBox.y + belowPreviewAdBox.height <= teaserBox.y, 'third ad appears before the unlock preview');
+    assert.equal(await page.locator('.article-display').count(), 1, 'exactly one display placement');
+    assert.match(await page.locator('.plain-article__intro').innerText(), /Start with those basics before chasing a view count\.$/);
+    assert.equal(await page.locator('.plain-article > header + .article-unlock > .article-unlock__teaser + button + .article-unlock__note').count(), 1, 'intro is followed by faded preview, Continue article and grey note');
+    const continueBox = await page.getByRole('button', { name: 'Continue article', exact: true }).boundingBox();
+    const teaser = page.locator('.article-unlock__teaser');
+    assert.equal(await teaser.count(), 1);
+    assert.match(await teaser.evaluate(node => getComputedStyle(node).maskImage), /linear-gradient/, 'upcoming text keeps its fade');
+    assert.match(await teaser.locator('h2').innerText(), /Start with a plan/);
+    const teaserBox = await teaser.boundingBox();
+    const noteBox = await page.locator('#article-ad-note').boundingBox();
+    assert.ok(teaserBox.y >= introBox.y + introBox.height, 'faded preview follows the introduction');
+    assert.ok(continueBox.y >= teaserBox.y + teaserBox.height, 'Continue article follows the fade');
+    assert.ok(continueBox.y - (teaserBox.y + teaserBox.height) <= 32, 'button sits close to the bottom of the fade');
+    assert.ok(noteBox.y >= continueBox.y + continueBox.height, 'grey ad note remains below the button');
+    assert.equal(await page.getByRole('heading', { name: 'Start with a plan, not an earnings promise', exact: true }).count(), 0, 'first section stays behind the unlock');
     for (const slot of await page.locator('.article-display__slot').all()) {
       assert.equal((await slot.boundingBox()).width, Math.min(width, 720), 'every placement has full container width');
       assert.equal(await slot.evaluate(node => getComputedStyle(node).maxHeight), 'none');
@@ -92,12 +97,11 @@ try {
     assert.equal(await page.locator('.hub-header').isVisible(), false);
     assert.equal(await page.locator('body').evaluate(node => getComputedStyle(node).backgroundColor), 'rgb(255, 255, 255)');
     assert.equal(await page.locator('.plain-article').evaluate(node => getComputedStyle(node).color), 'rgb(17, 17, 17)');
-    assert.match(await page.locator('.article-unlock__teaser').evaluate(node => getComputedStyle(node).maskImage), /linear-gradient/);
     assert.match(await page.locator('#article-ad-note').innerText(), /Short ad first.*unlock the full guide/);
+    assert.equal(await page.locator('#article-ad-note').evaluate(node => getComputedStyle(node).color), 'rgb(112, 112, 112)', 'ad disclosure uses a softer readable grey');
     assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'rewarded').length), 0);
     const displayRequests = await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').map(({ id, sizes, path }) => ({ id, sizes, path })));
-    assert.equal(displayRequests.length, 3);
-    assert.equal(new Set(displayRequests.map(slot => slot.id)).size, 3, 'same ad unit still has unique placement IDs');
+    assert.equal(displayRequests.length, 1);
     for (const slot of displayRequests) {
       assert.deepEqual(slot.sizes, width < 336 ? [[300, 250]] : [[300, 250], [336, 280]]);
       assert.equal(slot.path, '/22677279144/display');
@@ -131,18 +135,19 @@ try {
     assert.equal(await page.evaluate(() => window.destroyedAds.filter(kind => kind === 'rewarded').length), 1, 'granted ad stays open until close');
     await page.evaluate(() => window.emitArticleAd('rewardedSlotClosed'));
     assert.equal(await page.evaluate(() => window.destroyedAds.filter(kind => kind === 'rewarded').length), 2);
-    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 3, 'unlock does not request another display ad');
-    assert.equal(await page.locator('.article-display').count(), 3);
+    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 1, 'unlock does not request another display ad');
+    assert.equal(await page.locator('.article-display').count(), 1);
     assert.equal(await page.evaluate(() => window.adRequests.every(slot => slot.path === '/22677279144/display')), true);
     assert.equal(await page.getByRole('heading', { name: 'A realistic first-week plan' }).isVisible(), true);
+    assert.equal(await page.getByRole('heading', { name: 'Start with a plan, not an earnings promise', exact: true }).isVisible(), true, 'unlock includes the first section');
     await page.reload();
     await page.locator('#article-unlocked-content').waitFor({ state: 'visible' });
     assert.equal(await page.getByRole('button', { name: 'Continue article', exact: true }).count(), 0);
     assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'rewarded').length), 0);
-    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 3, 'restored unlock still has three display ads');
+    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 1, 'restored unlock still has one display ad');
     assert.deepEqual(errors, []);
     await context.close();
-    console.log(`${width}px: three placements, shared display ad unit, rewarded format, close/retry, grant, persistence and layout pass.`);
+    console.log(`${width}px: one display, faded preview before Continue, grey note below, shared display ad unit, rewarded format, close/retry, grant, persistence and layout pass.`);
   }
 
   const noFill = await newPage(390);
@@ -161,7 +166,7 @@ try {
   await pending.page.locator('#article-unlocked-content').waitFor({ state: 'visible' });
   assert.match(await pending.page.getByRole('status').innerText(), /No ad is available/);
   assert.equal(await pending.page.evaluate(() => window.rewardShows), 0, 'loading timeout never opened an ad');
-  assert.equal(await pending.page.locator('.article-display').count(), 3);
+  assert.equal(await pending.page.locator('.article-display').count(), 1);
   assert.deepEqual(pending.errors, []);
   await pending.context.close();
 
@@ -184,7 +189,9 @@ try {
   const html = await response.text();
   assert.ok(html.includes('A realistic first-week plan'));
   assert.equal(await page.locator('#article-unlocked-content').isVisible(), false);
-  assert.equal(await page.getByRole('heading', { name: 'Start with a plan, not an earnings promise' }).isVisible(), true);
+  assert.equal(await page.locator('.plain-article__intro').isVisible(), true);
+  assert.equal(await page.getByRole('heading', { name: 'Start with a plan, not an earnings promise' }).count(), 0);
+  assert.equal(await page.getByRole('button', { name: 'Continue article', exact: true }).isVisible(), true);
   assert.equal(await page.locator('noscript p').filter({ hasText: 'Enable JavaScript' }).isVisible(), true);
   await page.goto(`${base}/cloudstorage`);
   assert.equal(await page.locator('.article-unlock, .article-display').count(), 0);

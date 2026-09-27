@@ -209,7 +209,7 @@ export function isArticleManifest(value: unknown): value is ArticleManifest {
     && (manifest.layout === undefined || manifest.layout === "gated" || manifest.layout === "plain")
     && (monetization === undefined || (manifest.layout === "plain"
       && monetization !== null && typeof monetization === "object"
-      && Number.isInteger(monetization.previewPoints) && monetization.previewPoints > 0
+      && Number.isInteger(monetization.previewPoints) && monetization.previewPoints >= 0
       && Array.isArray(manifest.sections)
       && monetization.previewPoints < manifest.sections.reduce((count, section) => count + (Array.isArray(section?.points) ? section.points.length : 0), 0)
       && isString(monetization.title) && isString(monetization.copy)

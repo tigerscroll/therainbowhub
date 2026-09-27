@@ -39,9 +39,7 @@ export function PlainArticle({ article }: { article: ArticleManifest }) {
         {settings ? <ArticleDisplayAd /> : null}
         <p className="plain-article__intro">{article.landing.intro}</p>
       </header>
-      {settings ? <ArticleDisplayAd /> : null}
       <ArticleSections sections={preview} showTitles={article.sections.length > 1} />
-      {settings ? <ArticleDisplayAd /> : null}
       {settings ? <ArticleUnlock locale={article.locale} settings={settings} slug={article.slug}
         teaser={<><h2>{remaining[0]?.points[0]?.title}</h2><p>{remaining[0]?.points[0]?.paragraphs[0]}</p></>}>
         <ArticleSections sections={remaining} showTitles={article.sections.length > 1} />

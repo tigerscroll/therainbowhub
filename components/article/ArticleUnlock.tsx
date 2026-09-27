@@ -45,10 +45,12 @@ export function ArticleUnlock({ children, slug, locale, settings, teaser }: {
     if (result === "unavailable") window.requestAnimationFrame(() => content.current?.focus({ preventScroll: true }));
   }
 
+  const teaserPreview = teaser ? <div aria-hidden="true" className="article-unlock__teaser">{teaser}</div> : null;
+
   return (
     <>
       {!unlocked ? <div className="article-unlock" aria-label={settings.title}>
-        <div aria-hidden="true" className="article-unlock__teaser">{teaser}</div>
+        {teaserPreview}
         {settings.copy ? <p className="article-unlock__copy">{settings.copy}</p> : null}
         <button aria-controls="article-unlocked-content" aria-describedby="article-ad-note" disabled={!ready || busy} onClick={unlock} type="button">
           {busy ? "Opening ad…" : settings.cta}
