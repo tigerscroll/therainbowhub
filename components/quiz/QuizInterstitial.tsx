@@ -30,7 +30,7 @@ export function useQuizInterstitial() {
       const format = tag?.enums?.OutOfPageFormat?.INTERSTITIAL;
       if (format === undefined || !tag?.defineOutOfPageSlot || !tag.pubads) return;
       try {
-        slot = tag.defineOutOfPageSlot(siteConfig.rewardedAdUnitPath, format);
+        slot = tag.defineOutOfPageSlot(siteConfig.quizInterstitialAdUnitPath, format);
         if (!slot) return;
         if (!slot.setConfig) {
           tag.destroySlots?.([slot]);

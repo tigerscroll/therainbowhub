@@ -1,6 +1,6 @@
 # Quiz interstitial navigation
 
-Quizzes use GPT web interstitials on `/22677279144/rewarded`. The placement name is retained, but the slot format is `INTERSTITIAL`, not `REWARDED`. Google Ad Manager inventory and line items must support web interstitials on that unit. Real fill is not established by mocked browser tests.
+Quizzes use GPT web interstitials on `/22677279144/display`. The slot format is `INTERSTITIAL`, not a display banner or `REWARDED`. Article rewarded ads retain `/22677279144/rewarded`. Google Ad Manager inventory and line items must support web interstitials on the quiz unit. Real fill is not established by mocked browser tests.
 
 - Only quiz Start and checkpoint CTA anchors carry `data-quiz-interstitial="true"`.
 - Other links are excluded using `data-google-interstitial="false"`. Questions, study controls, restarts and answer reviews are not opportunities.

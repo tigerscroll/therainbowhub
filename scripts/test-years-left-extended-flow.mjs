@@ -215,11 +215,11 @@ async function run(width) {
   await result.waitFor();
   const opportunities = await page.evaluate(() => JSON.parse(sessionStorage.getItem('quiz-test-opportunities') ?? '[]'));
   assert.equal(opportunities.length, 11, 'Start plus ten checkpoint links are eligible opportunities');
-  assert.equal(opportunities.every(click => click.approved && click.format === 'INTERSTITIAL' && click.path === '/22677279144/rewarded'), true);
+  assert.equal(opportunities.every(click => click.approved && click.format === 'INTERSTITIAL' && click.path === '/22677279144/display'), true);
   assert.equal(opportunities.every(click => new URL(click.href).searchParams.get('test_keep') === '1'), true, 'attribution query survives every link');
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => Object.values(ad.config.interstitial.triggers).every(value => value === false))), true, 'all non-link triggers are disabled');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
-  assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'INTERSTITIAL' && ad.path === '/22677279144/rewarded')), true);
+  assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'INTERSTITIAL' && ad.path === '/22677279144/display')), true);
   assert.equal(documents, initialDocuments + 20 + reloads, 'checkpoint entry and continuation reload, but individual questions do not');
   assert.equal(await result.locator('.quiz-engine__result-share').count(), 0);
   let age;

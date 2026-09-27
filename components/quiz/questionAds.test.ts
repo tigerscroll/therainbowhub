@@ -10,7 +10,7 @@ test("display-ad components and request code are absent site-wide", () => {
   for (const directory of ["components", "lib", "app"]) {
     for (const path of fs.readdirSync(directory, { recursive: true })) {
       if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /mountDisplayAd|QuestionDisplayAd|data-display-ad|defineSlot|displayAdUnitPath|22677279144\/display/, `${directory}/${path}`);
+      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /mountDisplayAd|QuestionDisplayAd|data-display-ad|defineSlot|displayAdUnitPath/, `${directory}/${path}`);
     }
   }
 });
@@ -22,10 +22,12 @@ test("Mechanic uses automatic questions with hard checkpoint navigation", () => 
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("only the rewarded ad unit is configured", () => {
+test("quiz interstitials use display while article rewarded ads keep their placement", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
-  assert.doesNotMatch(config, /displayAdUnitPath|22677279144\/display/);
+  assert.match(config, /quizInterstitialAdUnitPath: "\/22677279144\/display"/);
+  const articleGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
+  assert.match(articleGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
 });
 test("quizzes save state and reload at checkpoint boundaries", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
@@ -33,12 +35,12 @@ test("quizzes save state and reload at checkpoint boundaries", () => {
   assert.match(source, /if \(reloadAtCheckpoint\(/);
   assert.doesNotMatch(source, /hardRefreshCheckpoints && reloadAtCheckpoint/);
 });
-test("interstitials are scoped to the quiz engine and use the existing placement", () => {
+test("interstitials are scoped to the quiz engine and use their own placement", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   const runtime = fs.readFileSync("components/quiz/QuizInterstitial.tsx", "utf8");
   assert.match(engine, /useQuizInterstitial\(\)/);
   assert.doesNotMatch(engine, /useRewardedGate|runRewardedGate|requestRewardedAd/);
-  assert.match(runtime, /siteConfig.rewardedAdUnitPath/);
+  assert.match(runtime, /siteConfig.quizInterstitialAdUnitPath/);
   assert.match(runtime, /OutOfPageFormat\?\.INTERSTITIAL/);
   assert.match(runtime, /data-google-interstitial/);
   assert.match(runtime, /navBar: false, unhideWindow: false, inactivity: false/);

@@ -39,7 +39,7 @@ try {
   await page.goto(`${base}/fr/memory?fbclid=scope-test`);
   await page.waitForFunction(() => window.adCalls.length === 1);
   assert.equal(await page.evaluate(() => window.adCalls[0].format), 'INTERSTITIAL');
-  assert.equal(await page.evaluate(() => window.adCalls[0].path), '/22677279144/rewarded');
+  assert.equal(await page.evaluate(() => window.adCalls[0].path), '/22677279144/display');
   assert.equal(await page.evaluate(() => Object.values(window.adCalls[0].config.interstitial.triggers).every(value => value === false)), true);
   assert.equal(await page.evaluate(() => window.adCalls[0].config.interstitial.requireStorageAccess), true);
   assert.equal(await page.evaluate(() => [...document.querySelectorAll('a:not([data-quiz-interstitial="true"])')].every(link => link.getAttribute('data-google-interstitial') === 'false')), true);
