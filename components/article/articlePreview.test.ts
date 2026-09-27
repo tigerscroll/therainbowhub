@@ -38,3 +38,23 @@ test("monetize has a genuine introduction, gated main guide and no images", () =
     assert.equal(isArticleManifest({ ...article, monetization: { ...article.monetization, previewPoints } }), false);
   }
 });
+
+test("makemoney uses the same article layout and unlock contract as monetize", () => {
+  const article = JSON.parse(fs.readFileSync("data/articles/makemoney/en.json", "utf8"));
+  const reference = JSON.parse(fs.readFileSync("data/articles/monetize/en.json", "utf8"));
+  assert.equal(isArticleManifest(article), true);
+  assert.equal(article.path, "/makemoney");
+  assert.equal(article.metadata.title, "How To Make Money By Watching Videos");
+  assert.equal(article.landing.title, article.metadata.title);
+  assert.equal(article.layout, reference.layout);
+  assert.deepEqual(article.monetization, reference.monetization);
+  assert.deepEqual(article.theme.colors, reference.theme.colors);
+  assert.deepEqual(article.theme.header, reference.theme.header);
+  assert.equal(article.landing.icon.value, "");
+  const points = article.sections.flatMap((section: ArticleSection) => section.points);
+  assert.equal(points.length, 13);
+  assert.equal(points.some((point: { image?: unknown }) => point.image), false);
+  assert.match(article.landing.intro, /unlocks the article, not a cash reward/);
+  assert.match(article.disclaimer, /do not pay readers to watch videos/);
+  assert.deepEqual(splitArticlePreview(article.sections, article.monetization.previewPoints), { preview: [], remaining: article.sections });
+});
