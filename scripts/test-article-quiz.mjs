@@ -75,6 +75,16 @@ try {
     page.on('request', request => { if (request.url().includes('/quiz-data/')) payloads.push(request.url()); });
     await page.route('**/*', route => new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort());
     await page.addInitScript(() => {
+      window.quizRenderGaps = [];
+      function observeQuizFrame() {
+        if (new URLSearchParams(location.search).get('q') === 'years-left' && document.getElementById('article-content')) {
+          const visibleQuiz = [...document.querySelectorAll('[data-article-quiz-preview="years-left"], [data-embedded-quiz="years-left"]')]
+            .some(node => node.getBoundingClientRect().height > 0);
+          if (!visibleQuiz) window.quizRenderGaps.push(performance.now());
+        }
+        if (performance.now() < 6000) requestAnimationFrame(observeQuizFrame);
+      }
+      requestAnimationFrame(observeQuizFrame);
       window.adCalls = [];
       const listeners = new Map();
       const ads = {
@@ -104,6 +114,7 @@ try {
     assert.equal(await page.locator('[data-embedded-quiz="years-left"]').isVisible(), false, 'SPA navigation shows the initial landing without waiting for quiz data');
     releaseNavigation();
     await page.locator('[data-embedded-quiz="years-left"] .quiz-engine__landing').waitFor();
+    assert.deepEqual(await page.evaluate(() => window.quizRenderGaps), [], 'cold engine loading never clears the initial landing');
     await page.unroute('**/quiz-data/en/years-left.json');
     let releasePayload;
     const heldPayload = new Promise(resolve => { releasePayload = resolve; });
@@ -121,6 +132,7 @@ try {
     assert.ok(Math.abs(previewBox.height - liveBox.height) < 1, 'handoff preserves quiz height');
     assert.ok(Math.abs(initialArticleY - (await page.locator('#article-content').boundingBox()).y) < 1, 'article does not jump when the quiz becomes interactive');
     assert.equal(await preview.isVisible(), false);
+    assert.deepEqual(await page.evaluate(() => window.quizRenderGaps), [], 'quiz remains visible in every painted frame throughout the lazy-engine handover');
     await page.unroute('**/quiz-data/en/years-left.json');
     await checkArticle(page);
     const originalText = await page.locator('#article-content').innerText();

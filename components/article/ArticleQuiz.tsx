@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz } from "@/lib/quizzes";
@@ -56,8 +56,11 @@ export function ArticleQuiz({ locale, slugs, translations }: {
     <section className="article-quiz" data-embedded-quiz={slug} id="article-quiz" style={readySlug === slug ? undefined : { display: "none" }}>
       <ExperienceThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
         <div className="quiz-engine__flow-container">
-          <QuizEngine key={`${locale}:${slug}`} locale={locale} quiz={quiz} recommendations={[]} onReady={onReady}
-            scrollTargetId="article-quiz" showAbout={false} startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled} translations={translations} />
+          {/* Keep the preview's owner mounted while the engine chunk loads. */}
+          <Suspense fallback={null}>
+            <QuizEngine key={`${locale}:${slug}`} locale={locale} quiz={quiz} recommendations={[]} onReady={onReady}
+              scrollTargetId="article-quiz" showAbout={false} startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled} translations={translations} />
+          </Suspense>
         </div>
       </ExperienceThemeBoundary>
     </section>
