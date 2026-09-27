@@ -42,7 +42,7 @@ export function ArticleQuiz({ locale, slugs, translations }: {
       <ExperienceThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
         <div className="quiz-engine__flow-container">
           <QuizEngine key={`${locale}:${slug}`} locale={locale} quiz={quiz} recommendations={[]}
-            scrollTargetId="article-quiz" startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled} translations={translations} />
+            scrollTargetId="article-quiz" showAbout={false} startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled} translations={translations} />
         </div>
       </ExperienceThemeBoundary>
     </section>

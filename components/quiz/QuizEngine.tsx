@@ -17,6 +17,7 @@ import { scoreQuiz, type QuizAnswers } from "./scoring";
 import { getChapterAnswers } from "./engagement";
 
 type QuizEngineProps = {
+  showAbout?: boolean;
   scrollTargetId?: string;
   locale: SupportedLocale;
   quiz: Quiz;
@@ -79,7 +80,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
   return { ...saved, answers } as RestoredProgress;
 }
 
-export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, startInstructionEnabled, translations }: QuizEngineProps) {
+export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, showAbout = true, startInstructionEnabled, translations }: QuizEngineProps) {
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -452,7 +453,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, star
             <p className="quiz-engine__ad-note quiz-engine__start-instruction-reassurance">{translations.ad.startsImmediately}</p>
           </div>
         </section>
-        <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
+        {showAbout && <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />}
         </>
       );
     }
@@ -475,7 +476,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, star
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
         title={quiz.title}
       />
-      <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
+      {showAbout && <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />}
       {showStartPrompt && quiz.landing.startPrompt ? (
         <div className="quiz-engine__reward-prompt">
           <section
@@ -608,7 +609,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, star
           </p>
         ) : null}
       </section>
-      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+      {showAbout && <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
       </>
     );
   }
@@ -858,7 +859,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, star
           />
         ) : null}
       </section>
-      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+      {showAbout && <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
       </>
     );
   }
@@ -906,7 +907,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, star
         ) : null}
       </article>
     </section>
-    <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
+    {showAbout && <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
     </>
   );
 }

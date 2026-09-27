@@ -15,6 +15,7 @@ async function checkArticle(page) {
   assert.equal(await page.locator('meta[property="og:type"]').getAttribute('content'), 'article');
   assert.equal(await page.locator('.simple-footer').count(), 1);
   assert.equal(await page.locator('.site-footer').count(), 0);
+  assert.equal(await page.locator('[data-embedded-quiz] .quiz-engine__about').count(), 0);
   assert.doesNotMatch(await page.locator('.simple-footer').innerText(), /quiz|reveal|test/i);
   assert.equal(await page.locator('.simple-footer a[href="/info/contact"]').count(), 1);
   assert.equal(await page.locator('body').evaluate(node => getComputedStyle(node).backgroundColor), 'rgb(255, 255, 255)');
@@ -99,8 +100,11 @@ try {
   await page.goto(`${base}/cloudstorage?q=years-left`);
   await checkArticle(page);
   assert.equal(await page.locator('[data-embedded-quiz]').count(), 0);
+  await page.goto(`${base}/years-left`);
+  await page.locator('.quiz-engine__about').waitFor();
+  assert.equal(await page.locator('.quiz-engine__about h2').innerText(), 'About This Quiz');
   await context.close();
-  console.log('Failed optional quiz: complete article remains accessible.');
+  console.log('Failed optional quiz: article remains accessible. Standalone quiz retains About This Quiz.');
 } finally {
   await browser.close();
 }
