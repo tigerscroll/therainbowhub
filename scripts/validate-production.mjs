@@ -193,8 +193,9 @@ if (fs.existsSync(path.join(rootDir, "components", "quiz", "QuizInterstitial.tsx
   addError("The retired quiz interstitial component must not exist.");
 }
 for (const source of [quizEngineText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText]) {
-  if (/mountDisplayAd|QuestionDisplayAd|data-display-ad|defineSlot|displayAdUnitPath/.test(source)) {
-    addError("Display-ad code must not exist in the rewarded-only site.");
+  // Shared GPT type declarations may describe defineSlot; only opted-in plain articles use it.
+  if (/mountDisplayAd|QuestionDisplayAd|ArticleDisplayAd|data-display-ad|\.defineSlot(?:\?\.)?\s*\(|displayAdUnitPath/.test(source)) {
+    addError("Display-ad calls must not exist in the rewarded-only quiz flow or root document.");
   }
 }
 if (!experienceLandingText.includes("onClick={onStart}")) {

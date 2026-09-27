@@ -19,12 +19,13 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("display-ad components and request code are absent site-wide", () => {
+test("display-ad requests are isolated to the opt-in article implementation", () => {
   assert.equal(fs.existsSync("components/quiz/QuestionDisplayAd.tsx"), false);
   for (const directory of ["components", "lib", "app"]) {
     for (const path of fs.readdirSync(directory, { recursive: true })) {
       if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /mountDisplayAd|QuestionDisplayAd|data-display-ad|defineSlot|displayAdUnitPath/, `${directory}/${path}`);
+      if (directory === "components" && path === "article/articleAds.ts") continue;
+      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /mountDisplayAd|QuestionDisplayAd|data-display-ad|\.defineSlot(?:\?\.)?\s*\(|displayAdUnitPath/, `${directory}/${path}`);
     }
   }
 });
@@ -36,10 +37,11 @@ test("Mechanic uses the automatic rewarded-only flow", () => {
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("quizzes and articles use only the rewarded placement", () => {
+test("quiz gates keep rewarded while plain articles get a distinct display placement", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
-  assert.doesNotMatch(config, /quizInterstitialAdUnitPath|22677279144\/display/);
+  assert.doesNotMatch(config, /quizInterstitialAdUnitPath/);
+  assert.match(config, /articleDisplayAdUnitPath: "\/22677279144\/display"/);
   const articleGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
   assert.match(articleGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
 });
@@ -63,7 +65,7 @@ test("Start, checkpoints and result breakdowns restore rewarded gates; interstit
   for (const directory of ["components", "lib", "app"]) {
     for (const path of fs.readdirSync(directory, { recursive: true })) {
       if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /INTERSTITIAL|useQuizInterstitial|data-quiz-interstitial|22677279144\/display/, `${directory}/${path}`);
+      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /INTERSTITIAL|useQuizInterstitial|data-quiz-interstitial/, `${directory}/${path}`);
     }
   }
 });

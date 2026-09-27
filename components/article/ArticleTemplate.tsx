@@ -174,6 +174,10 @@ export function ArticleTemplate({ article, initialSection, embeddedQuiz }: { art
     ...(article.layout === "plain" ? {
       articleBody: [article.landing.intro, ...article.sections.flatMap(section => section.points.flatMap(point => [point.title, ...point.paragraphs]))].join("\n\n"),
     } : {}),
+    ...(article.monetization ? {
+      isAccessibleForFree: false,
+      hasPart: { "@type": "WebPageElement", isAccessibleForFree: false, cssSelector: ".article-unlocked-content" },
+    } : {}),
     ...(article.metadata.dateModified ? { dateModified: article.metadata.dateModified } : {}),
     ...(article.metadata.lastReviewed ? { lastReviewed: article.metadata.lastReviewed } : {}),
     publisher: {

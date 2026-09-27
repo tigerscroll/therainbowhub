@@ -21,6 +21,7 @@ type PubAds = {
 
 type GoogleTag = {
   cmd: Array<() => void>;
+  defineSlot?: (path: string, sizes: Array<[number, number]>, elementId: string) => GptSlot | null;
   defineOutOfPageSlot?: (path: string, format: unknown) => GptSlot | null;
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;

@@ -1,15 +1,13 @@
-import type { ArticleManifest } from "./articleSchema";
+import { ArticleDisplayAd } from "./ArticleDisplayAd";
+import { ArticleUnlock } from "./ArticleUnlock";
+import { splitArticlePreview } from "./articlePreview";
+import type { ArticleManifest, ArticleSection } from "./articleSchema";
 
-export function PlainArticle({ article }: { article: ArticleManifest }) {
+function ArticleSections({ sections, showTitles }: { sections: ArticleSection[]; showTitles: boolean }) {
   return (
-    <article className="plain-article" id="article-content">
-      <header>
-        <h1>{article.metadata.title}</h1>
-        <p className="plain-article__intro">{article.landing.intro}</p>
-      </header>
-      {article.sections.map((section, sectionIndex) => (
+    <>{sections.map((section, sectionIndex) => (
         <div key={sectionIndex}>
-          {article.sections.length > 1 ? <h2>{section.title}</h2> : null}
+          {showTitles ? <h2>{section.title}</h2> : null}
           {section.points.map((point, index) => (
             <section key={index}>
               <h2>{point.title}</h2>
@@ -27,7 +25,25 @@ export function PlainArticle({ article }: { article: ArticleManifest }) {
           ))}
           {section.conclusion ? <p>{section.conclusion.copy}</p> : null}
         </div>
-      ))}
+      ))}</>
+  );
+}
+
+export function PlainArticle({ article }: { article: ArticleManifest }) {
+  const settings = article.monetization;
+  const { preview, remaining } = splitArticlePreview(article.sections, settings?.previewPoints ?? Infinity);
+  return (
+    <article className={`plain-article${settings ? " plain-article--monetized" : ""}`} id="article-content">
+      <header>
+        <h1>{article.metadata.title}</h1>
+        {settings ? <ArticleDisplayAd /> : null}
+        <p className="plain-article__intro">{article.landing.intro}</p>
+      </header>
+      <ArticleSections sections={preview} showTitles={article.sections.length > 1} />
+      {settings ? <ArticleUnlock locale={article.locale} settings={settings} slug={article.slug}
+        teaser={<><h2>{remaining[0]?.points[0]?.title}</h2><p>{remaining[0]?.points[0]?.paragraphs[0]}</p></>}>
+        <ArticleSections sections={remaining} showTitles={article.sections.length > 1} />
+      </ArticleUnlock> : null}
       <footer className="plain-article__references">
         <p>{article.ui?.sourcesLabel ?? "Further reading"}: {article.sources.map((source, index) => (
           <span key={source.url}>{index ? " · " : ""}<a href={source.url} rel="noreferrer" target="_blank">{source.label}</a></span>

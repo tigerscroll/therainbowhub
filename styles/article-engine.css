@@ -1555,6 +1555,25 @@
 .plain-article a { color: #275898; text-underline-offset: 3px; }
 .plain-article footer { border-top: 1px solid #dce1e6; margin-top: 40px; padding-top: 24px; }
 .plain-article img { max-width: 100%; height: auto; }
+.plain-article--monetized,
+.plain-article--monetized .plain-article__intro,
+.plain-article--monetized a { color: #111; }
+.plain-article--monetized { padding-top: 32px; padding-inline: 16px; max-width: 720px; }
+.article-display { width: calc(100% + 32px); margin: 24px -16px 32px; overflow: visible; text-align: center; }
+.article-display[hidden], .article-unlocked-content[hidden] { display: none !important; }
+.article-display__slot { width: 100%; min-height: 280px; height: auto; max-height: none; overflow: visible; display: flex; align-items: center; justify-content: center; }
+.article-unlock { margin: 32px 0 24px; padding: 0 0 24px; text-align: center; }
+.article-unlock__teaser { max-height: 190px; overflow: hidden; text-align: start; pointer-events: none; user-select: none; -webkit-mask-image: linear-gradient(#000 10%, transparent 100%); mask-image: linear-gradient(#000 10%, transparent 100%); }
+.plain-article .article-unlock__teaser h2 { margin-top: 0; }
+.plain-article .article-unlock__copy { margin: 0 auto; max-width: 440px; font-size: 16px; }
+.article-unlock button { display: block; width: min(100%, 340px); min-height: 56px; margin: 24px auto 12px; padding: 14px 24px; border: 1px solid #111; border-radius: 6px; background: #111; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.article-unlock button:hover:not(:disabled) { background: #333; }
+.article-unlock button:focus-visible { outline: 3px solid #555; outline-offset: 4px; }
+.article-unlock button:disabled { opacity: .6; cursor: wait; }
+.plain-article .article-unlock__note { margin: 0; font-size: 14px; line-height: 1.6; }
+.article-unlock__status { color: #555; font-size: 15px; }
+.article-unlock__status:empty { display: none; }
+.article-unlocked-content:focus { outline: none; }
 .article-quiz { scroll-margin-top: 16px; }
 .simple-footer {
   border-top: 1px solid #dce1e6;

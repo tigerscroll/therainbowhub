@@ -135,13 +135,14 @@ if (!fs.existsSync(outputRoot)) {
       const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, entry.name, "en.json"), "utf8"));
       return {
         layout: manifest.layout,
+        monetization: manifest.monetization,
         pointCounts: manifest.sections.map((section) => section.points.length),
         routeSlug: manifest.routeSlug ?? manifest.slug,
         slug: manifest.slug,
       };
     });
 
-  for (const { layout, pointCounts, routeSlug, slug } of articles) {
+  for (const { layout, monetization, pointCounts, routeSlug, slug } of articles) {
     const sectionCount = pointCounts.length;
     const articleFile = routeFile(`/${routeSlug}`);
     if (!articleFile) {
@@ -150,6 +151,14 @@ if (!fs.existsSync(outputRoot)) {
     }
     const html = fs.readFileSync(articleFile, "utf8");
     if (html.includes("data-display-ad")) addError(`/${routeSlug}: display-ad markup must not be exported.`);
+    if (monetization) {
+      if (!html.includes('class="article-display"') || !html.includes('class="article-unlocked-content" hidden=""')) {
+        addError(`/${routeSlug}: monetized article must export its top placement and initially locked main content.`);
+      }
+      if (!html.includes('"isAccessibleForFree":false')) addError(`/${routeSlug}: article unlock must be disclosed in structured data.`);
+    } else if (html.includes('class="article-display"')) {
+      addError(`/${routeSlug}: non-monetized articles must not request display ads.`);
+    }
     if (html.includes("data-embedded-quiz=") || html.includes("data-article-quiz-preview")) {
       addError(`/${routeSlug}: article-only pages must not contain quiz markup.`);
     }

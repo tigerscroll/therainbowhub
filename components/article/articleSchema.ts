@@ -51,6 +51,13 @@ export type ArticleIcon =
 export type ArticleManifest = {
   version: 1;
   layout?: "gated" | "plain";
+  monetization?: {
+    previewPoints: number;
+    title: string;
+    copy: string;
+    cta: string;
+    adNote: string;
+  };
   slug: string;
   locale: string;
   path: string;
@@ -196,9 +203,17 @@ export function isArticleManifest(value: unknown): value is ArticleManifest {
   const landing = manifest.landing;
   const cta = landing?.cta;
   const ui = manifest.ui;
+  const monetization = manifest.monetization;
 
   return manifest.version === 1
     && (manifest.layout === undefined || manifest.layout === "gated" || manifest.layout === "plain")
+    && (monetization === undefined || (manifest.layout === "plain"
+      && monetization !== null && typeof monetization === "object"
+      && Number.isInteger(monetization.previewPoints) && monetization.previewPoints > 0
+      && Array.isArray(manifest.sections)
+      && monetization.previewPoints < manifest.sections.reduce((count, section) => count + (Array.isArray(section?.points) ? section.points.length : 0), 0)
+      && isString(monetization.title) && isString(monetization.copy)
+      && isString(monetization.cta) && isString(monetization.adNote)))
     && isString(manifest.slug)
     && isString(manifest.locale)
     && isString(manifest.path)
