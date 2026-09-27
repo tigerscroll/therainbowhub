@@ -45,16 +45,20 @@ async function run(width) {
       cmd: { push(cb) { cb(); } },
       defineSlot() { throw Error('Unexpected display ad'); },
       defineOutOfPageSlot(path, format) {
-        const slot = { path, format, addService() { return this; } };
+        const slot = { path, format, addService() { return this; }, setConfig(config) { this.config = config; } };
         window.adCalls.push(slot);
-        return window.noAdFill ? null : slot;
+        return sessionStorage.getItem("quiz-test-no-fill") === "1" ? null : slot;
       },
       pubads: () => pubads, enableServices() {}, setConfig() {}, destroySlots() {},
       enums: { OutOfPageFormat: { REWARDED: 'REWARDED', INTERSTITIAL: 'INTERSTITIAL' } },
       display(slot) {
-        queueMicrotask(() => emit('rewardedSlotReady', slot, {
-          makeRewardedVisible() { queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); }); },
-        }));
+        document.addEventListener("click", event => {
+          const link = event.target instanceof Element ? event.target.closest("a") : null;
+          if (!link || link.getAttribute("data-google-interstitial") === "false") return;
+          const clicks = JSON.parse(sessionStorage.getItem("quiz-test-opportunities") ?? "[]");
+          clicks.push({ approved: link.dataset.quizInterstitial === "true", href: link.href, path: slot.path, format: slot.format });
+          sessionStorage.setItem("quiz-test-opportunities", JSON.stringify(clicks));
+        });
       },
     };
   });
@@ -66,7 +70,10 @@ async function run(width) {
   assert.equal(await landing.locator('h1').innerText(), copy.title);
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
   assert.equal((await landing.locator('.quiz-engine__primary').innerText()).replace(/[→←]/g, '').trim(), copy.landing.cta);
-  assert.equal(await page.evaluate(() => window.adCalls.length), 0);
+  await page.waitForFunction(() => window.adCalls.length === 1);
+  assert.equal(await landing.locator('.quiz-engine__primary').evaluate(node => node.tagName), 'A');
+  assert.equal(await landing.locator('.quiz-engine__primary').getAttribute('data-quiz-interstitial'), 'true');
+  assert.equal(await page.evaluate(() => [...document.querySelectorAll('a:not([data-quiz-interstitial="true"])')].every(node => node.getAttribute('data-google-interstitial') === 'false')), true);
   if ((slug === 'vision' || textChapters) && width === 320) {
     assert.equal(await landing.locator('.quiz-engine__primary').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'Start remains visible on a small phone');
     await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-small-phone.png`, animations: 'disabled' });
@@ -108,8 +115,8 @@ async function run(width) {
           reloads++;
           await question.locator('.quiz-engine__answer').first().waitFor();
           assert.equal(await question.locator('.quiz-engine__study').count(), 0, 'reload retains the hidden cue and study completion');
-          assert.equal(await page.evaluate(() => window.adCalls.length), 0);
-          expectedRewards = 0;
+          assert.equal(await page.evaluate(() => window.adCalls.length), 1);
+          expectedRewards = 1;
         }
       }
       assert.deepEqual(await question.locator('.quiz-engine__answer strong').allTextContents(), answerIds.map(answerId => copy.stages[stage.id].questions[id].answers[answerId]));
@@ -165,7 +172,7 @@ async function run(width) {
     assert.equal(await checkpoint.getAttribute('data-round'), String(stageIndex + 1));
     assert.equal(await checkpoint.getByRole('progressbar').count(), 0, 'checkpoints focus on the next topic without progress indicators');
     assert.doesNotMatch(await checkpoint.innerText(), /halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);
-    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'gate waits for a click');
+    assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'one prepared interstitial slot per quiz document');
     assert.doesNotMatch(await checkpoint.innerText(), /\{profile\}/);
     if (stageIndex < 9) {
       const leadingId = scored
@@ -184,9 +191,8 @@ async function run(width) {
     assert.equal(await button.locator('.quiz-engine__primary-arrow svg').count(), 1, 'Continue and See My Result both have an arrow');
     const geometry = await button.evaluate(node => ({ top: node.getBoundingClientRect().top, bottom: node.getBoundingClientRect().bottom, viewport: innerHeight }));
     assert.ok(geometry.top >= 0 && geometry.bottom <= geometry.viewport, `checkpoint ${stageIndex + 1} CTA visible without scrolling: ${JSON.stringify(geometry)}`);
-    if (slug === 'vision' || textChapters) {
-      assert.equal(await checkpoint.locator('.quiz-engine__ad-note').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, `chapter ${stageIndex + 1} ad note remains visible with its button`);
-    }
+    assert.equal(await checkpoint.locator('.quiz-engine__ad-note').count(), 0, 'no required-ad message');
+    assert.equal(await button.evaluate(node => node.tagName), 'A');
     if ((slug === 'vision' || textChapters) && stageIndex === 9) {
       assert.deepEqual(await checkpoint.locator('.quiz-engine__checklist li').allTextContents(), copy.career.stages[stage.id].preAdChecks.map(item => `✓${item}`));
     }
@@ -198,19 +204,23 @@ async function run(width) {
       reloads++;
       await checkpoint.waitFor();
       assert.equal(await checkpoint.getAttribute('data-round'), '1');
-      assert.equal(await page.evaluate(() => window.adCalls.length), 0, 'restore does not request another ad');
-      expectedRewards = 0;
+      assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'restore has one interstitial slot');
+      expectedRewards = 1;
     }
     await button.click();
-    expectedRewards++;
+    expectedRewards = 1;
     console.log(`${width}px: chapter ${stageIndex + 1} passed`);
   }
   const result = page.locator('.quiz-engine__results');
   await result.waitFor();
-  assert.equal(expectedRewards + rewardsBeforeReload, 11, 'ten chapter rewards plus the existing Start reward');
+  const opportunities = await page.evaluate(() => JSON.parse(sessionStorage.getItem('quiz-test-opportunities') ?? '[]'));
+  assert.equal(opportunities.length, 11, 'Start plus ten checkpoint links are eligible opportunities');
+  assert.equal(opportunities.every(click => click.approved && click.format === 'INTERSTITIAL' && click.path === '/22677279144/rewarded'), true);
+  assert.equal(opportunities.every(click => new URL(click.href).searchParams.get('test_keep') === '1'), true, 'attribution query survives every link');
+  assert.equal(await page.evaluate(() => window.adCalls.every(ad => Object.values(ad.config.interstitial.triggers).every(value => value === false))), true, 'all non-link triggers are disabled');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
-  assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'REWARDED' && ad.path === '/22677279144/rewarded')), true);
-  assert.equal(documents, initialDocuments + reloads, 'no document reloads between questions or chapters');
+  assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'INTERSTITIAL' && ad.path === '/22677279144/rewarded')), true);
+  assert.equal(documents, initialDocuments + 20 + reloads, 'checkpoint entry and continuation reload, but individual questions do not');
   assert.equal(await result.locator('.quiz-engine__result-share').count(), 0);
   let age;
   if (scored) {
@@ -231,15 +241,14 @@ async function run(width) {
     await result.locator('.quiz-engine__answer-review').waitFor();
     assert.equal(await result.locator('.quiz-engine__answer-review article').count(), scored ? 70 - totalCorrect : 70);
   }
-  expectedRewards++;
-  assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'optional breakdown keeps its existing reward');
+  assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'optional breakdown makes no ad requests');
   if (width === 390) {
     await page.locator('.quiz-engine__about-restart').click();
     await landing.waitFor();
-    await page.evaluate(() => { window.noAdFill = true; });
+    await page.evaluate(() => { sessionStorage.setItem('quiz-test-no-fill', '1'); });
     await landing.locator('.quiz-engine__primary').click();
     await page.locator('[data-question-id]').waitFor();
-    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'bounded unavailable-ad retry still starts the quiz');
+    assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'no-fill Start still navigates immediately');
     for (const id of manifest.structure.stages[0].questionIds) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
@@ -251,12 +260,12 @@ async function run(width) {
     }
     await page.locator('.quiz-engine__checkpoint .quiz-engine__primary').click();
     await page.locator(`[data-question-id="${manifest.structure.stages[1].questionIds[0]}"]`).waitFor();
-    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 6, 'unavailable checkpoint ads do not strand the user');
+    assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'no-fill checkpoint links do not strand the user');
   }
   assert.deepEqual(errors, []);
   fs.writeFileSync(`/tmp/${artifactPrefix}-engagement-browser-${width}.json`, JSON.stringify({ width, reducedMotion: reduced, chapters: checkpoints, age, totalCorrect: scored ? totalCorrect : undefined, result: 'PASS' }, null, 2));
   await context.close();
-  console.log(`${width}px PASS: 70 questions, 10 chapter gates, truthful previews, mobile CTA visibility, single-play animations and no sharing`);
+  console.log(`${width}px PASS: 70 questions, 10 chapter gates, truthful previews, hard checkpoint links, interstitial-only opportunities and no sharing`);
 }
 
 try {

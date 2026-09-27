@@ -48,7 +48,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
       />
       <script
         dangerouslySetInnerHTML={{
-          __html: `(function(){try{document.documentElement.style.background=${JSON.stringify(quiz.theme.colors.page)};document.body.style.background=${JSON.stringify(quiz.theme.colors.page)};var k=${JSON.stringify(storageKey)},r=window.localStorage.getItem(k);if(r){var p=JSON.parse(r),t=Date.parse(p.updatedAt),a=Date.now()-t;if(Number.isFinite(t)&&a>=0&&a<${PROGRESS_TTL_MS}){document.documentElement.classList.add("quiz-resuming")}else{window.localStorage.removeItem(k)}}}catch(e){try{window.localStorage.removeItem(${JSON.stringify(storageKey)})}catch(x){}}})();`,
+          __html: `(function(){try{document.documentElement.style.background=${JSON.stringify(quiz.theme.colors.page)};document.body.style.background=${JSON.stringify(quiz.theme.colors.page)};var k=${JSON.stringify(storageKey)},r=null;try{r=window.sessionStorage.getItem(k)}catch(e){}if(!r){try{r=window.localStorage.getItem(k)}catch(e){}}if(r){var p=JSON.parse(r),t=Date.parse(p.updatedAt),a=Date.now()-t;if(Number.isFinite(t)&&a>=0&&a<${PROGRESS_TTL_MS})document.documentElement.classList.add("quiz-resuming")}}catch(e){}})();`,
         }}
       />
       <ExperienceThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
@@ -57,7 +57,6 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
             locale={locale}
             quiz={quiz}
             recommendations={recommendations}
-            startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}
             translations={translations}
           />
         </div>

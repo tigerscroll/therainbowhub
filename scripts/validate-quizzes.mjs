@@ -334,7 +334,7 @@ for (const folder of folders) {
   fail(config.listing?.compactLanding === undefined || typeof config.listing.compactLanding === "boolean", `${folder.name}/quiz.json: listing.compactLanding must be a boolean when provided.`);
   fail(config.engine?.resultAds === undefined && config.engine?.questionAd === undefined, `${folder.name}: display ads are not part of the shared quiz template.`);
   fail([undefined, "strict", "independent"].includes(config.engine?.localeParity), `${folder.name}: engine.localeParity must be strict or independent.`);
-  fail(config.engine?.hardRefreshCheckpoints === undefined || typeof config.engine.hardRefreshCheckpoints === "boolean", `${folder.name}: engine.hardRefreshCheckpoints must be a boolean when provided.`);
+  fail(config.engine?.hardRefreshCheckpoints === true, `${folder.name}: quiz checkpoints must use hard navigation.`);
   if (config.engine?.targetRatio !== undefined) fail(config.engine.targetRatio > 0 && config.engine.targetRatio <= 1, `${folder.name}: targetRatio must be greater than zero and no more than one.`);
   if (config.engine?.derivedScore) {
     const points = config.engine.derivedScore.breakpoints;

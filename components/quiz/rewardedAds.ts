@@ -4,6 +4,7 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type GptSlot = {
   addService(service: unknown): GptSlot;
+  setConfig?: (config: { interstitial: { requireStorageAccess?: boolean; triggers: Record<string, boolean> } }) => void;
 };
 
 type RewardedEvent = {
@@ -25,7 +26,7 @@ type GoogleTag = {
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
+  enums?: { OutOfPageFormat?: { REWARDED?: unknown; INTERSTITIAL?: unknown } };
   pubads?: () => PubAds;
 };
 

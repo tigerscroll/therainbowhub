@@ -27,7 +27,7 @@ test('the site exposes exactly the eight agreed locales, with no alternate editi
 for (const slug of slugs) test(`${slug}: its normal folder supplies ten seven-question rounds in every supported language`, () => {
   const manifest = read(slug,'quiz');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.equal(manifest.engine.hardRefreshCheckpoints ?? false, false);
+  assert.equal(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(manifest.listing.showSocialProof, false);
   assert.equal(manifest.listing.compactLanding, true);
   const ids = manifest.structure.stages.flatMap((stage: any) => stage.questionIds);

@@ -3,7 +3,9 @@
 import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
-import { useRewardedGate } from "@/components/experience/useRewardedGate";
+import { useQuizInterstitial } from "./QuizInterstitial";
+import { getQuizNavigationHref, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress } from "./quizNavigation";
+import { prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { getStageCompletionPercentage } from "./engineState";
@@ -20,7 +22,6 @@ type QuizEngineProps = {
   locale: SupportedLocale;
   quiz: Quiz;
   recommendations: QuizRecommendation[];
-  startInstructionEnabled: boolean;
   translations: Translations;
 };
 
@@ -57,7 +58,7 @@ function formatSocialProof(template: string, count: number, locale: SupportedLoc
 function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): RestoredProgress | null {
   if (!raw || typeof raw !== "object") return null;
   const saved = raw as Partial<SavedProgress>;
-  if (saved.version !== STORAGE_VERSION || saved.signature !== signature) return null;
+  if (saved.version !== STORAGE_VERSION || !quizProgressSignaturesMatch(saved.signature, signature)) return null;
   if (!isProgressTimestampFresh(saved.updatedAt)) return null;
   if (!Number.isInteger(saved.questionIndex) || saved.questionIndex! < 0 || saved.questionIndex! >= quiz.questions.length) return null;
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
@@ -78,7 +79,7 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
   return { ...saved, answers } as RestoredProgress;
 }
 
-export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations }: QuizEngineProps) {
+export function QuizEngine({ locale, quiz, recommendations, translations }: QuizEngineProps) {
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -86,10 +87,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const [screen, setScreen] = useState<QuizScreen>(() => startsOnQuestion ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
-  const [rewardClosedSent, setRewardClosedSent] = useState(false);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
-  const [showStartPrompt, setShowStartPrompt] = useState(false);
-  const [startPromptMinHeight, setStartPromptMinHeight] = useState<number | null>(null);
+  const [navigationSearch, setNavigationSearch] = useState("");
   const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
   const landingShellRef = useRef<HTMLElement | null>(null);
   const preloadedArtwork = useRef(new Set<string>());
@@ -138,11 +137,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     [quiz],
   );
   const storageKey = getQuizStorageKey(quiz.slug, locale);
-  const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
-    attempts: quiz.engine.rewarded.attempts,
-    onRewardClosed: () => setRewardClosedSent(true),
-    rewardClosedAlreadySent: rewardClosedSent,
-  });
+  useQuizInterstitial();
   const currentQuestion = quiz.questions[questionIndex];
   const isChapterFlow = quiz.engine.flow.type === "staged" && quiz.stages.length === 10;
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
@@ -155,22 +150,23 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
 
   useLayoutEffect(() => {
+    setNavigationSearch(window.location.search);
     try {
-      const stored = window.localStorage.getItem(storageKey);
+      const stored = readQuizProgress(storageKey);
       const saved = stored ? safeSavedProgress(JSON.parse(stored), quiz, progressSignature) : null;
       if (saved) {
         setAnswers(saved.answers);
         setQuestionIndex(saved.questionIndex);
         setCompletedStage(saved.completedStage);
         setScreen(saved.screen);
-        setRewardClosedSent(saved.rewardClosedSent ?? false);
         setReviewUnlocked(saved.reviewUnlocked ?? false);
         setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
-      } else if (stored) {
-        window.localStorage.removeItem(storageKey);
+      } else {
+        if (stored) removeQuizProgress(storageKey);
+        if (new URLSearchParams(window.location.search).get("quizStep") === "start") setScreen("question");
       }
     } catch {
-      try { window.localStorage.removeItem(storageKey); } catch { /* Storage can be unavailable in private contexts. */ }
+      removeQuizProgress(storageKey);
     } finally {
       setHydrated(true);
       document.documentElement.classList.remove("quiz-resuming");
@@ -193,12 +189,11 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       completedStage,
       screen,
       studiedQuestions,
-      rewardClosedSent,
       reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
-    try { window.localStorage.setItem(storageKey, JSON.stringify(saved)); } catch { /* The quiz still works if storage is blocked. */ }
-  }, [answers, completedStage, hydrated, progressSignature, questionIndex, rewardClosedSent, reviewUnlocked, screen, storageKey, studiedQuestions]);
+    writeQuizProgress(storageKey, JSON.stringify(saved));
+  }, [answers, completedStage, hydrated, progressSignature, questionIndex, reviewUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => {
     // Warm only the current and next visual interaction. Decoding the next
@@ -237,16 +232,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     });
   }, [answers, completedStage, currentQuestion, currentStage, questionIndex, quiz, screen]);
 
-  useEffect(() => {
-    if (!showStartPrompt || startInstructionEnabled) return;
-    document.documentElement.classList.add("quiz-reward-prompt-open");
-    document.body.classList.add("quiz-reward-prompt-open");
-    return () => {
-      document.documentElement.classList.remove("quiz-reward-prompt-open");
-      document.body.classList.remove("quiz-reward-prompt-open");
-    };
-  }, [showStartPrompt, startInstructionEnabled]);
-
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "auto" });
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
@@ -265,34 +250,22 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       completedStage: nextCompletedStage,
       screen: nextScreen,
       studiedQuestions,
-      rewardClosedSent,
       reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
-    let progressSaved = false;
-    try {
-      const serialized = JSON.stringify(saved);
-      window.localStorage.setItem(storageKey, serialized);
-      progressSaved = window.localStorage.getItem(storageKey) === serialized;
-      if (progressSaved) return true;
-    } catch { /* Continue without refreshing when progress cannot be restored safely. */ }
-    return false;
+    return writeQuizProgress(storageKey, JSON.stringify(saved));
   }
 
   function reloadAtCheckpoint(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: "preparing" | "checkpoint") {
     if (!saveNextScreen(nextQuestionIndex, nextCompletedStage, nextScreen)) return false;
-    window.location.reload();
+    window.location.assign(getQuizNavigationHref(window.location.pathname, window.location.search, `checkpoint-${nextCompletedStage + 1}`));
     return true;
-  }
-
-  async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
-    await runGate(onComplete, { scrollAfter });
   }
 
   function moveForward() {
     const nextIndex = questionIndex + 1;
     if (nextIndex >= quiz.questions.length) {
-      if (quiz.engine.hardRefreshCheckpoints && reloadAtCheckpoint(questionIndex, currentStage, "preparing")) return;
+      if (reloadAtCheckpoint(questionIndex, currentStage, "preparing")) return;
       setCompletedStage(currentStage);
       setScreen("preparing");
       scrollToTop();
@@ -301,7 +274,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
 
     const nextQuestion = quiz.questions[nextIndex];
     if (quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage) {
-      if (quiz.engine.hardRefreshCheckpoints && reloadAtCheckpoint(nextIndex, currentStage, "checkpoint")) return;
+      if (reloadAtCheckpoint(nextIndex, currentStage, "checkpoint")) return;
       setQuestionIndex(nextIndex);
       setCompletedStage(currentStage);
       setScreen("checkpoint");
@@ -360,107 +333,55 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
       setStudiedQuestions((current) => current.includes(currentQuestion.id) ? current : [...current, currentQuestion.id]);
       scrollToTop();
     };
-    if (currentQuestion.study.rewarded) void runRewardedGate(complete);
-    else complete();
-  }
-
-  function beginQuiz() {
-    setScreen("question");
+    complete();
   }
 
   function startQuiz() {
-    if (quiz.engine.rewarded.start && startInstructionEnabled) {
-      setStartPromptMinHeight(landingShellRef.current?.getBoundingClientRect().height ?? null);
-      setShowStartPrompt(true);
-      scrollToTop();
-    }
-    else if (quiz.engine.rewarded.start && quiz.engine.rewarded.confirmStart && quiz.landing.startPrompt) {
-      setShowStartPrompt(true);
-    }
-    else if (quiz.engine.rewarded.start) void runRewardedGate(beginQuiz);
-    else beginQuiz();
-  }
-
-  function confirmQuizStart() {
-    void runRewardedGate(() => {
-      setShowStartPrompt(false);
-      beginQuiz();
-    });
+    trackQuizEvent("QuizStart", quiz, locale);
+    if (saveNextScreen(0, 0, "question")) return true;
+    setScreen("question");
+    scrollToTop();
+    return false;
   }
 
   function continueAfterCheckpoint() {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
-    const next = () => {
-      if (isFinalStage) {
-        setScreen("results");
-        trackQuizEvent("QuizComplete", quiz, locale);
-      } else {
-        setScreen("question");
-      }
-    };
-    if (quiz.engine.rewarded.stages) void runRewardedGate(next);
-    else next();
+    const nextScreen = isFinalStage ? "results" : "question";
+    if (isFinalStage) trackQuizEvent("QuizComplete", quiz, locale);
+    if (saveNextScreen(questionIndex, completedStage, nextScreen)) return true;
+    setScreen(nextScreen);
+    scrollToTop();
+    return false;
   }
 
   function unlockIncorrectAnswers() {
-    void runRewardedGate(() => setReviewUnlocked(true), false);
+    setReviewUnlocked(true);
   }
 
   function restartQuiz() {
-    cancelGate();
-    try { window.localStorage.removeItem(storageKey); } catch { /* Storage can be unavailable. */ }
+    removeQuizProgress(storageKey);
     setAnswers({});
     setQuestionIndex(0);
     setCompletedStage(0);
     setStudiedQuestions([]);
-    setRewardClosedSent(false);
     setReviewUnlocked(false);
-    setStartPromptMinHeight(null);
-    setShowStartPrompt(false);
     setScreen(startsOnQuestion ? "question" : "landing");
     scrollToTop();
   }
 
   if (screen === "landing") {
-    if (showStartPrompt && startInstructionEnabled && quiz.engine.rewarded.start) {
-      return (
-        <>
-        <section
-          className="quiz-engine__landing quiz-engine__landing--start-instruction"
-          data-start-instruction="true"
-          style={startPromptMinHeight ? { minHeight: `${startPromptMinHeight}px` } : undefined}
-        >
-          <div aria-live="polite" className="quiz-engine__start-instruction">
-            <div aria-hidden="true" className="quiz-engine__landing-badge quiz-engine__start-instruction-icon"><span>✓</span></div>
-            <h1>{translations.ad.readyTitle}</h1>
-            <p className="quiz-engine__quick-start quiz-engine__start-instruction-copy">{translations.ad.readyCopy}</p>
-            <p className="quiz-engine__quick-start quiz-engine__start-instruction-return">
-              <span>{translations.ad.returnInstructionBefore} </span>
-              <strong>{translations.ad.returnInstructionAction}</strong>
-              <br />
-              <span>{translations.ad.returnInstructionAfter}</span>
-            </p>
-            <button autoFocus className="quiz-engine__primary" disabled={adBusy} onClick={confirmQuizStart} type="button">
-              <span aria-hidden="true" className="quiz-engine__primary-icon">▶</span>
-              {adBusy ? translations.ad.loading : translations.ad.watchAdStart}
-            </button>
-            <p className="quiz-engine__ad-note quiz-engine__start-instruction-reassurance">{translations.ad.startsImmediately}</p>
-          </div>
-        </section>
-        <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
-        </>
-      );
-    }
     return (
       <>
       <ExperienceLanding
-        adNote={quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!startInstructionEnabled || quiz.landing.compact) ? translations.ad.startNote : undefined}
+        href={getQuizNavigationHref("", navigationSearch, "start")}
+        interstitialOpportunity
+        navigationMode="document"
         className={quiz.landing.compact ? "quiz-engine__landing--compact" : undefined}
         ctaIcon={quiz.landing.compact ? "→" : undefined}
         ctaIconPosition={quiz.landing.compact ? "end" : undefined}
         avatars={quiz.landing.socialAvatars}
-        busy={adBusy}
-        busyLabel={translations.ad.loading}
+        busy={false}
+        busyLabel={translations.quiz.start}
         ctaLabel={translations.quiz.start}
         icon={quiz.cardIcon}
         intro={quiz.landing.quickStartText}
@@ -471,24 +392,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
         title={quiz.title}
       />
       <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
-      {showStartPrompt && quiz.landing.startPrompt ? (
-        <div className="quiz-engine__reward-prompt">
-          <section
-            aria-labelledby="quiz-start-prompt-title"
-            aria-modal="true"
-            className="quiz-engine__reward-prompt-card quiz-engine__card"
-            role="dialog"
-          >
-            <span className="quiz-engine__eyebrow">{quiz.landing.startPrompt.eyebrow}</span>
-            <div aria-hidden="true" className="quiz-engine__reward-prompt-icon">{quiz.landing.startPrompt.icon}</div>
-            <h2 id="quiz-start-prompt-title">{quiz.landing.startPrompt.title}</h2>
-            <p>{quiz.landing.startPrompt.copy}</p>
-            <button autoFocus className="quiz-engine__primary" disabled={adBusy} onClick={confirmQuizStart} type="button">
-              {adBusy ? translations.ad.loading : quiz.landing.startPrompt.button}
-            </button>
-          </section>
-        </div>
-      ) : null}
       </>
     );
   }
@@ -532,7 +435,6 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const completedStageCount = completedStage + 1;
     const checkpointPercent = Math.round((completedStageCount / quiz.stages.length) * 100);
     const checkpointVariantAssets = quiz.theme.artwork?.checkpointVariants;
-    const checkpointAdNote = isFinalStage ? translations.ad.resultsNote : translations.ad.continueNote;
     const checkpointVariant = checkpointVariantAssets
       ? resolveArtworkVariant(quiz, answers, Object.keys(checkpointVariantAssets))
       : undefined;
@@ -541,8 +443,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const checkpointCtaContent = (
       <>
         {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
-        {adBusy ? translations.ad.loading : careerStage.preAdButton ?? checkpointButton}
-        {(!isFinalStage || isChapterFlow) && !adBusy ? (
+        {careerStage.preAdButton ?? checkpointButton}
+        {(!isFinalStage || isChapterFlow) ? (
           <span aria-hidden="true" className="quiz-engine__primary-arrow">
             <svg focusable="false" viewBox="0 0 24 24">
               <path d="M5 12h14M13 6l6 6-6 6" />
@@ -593,15 +495,23 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <small>{careerStage.next.tagline}</small>
           </div>
         ) : null}
-        <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
+        <a
+          className="quiz-engine__primary"
+          href={getQuizNavigationHref("", navigationSearch, isFinalStage ? "results" : `stage-${completedStage + 2}`)}
+          data-quiz-interstitial={(!isFinalStage || checkpointCtaReady) ? "true" : undefined}
+          data-google-interstitial={isFinalStage && !checkpointCtaReady ? "false" : undefined}
+          aria-disabled={isFinalStage && !checkpointCtaReady || undefined}
+          onClick={(event) => {
+            if ((isFinalStage && !checkpointCtaReady) || !continueAfterCheckpoint()) {
+              event.currentTarget.setAttribute("data-google-interstitial", "false");
+              event.preventDefault();
+              return;
+            }
+            prepareFullPageNavigation(event.currentTarget);
+          }}
+        >
           {checkpointCtaContent}
-        </button>
-        {quiz.engine.rewarded.stages && checkpoint ? (
-          <p className="quiz-engine__ad-note quiz-engine__checkpoint-ad-note">
-            <span aria-hidden="true">✓</span>
-            {checkpointAdNote}
-          </p>
-        ) : null}
+        </a>
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
@@ -683,10 +593,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
                 <span>{profileBreakdown?.eyebrow ?? translations.results.matchBreakdown.eyebrow}</span>
                 <h3>{profileBreakdown?.title ?? translations.results.matchBreakdown.title}</h3>
                 <p>{profileBreakdown?.copy ?? translations.results.matchBreakdown.copy}</p>
-                <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
-                  {adBusy ? translations.ad.loading : profileBreakdown?.button ?? translations.results.matchBreakdown.button}
+                <button className="quiz-engine__primary" onClick={unlockIncorrectAnswers} type="button">
+                  {profileBreakdown?.button ?? translations.results.matchBreakdown.button}
                 </button>
-                <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small>
               </section>
             ) : (
               <>
@@ -736,10 +645,9 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <span>{translations.results.fullBreakdown.eyebrow}</span>
             <h3>{reviewUnlockCopy?.title ?? translations.results.fullBreakdown.title}</h3>
             <p>{reviewUnlockCopy?.copy ?? translations.results.fullBreakdown.copy}</p>
-            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
-              {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.fullBreakdown.button}
+            <button className="quiz-engine__primary" onClick={unlockIncorrectAnswers} type="button">
+              {reviewUnlockCopy?.button ?? translations.results.fullBreakdown.button}
             </button>
-            <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small>
           </section>
         ) : supportsAnswerReview && reviewUnlocked ? (
           <section className="quiz-engine__answer-review">
@@ -769,13 +677,11 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             <p>{estimateReviewUnlockCopy?.copy}</p>
             <button
               className="quiz-engine__primary"
-              disabled={adBusy}
-              onClick={estimateReviewUnlockCopy?.rewarded === false ? () => setReviewUnlocked(true) : unlockIncorrectAnswers}
+              onClick={unlockIncorrectAnswers}
               type="button"
             >
-              {adBusy ? translations.ad.loading : estimateReviewUnlockCopy?.button}
+              {estimateReviewUnlockCopy?.button}
             </button>
-            {estimateReviewUnlockCopy?.rewarded !== false ? <small>{estimateReviewUnlockCopy?.adNote}</small> : null}
           </section>
         ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
           <section className="quiz-engine__answer-review quiz-engine__answer-review--impact">
@@ -882,8 +788,8 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           question={currentQuestion}
-          studyBusy={adBusy}
-          studyBusyLabel={translations.ad.loading}
+          studyBusy={false}
+          studyBusyLabel={translations.quiz.start}
           studyComplete={studyComplete}
         />
         {quiz.engine.flow.advance === "manual" ? (

@@ -14,10 +14,10 @@ test("display-ad components and request code are absent site-wide", () => {
     }
   }
 });
-test("Mechanic uses the automatic rewarded-only flow", () => {
+test("Mechanic uses automatic questions with hard checkpoint navigation", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
   assert.equal(manifest.template, "ten-stage-seven-question-v1");
-  assert.equal(manifest.engine.hardRefreshCheckpoints, false);
+  assert.equal(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(manifest.structure.stages.length, 10);
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
@@ -27,18 +27,23 @@ test("only the rewarded ad unit is configured", () => {
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
   assert.doesNotMatch(config, /displayAdUnitPath|22677279144\/display/);
 });
-test("Memory and Years Left reveal results without reloading", () => {
-  for (const slug of ["memory", "years-left"]) {
-    const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8"));
-    assert.equal(manifest.engine.hardRefreshCheckpoints, false);
-  }
+test("quizzes save state and reload at checkpoint boundaries", () => {
+  const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
+  assert.match(source, /window\.location\.assign\(getQuizNavigationHref/);
+  assert.match(source, /if \(reloadAtCheckpoint\(/);
+  assert.doesNotMatch(source, /hardRefreshCheckpoints && reloadAtCheckpoint/);
 });
-test("interstitial code is absent throughout the application", () => {
-  for (const directory of ["components", "lib", "app"]) {
-    for (const path of fs.readdirSync(directory, { recursive: true })) {
-      if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /interstitial/i, `${directory}/${path}`);
-    }
+test("interstitials are scoped to the quiz engine and use the existing placement", () => {
+  const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
+  const runtime = fs.readFileSync("components/quiz/QuizInterstitial.tsx", "utf8");
+  assert.match(engine, /useQuizInterstitial\(\)/);
+  assert.doesNotMatch(engine, /useRewardedGate|runRewardedGate|requestRewardedAd/);
+  assert.match(runtime, /siteConfig.rewardedAdUnitPath/);
+  assert.match(runtime, /OutOfPageFormat\?\.INTERSTITIAL/);
+  assert.match(runtime, /data-google-interstitial/);
+  assert.match(runtime, /navBar: false, unhideWindow: false, inactivity: false/);
+  for (const path of ["components/RootDocument.tsx", "components/article/ArticleExperience.tsx"]) {
+    assert.doesNotMatch(fs.readFileSync(path, "utf8"), /useQuizInterstitial|INTERSTITIAL/);
   }
 });
 test("Years Left keeps each choice's score and calibration regardless of answer order", () => {

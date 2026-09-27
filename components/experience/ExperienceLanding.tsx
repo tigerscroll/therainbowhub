@@ -18,6 +18,7 @@ type ExperienceLandingProps = {
   intro: string;
   href?: string;
   navigationMode?: "document" | "spa";
+  interstitialOpportunity?: boolean;
   onStart: () => boolean | void;
   showCtaIcon?: boolean;
   showSocialProof?: boolean;
@@ -62,6 +63,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   intro,
   href,
   navigationMode = "document",
+  interstitialOpportunity = false,
   onStart,
   showCtaIcon = true,
   showSocialProof = true,
@@ -85,6 +87,8 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
         {showSocialProof ? <SocialProof avatars={avatars} text={socialProofText} /> : null}
         {href && !busy ? (
           <a
+            data-quiz-interstitial={interstitialOpportunity ? "true" : undefined}
+            data-google-interstitial={interstitialOpportunity ? undefined : "false"}
             className="quiz-engine__primary"
             href={href}
             onClick={(event) => {
@@ -102,6 +106,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
               prepareFullPageNavigation(event.currentTarget);
               if (onStart() === false) {
                 cancelFullPageNavigation(event.currentTarget);
+                event.currentTarget.setAttribute("data-google-interstitial", "false");
                 event.preventDefault();
               }
             }}
