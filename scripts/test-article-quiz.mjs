@@ -37,12 +37,27 @@ try {
   await staticContext.close();
   console.log('No JavaScript: all 21 article sections, metadata, structured data and neutral footer readable.');
 
+  const earlyContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const earlyPage = await earlyContext.newPage();
+  await earlyPage.route('**/*', route => {
+    const url = new URL(route.request().url());
+    return url.origin !== new URL(base).origin || (url.pathname.startsWith('/_next/') && url.pathname.endsWith('.js'))
+      ? route.abort() : route.continue();
+  });
+  await earlyPage.addInitScript(() => { Storage.prototype.setItem = () => { throw new Error('Storage unavailable'); }; });
+  await earlyPage.goto(`${base}/cloudstorage?q=years-left&fbclid=test`, { waitUntil: 'domcontentloaded' });
+  assert.equal(await earlyPage.locator('[data-article-quiz-preview="years-left"] .quiz-engine__landing').isVisible(), true);
+  assert.equal(await earlyPage.locator('.hub-header').isVisible(), false, 'fbclid hides header before hydration even when storage throws');
+  await earlyContext.close();
+  console.log('Before application JavaScript: quiz landing already visible; fbclid header hidden even without storage.');
+
   for (const width of [390, 1440]) {
     const context = await browser.newContext({ viewport: { width, height: 844 } });
     const page = await context.newPage();
     const errors = [];
     const payloads = [];
     page.on('pageerror', error => errors.push(error.message));
+    page.on('console', message => { if (message.type() === 'error' && /hydration|Minified React error/i.test(message.text())) errors.push(message.text()); });
     page.on('request', request => { if (request.url().includes('/quiz-data/')) payloads.push(request.url()); });
     await page.route('**/*', route => new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort());
     await page.addInitScript(() => {
@@ -67,8 +82,23 @@ try {
       assert.equal(await page.locator('[data-embedded-quiz]').count(), 0);
     }
     assert.equal(payloads.length, 0, 'no query or invalid query loads no quiz payload');
-    await page.goto(`${base}/cloudstorage?q=years-left&test_keep=1`);
+    let releasePayload;
+    const heldPayload = new Promise(resolve => { releasePayload = resolve; });
+    await page.route('**/quiz-data/en/years-left.json', async route => { await heldPayload; await route.continue(); });
+    await page.goto(`${base}/cloudstorage?q=years-left&test_keep=1`, { waitUntil: 'domcontentloaded' });
+    const preview = page.locator('[data-article-quiz-preview="years-left"]');
+    await preview.waitFor({ state: 'visible' });
+    const previewBox = await preview.boundingBox();
+    const initialArticleY = (await page.locator('#article-content').boundingBox()).y;
+    await page.waitForTimeout(600);
+    assert.equal(await preview.isVisible(), true, 'initial landing stays visible while quiz data is delayed');
+    releasePayload();
     await page.locator('[data-embedded-quiz="years-left"] .quiz-engine__landing').waitFor();
+    const liveBox = await page.locator('[data-embedded-quiz="years-left"]').boundingBox();
+    assert.ok(Math.abs(previewBox.height - liveBox.height) < 1, 'handoff preserves quiz height');
+    assert.ok(Math.abs(initialArticleY - (await page.locator('#article-content').boundingBox()).y) < 1, 'article does not jump when the quiz becomes interactive');
+    assert.equal(await preview.isVisible(), false);
+    await page.unroute('**/quiz-data/en/years-left.json');
     await checkArticle(page);
     const originalText = await page.locator('#article-content').innerText();
     const originalTitle = await page.title();
@@ -89,6 +119,16 @@ try {
     await page.reload();
     await page.locator(`[data-question-id="${questionId}"]`).waitFor();
     await checkArticle(page);
+    await page.evaluate(() => { sessionStorage.clear(); localStorage.clear(); });
+    let releaseStartPayload;
+    const heldStartPayload = new Promise(resolve => { releaseStartPayload = resolve; });
+    await page.route('**/quiz-data/en/years-left.json', async route => { await heldStartPayload; await route.continue(); });
+    await page.goto(`${base}/cloudstorage?q=years-left`, { waitUntil: 'domcontentloaded' });
+    await page.locator('[data-article-quiz-preview="years-left"] .quiz-engine__primary').click();
+    releaseStartPayload();
+    await page.locator('[data-question-id]').waitFor();
+    assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'an early Start click runs the normal rewarded gate exactly once');
+    await page.unroute('**/quiz-data/en/years-left.json');
     assert.deepEqual(errors, []);
     console.log(`${width}px: rewarded quiz loads above unchanged article; answer and reload preserve cloud title, content, metadata and footer.`);
     await context.close();

@@ -18,7 +18,7 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{const key="rainbowhub:fbclid-traffic";const hasFbclid=new URLSearchParams(location.search).has("fbclid");if(hasFbclid)sessionStorage.setItem(key,"1");if(hasFbclid||sessionStorage.getItem(key)==="1")document.documentElement.classList.add("fbclid-traffic");const backgroundKey="rainbowhub:navigation-background";const navigationBackground=sessionStorage.getItem(backgroundKey);if(navigationBackground){document.documentElement.style.setProperty("--navigation-background",navigationBackground);sessionStorage.removeItem(backgroundKey)}}catch{}`,
+            __html: `const hasFbclid=new URLSearchParams(location.search).has("fbclid");if(hasFbclid)document.documentElement.classList.add("fbclid-traffic");try{const key="rainbowhub:fbclid-traffic";if(hasFbclid)sessionStorage.setItem(key,"1");if(sessionStorage.getItem(key)==="1")document.documentElement.classList.add("fbclid-traffic");const backgroundKey="rainbowhub:navigation-background";const navigationBackground=sessionStorage.getItem(backgroundKey);if(navigationBackground){document.documentElement.style.setProperty("--navigation-background",navigationBackground);sessionStorage.removeItem(backgroundKey)}}catch{}`,
           }}
         />
         {head}

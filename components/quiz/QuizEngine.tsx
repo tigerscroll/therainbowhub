@@ -17,6 +17,7 @@ import { scoreQuiz, type QuizAnswers } from "./scoring";
 import { getChapterAnswers } from "./engagement";
 
 type QuizEngineProps = {
+  onReady?: () => void;
   showAbout?: boolean;
   scrollTargetId?: string;
   locale: SupportedLocale;
@@ -80,13 +81,14 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
   return { ...saved, answers } as RestoredProgress;
 }
 
-export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, showAbout = true, startInstructionEnabled, translations }: QuizEngineProps) {
+export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, showAbout = true, startInstructionEnabled, translations, onReady }: QuizEngineProps) {
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [questionIndex, setQuestionIndex] = useState(0);
   const [completedStage, setCompletedStage] = useState(0);
   const [screen, setScreen] = useState<QuizScreen>(() => startsOnQuestion ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
+  useLayoutEffect(() => { if (hydrated) onReady?.(); }, [hydrated, onReady]);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [rewardClosedSent, setRewardClosedSent] = useState(false);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
