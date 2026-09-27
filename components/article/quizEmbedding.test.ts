@@ -1,15 +1,13 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { selectArticleQuiz } from "./quizEmbedding.ts";
+import { getArticleQuizPath } from "./articleRouting.ts";
 import { isArticleManifest } from "./articleSchema.ts";
 
-test("article quiz selector accepts only one existing local quiz slug", () => {
-  const slugs = ["years-left", "memory", "vision"];
-  assert.equal(selectArticleQuiz(["years-left"], slugs), "years-left");
-  for (const values of [[], [""], ["unknown"], ["../years-left"], ["https://example.com"], ["years-left", "memory"], ["years-left", "years-left"]]) {
-    assert.equal(selectArticleQuiz(values, slugs), undefined);
-  }
+test("article embeds have deterministic static paths, not query-string selectors", () => {
+  assert.equal(getArticleQuizPath("/cloudstorage", "years-left"), "/cloudstorage/years-left");
+  assert.equal(getArticleQuizPath("/cloudstorage/", "memory"), "/cloudstorage/memory");
+  assert.equal(getArticleQuizPath("/de/cloudstorage", "vision"), "/de/cloudstorage/vision");
 });
 
 test("cloud storage is a plain, ungated English article with the requested title", () => {

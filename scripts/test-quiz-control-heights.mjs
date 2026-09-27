@@ -34,7 +34,7 @@ async function measureAnswers(page) {
 }
 
 try {
-  for (const route of ['/years-left', '/memory', '/vision', '/de/years-left', '/ar/years-left', '/de/memory', '/ar/vision', '/cloudstorage?q=years-left']) {
+  for (const route of ['/years-left', '/memory', '/vision', '/de/years-left', '/ar/years-left', '/de/memory', '/ar/vision', '/cloudstorage/years-left']) {
     for (const width of [320, 390, 1440]) {
       const context = await browser.newContext({ viewport: { width, height: 640 } });
       const page = await context.newPage();

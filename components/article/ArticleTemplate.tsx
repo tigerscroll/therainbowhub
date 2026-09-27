@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Suspense, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { ArticleExperience } from "@/components/article/ArticleExperience";
 import { ArticleQuiz } from "@/components/article/ArticleQuiz";
-import { ArticleQuizPreview } from "@/components/article/ArticleQuizPreview";
 import { PlainArticle } from "@/components/article/PlainArticle";
-import { getArticleChapterPath } from "@/components/article/articleRouting";
+import { getArticleChapterPath, getArticleQuizPath } from "@/components/article/articleRouting";
 import type { ArticleIcon, ArticleManifest } from "@/components/article/articleSchema";
 import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import { SiteShell } from "@/components/SiteShell";
 import { getArticleBySlug, getArticleLocales } from "@/lib/articles";
 import { editorialArticleAvatars, editorialArticleTheme } from "@/lib/articleThemes";
 import { getTranslations, isSupportedLocale, type SupportedLocale } from "@/lib/i18n";
-import { getAllQuizzes, getQuizBySlug, SHARED_SHELL_CSS_HREF, type QuizTheme } from "@/lib/quizzes";
+import { getQuizBySlug, SHARED_SHELL_CSS_HREF, type Quiz, type QuizTheme } from "@/lib/quizzes";
 import { absoluteUrl, buildMetadata, getArticlePath } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -130,7 +129,7 @@ export function buildArticleMetadata(article: ArticleManifest, initialSection?: 
   };
 }
 
-export function ArticleTemplate({ article, initialSection }: { article: ArticleManifest; initialSection?: number }) {
+export function ArticleTemplate({ article, initialSection, embeddedQuiz }: { article: ArticleManifest; initialSection?: number; embeddedQuiz?: Quiz }) {
   if (!isSupportedLocale(article.locale)) notFound();
   if (article.layout === "plain") initialSection = undefined;
   const locale: SupportedLocale = article.locale;
@@ -140,22 +139,18 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
   const referenceTheme = article.referenceTheme === "editorial" ? editorialArticleTheme : referenceQuiz?.theme;
   if (!referenceTheme) notFound();
   const translations = getTranslations(locale);
-  const quizPreviews = getAllQuizzes(locale).map(quiz => ({
-    slug: quiz.slug, title: quiz.title, cardIcon: quiz.cardIcon, landing: quiz.landing,
-    theme: quiz.theme, shellCssHref: quiz.shellCssHref, themeCssHref: quiz.themeCssHref,
-    adNote: quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!siteConfig.rewardedStartInstructionEnabled || quiz.landing.compact)
-      ? translations.ad.startNote : undefined,
-  }));
   const articleBasePath = getArticlePath(locale, article.routeSlug ?? article.slug);
   const currentArticlePath = getArticleChapterPath(articleBasePath, initialSection);
-  const availableLocales = getArticleLocales(article.slug).filter(isSupportedLocale);
+  const currentPath = embeddedQuiz ? getArticleQuizPath(articleBasePath, embeddedQuiz.slug) : currentArticlePath;
+  const availableLocales = getArticleLocales(article.slug).filter(isSupportedLocale)
+    .filter(availableLocale => !embeddedQuiz || getQuizBySlug(embeddedQuiz.slug, availableLocale, { includeFallback: false }));
   const localePaths = Object.fromEntries(availableLocales.map((availableLocale) => {
     const localizedArticle = getArticleBySlug(article.slug, availableLocale);
     const localizedBasePath = getArticlePath(availableLocale, localizedArticle?.routeSlug ?? article.slug);
     const localizedSection = initialSection && localizedArticle && initialSection <= localizedArticle.sections.length
       ? initialSection
       : undefined;
-    return [availableLocale, getArticleChapterPath(localizedBasePath, localizedSection)];
+    return [availableLocale, embeddedQuiz ? getArticleQuizPath(localizedBasePath, embeddedQuiz.slug) : getArticleChapterPath(localizedBasePath, localizedSection)];
   })) as Partial<Record<SupportedLocale, string>>;
   const colors: QuizTheme["colors"] = {
     ...referenceTheme.colors,
@@ -192,7 +187,7 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
   return (
     <SiteShell
       availableLocales={availableLocales}
-      currentPath={currentArticlePath}
+      currentPath={currentPath}
       footerVariant={article.layout === "plain" ? "simple" : "default"}
       locale={locale}
       localePaths={localePaths}
@@ -204,10 +199,7 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
         type="application/ld+json"
       />
       <style dangerouslySetInnerHTML={{ __html: `html,body{background:${articleTheme.colors.page}}` }} />
-      <ArticleQuizPreview quizzes={quizPreviews} locale={locale} translations={translations} />
-      <Suspense fallback={null}>
-        <ArticleQuiz locale={locale} slugs={getAllQuizzes(locale).map(quiz => quiz.slug)} translations={translations} />
-      </Suspense>
+      {embeddedQuiz ? <ArticleQuiz locale={locale} quiz={embeddedQuiz} translations={translations} /> : null}
       {article.layout === "plain" ? <PlainArticle article={article} /> : (
       <ExperienceThemeBoundary
         shellCssHref={SHARED_SHELL_CSS_HREF}

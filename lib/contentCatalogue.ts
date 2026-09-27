@@ -9,7 +9,7 @@ export type TopLevelContentRoute = {
 
 export type TwoSegmentContentRoute = {
   first: string;
-  kind: "article-chapter" | "localized-article" | "localized-quiz";
+  kind: "article-chapter" | "article-quiz" | "localized-article" | "localized-quiz";
   second: string;
 };
 
@@ -67,6 +67,11 @@ export function getTwoSegmentContentRoutes(): TwoSegmentContentRoute[] {
       assertUniqueRoute(keys, key, `Article chapter route /${key}`);
       routes.push({ first: routeSlug, kind: "article-chapter", second: chapter });
     });
+    for (const quiz of getAllQuizzes(defaultLocale, { includeFallback: false })) {
+      const key = `${routeSlug}/${quiz.slug}`;
+      assertUniqueRoute(keys, key, `Article quiz route /${key}`);
+      routes.push({ first: routeSlug, kind: "article-quiz", second: quiz.slug });
+    }
   }
 
   return routes;

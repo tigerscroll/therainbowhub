@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: LocalizedArticlePageProps): P
 
   const article = getArticleByRouteSlug(locale, getDefaultLocale());
   if (!article) return {};
+  if (getQuizBySlug(slug, getDefaultLocale(), { includeFallback: false })) return buildArticleMetadata(article);
   const chapter = parseArticleChapter(slug, article.sections.length);
   return chapter ? buildArticleMetadata(article, chapter) : {};
 }
@@ -69,6 +70,8 @@ export default async function LocalizedArticlePage({ params }: LocalizedArticleP
 
   const article = getArticleByRouteSlug(locale, getDefaultLocale());
   if (!article) notFound();
+  const embeddedQuiz = getQuizBySlug(slug, getDefaultLocale(), { includeFallback: false });
+  if (embeddedQuiz) return <ArticleTemplate article={article} embeddedQuiz={embeddedQuiz} />;
   const chapter = parseArticleChapter(slug, article.sections.length);
   if (!chapter) notFound();
   return <ArticleTemplate article={article} initialSection={chapter} />;

@@ -150,6 +150,24 @@ if (!fs.existsSync(outputRoot)) {
     }
     const html = fs.readFileSync(articleFile, "utf8");
     if (html.includes("data-display-ad")) addError(`/${routeSlug}: display-ad markup must not be exported.`);
+    if (html.includes("data-embedded-quiz=") || html.includes("data-article-quiz-preview")) {
+      addError(`/${routeSlug}: article-only pages must not contain quiz markup.`);
+    }
+    for (const quizSlug of slugs) {
+      const embedRoute = `/${routeSlug}/${quizSlug}`;
+      const embedFile = routeFile(embedRoute);
+      if (!embedFile) {
+        addError(`Missing static article/quiz page: ${embedRoute}`);
+        continue;
+      }
+      const embedHtml = fs.readFileSync(embedFile, "utf8");
+      const embeds = [...embedHtml.matchAll(/data-embedded-quiz="([^"]+)"/g)].map(match => match[1]);
+      if (embeds.length !== 1 || embeds[0] !== quizSlug) addError(`${embedRoute}: must render only the selected quiz.`);
+      if (embedHtml.includes("data-article-quiz-preview") || embedHtml.includes("article-quiz-first-paint")) {
+        addError(`${embedRoute}: obsolete client preview injection remains.`);
+      }
+      if ((embedHtml.match(/<h1\b/g) ?? []).length !== 2) addError(`${embedRoute}: expected one quiz heading and one article heading.`);
+    }
     for (let section = 1; section <= sectionCount; section += 1) {
       const chapterRoute = `/${routeSlug}/${section}`;
       const chapterFile = routeFile(chapterRoute);

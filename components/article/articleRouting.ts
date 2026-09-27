@@ -3,6 +3,10 @@ export function getArticleChapterPath(articlePath: string, section?: number) {
   return section ? `${basePath}/${section}` : (basePath || "/");
 }
 
+export function getArticleQuizPath(articlePath: string, quizSlug: string) {
+  return `${articlePath.replace(/\/+$/, "")}/${quizSlug}`;
+}
+
 export function parseArticleChapter(section: string, sectionCount: number) {
   if (!/^\d+$/.test(section)) return null;
   const value = Number(section);
