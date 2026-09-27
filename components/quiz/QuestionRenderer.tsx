@@ -19,18 +19,13 @@ type QuestionRendererProps = {
 };
 
 function followAnswer(event: MouseEvent<HTMLAnchorElement>, choice: number, onAnswer: QuestionRendererProps["onAnswer"]) {
-  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.currentTarget.getAttribute("aria-disabled") === "true") {
-    event.preventDefault();
-    return;
-  }
-  if (onAnswer(choice) !== true) {
-    event.preventDefault();
+  event.preventDefault();
+  if (event.detail > 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.currentTarget.getAttribute("aria-disabled") === "true") {
     event.currentTarget.setAttribute("data-google-interstitial", "false");
     return;
   }
-  event.currentTarget.setAttribute("aria-disabled", "true");
-  event.currentTarget.setAttribute("data-selected", "true");
   event.currentTarget.blur();
+  onAnswer(choice);
 }
 
 function QuestionVisual({ question }: { question: QuizQuestion }) {

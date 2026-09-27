@@ -28,10 +28,10 @@ test("display-ad components and request code are absent site-wide", () => {
     }
   }
 });
-test("Mechanic uses automatic questions with hard checkpoint navigation", () => {
+test("Mechanic uses automatic questions with SPA checkpoint navigation", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
   assert.equal(manifest.template, "ten-stage-seven-question-v1");
-  assert.equal(manifest.engine.hardRefreshCheckpoints, true);
+  assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   assert.equal(manifest.structure.stages.length, 10);
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
@@ -43,13 +43,17 @@ test("quiz interstitials use display while article rewarded ads keep their place
   const articleGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
   assert.match(articleGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
 });
-test("answer links synchronously save the selected answer and destination before navigation", () => {
+test("answer links synchronously save the selected answer before SPA navigation", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   const renderer = fs.readFileSync("components/quiz/QuestionRenderer.tsx", "utf8");
-  assert.match(source, /saveNextScreen\(destination.questionIndex, nextCompletedStage, destination.screen, nextAnswers\)/);
+  assert.match(source, /navigateQuiz\(destination.questionIndex, nextCompletedStage, destination.screen, destination.transition, nextAnswers\)/);
+  assert.match(source, /writeQuizHistoryProgress\(storageKey, saved, href\)/);
+  assert.match(source, /navigationMode="spa"/);
+  assert.doesNotMatch(source, /prepareFullPageNavigation|window.location.reload/);
   assert.match(source, /answerNavigationPending.current = true/);
   assert.match(renderer, /href=\{answerHref\}/);
   assert.match(renderer, /data-quiz-interstitial="true"/);
+  assert.match(renderer, /event.preventDefault\(\)/);
   assert.doesNotMatch(source, /window.setTimeout\(moveForward/);
 });
 test("interstitials are scoped to the quiz engine and use their own placement", () => {

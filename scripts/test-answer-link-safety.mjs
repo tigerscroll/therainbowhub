@@ -12,37 +12,45 @@ try {
   await page.goto(`${base}/years-left?fbclid=answer-test&utm_source=meta`);
   await page.locator('.quiz-engine__landing a.quiz-engine__primary').click();
   await page.locator('a.quiz-engine__answer').first().waitFor();
-  await page.evaluate(() => {
-    // Simulate an interstitial delaying native navigation after React saved the answer.
-    document.addEventListener('click', event => {
-      const link = event.target.closest?.('a.quiz-engine__answer');
-      if (!link || event.defaultPrevented) return;
-      event.preventDefault();
-      window.delayedAnswerHref = link.href;
-    });
-  });
-  await page.locator('a.quiz-engine__answer').nth(1).click();
+  let documents = 0;
+  page.on('request', request => { if (request.isNavigationRequest() && request.frame() === page.mainFrame()) documents++; });
+  await page.locator('a.quiz-engine__answer').nth(1).dblclick({delay: 40});
+  await page.locator('[data-question-id="yl-s1q2"]').waitFor();
   const saved = await page.evaluate(() => JSON.parse(sessionStorage.getItem('rainbowhub:quiz-progress:v4:years-left:en')));
   assert.equal(saved.questionIndex, 1);
   assert.equal(saved.answers['yl-s1q1'], 'a2');
   assert.equal(saved.screen, 'question');
-  await page.locator('a.quiz-engine__answer').nth(2).click();
-  await page.waitForTimeout(1000);
-  assert.deepEqual(await page.evaluate(() => JSON.parse(sessionStorage.getItem('rainbowhub:quiz-progress:v4:years-left:en'))), saved, 'duplicate clicks and background renders cannot overwrite the accepted answer');
-  await page.evaluate(() => location.assign(window.delayedAnswerHref));
-  await page.locator('[data-question-id="yl-s1q2"]').waitFor();
+  assert.equal(Object.keys(saved.answers).length, 1, 'double-click does not answer the next question');
   assert.equal(new URL(page.url()).searchParams.get('fbclid'), 'answer-test');
   assert.equal(new URL(page.url()).searchParams.get('utm_source'), 'meta');
   assert.equal(new URL(page.url()).searchParams.get('quizStep'), 'question-2');
-  await page.reload();
+  await page.locator('a.quiz-engine__answer').nth(2).click();
+  await page.locator('[data-question-id="yl-s1q3"]').waitFor();
+  const second = await page.evaluate(() => JSON.parse(sessionStorage.getItem('rainbowhub:quiz-progress:v4:years-left:en')));
+  assert.equal(second.answers['yl-s1q2'], 'a3');
+  await page.goBack();
   await page.locator('[data-question-id="yl-s1q2"]').waitFor();
+  assert.equal(await page.evaluate(() => Object.keys(JSON.parse(sessionStorage.getItem('rainbowhub:quiz-progress:v4:years-left:en')).answers).length), 1, 'Back restores the matching answer snapshot');
+  await page.goForward();
+  await page.locator('[data-question-id="yl-s1q3"]').waitFor();
+  assert.equal(documents, 0, 'answers and Back/Forward never reload the document');
+  await page.reload();
+  await page.locator('[data-question-id="yl-s1q3"]').waitFor();
   await page.goBack();
   await page.locator('[data-question-id="yl-s1q2"]').waitFor();
   await page.locator('a.quiz-engine__answer').first().press('Enter');
   await page.locator('[data-question-id="yl-s1q3"]').waitFor();
+  assert.equal(await page.evaluate(() => JSON.parse(sessionStorage.getItem('rainbowhub:quiz-progress:v4:years-left:en')).answers['yl-s1q2']), 'a1', 'changing an earlier answer creates a correct new history branch');
+  assert.equal(documents, 1, 'only the deliberate reload loads a document');
+  await page.locator('.quiz-engine__about-restart').click();
+  await page.locator('.quiz-engine__landing').waitFor();
+  assert.equal(new URL(page.url()).searchParams.has('quizStep'), false);
+  assert.equal(new URL(page.url()).searchParams.get('fbclid'), 'answer-test');
+  await page.reload();
+  await page.locator('.quiz-engine__landing').waitFor();
   assert.deepEqual(errors, []);
   await context.close();
-  console.log('PASS: delayed ad, double-click guard, atomic answer save, reload/back recovery, keyboard navigation and attribution preservation');
+  console.log('PASS: SPA answers, double-click guard, atomic save, Back/Forward snapshots, reload recovery, keyboard navigation, restart and attribution preservation.');
 } finally {
   await browser.close();
 }

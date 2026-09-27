@@ -4,6 +4,22 @@ export function getQuizNavigationHref(pathname: string, search: string, transiti
   return `${pathname}?${params.toString()}`;
 }
 
+export function readQuizHistoryProgress(key: string): unknown {
+  const entry = window.history.state?.rainbowQuiz;
+  return entry?.key === key ? entry.progress : undefined;
+}
+
+export function writeQuizHistoryProgress(key: string, progress: unknown, href = window.location.href, replace = false) {
+  try {
+    // Next's native-history integration carries its router state forward.
+    window.history[replace ? "replaceState" : "pushState"]({ rainbowQuiz: { key, progress } }, "", href);
+    return true;
+  } catch {
+    // Restricted history must not prevent an in-memory quiz from advancing.
+    return false;
+  }
+}
+
 export function getQuizAnswerDestination(questions: { stage: number }[], index: number, staged: boolean) {
   const current = questions[index];
   if (!current) throw new Error("Invalid quiz question index");

@@ -66,7 +66,7 @@ try {
     const startDocuments = documents;
     await page.locator('.quiz-engine__landing a.quiz-engine__primary').click();
     await page.locator('[data-question-id]').waitFor();
-    assert.equal(documents, startDocuments + (blocked === 'both' ? 0 : 1), `${blocked}: safe Start behavior`);
+    assert.equal(documents, startDocuments, `${blocked}: SPA Start does not reload`);
     for (let question = 0; question < firstStageCount; question++) {
       const current = page.locator('[data-question-id]');
       const id = await current.getAttribute('data-question-id');
@@ -78,7 +78,7 @@ try {
     const beforeLink = documents;
     await checkpoint.locator('a.quiz-engine__primary').click();
     await page.locator('[data-question-id="yl-s2q1"]').waitFor();
-    assert.equal(documents, beforeLink + (blocked === 'both' ? 0 : 1), `${blocked}: checkpoint saves before navigation`);
+    assert.equal(documents, beforeLink, `${blocked}: SPA checkpoint saves without reloading`);
     if (blocked !== 'both') {
       const count = await page.evaluate(() => {
         let data;

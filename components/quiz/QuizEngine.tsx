@@ -4,8 +4,7 @@ import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type C
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useQuizInterstitial } from "./QuizInterstitial";
-import { getQuizAnswerDestination, getQuizNavigationHref, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress } from "./quizNavigation";
-import { prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
+import { getQuizAnswerDestination, getQuizNavigationHref, quizProgressSignaturesMatch, readQuizHistoryProgress, readQuizProgress, removeQuizProgress, writeQuizHistoryProgress, writeQuizProgress } from "./quizNavigation";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { getStageCompletionPercentage } from "./engineState";
@@ -150,29 +149,35 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
 
-  useEffect(() => {
-    const restoreFromBackCache = (event: PageTransitionEvent) => {
-      if (event.persisted && answerNavigationPending.current) window.location.reload();
-    };
-    window.addEventListener("pageshow", restoreFromBackCache);
-    return () => window.removeEventListener("pageshow", restoreFromBackCache);
-  }, []);
+  function restoreProgress(saved: RestoredProgress | null) {
+    answerNavigationPending.current = false;
+    setAnswers(saved?.answers ?? {});
+    setQuestionIndex(saved?.questionIndex ?? 0);
+    setCompletedStage(saved?.completedStage ?? 0);
+    setScreen(saved?.screen ?? (startsOnQuestion ? "question" : "landing"));
+    setReviewUnlocked(saved?.reviewUnlocked ?? false);
+    setStudiedQuestions((saved?.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
+  }
+
+  useLayoutEffect(() => {
+    answerNavigationPending.current = false;
+  }, [answers, questionIndex, screen]);
 
   useLayoutEffect(() => {
     setNavigationSearch(window.location.search);
     try {
       const stored = readQuizProgress(storageKey);
-      const saved = stored ? safeSavedProgress(JSON.parse(stored), quiz, progressSignature) : null;
+      const historyProgress = readQuizHistoryProgress(storageKey);
+      const saved = historyProgress !== undefined
+        ? safeSavedProgress(historyProgress, quiz, progressSignature)
+        : stored ? safeSavedProgress(JSON.parse(stored), quiz, progressSignature) : null;
       if (saved) {
-        setAnswers(saved.answers);
-        setQuestionIndex(saved.questionIndex);
-        setCompletedStage(saved.completedStage);
-        setScreen(saved.screen);
-        setReviewUnlocked(saved.reviewUnlocked ?? false);
-        setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
+        restoreProgress(saved);
+        writeQuizHistoryProgress(storageKey, historyProgress ?? JSON.parse(stored!), window.location.href, true);
       } else {
         if (stored) removeQuizProgress(storageKey);
-        if (new URLSearchParams(window.location.search).get("quizStep") === "start") setScreen("question");
+        writeQuizHistoryProgress(storageKey, null, window.location.href, true);
+        if (historyProgress === undefined && new URLSearchParams(window.location.search).get("quizStep") === "start") setScreen("question");
       }
     } catch {
       removeQuizProgress(storageKey);
@@ -182,6 +187,20 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
       document.documentElement.style.removeProperty("background");
       document.body.style.removeProperty("background");
     }
+  }, [progressSignature, quiz, storageKey]);
+
+  useEffect(() => {
+    const restoreHistory = () => {
+      const progress = readQuizHistoryProgress(storageKey);
+      if (progress === undefined) return;
+      const saved = safeSavedProgress(progress, quiz, progressSignature);
+      restoreProgress(saved);
+      if (!saved) removeQuizProgress(storageKey);
+      setNavigationSearch(window.location.search);
+      scrollToTop();
+    };
+    window.addEventListener("popstate", restoreHistory);
+    return () => window.removeEventListener("popstate", restoreHistory);
   }, [progressSignature, quiz, storageKey]);
 
   useEffect(() => {
@@ -202,6 +221,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
       updatedAt: new Date().toISOString(),
     };
     writeQuizProgress(storageKey, JSON.stringify(saved));
+    writeQuizHistoryProgress(storageKey, saved, window.location.href, true);
   }, [answers, completedStage, hydrated, progressSignature, questionIndex, reviewUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => {
@@ -262,7 +282,22 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
       reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
-    return writeQuizProgress(storageKey, JSON.stringify(saved));
+    writeQuizProgress(storageKey, JSON.stringify(saved));
+    return saved;
+  }
+
+  function navigateQuiz(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: SavedScreen, transition: string, nextAnswers = answers) {
+    if (answerNavigationPending.current) return;
+    answerNavigationPending.current = true;
+    const saved = saveNextScreen(nextQuestionIndex, nextCompletedStage, nextScreen, nextAnswers);
+    const href = getQuizNavigationHref("", window.location.search, transition);
+    writeQuizHistoryProgress(storageKey, saved, href);
+    setNavigationSearch(new URL(href, window.location.href).search);
+    setAnswers(nextAnswers);
+    setQuestionIndex(nextQuestionIndex);
+    setCompletedStage(nextCompletedStage);
+    setScreen(nextScreen);
+    scrollToTop();
   }
 
   useEffect(() => {
@@ -297,16 +332,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
     const nextAnswers = { ...answers, [currentQuestion.id]: choiceIndex };
     const destination = getQuizAnswerDestination(quiz.questions, questionIndex, quiz.engine.flow.type === "staged");
     const nextCompletedStage = destination.completedStage ?? completedStage;
-    if (saveNextScreen(destination.questionIndex, nextCompletedStage, destination.screen, nextAnswers)) {
-      answerNavigationPending.current = true;
-      return true;
-    }
-    setAnswers(nextAnswers);
-    setQuestionIndex(destination.questionIndex);
-    setCompletedStage(nextCompletedStage);
-    setScreen(destination.screen);
-    scrollToTop();
-    return false;
+    navigateQuiz(destination.questionIndex, nextCompletedStage, destination.screen, destination.transition, nextAnswers);
   }
 
   function completeStudy() {
@@ -320,9 +346,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
 
   function startQuiz() {
     trackQuizEvent("QuizStart", quiz, locale);
-    if (saveNextScreen(0, 0, "question")) return true;
-    setScreen("question");
-    scrollToTop();
+    navigateQuiz(0, 0, "question", "start");
+    // The engine owns this history entry; the shared landing must not push twice.
     return false;
   }
 
@@ -330,10 +355,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     const nextScreen = isFinalStage ? "results" : "question";
     if (isFinalStage) trackQuizEvent("QuizComplete", quiz, locale);
-    if (saveNextScreen(questionIndex, completedStage, nextScreen)) return true;
-    setScreen(nextScreen);
-    scrollToTop();
-    return false;
+    navigateQuiz(questionIndex, completedStage, nextScreen, isFinalStage ? "results" : `stage-${completedStage + 2}`);
   }
 
   function unlockIncorrectAnswers() {
@@ -341,7 +363,12 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
   }
 
   function restartQuiz() {
+    answerNavigationPending.current = false;
     removeQuizProgress(storageKey);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("quizStep");
+    writeQuizHistoryProgress(storageKey, null, url.toString());
+    setNavigationSearch(url.search);
     setAnswers({});
     setQuestionIndex(0);
     setCompletedStage(0);
@@ -357,7 +384,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
       <ExperienceLanding
         href={getQuizNavigationHref("", navigationSearch, "start")}
         interstitialOpportunity
-        navigationMode="document"
+        navigationMode="spa"
         className={quiz.landing.compact ? "quiz-engine__landing--compact" : undefined}
         ctaIcon={quiz.landing.compact ? "→" : undefined}
         ctaIconPosition={quiz.landing.compact ? "end" : undefined}
@@ -484,12 +511,12 @@ export function QuizEngine({ locale, quiz, recommendations, translations }: Quiz
           data-google-interstitial={isFinalStage && !checkpointCtaReady ? "false" : undefined}
           aria-disabled={isFinalStage && !checkpointCtaReady || undefined}
           onClick={(event) => {
-            if ((isFinalStage && !checkpointCtaReady) || !continueAfterCheckpoint()) {
+            event.preventDefault();
+            if (event.detail > 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || (isFinalStage && !checkpointCtaReady)) {
               event.currentTarget.setAttribute("data-google-interstitial", "false");
-              event.preventDefault();
               return;
             }
-            prepareFullPageNavigation(event.currentTarget);
+            continueAfterCheckpoint();
           }}
         >
           {checkpointCtaContent}

@@ -100,6 +100,10 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
               event.currentTarget.href = destination.toString();
               if (navigationMode === "spa") {
                 event.preventDefault();
+                if (event.detail > 1 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                  event.currentTarget.setAttribute("data-google-interstitial", "false");
+                  return;
+                }
                 if (onStart() !== false) window.history.pushState(null, "", destination);
                 return;
               }

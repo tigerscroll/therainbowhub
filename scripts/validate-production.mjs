@@ -182,8 +182,11 @@ const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz",
 const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
 const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
 const quizInterstitialText = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizInterstitial.tsx"), "utf8");
-for (const declaration of ["useQuizInterstitial()", 'navigationMode="document"', "href={getQuizNavigationHref", "onAnswer={answerQuestion}", "data-quiz-interstitial=", "answerHref={getQuizNavigationHref", "saveNextScreen(destination.questionIndex, nextCompletedStage, destination.screen, nextAnswers)"]) {
+for (const declaration of ["useQuizInterstitial()", 'navigationMode="spa"', "href={getQuizNavigationHref", "onAnswer={answerQuestion}", "data-quiz-interstitial=", "answerHref={getQuizNavigationHref", "writeQuizHistoryProgress(storageKey, saved, href)", 'window.addEventListener("popstate"']) {
   if (!quizEngineText.includes(declaration)) addError(`Quiz interstitial-navigation contract is missing: ${declaration}`);
+}
+if (/prepareFullPageNavigation|window\.location\.reload/.test(quizEngineText)) {
+  addError("The shared SPA quiz engine must not force full-document reloads.");
 }
 if (/useRewardedGate|runRewardedGate|requestRewardedAd/.test(quizEngineText)) {
   addError("Quizzes must not require rewarded ads to continue.");

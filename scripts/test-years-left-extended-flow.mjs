@@ -221,7 +221,7 @@ async function run(width) {
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => Object.values(ad.config.interstitial.triggers).every(value => value === false))), true, 'all non-link triggers are disabled');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'INTERSTITIAL' && ad.path === '/22677279144/display')), true);
-  assert.equal(documents, initialDocuments + totalQuestions + manifest.structure.stages.length + reloads, 'each answer and checkpoint continuation loads a new document');
+  assert.equal(documents, initialDocuments + reloads, 'Start, answers and checkpoint links stay in one document; only deliberate reloads load documents');
   assert.equal(await result.locator('.quiz-engine__result-share').count(), 0);
   let age;
   if (scored) {
@@ -247,6 +247,8 @@ async function run(width) {
     await page.locator('.quiz-engine__about-restart').click();
     await landing.waitFor();
     await page.evaluate(() => { sessionStorage.setItem('quiz-test-no-fill', '1'); });
+    await page.reload();
+    await landing.waitFor();
     await landing.locator('.quiz-engine__primary').click();
     await page.locator('[data-question-id]').waitFor();
     assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'no-fill Start still navigates immediately');
@@ -266,7 +268,7 @@ async function run(width) {
   assert.deepEqual(errors, []);
   fs.writeFileSync(`/tmp/${artifactPrefix}-engagement-browser-${width}.json`, JSON.stringify({ width, reducedMotion: reduced, chapters: checkpoints, age, totalCorrect: scored ? totalCorrect : undefined, result: 'PASS' }, null, 2));
   await context.close();
-  console.log(`${width}px PASS: ${totalQuestions} questions, ${manifest.structure.stages.length} chapter gates, truthful previews, hard checkpoint links, interstitial-only opportunities and no sharing`);
+  console.log(`${width}px PASS: ${totalQuestions} questions, ${manifest.structure.stages.length} chapter gates, truthful previews, SPA links, interstitial-only opportunities and no sharing`);
 }
 
 try {

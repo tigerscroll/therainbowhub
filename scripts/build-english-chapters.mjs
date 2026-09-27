@@ -28,7 +28,7 @@ for (const slug of args.length ? args : slugs) {
   manifest.template = 'ten-stage-seven-question-v1';
   manifest.activeLocales = localizedSlugs.includes(slug) ? activeLocales : ['en'];
   manifest.engine.localeParity = 'independent';
-  manifest.engine.hardRefreshCheckpoints = true;
+  manifest.engine.hardRefreshCheckpoints = false;
   manifest.listing.compactLanding = true;
   manifest.listing.showSocialProof = false;
   manifest.structure.stages = [];

@@ -45,7 +45,7 @@ The shared template supplies the flow, checkpoint layout, finite animations, red
 
 English buttons are `Start`, `Continue` and `See My Result`; the UI adds the arrows. Shared labels such as loading and restart live in `data/i18n/<locale>.json`. Topic titles, questions, result text and checkpoint copy belong in the quiz locale JSON.
 
-The existing Start rewarded ad, ten chapter reward opportunities and optional result-review reward use the shared runner. Ad inventory is requested from the configured rewarded unit. Browser tests mock delivery; they do not verify live advertising inventory.
+Quizzes use SPA navigation: Start, answer links and checkpoint links update the URL without reloading the document. Browser Back/Forward restores the corresponding saved step. Interstitial opportunities use the `/display` out-of-page unit, initialized once per quiz document; Google determines eligibility, frequency and delivery. Home and information pages do not initialize quiz interstitials. Articles retain their separate rewarded placement. Browser tests mock delivery; they do not verify live advertising inventory.
 
 ## Presentation and language
 

@@ -23,6 +23,8 @@ try {
       const blockScripts = route => route.abort();
       await page.route('**/_next/static/**/*.js', blockScripts);
       await page.locator('a.quiz-engine__answer').first().click();
+      await page.waitForFunction(previousId => document.querySelector('[data-question-id]')?.getAttribute('data-question-id') !== previousId, id);
+      await page.reload({waitUntil: 'domcontentloaded'});
       await page.waitForLoadState('domcontentloaded');
       await page.waitForFunction(() => document.documentElement.classList.contains('quiz-resuming'));
       const boot = await page.locator('.quiz-engine__landing').evaluate(element => {
