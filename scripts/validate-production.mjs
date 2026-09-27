@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
 import { quizTemplateContract } from "./quiz-template-contracts.mjs";
+import { resolveQuizLocaleManifest } from "../lib/quiz/localeManifest.mjs";
 import process from "node:process";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 
@@ -330,7 +331,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   if (!activeLocaleFiles.every((file) => localeFiles.includes(file)) || !sortedLocaleFiles.includes("en.json") || (!quizConfig.activeLocales && !independentLocales && JSON.stringify(sortedLocaleFiles) !== JSON.stringify(expectedLocaleFiles))) {
     addError(`Quiz locale set is invalid: data/quizzes/${entry.name} (${independentLocales ? "English plus any completed supported locales" : `exactly ${expectedLocaleFiles.join(", ")}`} required; found ${localeFiles.join(", ") || "none"})`);
   }
-  const templateContract = quizTemplateContract(quizConfig.template);
+  const templateContract = quizTemplateContract(resolveQuizLocaleManifest(quizConfig, "en").template);
   if (!templateContract) {
     addError(`Unsupported quiz template: data/quizzes/${entry.name}/quiz.json`);
     continue;

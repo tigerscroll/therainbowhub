@@ -6,6 +6,8 @@ import {execFileSync} from 'node:child_process';
 import test from 'node:test';
 import {getQuizSlugs, getSiteLocales} from '../../scripts/quiz-catalogue.mjs';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
+import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
+import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
 import {ui} from '../../scripts/chapter-locales/config.mjs';
 import {correctClinicalTerm} from '../../scripts/chapter-locales/clinical-language.mjs';
 import {correctTerm} from '../../scripts/chapter-locales/corrections.mjs';
@@ -24,7 +26,7 @@ test('the site exposes exactly the eight agreed locales, with no alternate editi
   for (const slug of slugs) assert.equal(fs.existsSync(`data/quizzes/${slug}/english-extended`), false, slug);
 });
 
-for (const slug of slugs) test(`${slug}: its normal folder supplies ten seven-question rounds in every supported language`, () => {
+for (const slug of slugs) test(`${slug}: its normal folder supplies its locale-specific ten-round template in every supported language`, () => {
   const manifest = read(slug,'quiz');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
@@ -38,12 +40,14 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies ten seven-qu
   assert.deepEqual(fs.readdirSync(`data/quizzes/${slug}`).filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file=>file.slice(0,-5)).sort(), locales);
   if (manifest.activeLocales) assert.deepEqual([...manifest.activeLocales].sort(), locales);
   for (const locale of locales) {
+    const effective = resolveQuizLocaleManifest(manifest, locale);
+    const contract = quizTemplateContract(effective.template)!;
     const copy = read(slug, locale), expanded = expandQuizLocale(manifest, copy, locale);
     assert.equal(copy.results.share, undefined);
     assert.equal(copy.landing.cta, locale === 'en' ? 'Start' : ui[locale].start);
-    assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), Array(10).fill(7));
+    assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), Array(contract.stageCount).fill(contract.questionsPerStage));
     assert.equal(expanded.career.stages.length, 10);
-    for (const [index, stage] of manifest.structure.stages.entries()) {
+    for (const [index, stage] of effective.structure.stages.entries()) {
       const checkpoint = copy.career.stages[stage.id];
       assert.equal(checkpoint.preAdButton, locale === 'en' ? index === 9 ? 'See My Result' : 'Continue' : index === 9 ? ui[locale].result : ui[locale].next);
       if (index < 9) {
@@ -55,7 +59,7 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies ten seven-qu
         assert.equal(checkpoint.preAdChecks.length, 3);
       }
       for (const id of stage.questionIds) {
-        const logic=manifest.structure.questions[id], q=copy.stages[stage.id].questions[id];
+        const logic=effective.structure.questions[id], q=copy.stages[stage.id].questions[id];
         assert.ok(q.question.trim());
         assert.deepEqual(Object.keys(q.answers),logic.answerIds);
         assert.equal(new Set(Object.values(q.answers).map((text:any)=>text.normalize('NFKC').trim().toLowerCase())).size,4,`${locale}/${id}`);

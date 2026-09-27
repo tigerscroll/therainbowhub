@@ -3,6 +3,7 @@ import path from "node:path";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
 import { quizTemplateContract } from "./quiz-template-contracts.mjs";
+import { resolveQuizLocaleManifest } from "../lib/quiz/localeManifest.mjs";
 
 const root = path.join(process.cwd(), "data", "quizzes");
 const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
@@ -362,12 +363,29 @@ for (const folder of folders) {
   const activeLocaleFiles = activeLocales.map((locale) => `${locale}.json`);
   fail(activeLocaleFiles.every((file) => localeFiles.includes(file)), `${folder.name}: every active locale must have a locale file.`);
   fail(activeLocaleFiles.includes("en.json"), `${folder.name}: English must remain active.`);
+  for (const locale of Object.keys(config.localeExtensions ?? {})) {
+    fail(activeLocales.includes(locale), `${folder.name}: extensions must belong to active locales.`);
+    const effective = resolveQuizLocaleManifest(config, locale);
+    const contract = quizTemplateContract(effective.template);
+    fail(Boolean(contract) && effective.structure.stages.length === contract.stageCount && effective.structure.stages.every(stage => stage.questionIds.length === contract.questionsPerStage), `${folder.name}/${locale}: extension must match a supported template.`);
+    for (const [id, question] of Object.entries(config.localeExtensions[locale].questions)) {
+      const answerIds = question.answerIds;
+      fail(Array.isArray(answerIds) && answerIds.length >= 1 && answerIds.length <= 5 && new Set(answerIds).size === answerIds.length, `${folder.name}/${locale}: ${id} needs unique answerIds.`);
+      fail(question.choiceCount === undefined && question.correct === undefined, `${folder.name}/${locale}: ${id} must use named answer IDs.`);
+      fail(question.correctAnswerId === undefined || answerIds?.includes(question.correctAnswerId), `${folder.name}/${locale}: ${id} has an invalid correctAnswerId.`);
+      for (const field of ["icons", "calibration", "choiceMeanings"]) {
+        if (question[field] !== undefined) fail(JSON.stringify(Object.keys(question[field]).sort()) === JSON.stringify([...(answerIds ?? [])].sort()), `${folder.name}/${locale}: ${id}.${field} must be keyed by answerIds.`);
+      }
+    }
+  }
   const sortedLocaleFiles = [...activeLocaleFiles].sort();
   const expectedLocaleFiles = [...supportedLocales].map((locale) => `${locale}.json`).sort();
   fail(JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: every quiz must be active in all supported locales: ${expectedLocaleFiles.join(", ")}.`);
 
   const sourceRaw = read(path.join(directory, "en.json"));
-  if (sourceRaw) validateTextOnlyLocale(sourceRaw, config, `${folder.name}/en.json`, "en");
+  const englishConfig = resolveQuizLocaleManifest(config, "en");
+  const englishContract = quizTemplateContract(englishConfig.template);
+  if (sourceRaw) validateTextOnlyLocale(sourceRaw, englishConfig, `${folder.name}/en.json`, "en");
   const source = sourceRaw ? expandQuizLocale(config, sourceRaw, "en") : null;
   if (!source) continue;
   fail(!source.landing?.intro?.includes("—"), `${folder.name}/en.json: landing subtitles must not use em dashes.`);
@@ -380,8 +398,8 @@ for (const folder of folders) {
   if (config.engine?.checkpoint === "ai") fail(source.stages?.every((stage) => stage.complete === undefined), `${folder.name}/en.json: AI checkpoint stages must not contain unused complete copy.`);
   fail(Boolean(source.title && source.summary), `${folder.name}/en.json: title and summary are required.`);
   fail(sourceQuestions.length > 0, `${folder.name}/en.json: at least one question is required.`);
-  fail(source.stages?.length === expectedStageCount && source.stages.every((stage) => stage.questions?.length === expectedQuestionsPerStage), `${folder.name}/en.json: quiz content does not match ${config.template}.`);
-  fail(sourceQuestions.length === expectedQuestionTotal, `${folder.name}/en.json: quiz must contain exactly ${expectedQuestionTotal} questions.`);
+  fail(source.stages?.length === englishContract?.stageCount && source.stages.every((stage) => stage.questions?.length === englishContract?.questionsPerStage), `${folder.name}/en.json: quiz content does not match ${englishConfig.template}.`);
+  fail(sourceQuestions.length === englishContract?.stageCount * englishContract?.questionsPerStage, `${folder.name}/en.json: question total must match its locale template.`);
   fail(sourceQuestions.every((question) => typeof question.headerLabel === "string" && question.headerLabel.trim()), `${folder.name}/en.json: every question needs a concise question-type header.`);
   fail(config.engine?.questionAd === undefined && config.engine?.resultAds === undefined, `${folder.name}: display-ad flow variants are not part of the shared quiz template.`);
   fail(JSON.stringify(config.theme?.layout) === JSON.stringify({ landing: "split", questions: "card", results: "immersive" }), `${folder.name}: landing, question and result layouts must use the shared template.`);
@@ -432,8 +450,13 @@ for (const folder of folders) {
     fail(JSON.stringify(dimensionCategories) === JSON.stringify(questionCategories), `${folder.name}/en.json: every scored category must appear in exactly one result dimension.`);
   }
   for (const localeFile of activeLocaleFiles) {
+    const locale = localeFile.replace(/\.json$/, "");
+    const localeConfig = resolveQuizLocaleManifest(config, locale);
+    const localeContract = quizTemplateContract(localeConfig.template);
+    const comparableSource = expandQuizLocale(localeConfig, sourceRaw, "en");
+    const comparableQuestions = comparableSource.stages.flatMap((stage) => stage.questions);
     const localizedRaw = read(path.join(directory, localeFile));
-    if (localizedRaw) validateTextOnlyLocale(localizedRaw, config, `${folder.name}/${localeFile}`, localeFile.replace(/\.json$/, ""));
+    if (localizedRaw) validateTextOnlyLocale(localizedRaw, localeConfig, `${folder.name}/${localeFile}`, locale);
     const localized = localizedRaw ? expandQuizLocale(config, localizedRaw, localeFile.replace(/\.json$/, "")) : null;
     if (!localized) continue;
     const landingIntroLines = localizedRaw?.landing?.intro?.split("\n") ?? [];
@@ -450,13 +473,13 @@ for (const folder of folders) {
       fail(localized.career?.stages?.at(-1)?.preAdChecks?.length >= 3 && localized.career.stages.at(-1).preAdChecks.length <= 8, `${folder.name}/${localeFile}: final checklist must contain three to eight items.`);
     }
     fail(JSON.stringify((localized.results?.dimensions ?? []).map((dimension) => dimension.categories)) === JSON.stringify((source.results?.dimensions ?? []).map((dimension) => dimension.categories)), `${folder.name}/${localeFile}: internal result dimension category IDs differ from English.`);
-    fail((localized.stages ?? []).length === (source.stages ?? []).length, `${folder.name}/${localeFile}: stage count differs from English.`);
+    fail(localized.stages?.length === localeContract?.stageCount && localized.stages.every((stage) => stage.questions.length === localeContract?.questionsPerStage), `${folder.name}/${localeFile}: stage counts must match its locale template.`);
     fail(
       JSON.stringify((localized.stages ?? []).map((stage) => stage.questions?.length ?? 0))
-        === JSON.stringify((source.stages ?? []).map((stage) => stage.questions?.length ?? 0)),
+        === JSON.stringify((comparableSource.stages ?? []).map((stage) => stage.questions?.length ?? 0)),
       `${folder.name}/${localeFile}: per-stage question counts differ from English.`,
     );
-    fail(questions.length === sourceQuestions.length, `${folder.name}/${localeFile}: question count differs from English.`);
+    fail(questions.length === comparableQuestions.length, `${folder.name}/${localeFile}: question count differs from its shared definitions.`);
     fail(questions.every((question) => question.explanation === undefined), `${folder.name}/${localeFile}: question explanations are no longer supported.`);
     if (config.engine?.scoring === "correct-answer") {
       fail(questions.every((question) => (
@@ -472,14 +495,14 @@ for (const folder of folders) {
         positions[question.correct] += 1;
         return positions;
       }, [0, 0, 0, 0]);
-      const sourcePositions = sourceQuestions.reduce((positions, question) => {
+      const sourcePositions = comparableQuestions.reduce((positions, question) => {
         positions[question.correct] += 1;
         return positions;
       }, [0, 0, 0, 0]);
       fail(JSON.stringify(localizedPositions) === JSON.stringify(sourcePositions), `${folder.name}/${localeFile}: correct-answer position balance differs from English.`);
     }
     questions.forEach((question, index) => {
-      const sourceQuestion = sourceQuestions[index];
+      const sourceQuestion = comparableQuestions[index];
       const answers = Array.isArray(question.answers) ? question.answers : Object.keys(question.answers ?? {});
       const sourceAnswers = Array.isArray(sourceQuestion?.answers) ? sourceQuestion.answers : Object.keys(sourceQuestion?.answers ?? {});
       validateStudy(question.study, `${folder.name}/${localeFile}: question ${index + 1}`);

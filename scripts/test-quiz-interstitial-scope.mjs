@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright-core';
+import fs from 'node:fs';
+import { resolveQuizLocaleManifest } from '../lib/quiz/localeManifest.mjs';
+
+const firstStageCount = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync('data/quizzes/years-left/quiz.json', 'utf8')), 'en').structure.stages[0].questionIds.length;
 
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3199';
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
@@ -63,7 +67,7 @@ try {
     await page.locator('.quiz-engine__landing a.quiz-engine__primary').click();
     await page.locator('[data-question-id]').waitFor();
     assert.equal(documents, startDocuments + (blocked === 'both' ? 0 : 1), `${blocked}: safe Start behavior`);
-    for (let question = 0; question < 7; question++) {
+    for (let question = 0; question < firstStageCount; question++) {
       const current = page.locator('[data-question-id]');
       const id = await current.getAttribute('data-question-id');
       await current.locator('.quiz-engine__answer').first().click();
@@ -82,7 +86,7 @@ try {
         data = Object.keys(localStorage).find(key => key.startsWith('rainbowhub:quiz-progress:'));
         return Object.keys(JSON.parse(localStorage.getItem(data)).answers).length;
       });
-      assert.equal(count, 7, `${blocked}: every previous answer survives`);
+      assert.equal(count, firstStageCount, `${blocked}: every previous answer survives`);
     }
     await context.close();
   }

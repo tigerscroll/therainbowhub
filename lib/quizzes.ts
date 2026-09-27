@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { resolveQuizLocaleManifest } from "./quiz/localeManifest.mjs";
 
 import {
   getDefaultLocale,
@@ -27,9 +28,20 @@ export type QuizFlow = {
   feedback: "instant" | "selection-only" | "after-results";
 };
 
-const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "five-stage-six-question-v1", "five-stage-eight-question-v1", "ten-stage-seven-question-v1"] as const;
+const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "five-stage-six-question-v1", "five-stage-eight-question-v1", "ten-stage-seven-question-v1", "ten-stage-ten-question-v1"] as const;
 type QuizTemplateId = (typeof QUIZ_TEMPLATE_IDS)[number];
 const QUIZ_TEMPLATE_CONTRACTS = {
+  "ten-stage-ten-question-v1": {
+    stageCount: 10,
+    questionsPerStage: 10,
+    levels: ["foundation", "foundation", "developing", "developing", "skilled", "skilled", "advanced", "advanced", "advanced", "final"],
+    engine: {
+      flow: "staged", advance: "automatic", feedback: "selection-only", checkpoint: "ai",
+      startOnLoad: false,
+      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      advanceDelayMs: 450,
+    },
+  },
   "five-stage-six-question-v1": {
     stageCount: 5,
     questionsPerStage: 6,
@@ -1713,7 +1725,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const cached = quizCache.get(cacheKey);
   if (cached) return cached;
   const contentDirectory = directory(slug);
-  const manifest = validateManifest(json(path.join(contentDirectory, "quiz.json")), `${slug}/${locale}/quiz.json`);
+  const manifest = validateManifest(resolveQuizLocaleManifest(json(path.join(contentDirectory, "quiz.json")), locale), `${slug}/${locale}/quiz.json`);
   if (manifest.slug !== slug) throw new Error(`${slug}: folder and quiz id must match.`);
   manifest.listing.thumbnail = normalizeQuizAsset(ROOT, slug, manifest.listing.thumbnail);
   if (manifest.theme.artwork) {

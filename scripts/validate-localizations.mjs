@@ -3,6 +3,7 @@ import path from "node:path";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
 import { quizTemplateContract } from "./quiz-template-contracts.mjs";
+import { resolveQuizLocaleManifest } from "../lib/quiz/localeManifest.mjs";
 import {answerNumbers, normalizedAnswer} from "./localization-values.mjs";
 
 const root = process.cwd();
@@ -493,24 +494,27 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     addError(`data/quizzes/${entry.name}: strict locale parity requires exactly ${expectedLocaleFiles.join(", ")}.`);
     continue;
   }
-  const english = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8")), "en");
-  validateQuestions(english, `data/quizzes/${entry.name}/en.json`, manifest.template);
+  const englishRaw = JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8"));
+  const english = expandQuizLocale(manifest, englishRaw, "en");
+  validateQuestions(english, `data/quizzes/${entry.name}/en.json`, resolveQuizLocaleManifest(manifest, "en").template);
   if (english.landing?.intro?.includes("—")) addError(`data/quizzes/${entry.name}/en.json#landing.intro: landing subtitles must not use em dashes.`);
   if (!Number.isInteger(SOCIAL_PROOF_COUNTS[entry.name])) addError(`data/quizzes/${entry.name}: missing stable social-proof count.`);
   if (english.landing?.socialProof !== undefined) addError(`data/quizzes/${entry.name}/en.json#landing.socialProof: wording must come from shared i18n.`);
   for (const localeFile of activeLocaleFiles.filter((file) => file !== "en.json")) {
     const location = `data/quizzes/${entry.name}/${localeFile}`;
     const locale = path.basename(localeFile, ".json");
+    const localeManifest = resolveQuizLocaleManifest(manifest, locale);
+    const comparableEnglish = expandQuizLocale(localeManifest, englishRaw, "en");
     const localized = expandQuizLocale(manifest, JSON.parse(fs.readFileSync(path.join(directory, localeFile), "utf8")), locale);
     if (localized.landing?.intro?.includes("—")) addError(`${location}#landing.intro: landing subtitles must not use em dashes.`);
     if (localized.landing?.socialProof !== undefined) addError(`${location}#landing.socialProof: wording must come from shared i18n.`);
-    compareStructure(english, localized, [], location);
-    validateQuestions(localized, location, manifest.template);
+    compareStructure(comparableEnglish, localized, [], location);
+    validateQuestions(localized, location, localeManifest.template);
     // Content-specific chapter semantics are verified by chapterLocales.test.ts
     // and the topic answer-key tests; retired single-stage IDs are not used.
-    validateNativeCopyPatterns(entry.name, localized, locale, location, english);
+    validateNativeCopyPatterns(entry.name, localized, locale, location, comparableEnglish);
     if (locale === "ar") validateArabicPrimaryCopy(localized, location);
-    const residue = collectStringPairs(english, localized)
+    const residue = collectStringPairs(comparableEnglish, localized)
       // This is a letter-scan stimulus, not English prose; every locale sees
       // the same glyphs so the seven-F answer has equivalent difficulty.
       .filter((pair) => !(entry.name === "vision" && pair.source === "EFPRE PEFER RFEPE PRFEF EPRFP PEFRE" && pair.pathParts.at(-1) === "context"))

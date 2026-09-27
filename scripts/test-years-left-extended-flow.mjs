@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { chromium } from 'playwright-core';
+import { resolveQuizLocaleManifest } from '../lib/quiz/localeManifest.mjs';
 
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3198';
 const slug = process.env.QUIZ_TEST_SLUG ?? 'years-left';
@@ -8,7 +9,8 @@ const locale = process.env.QUIZ_TEST_LOCALE ?? 'en';
 const fast = process.env.QUIZ_TEST_FAST === '1';
 const artifactPrefix = locale === 'en' ? slug : `${slug}-${locale}`;
 const root = `data/quizzes/${slug}`;
-const manifest = JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8'));
+const manifest = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8')), locale);
+const totalQuestions = manifest.structure.stages.reduce((count, stage) => count + stage.questionIds.length, 0);
 const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
 const textChapters = Object.values(manifest.structure.questions).every(question => question.presentation === 'text' && !question.image && !question.study);
@@ -213,19 +215,19 @@ async function run(width) {
   const result = page.locator('.quiz-engine__results');
   await result.waitFor();
   const opportunities = await page.evaluate(() => JSON.parse(sessionStorage.getItem('quiz-test-opportunities') ?? '[]'));
-  assert.equal(opportunities.length, 81, 'Start, seventy answer links and ten checkpoint links are eligible opportunities');
+  assert.equal(opportunities.length, 1 + totalQuestions + manifest.structure.stages.length, 'Start, all answer links and checkpoint links are eligible opportunities');
   assert.equal(opportunities.every(click => click.approved && click.format === 'INTERSTITIAL' && click.path === '/22677279144/display'), true);
   assert.equal(opportunities.every(click => new URL(click.href).searchParams.get('test_keep') === '1'), true, 'attribution query survives every link');
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => Object.values(ad.config.interstitial.triggers).every(value => value === false))), true, 'all non-link triggers are disabled');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'INTERSTITIAL' && ad.path === '/22677279144/display')), true);
-  assert.equal(documents, initialDocuments + 80 + reloads, 'each answer and checkpoint continuation loads a new document');
+  assert.equal(documents, initialDocuments + totalQuestions + manifest.structure.stages.length + reloads, 'each answer and checkpoint continuation loads a new document');
   assert.equal(await result.locator('.quiz-engine__result-share').count(), 0);
   let age;
   if (scored) {
-    assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(), `${totalCorrect} / 70`);
-    assert.equal(await result.locator('.quiz-engine__result-percentage strong').innerText(), `${Math.round(totalCorrect / 70 * 100)}%`);
-    assert.equal(await result.locator('h2').first().innerText(), totalCorrect >= 56 ? copy.results.score.passed : copy.results.score.finished);
+    assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(), `${totalCorrect} / ${totalQuestions}`);
+    assert.equal(await result.locator('.quiz-engine__result-percentage strong').innerText(), `${Math.round(totalCorrect / totalQuestions * 100)}%`);
+    assert.equal(await result.locator('h2').first().innerText(), totalCorrect >= Math.ceil(totalQuestions * manifest.engine.targetRatio) ? copy.results.score.passed : copy.results.score.finished);
   } else if (slug === 'years-left') {
     age = Number(await result.locator('.quiz-engine__result-age strong').innerText());
     assert.ok(age >= 73 && age <= 95);
@@ -238,7 +240,7 @@ async function run(width) {
     assert.equal(await result.locator('.quiz-engine__profile-traits > span').count(), 3);
   } else {
     await result.locator('.quiz-engine__answer-review').waitFor();
-    assert.equal(await result.locator('.quiz-engine__answer-review article').count(), scored ? 70 - totalCorrect : 70);
+    assert.equal(await result.locator('.quiz-engine__answer-review article').count(), scored ? totalQuestions - totalCorrect : totalQuestions);
   }
   assert.equal(await page.evaluate(() => window.adCalls.length), 1, 'optional breakdown makes no ad requests');
   if (width === 390) {
@@ -264,7 +266,7 @@ async function run(width) {
   assert.deepEqual(errors, []);
   fs.writeFileSync(`/tmp/${artifactPrefix}-engagement-browser-${width}.json`, JSON.stringify({ width, reducedMotion: reduced, chapters: checkpoints, age, totalCorrect: scored ? totalCorrect : undefined, result: 'PASS' }, null, 2));
   await context.close();
-  console.log(`${width}px PASS: 70 questions, 10 chapter gates, truthful previews, hard checkpoint links, interstitial-only opportunities and no sharing`);
+  console.log(`${width}px PASS: ${totalQuestions} questions, ${manifest.structure.stages.length} chapter gates, truthful previews, hard checkpoint links, interstitial-only opportunities and no sharing`);
 }
 
 try {

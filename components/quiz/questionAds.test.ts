@@ -2,8 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import fs from "node:fs";
 import { expandQuizLocale } from "../../scripts/quiz-schema-v2.mjs";
+import { resolveQuizLocaleManifest } from "../../lib/quiz/localeManifest.mjs";
 import { scoreQuiz } from "./scoring.ts";
 import type { Quiz } from "../../lib/quizzes.ts";
+
+test("full-document navigation has no page-load fade or cross-document transition", () => {
+  const css = fs.readFileSync("styles/site.css", "utf8");
+  assert.doesNotMatch(css, /@view-transition|site-page-in|site-page-out/);
+});
 
 test("display-ad components and request code are absent site-wide", () => {
   assert.equal(fs.existsSync("components/quiz/QuestionDisplayAd.tsx"), false);
@@ -52,7 +58,7 @@ test("interstitials are scoped to the quiz engine and use their own placement", 
   }
 });
 test("Years Left keeps each choice's score and calibration regardless of answer order", () => {
-  const manifest = JSON.parse(fs.readFileSync("data/quizzes/years-left/quiz.json", "utf8"));
+  const manifest = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync("data/quizzes/years-left/quiz.json", "utf8")), "en");
   const copy = JSON.parse(fs.readFileSync("data/quizzes/years-left/en.json", "utf8"));
   const originalOrder = structuredClone(manifest);
   for (const question of Object.values(originalOrder.structure.questions) as { answerIds: string[] }[]) question.answerIds.sort();
