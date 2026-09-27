@@ -37,13 +37,17 @@ test("Mechanic uses the automatic rewarded-only flow", () => {
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("quiz gates keep rewarded while plain articles get a distinct display placement", () => {
+test("quiz gates keep rewarded while monetized articles share display for banners and rewards", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
   assert.doesNotMatch(config, /quizInterstitialAdUnitPath/);
   assert.match(config, /articleDisplayAdUnitPath: "\/22677279144\/display"/);
-  const articleGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
-  assert.match(articleGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
+  const quizGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
+  assert.match(quizGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
+  const articleGate = fs.readFileSync("components/article/ArticleUnlock.tsx", "utf8");
+  assert.match(articleGate, /requestArticleReward\(\{ adUnitPath: siteConfig.articleDisplayAdUnitPath/);
+  const articleDisplay = fs.readFileSync("components/article/ArticleDisplayAd.tsx", "utf8");
+  assert.match(articleDisplay, /mountArticleDisplayAd\(id, siteConfig.articleDisplayAdUnitPath/);
 });
 test("answers remain buttons and do not trigger ads or link navigation", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");

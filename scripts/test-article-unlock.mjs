@@ -27,8 +27,8 @@ function mockGpt() {
       window.adRequests.push(slot);
       return slot;
     },
-    defineOutOfPageSlot(path) {
-      const slot = { path, kind: 'rewarded', addService() { return this; } };
+    defineOutOfPageSlot(path, format) {
+      const slot = { path, format, kind: 'rewarded', addService() { return this; } };
       window.adRequests.push(slot);
       window.rewardSlot = slot;
       return slot;
@@ -74,7 +74,20 @@ try {
     assert.ok(adBox.y >= titleBox.y + titleBox.height, 'ad appears below the article headline');
     assert.ok(adBox.y + adBox.height <= introBox.y, 'ad appears before the introduction');
     assert.equal(await page.locator('header > h1 + .article-display + .plain-article__intro').count(), 1, 'ad is directly between title and introduction');
-    assert.equal(await page.locator('.article-display__slot').first().evaluate(node => getComputedStyle(node).maxHeight), 'none');
+    assert.equal(await page.locator('.article-display').count(), 3, 'exactly three display placements');
+    const planTitleBox = await page.getByRole('heading', { name: 'Start with a plan, not an earnings promise', exact: true }).boundingBox();
+    const abovePlanAdBox = await page.locator('.article-display__slot').nth(1).boundingBox();
+    assert.ok(abovePlanAdBox.y >= introBox.y + introBox.height, 'second ad follows the introduction');
+    assert.ok(abovePlanAdBox.y + abovePlanAdBox.height <= planTitleBox.y, 'second ad is above Start with a plan');
+    const lastPreviewParagraph = await page.locator('p').filter({ hasText: 'The guide below walks through checking access' }).boundingBox();
+    const belowPreviewAdBox = await page.locator('.article-display__slot').nth(2).boundingBox();
+    const teaserBox = await page.locator('.article-unlock__teaser').boundingBox();
+    assert.ok(belowPreviewAdBox.y >= lastPreviewParagraph.y + lastPreviewParagraph.height, 'third ad follows the paragraph ending a particular income');
+    assert.ok(belowPreviewAdBox.y + belowPreviewAdBox.height <= teaserBox.y, 'third ad appears before the unlock preview');
+    for (const slot of await page.locator('.article-display__slot').all()) {
+      assert.equal((await slot.boundingBox()).width, Math.min(width, 720), 'every placement has full container width');
+      assert.equal(await slot.evaluate(node => getComputedStyle(node).maxHeight), 'none');
+    }
     assert.equal(await page.locator('#article-unlocked-content').isVisible(), false);
     assert.equal(await page.locator('.hub-header').isVisible(), false);
     assert.equal(await page.locator('body').evaluate(node => getComputedStyle(node).backgroundColor), 'rgb(255, 255, 255)');
@@ -82,8 +95,13 @@ try {
     assert.match(await page.locator('.article-unlock__teaser').evaluate(node => getComputedStyle(node).maskImage), /linear-gradient/);
     assert.match(await page.locator('#article-ad-note').innerText(), /Short ad first.*unlock the full guide/);
     assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'rewarded').length), 0);
-    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 1);
-    assert.deepEqual(await page.evaluate(() => window.adRequests.find(slot => slot.kind === 'display').sizes), width < 336 ? [[300, 250]] : [[300, 250], [336, 280]]);
+    const displayRequests = await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').map(({ id, sizes, path }) => ({ id, sizes, path })));
+    assert.equal(displayRequests.length, 3);
+    assert.equal(new Set(displayRequests.map(slot => slot.id)).size, 3, 'same ad unit still has unique placement IDs');
+    for (const slot of displayRequests) {
+      assert.deepEqual(slot.sizes, width < 336 ? [[300, 250]] : [[300, 250], [336, 280]]);
+      assert.equal(slot.path, '/22677279144/display');
+    }
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     const schema = await page.locator('script[type="application/ld+json"]').evaluate(node => JSON.parse(node.textContent));
     assert.equal(schema.isAccessibleForFree, false);
@@ -96,6 +114,8 @@ try {
 
     await page.getByRole('button', { name: 'Continue article', exact: true }).click();
     await page.waitForFunction(() => window.rewardShows === 1);
+    assert.equal(await page.evaluate(() => window.rewardSlot.path), '/22677279144/display');
+    assert.equal(await page.evaluate(() => window.rewardSlot.format), 'REWARDED', 'shared ad unit still requests the rewarded format');
     assert.equal(await page.getByRole('button', { name: 'Cancel', exact: true }).count(), 0, 'no custom Cancel button');
     assert.equal(await page.locator('#article-unlocked-content').isVisible(), false, 'ready alone never unlocks');
     await page.evaluate(() => window.emitArticleAd('rewardedSlotClosed'));
@@ -111,18 +131,18 @@ try {
     assert.equal(await page.evaluate(() => window.destroyedAds.filter(kind => kind === 'rewarded').length), 1, 'granted ad stays open until close');
     await page.evaluate(() => window.emitArticleAd('rewardedSlotClosed'));
     assert.equal(await page.evaluate(() => window.destroyedAds.filter(kind => kind === 'rewarded').length), 2);
-    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 1, 'unlock does not request another display ad');
-    assert.equal(await page.locator('.article-display').count(), 1);
-    assert.equal(await page.evaluate(() => window.adRequests.every(slot => slot.path === `/22677279144/${slot.kind === 'display' ? 'display' : 'rewarded'}`)), true);
+    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 3, 'unlock does not request another display ad');
+    assert.equal(await page.locator('.article-display').count(), 3);
+    assert.equal(await page.evaluate(() => window.adRequests.every(slot => slot.path === '/22677279144/display')), true);
     assert.equal(await page.getByRole('heading', { name: 'A realistic first-week plan' }).isVisible(), true);
     await page.reload();
     await page.locator('#article-unlocked-content').waitFor({ state: 'visible' });
     assert.equal(await page.getByRole('button', { name: 'Continue article', exact: true }).count(), 0);
     assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'rewarded').length), 0);
-    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 1, 'restored unlock still has one display ad');
+    assert.equal(await page.evaluate(() => window.adRequests.filter(slot => slot.kind === 'display').length), 3, 'restored unlock still has three display ads');
     assert.deepEqual(errors, []);
     await context.close();
-    console.log(`${width}px: initial preview, gradient, disclosure, correct ad paths, close/retry, grant, persistence and layout pass.`);
+    console.log(`${width}px: three placements, shared display ad unit, rewarded format, close/retry, grant, persistence and layout pass.`);
   }
 
   const noFill = await newPage(390);
@@ -141,7 +161,7 @@ try {
   await pending.page.locator('#article-unlocked-content').waitFor({ state: 'visible' });
   assert.match(await pending.page.getByRole('status').innerText(), /No ad is available/);
   assert.equal(await pending.page.evaluate(() => window.rewardShows), 0, 'loading timeout never opened an ad');
-  assert.equal(await pending.page.locator('.article-display').count(), 1);
+  assert.equal(await pending.page.locator('.article-display').count(), 3);
   assert.deepEqual(pending.errors, []);
   await pending.context.close();
 

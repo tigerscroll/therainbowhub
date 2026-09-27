@@ -31,7 +31,7 @@ export function ArticleUnlock({ children, slug, locale, settings, teaser }: {
     request.current = controller;
     setBusy(true);
     setMessage("");
-    const result = await requestArticleReward({ adUnitPath: siteConfig.rewardedAdUnitPath, signal: controller.signal });
+    const result = await requestArticleReward({ adUnitPath: siteConfig.articleDisplayAdUnitPath, signal: controller.signal });
     if (controller.signal.aborted) return;
     setBusy(false);
     if (result === "closed") {
