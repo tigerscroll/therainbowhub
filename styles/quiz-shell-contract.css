@@ -11,7 +11,7 @@
 
 .quiz-theme[data-quiz-flow="continuous"] {
   --quiz-shell-action-width: 480px;
-  --quiz-shell-action-height: 78px;
+  --quiz-shell-action-height: 72px;
   --quiz-shell-action-radius: 14px;
   --quiz-shell-control-radius: 12px;
   --quiz-shell-border: 2px solid var(--quiz-text);
@@ -392,6 +392,9 @@
   width: min(100%, var(--quiz-shell-action-width)) !important;
   max-width: var(--quiz-shell-action-width) !important;
   min-height: var(--quiz-shell-action-height) !important;
+  height: auto !important;
+  max-height: none !important;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   padding: 12px 22px !important;
@@ -403,6 +406,8 @@
     0 10px 22px color-mix(in srgb, var(--quiz-primary) 18%, transparent),
     inset 0 1px 0 rgba(255,255,255,.16)) !important;
   text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 /* Core controls use one geometry contract. Themes still own every colour,
@@ -544,7 +549,6 @@
 
 @media (max-width: 700px) {
   .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] {
-    --quiz-shell-action-height: 78px;
     --quiz-shell-content-inset: 18px;
     --quiz-shell-landing-padding-block: 24px;
     padding-top: var(--quiz-shell-header-gap) !important;
@@ -683,10 +687,6 @@
     font-size: 13px !important;
   }
 
-  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__primary {
-    min-height: 52px !important;
-  }
-
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__ad-note {
     margin-top: 10px !important;
     font-size: 12px !important;
@@ -756,7 +756,6 @@
   }
 
   .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
-    min-height: 56px !important;
     font-size: 18px !important;
   }
 }
@@ -815,8 +814,7 @@
 
 .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__landing--compact .quiz-engine__primary {
   margin-top: 26px !important;
-  min-height: 78px !important;
-  padding: 18px 24px !important;
+  padding: 14px 24px !important;
   font-size: clamp(21px, 2.5vw, 24px) !important;
   font-weight: 900 !important;
   line-height: 1.2;
@@ -927,7 +925,6 @@
     margin-bottom: 16px !important;
   }
   .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__landing--compact .quiz-engine__primary {
-    min-height: 64px !important;
     margin-top: 20px !important;
     padding-block: 14px !important;
   }
@@ -1081,7 +1078,8 @@
   animation: none !important;
 }
 
-/* Grow answer rows into spare mobile space, never shrink or clip their content. */
+/* The shell fills the screen, not its controls. Answers share the CTA's minimum
+   height and grow only for their content, including icons and translated text. */
 @media (max-width: 820px) {
   .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__flow-container > .quiz-engine__question-shell {
     min-height: calc(100dvh - var(--site-header-height, 40px) - 12px) !important;
@@ -1090,14 +1088,20 @@
     display: flex;
     flex-direction: column;
   }
-  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question > .quiz-engine__answers {
-    flex: 1 0 auto;
-    width: 100%;
-    grid-auto-rows: minmax(min-content, 1fr);
-    align-content: stretch;
-  }
-  .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__answers > .quiz-engine__answer {
-    width: 100%;
-    height: 100%;
-  }
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question > .quiz-engine__answers {
+  flex: 0 0 auto;
+  width: 100%;
+  grid-auto-rows: auto;
+  align-content: start;
+}
+
+.quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__answers > .quiz-engine__answer {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--quiz-shell-action-height) !important;
+  height: auto !important;
+  max-height: none !important;
+  padding-block: 12px !important;
 }

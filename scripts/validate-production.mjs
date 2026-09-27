@@ -224,7 +224,7 @@ const requiredContinuousShellContract = [
   "--quiz-flow-width: var(--quiz-shell-container-width);",
   "--quiz-flow-min-height: clamp(590px, 82svh, 860px);",
   "--quiz-shell-action-width: 480px;",
-  "--quiz-shell-action-height: 78px;",
+  "--quiz-shell-action-height: 72px;",
   "--quiz-shell-action-radius: 14px;",
   "--quiz-shell-control-radius: 12px;",
   "--quiz-shell-border: 2px solid var(--quiz-text);",
