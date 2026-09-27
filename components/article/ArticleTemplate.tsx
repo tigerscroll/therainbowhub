@@ -146,10 +146,6 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
     adNote: quiz.engine.rewarded.start && !quiz.engine.rewarded.confirmStart && (!siteConfig.rewardedStartInstructionEnabled || quiz.landing.compact)
       ? translations.ad.startNote : undefined,
   }));
-  const previewSources = JSON.stringify(Object.fromEntries(quizPreviews.map(quiz => [quiz.slug, quiz.themeCssHref]))).replace(/</g, "\\u003c");
-  const previewCss = `.article-quiz-previews>[data-article-quiz-preview]{display:none}` + quizPreviews.map(quiz =>
-    `html[data-article-quiz="${quiz.slug}"] .article-quiz-previews>[data-article-quiz-preview="${quiz.slug}"]{display:block}`
-  ).join("");
   const articleBasePath = getArticlePath(locale, article.routeSlug ?? article.slug);
   const currentArticlePath = getArticleChapterPath(articleBasePath, initialSection);
   const availableLocales = getArticleLocales(article.slug).filter(isSupportedLocale);
@@ -208,8 +204,6 @@ export function ArticleTemplate({ article, initialSection }: { article: ArticleM
         type="application/ld+json"
       />
       <style dangerouslySetInnerHTML={{ __html: `html,body{background:${articleTheme.colors.page}}` }} />
-      <style dangerouslySetInnerHTML={{ __html: previewCss }} />
-      <script dangerouslySetInnerHTML={{ __html: `(function(){const sources=${previewSources};const values=new URLSearchParams(location.search).getAll("q");const slug=values.length===1?values[0]:"";if(!Object.hasOwn(sources,slug))return;document.documentElement.dataset.articleQuiz=slug;if(sources[slug]){const link=document.createElement("link");link.rel="stylesheet";link.href=sources[slug];link.setAttribute("blocking","render");document.head.appendChild(link)}})()` }} />
       <ArticleQuizPreview quizzes={quizPreviews} locale={locale} translations={translations} />
       <Suspense fallback={null}>
         <ArticleQuiz locale={locale} slugs={getAllQuizzes(locale).map(quiz => quiz.slug)} translations={translations} />

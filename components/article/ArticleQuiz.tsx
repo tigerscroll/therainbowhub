@@ -23,7 +23,8 @@ export function ArticleQuiz({ locale, slugs, translations }: {
   const onReady = useCallback(() => { setReadySlug(slug ?? null); }, [slug]);
 
   useLayoutEffect(() => {
-    if (!slug || readySlug === slug) delete document.documentElement.dataset.articleQuiz;
+    if (slug && readySlug !== slug) document.documentElement.dataset.articleQuiz = slug;
+    else delete document.documentElement.dataset.articleQuiz;
     if (slug && readySlug === slug && document.documentElement.dataset.articleQuizStart === slug) {
       delete document.documentElement.dataset.articleQuizStart;
       document.querySelector<HTMLButtonElement>("#article-quiz .quiz-engine__landing .quiz-engine__primary")?.click();
@@ -40,7 +41,8 @@ export function ArticleQuiz({ locale, slugs, translations }: {
         return response.json() as Promise<Quiz>;
       })
       .then(quiz => {
-        if (!controller.signal.aborted && quiz.slug === slug) setLoaded({ locale, slug, quiz });
+        if (quiz.slug !== slug) throw new Error("Quiz identity mismatch");
+        if (!controller.signal.aborted) setLoaded({ locale, slug, quiz });
       })
       .catch(() => {
         if (!controller.signal.aborted) delete document.documentElement.dataset.articleQuiz;

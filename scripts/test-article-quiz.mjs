@@ -44,10 +44,24 @@ try {
     return url.origin !== new URL(base).origin || (url.pathname.startsWith('/_next/') && url.pathname.endsWith('.js'))
       ? route.abort() : route.continue();
   });
-  await earlyPage.addInitScript(() => { Storage.prototype.setItem = () => { throw new Error('Storage unavailable'); }; });
+  await earlyPage.addInitScript(() => {
+    Storage.prototype.setItem = () => { throw new Error('Storage unavailable'); };
+    window.quizFirstPaint = null;
+    new PerformanceObserver(list => {
+      if (!list.getEntries().some(entry => entry.name === 'first-contentful-paint')) return;
+      const preview = document.querySelector('[data-article-quiz-preview="years-left"]');
+      window.quizFirstPaint = { selected: document.documentElement.dataset.articleQuiz,
+        visible: Boolean(preview?.getBoundingClientRect().height),
+        headerHidden: getComputedStyle(document.querySelector('.hub-header')).display === 'none' };
+    }).observe({ type: 'paint', buffered: true });
+  });
   await earlyPage.goto(`${base}/cloudstorage?q=years-left&fbclid=test`, { waitUntil: 'domcontentloaded' });
   assert.equal(await earlyPage.locator('[data-article-quiz-preview="years-left"] .quiz-engine__landing').isVisible(), true);
   assert.equal(await earlyPage.locator('.hub-header').isVisible(), false, 'fbclid hides header before hydration even when storage throws');
+  await earlyPage.waitForFunction(() => window.quizFirstPaint !== null);
+  assert.deepEqual(await earlyPage.evaluate(() => window.quizFirstPaint), { selected: 'years-left', visible: true, headerHidden: true });
+  const documentHtml = await (await earlyPage.request.get(`${base}/cloudstorage`)).text();
+  assert.ok(documentHtml.indexOf('id="article-quiz-first-paint"') < documentHtml.indexOf('<body'), 'quiz is selected in the head, before any body content is parsed');
   await earlyContext.close();
   console.log('Before application JavaScript: quiz landing already visible; fbclid header hidden even without storage.');
 
@@ -82,6 +96,15 @@ try {
       assert.equal(await page.locator('[data-embedded-quiz]').count(), 0);
     }
     assert.equal(payloads.length, 0, 'no query or invalid query loads no quiz payload');
+    let releaseNavigation;
+    const heldNavigation = new Promise(resolve => { releaseNavigation = resolve; });
+    await page.route('**/quiz-data/en/years-left.json', async route => { await heldNavigation; await route.continue(); });
+    await page.evaluate(() => window.history.pushState(null, '', '/cloudstorage?q=years-left'));
+    await page.locator('[data-article-quiz-preview="years-left"]').waitFor({ state: 'visible' });
+    assert.equal(await page.locator('[data-embedded-quiz="years-left"]').isVisible(), false, 'SPA navigation shows the initial landing without waiting for quiz data');
+    releaseNavigation();
+    await page.locator('[data-embedded-quiz="years-left"] .quiz-engine__landing').waitFor();
+    await page.unroute('**/quiz-data/en/years-left.json');
     let releasePayload;
     const heldPayload = new Promise(resolve => { releasePayload = resolve; });
     await page.route('**/quiz-data/en/years-left.json', async route => { await heldPayload; await route.continue(); });
