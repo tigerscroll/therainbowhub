@@ -55,8 +55,8 @@ try {
       if (await study.count()) await study.click();
       const shortScreen = await measureAnswers(page);
       for (const answer of shortScreen) {
-        assert.equal(answer.minimum, '72px', `${route}/${width}: answer minimum`);
-        assert.ok(answer.height >= 72 && answer.contentFits, `${route}/${width}: no clipped content`);
+        assert.equal(answer.minimum, '90px', `${route}/${width}: answer minimum`);
+        assert.ok(answer.height >= 90 && answer.contentFits, `${route}/${width}: no clipped content`);
       }
       await page.setViewportSize({ width, height: 1000 });
       assert.deepEqual(await measureAnswers(page), shortScreen, `${route}/${width}: spare viewport height must not stretch answers`);
@@ -83,11 +83,11 @@ try {
         }
         const continueButton = page.locator('.quiz-engine__checkpoint > .quiz-engine__primary');
         await continueButton.waitFor();
-        assert.equal(await continueButton.evaluate(button => getComputedStyle(button).minHeight), '72px', 'checkpoint CTA shares the same baseline');
+        assert.equal(await continueButton.evaluate(button => getComputedStyle(button).minHeight), '72px', 'checkpoint CTA keeps its original baseline');
         await page.setViewportSize({ width, height: 640 });
         assert.equal((await continueButton.boundingBox()).height, 72, 'short screens do not shrink checkpoint CTA');
       }
-      console.log(`${route} ${width}px: 72px controls, stable across screen heights, long text expands, full-screen shell preserved.`);
+      console.log(`${route} ${width}px: 90px answers, unchanged 72px CTAs, stable across screen heights, long text expands, full-screen shell preserved.`);
       await context.close();
     }
   }

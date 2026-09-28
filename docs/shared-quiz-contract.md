@@ -33,6 +33,10 @@ progress layout, checkpoint hierarchy, social-proof geometry or responsive
 breakpoints. Those are owned by `styles/quiz-shell-contract.css` and published
 as a content-hashed, immutable `/styles/quiz-shell-contract.<hash>.css` asset.
 
+Answer buttons have a 90px minimum height on mobile and desktop, with extra
+height only when their content needs it. Start and checkpoint CTAs retain their
+72px minimum. Taller viewports do not stretch the buttons.
+
 The manifest is the only owner of scoring, presentation, categories, stage
 membership and other mechanics. Locale JSON is keyed text only. Quiz themes
 receive their palette through manifest-backed `--quiz-*` variables and may not
@@ -62,7 +66,9 @@ before the user chooses. The tapped answer is highlighted while the gate is busy
 but that temporary selection is not scored or saved. No ad is
 requested on arrival; early closure leaves the question unanswered and allows
 another attempt. Completion/no-fill accepts the choice, and subsequent answers
-are unchanged. Saved in-progress attempts survive entry-mode changes.
+are unchanged. In the automatic flow, accepting that gated first answer and
+showing question two happen in the same update, without the normal answer delay
+after the ad closes. Saved in-progress attempts survive entry-mode changes.
 
 `QuizEngine` must remain slug-agnostic. Any subject-specific content belongs in
 the quiz data; any subject-specific visual identity belongs in its scoped theme.

@@ -12,6 +12,7 @@
 .quiz-theme[data-quiz-flow="continuous"] {
   --quiz-shell-action-width: 480px;
   --quiz-shell-action-height: 72px;
+  --quiz-shell-answer-height: 90px;
   --quiz-shell-action-radius: 14px;
   --quiz-shell-control-radius: 12px;
   --quiz-shell-border: 2px solid var(--quiz-text);
@@ -1096,7 +1097,7 @@
   animation: none !important;
 }
 
-/* The shell fills the screen, not its controls. Answers share the CTA's minimum
+/* The shell fills the screen, not its controls. Answers have their own minimum
    height and grow only for their content, including icons and translated text. */
 @media (max-width: 820px) {
   .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__flow-container > .quiz-engine__question-shell {
@@ -1118,7 +1119,7 @@
 .quiz-theme[data-quiz-theme][data-quiz-flow="continuous"] .quiz-engine__answers > .quiz-engine__answer {
   box-sizing: border-box;
   width: 100%;
-  min-height: var(--quiz-shell-action-height) !important;
+  min-height: var(--quiz-shell-answer-height) !important;
   height: auto !important;
   max-height: none !important;
   padding-block: 12px !important;
