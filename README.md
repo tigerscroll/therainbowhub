@@ -1,6 +1,6 @@
 # Rainbow Hub quiz engine
 
-The standard quiz is **10 themed rounds × 7 questions**. All quizzes use the same chapter layout, manual Next Question navigation, topic-profile checkpoints and final result screen. The supported languages are English, French, German, Italian, Dutch, Spanish, Portuguese and Arabic.
+The standard quiz is **10 themed rounds × 7 questions**. All quizzes use the same chapter layout, automatic question progression, topic-profile checkpoints and final result screen. The supported languages are English, French, German, Italian, Dutch, Spanish, Portuguese and Arabic.
 
 ## Add a quiz
 
@@ -45,7 +45,7 @@ The shared template supplies the flow, checkpoint layout, finite animations, red
 
 English buttons are `Start`, `Continue` and `See My Result`; the UI adds the arrows. Shared labels such as loading and restart live in `data/i18n/<locale>.json`. Topic titles, questions, result text and checkpoint copy belong in the quiz locale JSON.
 
-Every question uses one full-width Fluid `/22677279144/quiz_native_card` below the answers and above Next Question, starting on question one. Checkpoints show the same unit above Continue or the final result button. There is no top ad, fixed display unit, rewarded gate or interstitial. The question card stays mounted within a chapter. Next Question scrolls after the new question has rendered, then refreshes the existing card once the page settles at the top. Answer selection and ordinary scrolling do not refresh it. Newly mounted cards load once, and checkpoints remain in the same document. The final result sends the Meta custom event `QuizComplete`; ad interactions do not send quiz completion events. No-fill and blocked GPT collapse the card. Browser checks use mock ads and do not verify live inventory.
+Quizzes use rewarded ads only on `/22677279144/rewarded`: Start (or the first answer on a direct-entry quiz), chapter checkpoints, final result reveal and optional result breakdowns request a reward. There are no Fluid, display or interstitial placements. Selecting an answer automatically advances after the selection feedback, then scrolls to the top. Each checkpoint saves progress and reloads the document. Quiz answer and primary CTA buttons are 80px tall, growing only when text needs more space. Closing an ad early leaves the current step available to retry; bounded no-fill retries allow the quiz to continue when inventory is unavailable. `QuizComplete` fires only when the final result is revealed. Browser checks use mock ads and do not verify live inventory.
 
 ## Presentation and language
 

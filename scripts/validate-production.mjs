@@ -181,11 +181,11 @@ const rewardedGateText = fs.readFileSync(path.join(rootDir, "components", "exper
 const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz", "rewardedAds.ts"), "utf8");
 const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
 const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
-for (const declaration of ["QuestionDisplayAd", "onStart={startQuiz}", "onAnswer={answerQuestion}", 'data-quiz-next']) {
-  if (!quizEngineText.includes(declaration)) addError(`Display quiz contract is missing: ${declaration}`);
+for (const declaration of ["useRewardedGate", "onStart={startQuiz}", "onAnswer={answerQuestion}", "window.setTimeout(moveForward", "reloadAtCheckpoint"]) {
+  if (!quizEngineText.includes(declaration)) addError(`Rewarded quiz contract is missing: ${declaration}`);
 }
-if (/useRewardedGate|runRewardedGate|QuizNativeAd|mountQuizInterstitial|INTERSTITIAL|window\.location\.reload/.test(quizEngineText)) {
-  addError("Quizzes must use in-page ads with no rewarded gates, interstitials or checkpoint reloads.");
+if (/QuestionDisplayAd|QuizNativeAd|mountQuizInterstitial|INTERSTITIAL|data-quiz-next/.test(quizEngineText)) {
+  addError("Quizzes must use rewarded ads only and automatic question navigation, without in-page ads or interstitials.");
 }
 for (const source of [quizEngineText, experienceLandingText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText, rewardedGateText]) {
   if (/useQuizInterstitial|gamInterstitial|quizInterstitialAdUnitPath|writeQuizHistoryProgress/.test(source)) {
@@ -222,8 +222,8 @@ const requiredContinuousShellContract = [
   "--quiz-flow-width: var(--quiz-shell-container-width);",
   "--quiz-flow-min-height: clamp(590px, 82svh, 860px);",
   "--quiz-shell-action-width: 480px;",
-  "--quiz-shell-action-height: 72px;",
-  "--quiz-shell-answer-height: 90px;",
+  "--quiz-shell-action-height: 80px;",
+  "--quiz-shell-answer-height: 80px;",
   "--quiz-shell-action-radius: 14px;",
   "--quiz-shell-control-radius: 12px;",
   "--quiz-shell-border: 2px solid var(--quiz-text);",

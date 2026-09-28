@@ -19,17 +19,17 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("quizzes request only the Fluid native unit without rewarded or interstitial ads", () => {
+test("quizzes request only rewarded ads without native, display or interstitial placements", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
-  assert.doesNotMatch(engine, /QuizNativeAd|useRewardedGate|runRewardedGate|mountQuizInterstitial|INTERSTITIAL|nextQuestionHref|window\.location\.reload/);
+  assert.match(engine, /useRewardedGate/);
+  assert.match(engine, /if \(quiz\.engine\.rewarded\.start\) void runRewardedGate/);
+  assert.match(engine, /if \(quiz\.engine\.rewarded\.stages\) void runRewardedGate/);
+  assert.doesNotMatch(engine, /QuizNativeAd|QuestionDisplayAd|mountQuizInterstitial|INTERSTITIAL|nextQuestionHref|data-quiz-next/);
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
-  assert.doesNotMatch(config, /displayAdUnitPath/);
-  assert.match(config, /quizNativeAdUnitPath: "\/22677279144\/quiz_native_card"/);
-  const ad = fs.readFileSync("components/quiz/QuestionDisplayAd.tsx", "utf8");
-  assert.match(ad, /siteConfig\.quizNativeAdUnitPath/);
-  assert.match(ad, /\["fluid"\]/);
-  assert.doesNotMatch(engine, /placement="below-question"/);
-  assert.match(engine, /placement="above-continue"/);
+  assert.doesNotMatch(config, /displayAdUnitPath|quizNativeAdUnitPath/);
+  assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
+  const templates = fs.readFileSync("lib/quizzes.ts", "utf8").split("export type QuizTemplateId")[0];
+  assert.equal((templates.match(/rewarded: \{ start: true, stages: true, attempts: 3, confirmStart: false \}/g) ?? []).length, 5);
   for (const file of fs.readdirSync("data/i18n")) {
     if (!file.endsWith(".json")) continue;
     const copy = JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8"));
@@ -40,19 +40,18 @@ test("quizzes request only the Fluid native unit without rewarded or interstitia
 test("Mechanic retains its shared chapters and scoring", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
   assert.equal(manifest.template, "ten-stage-seven-question-v1");
-  assert.equal(manifest.engine.hardRefreshCheckpoints, false);
+  assert.equal(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(manifest.structure.stages.length, 10);
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("answers are selected before manual Next Question navigation", () => {
+test("answers proceed automatically and checkpoint reloads save progress first", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   const renderer = fs.readFileSync("components/quiz/QuestionRenderer.tsx", "utf8");
-  assert.doesNotMatch(source, /setTimeout\(moveForward|firstAnswerReward/);
+  assert.match(source, /window\.setTimeout\(moveForward/);
   assert.match(renderer, /<button/);
-  assert.match(source, /data-quiz-next/);
-  assert.match(source, /disabled=\{selectedAnswer === undefined\}/);
-  assert.match(source, /aria-disabled=\{selectedAnswer === undefined\}/);
+  assert.doesNotMatch(source, /data-quiz-next|quiz-engine__next-question/);
+  assert.match(source, /if \(!writeQuizProgress\(storageKey, JSON\.stringify\(saved\)\)\) return false;\s*window\.location\.reload\(\);/);
   assert.match(renderer, /"data-google-interstitial": "false"/);
 });
 
@@ -63,7 +62,7 @@ test("Meta QuizComplete is sent at the final result, never from an ad or answer 
   assert.match(completion, /if \(isFinalStage\) \{\s*setScreen\("results"\);\s*trackQuizComplete\(quiz, locale\);/);
   const answer = source.slice(source.indexOf("function answerQuestion("), source.indexOf("function completeStudy("));
   assert.doesNotMatch(answer, /fbq|trackQuizComplete|refresh|scrollToTop/);
-  assert.doesNotMatch(fs.readFileSync("components/quiz/displayAds.ts", "utf8"), /fbq|AdClick|QuizComplete/);
+  assert.doesNotMatch(fs.readFileSync("components/quiz/rewardedAds.ts", "utf8"), /AdClick|QuizComplete/);
 });
 
 test("only Years Left opts into the first-answer entry across its locales", () => {

@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
+import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { getStageCompletionPercentage } from "./engineState";
@@ -10,7 +11,6 @@ import { getQuizStorageKey, isProgressTimestampFresh, quizProgressSignaturesMatc
 import { QuestionMedia, QuestionRenderer } from "./QuestionRenderer";
 import { QuizText } from "./QuizText";
 import { QuizAbout } from "./QuizAbout";
-import { QuestionDisplayAd, type QuestionDisplayAdHandle } from "./QuestionDisplayAd";
 import { scrollQuizToTop } from "./scrollToTop";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
@@ -82,15 +82,17 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
 export function QuizEngine({ locale, quiz, recommendations, translations, onReady }: QuizEngineProps) {
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
+  const [pendingAnswer, setPendingAnswer] = useState<{ questionId: string; choiceIndex: number }>();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [completedStage, setCompletedStage] = useState(0);
   const [screen, setScreen] = useState<QuizScreen>(() => startsOnQuestion ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
   useLayoutEffect(() => { if (hydrated) onReady?.(); }, [hydrated, onReady]);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
+  const [rewardClosedSent, setRewardClosedSent] = useState(false);
+  const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
   const preloadedArtwork = useRef(new Set<string>());
-  const answersAd = useRef<QuestionDisplayAdHandle>(null);
   const cancelScroll = useRef<(() => void) | null>(null);
   useEffect(() => () => cancelScroll.current?.(), []);
   const progressSignature = useMemo(
@@ -138,9 +140,15 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     [quiz],
   );
   const storageKey = getQuizStorageKey(quiz.slug, locale);
+  const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
+    attempts: quiz.engine.rewarded.attempts,
+    onRewardClosed: () => setRewardClosedSent(true),
+    rewardClosedAlreadySent: rewardClosedSent,
+  });
   const currentQuestion = quiz.questions[questionIndex];
   const isChapterFlow = quiz.engine.flow.type === "staged" && quiz.stages.length === 10;
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
+  const firstAnswerReward = quiz.engine.startOnLoad && quiz.engine.rewarded.start && questionIndex === 0;
   const studyComplete = currentQuestion ? studiedQuestions.includes(currentQuestion.id) : true;
   const currentStage = currentQuestion?.stage ?? 0;
   const stageQuestions = quiz.questions.filter((question) => question.stage === currentStage);
@@ -158,6 +166,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         setQuestionIndex(saved.questionIndex);
         setCompletedStage(saved.completedStage);
         setScreen(saved.screen);
+        setRewardClosedSent(saved.rewardClosedSent ?? false);
+        setReviewUnlocked(saved.reviewUnlocked ?? false);
         setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
       } else if (stored) {
         removeQuizProgress(storageKey);
@@ -186,10 +196,12 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       completedStage,
       screen,
       studiedQuestions,
+      rewardClosedSent,
+      reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
     writeQuizProgress(storageKey, JSON.stringify(saved));
-  }, [answers, completedStage, hydrated, progressSignature, questionIndex, screen, storageKey, studiedQuestions]);
+  }, [answers, completedStage, hydrated, progressSignature, questionIndex, rewardClosedSent, reviewUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => {
     // Warm only the current and next visual interaction. Decoding the next
@@ -233,9 +245,39 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     cancelScroll.current = scrollQuizToTop(onTop);
   }
 
+  async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
+    await runGate(() => {
+      onComplete();
+      if (scrollAfter) scrollToTop();
+    }, { scrollAfter: false, retryOnClose: false });
+  }
+
+  function reloadAtCheckpoint(nextQuestionIndex: number, nextCompletedStage: number, nextScreen: "preparing" | "checkpoint") {
+    const saved: SavedProgress = {
+      version: STORAGE_VERSION,
+      signature: progressSignature,
+      answers: Object.fromEntries(quiz.questions.flatMap((question) => {
+        const selectedIndex = answers[question.id];
+        const answerId = selectedIndex === undefined ? undefined : question.choiceIds[selectedIndex];
+        return answerId ? [[question.id, answerId]] : [];
+      })),
+      questionIndex: nextQuestionIndex,
+      completedStage: nextCompletedStage,
+      screen: nextScreen,
+      studiedQuestions,
+      rewardClosedSent,
+      reviewUnlocked,
+      updatedAt: new Date().toISOString(),
+    };
+    if (!writeQuizProgress(storageKey, JSON.stringify(saved))) return false;
+    window.location.reload();
+    return true;
+  }
+
   function moveForward() {
     const nextIndex = questionIndex + 1;
     if (nextIndex >= quiz.questions.length) {
+      if (quiz.engine.hardRefreshCheckpoints && reloadAtCheckpoint(questionIndex, currentStage, "preparing")) return;
       setCompletedStage(currentStage);
       setScreen("preparing");
       scrollToTop();
@@ -244,19 +286,26 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
 
     const nextQuestion = quiz.questions[nextIndex];
     if (quiz.engine.flow.type === "staged" && nextQuestion.stage !== currentStage) {
+      if (quiz.engine.hardRefreshCheckpoints && reloadAtCheckpoint(nextIndex, currentStage, "checkpoint")) return;
       setQuestionIndex(nextIndex);
       setCompletedStage(currentStage);
       setScreen("checkpoint");
       scrollToTop();
     } else {
-      // Only refresh a placement that already exists. A newly revealed card
-      // gets its initial request without an immediate second request.
-      const mountedAd = answersAd.current;
       setQuestionIndex(nextIndex);
       setScreen("question");
-      scrollToTop(() => mountedAd?.refresh());
+      scrollToTop();
     }
   }
+
+  useEffect(() => {
+    if (screen !== "question" || selectedAnswer === undefined || quiz.engine.flow.advance !== "automatic") return;
+    const delay = currentQuestion.advanceDelayMs ?? quiz.engine.advanceDelayMs;
+    const timer = window.setTimeout(moveForward, quiz.engine.flow.feedback === "instant" ? 800 : delay);
+    return () => window.clearTimeout(timer);
+    // moveForward must retain the current answer and question for checkpoint saving.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedAnswer, screen, currentQuestion?.id, currentQuestion?.advanceDelayMs, quiz.engine.advanceDelayMs]);
 
   useEffect(() => {
     if (screen !== "preparing") return;
@@ -286,39 +335,66 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   }, [completedStage, quiz.stages.length, screen]);
 
   function answerQuestion(choiceIndex: number) {
-    if (!hydrated || !currentQuestion || selectedAnswer !== undefined) return false;
-    setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
+    if (!hydrated || adBusy || !currentQuestion || selectedAnswer !== undefined) return false;
+    const acceptAnswer = () => setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
+    if (firstAnswerReward) {
+      setPendingAnswer({ questionId: currentQuestion.id, choiceIndex });
+      void runRewardedGate(() => {
+        acceptAnswer();
+        setPendingAnswer(undefined);
+      }, false);
+    } else acceptAnswer();
     return true;
   }
 
   function completeStudy() {
     if (!currentQuestion?.study) return;
-    setStudiedQuestions((current) => current.includes(currentQuestion.id) ? current : [...current, currentQuestion.id]);
-    scrollToTop();
+    const complete = () => {
+      setStudiedQuestions((current) => current.includes(currentQuestion.id) ? current : [...current, currentQuestion.id]);
+      scrollToTop();
+    };
+    if (currentQuestion.study.rewarded) void runRewardedGate(complete);
+    else complete();
   }
 
   function startQuiz() {
-    setScreen("question");
-    scrollToTop();
+    const begin = () => {
+      setScreen("question");
+      scrollToTop();
+    };
+    if (quiz.engine.rewarded.start) void runRewardedGate(begin, false);
+    else begin();
   }
 
   function continueAfterCheckpoint() {
     const isFinalStage = completedStage >= quiz.stages.length - 1;
-    if (isFinalStage) {
-      setScreen("results");
-      trackQuizComplete(quiz, locale);
-    } else {
-      setScreen("question");
-    }
-    scrollToTop();
+    const next = () => {
+      if (isFinalStage) {
+        setScreen("results");
+        trackQuizComplete(quiz, locale);
+      } else {
+        setScreen("question");
+      }
+      scrollToTop();
+    };
+    if (quiz.engine.rewarded.stages) void runRewardedGate(next, false);
+    else next();
+  }
+
+  function unlockIncorrectAnswers() {
+    void runRewardedGate(() => setReviewUnlocked(true), false);
   }
 
   function restartQuiz() {
+    cancelGate();
     removeQuizProgress(storageKey);
     setAnswers({});
+    setPendingAnswer(undefined);
     setQuestionIndex(0);
     setCompletedStage(0);
     setStudiedQuestions([]);
+    setRewardClosedSent(false);
+    setReviewUnlocked(false);
     setScreen(startsOnQuestion ? "question" : "landing");
     scrollToTop();
   }
@@ -327,11 +403,12 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     return (
       <>
       <ExperienceLanding
+        adNote={quiz.engine.rewarded.start ? translations.ad.startNote : undefined}
         className={quiz.landing.compact ? "quiz-engine__landing--compact" : undefined}
         ctaIcon={quiz.landing.compact ? "→" : undefined}
         ctaIconPosition={quiz.landing.compact ? "end" : undefined}
         avatars={quiz.landing.socialAvatars}
-        busy={!hydrated}
+        busy={!hydrated || adBusy}
         busyLabel={translations.ad.loading}
         ctaLabel={translations.quiz.start}
         icon={quiz.cardIcon}
@@ -393,8 +470,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     const checkpointCtaContent = (
       <>
         {checkpoint?.buttonIcon ? <span aria-hidden="true" className="quiz-engine__primary-icon">{checkpoint.buttonIcon}</span> : null}
-        {careerStage.preAdButton ?? checkpointButton}
-        {(!isFinalStage || isChapterFlow) ? (
+        {adBusy ? translations.ad.loading : careerStage.preAdButton ?? checkpointButton}
+        {(!isFinalStage || isChapterFlow) && !adBusy ? (
           <span aria-hidden="true" className="quiz-engine__primary-arrow">
             <svg focusable="false" viewBox="0 0 24 24">
               <path d="M5 12h14M13 6l6 6-6 6" />
@@ -445,10 +522,15 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
             <small>{careerStage.next.tagline}</small>
           </div>
         ) : null}
-        {hydrated ? <QuestionDisplayAd label={translations.ad.advertisement} placement="above-continue" /> : null}
-        <button className="quiz-engine__primary" disabled={isFinalStage && !checkpointCtaReady} onClick={continueAfterCheckpoint} type="button">
+        <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
           {checkpointCtaContent}
         </button>
+        {quiz.engine.rewarded.stages ? (
+          <p className="quiz-engine__ad-note quiz-engine__checkpoint-ad-note">
+            <span aria-hidden="true">✓</span>
+            {isFinalStage ? translations.ad.resultsNote : translations.ad.continueNote}
+          </p>
+        ) : null}
       </section>
       <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
@@ -472,8 +554,17 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     const incorrectQuestions = supportsAnswerReview
       ? quiz.questions.filter((question) => answers[question.id] !== question.answerIndex)
       : [];
+    const reviewUnlockCopy = scoreCopy?.reviewUnlock;
     const estimateReviewUnlockCopy = estimate?.reviewUnlock;
     const detailedResults = supportsAnswerReview || Boolean(estimateReviewUnlockCopy);
+    const requiresReviewUnlock = Boolean(
+      supportsAnswerReview && !reviewUnlocked,
+    );
+    const requiresEstimateReviewUnlock = Boolean(
+      quiz.engine.scoring.type === "weighted-profile"
+      && estimateReviewUnlockCopy
+      && !reviewUnlocked,
+    );
     const estimateChoiceImpacts = quiz.engine.scoring.type === "weighted-profile" && quiz.engine.estimate
       ? quiz.questions.flatMap((question) => {
           const choiceIndex = answers[question.id];
@@ -515,7 +606,19 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
               )}
             </p>
             <p className="quiz-engine__result-copy">{result.profile.copy}</p>
-            <>
+            {!reviewUnlocked ? (
+              <section className="quiz-engine__answer-review-unlock">
+                <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
+                <span>{profileBreakdown?.eyebrow ?? translations.results.matchBreakdown.eyebrow}</span>
+                <h3>{profileBreakdown?.title ?? translations.results.matchBreakdown.title}</h3>
+                <p>{profileBreakdown?.copy ?? translations.results.matchBreakdown.copy}</p>
+                <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+                  {adBusy ? translations.ad.loading : profileBreakdown?.button ?? translations.results.matchBreakdown.button}
+                </button>
+                <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small>
+              </section>
+            ) : (
+              <>
                 <p className="quiz-engine__profile-chemistry"><span>{profileReveal.consistency}</span><strong>{revealConsistency}</strong></p>
                 <p className="quiz-engine__profile-traits" aria-label={profileReveal.traitsLabel}>
                   {result.profile.traits?.map((trait) => <span key={trait}>{trait}</span>)}
@@ -538,7 +641,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
                 {profileReveal.firstFeatureLabel && result.profile.firstFeature ? (
                   <p className="quiz-engine__profile-first-feature"><strong>{profileReveal.firstFeatureLabel}</strong> {result.profile.firstFeature}</p>
                 ) : null}
-            </>
+              </>
+            )}
             <p className="quiz-engine__disclaimer">{profileReveal.disclaimer}</p>
           </>
         ) : (
@@ -555,7 +659,18 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         {scoreCopy ? <p className="quiz-engine__result-fraction"><strong>{result.score} / {result.total}</strong> {scoreCopy.correctLabel}</p> : null}
         {scoreCopy && !hasDerivedScore ? <h3 className="quiz-engine__result-profile">{result.profile.title}</h3> : null}
         <p className="quiz-engine__result-copy">{result.profile.copy}</p>
-        {supportsAnswerReview ? (
+        {supportsAnswerReview && requiresReviewUnlock ? (
+          <section className="quiz-engine__answer-review-unlock">
+            <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
+            <span>{translations.results.fullBreakdown.eyebrow}</span>
+            <h3>{reviewUnlockCopy?.title ?? translations.results.fullBreakdown.title}</h3>
+            <p>{reviewUnlockCopy?.copy ?? translations.results.fullBreakdown.copy}</p>
+            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+              {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.fullBreakdown.button}
+            </button>
+            <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small>
+          </section>
+        ) : supportsAnswerReview && reviewUnlocked ? (
           <section className="quiz-engine__answer-review">
             <h3>{translations.quiz.answersToReview}</h3>
             {incorrectQuestions.length === 0 ? (
@@ -574,6 +689,22 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
                 ))}
               </div>
             )}
+          </section>
+        ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && requiresEstimateReviewUnlock ? (
+          <section className="quiz-engine__answer-review-unlock">
+            <div aria-hidden="true" className="quiz-engine__answer-review-lock">🔒</div>
+            <span>{estimateReviewUnlockCopy?.reviewTitle}</span>
+            <h3>{estimateReviewUnlockCopy?.title}</h3>
+            <p>{estimateReviewUnlockCopy?.copy}</p>
+            <button
+              className="quiz-engine__primary"
+              disabled={adBusy}
+              onClick={estimateReviewUnlockCopy?.rewarded === false ? () => setReviewUnlocked(true) : unlockIncorrectAnswers}
+              type="button"
+            >
+              {adBusy ? translations.ad.loading : estimateReviewUnlockCopy?.button}
+            </button>
+            {estimateReviewUnlockCopy?.rewarded !== false ? <small>{estimateReviewUnlockCopy?.adNote}</small> : null}
           </section>
         ) : detailedResults && quiz.engine.scoring.type === "weighted-profile" && estimateReviewUnlockCopy ? (
           <section className="quiz-engine__answer-review quiz-engine__answer-review--impact">
@@ -594,14 +725,14 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
             </div>
           </section>
         ) : null}
-        {estimate ? (
+        {estimate && (!detailedResults || reviewUnlocked) ? (
           <dl className="quiz-engine__result-signals">
             <div><dt>{estimate.strongestSignal}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{estimate.wildcard}</dt><dd>{result.wildcard}</dd></div>
             <div><dt>{estimate.consistency}</dt><dd>{consistency}</dd></div>
           </dl>
         ) : !estimate && !scoreCopy && !matchCopy ? <p className="quiz-engine__result-tier">{result.profile.tier}</p> : null}
-        {matchCopy ? (
+        {matchCopy && reviewUnlocked ? (
           <dl className="quiz-engine__result-signals quiz-engine__result-signals--match">
             <div><dt>{matchCopy.strongest}</dt><dd>{result.strongestSignal}</dd></div>
             <div><dt>{matchCopy.preferredStyle}</dt><dd>{result.preferredStyle}</dd></div>
@@ -620,7 +751,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
             <span>{translations.quiz.profile}</span>
           </div>
         </div> : null}
-        {Object.keys(result.dimensionScores).length ? (
+        {reviewUnlocked && Object.keys(result.dimensionScores).length ? (
           <div className={`quiz-engine__dimensions${detailedResults && scoreCopy ? " quiz-engine__dimensions--summary" : ""}`}>
             {detailedResults && resultInsights ? <h3>{resultInsights.breakdown}</h3> : null}
             {detailedResults && scoreCopy ? (
@@ -681,33 +812,23 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         {(!currentQuestion.study || studyComplete) ? <QuestionMedia question={currentQuestion} /> : null}
         <QuestionRenderer
           answer={selectedAnswer}
+          answerNoteId={firstAnswerReward && selectedAnswer === undefined ? "quiz-first-answer-note" : undefined}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
+          pendingAnswer={adBusy && pendingAnswer?.questionId === currentQuestion.id ? pendingAnswer.choiceIndex : undefined}
           question={currentQuestion}
-          studyBusy={!hydrated}
+          studyBusy={!hydrated || adBusy}
           studyBusyLabel={translations.ad.loading}
           studyComplete={studyComplete}
         />
-        {hydrated && (!currentQuestion.study || studyComplete) ? (
-          <QuestionDisplayAd label={translations.ad.advertisement} placement="below-answers" ref={answersAd} />
+        {firstAnswerReward && selectedAnswer === undefined ? (
+          <p aria-live="polite" className="quiz-engine__first-answer-note" id="quiz-first-answer-note">
+            {adBusy ? translations.ad.loading : translations.ad.continueNote}
+          </p>
         ) : null}
-        {quiz.engine.flow.advance === "manual" ? (
-          <button
-            aria-hidden={selectedAnswer === undefined || undefined}
-            aria-disabled={selectedAnswer === undefined}
-            className="quiz-engine__primary quiz-engine__next-question"
-            data-quiz-next
-            data-ready={selectedAnswer !== undefined}
-            disabled={selectedAnswer === undefined}
-            onClick={moveForward}
-            tabIndex={selectedAnswer === undefined ? -1 : undefined}
-            type="button"
-          >
-            {questionIndex === quiz.questions.length - 1 ? translations.results.viewResults : quiz.nextQuestionLabel ?? translations.quiz.nextQuestion}
-          </button>
-        ) : null}
+
       </article>
     </section>
     <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />

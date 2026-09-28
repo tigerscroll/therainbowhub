@@ -11,8 +11,8 @@
 
 .quiz-theme[data-quiz-flow="continuous"] {
   --quiz-shell-action-width: 480px;
-  --quiz-shell-action-height: 72px;
-  --quiz-shell-answer-height: 90px;
+  --quiz-shell-action-height: 80px;
+  --quiz-shell-answer-height: 80px;
   --quiz-shell-action-radius: 14px;
   --quiz-shell-control-radius: 12px;
   --quiz-shell-border: 2px solid var(--quiz-text);
@@ -317,54 +317,6 @@
   box-shadow: none !important;
 }
 
-.quiz-display-ad {
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  width: calc(100% + 2 * var(--quiz-shell-content-inset));
-  min-width: 0;
-  margin: 0 calc(-1 * var(--quiz-shell-content-inset)) 24px;
-  padding: 0;
-  border: 0;
-  text-align: center;
-}
-
-.quiz-display-ad[data-display-ad="below-answers"] {
-  margin-block: 24px 0;
-}
-
-.quiz-display-ad__slot {
-  display: flex;
-  width: 100%;
-  min-height: 280px;
-  justify-content: center;
-}
-
-.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot {
-  display: block;
-  min-height: 0;
-}
-
-.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot > div,
-.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot iframe {
-  max-width: 100%;
-  margin-inline: auto;
-}
-
-.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot iframe {
-  display: block;
-}
-
-/* Keep the row measurable while avoiding empty frames or clipped fixed ads. */
-.quiz-display-ad[data-fits="false"],
-.quiz-display-ad[data-state="empty"] {
-  height: 0;
-  margin-block: 0;
-  padding-block: 0;
-  overflow: hidden;
-  border: 0;
-  visibility: hidden;
-}
-
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell::before,
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell > .quiz-engine__question::before {
   display: none !important;
@@ -431,19 +383,6 @@
   border-radius: 18px !important;
   background: var(--quiz-flow-next-background, color-mix(in srgb, var(--quiz-primary) 6%, var(--quiz-surface-raised))) !important;
   box-shadow: none !important;
-}
-
-/* Let the ad own both gaps so neighbouring theme margins cannot unbalance it. */
-.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint > :has(+ .quiz-display-ad[data-display-ad="above-continue"][data-state="filled"]) {
-  margin-bottom: 0 !important;
-}
-
-.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint > .quiz-display-ad[data-display-ad="above-continue"][data-state="filled"] {
-  margin-block: 24px !important;
-}
-
-.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint > .quiz-display-ad[data-display-ad="above-continue"][data-state="filled"] + .quiz-engine__primary {
-  margin-top: 0 !important;
 }
 
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__primary,

@@ -14,8 +14,8 @@ production; the validators enforce the contract independently.
 - One manifest, one scoped theme and one worldwide-English content file per quiz: `quiz.json`, `theme.css` and `en.json`.
 - The manifest must declare `"template": "single-stage-rewarded-v1"`; shared flow, timing, checkpoint and rewarded settings may not be overridden per quiz.
 - Exactly one stage containing exactly ten strong, unique questions.
-- Shared selection-only engine with manual Next Question navigation.
-- Free Start, checkpoints and result reveal; Fluid cards appear on question and checkpoint screens.
+- Shared selection-only engine with automatic question progression.
+- Rewarded entry, checkpoints and result reveal; there are no in-page ad placements.
 - One persistent continuous shell for landing, questions, checkpoints and results.
 - No intermediate checkpoints or scores.
 - One three-row result checklist after question ten.
@@ -56,26 +56,21 @@ The active site publishes quizzes and standard information pages only. Article
 wrappers, article payload routes, and article-specific display/rewarded ads are
 retired. Quizzes retain the original themed shell and use the shared display placements.
 
-Every quiz and locale uses a single `/22677279144/quiz_native_card` with Fluid
-sizing in a full-width row below the answers, above Next Question, from question
-one onward. Checkpoints show the same unit above Continue or the final result
-button. There is no top ad or `/display` request.
-Selecting an answer does not advance or refresh ads. Next Question is a button
-that changes quiz content without reloading or changing the URL. Scrolling starts
-after the new question has rendered. The existing card refreshes once the page
-settles at the top. Newly mounted cards load once without a duplicate refresh.
-An interrupted navigation cancels its pending refresh. Ordinary scrolling has no
-ad trigger. There are no interstitial requests or timed refreshes. The final result
-sends the Meta custom event `QuizComplete`, never `AdClick`.
-The card persists across questions using its existing GPT slot. Leaving a
-question or checkpoint screen destroys only that screen's slot. Landing, results
-and information pages have no cards. Saved progress restores before ads mount.
-No-fill and blocked GPT collapse the row. Fluid sizing fits narrow viewports.
+Every quiz and locale uses rewarded ads only on `/22677279144/rewarded`.
+Start, chapter Continue, final result reveal and optional result breakdowns use
+the shared rewarded gate. A direct-entry quiz uses its first answer as the entry
+gate and shows the ad notice beside that interaction. There are no Fluid, display
+or interstitial placements and no timer-based refreshes.
 
-Start, study cues, checkpoints and all result breakdowns are free of rewarded
-ads. Checkpoints and Continue
-stay client-side without document reloads. The optional first-answer entry
-setting still opens directly on question one, without requesting a reward.
+Selecting an answer automatically advances after the selection feedback. Scrolling
+starts after the new question renders. Every checkpoint saves the completed
+answers and next screen before reloading the document. If storage is unavailable,
+it continues in memory. Saved progress restores before ads can be requested.
+Answer and primary CTA buttons have an 80px minimum height and grow for long text.
+Closing an ad early leaves the current step available for another attempt.
+Unavailable inventory uses bounded retries, then permits progress. The final
+result sends the Meta custom event `QuizComplete`, never `AdClick`; rewarded
+completion itself does not send `QuizComplete`.
 
 `QuizEngine` must remain slug-agnostic. Any subject-specific content belongs in
 the quiz data; any subject-specific visual identity belongs in its scoped theme.

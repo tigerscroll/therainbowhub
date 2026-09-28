@@ -35,7 +35,7 @@ const answerIds = ["a1", "a2", "a3", "a4"];
 const manifest = {
   schemaVersion: 2,
   slug,
-  engine: { scoring: "correct-answer", hardRefreshCheckpoints: false, localeParity: "independent", targetRatio: 0.8, tieBreaks: { categories: "harder-correct", bestRound: "later" } },
+  engine: { scoring: "correct-answer", hardRefreshCheckpoints: true, localeParity: "independent", targetRatio: 0.8, tieBreaks: { categories: "harder-correct", bestRound: "later" } },
   listing: { thumbnail: "assets/thumbnail.png", published: new Date().toISOString().slice(0, 10), difficulty: "Hard", icon, socialProofCount, compactLanding: true, showSocialProof: false },
   theme: {
     id: slug, preset: "editorial", layout: { landing: "split", questions: "card", results: "immersive" },
