@@ -342,6 +342,9 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       void runRewardedGate(() => {
         acceptAnswer();
         setPendingAnswer(undefined);
+        // Commit the next question with the answer before the completed ad's
+        // first uncovered frame, without the normal answer-feedback delay.
+        if (quiz.engine.flow.advance === "automatic") moveForward();
       }, false);
     } else acceptAnswer();
     return true;
