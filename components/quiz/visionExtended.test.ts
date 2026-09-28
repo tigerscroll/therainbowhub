@@ -104,7 +104,7 @@ test('Vision spatial answer keys follow the displayed geometry', () => {
   assert.equal(Number(answer('vision-s8q5')), inBoth.length);
 });
 
-test('Vision memory cues are self-paced, ad-free and match their answer keys', () => {
+test('Vision memory cues are self-paced, add no rewarded gate and match their answer keys', () => {
   const cues = questions.filter((question: any) => question.study);
   assert.equal(cues.length, 8);
   for (const question of cues) {
