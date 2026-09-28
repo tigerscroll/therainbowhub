@@ -119,6 +119,10 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
+export function QuestionMedia({ question }: { question: QuizQuestion }) {
+  return <><QuestionImage question={question} /><QuestionVisual question={question} /></>;
+}
+
 function ChoiceQuestion({ answer, answerLabels, answerNoteId, feedback, onAnswer, pendingAnswer, question, studyBusy }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
@@ -126,8 +130,6 @@ function ChoiceQuestion({ answer, answerLabels, answerNoteId, feedback, onAnswer
 
   return (
     <>
-      <QuestionImage question={question} />
-      <QuestionVisual question={question} />
       <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}${hasLongUnbrokenChoice ? " quiz-engine__answers--long-word" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
         {question.choices.map((choice, index) => {
           const pending = pendingAnswer === index;
@@ -152,6 +154,7 @@ function ChoiceQuestion({ answer, answerLabels, answerNoteId, feedback, onAnswer
             </>
           );
           const sharedProps = {
+            "data-google-interstitial": "false",
             "aria-checked": question.presentation === "scale" ? selected : undefined,
             className: "quiz-engine__answer",
             "data-answer-id": question.choiceIds[index],
@@ -221,12 +224,6 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
           <button className="quiz-engine__primary" disabled={studyBusy} onClick={onStudyComplete} type="button">
             {studyBusy ? studyBusyLabel : study.continueLabel}
           </button>
-          {study.rewarded && study.adNote ? (
-            <p className="quiz-engine__ad-note quiz-engine__study-ad-note">
-              <span aria-hidden="true">✓</span>
-              {study.adNote}
-            </p>
-          ) : null}
         </>
       ) : !started ? (
         <button className="quiz-engine__primary quiz-engine__study-ready" onClick={() => setStarted(true)} type="button">

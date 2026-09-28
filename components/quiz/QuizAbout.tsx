@@ -13,7 +13,7 @@ export function QuizAbout({ label, onRestart, quiz, title }: QuizAboutProps) {
   const aboutParagraphs = quiz.footer.aboutText.split(/\n\s*\n/).filter(Boolean);
 
   return (
-    <aside className="quiz-engine__about">
+    <aside className="quiz-engine__about" data-google-interstitial="false">
       <h2>{title}</h2>
       {topicParagraphs.map((paragraph, index) => <p key={`topic-${index}`}>{paragraph}</p>)}
       {quiz.footer.howToPlay ? (

@@ -19,32 +19,20 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("the only in-page ad is the shared Fluid native card, not the retired display flow", () => {
-  assert.equal(fs.existsSync("components/quiz/QuestionDisplayAd.tsx"), false);
-  for (const directory of ["components", "lib", "app"]) {
-    for (const path of fs.readdirSync(directory, { recursive: true })) {
-      if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      const file = `${directory}/${path}`;
-      const source = fs.readFileSync(file, "utf8");
-      assert.doesNotMatch(source, /mountDisplayAd|QuestionDisplayAd|data-display-ad|displayAdUnitPath/, file);
-      if (file !== "components/quiz/nativeAds.ts") assert.doesNotMatch(source, /\.defineSlot(?:\?\.)?\s*\(/, file);
-    }
-  }
-  const native = fs.readFileSync("components/quiz/nativeAds.ts", "utf8");
-  assert.match(native, /defineSlot\(adUnitPath, \["fluid"\], element\.id\)/);
-  assert.doesNotMatch(native, /\.refresh\(|setInterval|setConfig|updateCorrelator/);
+test("quizzes use display slots and never request native or rewarded ads", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
-  assert.equal(engine.match(/<QuizNativeAd /g)?.length, 1);
-  assert.ok(engine.indexOf("<QuizNativeAd ") > engine.indexOf("<QuestionRenderer"));
-  assert.match(engine, /hydrated \? <QuizNativeAd label=\{translations\.ad\.advertisement\}/);
-  const card = fs.readFileSync("components/quiz/QuizNativeAd.tsx", "utf8");
-  assert.doesNotMatch(card, /questionIndex|questionId|setInterval|refresh/);
+  assert.doesNotMatch(engine, /QuizNativeAd|useRewardedGate|runRewardedGate|window\.location\.reload/);
+  const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
+  assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
+  assert.doesNotMatch(config, /quizNativeAdUnitPath/);
   for (const file of fs.readdirSync("data/i18n")) {
     if (!file.endsWith(".json")) continue;
-    assert.ok(JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8")).ad.advertisement.trim(), file);
+    const copy = JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8"));
+    assert.ok(copy.ad.advertisement.trim(), file);
+    assert.ok(copy.quiz.nextQuestion.trim(), file);
   }
 });
-test("Mechanic retains the automatic flow and rewarded gates", () => {
+test("Mechanic retains its shared chapters and scoring", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
   assert.equal(manifest.template, "ten-stage-seven-question-v1");
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
@@ -52,34 +40,14 @@ test("Mechanic retains the automatic flow and rewarded gates", () => {
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("quiz gates use the rewarded placement without an article ad unit", () => {
-  const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
-  assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
-  assert.match(config, /quizNativeAdUnitPath: "\/22677279144\/quiz_native_card"/);
-  assert.doesNotMatch(config, /quizInterstitialAdUnitPath|articleDisplayAdUnitPath|\/22677279144\/display/);
-  const quizGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
-  assert.match(quizGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
-  assert.equal(fs.existsSync("components/article/ArticleUnlock.tsx"), false);
-  assert.equal(fs.existsSync("components/article/ArticleDisplayAd.tsx"), false);
-});
-test("answers remain buttons; only an opted-in first-answer entry can request a reward", () => {
+test("answers are selected before manual Next Question navigation", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   const renderer = fs.readFileSync("components/quiz/QuestionRenderer.tsx", "utf8");
-  assert.match(source, /window.setTimeout\(moveForward/);
+  assert.doesNotMatch(source, /setTimeout\(moveForward|firstAnswerReward/);
   assert.match(renderer, /<button/);
-  assert.match(renderer, /disabled=\{studyBusy \|\| answer !== undefined\}/);
-  assert.doesNotMatch(renderer, /answerHref|data-quiz-interstitial|followAnswer/);
-  const answerHandler = source.slice(source.indexOf("function answerQuestion("), source.indexOf("function completeStudy("));
-  assert.doesNotMatch(answerHandler, /window\.location|pushState/);
-  assert.match(source, /const firstAnswerReward = quiz\.engine\.startOnLoad && quiz\.engine\.rewarded\.start && questionIndex === 0/);
-  assert.match(answerHandler, /if \(firstAnswerReward\) \{\s*setPendingAnswer\([\s\S]*?void runGate\(\(\) => \{\s*acceptAnswer\(\);\s*setPendingAnswer\(undefined\);\s*if \(quiz\.engine\.flow\.advance === "automatic"\) moveForward\(\);\s*\}, \{ scrollAfter: false, retryOnClose: false \}\);/);
-  assert.doesNotMatch(answerHandler, /setTimeout/, 'first-answer reward completion has no additional answer delay');
-  assert.match(answerHandler, /else acceptAnswer\(\)/);
-  assert.match(source, /translations\.ad\.continueNote/);
-  assert.match(renderer, /aria-describedby=\{answerNoteId\}/);
-  assert.match(renderer, /const selected = answer === index \|\| pending/);
-  assert.match(renderer, /"data-pending": pending \|\| undefined/);
-  assert.ok(source.lastIndexOf('id="quiz-first-answer-note"') > source.lastIndexOf('<QuestionRenderer'), 'ad note follows answers');
+  assert.match(source, /data-quiz-next/);
+  assert.match(source, /aria-disabled=\{selectedAnswer === undefined\}/);
+  assert.match(renderer, /"data-google-interstitial": "false"/);
 });
 
 test("only Years Left opts into the first-answer entry across its locales", () => {
@@ -97,20 +65,6 @@ test("only Years Left opts into the first-answer entry across its locales", () =
     const translations = JSON.parse(fs.readFileSync(`data/i18n/${locale}.json`, "utf8"));
     assert.equal(typeof translations.ad.continueNote, "string");
     assert.ok(translations.ad.continueNote.trim().length > 0, locale);
-  }
-});
-test("Start, checkpoints and result breakdowns restore rewarded gates; interstitials are removed", () => {
-  const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
-  assert.match(engine, /useRewardedGate/);
-  assert.match(engine, /runRewardedGate\(beginQuiz\)/);
-  assert.match(engine, /runRewardedGate\(next\)/);
-  assert.match(engine, /runRewardedGate\(\(\) => setReviewUnlocked\(true\)/);
-  assert.equal(fs.existsSync("components/quiz/QuizInterstitial.tsx"), false);
-  for (const directory of ["components", "lib", "app"]) {
-    for (const path of fs.readdirSync(directory, { recursive: true })) {
-      if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /INTERSTITIAL|useQuizInterstitial|data-quiz-interstitial/, `${directory}/${path}`);
-    }
   }
 });
 test("Years Left keeps each choice's score and calibration regardless of answer order", () => {

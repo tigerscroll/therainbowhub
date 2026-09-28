@@ -20,7 +20,7 @@ export function HeaderChrome({ homePath, languageOptions, locale, translations }
   const currentLanguage = languageOptions.find((option) => option.code === locale) ?? languageOptions[0];
 
   return (
-    <header className="hub-header">
+    <header className="hub-header" data-google-interstitial="false">
       <div className="hub-header__inner">
         <Link className="hub-brand" href={homePath} prefetch={false}>
           <span aria-hidden="true" className="hub-brand__mark">

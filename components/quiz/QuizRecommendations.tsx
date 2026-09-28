@@ -25,7 +25,7 @@ function RecommendationCard({ recommendation }: { recommendation: QuizRecommenda
 
 export function QuizRecommendations({ labels, recommendations }: { labels: QuizRecommendationLabels; recommendations: QuizRecommendation[] }) {
   return (
-    <section className="quiz-engine__recommendations" aria-label={labels.label}>
+    <section className="quiz-engine__recommendations" aria-label={labels.label} data-google-interstitial="false">
       <header>
         <span>{labels.eyebrow}</span>
         <h3>{labels.title}</h3>

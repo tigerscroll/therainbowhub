@@ -16,7 +16,7 @@ type FooterChromeProps = {
 
 export function FooterChrome({ companyLinks, homePath, legalLinks, translations }: FooterChromeProps) {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" data-google-interstitial="false">
       <div className="site-footer__inner">
         <div className="site-footer__top">
           <div className="site-footer__brand">

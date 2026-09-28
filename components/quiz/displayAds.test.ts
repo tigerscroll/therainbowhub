@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { mountNativeAd } from "./nativeAds.ts";
+import { mountDisplayAd } from "./displayAds.ts";
 import type { GoogleTag, GptEvent, GptSlot } from "./gpt.ts";
 
 function setup({ ready = false, noFill = false, throwOnDisplay = false } = {}) {
@@ -35,19 +35,19 @@ function setup({ ready = false, noFill = false, throwOnDisplay = false } = {}) {
     destroySlots(values) { destroyed.push(values); },
   };
   Object.defineProperty(globalThis, "window", { configurable: true, value: { googletag } });
-  const element = { id: "native-test", isConnected: true } as HTMLElement;
-  const mount = () => mountNativeAd(element, "/22677279144/quiz_native_card", value => filled.push(value));
+  const element = { id: "display-test", isConnected: true } as HTMLElement;
+  const mount = () => mountDisplayAd(element, "/22677279144/display", value => filled.push(value));
   const emit = (event: GptEvent) => listeners.forEach(listener => listener(event));
   const flush = async () => { await Promise.resolve(); commands.splice(0).forEach(command => command()); };
   return { mount, flush, emit, requests, displayed, destroyed, filled, slot, listeners, element, commands, get enableCalls() { return enableCalls; } };
 }
 
-test("a native card uses the exact unit with only Fluid sizing and one display request", async () => {
+test("a display placement uses the exact unit with only 336×280 sizing and one display request", async () => {
   const env = setup();
   const cleanup = env.mount();
   assert.equal(env.requests.length, 0, "wait for GPT's command queue");
   await env.flush();
-  assert.deepEqual(env.requests, [["/22677279144/quiz_native_card", ["fluid"], "native-test"]]);
+  assert.deepEqual(env.requests, [["/22677279144/display", [[336, 280]], "display-test"]]);
   assert.deepEqual(env.displayed, [env.slot]);
   assert.equal(env.enableCalls, 1);
   env.emit({ slot: env.slot, isEmpty: false });
@@ -57,7 +57,7 @@ test("a native card uses the exact unit with only Fluid sizing and one display r
   assert.equal(env.listeners.size, 0);
 });
 
-test("native events and cleanup never affect a rewarded or other placement", async () => {
+test("display events and cleanup never affect a rewarded or other placement", async () => {
   const env = setup({ ready: true });
   const cleanup = env.mount();
   await env.flush();
@@ -97,7 +97,7 @@ test("Strict Mode cleanup cancels the first effect before it can create an impre
   cleanup();
 });
 
-test("leaving the question before GPT loads cancels queued native work", async () => {
+test("leaving the question before GPT loads cancels queued display work", async () => {
   const env = setup();
   const cleanup = env.mount();
   await Promise.resolve();

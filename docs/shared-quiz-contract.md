@@ -14,13 +14,13 @@ production; the validators enforce the contract independently.
 - One manifest, one scoped theme and one worldwide-English content file per quiz: `quiz.json`, `theme.css` and `en.json`.
 - The manifest must declare `"template": "single-stage-rewarded-v1"`; shared flow, timing, checkpoint and rewarded settings may not be overridden per quiz.
 - Exactly one stage containing exactly ten strong, unique questions.
-- Shared linear, automatic, selection-only engine with a 450ms transition.
-- Rewarded Start and one rewarded final-result reveal with three unavailable-ad attempts.
+- Shared selection-only engine with manual Next Question navigation.
+- Free Start, checkpoints and result reveal; display ads appear only on question screens.
 - One persistent continuous shell for landing, questions, checkpoints and results.
 - No intermediate checkpoints or scores.
 - One three-row result checklist after question ten.
 - Free incorrect-answer review and no question explanations.
-- No per-quiz display-ad flow variants; the shared native placement below applies to every question screen.
+- No per-quiz advertising variants; the display placements below apply to every quiz.
 - Standard split landing, card questions and immersive results.
 - Standard landing content: intro and configurable CTA only. Each quiz stores one stable `listing.socialProofCount`; the locale-specific social-proof sentence comes exclusively from `data/i18n/{locale}.json` via `quiz.socialProofTaken`.
 - No landing artwork panel.
@@ -54,40 +54,21 @@ intentional, reviewed visual change.
 
 The active site publishes quizzes and standard information pages only. Article
 wrappers, article payload routes, and article-specific display/rewarded ads are
-retired. Quizzes retain the original themed shell and rewarded placement.
+retired. Quizzes retain the original themed shell and use the shared display placements.
 
-Every quiz and locale shares one in-page native card beneath the question/answer
-content, inside the quiz shell. It uses `/22677279144/quiz_native_card` with
-Fluid sizing: full available content width, creative-controlled height. It is
-separated from answer controls and labelled in the current language. The card
-persists across question changes (including memory study cues) without timed or
-per-answer refreshes. Leaving questions destroys only that native slot. Returning
-from a checkpoint mounts a new card; landing, checkpoint, result, home and info
-screens have none. The slot mounts only after saved progress has been restored,
-so a restored checkpoint cannot briefly request an ad. No-fill or blocked GPT
-leaves no empty ad frame and never gates answers. Rewarded ads continue to use
-`/22677279144/rewarded` independently.
+Every quiz and locale uses `/22677279144/display`, requesting only 336×280.
+The first question shows a full-width ad row below the question content. From
+question two onward a second row appears below the answers, above Next Question.
+Selecting an answer does not advance or trigger an interstitial. Next Question is a real link styled as a button; it updates the URL and quiz content without reloading. GPT manages the web interstitial on `/22677279144/display`. Every optional trigger is disabled, and answer controls, header, footer, about and recommendation links opt out. One interstitial slot persists for the quiz session; GPT controls fill and frequency.
+Slots persist across questions without timed or per-answer refreshes. Leaving
+the question screen destroys only these slots. Landing, checkpoint, results and
+information pages have no display slots. Saved progress restores before ads mount.
+No-fill and blocked GPT collapse the rows; widths below 336px skip requests.
 
-An optional manifest setting, `engine.entry: "first-answer"`, opens directly
-on the first question and moves the existing Start reward to the first answer.
-Only Years Left currently enables it, in all its supported locales. Each question
-has three choices. The first question's translated header label identifies the
-test in a compact themed hourglass badge; later questions keep their chapter
-labels. The small, muted notice below the choices explains the ad
-before the user chooses. The tapped answer is highlighted while the gate is busy,
-but that temporary selection is not scored or saved. No rewarded ad is
-requested on arrival; early closure leaves the question unanswered and allows
-another attempt. Completion/no-fill accepts the choice, and subsequent answers
-are unchanged. In the automatic flow, accepting that gated first answer and
-showing question two happen in the same update, without the normal answer delay
-after the ad closes. Saved in-progress attempts survive entry-mode changes.
-
-Years Left enables `engine.hardRefreshCheckpoints`: after the last answer of
-each chapter, progress is saved and the document reloads into that checkpoint
-(including the final result gate). Questions within a chapter and the rewarded
-Continue action remain client-side. Checkpoint arrival does not request an ad.
-If browser storage cannot save progress, the engine continues without reloading
-so answers are not lost. Other quizzes retain their existing no-reload flow.
+Start, study cues, checkpoints and all result breakdowns are free of rewarded
+ads. There is no native card in the live quiz flow. Checkpoints and Continue
+stay client-side without document reloads. The optional first-answer entry
+setting still opens directly on question one, without requesting a reward.
 
 `QuizEngine` must remain slug-agnostic. Any subject-specific content belongs in
 the quiz data; any subject-specific visual identity belongs in its scoped theme.

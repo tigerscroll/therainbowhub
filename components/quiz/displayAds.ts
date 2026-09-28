@@ -1,6 +1,6 @@
 import type { GoogleTag, GptEvent, GptSlot, PubAds } from "./gpt";
 
-export function mountNativeAd(
+export function mountDisplayAd(
   element: HTMLElement,
   adUnitPath: string,
   onRender: (filled: boolean) => void,
@@ -9,10 +9,20 @@ export function mountNativeAd(
   let googletag: GoogleTag | undefined;
   let pubads: PubAds | undefined;
   let slot: GptSlot | null = null;
+  const timeout = setTimeout(() => {
+    if (disposed) return;
+    onRender(false);
+    disposed = true;
+    release();
+  }, 8000);
   const onRenderEnded = (event: GptEvent) => {
-    if (!disposed && slot && event.slot === slot) onRender(event.isEmpty === false);
+    if (!disposed && slot && event.slot === slot) {
+      clearTimeout(timeout);
+      onRender(event.isEmpty === false);
+    }
   };
   const release = () => {
+    clearTimeout(timeout);
     try { pubads?.removeEventListener?.("slotRenderEnded", onRenderEnded); } catch { /* Best-effort cleanup. */ }
     if (slot) {
       try { googletag?.destroySlots?.([slot]); } catch { /* Never destroy another placement. */ }
@@ -29,11 +39,13 @@ export function mountNativeAd(
       googletag = window.googletag;
       try {
         if (!googletag?.defineSlot || !googletag.pubads || !googletag.display) {
+          release();
           onRender(false);
           return;
         }
-        slot = googletag.defineSlot(adUnitPath, ["fluid"], element.id);
+        slot = googletag.defineSlot(adUnitPath, [[336, 280]], element.id);
         if (!slot) {
+          release();
           onRender(false);
           return;
         }

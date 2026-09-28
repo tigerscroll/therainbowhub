@@ -9,13 +9,13 @@ import {scoreQuiz} from './scoring.ts';
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, 'utf8'));
 const englishManifest = () => resolveQuizLocaleManifest(read('quiz'), 'en');
 
-test('English Years Left has ten distinct ten-question chapters and a rewarded checkpoint after each', () => {
+test('English Years Left has ten distinct ten-question chapters and a checkpoint after each', () => {
   const manifest = englishManifest();
   const copy = read('en');
   const quiz = expandQuizLocale(manifest, copy, 'en');
   assert.equal(manifest.template, 'ten-stage-ten-question-v1');
   assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
-  assert.equal(manifest.engine.hardRefreshCheckpoints, true);
+  assert.equal(manifest.engine.hardRefreshCheckpoints, false);
   assert.equal(quiz.stages.length, 10);
   assert.deepEqual(quiz.stages.map((stage: {questions: unknown[]}) => stage.questions.length), Array(10).fill(10));
   const questions = quiz.stages.flatMap((stage: {questions: {id: string; question: string; answers: Record<string, string>}[]}) => stage.questions);
@@ -90,7 +90,7 @@ test('every supported Years Left locale has three aligned choices per question',
   const source = read('quiz');
   for (const locale of source.activeLocales) {
     const manifest = resolveQuizLocaleManifest(source, locale);
-    assert.equal(manifest.engine.hardRefreshCheckpoints, true, `${locale}: reload before checkpoints`);
+    assert.equal(manifest.engine.hardRefreshCheckpoints, false, `${locale}: keep checkpoints in the same document`);
     const copy = read(locale);
     const firstHeader = copy.stages['stage-1'].questions['yl-s1q1'].headerLabel;
     assert.ok(firstHeader.trim(), `${locale}: first-screen identity`);

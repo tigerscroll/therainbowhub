@@ -1,5 +1,6 @@
 export type GptSlot = {
   addService(service: unknown): GptSlot;
+  setConfig?: (config: { interstitial: { triggers: Record<string, boolean> } }) => GptSlot;
 };
 
 export type GptEvent = {
@@ -22,7 +23,7 @@ export type GoogleTag = {
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
+  enums?: { OutOfPageFormat?: { REWARDED?: unknown; INTERSTITIAL?: unknown } };
   pubads?: () => PubAds;
   pubadsReady?: boolean;
 };

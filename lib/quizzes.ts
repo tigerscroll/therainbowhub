@@ -36,9 +36,9 @@ const QUIZ_TEMPLATE_CONTRACTS = {
     questionsPerStage: 10,
     levels: ["foundation", "foundation", "developing", "developing", "skilled", "skilled", "advanced", "advanced", "advanced", "final"],
     engine: {
-      flow: "staged", advance: "automatic", feedback: "selection-only", checkpoint: "ai",
+      flow: "staged", advance: "manual", feedback: "selection-only", checkpoint: "ai",
       startOnLoad: false,
-      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      rewarded: { start: false, stages: false, attempts: 3, confirmStart: false },
       advanceDelayMs: 450,
     },
   },
@@ -47,9 +47,9 @@ const QUIZ_TEMPLATE_CONTRACTS = {
     questionsPerStage: 6,
     levels: ["foundation", "developing", "skilled", "advanced", "final"],
     engine: {
-      flow: "staged", advance: "automatic", feedback: "selection-only", checkpoint: "ai",
+      flow: "staged", advance: "manual", feedback: "selection-only", checkpoint: "ai",
       startOnLoad: false,
-      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      rewarded: { start: false, stages: false, attempts: 3, confirmStart: false },
       advanceDelayMs: 450,
     },
   },
@@ -59,11 +59,11 @@ const QUIZ_TEMPLATE_CONTRACTS = {
     levels: ["final"],
     engine: {
       flow: "linear",
-      advance: "automatic",
+      advance: "manual",
       feedback: "selection-only",
       checkpoint: "ai",
       startOnLoad: false,
-      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      rewarded: { start: false, stages: false, attempts: 3, confirmStart: false },
       advanceDelayMs: 450,
     },
   },
@@ -73,11 +73,11 @@ const QUIZ_TEMPLATE_CONTRACTS = {
     levels: ["foundation", "foundation", "developing", "developing", "skilled", "skilled", "advanced", "advanced", "advanced", "final"],
     engine: {
       flow: "staged",
-      advance: "automatic",
+      advance: "manual",
       feedback: "selection-only",
       checkpoint: "ai",
       startOnLoad: false,
-      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      rewarded: { start: false, stages: false, attempts: 3, confirmStart: false },
       advanceDelayMs: 450,
     },
   },
@@ -87,11 +87,11 @@ const QUIZ_TEMPLATE_CONTRACTS = {
     levels: ["foundation", "developing", "skilled", "advanced", "final"],
     engine: {
       flow: "staged",
-      advance: "automatic",
+      advance: "manual",
       feedback: "selection-only",
       checkpoint: "ai",
       startOnLoad: false,
-      rewarded: { start: true, stages: true, attempts: 3, confirmStart: false },
+      rewarded: { start: false, stages: false, attempts: 3, confirmStart: false },
       advanceDelayMs: 450,
     },
   },
@@ -1367,7 +1367,6 @@ function normalizeLocale(
         if (stage.next.copy !== undefined) text(stage.next.copy, `career.stages[${index}].next.copy`, file);
       }
     });
-    if (!manifest.engine.rewarded?.stages) throw new Error(`${file}: checkpoint mode requires the shared rewarded template.`);
   }
 
   const questions: QuizQuestion[] = [];

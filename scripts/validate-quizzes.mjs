@@ -312,11 +312,11 @@ for (const folder of folders) {
   fail(templateKeys.every((key) => manifestEngine[key] === undefined), `${folder.name}: shared flow settings must come from the template, not individual manifests.`);
   config.engine = {
     flow: templateContract.flow,
-    advance: templateContract.advance ?? "automatic",
+    advance: templateContract.advance ?? "manual",
     feedback: "selection-only",
     checkpoint: "ai",
     startOnLoad,
-    rewarded: { start: templateContract.rewardedStart ?? true, stages: true, attempts: 3, confirmStart: false },
+    rewarded: { start: false, stages: false, attempts: 3, confirmStart: false },
     advanceDelayMs: 450,
     ...manifestEngine,
   };
@@ -325,12 +325,12 @@ for (const folder of folders) {
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
   fail(config.engine.flow === templateContract.flow
-    && config.engine.advance === (templateContract.advance ?? "automatic")
+    && config.engine.advance === (templateContract.advance ?? "manual")
     && config.engine.feedback === "selection-only"
     && config.engine.checkpoint === "ai"
     && config.engine.startOnLoad === startOnLoad
     && config.engine.advanceDelayMs === 450
-    && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: templateContract.rewardedStart ?? true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: quiz must resolve to its shared template engine.`);
+    && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: false, stages: false, attempts: 3, confirmStart: false }), `${folder.name}: quiz must resolve to its shared template engine.`);
   const proofCount = config.listing?.socialProofCount;
   fail(Number.isInteger(proofCount) && (proofCount >= 1000 || (proofCount === 0 && config.listing.showSocialProof === false)), `${folder.name}/quiz.json: social proof needs a valid count, or zero with social proof disabled.`);
   fail(config.listing?.showSocialProof === undefined || typeof config.listing.showSocialProof === "boolean", `${folder.name}/quiz.json: listing.showSocialProof must be a boolean when provided.`);

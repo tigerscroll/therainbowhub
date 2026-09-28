@@ -23,6 +23,9 @@ export function quizProgressSignaturesMatch(saved: unknown, current: string) {
     delete next.engine.hardRefreshCheckpoints;
     delete previous.engine.startOnLoad;
     delete next.engine.startOnLoad;
+    // Changing the navigation button does not change already-scored answers.
+    delete previous.engine.flow?.advance;
+    delete next.engine.flow?.advance;
     return JSON.stringify(previous) === JSON.stringify(next);
   } catch { return false; }
 }

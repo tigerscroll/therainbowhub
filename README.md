@@ -1,6 +1,6 @@
 # Rainbow Hub quiz engine
 
-The standard quiz is **10 themed rounds × 7 questions**. All quizzes use the same chapter layout, automatic answer advancement, topic-profile checkpoints and final result screen. The supported languages are English, French, German, Italian, Dutch, Spanish, Portuguese and Arabic.
+The standard quiz is **10 themed rounds × 7 questions**. All quizzes use the same chapter layout, manual Next Question navigation, topic-profile checkpoints and final result screen. The supported languages are English, French, German, Italian, Dutch, Spanish, Portuguese and Arabic.
 
 ## Add a quiz
 
@@ -45,7 +45,7 @@ The shared template supplies the flow, checkpoint layout, finite animations, red
 
 English buttons are `Start`, `Continue` and `See My Result`; the UI adds the arrows. Shared labels such as loading and restart live in `data/i18n/<locale>.json`. Topic titles, questions, result text and checkpoint copy belong in the quiz locale JSON.
 
-Quizzes use rewarded ads on `/22677279144/rewarded`: Start, each chapter checkpoint and optional result breakdowns request a reward. Answer buttons advance automatically without ads or document reloads. Early ad dismissal does not advance the quiz; bounded no-fill retries allow it to continue when inventory is unavailable. Articles retain their existing rewarded flow. Browser tests mock delivery; they do not verify live advertising inventory.
+Quizzes use `/22677279144/display` with fixed 336×280 creatives in full-width rows. Question one has a display ad below the question; question two onward also has one below the answers and above Next Question. Ads remain mounted while advancing within a chapter, with no timed or per-answer refresh. Start, study cues, checkpoints and result breakdowns need no rewarded ads. Checkpoints stay in the same document. Only the Next Question navigation control is eligible for a GPT web interstitial on the same `/display` unit. All automatic triggers are disabled; Google manages availability and frequency limits. Slots collapse on no-fill or blocked GPT; layouts narrower than 336px do not request a clipped creative. Browser checks use mock ads and do not verify live inventory.
 
 ## Presentation and language
 

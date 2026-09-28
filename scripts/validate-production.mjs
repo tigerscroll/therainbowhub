@@ -181,22 +181,19 @@ const rewardedGateText = fs.readFileSync(path.join(rootDir, "components", "exper
 const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz", "rewardedAds.ts"), "utf8");
 const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
 const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
-for (const declaration of ["useRewardedGate", "runRewardedGate(beginQuiz)", "runRewardedGate(next)", "onStart={startQuiz}", "onAnswer={answerQuestion}", "disabled={adBusy}"]) {
-  if (!quizEngineText.includes(declaration)) addError(`Rewarded-only quiz contract is missing: ${declaration}`);
+for (const declaration of ["QuestionDisplayAd", "onStart={startQuiz}", "onAnswer={answerQuestion}", 'data-quiz-next']) {
+  if (!quizEngineText.includes(declaration)) addError(`Display quiz contract is missing: ${declaration}`);
+}
+if (/useRewardedGate|runRewardedGate|QuizNativeAd|window\.location\.reload/.test(quizEngineText)) {
+  addError("Quizzes must use display ads with no rewarded gates, native placement or checkpoint reloads.");
 }
 for (const source of [quizEngineText, experienceLandingText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText, rewardedGateText]) {
-  if (/INTERSTITIAL|useQuizInterstitial|gamInterstitial|quizInterstitialAdUnitPath|data-quiz-interstitial|writeQuizHistoryProgress/.test(source)) {
-    addError("Interstitial and answer-link navigation code must not exist in the rewarded-only flow.");
+  if (/useQuizInterstitial|gamInterstitial|quizInterstitialAdUnitPath|writeQuizHistoryProgress/.test(source)) {
+    addError("Retired answer-link navigation code must not exist in the shared quiz flow.");
   }
 }
 if (fs.existsSync(path.join(rootDir, "components", "quiz", "QuizInterstitial.tsx"))) {
   addError("The retired quiz interstitial component must not exist.");
-}
-for (const source of [quizEngineText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText]) {
-  // Shared GPT type declarations may describe defineSlot; the quiz-only site must never request display ads.
-  if (/mountDisplayAd|QuestionDisplayAd|ArticleDisplayAd|data-display-ad|\.defineSlot(?:\?\.)?\s*\(|displayAdUnitPath/.test(source)) {
-    addError("Display-ad calls must not exist in the rewarded-only quiz flow or root document.");
-  }
 }
 if (!experienceLandingText.includes("onClick={onStart}")) {
   addError("Shared experience landing must connect its primary CTA to onStart.");
@@ -298,10 +295,6 @@ for (const slug of fs.readdirSync(quizThemeRoot)) {
   if (/--quiz-shell-[a-z0-9-]+\s*:/i.test(themeCss)) {
     addError(`Quiz themes cannot declare protected --quiz-shell-* geometry tokens: data/quizzes/${slug}/theme.css`);
   }
-}
-
-if (!quizTemplateText.includes("startInstructionEnabled={siteConfig.rewardedStartInstructionEnabled}")) {
-  addError("The rewarded Start instruction must use its existing shared site setting.");
 }
 
 const infoRoot = path.join(rootDir, "data", "info-pages");
