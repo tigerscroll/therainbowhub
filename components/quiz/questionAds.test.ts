@@ -55,7 +55,8 @@ test("answers remain buttons; only an opted-in first-answer entry can request a 
   const answerHandler = source.slice(source.indexOf("function answerQuestion("), source.indexOf("function completeStudy("));
   assert.doesNotMatch(answerHandler, /window\.location|pushState/);
   assert.match(source, /const firstAnswerReward = quiz\.engine\.startOnLoad && quiz\.engine\.rewarded\.start && questionIndex === 0/);
-  assert.match(answerHandler, /if \(firstAnswerReward\) \{\s*setPendingAnswer\([\s\S]*?void runGate\(acceptAnswer, \{ scrollAfter: false, retryOnClose: false \}\);/);
+  assert.match(answerHandler, /if \(firstAnswerReward\) \{\s*setPendingAnswer\([\s\S]*?void runGate\(\(\) => \{\s*acceptAnswer\(\);\s*setPendingAnswer\(undefined\);\s*if \(quiz\.engine\.flow\.advance === "automatic"\) moveForward\(\);\s*\}, \{ scrollAfter: false, retryOnClose: false \}\);/);
+  assert.doesNotMatch(answerHandler, /setTimeout/, 'first-answer reward completion has no additional answer delay');
   assert.match(answerHandler, /else acceptAnswer\(\)/);
   assert.match(source, /translations\.ad\.continueNote/);
   assert.match(renderer, /aria-describedby=\{answerNoteId\}/);

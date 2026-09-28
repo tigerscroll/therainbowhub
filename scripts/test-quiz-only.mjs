@@ -166,8 +166,15 @@ try {
     assert.equal(await page.evaluate(() => window.quizOnlyTest.requests.length), 2);
     await page.evaluate(() => window.quizOnlyTest.emit('rewardedSlotGranted'));
     assert.equal(await question.count(), 1, 'grant alone keeps the quiz behind the ad until closure');
-    await page.evaluate(() => window.quizOnlyTest.emit('rewardedSlotClosed'));
-    await page.locator('[data-question-id="yl-s1q2"]').waitFor();
+    const questionAfterClose = await page.evaluate(() => {
+      window.quizOnlyTest.emit('rewardedSlotClosed');
+      return new Promise(resolve => requestAnimationFrame(() => {
+        resolve(document.querySelector('[data-question-id]')?.getAttribute('data-question-id'));
+      }));
+    });
+    assert.equal(questionAfterClose, 'yl-s1q2', 'the next question is ready for the first paint after a completed ad closes');
+    await page.waitForTimeout(550);
+    assert.equal(await page.locator('[data-question-id="yl-s1q2"]').count(), 1, 'no leftover answer timer skips question two');
     assert.equal(await entryBadge.count(), 0, 'the identity badge is only on question one');
     assert.equal(await page.locator('.quiz-engine__progress-head > strong').count(), 1, 'later questions keep the chapter badge');
     assert.equal(await page.locator('.quiz-engine__answer').count(), 3, 'later questions also have three choices');
@@ -176,6 +183,8 @@ try {
     const key = `rainbowhub:quiz-progress:v4:years-left:${locale}`;
     const saved = await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), key);
     assert.equal(saved.answers['yl-s1q1'], answerId, 'the chosen answer is saved after completion');
+    assert.equal(saved.questionIndex, 1, 'answer and next question are saved together');
+    assert.equal(Object.keys(saved.answers).length, 1, 'the first answer is recorded only once');
     assert.equal(await page.evaluate(() => window.quizOnlyTest.events.filter(event => event[1] === 'QuizStart').length), 1);
     await page.locator('.quiz-engine__answer').first().click();
     await page.locator('[data-question-id="yl-s1q3"]').waitFor();
@@ -201,7 +210,7 @@ try {
     assert.equal(await page.evaluate(() => window.quizOnlyTest.requests.every(ad => ad.path === '/22677279144/rewarded' && ad.format === 'REWARDED')), true);
     assert.deepEqual(errors, []);
     await context.close();
-    console.log(`${locale}/${width}px PASS: first paint, opt-in first answer, close/retry, correct saved choice, no-fill, resume and restart`);
+    console.log(`${locale}/${width}px PASS: first paint, immediate completed-ad transition, early close/retry, correct saved choice, no-fill, resume and restart`);
   }
   console.log('Quiz-only routes PASS: removed pages and embeds return 404; original homepage, footer and other quiz landings remain.');
 } finally {

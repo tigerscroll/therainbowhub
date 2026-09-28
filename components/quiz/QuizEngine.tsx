@@ -350,7 +350,11 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
     const acceptAnswer = () => setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
     if (firstAnswerReward) {
       setPendingAnswer({ questionId: currentQuestion.id, choiceIndex });
-      void runGate(acceptAnswer, { scrollAfter: false, retryOnClose: false });
+      void runGate(() => {
+        acceptAnswer();
+        setPendingAnswer(undefined);
+        if (quiz.engine.flow.advance === "automatic") moveForward();
+      }, { scrollAfter: false, retryOnClose: false });
     }
     else acceptAnswer();
     return true;
