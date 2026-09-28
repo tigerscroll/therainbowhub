@@ -317,6 +317,30 @@
   box-shadow: none !important;
 }
 
+.quiz-native-card {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+.quiz-native-card[data-state="filled"] {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--quiz-muted) 25%, transparent);
+}
+
+.quiz-native-card[hidden] { display: none; }
+
+.quiz-native-card__label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--quiz-muted);
+  font: 500 11px/1.4 Arial, sans-serif;
+  text-align: center;
+}
+
+.quiz-native-card__slot { width: 100%; }
+
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell::before,
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell > .quiz-engine__question::before {
   display: none !important;

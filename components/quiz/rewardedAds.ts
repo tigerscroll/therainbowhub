@@ -1,40 +1,8 @@
 "use client";
 
+import type { GptSlot } from "./gpt";
+
 export type RewardedResult = "granted" | "closed" | "unavailable";
-
-type GptSlot = {
-  addService(service: unknown): GptSlot;
-};
-
-type RewardedEvent = {
-  slot: GptSlot;
-  makeRewardedVisible?: () => void;
-  isEmpty?: boolean;
-};
-
-type PubAds = {
-  addEventListener(name: string, listener: (event: RewardedEvent) => void): void;
-  removeEventListener?: (name: string, listener: (event: RewardedEvent) => void) => void;
-  refresh?: (slots: GptSlot[], options?: { changeCorrelator: boolean }) => void;
-  updateCorrelator?: () => void;
-};
-
-type GoogleTag = {
-  cmd: Array<() => void>;
-  defineSlot?: (path: string, sizes: Array<[number, number]>, elementId: string) => GptSlot | null;
-  defineOutOfPageSlot?: (path: string, format: unknown) => GptSlot | null;
-  destroySlots?: (slots: GptSlot[]) => void;
-  display?: (slotOrElementId: GptSlot | string) => void;
-  enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
-  pubads?: () => PubAds;
-};
-
-declare global {
-  interface Window {
-    googletag?: GoogleTag;
-  }
-}
 
 type ActiveRequest = {
   closed: boolean;

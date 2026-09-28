@@ -20,7 +20,7 @@ production; the validators enforce the contract independently.
 - No intermediate checkpoints or scores.
 - One three-row result checklist after question ten.
 - Free incorrect-answer review and no question explanations.
-- No display-ad flow variants.
+- No per-quiz display-ad flow variants; the shared native placement below applies to every question screen.
 - Standard split landing, card questions and immersive results.
 - Standard landing content: intro and configurable CTA only. Each quiz stores one stable `listing.socialProofCount`; the locale-specific social-proof sentence comes exclusively from `data/i18n/{locale}.json` via `quiz.socialProofTaken`.
 - No landing artwork panel.
@@ -56,6 +56,18 @@ The active site publishes quizzes and standard information pages only. Article
 wrappers, article payload routes, and article-specific display/rewarded ads are
 retired. Quizzes retain the original themed shell and rewarded placement.
 
+Every quiz and locale shares one in-page native card beneath the question/answer
+content, inside the quiz shell. It uses `/22677279144/quiz_native_card` with
+Fluid sizing: full available content width, creative-controlled height. It is
+separated from answer controls and labelled in the current language. The card
+persists across question changes (including memory study cues) without timed or
+per-answer refreshes. Leaving questions destroys only that native slot. Returning
+from a checkpoint mounts a new card; landing, checkpoint, result, home and info
+screens have none. The slot mounts only after saved progress has been restored,
+so a restored checkpoint cannot briefly request an ad. No-fill or blocked GPT
+leaves no empty ad frame and never gates answers. Rewarded ads continue to use
+`/22677279144/rewarded` independently.
+
 An optional manifest setting, `engine.entry: "first-answer"`, opens directly
 on the first question and moves the existing Start reward to the first answer.
 Only Years Left currently enables it, in all its supported locales. Each question
@@ -63,7 +75,7 @@ has three choices. The first question's translated header label identifies the
 test in a compact themed hourglass badge; later questions keep their chapter
 labels. The small, muted notice below the choices explains the ad
 before the user chooses. The tapped answer is highlighted while the gate is busy,
-but that temporary selection is not scored or saved. No ad is
+but that temporary selection is not scored or saved. No rewarded ad is
 requested on arrival; early closure leaves the question unanswered and allows
 another attempt. Completion/no-fill accepts the choice, and subsequent answers
 are unchanged. In the automatic flow, accepting that gated first answer and

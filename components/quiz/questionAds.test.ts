@@ -19,16 +19,32 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("the quiz-only site has no display-ad requests", () => {
+test("the only in-page ad is the shared Fluid native card, not the retired display flow", () => {
   assert.equal(fs.existsSync("components/quiz/QuestionDisplayAd.tsx"), false);
   for (const directory of ["components", "lib", "app"]) {
     for (const path of fs.readdirSync(directory, { recursive: true })) {
       if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /mountDisplayAd|QuestionDisplayAd|data-display-ad|\.defineSlot(?:\?\.)?\s*\(|displayAdUnitPath/, `${directory}/${path}`);
+      const file = `${directory}/${path}`;
+      const source = fs.readFileSync(file, "utf8");
+      assert.doesNotMatch(source, /mountDisplayAd|QuestionDisplayAd|data-display-ad|displayAdUnitPath/, file);
+      if (file !== "components/quiz/nativeAds.ts") assert.doesNotMatch(source, /\.defineSlot(?:\?\.)?\s*\(/, file);
     }
   }
+  const native = fs.readFileSync("components/quiz/nativeAds.ts", "utf8");
+  assert.match(native, /defineSlot\(adUnitPath, \["fluid"\], element\.id\)/);
+  assert.doesNotMatch(native, /\.refresh\(|setInterval|setConfig|updateCorrelator/);
+  const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
+  assert.equal(engine.match(/<QuizNativeAd /g)?.length, 1);
+  assert.ok(engine.indexOf("<QuizNativeAd ") > engine.indexOf("<QuestionRenderer"));
+  assert.match(engine, /hydrated \? <QuizNativeAd label=\{translations\.ad\.advertisement\}/);
+  const card = fs.readFileSync("components/quiz/QuizNativeAd.tsx", "utf8");
+  assert.doesNotMatch(card, /questionIndex|questionId|setInterval|refresh/);
+  for (const file of fs.readdirSync("data/i18n")) {
+    if (!file.endsWith(".json")) continue;
+    assert.ok(JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8")).ad.advertisement.trim(), file);
+  }
 });
-test("Mechanic uses the automatic rewarded-only flow", () => {
+test("Mechanic retains the automatic flow and rewarded gates", () => {
   const manifest = JSON.parse(fs.readFileSync("data/quizzes/mechanic/quiz.json", "utf8"));
   assert.equal(manifest.template, "ten-stage-seven-question-v1");
   assert.equal(manifest.engine.hardRefreshCheckpoints, false);
@@ -39,6 +55,7 @@ test("Mechanic uses the automatic rewarded-only flow", () => {
 test("quiz gates use the rewarded placement without an article ad unit", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
+  assert.match(config, /quizNativeAdUnitPath: "\/22677279144\/quiz_native_card"/);
   assert.doesNotMatch(config, /quizInterstitialAdUnitPath|articleDisplayAdUnitPath|\/22677279144\/display/);
   const quizGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
   assert.match(quizGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);

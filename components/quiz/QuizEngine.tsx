@@ -11,6 +11,7 @@ import { getQuizStorageKey, isProgressTimestampFresh, quizProgressSignaturesMatc
 import { QuestionRenderer } from "./QuestionRenderer";
 import { QuizText } from "./QuizText";
 import { QuizAbout } from "./QuizAbout";
+import { QuizNativeAd } from "./QuizNativeAd";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
@@ -918,6 +919,7 @@ export function QuizEngine({ locale, quiz, recommendations, startInstructionEnab
             {questionIndex === quiz.questions.length - 1 ? translations.results.viewResults : quiz.nextQuestionLabel ?? translations.quiz.continue}
           </button>
         ) : null}
+        {hydrated ? <QuizNativeAd label={translations.ad.advertisement} /> : null}
       </article>
     </section>
     <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
