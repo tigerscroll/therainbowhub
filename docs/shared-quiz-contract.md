@@ -70,6 +70,13 @@ are unchanged. In the automatic flow, accepting that gated first answer and
 showing question two happen in the same update, without the normal answer delay
 after the ad closes. Saved in-progress attempts survive entry-mode changes.
 
+Years Left enables `engine.hardRefreshCheckpoints`: after the last answer of
+each chapter, progress is saved and the document reloads into that checkpoint
+(including the final result gate). Questions within a chapter and the rewarded
+Continue action remain client-side. Checkpoint arrival does not request an ad.
+If browser storage cannot save progress, the engine continues without reloading
+so answers are not lost. Other quizzes retain their existing no-reload flow.
+
 `QuizEngine` must remain slug-agnostic. Any subject-specific content belongs in
 the quiz data; any subject-specific visual identity belongs in its scoped theme.
 The production validator rejects slug-specific engine branches.

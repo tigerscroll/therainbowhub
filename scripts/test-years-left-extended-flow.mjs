@@ -11,6 +11,7 @@ const artifactPrefix = locale === 'en' ? slug : `${slug}-${locale}`;
 const root = `data/quizzes/${slug}`;
 const manifest = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8')), locale);
 const firstAnswerEntry = manifest.engine.entry === 'first-answer';
+const hardRefreshCheckpoints = manifest.engine.hardRefreshCheckpoints === true;
 const totalQuestions = manifest.structure.stages.reduce((count, stage) => count + stage.questionIds.length, 0);
 const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
@@ -89,8 +90,11 @@ async function run(width) {
   let totalCorrect = 0;
   const initialDocuments = documents;
   const checkpoints = [];
+  const expectedAnswers = {};
+  const storageKey = `rainbowhub:quiz-progress:v4:${slug}:${locale}`;
 
   for (const [stageIndex, stage] of manifest.structure.stages.entries()) {
+    const documentsBeforeStage = documents;
     const profileWeights = Object.fromEntries(manifest.structure.results.profiles.map(profile => [profile.id ?? profile.key, 0]));
     let chapterCorrect = 0;
     for (const [index, id] of stage.questionIds.entries()) {
@@ -166,12 +170,26 @@ async function run(width) {
         for (const [profile, weight] of Object.entries(logic.choiceMeanings[answerIds[choice]])) profileWeights[profile] += weight;
       }
       await question.locator('.quiz-engine__answer').nth(choice).click();
+      expectedAnswers[id] = answerIds[choice];
       if (firstAnswerEntry && stageIndex === 0 && index === 0) expectedRewards++;
       if (fast) await page.clock.fastForward(700);
       await question.waitFor({ state: 'detached' });
     }
     const checkpoint = page.locator('.quiz-engine__checkpoint');
     await checkpoint.waitFor();
+    if (hardRefreshCheckpoints) {
+      rewardsBeforeReload += expectedRewards;
+      expectedRewards = 0;
+      reloads++;
+      assert.equal(documents, documentsBeforeStage + 1, 'one full-document reload before each checkpoint, not between its questions');
+      assert.equal(await page.evaluate(() => performance.getEntriesByType('navigation')[0].type), 'reload');
+      assert.equal(new URL(page.url()).searchParams.get('test_keep'), '1', 'checkpoint reload preserves the URL parameters');
+    }
+    const savedCheckpoint = await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), storageKey);
+    assert.deepEqual(savedCheckpoint.answers, expectedAnswers, 'every chosen answer, including the last one, survives the checkpoint');
+    assert.equal(savedCheckpoint.completedStage, stageIndex);
+    assert.equal(savedCheckpoint.questionIndex, Math.min(Object.keys(expectedAnswers).length, totalQuestions - 1));
+    assert.equal(savedCheckpoint.rewardClosedSent, true, 'completed Start reward remains recorded across reloads');
     assert.equal(await checkpoint.getAttribute('data-round'), String(stageIndex + 1));
     assert.equal(await checkpoint.getByRole('progressbar').count(), 0, 'checkpoints focus on the next topic without progress indicators');
     assert.doesNotMatch(await checkpoint.innerText(), /halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);
@@ -220,7 +238,7 @@ async function run(width) {
   assert.equal(expectedRewards + rewardsBeforeReload, 11, 'ten chapter rewards plus the existing Start reward');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'REWARDED' && ad.path === '/22677279144/rewarded')), true);
-  assert.equal(documents, initialDocuments + reloads, 'no document reloads between questions or chapters');
+  assert.equal(documents, initialDocuments + reloads, 'only requested checkpoint and explicit test reloads occur');
   assert.equal(await result.locator('.quiz-engine__result-share').count(), 0);
   let age;
   if (scored) {
@@ -260,11 +278,19 @@ async function run(width) {
       await question.locator('.quiz-engine__answer').first().click();
       if (fast) await page.clock.runFor(firstAnswerEntry && id === manifest.structure.stages[0].questionIds[0] ? 1800 : 700);
       await question.waitFor({ state: 'detached' });
+      if (id === manifest.structure.stages[0].questionIds[0]) {
+        assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'bounded unavailable-ad retry still continues the quiz');
+      }
     }
-    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'bounded unavailable-ad retry still continues the quiz');
+    await page.locator('.quiz-engine__checkpoint').waitFor();
+    if (hardRefreshCheckpoints) {
+      expectedRewards = 0;
+      assert.equal(await page.evaluate(() => window.adCalls.length), 0, 'no-fill progress also resumes without an ad on checkpoint arrival');
+      await page.evaluate(() => { window.noAdFill = true; });
+    } else expectedRewards += 3;
     await page.locator('.quiz-engine__checkpoint .quiz-engine__primary').click();
     await page.locator(`[data-question-id="${manifest.structure.stages[1].questionIds[0]}"]`).waitFor();
-    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 6, 'unavailable checkpoint ads do not strand the user');
+    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'unavailable checkpoint ads do not strand the user');
   }
   assert.deepEqual(errors, []);
   fs.writeFileSync(`/tmp/${artifactPrefix}-engagement-browser-${width}.json`, JSON.stringify({ width, reducedMotion: reduced, chapters: checkpoints, age, totalCorrect: scored ? totalCorrect : undefined, result: 'PASS' }, null, 2));
