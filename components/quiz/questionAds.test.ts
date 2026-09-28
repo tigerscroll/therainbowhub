@@ -19,12 +19,12 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("quizzes use display slots and never request native or rewarded ads", () => {
+test("question ads use dedicated display and native units without rewarded or interstitial ads", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
-  assert.doesNotMatch(engine, /QuizNativeAd|useRewardedGate|runRewardedGate|window\.location\.reload/);
+  assert.doesNotMatch(engine, /QuizNativeAd|useRewardedGate|runRewardedGate|mountQuizInterstitial|INTERSTITIAL|nextQuestionHref|window\.location\.reload/);
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
-  assert.doesNotMatch(config, /quizNativeAdUnitPath/);
+  assert.match(config, /quizNativeAdUnitPath: "\/22677279144\/quiz_native_card"/);
   for (const file of fs.readdirSync("data/i18n")) {
     if (!file.endsWith(".json")) continue;
     const copy = JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8"));
@@ -46,8 +46,19 @@ test("answers are selected before manual Next Question navigation", () => {
   assert.doesNotMatch(source, /setTimeout\(moveForward|firstAnswerReward/);
   assert.match(renderer, /<button/);
   assert.match(source, /data-quiz-next/);
+  assert.match(source, /disabled=\{selectedAnswer === undefined\}/);
   assert.match(source, /aria-disabled=\{selectedAnswer === undefined\}/);
   assert.match(renderer, /"data-google-interstitial": "false"/);
+});
+
+test("Meta QuizComplete is sent at the final result, never from an ad or answer interaction", () => {
+  const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
+  assert.match(source, /window\.fbq\?\.\("trackCustom", "QuizComplete", \{ quiz_slug: quiz\.slug, locale \}\)/);
+  const completion = source.slice(source.indexOf("function continueAfterCheckpoint()"), source.indexOf("function restartQuiz()"));
+  assert.match(completion, /if \(isFinalStage\) \{\s*setScreen\("results"\);\s*trackQuizComplete\(quiz, locale\);/);
+  const answer = source.slice(source.indexOf("function answerQuestion("), source.indexOf("function completeStudy("));
+  assert.doesNotMatch(answer, /fbq|trackQuizComplete|refresh|scrollToTop/);
+  assert.doesNotMatch(fs.readFileSync("components/quiz/displayAds.ts", "utf8"), /fbq|AdClick|QuizComplete/);
 });
 
 test("only Years Left opts into the first-answer entry across its locales", () => {

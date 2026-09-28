@@ -56,17 +56,24 @@ The active site publishes quizzes and standard information pages only. Article
 wrappers, article payload routes, and article-specific display/rewarded ads are
 retired. Quizzes retain the original themed shell and use the shared display placements.
 
-Every quiz and locale uses `/22677279144/display`, requesting only 336×280.
-The first question shows a full-width ad row below the question content. From
-question two onward a second row appears below the answers, above Next Question.
-Selecting an answer does not advance or trigger an interstitial. Next Question is a real link styled as a button; it updates the URL and quiz content without reloading. GPT manages the web interstitial on `/22677279144/display`. Every optional trigger is disabled, and answer controls, header, footer, about and recommendation links opt out. One interstitial slot persists for the quiz session; GPT controls fill and frequency.
-Slots persist across questions without timed or per-answer refreshes. Leaving
+Every quiz and locale uses `/22677279144/display` at 336×280 below the question.
+From question two onward, `/22677279144/quiz_native_card` uses Fluid sizing in
+a full-width row below the answers, above Next Question.
+Selecting an answer does not advance or refresh ads. Next Question is a button
+that changes quiz content without reloading or changing the URL. Existing display
+slots refresh only after the navigation scroll reaches the top. Newly mounted
+slots load once, without an immediate duplicate refresh. An interrupted navigation
+cancels its pending refresh. Ordinary scrolling has no ad trigger. There are no
+interstitial requests or timed refreshes. The final result sends the Meta custom
+event `QuizComplete`, never `AdClick`. Declare `/display` and `/quiz_native_card` as user-action refreshing
+inventory in Google Ad Manager.
+Slots persist across questions and refresh using their existing GPT slot. Leaving
 the question screen destroys only these slots. Landing, checkpoint, results and
 information pages have no display slots. Saved progress restores before ads mount.
-No-fill and blocked GPT collapse the rows; widths below 336px skip requests.
+No-fill and blocked GPT collapse the rows; widths below 336px skip fixed display requests but still support the Fluid native card.
 
 Start, study cues, checkpoints and all result breakdowns are free of rewarded
-ads. There is no native card in the live quiz flow. Checkpoints and Continue
+ads. Checkpoints and Continue
 stay client-side without document reloads. The optional first-answer entry
 setting still opens directly on question one, without requesting a reward.
 

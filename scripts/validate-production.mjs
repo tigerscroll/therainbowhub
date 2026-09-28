@@ -184,8 +184,8 @@ const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"
 for (const declaration of ["QuestionDisplayAd", "onStart={startQuiz}", "onAnswer={answerQuestion}", 'data-quiz-next']) {
   if (!quizEngineText.includes(declaration)) addError(`Display quiz contract is missing: ${declaration}`);
 }
-if (/useRewardedGate|runRewardedGate|QuizNativeAd|window\.location\.reload/.test(quizEngineText)) {
-  addError("Quizzes must use display ads with no rewarded gates, native placement or checkpoint reloads.");
+if (/useRewardedGate|runRewardedGate|QuizNativeAd|mountQuizInterstitial|INTERSTITIAL|window\.location\.reload/.test(quizEngineText)) {
+  addError("Quizzes must use in-page ads with no rewarded gates, interstitials or checkpoint reloads.");
 }
 for (const source of [quizEngineText, experienceLandingText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText, rewardedGateText]) {
   if (/useQuizInterstitial|gamInterstitial|quizInterstitialAdUnitPath|writeQuizHistoryProgress/.test(source)) {

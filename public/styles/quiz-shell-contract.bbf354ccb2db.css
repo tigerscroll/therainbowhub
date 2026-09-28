@@ -339,6 +339,11 @@
   justify-content: center;
 }
 
+.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot {
+  display: block;
+  min-height: 0;
+}
+
 /* Keep the row measurable while avoiding empty frames or clipped fixed ads. */
 .quiz-display-ad[data-fits="false"],
 .quiz-display-ad[data-state="empty"] {

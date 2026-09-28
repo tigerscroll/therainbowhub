@@ -5,14 +5,13 @@ import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type C
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
-import { siteConfig } from "@/lib/siteConfig";
-import { mountQuizInterstitial } from "./interstitialAds";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress, STORAGE_VERSION } from "./progressStorage";
 import { QuestionMedia, QuestionRenderer } from "./QuestionRenderer";
 import { QuizText } from "./QuizText";
 import { QuizAbout } from "./QuizAbout";
-import { QuestionDisplayAd } from "./QuestionDisplayAd";
+import { QuestionDisplayAd, type QuestionDisplayAdHandle } from "./QuestionDisplayAd";
+import { scrollQuizToTop } from "./scrollToTop";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
@@ -47,9 +46,9 @@ type SavedProgress = {
 
 type RestoredProgress = Omit<SavedProgress, "answers"> & { answers: QuizAnswers };
 
-function trackQuizEvent(name: string, quiz: Quiz, locale: SupportedLocale) {
+function trackQuizComplete(quiz: Quiz, locale: SupportedLocale) {
   if (typeof window === "undefined") return;
-  window.fbq?.("trackCustom", name, { quiz_slug: quiz.slug, locale });
+  window.fbq?.("trackCustom", "QuizComplete", { quiz_slug: quiz.slug, locale });
 }
 
 function formatSocialProof(template: string, count: number, locale: SupportedLocale) {
@@ -91,6 +90,10 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
   const preloadedArtwork = useRef(new Set<string>());
+  const questionAd = useRef<QuestionDisplayAdHandle>(null);
+  const answersAd = useRef<QuestionDisplayAdHandle>(null);
+  const cancelScroll = useRef<(() => void) | null>(null);
+  useEffect(() => () => cancelScroll.current?.(), []);
   const progressSignature = useMemo(
     () => JSON.stringify({
       engine: {
@@ -146,11 +149,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const progress = getStageCompletionPercentage(quiz.questions, answers, currentStage);
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
-
-  useEffect(() => {
-    if (!hydrated) return;
-    return mountQuizInterstitial(siteConfig.displayAdUnitPath);
-  }, [hydrated]);
 
   useLayoutEffect(() => {
     try {
@@ -231,9 +229,9 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     });
   }, [answers, completedStage, currentQuestion, currentStage, questionIndex, quiz, screen]);
 
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "auto" });
-    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
+  function scrollToTop(onTop?: () => void) {
+    cancelScroll.current?.();
+    cancelScroll.current = scrollQuizToTop(onTop);
   }
 
   function moveForward() {
@@ -250,18 +248,15 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       setQuestionIndex(nextIndex);
       setCompletedStage(currentStage);
       setScreen("checkpoint");
+      scrollToTop();
     } else {
+      // Capture only existing placements: question two's new lower ad gets its
+      // initial request, not an immediate second request at the top.
+      const mountedAds = [questionAd.current, answersAd.current];
       setQuestionIndex(nextIndex);
       setScreen("question");
+      scrollToTop(() => mountedAds.forEach(ad => ad?.refresh()));
     }
-    scrollToTop();
-  }
-
-  function nextQuestionHref() {
-    if (!hydrated || typeof window === "undefined") return undefined;
-    const destination = new URL(window.location.href);
-    destination.searchParams.set("quiz_step", questionIndex === quiz.questions.length - 1 ? "result" : String(questionIndex + 2));
-    return destination.href;
   }
 
   useEffect(() => {
@@ -312,7 +307,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     const isFinalStage = completedStage >= quiz.stages.length - 1;
     if (isFinalStage) {
       setScreen("results");
-      trackQuizEvent("QuizComplete", quiz, locale);
+      trackQuizComplete(quiz, locale);
     } else {
       setScreen("question");
     }
@@ -684,7 +679,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context"><QuizText text={currentQuestion.context} /></p> : null}
         <h1 key={currentQuestion.id}><QuizText text={currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt} /></h1>
         {(!currentQuestion.study || studyComplete) ? <QuestionMedia question={currentQuestion} /> : null}
-        {hydrated ? <QuestionDisplayAd label={translations.ad.advertisement} placement="below-question" /> : null}
+        {hydrated ? <QuestionDisplayAd label={translations.ad.advertisement} placement="below-question" ref={questionAd} /> : null}
         <QuestionRenderer
           answer={selectedAnswer}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
@@ -697,30 +692,22 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
           studyComplete={studyComplete}
         />
         {hydrated && questionIndex > 0 && (!currentQuestion.study || studyComplete) ? (
-          <QuestionDisplayAd label={translations.ad.advertisement} placement="below-answers" />
+          <QuestionDisplayAd label={translations.ad.advertisement} placement="below-answers" ref={answersAd} />
         ) : null}
         {quiz.engine.flow.advance === "manual" ? (
-          <a
+          <button
             aria-hidden={selectedAnswer === undefined || undefined}
             aria-disabled={selectedAnswer === undefined}
             className="quiz-engine__primary quiz-engine__next-question"
-            data-google-interstitial={selectedAnswer === undefined ? "false" : "true"}
             data-quiz-next
             data-ready={selectedAnswer !== undefined}
-            href={selectedAnswer === undefined ? undefined : nextQuestionHref()}
-            onClick={(event) => {
-              if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-              event.preventDefault();
-              if (selectedAnswer === undefined) return;
-              // Keep a real navigation target for GPT, while the quiz stays in
-              // this document and the browser history is not filled with answers.
-              try { window.history.replaceState(window.history.state, "", event.currentTarget.href); } catch { /* Navigation still works if history is restricted. */ }
-              moveForward();
-            }}
+            disabled={selectedAnswer === undefined}
+            onClick={moveForward}
             tabIndex={selectedAnswer === undefined ? -1 : undefined}
+            type="button"
           >
             {questionIndex === quiz.questions.length - 1 ? translations.results.viewResults : quiz.nextQuestionLabel ?? translations.quiz.nextQuestion}
-          </a>
+          </button>
         ) : null}
       </article>
     </section>
