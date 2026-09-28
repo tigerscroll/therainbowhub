@@ -1,15 +1,14 @@
-import { getAllArticleManifests, getAllArticles } from "@/lib/articles";
-import { getDefaultLocale, getSupportedLocales, isSupportedLocale } from "@/lib/i18n";
+import { getDefaultLocale, getSupportedLocales } from "@/lib/i18n";
 import { getAllQuizzes } from "@/lib/quizzes";
 
 export type TopLevelContentRoute = {
-  kind: "article" | "locale-home" | "quiz";
+  kind: "locale-home" | "quiz";
   segment: string;
 };
 
 export type TwoSegmentContentRoute = {
   first: string;
-  kind: "article-chapter" | "article-quiz" | "localized-article" | "localized-quiz";
+  kind: "localized-quiz";
   second: string;
 };
 
@@ -31,12 +30,6 @@ export function getTopLevelContentRoutes(): TopLevelContentRoute[] {
     assertUniqueRoute(keys, quiz.slug, `Quiz route /${quiz.slug}`);
     routes.push({ kind: "quiz", segment: quiz.slug });
   }
-  for (const article of getAllArticles()) {
-    const segment = article.routeSlug ?? article.slug;
-    assertUniqueRoute(keys, segment, `Article route /${segment}`);
-    routes.push({ kind: "article", segment });
-  }
-
   return routes;
 }
 
@@ -52,27 +45,5 @@ export function getTwoSegmentContentRoutes(): TwoSegmentContentRoute[] {
       routes.push({ first: locale, kind: "localized-quiz", second: quiz.slug });
     }
   }
-  for (const article of getAllArticleManifests()) {
-    if (article.locale === defaultLocale || !isSupportedLocale(article.locale)) continue;
-    const routeSlug = article.routeSlug ?? article.slug;
-    const key = `${article.locale}/${routeSlug}`;
-    assertUniqueRoute(keys, key, `Localized article route /${key}`);
-    routes.push({ first: article.locale, kind: "localized-article", second: routeSlug });
-  }
-  for (const article of getAllArticles()) {
-    const routeSlug = article.routeSlug ?? article.slug;
-    article.sections.forEach((_, index) => {
-      const chapter = String(index + 1);
-      const key = `${routeSlug}/${chapter}`;
-      assertUniqueRoute(keys, key, `Article chapter route /${key}`);
-      routes.push({ first: routeSlug, kind: "article-chapter", second: chapter });
-    });
-    for (const quiz of getAllQuizzes(defaultLocale, { includeFallback: false })) {
-      const key = `${routeSlug}/${quiz.slug}`;
-      assertUniqueRoute(keys, key, `Article quiz route /${key}`);
-      routes.push({ first: routeSlug, kind: "article-quiz", second: quiz.slug });
-    }
-  }
-
   return routes;
 }

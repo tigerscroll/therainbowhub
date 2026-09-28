@@ -10,6 +10,7 @@ const fast = process.env.QUIZ_TEST_FAST === '1';
 const artifactPrefix = locale === 'en' ? slug : `${slug}-${locale}`;
 const root = `data/quizzes/${slug}`;
 const manifest = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8')), locale);
+const firstAnswerEntry = manifest.engine.entry === 'first-answer';
 const totalQuestions = manifest.structure.stages.reduce((count, stage) => count + stage.questionIds.length, 0);
 const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
@@ -64,6 +65,11 @@ async function run(width) {
   assert.equal(await page.locator('html').getAttribute('lang'), locale);
   if (locale === 'ar') assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   const landing = page.locator('.quiz-engine__landing');
+  if (firstAnswerEntry) {
+    assert.equal(await landing.count(), 0, 'first-answer entry has no Start screen');
+    await page.locator('#quiz-first-answer-note').waitFor();
+    assert.equal(await page.evaluate(() => window.adCalls.length), 0, 'arrival never requests a reward');
+  } else {
   await landing.waitFor();
   assert.equal(await landing.locator('h1').innerText(), copy.title);
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
@@ -75,8 +81,9 @@ async function run(width) {
   }
   await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
   await landing.locator('.quiz-engine__primary').click();
+  }
   await page.locator('[data-question-id]').waitFor();
-  let expectedRewards = 1;
+  let expectedRewards = firstAnswerEntry ? 0 : 1;
   let rewardsBeforeReload = 0;
   let reloads = 0;
   let totalCorrect = 0;
@@ -152,13 +159,14 @@ async function run(width) {
       const correctIndex = answerIds.indexOf(logic.correctAnswerId);
       const choice = scored && (width === 320 || (width === 390 && stageIndex === 0))
         ? correctIndex
-        : scored && width === 1440 ? (correctIndex + 1) % 4 : (stageIndex + index) % 4;
+        : scored && width === 1440 ? (correctIndex + 1) % answerIds.length : (stageIndex + index) % answerIds.length;
       if (scored) {
         if (choice === correctIndex) { chapterCorrect++; totalCorrect++; }
       } else {
         for (const [profile, weight] of Object.entries(logic.choiceMeanings[answerIds[choice]])) profileWeights[profile] += weight;
       }
       await question.locator('.quiz-engine__answer').nth(choice).click();
+      if (firstAnswerEntry && stageIndex === 0 && index === 0) expectedRewards++;
       if (fast) await page.clock.fastForward(700);
       await question.waitFor({ state: 'detached' });
     }
@@ -237,20 +245,23 @@ async function run(width) {
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'optional breakdown keeps its existing reward');
   if (width === 390) {
     await page.locator('.quiz-engine__about-restart').click();
-    await landing.waitFor();
     await page.evaluate(() => { window.noAdFill = true; });
-    await landing.locator('.quiz-engine__primary').click();
+    if (!firstAnswerEntry) {
+      await landing.waitFor();
+      await landing.locator('.quiz-engine__primary').click();
+    }
     await page.locator('[data-question-id]').waitFor();
-    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'bounded unavailable-ad retry still starts the quiz');
+    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + (firstAnswerEntry ? 0 : 3), 'direct entry waits for an answer; landing entry waits for Start');
     for (const id of manifest.structure.stages[0].questionIds) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
       if (fast) await page.clock.runFor(50);
       if (manifest.structure.questions[id].study) await question.getByRole('button', { name: copy.stages[manifest.structure.stages[0].id].questions[id].study.continueLabel, exact: true }).click();
       await question.locator('.quiz-engine__answer').first().click();
-      if (fast) await page.clock.fastForward(700);
+      if (fast) await page.clock.runFor(firstAnswerEntry && id === manifest.structure.stages[0].questionIds[0] ? 1800 : 700);
       await question.waitFor({ state: 'detached' });
     }
+    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'bounded unavailable-ad retry still continues the quiz');
     await page.locator('.quiz-engine__checkpoint .quiz-engine__primary').click();
     await page.locator(`[data-question-id="${manifest.structure.stages[1].questionIds[0]}"]`).waitFor();
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 6, 'unavailable checkpoint ads do not strand the user');

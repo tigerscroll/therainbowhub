@@ -7,7 +7,6 @@ import type { QuizTheme } from "@/lib/quizzes";
 import type { CSSProperties } from "react";
 
 type SiteShellProps = {
-  footerVariant?: "default" | "simple";
   availableLocales?: SupportedLocale[];
   children: React.ReactNode;
   currentPath: string;
@@ -17,7 +16,7 @@ type SiteShellProps = {
   quizTheme?: QuizTheme;
 };
 
-export function SiteShell({ availableLocales, children, currentPath, footerVariant, locale, localePaths, quizTheme, translations }: SiteShellProps) {
+export function SiteShell({ availableLocales, children, currentPath, locale, localePaths, quizTheme, translations }: SiteShellProps) {
   const direction = getLocaleDirection(locale);
   const shellStyle = quizTheme ? {
     "--site-chrome-primary": quizTheme.colors.primary,
@@ -43,7 +42,7 @@ export function SiteShell({ availableLocales, children, currentPath, footerVaria
       <TrackingPageView />
       <Header availableLocales={availableLocales} currentPath={currentPath} locale={locale} localePaths={localePaths} translations={translations} />
       <main className="site-content" style={quizTheme ? { background: quizTheme.colors.page } : undefined}>{children}</main>
-      <Footer locale={locale} translations={translations} variant={footerVariant} />
+      <Footer locale={locale} translations={translations} />
     </div>
   );
 }

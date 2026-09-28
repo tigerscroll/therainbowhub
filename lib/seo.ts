@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { getAllArticleManifests } from "@/lib/articles";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
@@ -24,10 +23,6 @@ export function getQuizPath(locale: SupportedLocale, slug: string) {
 
 export function getInfoPath(locale: SupportedLocale, slug: InfoPageSlug) {
   return locale === defaultLocale ? `/info/${slug}` : `/${locale}/info/${slug}`;
-}
-
-export function getArticlePath(locale: SupportedLocale, slug: string) {
-  return locale === defaultLocale ? `/${slug}` : `/${locale}/${slug}`;
 }
 
 function languageAlternates(pathForLocale: (locale: SupportedLocale) => string, locales = getSupportedLocales()) {
@@ -218,17 +213,6 @@ export function getSitemapEntries() {
         priority: locale === defaultLocale ? 0.45 : 0.35,
       });
     }
-  }
-
-  for (const article of getAllArticleManifests()) {
-    if (!getSupportedLocales().includes(article.locale as SupportedLocale)) continue;
-    const modified = article.metadata.dateModified ?? article.metadata.lastReviewed ?? "2026-08-27";
-    entries.push({
-      url: absoluteUrl(getArticlePath(article.locale as SupportedLocale, article.routeSlug ?? article.slug)),
-      lastModified: new Date(`${modified}T00:00:00Z`),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    });
   }
 
   return entries;

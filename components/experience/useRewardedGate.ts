@@ -13,6 +13,7 @@ type RewardedGateOptions = {
 };
 
 type RunGateOptions = {
+  retryOnClose?: boolean;
   scrollAfter?: boolean;
   scrollBehavior?: ScrollBehavior;
 };
@@ -43,7 +44,7 @@ export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadyS
 
   const runGate = useCallback(async (
     onComplete: () => void,
-    { scrollAfter = true, scrollBehavior = "auto" }: RunGateOptions = {},
+    { retryOnClose = true, scrollAfter = true, scrollBehavior = "auto" }: RunGateOptions = {},
   ) => {
     if (active.current) return;
     const requestGeneration = ++generation.current;
@@ -58,6 +59,7 @@ export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadyS
         attempts,
         onRewardClosed,
         rewardClosedAlreadySent,
+        retryOnClose,
         signal: requestController.signal,
       });
       if (requestGeneration !== generation.current) return;

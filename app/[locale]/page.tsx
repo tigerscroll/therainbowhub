@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ArticleTemplate, buildArticleMetadata } from "@/components/article/ArticleTemplate";
 import { HomePageContent } from "@/components/HomePageContent";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
-import { getArticleByRouteSlug } from "@/lib/articles";
 import { getTopLevelContentRoutes } from "@/lib/contentCatalogue";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
 import { getQuizBySlug } from "@/lib/quizzes";
@@ -57,8 +55,7 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
     });
   }
 
-  const article = getArticleByRouteSlug(segment, getDefaultLocale());
-  return article ? buildArticleMetadata(article) : {};
+  return {};
 }
 
 export default async function SegmentPage({ params }: SegmentPageProps) {
@@ -86,7 +83,5 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
     );
   }
 
-  const article = getArticleByRouteSlug(segment, locale);
-  if (!article) notFound();
-  return <ArticleTemplate article={article} />;
+  notFound();
 }

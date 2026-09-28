@@ -193,7 +193,7 @@ if (fs.existsSync(path.join(rootDir, "components", "quiz", "QuizInterstitial.tsx
   addError("The retired quiz interstitial component must not exist.");
 }
 for (const source of [quizEngineText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText]) {
-  // Shared GPT type declarations may describe defineSlot; only opted-in plain articles use it.
+  // Shared GPT type declarations may describe defineSlot; the quiz-only site must never request display ads.
   if (/mountDisplayAd|QuestionDisplayAd|ArticleDisplayAd|data-display-ad|\.defineSlot(?:\?\.)?\s*\(|displayAdUnitPath/.test(source)) {
     addError("Display-ad calls must not exist in the rewarded-only quiz flow or root document.");
   }
@@ -258,19 +258,28 @@ for (const declaration of requiredContinuousShellContract) {
   }
 }
 
-const articleEngineText = fs.readFileSync(path.join(rootDir, "components", "article", "ArticleExperience.tsx"), "utf8");
-if (/mountDisplayAd|data-display-ad|ArticleDisplayAd/.test(articleEngineText)) {
-  addError("The shared article engine must not mount display ads.");
+for (const retiredFile of [
+  "app/article-data/[slug]/[section]/route.ts",
+  "app/[locale]/[slug]/[section]/page.tsx",
+  "components/article/ArticleTemplate.tsx",
+  "components/article/ArticleQuiz.tsx",
+  "components/article/ArticleUnlock.tsx",
+  "components/article/ArticleDisplayAd.tsx",
+  "components/article/articleAds.ts",
+  "data/articles/cloudstorage/en.json",
+  "data/articles/monetize/en.json",
+  "data/articles/makemoney/en.json",
+]) {
+  if (fs.existsSync(path.join(rootDir, retiredFile))) addError(`Retired article setup must not exist: ${retiredFile}`);
 }
-for (const declaration of ["loadArticleSection", "getArticleChapterPath", "router.push"]) {
-  if (!articleEngineText.includes(declaration)) addError(`Shared article chapter-routing contract is missing: ${declaration}`);
-}
-if (/localStorage|articleProgress|ARTICLE_PROGRESS_VERSION/.test(articleEngineText)) {
-  addError("The shared article engine must use chapter URLs instead of localStorage progress.");
+for (const file of ["app/[locale]/page.tsx", "app/[locale]/[slug]/page.tsx", "lib/contentCatalogue.ts", "lib/seo.ts", "app/globals.css"]) {
+  const source = fs.readFileSync(path.join(rootDir, file), "utf8");
+  if (/ArticleTemplate|getAllArticles|getAllArticleManifests|embeddedQuiz|article-engine\.css|@\/lib\/articles/.test(source)) {
+    addError(`The quiz-only site must not load or publish articles: ${file}`);
+  }
 }
 requireFile("app/[locale]/page.tsx");
 requireFile("app/[locale]/[slug]/page.tsx");
-requireFile("app/[locale]/[slug]/[section]/page.tsx");
 requireFile("lib/contentCatalogue.ts");
 if (quizTemplateText.includes("getAllQuizzes")) {
   addError("QuizTemplate must select its lightweight recommendation pool server-side.");

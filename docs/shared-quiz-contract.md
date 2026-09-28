@@ -48,6 +48,22 @@ intentional, reviewed visual change.
 
 ## Runtime rule
 
+The active site publishes quizzes and standard information pages only. Article
+wrappers, article payload routes, and article-specific display/rewarded ads are
+retired. Quizzes retain the original themed shell and rewarded placement.
+
+An optional manifest setting, `engine.entry: "first-answer"`, opens directly
+on the first question and moves the existing Start reward to the first answer.
+Only Years Left currently enables it, in all its supported locales. Each question
+has three choices. The first question's translated header label identifies the
+test in a compact themed hourglass badge; later questions keep their chapter
+labels. The small, muted notice below the choices explains the ad
+before the user chooses. The tapped answer is highlighted while the gate is busy,
+but that temporary selection is not scored or saved. No ad is
+requested on arrival; early closure leaves the question unanswered and allows
+another attempt. Completion/no-fill accepts the choice, and subsequent answers
+are unchanged. Saved in-progress attempts survive entry-mode changes.
+
 `QuizEngine` must remain slug-agnostic. Any subject-specific content belongs in
 the quiz data; any subject-specific visual identity belongs in its scoped theme.
 The production validator rejects slug-specific engine branches.

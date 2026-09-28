@@ -19,12 +19,11 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("display-ad requests are isolated to the opt-in article implementation", () => {
+test("the quiz-only site has no display-ad requests", () => {
   assert.equal(fs.existsSync("components/quiz/QuestionDisplayAd.tsx"), false);
   for (const directory of ["components", "lib", "app"]) {
     for (const path of fs.readdirSync(directory, { recursive: true })) {
       if (typeof path !== "string" || !/\.(tsx?|jsx?)$/.test(path) || path.endsWith(".test.ts")) continue;
-      if (directory === "components" && path === "article/articleAds.ts") continue;
       assert.doesNotMatch(fs.readFileSync(`${directory}/${path}`, "utf8"), /mountDisplayAd|QuestionDisplayAd|data-display-ad|\.defineSlot(?:\?\.)?\s*\(|displayAdUnitPath/, `${directory}/${path}`);
     }
   }
@@ -37,27 +36,50 @@ test("Mechanic uses the automatic rewarded-only flow", () => {
   assert.equal(manifest.structure.stages[0].questionIds.length,7);
   assert.equal(manifest.engine.targetRatio, 0.8);
 });
-test("quiz gates keep rewarded while monetized articles share display for banners and rewards", () => {
+test("quiz gates use the rewarded placement without an article ad unit", () => {
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
-  assert.doesNotMatch(config, /quizInterstitialAdUnitPath/);
-  assert.match(config, /articleDisplayAdUnitPath: "\/22677279144\/display"/);
+  assert.doesNotMatch(config, /quizInterstitialAdUnitPath|articleDisplayAdUnitPath|\/22677279144\/display/);
   const quizGate = fs.readFileSync("components/experience/useRewardedGate.ts", "utf8");
   assert.match(quizGate, /adUnitPath: siteConfig.rewardedAdUnitPath/);
-  const articleGate = fs.readFileSync("components/article/ArticleUnlock.tsx", "utf8");
-  assert.match(articleGate, /requestArticleReward\(\{ adUnitPath: siteConfig.articleDisplayAdUnitPath/);
-  const articleDisplay = fs.readFileSync("components/article/ArticleDisplayAd.tsx", "utf8");
-  assert.match(articleDisplay, /mountArticleDisplayAd\(id, siteConfig.articleDisplayAdUnitPath/);
+  assert.equal(fs.existsSync("components/article/ArticleUnlock.tsx"), false);
+  assert.equal(fs.existsSync("components/article/ArticleDisplayAd.tsx"), false);
 });
-test("answers remain buttons and do not trigger ads or link navigation", () => {
+test("answers remain buttons; only an opted-in first-answer entry can request a reward", () => {
   const source = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   const renderer = fs.readFileSync("components/quiz/QuestionRenderer.tsx", "utf8");
   assert.match(source, /window.setTimeout\(moveForward/);
   assert.match(renderer, /<button/);
-  assert.match(renderer, /disabled=\{answer !== undefined\}/);
+  assert.match(renderer, /disabled=\{studyBusy \|\| answer !== undefined\}/);
   assert.doesNotMatch(renderer, /answerHref|data-quiz-interstitial|followAnswer/);
   const answerHandler = source.slice(source.indexOf("function answerQuestion("), source.indexOf("function completeStudy("));
-  assert.doesNotMatch(answerHandler, /runRewardedGate|window\.location|pushState/);
+  assert.doesNotMatch(answerHandler, /window\.location|pushState/);
+  assert.match(source, /const firstAnswerReward = quiz\.engine\.startOnLoad && quiz\.engine\.rewarded\.start && questionIndex === 0/);
+  assert.match(answerHandler, /if \(firstAnswerReward\) \{\s*setPendingAnswer\([\s\S]*?void runGate\(acceptAnswer, \{ scrollAfter: false, retryOnClose: false \}\);/);
+  assert.match(answerHandler, /else acceptAnswer\(\)/);
+  assert.match(source, /translations\.ad\.continueNote/);
+  assert.match(renderer, /aria-describedby=\{answerNoteId\}/);
+  assert.match(renderer, /const selected = answer === index \|\| pending/);
+  assert.match(renderer, /"data-pending": pending \|\| undefined/);
+  assert.ok(source.lastIndexOf('id="quiz-first-answer-note"') > source.lastIndexOf('<QuestionRenderer'), 'ad note follows answers');
+});
+
+test("only Years Left opts into the first-answer entry across its locales", () => {
+  const locales = fs.readdirSync("data/i18n").filter(name => name.endsWith(".json")).map(file => file.slice(0, -5));
+  for (const slug of fs.readdirSync("data/quizzes")) {
+    const file = `data/quizzes/${slug}/quiz.json`;
+    if (!fs.existsSync(file)) continue;
+    const manifest = JSON.parse(fs.readFileSync(file, "utf8"));
+    assert.equal(manifest.engine.entry === "first-answer", slug === "years-left", slug);
+    if (slug === "years-left") {
+      for (const locale of locales) assert.equal(resolveQuizLocaleManifest(manifest, locale).engine.entry, "first-answer");
+    }
+  }
+  for (const locale of locales) {
+    const translations = JSON.parse(fs.readFileSync(`data/i18n/${locale}.json`, "utf8"));
+    assert.equal(typeof translations.ad.continueNote, "string");
+    assert.ok(translations.ad.continueNote.trim().length > 0, locale);
+  }
 });
 test("Start, checkpoints and result breakdowns restore rewarded gates; interstitials are removed", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
@@ -104,14 +126,14 @@ test("Years Left keeps each choice's score and calibration regardless of answer 
   const baselineQuiz = asQuiz(baseline);
   let seed = 317;
   for (let run = 0; run < 256; run++) {
-    const chosenIds = questions.map(() => {
+    const chosenIds = questions.map((question: { answerIds: string[] }) => {
       seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
-      return `a${1 + ((seed >>> 16) % 4)}`;
+      return question.answerIds[(seed >>> 16) % question.answerIds.length];
     });
     const answers = (quiz: Quiz) => Object.fromEntries(quiz.questions.map((q, i) => [q.id, q.choiceIds!.indexOf(chosenIds[i])]));
     assert.deepEqual(scoreQuiz(shuffledQuiz, answers(shuffledQuiz)), scoreQuiz(baselineQuiz, answers(baselineQuiz)));
   }
   const calibrationId = Object.keys(manifest.structure.questions).find(id => manifest.structure.questions[id].calibration)!;
-  assert.deepEqual(manifest.structure.questions[calibrationId].calibration, { a1: -1, a2: -0.25, a3: 0.5, a4: 1 });
+  assert.deepEqual(manifest.structure.questions[calibrationId].calibration, { a1: -1, a3: 0.5, a4: 1 });
   assert.doesNotMatch(questionCopy[calibrationId].question, /how far|clock.*run/i);
 });

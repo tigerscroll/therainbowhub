@@ -53,10 +53,10 @@ const server = http.createServer((request, response) => {
   }
 
   const status = resolveRequest(pathname) ? 200 : 404;
-  const isArticlePayload = ["article-data", "quiz-data"].some(directory => file.startsWith(path.join(root, directory) + path.sep));
+  const isQuizPayload = file.startsWith(path.join(root, "quiz-data") + path.sep);
   response.writeHead(status, {
     "Cache-Control": "no-cache",
-    "Content-Type": isArticlePayload
+    "Content-Type": isQuizPayload
       ? "application/json; charset=utf-8"
       : contentTypes[path.extname(file).toLowerCase()] ?? "application/octet-stream",
   });

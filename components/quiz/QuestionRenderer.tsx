@@ -8,9 +8,11 @@ import { QuizText } from './QuizText';
 type QuestionRendererProps = {
   answer?: number;
   answerLabels?: string[];
+  answerNoteId?: string;
   feedback: Quiz["engine"]["flow"]["feedback"];
   onAnswer: (choiceIndex: number) => boolean | void;
   onStudyComplete: () => void;
+  pendingAnswer?: number;
   question: QuizQuestion;
   studyBusy?: boolean;
   studyBusyLabel?: string;
@@ -117,7 +119,7 @@ function QuestionImage({ question }: { question: QuizQuestion }) {
   );
 }
 
-function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, answerLabels, answerNoteId, feedback, onAnswer, pendingAnswer, question, studyBusy }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -128,7 +130,8 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
       <QuestionVisual question={question} />
       <div className={`quiz-engine__answers quiz-engine__answers--${question.presentation}${hasAnswerIcons ? " quiz-engine__answers--icons" : ""}${usesCompactMobileGrid ? " quiz-engine__answers--compact-grid" : ""}${hasLongUnbrokenChoice ? " quiz-engine__answers--long-word" : ""}`} role={question.presentation === "scale" ? "radiogroup" : undefined}>
         {question.choices.map((choice, index) => {
-          const selected = answer === index;
+          const pending = pendingAnswer === index;
+          const selected = answer === index || pending;
           const icon = question.icons?.[index];
           const revealCorrectness = feedback === "instant" && answer !== undefined && question.answerIndex !== undefined;
           const correct = revealCorrectness && index === question.answerIndex;
@@ -154,6 +157,7 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
             "data-answer-id": question.choiceIds[index],
             "data-correct": correct || undefined,
             "data-incorrect": incorrect || undefined,
+            "data-pending": pending || undefined,
             "data-selected": selected || undefined,
             role: question.presentation === "scale" ? "radio" : undefined,
           };
@@ -162,7 +166,10 @@ function ChoiceQuestion({ answer, answerLabels, feedback, onAnswer, question }: 
             <button
               {...sharedProps}
               aria-checked={question.presentation === "scale" ? selected : undefined}
-              disabled={answer !== undefined}
+              aria-describedby={answerNoteId}
+              aria-busy={pending || undefined}
+              aria-pressed={question.presentation === "scale" ? undefined : selected}
+              disabled={studyBusy || answer !== undefined}
               key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
                 event.currentTarget.blur();
@@ -230,7 +237,7 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
   );
 }
 
-function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps) {
+function MemoryCueQuestion({ answer, answerNoteId, onAnswer, question, studyBusy }: QuestionRendererProps) {
   const [ready, setReady] = useState(false);
   useLayoutEffect(() => {
     setReady(false);
@@ -243,7 +250,7 @@ function MemoryCueQuestion({ answer, onAnswer, question }: QuestionRendererProps
       <div className="quiz-engine__memory-items" aria-label={question.memoryItems?.join(", ")}>
         {question.memoryItems?.map((item) => <strong key={item}>{item}</strong>)}
       </div>
-      <button className="quiz-engine__primary" disabled={!ready || answer !== undefined} onClick={() => onAnswer(0)} type="button">
+      <button aria-describedby={answerNoteId} className="quiz-engine__primary" disabled={studyBusy || !ready || answer !== undefined} onClick={() => onAnswer(0)} type="button">
         {question.continueLabel}
       </button>
     </div>

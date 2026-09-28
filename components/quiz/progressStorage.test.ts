@@ -27,8 +27,8 @@ test("storage remains isolated by quiz and locale", () => {
 });
 
 test("navigation-only changes preserve attempts but changed questions do not", () => {
-  const previous = { engine: { hardRefreshCheckpoints: true }, questions: ["q1"] };
-  const next = { ...previous, engine: { hardRefreshCheckpoints: false } };
+  const previous = { engine: { hardRefreshCheckpoints: true, startOnLoad: false }, questions: ["q1"] };
+  const next = { ...previous, engine: { hardRefreshCheckpoints: false, startOnLoad: true } };
   assert.equal(quizProgressSignaturesMatch(JSON.stringify(previous), JSON.stringify(next)), true);
   assert.equal(quizProgressSignaturesMatch(JSON.stringify(previous), JSON.stringify({ ...next, questions: ["q2"] })), false);
   assert.equal(quizProgressSignaturesMatch("broken", JSON.stringify(next)), false);

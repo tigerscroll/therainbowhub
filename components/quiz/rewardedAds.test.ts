@@ -110,4 +110,11 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
   controller.abort();
   assert.equal(await cancelled, "closed", "aborting a gate must stop it without consuming unavailable attempts");
   assert.equal(requests, 10);
+
+  outcomes.push("closed");
+  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3, retryOnClose: false }), "closed");
+  assert.equal(requests, 11, "a first-answer gate does not reopen after the user closes it");
+  outcomes.push("granted");
+  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3, retryOnClose: false, rewardClosedAlreadySent: true }), "granted");
+  assert.equal(requests, 12, "a fresh user interaction can request another ad");
 });

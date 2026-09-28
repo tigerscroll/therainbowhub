@@ -47,10 +47,10 @@ test("article schema rejects malformed optional fields", () => {
   assert.equal(isArticleSection({ ...base, conclusion: { eyebrow: "END" } }), false);
 });
 
-test("every article locale file is a complete validated manifest", () => {
+test("saved article locale files remain complete validated manifests", () => {
   const articleRoot = path.join(process.cwd(), "data", "articles");
   const slugs = fs.readdirSync(articleRoot, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
+    .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(articleRoot, entry.name, "en.json")))
     .map((entry) => entry.name)
     .sort();
 
@@ -94,7 +94,7 @@ test("every article locale file is a complete validated manifest", () => {
   }
 });
 
-test("every English article is automatically routable without a handwritten wrapper", () => {
+test("saved English article identities remain unique without public page wrappers", () => {
   const root = process.cwd();
   const articleRoot = path.join(root, "data", "articles");
   const quizRoot = path.join(root, "data", "quizzes");
@@ -114,11 +114,11 @@ test("every English article is automatically routable without a handwritten wrap
     assert.equal(routeSlugs.has(routeSlug), false, `duplicate English article route: /${routeSlug}`);
     assert.equal(quizSlugs.has(routeSlug), false, `article route /${routeSlug} conflicts with a quiz`);
     assert.equal(fs.existsSync(path.join(root, "app", "(default)", routeSlug, "page.tsx")), false,
-      `/${routeSlug} must use the shared JSON router instead of a handwritten page`);
+      `/${routeSlug} must not have a public page wrapper in the quiz-only site`);
     routeSlugs.add(routeSlug);
   }
 
-  assert.ok(routeSlugs.size > 0, "at least one English article should be discovered");
+  assert.ok(routeSlugs.size > 0, "older article source content should remain saved");
 });
 
 test("localized manifests can customize their public slug and every CTA state", () => {

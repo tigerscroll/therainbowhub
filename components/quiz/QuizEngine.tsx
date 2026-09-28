@@ -18,8 +18,6 @@ import { getChapterAnswers } from "./engagement";
 
 type QuizEngineProps = {
   onReady?: () => void;
-  showAbout?: boolean;
-  scrollTargetId?: string;
   locale: SupportedLocale;
   quiz: Quiz;
   recommendations: QuizRecommendation[];
@@ -81,9 +79,10 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
   return { ...saved, answers } as RestoredProgress;
 }
 
-export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, showAbout = true, startInstructionEnabled, translations, onReady }: QuizEngineProps) {
+export function QuizEngine({ locale, quiz, recommendations, startInstructionEnabled, translations, onReady }: QuizEngineProps) {
   const startsOnQuestion = quiz.engine.startOnLoad || Boolean(quiz.questions[0]?.study?.rewarded);
   const [answers, setAnswers] = useState<QuizAnswers>({});
+  const [pendingAnswer, setPendingAnswer] = useState<{ questionId: string; choiceIndex: number }>();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [completedStage, setCompletedStage] = useState(0);
   const [screen, setScreen] = useState<QuizScreen>(() => startsOnQuestion ? "question" : "landing");
@@ -150,6 +149,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
   const currentQuestion = quiz.questions[questionIndex];
   const isChapterFlow = quiz.engine.flow.type === "staged" && quiz.stages.length === 10;
   const selectedAnswer = currentQuestion ? answers[currentQuestion.id] : undefined;
+  const firstAnswerReward = quiz.engine.startOnLoad && quiz.engine.rewarded.start && questionIndex === 0;
   const studyComplete = currentQuestion ? studiedQuestions.includes(currentQuestion.id) : true;
   const currentStage = currentQuestion?.stage ?? 0;
   const stageQuestions = quiz.questions.filter((question) => question.stage === currentStage);
@@ -177,13 +177,11 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
       removeQuizProgress(storageKey);
     } finally {
       setHydrated(true);
-      if (!scrollTargetId) {
-        document.documentElement.classList.remove("quiz-resuming");
-        document.documentElement.style.removeProperty("background");
-        document.body.style.removeProperty("background");
-      }
+      document.documentElement.classList.remove("quiz-resuming");
+      document.documentElement.style.removeProperty("background");
+      document.body.style.removeProperty("background");
     }
-  }, [progressSignature, quiz, scrollTargetId, storageKey]);
+  }, [progressSignature, quiz, storageKey]);
 
   useEffect(() => {
     if (!hydrated || screen === "landing") return;
@@ -254,12 +252,6 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
   }, [showStartPrompt, startInstructionEnabled]);
 
   function scrollToTop() {
-    if (scrollTargetId) {
-      const scroll = () => document.getElementById(scrollTargetId)?.scrollIntoView({ block: "start", behavior: "instant" });
-      scroll();
-      window.requestAnimationFrame(scroll);
-      return;
-    }
     window.scrollTo({ top: 0, behavior: "auto" });
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "auto" }));
   }
@@ -291,10 +283,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
   }
 
   async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
-    await runGate(() => {
-      onComplete();
-      if (scrollTargetId && scrollAfter) scrollToTop();
-    }, { scrollAfter: scrollAfter && !scrollTargetId });
+    await runGate(onComplete, { scrollAfter });
   }
 
   function moveForward() {
@@ -357,8 +346,13 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
   }, [completedStage, quiz.stages.length, screen]);
 
   function answerQuestion(choiceIndex: number) {
-    if (!currentQuestion || selectedAnswer !== undefined) return false;
-    setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
+    if (!hydrated || adBusy || !currentQuestion || selectedAnswer !== undefined) return false;
+    const acceptAnswer = () => setAnswers((current) => ({ ...current, [currentQuestion.id]: choiceIndex }));
+    if (firstAnswerReward) {
+      setPendingAnswer({ questionId: currentQuestion.id, choiceIndex });
+      void runGate(acceptAnswer, { scrollAfter: false, retryOnClose: false });
+    }
+    else acceptAnswer();
     return true;
   }
 
@@ -418,6 +412,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
     cancelGate();
     removeQuizProgress(storageKey);
     setAnswers({});
+    setPendingAnswer(undefined);
     setQuestionIndex(0);
     setCompletedStage(0);
     setStudiedQuestions([]);
@@ -455,7 +450,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
             <p className="quiz-engine__ad-note quiz-engine__start-instruction-reassurance">{translations.ad.startsImmediately}</p>
           </div>
         </section>
-        {showAbout && <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />}
+        <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
         </>
       );
     }
@@ -478,7 +473,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
         title={quiz.title}
       />
-      {showAbout && <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />}
+      <QuizAbout quiz={quiz} title={translations.quiz.aboutTitle} />
       {showStartPrompt && quiz.landing.startPrompt ? (
         <div className="quiz-engine__reward-prompt">
           <section
@@ -611,7 +606,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
           </p>
         ) : null}
       </section>
-      {showAbout && <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
+      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );
   }
@@ -861,7 +856,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
           />
         ) : null}
       </section>
-      {showAbout && <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
+      <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
       </>
     );
   }
@@ -873,7 +868,12 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
         {!isChapterFlow ? <span>{quiz.career
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
           : translations.quiz.progressComplete.replace("{value}", String(progress))}</span> : null}
-        <strong>{currentQuestion.headerLabel ?? quiz.stages[currentStage]}</strong>
+        <strong data-entry={quiz.engine.startOnLoad && questionIndex === 0 || undefined}>
+          {quiz.engine.startOnLoad && questionIndex === 0 ? (
+            <span aria-hidden="true" className="quiz-engine__entry-mark">{quiz.cardIcon}</span>
+          ) : null}
+          {currentQuestion.headerLabel ?? quiz.stages[currentStage]}
+        </strong>
       </div>
       {!isChapterFlow ? (
         <div className="quiz-engine__progress" data-complete={quiz.career && displayedStageProgress === 100 ? true : undefined}>
@@ -883,17 +883,24 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
       <article className="quiz-engine__question quiz-engine__card" data-question-id={currentQuestion.id}>
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context"><QuizText text={currentQuestion.context} /></p> : null}
         <h1 key={currentQuestion.id}><QuizText text={currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt} /></h1>
-      <QuestionRenderer
-        answer={selectedAnswer}
+        <QuestionRenderer
+          answer={selectedAnswer}
+          answerNoteId={firstAnswerReward && selectedAnswer === undefined ? "quiz-first-answer-note" : undefined}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
+          pendingAnswer={adBusy && pendingAnswer?.questionId === currentQuestion.id ? pendingAnswer.choiceIndex : undefined}
           question={currentQuestion}
-          studyBusy={adBusy}
+          studyBusy={!hydrated || adBusy}
           studyBusyLabel={translations.ad.loading}
           studyComplete={studyComplete}
         />
+        {firstAnswerReward && selectedAnswer === undefined ? (
+          <p aria-live="polite" className="quiz-engine__first-answer-note" id="quiz-first-answer-note">
+            {adBusy ? translations.ad.loading : translations.ad.continueNote}
+          </p>
+        ) : null}
         {quiz.engine.flow.advance === "manual" ? (
           <button
             aria-hidden={selectedAnswer === undefined || undefined}
@@ -909,7 +916,7 @@ export function QuizEngine({ locale, quiz, recommendations, scrollTargetId, show
         ) : null}
       </article>
     </section>
-    {showAbout && <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />}
+    <QuizAbout label={translations.quiz.restartTest} onRestart={restartQuiz} quiz={quiz} title={translations.quiz.aboutTitle} />
     </>
   );
 }

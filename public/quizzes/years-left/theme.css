@@ -88,6 +88,10 @@
   display: block;
   width: 60px;
   height: 66px;
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__landing:not(.quiz-engine__landing--start-instruction) .quiz-engine__landing-badge span,
+[data-quiz-theme="years-left"] .quiz-engine__entry-mark{
   background: url("./assets/items/hourglass-icon.webp") center / contain no-repeat;
   color: transparent;
   font-size: 0;
@@ -449,6 +453,13 @@
   border-color: var(--years-brass-dark);
   box-shadow: inset 4px 0 0 var(--years-brass-dark), 2px 2px 0 rgba(33, 29, 26, .12);
   transform: translateY(1px);
+}
+
+[data-quiz-theme="years-left"] .quiz-engine__answer[data-pending] {
+  border-color: var(--years-brass-dark);
+  background: #edca88;
+  box-shadow: inset 4px 0 0 var(--years-brass-dark), 0 0 0 3px rgba(122, 77, 31, .2);
+  opacity: 1;
 }
 
 [data-quiz-theme="years-left"] .quiz-engine__checkpoint > h2,

@@ -1,5 +1,9 @@
 # Article manifest format
 
+This is retained source content only. The active site is quiz-only: these
+manifests are not routed, embedded, exported as article payloads, or included in
+the sitemap. The format notes below describe the former article implementation.
+
 Each article has one stable folder and one complete JSON manifest per locale:
 
 ```text

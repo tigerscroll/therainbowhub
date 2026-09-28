@@ -34,19 +34,22 @@ async function measureAnswers(page) {
 }
 
 try {
-  for (const route of ['/years-left', '/memory', '/vision', '/de/years-left', '/ar/years-left', '/de/memory', '/ar/vision', '/cloudstorage/years-left']) {
+  for (const route of ['/years-left', '/memory', '/vision', '/de/years-left', '/ar/years-left', '/de/memory', '/ar/vision']) {
     for (const width of [320, 390, 1440]) {
       const context = await browser.newContext({ viewport: { width, height: 640 } });
       const page = await context.newPage();
       await page.route('**/*', route => new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort());
       await page.addInitScript(mockRewardedAds);
       await page.goto(`${base}${route}`);
-      const landing = page.locator(route.startsWith('/cloudstorage') ? '[data-embedded-quiz] .quiz-engine__landing' : '.quiz-engine__landing');
-      await landing.waitFor();
-      const start = landing.locator('.quiz-engine__primary');
-      assert.equal(await start.evaluate(button => getComputedStyle(button).minHeight), '72px', `${route}/${width}: Start minimum`);
-      assert.equal((await start.boundingBox()).height, 72, `${route}/${width}: short Start label stays at baseline`);
-      await start.click();
+      const landing = page.locator('.quiz-engine__landing');
+      if (await landing.count()) {
+        const start = landing.locator('.quiz-engine__primary');
+        assert.equal(await start.evaluate(button => getComputedStyle(button).minHeight), '72px', `${route}/${width}: Start minimum`);
+        assert.equal((await start.boundingBox()).height, 72, `${route}/${width}: short Start label stays at baseline`);
+        await start.click();
+      } else {
+        await page.locator('#quiz-first-answer-note').waitFor();
+      }
       await page.locator('[data-question-id]').waitFor();
       const study = page.locator('.quiz-engine__study .quiz-engine__primary');
       if (await study.count()) await study.click();

@@ -129,116 +129,28 @@ if (!fs.existsSync(outputRoot)) {
     }
   }
 
-  const articles = fs.readdirSync(articleRoot, { withFileTypes: true })
+  const savedArticleSlugs = fs.readdirSync(articleRoot, { withFileTypes: true })
     .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(articleRoot, entry.name, "en.json")))
     .map((entry) => {
       const manifest = JSON.parse(fs.readFileSync(path.join(articleRoot, entry.name, "en.json"), "utf8"));
-      return {
-        layout: manifest.layout,
-        monetization: manifest.monetization,
-        pointCounts: manifest.sections.map((section) => section.points.length),
-        routeSlug: manifest.routeSlug ?? manifest.slug,
-        slug: manifest.slug,
-      };
+      return manifest.routeSlug ?? manifest.slug;
     });
-
-  for (const { layout, monetization, pointCounts, routeSlug, slug } of articles) {
-    const sectionCount = pointCounts.length;
-    const articleFile = routeFile(`/${routeSlug}`);
-    if (!articleFile) {
-      addError(`Missing exported article route: /${routeSlug}`);
-      continue;
-    }
-    const html = fs.readFileSync(articleFile, "utf8");
-    if (html.includes("data-display-ad")) addError(`/${routeSlug}: display-ad markup must not be exported.`);
-    if (monetization) {
-      if (!html.includes('class="article-display"') || !html.includes('class="article-unlocked-content" hidden=""')) {
-        addError(`/${routeSlug}: monetized article must export its top placement and initially locked main content.`);
-      }
-      if (!html.includes('"isAccessibleForFree":false')) addError(`/${routeSlug}: article unlock must be disclosed in structured data.`);
-    } else if (html.includes('class="article-display"')) {
-      addError(`/${routeSlug}: non-monetized articles must not request display ads.`);
-    }
-    if (html.includes("data-embedded-quiz=") || html.includes("data-article-quiz-preview")) {
-      addError(`/${routeSlug}: article-only pages must not contain quiz markup.`);
-    }
-    for (const quizSlug of slugs) {
-      const embedRoute = `/${routeSlug}/${quizSlug}`;
-      const embedFile = routeFile(embedRoute);
-      if (!embedFile) {
-        addError(`Missing static article/quiz page: ${embedRoute}`);
-        continue;
-      }
-      const embedHtml = fs.readFileSync(embedFile, "utf8");
-      const embeds = [...embedHtml.matchAll(/data-embedded-quiz="([^"]+)"/g)].map(match => match[1]);
-      if (embeds.length !== 1 || embeds[0] !== quizSlug) addError(`${embedRoute}: must render only the selected quiz.`);
-      if (embedHtml.includes("data-article-quiz-preview") || embedHtml.includes("article-quiz-first-paint")) {
-        addError(`${embedRoute}: obsolete client preview injection remains.`);
-      }
-      if ((embedHtml.match(/<h1\b/g) ?? []).length !== 2) addError(`${embedRoute}: expected one quiz heading and one article heading.`);
-    }
-    for (let section = 1; section <= sectionCount; section += 1) {
-      const chapterRoute = `/${routeSlug}/${section}`;
-      const chapterFile = routeFile(chapterRoute);
-      if (!chapterFile) {
-        addError(`Missing exported article chapter route: ${chapterRoute}`);
-      } else if (fs.readFileSync(chapterFile, "utf8").includes("data-display-ad")) {
-        addError(`${chapterRoute}: display-ad markup must not be exported.`);
-      }
-      const payloadFile = path.join(outputRoot, "article-data", slug, String(section));
-      if (!fs.existsSync(payloadFile)) {
-        addError(`Missing lazy article payload: /article-data/${slug}/${section}`);
-        continue;
-      }
-      const payload = JSON.parse(fs.readFileSync(payloadFile, "utf8"));
-      const expectedPointCount = pointCounts[section - 1];
-      if (!payload?.title || !Array.isArray(payload.points) || payload.points.length !== expectedPointCount) {
-        addError(`/article-data/${slug}/${section}: expected a titled ${expectedPointCount}-point article section.`);
-      }
-      if (payload.next && (
-        typeof payload.next.copy !== "string"
-        || typeof payload.next.cta !== "string"
-        || typeof payload.next.eyebrow !== "string"
-        || typeof payload.next.title !== "string"
-        || (typeof payload.next.adNote !== "undefined" && typeof payload.next.adNote !== "string")
-      )) {
-        addError(`/article-data/${slug}/${section}: invalid next-section gate.`);
-      }
-      if (section < sectionCount && (!payload.next || typeof payload.next.adNote !== "string")) {
-        addError(`/article-data/${slug}/${section}: every internal gate must include its rewarded-ad note.`);
-      }
-      if (section === sectionCount && payload.next) {
-        addError(`/article-data/${slug}/${section}: final section must not include another gate.`);
-      }
-      for (const [pointIndex, point] of (payload.points ?? []).entries()) {
-        if (point.callouts && (!Array.isArray(point.callouts) || point.callouts.some((callout) => (
-          typeof callout?.question !== "string" || typeof callout?.answer !== "string"
-        )))) {
-          addError(`/article-data/${slug}/${section}: invalid callouts on point ${pointIndex + 1}.`);
-        }
-      }
-      if (payload.conclusion && (
-        typeof payload.conclusion.eyebrow !== "string" || typeof payload.conclusion.copy !== "string"
-      )) {
-        addError(`/article-data/${slug}/${section}: invalid editorial conclusion.`);
-      }
-      if (slug === "prostate") {
-        const calloutCounts = payload.points.map((point) => point.callouts?.length ?? 0);
-        if (section === 3 && (calloutCounts[3] !== 3 || calloutCounts.some((count, index) => index !== 3 && count !== 0))) {
-          addError("/article-data/prostate/3: the three PSA callouts must appear together after Step 4.");
-        }
-        if (section === 5 && (!payload.conclusion || payload.conclusion.eyebrow !== "THE MOST IMPORTANT POINT")) {
-          addError("/article-data/prostate/5: final editorial conclusion is missing.");
-        }
-      }
-      const firstPointTitle = payload.points?.[0]?.title;
-      if (layout !== "plain" && firstPointTitle && html.includes(firstPointTitle)) {
-        addError(`/${routeSlug}: locked section content leaked into the initial article payload.`);
-      }
-      if (layout === "plain" && firstPointTitle && !html.includes(firstPointTitle)) {
-        addError(`/${routeSlug}: readable article content must be exported without an ad gate.`);
+  const removedArticles = [...savedArticleSlugs, "cloudstorage", "monetize", "makemoney"];
+  const sitemap = fs.readFileSync(path.join(outputRoot, "sitemap.xml"), "utf8");
+  const sitemapPaths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
+  for (const slug of removedArticles) {
+    for (const prefix of ["", ...locales.map((locale) => `/${locale}`)]) {
+      const articleRoute = `${prefix}/${slug}`;
+      if (routeFile(articleRoute)) addError(`Removed article page is still exported: ${articleRoute}`);
+      const artifactRoot = path.join(outputRoot, articleRoute.replace(/^\//, ""));
+      if (fs.existsSync(artifactRoot)) addError(`Removed article chapter or embed assets remain: ${articleRoute}`);
+      if (sitemapPaths.some((route) => route === articleRoute || route.startsWith(`${articleRoute}/`))) {
+        addError(`Removed article is still listed in the sitemap: ${articleRoute}`);
       }
     }
+  }
+  if (fs.existsSync(path.join(outputRoot, "article-data"))) {
+    addError("Removed article-data payloads must not be exported.");
   }
 
   if (routeFile("/mcdonalds")) addError("Removed /mcdonalds route must not be present in the static export.");
@@ -250,4 +162,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Static export validation passed for every quiz, locale and lazy article-section route.");
+console.log("Static export validation passed for every quiz and locale; retired article routes and payloads are absent.");

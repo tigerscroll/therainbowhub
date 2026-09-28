@@ -21,6 +21,8 @@ export function quizProgressSignaturesMatch(saved: unknown, current: string) {
     const next = JSON.parse(current);
     delete previous.engine.hardRefreshCheckpoints;
     delete next.engine.hardRefreshCheckpoints;
+    delete previous.engine.startOnLoad;
+    delete next.engine.startOnLoad;
     return JSON.stringify(previous) === JSON.stringify(next);
   } catch { return false; }
 }

@@ -987,6 +987,24 @@
   animation: quizChapterIn .28s ease-out both;
 }
 
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell.quiz-engine__question-shell--chapters .quiz-engine__progress-head > strong[data-entry] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  border: 2px solid color-mix(in srgb, var(--quiz-primary) 65%, var(--quiz-border));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--quiz-primary) 35%, var(--quiz-surface-raised)), var(--quiz-surface-raised));
+  color: var(--quiz-text);
+  box-shadow: 2px 3px 0 color-mix(in srgb, var(--quiz-primary) 25%, transparent);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: .01em;
+  text-transform: none;
+}
+
+.quiz-engine__entry-mark { display: inline-block; flex: 0 0 auto; width: 18px; height: 22px; color: var(--quiz-primary); font-size: 18px; line-height: 1; }
+
 /* Text choices keep the same full-width targets in every language, even when
    a short set of labels would otherwise trigger the legacy compact grid. */
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__answers--text:not(.quiz-engine__answers--icons) {

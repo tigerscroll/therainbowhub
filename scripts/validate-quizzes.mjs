@@ -306,6 +306,8 @@ for (const folder of folders) {
     }
   }
   const manifestEngine = config.engine ?? {};
+  fail([undefined, "landing", "first-answer"].includes(manifestEngine.entry), `${folder.name}: engine.entry must be landing or first-answer.`);
+  const startOnLoad = manifestEngine.entry === "first-answer" || (templateContract.startOnLoad ?? false);
   const templateKeys = ["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"];
   fail(templateKeys.every((key) => manifestEngine[key] === undefined), `${folder.name}: shared flow settings must come from the template, not individual manifests.`);
   config.engine = {
@@ -313,7 +315,7 @@ for (const folder of folders) {
     advance: templateContract.advance ?? "automatic",
     feedback: "selection-only",
     checkpoint: "ai",
-    startOnLoad: templateContract.startOnLoad ?? false,
+    startOnLoad,
     rewarded: { start: templateContract.rewardedStart ?? true, stages: true, attempts: 3, confirmStart: false },
     advanceDelayMs: 450,
     ...manifestEngine,
@@ -326,7 +328,7 @@ for (const folder of folders) {
     && config.engine.advance === (templateContract.advance ?? "automatic")
     && config.engine.feedback === "selection-only"
     && config.engine.checkpoint === "ai"
-    && config.engine.startOnLoad === (templateContract.startOnLoad ?? false)
+    && config.engine.startOnLoad === startOnLoad
     && config.engine.advanceDelayMs === 450
     && JSON.stringify(config.engine.rewarded) === JSON.stringify({ start: templateContract.rewardedStart ?? true, stages: true, attempts: 3, confirmStart: false }), `${folder.name}: quiz must resolve to its shared template engine.`);
   const proofCount = config.listing?.socialProofCount;

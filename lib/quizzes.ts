@@ -433,6 +433,7 @@ type QuizManifest = {
     scoring: QuizScoring["type"];
     checkpoint?: QuizEngineConfig["checkpoint"];
     startOnLoad?: boolean;
+    entry?: "landing" | "first-answer";
     localeParity?: QuizEngineConfig["localeParity"];
     rewarded?: Partial<QuizRewardedConfig>;
     advanceDelayMs?: number;
@@ -1107,6 +1108,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (!["correct-answer", "weighted-profile", "hybrid-match"].includes(String(engine.scoring))) throw new Error(`${file}: invalid scoring mode.`);
   if (engine.localeParity !== undefined && !["strict", "independent"].includes(String(engine.localeParity))) throw new Error(`${file}: engine.localeParity must be strict or independent.`);
   const templateContract = QUIZ_TEMPLATE_CONTRACTS[template];
+  if (engine.entry !== undefined && !["landing", "first-answer"].includes(String(engine.entry))) throw new Error(`${file}: engine.entry must be landing or first-answer.`);
   const advanceDelayMs = templateContract.engine.advanceDelayMs;
   if (engine.hardRefreshCheckpoints !== undefined && typeof engine.hardRefreshCheckpoints !== "boolean") throw new Error(`${file}: engine.hardRefreshCheckpoints must be a boolean.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
@@ -1223,6 +1225,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     engine: {
       ...engine,
       ...templateContract.engine,
+      startOnLoad: engine.entry === "first-answer" || templateContract.engine.startOnLoad,
       advanceDelayMs,
       targetRatio,
       estimate,

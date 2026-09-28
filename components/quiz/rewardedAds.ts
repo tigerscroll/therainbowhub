@@ -202,6 +202,7 @@ export async function requestRewardedAd({
   onRewardClosed,
   rewardClosedAlreadySent = false,
   signal,
+  retryOnClose = true,
   timeoutMs = 4000,
   visibleTimeoutMs = 120000,
 }: {
@@ -210,6 +211,7 @@ export async function requestRewardedAd({
   onAttempt?: (attempt: number, maximum: number) => void;
   onRewardClosed?: () => void;
   rewardClosedAlreadySent?: boolean;
+  retryOnClose?: boolean;
   signal?: AbortSignal;
   timeoutMs?: number;
   visibleTimeoutMs?: number;
@@ -232,6 +234,7 @@ export async function requestRewardedAd({
     if (signal?.aborted) return "closed";
     if (result === "granted") return result;
     if (result === "closed") {
+      if (!retryOnClose) return "closed";
       await waitBeforeRetry(signal);
       continue;
     }
