@@ -27,8 +27,10 @@ test("navigation refresh waits for the scroll to settle at the top and fires onl
   const env = setup();
   let refreshes = 0;
   scrollQuizToTop(() => refreshes++);
+  assert.deepEqual(env.scrolls, [], "wait for React to commit the next question");
+  env.frame(500, 0);
   assert.deepEqual(env.scrolls, [{ top: 0, behavior: "smooth" }]);
-  env.frame(350, 0);
+  env.frame(350, 8);
   env.frame(100, 16);
   env.frame(0, 32);
   assert.equal(refreshes, 0, "the new question must settle before requesting ads");
@@ -43,9 +45,10 @@ test("reduced motion and already-at-top navigation still refresh once", () => {
   env.browser.scrollY = 0;
   let refreshes = 0;
   scrollQuizToTop(() => refreshes++);
-  assert.deepEqual(env.scrolls, [{ top: 0, behavior: "instant" }]);
   env.frame(0, 0);
+  assert.deepEqual(env.scrolls, [{ top: 0, behavior: "instant" }]);
   env.frame(0, 16);
+  env.frame(0, 32);
   assert.equal(refreshes, 1);
 });
 
@@ -59,8 +62,9 @@ test("leaving the question or interrupting the scroll cannot cause a delayed ref
   assert.equal(refreshes, 0);
   scrollQuizToTop(() => refreshes++);
   env.frame(50, 20);
-  env.frame(50, 3020);
-  env.frame(0, 3040);
+  env.frame(50, 36);
+  env.frame(50, 3036);
+  env.frame(0, 3052);
   assert.equal(refreshes, 0);
   assert.equal(env.frames.size, 0);
 });

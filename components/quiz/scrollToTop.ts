@@ -15,10 +15,15 @@ export function scrollQuizToTop(onTop?: () => void) {
     // An interrupted scroll must not leave an ad refresh waiting indefinitely.
     if (now - startedAt < 3000) frame = window.requestAnimationFrame(check);
   };
-  window.scrollTo({
-    top: 0,
-    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+  // React must commit the new question before scrolling. Starting inside the
+  // click handler lets the changed layout/focused Next button cancel the scroll.
+  frame = window.requestAnimationFrame(() => {
+    if (cancelled) return;
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+    frame = window.requestAnimationFrame(check);
   });
-  frame = window.requestAnimationFrame(check);
   return () => { cancelled = true; window.cancelAnimationFrame(frame); };
 }

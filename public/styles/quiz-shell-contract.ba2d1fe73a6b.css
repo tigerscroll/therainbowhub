@@ -344,6 +344,16 @@
   min-height: 0;
 }
 
+.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot > div,
+.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot iframe {
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.quiz-display-ad[data-ad-format="native"] .quiz-display-ad__slot iframe {
+  display: block;
+}
+
 /* Keep the row measurable while avoiding empty frames or clipped fixed ads. */
 .quiz-display-ad[data-fits="false"],
 .quiz-display-ad[data-state="empty"] {
@@ -421,6 +431,19 @@
   border-radius: 18px !important;
   background: var(--quiz-flow-next-background, color-mix(in srgb, var(--quiz-primary) 6%, var(--quiz-surface-raised))) !important;
   box-shadow: none !important;
+}
+
+/* Let the ad own both gaps so neighbouring theme margins cannot unbalance it. */
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint > :has(+ .quiz-display-ad[data-display-ad="above-continue"][data-state="filled"]) {
+  margin-bottom: 0 !important;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint > .quiz-display-ad[data-display-ad="above-continue"][data-state="filled"] {
+  margin-block: 24px !important;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__checkpoint > .quiz-display-ad[data-display-ad="above-continue"][data-state="filled"] + .quiz-engine__primary {
+  margin-top: 0 !important;
 }
 
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__landing .quiz-engine__primary,

@@ -90,7 +90,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
   const preloadedArtwork = useRef(new Set<string>());
-  const questionAd = useRef<QuestionDisplayAdHandle>(null);
   const answersAd = useRef<QuestionDisplayAdHandle>(null);
   const cancelScroll = useRef<(() => void) | null>(null);
   useEffect(() => () => cancelScroll.current?.(), []);
@@ -250,12 +249,12 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       setScreen("checkpoint");
       scrollToTop();
     } else {
-      // Capture only existing placements: question two's new lower ad gets its
-      // initial request, not an immediate second request at the top.
-      const mountedAds = [questionAd.current, answersAd.current];
+      // Only refresh a placement that already exists. A newly revealed card
+      // gets its initial request without an immediate second request.
+      const mountedAd = answersAd.current;
       setQuestionIndex(nextIndex);
       setScreen("question");
-      scrollToTop(() => mountedAds.forEach(ad => ad?.refresh()));
+      scrollToTop(() => mountedAd?.refresh());
     }
   }
 
@@ -446,6 +445,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
             <small>{careerStage.next.tagline}</small>
           </div>
         ) : null}
+        {hydrated ? <QuestionDisplayAd label={translations.ad.advertisement} placement="above-continue" /> : null}
         <button className="quiz-engine__primary" disabled={isFinalStage && !checkpointCtaReady} onClick={continueAfterCheckpoint} type="button">
           {checkpointCtaContent}
         </button>
@@ -679,7 +679,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         {currentQuestion.context && (!currentQuestion.study || studyComplete) ? <p className="quiz-engine__question-context"><QuizText text={currentQuestion.context} /></p> : null}
         <h1 key={currentQuestion.id}><QuizText text={currentQuestion.study && !studyComplete ? currentQuestion.study.title : currentQuestion.prompt} /></h1>
         {(!currentQuestion.study || studyComplete) ? <QuestionMedia question={currentQuestion} /> : null}
-        {hydrated ? <QuestionDisplayAd label={translations.ad.advertisement} placement="below-question" ref={questionAd} /> : null}
         <QuestionRenderer
           answer={selectedAnswer}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
@@ -691,7 +690,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
           studyBusyLabel={translations.ad.loading}
           studyComplete={studyComplete}
         />
-        {hydrated && questionIndex > 0 && (!currentQuestion.study || studyComplete) ? (
+        {hydrated && (!currentQuestion.study || studyComplete) ? (
           <QuestionDisplayAd label={translations.ad.advertisement} placement="below-answers" ref={answersAd} />
         ) : null}
         {quiz.engine.flow.advance === "manual" ? (

@@ -19,12 +19,17 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("question ads use dedicated display and native units without rewarded or interstitial ads", () => {
+test("quizzes request only the Fluid native unit without rewarded or interstitial ads", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   assert.doesNotMatch(engine, /QuizNativeAd|useRewardedGate|runRewardedGate|mountQuizInterstitial|INTERSTITIAL|nextQuestionHref|window\.location\.reload/);
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
-  assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
+  assert.doesNotMatch(config, /displayAdUnitPath/);
   assert.match(config, /quizNativeAdUnitPath: "\/22677279144\/quiz_native_card"/);
+  const ad = fs.readFileSync("components/quiz/QuestionDisplayAd.tsx", "utf8");
+  assert.match(ad, /siteConfig\.quizNativeAdUnitPath/);
+  assert.match(ad, /\["fluid"\]/);
+  assert.doesNotMatch(engine, /placement="below-question"/);
+  assert.match(engine, /placement="above-continue"/);
   for (const file of fs.readdirSync("data/i18n")) {
     if (!file.endsWith(".json")) continue;
     const copy = JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8"));
