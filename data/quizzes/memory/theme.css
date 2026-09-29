@@ -311,9 +311,9 @@
 [data-quiz-theme="memory"] .quiz-engine__answer{ border: 2px solid var(--memory-ink); border-radius: 3px; background: rgba(255,250,240,.92); color: var(--memory-ink); box-shadow: 4px 4px 0 rgba(25,23,19,.12); }
 [data-quiz-theme="memory"] .quiz-engine__answer > span{ border: 1px solid var(--memory-ink); border-radius: 2px; background: var(--memory-ink); color: var(--memory-paper-light); box-shadow: none; }
 @media (hover: hover) and (pointer: fine) {
-  [data-quiz-theme="memory"] .quiz-engine__answer:hover:not(:disabled){ border-color: var(--memory-red); transform: translate(-1px, -2px); }
+  [data-quiz-theme="memory"] .quiz-engine__answer:hover:not(:disabled){ border-color: var(--memory-green); transform: translate(-1px, -2px); }
 }
-[data-quiz-theme="memory"] .quiz-engine__answer[data-selected]{ border-color: var(--memory-red); background: #f1d9d5; box-shadow: 5px 5px 0 rgba(168,44,50,.22); }
+[data-quiz-theme="memory"] .quiz-engine__answer[data-selected]{ border-color: var(--memory-green); background: #dcebdc; box-shadow: 5px 5px 0 rgba(63,118,81,.22); opacity: 1; }
 [data-quiz-theme="memory"] .quiz-engine__answers--icons .quiz-engine__answer-icon{ border: 0; background: transparent; color: inherit; font-size: 44px; }
 
 /* Study cues read like clipped revision cards. */
@@ -553,13 +553,13 @@
 
 @media (hover: hover) and (pointer: fine) {
   [data-quiz-theme="memory"] .quiz-engine__answer:hover:not(:disabled){
-    box-shadow: 6px 6px 0 rgba(168,44,50,.18);
+    box-shadow: 6px 6px 0 rgba(63,118,81,.18);
   }
 }
 
 [data-quiz-theme="memory"] .quiz-engine__answer[data-selected] > span{
-  border-color: var(--memory-red);
-  background: var(--memory-red);
+  border-color: var(--memory-green);
+  background: var(--memory-green);
 }
 
 [data-quiz-theme="memory"] .quiz-engine__study{

@@ -94,6 +94,21 @@ try {
       assert.notEqual(await answers.nth(1).evaluate(node => getComputedStyle(node).backgroundColor), selectedStyle.background);
       if (['en', 'ar'].includes(locale)) await page.screenshot({path: `/tmp/vision-selected-${locale}.png`});
     }
+    if (slug === 'memory') {
+      await page.waitForFunction(() => {
+        const selected = document.querySelector('.quiz-engine__answer[data-pending]');
+        if (!selected) return false;
+        const style = getComputedStyle(selected);
+        return style.backgroundColor === 'rgb(220, 235, 220)' && style.borderTopColor === 'rgb(63, 118, 81)' && style.opacity === '1';
+      });
+      const badge = await answers.first().locator(':scope > span').evaluate(node => {
+        const style = getComputedStyle(node);
+        return {background: style.backgroundColor, border: style.borderTopColor};
+      });
+      assert.deepEqual(badge, {background: 'rgb(63, 118, 81)', border: 'rgb(63, 118, 81)'}, 'the selected Memory answer badge is green, including while the reward loads');
+      assert.equal(await page.locator('.quiz-engine__answer[data-correct], .quiz-engine__answer[data-incorrect]').count(), 0, 'green marks selection, not a revealed correct answer');
+      if (['en', 'ar'].includes(locale)) await page.screenshot({path: `/tmp/memory-selected-${locale}.png`});
+    }
     assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId);
     await page.evaluate(() => { window.testReward.ready(); window.testReward.grant(); });
     assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId, 'reward must close before leaving the first question');
