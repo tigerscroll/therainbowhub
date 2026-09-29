@@ -65,13 +65,13 @@ test("Meta QuizComplete is sent at the final result, never from an ad or answer 
   assert.doesNotMatch(fs.readFileSync("components/quiz/rewardedAds.ts", "utf8"), /AdClick|QuizComplete/);
 });
 
-test("Years Left, Vision, Nursing, Midwifery and Memory opt into the first-answer entry across their locales", () => {
+test("Years Left, Vision, Nursing, Midwifery, Memory and IQ opt into the first-answer entry across their locales", () => {
   const locales = fs.readdirSync("data/i18n").filter(name => name.endsWith(".json")).map(file => file.slice(0, -5));
   for (const slug of fs.readdirSync("data/quizzes")) {
     const file = `data/quizzes/${slug}/quiz.json`;
     if (!fs.existsSync(file)) continue;
     const manifest = JSON.parse(fs.readFileSync(file, "utf8"));
-    const firstAnswerEntry = ["years-left", "vision", "nursing", "midwifery", "memory"].includes(slug);
+    const firstAnswerEntry = ["years-left", "vision", "nursing", "midwifery", "memory", "iq"].includes(slug);
     assert.equal(manifest.engine.entry === "first-answer", firstAnswerEntry, slug);
     if (firstAnswerEntry) {
       for (const locale of locales) assert.equal(resolveQuizLocaleManifest(manifest, locale).engine.entry, "first-answer");

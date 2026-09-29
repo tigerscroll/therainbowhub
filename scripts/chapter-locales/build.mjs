@@ -56,7 +56,7 @@ for (const slug of selected) {
     }
     if (slug === 'memory') polishMemory(copy, source, locale);
     polishCopy(slug, locale, copy, source, manifest);
-    if (['nursing', 'midwifery', 'memory'].includes(slug)) applyTextThreeChoices(manifest, {[locale]: copy});
+    if (['nursing', 'midwifery', 'memory', 'iq'].includes(slug)) applyTextThreeChoices(manifest, {[locale]: copy});
     else if (slug === 'vision') applyVisionEntry(manifest, {[locale]: copy}, {
       write: (src, svg) => fs.writeFileSync(`data${src}`, svg),
     });

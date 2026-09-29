@@ -15,7 +15,7 @@ for (const slug of slugs) {
   const copy = read(slug, 'en.json');
   const expanded = expandQuizLocale(manifest, copy, 'en');
   const questions = expanded.stages.flatMap((stage: { questions: any[] }) => stage.questions);
-  const choiceCount = ['nursing', 'midwifery'].includes(slug) ? 3 : 4;
+  const choiceCount = ['nursing', 'midwifery', 'iq'].includes(slug) ? 3 : 4;
 
   test(`${slug}: English has ten seven-question chapters with its original headline and subtitle`, () => {
     assert.equal(copy.title, original.title);

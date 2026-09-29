@@ -497,7 +497,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
   }
   const englishRaw = JSON.parse(fs.readFileSync(path.join(directory, "en.json"), "utf8"));
   const english = expandQuizLocale(manifest, englishRaw, "en");
-  validateQuestions(english, `data/quizzes/${entry.name}/en.json`, resolveQuizLocaleManifest(manifest, "en").template, ["nursing", "midwifery", "memory"].includes(entry.name) ? 3 : 4);
+  validateQuestions(english, `data/quizzes/${entry.name}/en.json`, resolveQuizLocaleManifest(manifest, "en").template, ["nursing", "midwifery", "memory", "iq"].includes(entry.name) ? 3 : 4);
   if (english.landing?.intro?.includes("—")) addError(`data/quizzes/${entry.name}/en.json#landing.intro: landing subtitles must not use em dashes.`);
   if (!Number.isInteger(SOCIAL_PROOF_COUNTS[entry.name])) addError(`data/quizzes/${entry.name}: missing stable social-proof count.`);
   if (english.landing?.socialProof !== undefined) addError(`data/quizzes/${entry.name}/en.json#landing.socialProof: wording must come from shared i18n.`);
@@ -510,7 +510,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (localized.landing?.intro?.includes("—")) addError(`${location}#landing.intro: landing subtitles must not use em dashes.`);
     if (localized.landing?.socialProof !== undefined) addError(`${location}#landing.socialProof: wording must come from shared i18n.`);
     compareStructure(comparableEnglish, localized, [], location);
-    validateQuestions(localized, location, localeManifest.template, ["nursing", "midwifery", "memory"].includes(entry.name) ? 3 : 4);
+    validateQuestions(localized, location, localeManifest.template, ["nursing", "midwifery", "memory", "iq"].includes(entry.name) ? 3 : 4);
     // Content-specific chapter semantics are verified by chapterLocales.test.ts
     // and the topic answer-key tests; retired single-stage IDs are not used.
     validateNativeCopyPatterns(entry.name, localized, locale, location, comparableEnglish);

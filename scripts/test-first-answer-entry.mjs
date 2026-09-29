@@ -70,6 +70,7 @@ try {
     const pill = page.locator('.quiz-engine__progress-head > strong[data-entry]');
     assert.ok((await pill.textContent()).endsWith(first.headerLabel));
     assert.equal(await pill.locator('.quiz-engine__entry-mark').count(), 1);
+    if (slug === 'iq') assert.equal(await pill.locator('.quiz-engine__entry-mark').textContent(), manifest.listing.icon, 'Intelligence Test retains the original landing-page icon');
     assert.equal(await page.evaluate(() => window.adCalls.length), 0, 'no reward on page load');
     assert.deepEqual(await answers.locator('strong').allTextContents(), Object.values(first.answers));
     assert.equal(await page.locator('#quiz-first-answer-note').textContent(), JSON.parse(fs.readFileSync(`data/i18n/${locale}.json`, 'utf8')).ad.continueNote);

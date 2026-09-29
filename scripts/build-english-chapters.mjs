@@ -125,7 +125,7 @@ for (const slug of args.length ? args : slugs) {
   assert.equal(key.length, 70);
   assert.equal(copy.title, originalTitle);
   assert.equal(copy.landing.intro, originalIntro);
-  if (['nursing', 'midwifery'].includes(slug)) applyTextThreeChoices(manifest, {en: copy});
+  if (['nursing', 'midwifery', 'iq'].includes(slug)) applyTextThreeChoices(manifest, {en: copy});
   const out = dir;
   fs.mkdirSync(out, { recursive: true });
   for (const [name, data] of [['quiz', manifest], ['en', copy]]) fs.writeFileSync(path.join(out, `${name}.json`), JSON.stringify(data, null, 2) + '\n');

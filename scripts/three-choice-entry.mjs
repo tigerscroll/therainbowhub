@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 
 const entryLabels = {
+  iq: {
+    en: 'Intelligence Test', ar: 'اختبار الذكاء', de: 'Intelligenztest', es: 'Test de inteligencia',
+    fr: 'Test d’intelligence', it: 'Test di intelligenza', nl: 'Intelligentietest', pt: 'Teste de inteligência',
+  },
   memory: {
     en: 'Memory Test', ar: 'اختبار الذاكرة', de: 'Gedächtnistest', es: 'Test de memoria',
     fr: 'Test de mémoire', it: 'Test di memoria', nl: 'Geheugentest', pt: 'Teste de memória',

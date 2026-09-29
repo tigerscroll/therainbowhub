@@ -428,7 +428,7 @@ for (const folder of folders) {
       || (Number.isInteger(question.visual.columns) && question.visual.columns >= 1 && question.visual.columns <= 8)
   )), `${folder.name}/en.json: visual.columns must be an integer from 1 to 8.`);
   fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.`);
-  const scoredChoiceCount = ["nursing", "midwifery", "memory"].includes(folder.name) ? 3 : 4;
+  const scoredChoiceCount = ["nursing", "midwifery", "memory", "iq"].includes(folder.name) ? 3 : 4;
   const choiceCountFor = (question) => question.id === "vision-s1q1" ? 3 : scoredChoiceCount;
   if (config.engine?.scoring === "correct-answer") {
     fail(sourceQuestions.every((question) => (

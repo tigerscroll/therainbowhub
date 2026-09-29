@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import {chromium} from 'playwright-core';
 
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3198';
-const slugs = ['years-left', 'vision', 'nursing', 'midwifery', 'memory'];
+const slugs = ['years-left', 'vision', 'nursing', 'midwifery', 'memory', 'iq'];
 const browser = await chromium.launch({executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true});
 const context = await browser.newContext({deviceScaleFactor: 2});
 await context.route('**/*', route => new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort());
