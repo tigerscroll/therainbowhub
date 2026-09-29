@@ -74,6 +74,20 @@ try {
     assert.equal(await answers.first().getAttribute('data-pending'), 'true');
     assert.equal(await answers.first().getAttribute('aria-pressed'), 'true');
     assert.equal(await answers.evaluateAll(nodes => nodes.every(node => node.disabled)), true);
+    if (slug === 'vision') {
+      await page.waitForFunction(() => {
+        const selected = document.querySelector('.quiz-engine__answer[data-pending]');
+        return selected && getComputedStyle(selected).opacity === '1';
+      });
+      const selectedStyle = await answers.first().evaluate(node => {
+        const style = getComputedStyle(node);
+        return {background: style.backgroundColor, color: style.color, opacity: style.opacity};
+      });
+      assert.deepEqual(selectedStyle, {background: 'rgb(16, 47, 85)', color: 'rgb(255, 255, 255)', opacity: '1'}, 'the selected answer is unmistakable while the reward loads');
+      assert.equal(await answers.first().locator('strong').evaluate(node => getComputedStyle(node).color), selectedStyle.color, 'the answer text has full white-on-navy contrast');
+      assert.notEqual(await answers.nth(1).evaluate(node => getComputedStyle(node).backgroundColor), selectedStyle.background);
+      if (['en', 'ar'].includes(locale)) await page.screenshot({path: `/tmp/vision-selected-${locale}.png`});
+    }
     assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId);
     await page.evaluate(() => { window.testReward.ready(); window.testReward.grant(); });
     assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId, 'reward must close before leaving the first question');

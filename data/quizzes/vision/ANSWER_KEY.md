@@ -6,7 +6,7 @@ Rebuild with `node scripts/build-vision-english.mjs`.
 
 | Question | Correct answer | Reason |
 | --- | --- | --- |
-| vision-s1q1 | Tile B | Square B is blue-violet; squares A and C are the same teal. |
+| vision-s1q1 | Tile B | Square B has a subtly different blue shade; squares A and C are the same blue. The shades come from the original ten-question opener. |
 | vision-s1q2 | Bottom right | The bottom-right arrow points down-right; the others point up-right. |
 | vision-s1q3 | Top left | The top-left diamond has an empty center. |
 | vision-s1q4 | Bottom left | The bottom-left tile has three dots; the others have four. |

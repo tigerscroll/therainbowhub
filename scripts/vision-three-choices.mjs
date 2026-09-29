@@ -12,7 +12,8 @@ const openingPrompts = {
   pt: 'Qual é o quadrado com uma cor diferente?',
 };
 
-const openingBoard = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 184" width="480" height="184"><rect width="480" height="184" rx="18" fill="#f1f7fa"/>${['#267d97', '#5869b5', '#267d97'].map((color, i) => `<g data-row="${'ABC'[i]}"><rect x="${26 + i * 156}" y="20" width="116" height="116" rx="8" fill="${color}"/><text x="${84 + i * 156}" y="160" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#163654">${'ABC'[i]}</text></g>`).join('')}</svg>\n`;
+// Original ten-question opener's close blue shades, adapted to three choices.
+const openingBoard = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 184" width="480" height="184"><rect width="480" height="184" rx="18" fill="#f1f7fa"/>${['#356ead', '#3d69ad', '#356ead'].map((color, i) => `<g data-row="${'ABC'[i]}"><rect x="${26 + i * 156}" y="20" width="116" height="116" rx="14" fill="${color}"/><text x="${84 + i * 156}" y="160" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#163654">${'ABC'[i]}</text></g>`).join('')}</svg>\n`;
 
 function removeGroup(svg, matches) {
   const stack = [], found = [];

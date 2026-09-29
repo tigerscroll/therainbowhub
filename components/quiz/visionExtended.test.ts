@@ -67,16 +67,18 @@ test('English Vision preserves its headline and intro in ten seven-question roun
   assert.equal(copy.results.share, undefined);
 });
 
-test('Vision opens on three coloured squares with one genuinely different colour', () => {
+test('Vision restores the original blue-shade opener with three selectable squares', () => {
   const first = questions[0];
   assert.equal(first.id, 'vision-s1q1');
   assert.equal(first.question, 'Which square is a different color?');
   assert.equal(first.category, 'colour_contrast');
   const colors = [...svg(first.id).matchAll(/<g data-row="([ABC])"><rect[^>]*fill="([^"]+)"/g)];
   assert.deepEqual(colors.map(([, label]) => label), ['A', 'B', 'C']);
+  assert.deepEqual(colors.map(([, , color]) => color), ['#356ead', '#3d69ad', '#356ead'], 'the original ten-question color challenge used these close blue shades');
   assert.equal(colors[0][2], colors[2][2]);
   assert.notEqual(colors[1][2], colors[0][2]);
   assert.equal(answer(first.id), 'Tile B');
+  assert.equal(fs.readFileSync('public/quizzes/vision/assets/icons/en-s1q1.svg', 'utf8'), svg(first.id), 'the served board matches the authored blue-shade opener');
 });
 
 test('every illustrated candidate remains selectable, including localized diagrams', () => {

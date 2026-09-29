@@ -153,6 +153,9 @@ async function run(width) {
             const bounds = node.getBoundingClientRect();
             return bounds.left >= 0 && bounds.right <= innerWidth && Math.abs(bounds.width / bounds.height - node.naturalWidth / node.naturalHeight) < .02;
           }), true, `${width}px ${id}: the entire puzzle board is visible without distortion`);
+          const boardWidth = await question.locator('.quiz-engine__question-image').evaluate(node => node.getBoundingClientRect().width);
+          const boardLimit = width <= 700 ? height <= 700 ? 240 : 280 : 320;
+          assert.ok(boardWidth <= boardLimit + 1, `${width}px ${id}: compact board leaves room for answers`);
         }
         assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
         if (index === 0 || id === 'vision-s9q3') await capture({ path: `/tmp/${artifactPrefix}-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });

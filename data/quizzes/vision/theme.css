@@ -325,7 +325,13 @@
   box-shadow: 0 7px 18px rgba(10,32,57,.07);
 }
 [data-quiz-theme="vision"] .quiz-engine__answer > span{ background: #dceaf1; color: var(--vision-navy); }
-[data-quiz-theme="vision"] .quiz-engine__answer[data-selected]{ border-color: var(--vision-cyan); box-shadow: 0 0 0 3px rgba(49,185,208,.2); }
+[data-quiz-theme="vision"] .quiz-engine__answer[data-selected]{
+  border-color: var(--vision-cyan);
+  background: var(--vision-navy);
+  color: #fff;
+  opacity: 1;
+  box-shadow: 0 0 0 3px rgba(49,185,208,.45), 0 7px 18px rgba(10,32,57,.16);
+}
 
 [data-quiz-theme="vision"] .quiz-engine__study-items strong,
 [data-quiz-theme="vision"] .quiz-engine__checkpoint-next,
@@ -618,8 +624,8 @@
 }
 
 [data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__question-image {
-  width: min(100%, 480px);
-  margin-inline: auto;
+  width: min(100%, 320px);
+  margin: -4px auto 14px;
 }
 
 [data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__question-image img {
@@ -629,6 +635,18 @@
   aspect-ratio: auto;
   max-height: none;
   object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  [data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__question-image {
+    width: min(100%, 280px);
+  }
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+  [data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__question-image {
+    width: min(100%, 240px);
+  }
 }
 
 /* The choice itself identifies the tile; a second A/B/C/D badge competes with it. */

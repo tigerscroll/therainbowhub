@@ -327,7 +327,7 @@ applyVisionThreeChoices(manifest, {en: copy}, {
   write: (src, svg) => fs.writeFileSync(`data${src}`, svg),
 });
 puzzles[0].answer = copy.stages['stage-1'].questions['vision-s1q1'].answers.a2;
-puzzles[0].rationale = 'Square B is blue-violet; squares A and C are the same teal.';
+puzzles[0].rationale = 'Square B has a subtly different blue shade; squares A and C are the same blue. The shades come from the original ten-question opener.';
 localizeVisionImages(manifest);
 for (const [name,data] of [['quiz',manifest],['en',copy]]) fs.writeFileSync(`${out}/${name}.json`,`${JSON.stringify(data,null,2)}\n`);
 fs.writeFileSync(`${out}/ANSWER_KEY.md`, '# English Vision puzzle key\n\nThe title and subtitle are preserved from the original English landing page. These are authored entertainment puzzles, not eyesight measurements. SVG geometry is fixed so the correct answer does not depend on emoji rendering, except in the self-paced icon-memory cues. Left/right and clockwise refer to the displayed board.\n\nRebuild with `node scripts/build-vision-english.mjs`.\n\n| Question | Correct answer | Reason |\n| --- | --- | --- |\n' + puzzles.map(puzzle=>`| ${puzzle.id} | ${puzzle.answer} | ${puzzle.rationale} |`).join('\n')+'\n');
