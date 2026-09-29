@@ -142,6 +142,20 @@ async function run(width) {
         assert.equal(await question.locator('.quiz-engine__answers').evaluate(node => getComputedStyle(node).gridTemplateColumns.trim().split(/\s+/).length), 1);
       }
       if (slug === 'vision') {
+        const expectedColumns = id === 'vision-s1q1' ? 1 : 2;
+        const answerGrid = question.locator('.quiz-engine__answers');
+        assert.equal(await answerGrid.evaluate(node => getComputedStyle(node).gridTemplateColumns.trim().split(/\s+/).length), expectedColumns, `${width}px ${locale}/${id}: only the opener stays stacked`);
+        const answerBoxes = await question.locator('.quiz-engine__answer').evaluateAll(nodes => nodes.map(node => {
+          const {x, y, width, height} = node.getBoundingClientRect();
+          return {x, y, width, height};
+        }));
+        if (expectedColumns === 2) {
+          assert.equal(answerBoxes.length, 4);
+          assert.ok(Math.abs(answerBoxes[0].y - answerBoxes[1].y) < 1 && Math.abs(answerBoxes[2].y - answerBoxes[3].y) < 1, `${id}: two rows of two answers`);
+          assert.ok(answerBoxes[0].x < answerBoxes[1].x && answerBoxes[2].x < answerBoxes[3].x, `${id}: answer positions match the unmirrored board in every locale`);
+          assert.ok(answerBoxes[2].y >= answerBoxes[0].y + answerBoxes[0].height, `${id}: rows do not overlap`);
+        }
+        assert.equal(await question.locator('.quiz-engine__answer').evaluateAll(nodes => nodes.every(node => getComputedStyle(node).direction === document.documentElement.dir)), true, `${locale}: labels keep their native text direction`);
         assert.equal(await question.locator('.quiz-engine__answer > span').evaluateAll(nodes => nodes.every(node => getComputedStyle(node).display === 'none')), true, 'diagram labels do not compete with extra answer letters');
         if (logic.image) {
           const picture = question.locator('.quiz-engine__question-image img');

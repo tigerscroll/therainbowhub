@@ -649,8 +649,19 @@
   }
 }
 
+/* Keep the four choices in board order, including left/right puzzles in RTL locales. */
+.quiz-theme[data-quiz-theme="vision"] .quiz-engine__question[data-question-id^="vision-s"]:not([data-question-id="vision-s1q1"]) .quiz-engine__answers {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  direction: ltr;
+}
+
+[dir="rtl"] [data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__answer {
+  direction: rtl;
+}
+
 /* The choice itself identifies the tile; a second A/B/C/D badge competes with it. */
 [data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__answer {
+  min-width: 0;
   grid-template-columns: minmax(0, 1fr);
   justify-items: center;
   text-align: center;
@@ -662,6 +673,7 @@
 
 [data-quiz-theme="vision"] [data-question-id^="vision-s"] .quiz-engine__answer strong {
   min-width: 0;
+  overflow-wrap: anywhere;
   text-wrap: balance;
 }
 
