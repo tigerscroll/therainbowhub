@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { activeLocales, slugs as localizedSlugs } from './chapter-locales/config.mjs';
+import { applyTextThreeChoices } from './three-choice-entry.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const slugs = ['anatomy', 'bible', 'chef', 'catholic', 'mechanic', 'midwifery', 'nursing', 'paramedic', 'iq', 'harvard', 'oxford', 'cambridge', 'personality', ...remainingSlugs];
@@ -124,6 +125,7 @@ for (const slug of args.length ? args : slugs) {
   assert.equal(key.length, 70);
   assert.equal(copy.title, originalTitle);
   assert.equal(copy.landing.intro, originalIntro);
+  if (['nursing', 'midwifery'].includes(slug)) applyTextThreeChoices(manifest, {en: copy});
   const out = dir;
   fs.mkdirSync(out, { recursive: true });
   for (const [name, data] of [['quiz', manifest], ['en', copy]]) fs.writeFileSync(path.join(out, `${name}.json`), JSON.stringify(data, null, 2) + '\n');

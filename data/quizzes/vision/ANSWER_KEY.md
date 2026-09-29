@@ -6,7 +6,7 @@ Rebuild with `node scripts/build-vision-english.mjs`.
 
 | Question | Correct answer | Reason |
 | --- | --- | --- |
-| vision-s1q1 | Top right | Only the top-right ring has an opening. |
+| vision-s1q1 | Tile B | Square B is blue-violet; squares A and C are the same teal. |
 | vision-s1q2 | Bottom right | The bottom-right arrow points down-right; the others point up-right. |
 | vision-s1q3 | Top left | The top-left diamond has an empty center. |
 | vision-s1q4 | Bottom left | The bottom-left tile has three dots; the others have four. |
@@ -34,7 +34,7 @@ Rebuild with `node scripts/build-vision-english.mjs`.
 | vision-s4q5 | Top right | The bottom-right dot reflects to top right. |
 | vision-s4q6 | Bottom left | The top-right dot moves diagonally opposite to bottom left. |
 | vision-s4q7 | Up | The gap starts on the left; a clockwise quarter-turn moves it to the top. |
-| vision-s5q1 | Bottom left | Three tiles are teal; the bottom-left tile is blue-violet. |
+| vision-s5q1 | Bottom left | The other tiles are teal; the bottom-left tile is blue-violet. |
 | vision-s5q2 | Top right | The top-right tile has the highest equal red, green and blue values. |
 | vision-s5q3 | Bottom right | The bottom-right blue is darker than all the others. |
 | vision-s5q4 | Row C | Only row C increases in brightness at every step. |
@@ -65,7 +65,7 @@ Rebuild with `node scripts/build-vision-english.mjs`.
 | vision-s9q1 | Bottom left | Only the bottom-left tile moves its lower-right dot to the lower middle. |
 | vision-s9q2 | Row C | The fourth circle in row C is empty; it should be filled to alternate. |
 | vision-s9q3 | Tile C | Only tile C matches every filled cell in the target. |
-| vision-s9q4 | Bottom right | Three gaps face down; the bottom-right gap faces up. |
+| vision-s9q4 | Bottom right | The other gaps face down; the bottom-right gap faces up. |
 | vision-s9q5 | Row B | Only row B contains one diamond, one circle and one triangle on both sides. |
 | vision-s9q6 | Top right | Only the top-right group has a left-pointing middle arrow. |
 | vision-s9q7 | 6 | Qs occupy cells 2, 9, 11, 18, 22 and 29. |

@@ -52,7 +52,7 @@ test('Portuguese editorial rules are repeatable and keep quiz structure intact',
     for (const [id, q] of Object.entries(questions(slug))) {
       const ids = read(slug, 'quiz').structure.questions[id].answerIds;
       assert.deepEqual(Object.keys(q.answers), ids);
-      assert.equal(new Set(Object.values(q.answers)).size, slug === 'years-left' ? 3 : 4, `${slug}: distinct answer choices`);
+      assert.equal(new Set(Object.values(q.answers)).size, ['years-left', 'vision', 'nursing', 'midwifery', 'memory'].includes(slug) ? 3 : 4, `${slug}: distinct answer choices`);
     }
   }
   for (const term of ['Oxigénio (oxigênio)', 'Travões (freios)', 'Fumo (fumaça)', 'Génesis (Gênesis)']) {

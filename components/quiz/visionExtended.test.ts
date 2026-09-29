@@ -5,6 +5,7 @@ import type { Quiz } from '../../lib/quizzes.ts';
 import { expandQuizLocale } from '../../scripts/quiz-schema-v2.mjs';
 import { getChapterAnswers } from './engagement.ts';
 import { scoreQuiz } from './scoring.ts';
+import { applyVisionThreeChoices } from '../../scripts/vision-three-choices.mjs';
 
 const root = 'data/quizzes/vision/';
 const read = (file: string) => JSON.parse(fs.readFileSync(root + file, 'utf8'));
@@ -26,16 +27,17 @@ test('English Vision preserves its headline and intro in ten seven-question roun
   assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
   assert.equal(manifest.engine.localeParity, 'independent');
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
+  assert.equal(manifest.engine.entry, 'first-answer');
   assert.equal(manifest.listing.compactLanding, true);
   assert.equal(manifest.listing.showSocialProof, false);
   assert.deepEqual(expanded.stages.map((stage: { questions: any[] }) => stage.questions.length), Array(10).fill(7));
   assert.equal(new Set(questions.map((question: any) => question.id)).size, 70);
   assert.equal(new Set(questions.map((question: any) => question.question)).size, 70);
-  const positions = [0, 0, 0, 0];
+  const positions = [0, 0, 0];
   const categories = manifest.structure.results.dimensions.flatMap((dimension: { categories: string[] }) => dimension.categories);
   for (const question of questions) {
-    assert.equal(new Set(question.answers).size, 4, question.id);
-    assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4, question.id);
+    assert.equal(new Set(question.answers).size, 3, question.id);
+    assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 3, question.id);
     assert.ok(Boolean(question.image) !== Boolean(question.study), `${question.id}: one clear visual or study phase`);
     assert.equal(categories.filter((category: string) => category === question.category).length, 1, question.id);
     if (question.image) {
@@ -46,10 +48,8 @@ test('English Vision preserves its headline and intro in ten seven-question roun
     }
     positions[question.correct]++;
   }
-  assert.deepEqual(positions.sort(), [17, 17, 18, 18]);
-  assert.deepEqual(byId['vision-s1q1'].answers, ['Top left', 'Top right', 'Bottom left', 'Bottom right']);
-  assert.deepEqual(byId['vision-s9q3'].answers, ['Tile A', 'Tile B', 'Tile C', 'Tile D']);
-  assert.deepEqual(byId['vision-s7q3'].answers, ['Row A', 'Row B', 'Row C', 'Row D']);
+  assert.deepEqual(positions.sort(), [23, 23, 24]);
+  assert.deepEqual(byId['vision-s1q1'].answers, ['Tile A', 'Tile B', 'Tile C']);
   assert.deepEqual(expanded.career.stages[9].preAdChecks, ['Answers checked', 'Puzzle strengths compared', 'Score calculated']);
   for (const [index, stage] of manifest.structure.stages.entries()) {
     const checkpoint = copy.career.stages[stage.id];
@@ -65,6 +65,56 @@ test('English Vision preserves its headline and intro in ten seven-question roun
   assert.doesNotMatch(JSON.stringify(copy), /\b(?:colour|colours|colourful|metres|centre|postcode|NHS)\b/i);
   assert.match(copy.about.disclaimer, /not an eye examination/);
   assert.equal(copy.results.share, undefined);
+});
+
+test('Vision opens on three coloured squares with one genuinely different colour', () => {
+  const first = questions[0];
+  assert.equal(first.id, 'vision-s1q1');
+  assert.equal(first.question, 'Which square is a different color?');
+  assert.equal(first.category, 'colour_contrast');
+  const colors = [...svg(first.id).matchAll(/<g data-row="([ABC])"><rect[^>]*fill="([^"]+)"/g)];
+  assert.deepEqual(colors.map(([, label]) => label), ['A', 'B', 'C']);
+  assert.equal(colors[0][2], colors[2][2]);
+  assert.notEqual(colors[1][2], colors[0][2]);
+  assert.equal(answer(first.id), 'Tile B');
+});
+
+test('every illustrated candidate remains selectable, including localized diagrams', () => {
+  for (const q of questions) {
+    if (!q.image) continue;
+    const logic = manifest.structure.questions[q.id];
+    for (const src of [logic.image.src, ...Object.values(logic.image.localizedSrc ?? {})] as string[]) {
+      const board = fs.readFileSync(sourceAsset(src), 'utf8');
+      const panels = [...board.matchAll(/data-panel="([^"]+)"/g)].map(([, label]) => label);
+      const rows = [...board.matchAll(/data-row="([^"]+)"/g)].map(([, label]) => label);
+      if (panels.length) assert.deepEqual(panels, q.answers, `${q.id}: spatial candidates`);
+      if (rows.length) assert.deepEqual(rows, q.answers.map((label: string) => label.replace(/^(Row|Tile) /, '')), `${q.id}: labelled candidates`);
+      if (['vision-s5q5', 'vision-s10q6'].includes(q.id)) {
+        const labels = [...board.matchAll(/>([A-D])<\/text>/g)].map(([, label]) => label);
+        assert.deepEqual(labels, q.answers.map((label: string) => label.replace(/^Tile /, '')), q.id);
+        if (q.id === 'vision-s10q6') assert.equal((board.match(/<path /g) ?? []).length, 3);
+      }
+    }
+  }
+});
+
+test('all supported Vision locales share three choices, scoring and the localized first question', () => {
+  const copies = Object.fromEntries(manifest.activeLocales.map((locale: string) => [locale, read(`${locale}.json`)]));
+  for (const [locale, words] of Object.entries(copies) as [string, any][]) {
+    const native = expandQuizLocale(manifest, words, locale).stages.flatMap((stage: any) => stage.questions);
+    assert.deepEqual(native.map((q: any) => [q.id, q.answerIds, q.correct]), questions.map((q: any) => [q.id, q.answerIds, q.correct]));
+    assert.equal(native.length, 70);
+    assert.ok(native[0].image.alt.endsWith(native[0].question));
+    if (locale !== 'en') assert.notEqual(native[0].question, questions[0].question);
+    for (const q of native) assert.equal(new Set(q.answers).size, 3, `${locale}/${q.id}`);
+  }
+  const nextManifest = structuredClone(manifest), nextCopies = structuredClone(copies);
+  applyVisionThreeChoices(nextManifest, nextCopies, {
+    read: (src: string) => fs.readFileSync(sourceAsset(src), 'utf8'),
+    write: (src: string, contents: string) => assert.equal(contents, fs.readFileSync(sourceAsset(src), 'utf8'), `${src}: repeatable artwork`),
+  });
+  assert.deepEqual(nextManifest, manifest);
+  assert.deepEqual(nextCopies, copies);
 });
 
 test('Vision counting answers agree with the actual symbols in each SVG', () => {
@@ -134,7 +184,7 @@ const scoringQuiz = {
 
 test('Vision scores all 70 answers and uses only the current round for checkpoint feedback', () => {
   for (const correct of [0, 34, 35, 41, 42, 48, 49, 55, 56, 62, 63, 70]) {
-    const answers = Object.fromEntries(scoringQuiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % 4]));
+    const answers = Object.fromEntries(scoringQuiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % 3]));
     const result = scoreQuiz(scoringQuiz, answers);
     assert.equal(result.score, correct);
     assert.equal(result.total, 70);

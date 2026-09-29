@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {localizeVisionImages} from './chapter-locales/vision-images.mjs';
+import {applyVisionThreeChoices} from './vision-three-choices.mjs';
 
 const root = 'data/quizzes/vision';
 const out = `${root}`;
@@ -168,7 +169,7 @@ add(4, 'Turn the square 180°. Where does the dot land?', positions, 'Bottom lef
 add(4, 'Turn the ring 90° clockwise. Where is the gap?', directions, 'Up', board(group(symbol('gap:180'), 240, 110, 1.8), 220), 'The gap starts on the left; a clockwise quarter-turn moves it to the top.', 'spatial_orientation');
 
 const swatch = color => rect(-73, -43, 146, 86, color, 'rx="8"');
-add(5, 'Which tile is a different color?', positions, 'Bottom left', tiles(['#267d97','#267d97','#5869b5','#267d97'], swatch), 'Three tiles are teal; the bottom-left tile is blue-violet.', 'colour_contrast');
+add(5, 'Which tile is a different color?', positions, 'Bottom left', tiles(['#267d97','#267d97','#5869b5','#267d97'], swatch), 'The other tiles are teal; the bottom-left tile is blue-violet.', 'colour_contrast');
 add(5, 'Which gray tile is the lightest?', positions, 'Top right', tiles(['#8a8a8a','#d0d0d0','#545454','#a8a8a8'], swatch), 'The top-right tile has the highest equal red, green and blue values.', 'colour_contrast');
 add(5, 'Which blue tile is the darkest?', positions, 'Bottom right', tiles(['#789bc2','#43729e','#a8c9e9','#1b3555'], swatch), 'The bottom-right blue is darker than all the others.', 'colour_contrast');
 add(5, 'Which row goes from darkest to lightest?', rows, 'Row C', rowBoard([
@@ -214,7 +215,7 @@ add(9, 'Which row breaks the empty/filled circle pattern?', rows, 'Row C', rowBo
 ], values => values.map((value,i) => group(symbol(value),-123 + i * 57,0,.4)).join('')), 'The fourth circle in row C is empty; it should be filled to alternate.', 'pattern_tracking');
 const target = ['1100','0100','0110','0010'];
 add(9, 'Which tile exactly matches the target pattern?', letters.map(letter => `Tile ${letter}`), 'Tile C', targetPixels(target,[['1100','0100','0100','0010'],['1100','0010','0110','0010'],target,['1100','0100','0110','0001']]), 'Only tile C matches every filled cell in the target.', 'detail_detection');
-add(9, 'Which ring has its opening on the opposite side?', positions, 'Bottom right', tiles(['gap:90','gap:90','gap:90','gap:270']), 'Three gaps face down; the bottom-right gap faces up.', 'spatial_orientation');
+add(9, 'Which ring has its opening on the opposite side?', positions, 'Bottom right', tiles(['gap:90','gap:90','gap:90','gap:270']), 'The other gaps face down; the bottom-right gap faces up.', 'spatial_orientation');
 add(9, 'Which row has the same shapes in a different order?', rows, 'Row B', rowBoard([
   [['circle','triangle','square'],['square','circle','diamond']],
   [['diamond','circle','triangle'],['triangle','diamond','circle']],
@@ -321,6 +322,12 @@ for (const [index,puzzle] of puzzles.entries()) {
   manifest.structure.questions[puzzle.id] = logic;
   copy.stages[stageId].questions[puzzle.id] = words;
 }
+applyVisionThreeChoices(manifest, {en: copy}, {
+  read: src => fs.readFileSync(`data${src}`, 'utf8'),
+  write: (src, svg) => fs.writeFileSync(`data${src}`, svg),
+});
+puzzles[0].answer = copy.stages['stage-1'].questions['vision-s1q1'].answers.a2;
+puzzles[0].rationale = 'Square B is blue-violet; squares A and C are the same teal.';
 localizeVisionImages(manifest);
 for (const [name,data] of [['quiz',manifest],['en',copy]]) fs.writeFileSync(`${out}/${name}.json`,`${JSON.stringify(data,null,2)}\n`);
 fs.writeFileSync(`${out}/ANSWER_KEY.md`, '# English Vision puzzle key\n\nThe title and subtitle are preserved from the original English landing page. These are authored entertainment puzzles, not eyesight measurements. SVG geometry is fixed so the correct answer does not depend on emoji rendering, except in the self-paced icon-memory cues. Left/right and clockwise refer to the displayed board.\n\nRebuild with `node scripts/build-vision-english.mjs`.\n\n| Question | Correct answer | Reason |\n| --- | --- | --- |\n' + puzzles.map(puzzle=>`| ${puzzle.id} | ${puzzle.answer} | ${puzzle.rationale} |`).join('\n')+'\n');

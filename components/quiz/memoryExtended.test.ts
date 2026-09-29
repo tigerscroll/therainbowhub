@@ -5,6 +5,7 @@ import type { Quiz } from '../../lib/quizzes.ts';
 import { expandQuizLocale } from '../../scripts/quiz-schema-v2.mjs';
 import { getChapterAnswers } from './engagement.ts';
 import { scoreQuiz } from './scoring.ts';
+import { applyTextThreeChoices } from '../../scripts/three-choice-entry.mjs';
 
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/memory/${file}.json`, 'utf8'));
 const manifest = read('quiz');
@@ -19,29 +20,54 @@ test('English memory has ten seven-question chapters, self-paced cues and no adv
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
   assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
+  assert.equal(manifest.engine.entry, 'first-answer');
+  assert.equal(content('s1q2').headerLabel, 'Memory Test');
+  assert.deepEqual(manifest.structure.stages[0].questionIds.slice(0, 2), [id('s1q2'), id('s1q1')]);
+  assert.equal(manifest.structure.questions[id('s1q2')].study, undefined, 'the first action is an answer, not a study-screen button');
   assert.deepEqual(expanded.stages.map((stage: {questions: unknown[]}) => stage.questions.length), Array(10).fill(7));
   assert.deepEqual(copy.landing, { intro: 'Think your memory is sharp? Put it to the test.', cta: 'Start' });
   const all = expanded.stages.flatMap((stage: { questions: {id: string; question: string; answers: string[]}[] }) => stage.questions);
   assert.equal(new Set(all.map((question: {id: string}) => question.id)).size, 70);
   assert.equal(new Set(all.map((question: {question: string}) => question.question)).size, 70);
-  const positions = [0, 0, 0, 0];
+  const positions = [0, 0, 0];
   for (const [index, stage] of manifest.structure.stages.entries()) {
     assert.equal(copy.career.stages[stage.id].preAdButton, index === 9 ? 'See My Result' : 'Continue');
     if (index < 9) assert.match(copy.career.stages[stage.id].preAdCopy, /\{profile\}/);
     for (const questionId of stage.questionIds) {
       const logic = manifest.structure.questions[questionId];
       const question = copy.stages[stage.id].questions[questionId];
-      assert.equal(new Set(Object.values(question.answers)).size, 4, questionId);
+      assert.equal(new Set(Object.values(question.answers)).size, 3, questionId);
       positions[logic.answerIds.indexOf(logic.correctAnswerId)]++;
       if (logic.study) assert.deepEqual(logic.study, { mode: 'manual', rewarded: false });
     }
   }
-  assert.deepEqual(positions.sort(), [17, 17, 18, 18]);
+  assert.deepEqual(positions.sort(), [23, 23, 24]);
   assert.equal(Object.values(manifest.structure.questions).filter((question: any) => question.study).length, 19);
   for (const text of [copy.landing.intro, copy.summary, copy.about.body, ...copy.about.howToPlay.steps, ...Object.values(copy.career.stages).flatMap((stage: any) => [stage.preAdTitle, stage.preAdCopy])]) {
     assert.doesNotMatch(text, /\b(?:70|seventy|10|ten|7|seven)\b|halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);
   }
   assert.equal(copy.results.share, undefined);
+});
+
+test('all Memory locales preserve study boards, correct-answer mapping and three-choice regeneration', () => {
+  const copies = Object.fromEntries(manifest.activeLocales.map((locale: string) => [locale, read(locale)]));
+  const english = expandQuizLocale(manifest, copy, 'en').stages.flatMap((stage: any) => stage.questions);
+  for (const [locale, words] of Object.entries(copies)) {
+    const localized = expandQuizLocale(manifest, words, locale).stages.flatMap((stage: any) => stage.questions);
+    assert.equal(localized.length, 70);
+    assert.deepEqual(localized.map((q: any) => [q.id, q.answerIds, q.correct]), english.map((q: any) => [q.id, q.answerIds, q.correct]));
+    for (const q of localized) assert.equal(new Set(q.answers).size, 3, `${locale}/${q.id}`);
+    assert.equal(localized.filter((q: any) => q.study).length, 19);
+    assert.equal(localized[0].id, id('s1q2'));
+    assert.equal(localized[0].study, undefined, 'an immediate answer triggers the entry reward');
+    assert.equal(localized[1].id, id('s1q1'));
+    assert.equal(localized[1].study.items.length, 4, 'the opening cue keeps all four details for later callbacks');
+    assert.equal(localized[1].study.rewarded, false, 'hiding the cue does not request another reward');
+  }
+  const nextManifest = structuredClone(manifest), nextCopies = structuredClone(copies);
+  applyTextThreeChoices(nextManifest, nextCopies);
+  assert.deepEqual(nextManifest, manifest);
+  assert.deepEqual(nextCopies, copies);
 });
 
 test('recall answers are uniquely supported by the relevant study detail, including distant callbacks', () => {
@@ -113,7 +139,7 @@ function scoringQuiz(): Quiz {
 test('memory scoring uses all 70 answers with an exact 56-answer target and accurate chapter previews', () => {
   const quiz = scoringQuiz();
   for (const correct of [0, 35, 42, 49, 55, 56, 63, 70]) {
-    const answers = Object.fromEntries(quiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % 4]));
+    const answers = Object.fromEntries(quiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % 3]));
     const result = scoreQuiz(quiz, answers);
     assert.equal(result.score, correct);
     assert.equal(result.total, 70);

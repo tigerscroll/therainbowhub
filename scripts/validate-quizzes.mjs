@@ -428,22 +428,23 @@ for (const folder of folders) {
       || (Number.isInteger(question.visual.columns) && question.visual.columns >= 1 && question.visual.columns <= 8)
   )), `${folder.name}/en.json: visual.columns must be an integer from 1 to 8.`);
   fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.`);
+  const scoredChoiceCount = ["vision", "nursing", "midwifery", "memory"].includes(folder.name) ? 3 : 4;
   if (config.engine?.scoring === "correct-answer") {
     fail(sourceQuestions.every((question) => (
       Array.isArray(question.answers)
-        && question.answers.length === 4
-        && new Set(question.answers).size === 4
+        && question.answers.length === scoredChoiceCount
+        && new Set(question.answers).size === scoredChoiceCount
         && question.answers.every((answer) => typeof answer === "string" && answer.trim())
         && Number.isInteger(question.correct)
         && question.correct >= 0
-        && question.correct < 4
-    )), `${folder.name}/en.json: every scored question needs four unique choices and one valid answer.`);
+        && question.correct < scoredChoiceCount
+    )), `${folder.name}/en.json: every scored question needs ${scoredChoiceCount} unique choices and one valid answer.`);
     const sharedPositions = sourceQuestions.reduce((positions, question) => {
       positions[question.correct] += 1;
       return positions;
-    }, [0, 0, 0, 0]);
-    const expectedPositions = [0, 1, 2, 3].map((index) => (
-      Math.floor(sourceQuestions.length / 4) + (index < sourceQuestions.length % 4 ? 1 : 0)
+    }, Array(scoredChoiceCount).fill(0));
+    const expectedPositions = Array.from({ length: scoredChoiceCount }, (_, index) => (
+      Math.floor(sourceQuestions.length / scoredChoiceCount) + (index < sourceQuestions.length % scoredChoiceCount ? 1 : 0)
     ));
     fail(JSON.stringify(sharedPositions.sort()) === JSON.stringify(expectedPositions.sort()), `${folder.name}/en.json: answer positions must match the shared template balance.`);
     fail(expectedStageCount > 1 || source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage quizzes must not show a redundant best-round module.`);
@@ -486,21 +487,21 @@ for (const folder of folders) {
     if (config.engine?.scoring === "correct-answer") {
       fail(questions.every((question) => (
         Array.isArray(question.answers)
-          && question.answers.length === 4
+          && question.answers.length === scoredChoiceCount
           && question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim()))
-          && new Set(question.answers).size === 4
+          && new Set(question.answers).size === scoredChoiceCount
           && Number.isInteger(question.correct)
           && question.correct >= 0
-          && question.correct < 4
-      )), `${folder.name}/${localeFile}: every localized scored question needs four unique choices and one valid answer.`);
+          && question.correct < scoredChoiceCount
+      )), `${folder.name}/${localeFile}: every localized scored question needs ${scoredChoiceCount} unique choices and one valid answer.`);
       const localizedPositions = questions.reduce((positions, question) => {
         positions[question.correct] += 1;
         return positions;
-      }, [0, 0, 0, 0]);
+      }, Array(scoredChoiceCount).fill(0));
       const sourcePositions = comparableQuestions.reduce((positions, question) => {
         positions[question.correct] += 1;
         return positions;
-      }, [0, 0, 0, 0]);
+      }, Array(scoredChoiceCount).fill(0));
       fail(JSON.stringify(localizedPositions) === JSON.stringify(sourcePositions), `${folder.name}/${localeFile}: correct-answer position balance differs from English.`);
     }
     questions.forEach((question, index) => {

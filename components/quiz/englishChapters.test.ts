@@ -15,6 +15,7 @@ for (const slug of slugs) {
   const copy = read(slug, 'en.json');
   const expanded = expandQuizLocale(manifest, copy, 'en');
   const questions = expanded.stages.flatMap((stage: { questions: any[] }) => stage.questions);
+  const choiceCount = ['nursing', 'midwifery'].includes(slug) ? 3 : 4;
 
   test(`${slug}: English has ten seven-question chapters with its original headline and subtitle`, () => {
     assert.equal(copy.title, original.title);
@@ -29,16 +30,16 @@ for (const slug of slugs) {
     assert.deepEqual(expanded.stages.map((stage: { questions: any[] }) => stage.questions.length), Array(10).fill(7));
     assert.equal(new Set(questions.map((question: any) => question.id)).size, 70);
     assert.equal(new Set(questions.map((question: any) => question.question)).size, 70);
-    const positions = [0, 0, 0, 0];
+    const positions = Array(choiceCount).fill(0);
     const categories = manifest.structure.results.dimensions.flatMap((dimension: { categories: string[] }) => dimension.categories);
     for (const question of questions) {
       assert.equal(question.presentation, 'text');
-      assert.equal(new Set(question.answers).size, 4, question.id);
-      assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 4, question.id);
+      assert.equal(new Set(question.answers).size, choiceCount, question.id);
+      assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < choiceCount, question.id);
       assert.equal(categories.filter((category: string) => category === question.category).length, 1, question.id);
       positions[question.correct]++;
     }
-    assert.deepEqual(positions.sort(), [17, 17, 18, 18]);
+    assert.deepEqual(positions.sort(), choiceCount === 3 ? [23, 23, 24] : [17, 17, 18, 18]);
 
   });
 
@@ -80,7 +81,7 @@ for (const slug of slugs) {
 
   test(`${slug}: 56 answers meet the target and checkpoint feedback cannot inherit previous chapter scores`, () => {
     for (const correct of [0, 20, 21, 27, 28, 34, 35, 41, 42, 48, 49, 55, 56, 62, 63, 70]) {
-      const answers = Object.fromEntries(quiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % 4]));
+      const answers = Object.fromEntries(quiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % choiceCount]));
       const result = scoreQuiz(quiz, answers);
       assert.equal(result.score, correct);
       assert.equal(result.total, 70);
@@ -88,7 +89,7 @@ for (const slug of slugs) {
       const expected = manifest.structure.results.profiles.find((profile: { min: number }) => correct / 70 >= profile.min);
       assert.equal(result.profile.title, copy.results.profiles[expected.key].title);
     }
-    const answers = Object.fromEntries(quiz.questions.map(question => [question.id, question.stage === 1 ? (question.answerIndex! + 1) % 4 : question.answerIndex!]));
+    const answers = Object.fromEntries(quiz.questions.map(question => [question.id, question.stage === 1 ? (question.answerIndex! + 1) % choiceCount : question.answerIndex!]));
     for (let stage = 0; stage < 10; stage++) {
       const chapter = { ...quiz, questions: quiz.questions.filter(question => question.stage === stage) };
       const result = scoreQuiz(chapter, getChapterAnswers(quiz.questions, answers, stage));

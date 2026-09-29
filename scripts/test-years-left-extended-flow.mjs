@@ -95,6 +95,7 @@ async function run(width) {
 
   for (const [stageIndex, stage] of manifest.structure.stages.entries()) {
     const documentsBeforeStage = documents;
+    const reloadsBeforeStage = reloads;
     const profileWeights = Object.fromEntries(manifest.structure.results.profiles.map(profile => [profile.id ?? profile.key, 0]));
     let chapterCorrect = 0;
     for (const [index, id] of stage.questionIds.entries()) {
@@ -181,8 +182,10 @@ async function run(width) {
       rewardsBeforeReload += expectedRewards;
       expectedRewards = 0;
       reloads++;
-      assert.equal(documents, documentsBeforeStage + 1, 'one full-document reload before each checkpoint, not between its questions');
-      assert.equal(await page.evaluate(() => performance.getEntriesByType('navigation')[0].type), 'reload');
+      assert.equal(documents, documentsBeforeStage + reloads - reloadsBeforeStage, 'only the checkpoint reload and deliberate resume-test reloads occur');
+      // Playwright's virtual clock replaces Performance entries. Document counts
+      // and saved state above/below still verify every reload in accelerated runs.
+      if (!fast) assert.equal(await page.evaluate(() => performance.getEntriesByType('navigation')[0].type), 'reload');
       assert.equal(new URL(page.url()).searchParams.get('test_keep'), '1', 'checkpoint reload preserves the URL parameters');
     }
     const savedCheckpoint = await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), storageKey);
