@@ -10,7 +10,8 @@ import {stageTitles} from './titles.mjs';
 import {localizeVisionImages} from './vision-images.mjs';
 import {nativeNextTopic} from './remaining-native.mjs';
 import {nativeRemainingTitle} from './remaining-titles.mjs';
-import {applyEntryLabel, applyTextThreeChoices} from '../three-choice-entry.mjs';
+import {applyTextThreeChoices} from '../three-choice-entry.mjs';
+import {applyVisionEntry} from '../vision-entry.mjs';
 
 const cache = process.env.CHAPTER_TRANSLATION_CACHE;
 if (!cache || !path.isAbsolute(cache)) throw Error('Set CHAPTER_TRANSLATION_CACHE to the reviewed draft cache.');
@@ -56,7 +57,9 @@ for (const slug of selected) {
     if (slug === 'memory') polishMemory(copy, source, locale);
     polishCopy(slug, locale, copy, source, manifest);
     if (['nursing', 'midwifery', 'memory'].includes(slug)) applyTextThreeChoices(manifest, {[locale]: copy});
-    else if (slug === 'vision') applyEntryLabel(manifest, {[locale]: copy});
+    else if (slug === 'vision') applyVisionEntry(manifest, {[locale]: copy}, {
+      write: (src, svg) => fs.writeFileSync(`data${src}`, svg),
+    });
     save(`${root}/${locale}.json`, copy);
   }
   if (slug === 'vision') localizeVisionImages(manifest, chosen);

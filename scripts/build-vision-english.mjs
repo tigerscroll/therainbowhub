@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {localizeVisionImages} from './chapter-locales/vision-images.mjs';
-import {applyVisionThreeChoices} from './vision-three-choices.mjs';
+import {applyVisionEntry} from './vision-entry.mjs';
 
 const root = 'data/quizzes/vision';
 const out = `${root}`;
@@ -322,8 +322,7 @@ for (const [index,puzzle] of puzzles.entries()) {
   manifest.structure.questions[puzzle.id] = logic;
   copy.stages[stageId].questions[puzzle.id] = words;
 }
-applyVisionThreeChoices(manifest, {en: copy}, {
-  read: src => fs.readFileSync(`data${src}`, 'utf8'),
+applyVisionEntry(manifest, {en: copy}, {
   write: (src, svg) => fs.writeFileSync(`data${src}`, svg),
 });
 puzzles[0].answer = copy.stages['stage-1'].questions['vision-s1q1'].answers.a2;

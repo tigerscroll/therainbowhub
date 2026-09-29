@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import { chromium } from 'playwright-core';
 import { resolveQuizLocaleManifest } from '../lib/quiz/localeManifest.mjs';
 
@@ -145,10 +146,12 @@ async function run(width) {
         if (logic.image) {
           const picture = question.locator('.quiz-engine__question-image img');
           await picture.waitFor();
+          const src = logic.image.localizedSrc?.[locale] ?? logic.image.src;
+          const hash = createHash('sha256').update(fs.readFileSync(`data${src}`)).digest('hex').slice(0, 12);
           await page.waitForFunction(src => {
             const img = document.querySelector('[data-question-id] .quiz-engine__question-image img');
             return img?.complete && img.naturalWidth > 0 && img.getAttribute('src').endsWith(src);
-          }, logic.image.localizedSrc?.[locale] ?? logic.image.src);
+          }, `${src}?v=${hash}`);
           assert.equal(await picture.evaluate(node => {
             const bounds = node.getBoundingClientRect();
             return bounds.left >= 0 && bounds.right <= innerWidth && Math.abs(bounds.width / bounds.height - node.naturalWidth / node.naturalHeight) < .02;
@@ -158,7 +161,7 @@ async function run(width) {
           assert.ok(boardWidth <= boardLimit + 1, `${width}px ${id}: compact board leaves room for answers`);
         }
         assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
-        if (index === 0 || id === 'vision-s9q3') await capture({ path: `/tmp/${artifactPrefix}-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });
+        if (index === 0 || ['vision-s1q2', 'vision-s9q3'].includes(id)) await capture({ path: `/tmp/${artifactPrefix}-engagement-puzzle-${id}-${width}.png`, animations: 'disabled' });
       }
       if (stageIndex === 0 && index === 0) await capture({ path: `/tmp/${artifactPrefix}-engagement-question-${width}.png`, animations: 'disabled' });
       if (locale === 'ar' && ['oxford-s10q1','cambridge-s9q4'].includes(id)) {

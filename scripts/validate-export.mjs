@@ -68,6 +68,16 @@ if (!fs.existsSync(outputRoot)) {
         continue;
       }
       const html = fs.readFileSync(file, "utf8");
+      if (slug === "vision") {
+        for (const question of Object.values(quizConfig.structure.questions)) {
+          if (!question.image) continue;
+          const src = question.image.localizedSrc?.[locale] ?? question.image.src;
+          const hash = createHash("sha256").update(fs.readFileSync(assetFile(src))).digest("hex").slice(0, 12);
+          if (!html.includes(`${src}?v=${hash}`)) {
+            addError(`${route}: Vision artwork must use its current content version: ${src}`);
+          }
+        }
+      }
       if (!html.includes("data-quiz-shell-contract") || !html.includes(shellHref)) {
         addError(`${route}: shared cacheable shell stylesheet is not linked.`);
       }

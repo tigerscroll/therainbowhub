@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {createHash} from 'node:crypto';
 import {chromium} from 'playwright-core';
 
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3198';
@@ -26,6 +27,11 @@ try {
     assert.equal(await staticPage.locator(`[data-question-id="${firstId}"] h1`).textContent(), first.question, `${locale}: first question is in server HTML`);
     assert.ok((await staticPage.locator('.quiz-engine__progress-head > strong[data-entry]').textContent()).endsWith(first.headerLabel), 'opening pill is present before hydration');
     assert.equal(await staticPage.locator('.quiz-engine__answer').count(), 3);
+    if (slug === 'vision') {
+      const src = manifest.structure.questions[firstId].image.src;
+      const hash = createHash('sha256').update(fs.readFileSync(`data${src}`)).digest('hex').slice(0, 12);
+      assert.equal(await staticPage.locator('.quiz-engine__question-image img').getAttribute('src'), `${src}?v=${hash}`, 'the first paint must not request the old cached ring image');
+    }
     await staticContext.close();
 
     const context = await browser.newContext({viewport});
@@ -93,6 +99,11 @@ try {
     assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId, 'reward must close before leaving the first question');
     await page.evaluate(() => window.testReward.close());
     await page.locator(`[data-question-id="${secondId}"]`).waitFor();
+    if (slug === 'vision') {
+      const second = copy.stages[firstStage.id].questions[secondId];
+      assert.equal(await answers.count(), 4, 'Vision restores four choices after the three-square opener');
+      assert.deepEqual(await answers.locator('strong').allTextContents(), Object.values(second.answers));
+    }
     assert.deepEqual(await page.evaluate(() => window.adCalls.map(({path, format}) => ({path, format}))), [{path: '/22677279144/rewarded', format: 'REWARDED'}]);
     assert.equal(await page.locator('#quiz-first-answer-note').count(), 0);
     assert.equal(await pill.count(), 0, 'the special title pill appears only on the first question');

@@ -37,3 +37,11 @@ export function themeStylesheetHref(slug: string, css: string) {
   const filename = revision ? `theme.${revision}.css` : "theme.css";
   return `/quizzes/${slug}/${filename}?v=${createHash("sha256").update(css).digest("hex").slice(0, 12)}`;
 }
+
+export function versionedQuestionImage(root: string, src: string) {
+  if (!src.startsWith("/quizzes/")) return src;
+  const url = new URL(src, "https://assets.invalid");
+  const contents = fs.readFileSync(path.join(root, url.pathname.slice("/quizzes/".length)));
+  url.searchParams.set("v", createHash("sha256").update(contents).digest("hex").slice(0, 12));
+  return `${url.pathname}${url.search}${url.hash}`;
+}

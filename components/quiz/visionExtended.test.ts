@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import test from 'node:test';
 import type { Quiz } from '../../lib/quizzes.ts';
 import { expandQuizLocale } from '../../scripts/quiz-schema-v2.mjs';
 import { getChapterAnswers } from './engagement.ts';
 import { scoreQuiz } from './scoring.ts';
-import { applyVisionThreeChoices } from '../../scripts/vision-three-choices.mjs';
+import { applyVisionEntry } from '../../scripts/vision-entry.mjs';
+import { versionedQuestionImage } from '../../lib/quiz/normalization.ts';
 
 const root = 'data/quizzes/vision/';
 const read = (file: string) => JSON.parse(fs.readFileSync(root + file, 'utf8'));
@@ -16,6 +18,7 @@ const expanded = expandQuizLocale(manifest, copy, 'en');
 const questions = expanded.stages.flatMap((stage: { questions: any[] }) => stage.questions);
 const byId = Object.fromEntries(questions.map((question: any) => [question.id, question]));
 const answer = (id: string) => byId[id].answers[byId[id].correct];
+const choiceCount = (id: string) => id === 'vision-s1q1' ? 3 : 4;
 const sourceAsset = (src: string) => root + src.replace(/^\/quizzes\/vision\//, '');
 const svg = (id: string) => fs.readFileSync(sourceAsset(byId[id].image.src), 'utf8');
 
@@ -33,11 +36,11 @@ test('English Vision preserves its headline and intro in ten seven-question roun
   assert.deepEqual(expanded.stages.map((stage: { questions: any[] }) => stage.questions.length), Array(10).fill(7));
   assert.equal(new Set(questions.map((question: any) => question.id)).size, 70);
   assert.equal(new Set(questions.map((question: any) => question.question)).size, 70);
-  const positions = [0, 0, 0];
+  const positions = [0, 0, 0, 0];
   const categories = manifest.structure.results.dimensions.flatMap((dimension: { categories: string[] }) => dimension.categories);
   for (const question of questions) {
-    assert.equal(new Set(question.answers).size, 3, question.id);
-    assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < 3, question.id);
+    assert.equal(new Set(question.answers).size, choiceCount(question.id), question.id);
+    assert.ok(Number.isInteger(question.correct) && question.correct >= 0 && question.correct < choiceCount(question.id), question.id);
     assert.ok(Boolean(question.image) !== Boolean(question.study), `${question.id}: one clear visual or study phase`);
     assert.equal(categories.filter((category: string) => category === question.category).length, 1, question.id);
     if (question.image) {
@@ -48,7 +51,7 @@ test('English Vision preserves its headline and intro in ten seven-question roun
     }
     positions[question.correct]++;
   }
-  assert.deepEqual(positions.sort(), [23, 23, 24]);
+  assert.deepEqual(positions.sort(), [17, 17, 18, 18]);
   assert.deepEqual(byId['vision-s1q1'].answers, ['Tile A', 'Tile B', 'Tile C']);
   assert.deepEqual(expanded.career.stages[9].preAdChecks, ['Answers checked', 'Puzzle strengths compared', 'Score calculated']);
   for (const [index, stage] of manifest.structure.stages.entries()) {
@@ -94,13 +97,13 @@ test('every illustrated candidate remains selectable, including localized diagra
       if (['vision-s5q5', 'vision-s10q6'].includes(q.id)) {
         const labels = [...board.matchAll(/>([A-D])<\/text>/g)].map(([, label]) => label);
         assert.deepEqual(labels, q.answers.map((label: string) => label.replace(/^Tile /, '')), q.id);
-        if (q.id === 'vision-s10q6') assert.equal((board.match(/<path /g) ?? []).length, 3);
+        if (q.id === 'vision-s10q6') assert.equal((board.match(/<path /g) ?? []).length, 4);
       }
     }
   }
 });
 
-test('all supported Vision locales share three choices, scoring and the localized first question', () => {
+test('all supported Vision locales keep three choices only on the opener and four on every subsequent question', () => {
   const copies = Object.fromEntries(manifest.activeLocales.map((locale: string) => [locale, read(`${locale}.json`)]));
   for (const [locale, words] of Object.entries(copies) as [string, any][]) {
     const native = expandQuizLocale(manifest, words, locale).stages.flatMap((stage: any) => stage.questions);
@@ -108,15 +111,26 @@ test('all supported Vision locales share three choices, scoring and the localize
     assert.equal(native.length, 70);
     assert.ok(native[0].image.alt.endsWith(native[0].question));
     if (locale !== 'en') assert.notEqual(native[0].question, questions[0].question);
-    for (const q of native) assert.equal(new Set(q.answers).size, 3, `${locale}/${q.id}`);
+    for (const q of native) assert.equal(new Set(q.answers).size, choiceCount(q.id), `${locale}/${q.id}`);
   }
   const nextManifest = structuredClone(manifest), nextCopies = structuredClone(copies);
-  applyVisionThreeChoices(nextManifest, nextCopies, {
-    read: (src: string) => fs.readFileSync(sourceAsset(src), 'utf8'),
+  applyVisionEntry(nextManifest, nextCopies, {
     write: (src: string, contents: string) => assert.equal(contents, fs.readFileSync(sourceAsset(src), 'utf8'), `${src}: repeatable artwork`),
   });
   assert.deepEqual(nextManifest, manifest);
   assert.deepEqual(nextCopies, copies);
+});
+
+test('Vision diagram URLs are versioned from the exact artwork, including localized boards', () => {
+  for (const logic of Object.values(manifest.structure.questions) as any[]) {
+    if (!logic.image) continue;
+    for (const src of [logic.image.src, ...Object.values(logic.image.localizedSrc ?? {})] as string[]) {
+      const hash = createHash('sha256').update(fs.readFileSync(sourceAsset(src))).digest('hex').slice(0, 12);
+      const versioned = versionedQuestionImage('data/quizzes', src);
+      assert.equal(versioned, `${src}?v=${hash}`);
+      assert.equal(versionedQuestionImage('data/quizzes', `${src}?v=old`), versioned);
+    }
+  }
 });
 
 test('Vision counting answers agree with the actual symbols in each SVG', () => {
@@ -186,7 +200,7 @@ const scoringQuiz = {
 
 test('Vision scores all 70 answers and uses only the current round for checkpoint feedback', () => {
   for (const correct of [0, 34, 35, 41, 42, 48, 49, 55, 56, 62, 63, 70]) {
-    const answers = Object.fromEntries(scoringQuiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % 3]));
+    const answers = Object.fromEntries(scoringQuiz.questions.map((question, index) => [question.id, index < correct ? question.answerIndex! : (question.answerIndex! + 1) % choiceCount(question.id)]));
     const result = scoreQuiz(scoringQuiz, answers);
     assert.equal(result.score, correct);
     assert.equal(result.total, 70);

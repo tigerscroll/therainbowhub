@@ -428,17 +428,18 @@ for (const folder of folders) {
       || (Number.isInteger(question.visual.columns) && question.visual.columns >= 1 && question.visual.columns <= 8)
   )), `${folder.name}/en.json: visual.columns must be an integer from 1 to 8.`);
   fail(source.results?.score?.reviewUnlock === undefined && source.career?.reportUnlock === undefined, `${folder.name}/en.json: shared breakdown-unlock copy must not be duplicated in quiz data.`);
-  const scoredChoiceCount = ["vision", "nursing", "midwifery", "memory"].includes(folder.name) ? 3 : 4;
+  const scoredChoiceCount = ["nursing", "midwifery", "memory"].includes(folder.name) ? 3 : 4;
+  const choiceCountFor = (question) => question.id === "vision-s1q1" ? 3 : scoredChoiceCount;
   if (config.engine?.scoring === "correct-answer") {
     fail(sourceQuestions.every((question) => (
       Array.isArray(question.answers)
-        && question.answers.length === scoredChoiceCount
-        && new Set(question.answers).size === scoredChoiceCount
+        && question.answers.length === choiceCountFor(question)
+        && new Set(question.answers).size === choiceCountFor(question)
         && question.answers.every((answer) => typeof answer === "string" && answer.trim())
         && Number.isInteger(question.correct)
         && question.correct >= 0
-        && question.correct < scoredChoiceCount
-    )), `${folder.name}/en.json: every scored question needs ${scoredChoiceCount} unique choices and one valid answer.`);
+        && question.correct < choiceCountFor(question)
+    )), `${folder.name}/en.json: every scored question needs ${scoredChoiceCount} unique choices (three for the Vision opener) and one valid answer.`);
     const sharedPositions = sourceQuestions.reduce((positions, question) => {
       positions[question.correct] += 1;
       return positions;
@@ -487,13 +488,13 @@ for (const folder of folders) {
     if (config.engine?.scoring === "correct-answer") {
       fail(questions.every((question) => (
         Array.isArray(question.answers)
-          && question.answers.length === scoredChoiceCount
+          && question.answers.length === choiceCountFor(question)
           && question.answers.every((answer) => typeof answer === "string" && Boolean(answer.trim()))
-          && new Set(question.answers).size === scoredChoiceCount
+          && new Set(question.answers).size === choiceCountFor(question)
           && Number.isInteger(question.correct)
           && question.correct >= 0
-          && question.correct < scoredChoiceCount
-      )), `${folder.name}/${localeFile}: every localized scored question needs ${scoredChoiceCount} unique choices and one valid answer.`);
+          && question.correct < choiceCountFor(question)
+      )), `${folder.name}/${localeFile}: every localized scored question needs ${scoredChoiceCount} unique choices (three for the Vision opener) and one valid answer.`);
       const localizedPositions = questions.reduce((positions, question) => {
         positions[question.correct] += 1;
         return positions;

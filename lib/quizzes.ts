@@ -20,6 +20,7 @@ import {
   normalizeQuizAsset,
   normalizedSocialAvatars,
   themeStylesheetHref,
+  versionedQuestionImage,
 } from "@/lib/quiz/normalization";
 
 export type QuizFlow = {
@@ -1758,6 +1759,12 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const rawLocale = json<unknown>(path.join(contentDirectory, `${locale}.json`));
   const localized = expandLocaleV2(rawLocale, manifest, locale, localeFile);
   const quiz = normalizeLocale(localized, manifest, manifest.theme, themeCssHref, socialAvatars, localeFile);
+  if (slug === "vision") {
+    // Immutable CDN assets need new URLs whenever a puzzle board changes.
+    for (const question of quiz.questions) {
+      if (question.image) question.image.src = versionedQuestionImage(ROOT, question.image.src);
+    }
+  }
   quizCache.set(cacheKey, quiz);
   return quiz;
 }

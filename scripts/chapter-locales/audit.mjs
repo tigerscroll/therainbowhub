@@ -27,7 +27,7 @@ for (const slug of slugs) {
         const answers = Object.values(question.answers);
         assert.deepEqual(Object.keys(question.answers), Object.keys(source.answers), `${id}: answer order changed`);
         assert.equal(new Set(answers.map(answer => answer.normalize('NFKC').trim().toLowerCase())).size, answers.length, `${id}: duplicate answers`);
-        assert.equal(answers.length, ['years-left', 'vision', 'nursing', 'midwifery', 'memory'].includes(slug) ? 3 : 4);
+        assert.equal(answers.length, id === 'vision-s1q1' || ['years-left', 'nursing', 'midwifery', 'memory'].includes(slug) ? 3 : 4);
       }
     }
     for (const {value, parts} of strings(copy)) {
