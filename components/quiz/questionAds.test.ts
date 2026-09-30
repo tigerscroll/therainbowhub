@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import fs from "node:fs";
 import { expandQuizLocale } from "../../scripts/quiz-schema-v2.mjs";
+import { QUIZ_TEMPLATE_CONTRACTS } from "../../scripts/quiz-template-contracts.mjs";
 import { resolveQuizLocaleManifest } from "../../lib/quiz/localeManifest.mjs";
 import { scoreQuiz } from "./scoring.ts";
 import type { Quiz } from "../../lib/quizzes.ts";
@@ -29,7 +30,7 @@ test("quizzes request only rewarded ads without native, display or interstitial 
   assert.doesNotMatch(config, /displayAdUnitPath|quizNativeAdUnitPath/);
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
   const templates = fs.readFileSync("lib/quizzes.ts", "utf8").split("export type QuizTemplateId")[0];
-  assert.equal((templates.match(/rewarded: \{ start: true, stages: true, attempts: 3, confirmStart: false \}/g) ?? []).length, 5);
+  assert.equal((templates.match(/rewarded: \{ start: true, stages: true, attempts: 3, confirmStart: false \}/g) ?? []).length, Object.keys(QUIZ_TEMPLATE_CONTRACTS).length);
   for (const file of fs.readdirSync("data/i18n")) {
     if (!file.endsWith(".json")) continue;
     const copy = JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8"));
@@ -65,13 +66,13 @@ test("Meta QuizComplete is sent at the final result, never from an ad or answer 
   assert.doesNotMatch(fs.readFileSync("components/quiz/rewardedAds.ts", "utf8"), /AdClick|QuizComplete/);
 });
 
-test("Years Left, Vision, Nursing, Midwifery, Memory and IQ opt into the first-answer entry across their locales", () => {
+test("Years Left, Vision, Nursing, Midwifery, Memory, IQ and Marry opt into the first-answer entry across their locales", () => {
   const locales = fs.readdirSync("data/i18n").filter(name => name.endsWith(".json")).map(file => file.slice(0, -5));
   for (const slug of fs.readdirSync("data/quizzes")) {
     const file = `data/quizzes/${slug}/quiz.json`;
     if (!fs.existsSync(file)) continue;
     const manifest = JSON.parse(fs.readFileSync(file, "utf8"));
-    const firstAnswerEntry = ["years-left", "vision", "nursing", "midwifery", "memory", "iq"].includes(slug);
+    const firstAnswerEntry = ["years-left", "vision", "nursing", "midwifery", "memory", "iq", "marry"].includes(slug);
     assert.equal(manifest.engine.entry === "first-answer", firstAnswerEntry, slug);
     if (firstAnswerEntry) {
       for (const locale of locales) assert.equal(resolveQuizLocaleManifest(manifest, locale).engine.entry, "first-answer");

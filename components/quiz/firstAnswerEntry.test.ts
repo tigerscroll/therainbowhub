@@ -6,7 +6,7 @@ import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 
 const read = (slug: string, name: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${name}.json`, 'utf8'));
 
-for (const slug of ['vision', 'nursing', 'midwifery', 'memory', 'iq']) {
+for (const slug of ['vision', 'nursing', 'midwifery', 'memory', 'iq', 'marry']) {
   test(`${slug}: the first-question pill is localized without replacing subsequent topic labels`, () => {
     const manifest = read(slug, 'quiz');
     const copies = Object.fromEntries(manifest.activeLocales.map((locale: string) => [locale, read(slug, locale)]));
@@ -18,7 +18,7 @@ for (const slug of ['vision', 'nursing', 'midwifery', 'memory', 'iq']) {
       const first = copy.stages[stage.id].questions[id];
       assert.ok(first.headerLabel.trim());
       assert.notEqual(first.headerLabel, copy.stages[stage.id].questions[secondId].headerLabel);
-      if (locale === 'en') assert.equal(first.headerLabel, slug === 'iq' ? 'Intelligence Test' : `${slug[0].toUpperCase()}${slug.slice(1)} Test`);
+      if (locale === 'en') assert.equal(first.headerLabel, slug === 'marry' ? 'Future Partner Test' : slug === 'iq' ? 'Intelligence Test' : `${slug[0].toUpperCase()}${slug.slice(1)} Test`);
       else assert.notEqual(first.headerLabel, copies.en.stages[stage.id].questions[id].headerLabel);
       if (locale !== 'ar') assert.notEqual(first.headerLabel, first.headerLabel.toLocaleUpperCase(locale), 'opening labels use natural casing, not all caps');
     }

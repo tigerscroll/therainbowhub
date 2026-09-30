@@ -6,7 +6,10 @@ import {slugs, activeLocales as locales} from './chapter-locales/config.mjs';
 const chosenSlugs = process.env.QUIZZES?.split(',') ?? slugs;
 const chosenLocales = process.env.LOCALES?.split(',') ?? locales;
 if (chosenSlugs.some(slug => !slugs.includes(slug)) || chosenLocales.some(locale => !locales.includes(locale))) throw Error('Unknown test selection');
-const queue = chosenSlugs.flatMap(slug => chosenLocales.map(locale => ({slug, locale})));
+const queue = chosenSlugs.flatMap(slug => {
+  const manifest = JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, 'utf8'));
+  return chosenLocales.filter(locale => !manifest.activeLocales || manifest.activeLocales.includes(locale)).map(locale => ({slug, locale}));
+});
 const runName = process.env.QUIZ_TEST_RUN ?? `${process.env.QUIZ_TEST_FAST === '1' ? 'fast' : 'realtime'}-${process.env.QUIZ_TEST_WIDTHS ?? '390'}`;
 if (!/^[a-z0-9,-]+$/i.test(runName)) throw Error('Invalid browser test run name');
 const artifacts = path.join('/tmp', `chapter-browser-${runName}`);

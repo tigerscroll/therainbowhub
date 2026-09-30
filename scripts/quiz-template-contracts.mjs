@@ -1,4 +1,9 @@
 export const QUIZ_TEMPLATE_CONTRACTS = {
+  "ten-stage-eight-question-v1": {
+    stageCount: 10,
+    questionsPerStage: 8,
+    flow: "staged",
+  },
   "ten-stage-ten-question-v1": {
     stageCount: 10,
     questionsPerStage: 10,

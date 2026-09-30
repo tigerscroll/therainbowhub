@@ -50,13 +50,15 @@ if (!fs.existsSync(outputRoot)) {
   for (const slug of slugs) {
     const quizConfig = JSON.parse(fs.readFileSync(path.join(quizRoot, slug, "quiz.json"), "utf8"));
     const hasCustomTheme = fs.existsSync(path.join(quizRoot, slug, "theme.css"));
-    if (quizConfig.activeLocales && (
-      quizConfig.activeLocales.length !== locales.length
-      || locales.some((locale) => !quizConfig.activeLocales.includes(locale))
-    )) {
-      addError(`${slug}: activeLocales must include every supported locale.`);
+    const activeLocales = quizConfig.activeLocales ?? locales;
+    if (!activeLocales.includes('en') || activeLocales.some(locale => !locales.includes(locale)) || new Set(activeLocales).size !== activeLocales.length) {
+      addError(`${slug}: activeLocales must contain English and unique supported locales.`);
     }
-    for (const locale of locales) {
+    for (const locale of locales.filter(locale => !activeLocales.includes(locale))) {
+      if (routeFile(`/${locale}/${slug}`)) addError(`${slug}: inactive locale ${locale} must not have an exported quiz route.`);
+      if (fs.existsSync(path.join(outputRoot, 'quiz-data', locale, `${slug}.json`))) addError(`${slug}: inactive locale ${locale} must not have an exported quiz payload.`);
+    }
+    for (const locale of activeLocales) {
       if (!fs.existsSync(path.join(quizRoot, slug, `${locale}.json`))) {
         addError(`${slug}: missing quiz translation for ${locale}.`);
         continue;
@@ -87,11 +89,15 @@ if (!fs.existsSync(outputRoot)) {
       if (/data-quiz-shell-contract[^>]*>[^<]*<style/i.test(html) || html.includes("data-quiz-shell-styles")) {
         addError(`${route}: shared shell CSS was inlined instead of linked.`);
       }
-      for (const availableLocale of locales) {
+      // English-only previews intentionally omit the language switcher.
+      for (const availableLocale of activeLocales.length > 1 ? activeLocales : []) {
         const languageRoute = availableLocale === "en" ? `/${slug}` : `/${availableLocale}/${slug}`;
         if (!html.includes(`href="${languageRoute}"`)) {
           addError(`${route}: language switcher is missing ${languageRoute}.`);
         }
+      }
+      for (const unavailableLocale of locales.filter(locale => !activeLocales.includes(locale))) {
+        if (html.includes(`href="/${unavailableLocale}/${slug}"`)) addError(`${route}: links to an inactive quiz translation.`);
       }
 
       for (const match of html.matchAll(/<(?:script|img|link)\b[^>]*(?:src|href)=\"([^\"]+)\"/gi)) {

@@ -2,6 +2,9 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {slugs, locales, ui} from './config.mjs';
 import {expandQuizLocale} from '../quiz-schema-v2.mjs';
+import {quizTemplateContract} from '../quiz-template-contracts.mjs';
+import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
+import {marryRevealLabels} from '../localize-marry.mjs';
 
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const failures = [];
@@ -13,15 +16,16 @@ function strings(value, parts = [], result = []) {
 }
 for (const slug of slugs) {
   const root = `data/quizzes/${slug}`, manifest = read(`${root}/quiz.json`), english = read(`${root}/en.json`);
-  for (const locale of locales) try {
+  for (const locale of locales.filter(locale => !manifest.activeLocales || manifest.activeLocales.includes(locale))) try {
     const copy = read(`${root}/${locale}.json`), expanded = expandQuizLocale(manifest, copy, locale);
     assert.equal(copy.landing.cta, ui[locale].start);
     assert.equal(copy.results.share, undefined);
-    assert.deepEqual(expanded.stages.map(stage => stage.questions.length), Array(10).fill(7));
+    const contract = quizTemplateContract(resolveQuizLocaleManifest(manifest, locale).template);
+    assert.deepEqual(expanded.stages.map(stage => stage.questions.length), Array(contract.stageCount).fill(contract.questionsPerStage));
     for (const [index, stage] of manifest.structure.stages.entries()) {
       const checkpoint = copy.career.stages[stage.id];
-      assert.equal(checkpoint.preAdButton, index === 9 ? ui[locale].result : ui[locale].next);
-      if (index < 9) assert.equal(checkpoint.preAdCopy.match(/\{profile\}/g)?.length, 1);
+      assert.equal(checkpoint.preAdButton, index === 9 ? slug === 'marry' ? marryRevealLabels[locale] : ui[locale].result : ui[locale].next);
+      if (index < 9) assert.equal(checkpoint.preAdCopy.match(/\{profile\}/g)?.length ?? 0, slug === 'marry' ? 0 : 1);
       for (const id of stage.questionIds) {
         const question = copy.stages[stage.id].questions[id], source = english.stages[stage.id].questions[id];
         const answers = Object.values(question.answers);
@@ -62,9 +66,9 @@ for (const slug of slugs) {
     for (const question of expanded.stages.flatMap(stage => stage.questions)) {
       if (question.image?.src) assert.ok(fs.existsSync(`data${question.image.src}`), `${question.id}: missing image`);
     }
-    report.push({slug, locale, questions: 70, checkpoints: 10, status: 'PASS'});
+    report.push({slug, locale, questions: expanded.stages.flatMap(stage => stage.questions).length, checkpoints: expanded.stages.length, status: 'PASS'});
   } catch (error) {failures.push(`${slug}/${locale}: ${error.message}`);}
 }
 fs.writeFileSync('/tmp/quiz-chapter-localization-audit.json', JSON.stringify({report, failures}, null, 2));
 if (failures.length) {console.error(failures.join('\n')); process.exitCode = 1;}
-else console.log(`Chapter localization audit passed: ${report.length} editions, ${report.length * 70} questions.`);
+else console.log(`Chapter localization audit passed: ${report.length} editions, ${report.reduce((sum, entry) => sum + entry.questions, 0)} questions.`);

@@ -26,7 +26,7 @@ try {
     assert.equal(await staticPage.locator('.quiz-engine__landing').count(), 0);
     assert.equal(await staticPage.locator(`[data-question-id="${firstId}"] h1`).textContent(), first.question, `${locale}: first question is in server HTML`);
     assert.ok((await staticPage.locator('.quiz-engine__progress-head > strong[data-entry]').textContent()).endsWith(first.headerLabel), 'opening pill is present before hydration');
-    assert.equal(await staticPage.locator('.quiz-engine__answer').count(), 3);
+    assert.equal(await staticPage.locator('.quiz-engine__answer').count(), manifest.structure.questions[firstId].answerIds.length);
     if (slug === 'vision') {
       const src = manifest.structure.questions[firstId].image.src;
       const hash = createHash('sha256').update(fs.readFileSync(`data${src}`)).digest('hex').slice(0, 12);
@@ -70,7 +70,7 @@ try {
     const pill = page.locator('.quiz-engine__progress-head > strong[data-entry]');
     assert.ok((await pill.textContent()).endsWith(first.headerLabel));
     assert.equal(await pill.locator('.quiz-engine__entry-mark').count(), 1);
-    if (slug === 'iq') assert.equal(await pill.locator('.quiz-engine__entry-mark').textContent(), manifest.listing.icon, 'Intelligence Test retains the original landing-page icon');
+    if (['iq', 'marry'].includes(slug)) assert.equal(await pill.locator('.quiz-engine__entry-mark').textContent(), manifest.listing.icon, 'the first-question pill retains the original landing-page icon');
     assert.equal(await page.evaluate(() => window.adCalls.length), 0, 'no reward on page load');
     assert.deepEqual(await answers.locator('strong').allTextContents(), Object.values(first.answers));
     assert.equal(await page.locator('#quiz-first-answer-note').textContent(), JSON.parse(fs.readFileSync(`data/i18n/${locale}.json`, 'utf8')).ad.continueNote);
@@ -153,7 +153,7 @@ try {
     }
     assert.deepEqual(errors, []);
     await context.close();
-    console.log(`${slug}/${locale}: server-rendered question and pill, three answers, first-answer reward and localized note PASS`);
+    console.log(`${slug}/${locale}: server-rendered question and pill, all intended answers, first-answer reward and localized note PASS`);
   }
 } finally {
   await browser.close();

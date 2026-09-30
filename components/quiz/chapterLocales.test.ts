@@ -4,6 +4,7 @@ import test from 'node:test';
 import {directionalParts} from './directionalText.ts';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
+import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
 
 const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5))};
 const read = (slug: string, locale: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
@@ -13,10 +14,13 @@ const sameWord = (a: string, b: string, locale: string) => assert.equal(a.toLoca
 for (const locale of scope.locales.filter((value: string) => value !== 'en')) {
   test(`${locale}: translated questions retain all answer IDs and scoring positions`, () => {
     for (const slug of scope.quizzes) {
-      const manifest = read(slug, 'quiz'), copy = read(slug, locale);
+      const manifest = read(slug, 'quiz');
+      if (manifest.activeLocales && !manifest.activeLocales.includes(locale)) continue;
+      const copy = read(slug, locale);
       const english = expandQuizLocale(resolveQuizLocaleManifest(manifest, locale), read(slug, 'en'), 'en');
       const native = expandQuizLocale(manifest, copy, locale);
-      assert.deepEqual(native.stages.map((stage: any) => stage.questions.length), Array(10).fill(7));
+      const contract = quizTemplateContract(resolveQuizLocaleManifest(manifest, locale).template);
+      assert.deepEqual(native.stages.map((stage: any) => stage.questions.length), Array(contract.stageCount).fill(contract.questionsPerStage));
       const indexes = (data: any) => data.stages.flatMap((stage: any) => stage.questions.map((question: any) => [question.id, question.answerIds, question.correct, question.weights]));
       assert.deepEqual(indexes(native), indexes(english), slug);
     }

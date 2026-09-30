@@ -382,7 +382,7 @@ for (const folder of folders) {
   }
   const sortedLocaleFiles = [...activeLocaleFiles].sort();
   const expectedLocaleFiles = [...supportedLocales].map((locale) => `${locale}.json`).sort();
-  fail(JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: every quiz must be active in all supported locales: ${expectedLocaleFiles.join(", ")}.`);
+  if (!config.activeLocales) fail(JSON.stringify(sortedLocaleFiles) === JSON.stringify(expectedLocaleFiles), `${folder.name}: quizzes without an explicit locale rollout must support all locales: ${expectedLocaleFiles.join(", ")}.`);
 
   const sourceRaw = read(path.join(directory, "en.json"));
   const englishConfig = resolveQuizLocaleManifest(config, "en");

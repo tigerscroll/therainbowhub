@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 
 const entryLabels = {
+  marry: {
+    en: 'Future Partner Test', ar: 'اختبار شريك المستقبل', de: 'Partnertest', es: 'Test de pareja',
+    fr: 'Test du futur partenaire', it: 'Test del partner', nl: 'Partnertest', pt: 'Teste de par ideal',
+  },
   iq: {
     en: 'Intelligence Test', ar: 'اختبار الذكاء', de: 'Intelligenztest', es: 'Test de inteligencia',
     fr: 'Test d’intelligence', it: 'Test di intelligenza', nl: 'Intelligentietest', pt: 'Teste de inteligência',

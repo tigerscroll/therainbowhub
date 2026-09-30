@@ -136,6 +136,15 @@ async function run(width) {
       assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), 0, 'questions do not reveal the journey length');
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'questions add no ad requests');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px ${id} overflow`);
+      if (slug === 'marry') {
+        assert.equal(await page.locator('.quiz-engine__profile-portrait').count(), 0, 'no portrait reveal during questions');
+        if (logic.icons) {
+          assert.equal(await question.locator('.quiz-engine__answer-icon img').count(), 4, 'all four original image choices are restored');
+          await page.waitForFunction(() => [...document.querySelectorAll('[data-question-id] .quiz-engine__answer-icon img')].every(image => image.complete && image.naturalWidth > 0));
+          assert.equal(await question.locator('.quiz-engine__answers').evaluate(node => getComputedStyle(node).gridTemplateColumns.trim().split(/\s+/).length), 2);
+        }
+        assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer labels fit`);
+      }
       if (textChapters) {
         assert.equal(await question.locator('img,.quiz-engine__visual,.quiz-engine__question-image').count(), 0, `${slug} stays text-only`);
         assert.equal(await question.locator('.quiz-engine__answer strong').evaluateAll(nodes => nodes.every(node => node.scrollWidth <= node.clientWidth + 1)), true, `${width}px ${id} answer clipping`);
@@ -188,7 +197,7 @@ async function run(width) {
       if (scored) {
         if (choice === correctIndex) { chapterCorrect++; totalCorrect++; }
       } else {
-        for (const [profile, weight] of Object.entries(logic.choiceMeanings[answerIds[choice]])) profileWeights[profile] += weight;
+        for (const [profile, weight] of Object.entries(logic.choiceMeanings?.[answerIds[choice]] ?? {})) profileWeights[profile] += weight;
       }
       await question.locator('.quiz-engine__answer').nth(choice).click();
       expectedAnswers[id] = answerIds[choice];
@@ -218,13 +227,17 @@ async function run(width) {
     assert.doesNotMatch(await checkpoint.innerText(), /halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'gate waits for a click');
     assert.doesNotMatch(await checkpoint.innerText(), /\{profile\}/);
-    if (stageIndex < 9) {
+    if (stageIndex < 9 && copy.career.stages[stage.id].preAdCopy.includes('{profile}')) {
       const leadingId = scored
         ? [...manifest.structure.results.profiles].sort((a, b) => b.min - a.min).find(profile => chapterCorrect / stage.questionIds.length >= profile.min).key
         : Object.entries(profileWeights).sort((a, b) => b[1] - a[1])[0][0];
       const leadingKey = scored ? leadingId : manifest.structure.results.profiles.find(profile => profile.id === leadingId).key;
       assert.equal(await checkpoint.locator('.quiz-engine__checkpoint-profile').innerText(), copy.results.profiles[leadingKey].title, 'preview is based only on this chapter');
       assert.equal(await checkpoint.locator('.quiz-engine__primary').isEnabled(), true, 'no animation lock on intermediate gates');
+    }
+    if (slug === 'marry') {
+      assert.equal(await checkpoint.locator('.quiz-engine__checkpoint-profile,.quiz-engine__profile-portrait,img').count(), 0, 'the final portrait and archetype are not revealed early');
+      if (stageIndex < 9) assert.equal(await checkpoint.locator('.quiz-engine__primary').isEnabled(), true, 'no artificial wait at an intermediate checkpoint');
     }
     const animationNames = await checkpoint.locator('.quiz-engine__checkpoint-icon').evaluate(node => getComputedStyle(node).animationName);
     assert.equal(animationNames, reduced ? 'none' : 'quiz-chapter-mark');
@@ -263,6 +276,17 @@ async function run(width) {
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'REWARDED' && ad.path === '/22677279144/rewarded')), true);
   assert.equal(documents, initialDocuments + reloads, 'only requested checkpoint and explicit test reloads occur');
   assert.equal(await result.locator('.quiz-engine__result-share').count(), 0);
+  if (slug === 'marry') {
+    const portrait = result.locator('.quiz-engine__profile-portrait img');
+    await portrait.waitFor();
+    await page.waitForFunction(() => {
+      const image = document.querySelector('.quiz-engine__profile-portrait img');
+      return image?.complete && image.naturalWidth > 0;
+    });
+    const profile = await result.getAttribute('data-profile-id');
+    assert.equal(await portrait.getAttribute('src'), `/quizzes/marry/${manifest.theme.artwork.profileVariants[profile].masculine}`);
+    assert.equal(await result.locator('.quiz-engine__disclaimer').innerText(), copy.about.disclaimer);
+  }
   let age;
   if (scored) {
     assert.equal(await result.locator('.quiz-engine__result-fraction strong').innerText(), `${totalCorrect} / ${totalQuestions}`);
@@ -274,7 +298,7 @@ async function run(width) {
   }
   await capture({ path: `/tmp/${artifactPrefix}-engagement-result-${width}.png`, animations: 'disabled' });
   await result.locator('.quiz-engine__answer-review-unlock .quiz-engine__primary').click();
-  if (slug === 'personality') {
+  if (copy.results.profileReveal) {
     await result.locator('.quiz-engine__profile-chemistry').waitFor();
     assert.equal(await result.locator('.quiz-engine__dimension').count(), 4);
     assert.equal(await result.locator('.quiz-engine__profile-traits > span').count(), 3);
