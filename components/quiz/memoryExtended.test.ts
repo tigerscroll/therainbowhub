@@ -6,6 +6,7 @@ import { expandQuizLocale } from '../../scripts/quiz-schema-v2.mjs';
 import { getChapterAnswers } from './engagement.ts';
 import { scoreQuiz } from './scoring.ts';
 import { applyTextThreeChoices } from '../../scripts/three-choice-entry.mjs';
+import { applyEditorialReview } from '../../scripts/chapter-locales/editorial-review.mjs';
 
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/memory/${file}.json`, 'utf8'));
 const manifest = read('quiz');
@@ -41,7 +42,7 @@ test('English memory has ten seven-question chapters, self-paced cues and no adv
       if (logic.study) assert.deepEqual(logic.study, { mode: 'manual', rewarded: false });
     }
   }
-  assert.deepEqual(positions.sort(), [23, 23, 24]);
+  assert.deepEqual(positions, [24, 24, 22], 'Q1 deliberately uses B without rearranging other questions');
   assert.equal(Object.values(manifest.structure.questions).filter((question: any) => question.study).length, 19);
   for (const text of [copy.landing.intro, copy.summary, copy.about.body, ...copy.about.howToPlay.steps, ...Object.values(copy.career.stages).flatMap((stage: any) => [stage.preAdTitle, stage.preAdCopy])]) {
     assert.doesNotMatch(text, /\b(?:70|seventy|10|ten|7|seven)\b|halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);
@@ -68,6 +69,34 @@ test('all Memory locales preserve study boards, correct-answer mapping and three
   applyTextThreeChoices(nextManifest, nextCopies);
   assert.deepEqual(nextManifest, manifest);
   assert.deepEqual(nextCopies, copies);
+});
+
+test('Memory opens with the same clear code choices and B as the only correct answer in every locale', () => {
+  const sameByLocale: Record<string, string> = {
+    en: "They're all the same", ar: 'كلها متطابقة', de: 'Alle sind gleich', es: 'Todos son iguales',
+    fr: 'Ils sont tous identiques', it: 'Sono tutti uguali', nl: 'Ze zijn allemaal hetzelfde', pt: 'São todos iguais',
+  };
+  assert.deepEqual(Object.keys(sameByLocale).sort(), manifest.activeLocales);
+  for (const locale of manifest.activeLocales) {
+    const words = read(locale);
+    const first = expandQuizLocale(manifest, words, locale).stages[0].questions[0];
+    assert.deepEqual(first.answers, ['H2K7', 'H2K1', sameByLocale[locale]], locale);
+    assert.equal(first.correct, 1, `${locale}: B is correct`);
+    assert.equal(first.study, undefined);
+    const question = words.stages['stage-1'].questions[id('s1q2')];
+    assert.match(question.question, /H2K7 · H2K7 · H2K1 · H2K7/);
+    if (locale !== 'en') {
+      const draft = structuredClone(question);
+      draft.answers = { a1: 'H2K7', a2: 'H7K2', a3: 'H2K1' };
+      applyEditorialReview('memory', locale, draft, content('s1q2'));
+      assert.deepEqual(draft.answers, question.answers, `${locale}: stale translation drafts cannot restore the old choices`);
+    }
+  }
+  const quiz = scoringQuiz();
+  const first = quiz.questions[0];
+  for (const selected of [0, 1, 2]) {
+    assert.equal(scoreQuiz({ ...quiz, questions: [first] }, { [first.id]: selected }).score, selected === 1 ? 1 : 0);
+  }
 });
 
 test('recall answers are uniquely supported by the relevant study detail, including distant callbacks', () => {

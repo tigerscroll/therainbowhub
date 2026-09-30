@@ -39,12 +39,16 @@ export function applyEntryLabel(manifest, copies) {
 }
 
 // Preserve answer IDs and reading order, removing only a distractor. Keep the
-// correct positions balanced without relabelling reviewed translations.
+// correct positions balanced during reduction without relabelling translations.
 export function choicePlan(questions) {
   for (const question of questions) {
     assert.ok([3, 4].includes(question.answerIds.length));
     assert.equal(new Set(question.answerIds).size, question.answerIds.length);
     assert.ok(question.answerIds.includes(question.correctAnswerId));
+  }
+  // Already-authored three-choice questions retain their intentional positions.
+  if (questions.every(question => question.answerIds.length === 3)) {
+    return questions.map(question => [...question.answerIds]);
   }
   const failed = new Set();
   function visit(index, remaining) {

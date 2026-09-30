@@ -68,3 +68,13 @@ test('three-choice authoring removes only wrong answers without changing reading
   assert.deepEqual(positions, [4, 4, 4]);
   assert.throws(() => choicePlan([{answerIds: ['a1', 'a2', 'a3', 'a4'], correctAnswerId: 'missing'}]));
 });
+
+test('three-choice authoring preserves intentional positions in already-authored questions', () => {
+  const questions = Array.from({length: 3}, () => ({answerIds: ['a1', 'a2', 'a3'], correctAnswerId: 'a2'}));
+  const original = structuredClone(questions);
+  const plan = choicePlan(questions);
+  assert.deepEqual(plan, original.map(question => question.answerIds));
+  assert.deepEqual(questions, original);
+  assert.notEqual(plan[0], questions[0].answerIds);
+  assert.throws(() => choicePlan([{answerIds: ['a1', 'a2', 'a3'], correctAnswerId: 'missing'}]));
+});
