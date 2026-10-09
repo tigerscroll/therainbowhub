@@ -13,6 +13,8 @@ test('Years Left restores the self-test landing and exactly ten questions in eve
   assert.equal(source.template, 'single-stage-rewarded-v1');
   assert.equal(source.engine.entry, 'landing');
   assert.equal(source.engine.localeParity, 'strict');
+  assert.equal(source.engine.displayAds, true);
+  assert.equal(source.engine.hardRefreshCheckpoints, false, 'estimate readiness stays in the same document');
   assert.equal(source.localeExtensions, undefined);
   assert.deepEqual(source.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
   for (const locale of source.activeLocales) {

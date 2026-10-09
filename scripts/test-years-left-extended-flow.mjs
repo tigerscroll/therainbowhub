@@ -173,7 +173,7 @@ async function run(width) {
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px ${id} overflow`);
       if (displayAds) {
         const count = index === 0 ? 1 : 2;
-        await page.waitForFunction(count => document.querySelectorAll('.quiz-engine__display iframe').length === count, count);
+        await page.waitForFunction(count => document.querySelectorAll('.quiz-engine__display iframe').length === count, index === 2 ? 0 : count);
         assert.equal(await question.locator('[data-display-placement="below-answers"]').count(), index === 0 ? 0 : 1);
         assert.equal(await question.locator('.quiz-engine__next-question button').isDisabled(), true);
         assert.equal(await question.locator('h1').evaluate(node => getComputedStyle(node).borderBottomWidth), '0px');
@@ -182,7 +182,28 @@ async function run(width) {
         assert.ok(nextBox.height >= 55 && nextBox.height < 60, 'Next is compact');
         const questionBox = await question.boundingBox();
         assert.ok(Math.abs(nextBox.x + nextBox.width/2 - questionBox.x - questionBox.width/2) < 1, 'Next is centred');
+        const shellBox = await page.locator('.quiz-engine__question-shell').boundingBox();
+        assert.ok(Math.abs(shellBox.x) < 1 && Math.abs(shellBox.width - width) < 1, 'the quiz shell fills the screen width');
         assert.equal(await page.evaluate(() => window.displayRefreshes.length), index === 0 ? 0 : 2 * index - 1, 'one refresh for each existing slot per question');
+        if (index === 1) {
+          const expansion = await question.locator('[data-display-placement="below-question"]').evaluate(node => {
+            const frame = node.querySelector('iframe');
+            const size = {width:frame.width,height:frame.height};
+            frame.width = String(node.clientWidth); frame.height = '420';
+            const ad = node.getBoundingClientRect();
+            const answers = node.nextElementSibling.getBoundingClientRect();
+            const result = {height:ad.height,gap:answers.top-ad.bottom,overflow:getComputedStyle(node.closest('[data-display-ads]')).overflow};
+            frame.width = size.width; frame.height = size.height;
+            return result;
+          });
+          assert.ok(expansion.height >= 420, 'expanded ads are not capped at 280px');
+          assert.ok(expansion.gap >= 20, 'expanded creative remains separate from answers');
+          assert.equal(expansion.overflow, 'visible', 'the shell does not clip expansion');
+          await page.evaluate(() => { window.noDisplayFill = true; });
+        } else if (index === 2) {
+          assert.equal(await question.locator('.quiz-engine__display').evaluateAll(nodes => nodes.every(node => getComputedStyle(node).display === 'none')), true, 'unfilled slots collapse');
+          await page.evaluate(() => { window.noDisplayFill = false; });
+        }
         await capture({path:`/tmp/${artifactPrefix}-display-q${index + 1}-${width}.png`, fullPage:true, animations:'disabled'});
       }
       if (slug === 'marry') {

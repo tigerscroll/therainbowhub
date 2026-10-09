@@ -51,7 +51,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
           __html: `(function(){try{document.documentElement.style.background=${JSON.stringify(quiz.theme.colors.page)};document.body.style.background=${JSON.stringify(quiz.theme.colors.page)};var k=${JSON.stringify(storageKey)},r=null;try{r=window.sessionStorage.getItem(k)}catch(e){}if(!r){try{r=window.localStorage.getItem(k)}catch(e){}}if(r){var p=JSON.parse(r),t=Date.parse(p.updatedAt),a=Date.now()-t;if(Number.isFinite(t)&&a>=0&&a<${PROGRESS_TTL_MS})document.documentElement.classList.add("quiz-resuming")}}catch(e){}})();`,
         }}
       />
-      <ExperienceThemeBoundary shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
+      <ExperienceThemeBoundary displayLayout={quiz.engine.displayAds} shellCssHref={quiz.shellCssHref} theme={quiz.theme} themeCssHref={quiz.themeCssHref}>
         <div className="quiz-engine__flow-container">
           <QuizEngine
             locale={locale}

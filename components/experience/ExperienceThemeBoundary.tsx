@@ -4,12 +4,13 @@ import type { QuizTheme } from "@/lib/quizzes";
 
 type ExperienceThemeBoundaryProps = {
   children: ReactNode;
+  displayLayout?: boolean;
   shellCssHref: string;
   themeCssHref?: string;
   theme: QuizTheme;
 };
 
-export function ExperienceThemeBoundary({ children, shellCssHref, themeCssHref, theme }: ExperienceThemeBoundaryProps) {
+export function ExperienceThemeBoundary({ children, displayLayout, shellCssHref, themeCssHref, theme }: ExperienceThemeBoundaryProps) {
   const variables = {
     "--quiz-page": theme.colors.page,
     "--quiz-page-alt": theme.colors.pageAlt,
@@ -37,6 +38,7 @@ export function ExperienceThemeBoundary({ children, shellCssHref, themeCssHref, 
       <div
         className="quiz-theme"
         data-heading={theme.typography.heading}
+        data-display-layout={displayLayout || undefined}
         data-landing-layout={theme.layout.landing}
         data-question-layout={theme.layout.questions}
         data-quiz-flow="continuous"

@@ -1033,6 +1033,27 @@
    still wrap within narrow cards without losing their reading direction. */
 .quiz-text__literal { overflow-wrap: anywhere; }
 
+.quiz-theme[data-quiz-theme][data-quiz-flow="continuous"][data-display-layout] {
+  --quiz-shell-container-width: 100%;
+  --quiz-shell-side-gutter: 0px;
+  padding-inline: 0 !important;
+}
+
+.quiz-theme[data-quiz-flow="continuous"][data-display-layout] .quiz-engine__landing,
+.quiz-theme[data-quiz-flow="continuous"][data-display-layout] .quiz-engine__continuous-shell {
+  border-inline: 0 !important;
+  border-radius: 0 !important;
+}
+
+.quiz-theme[data-quiz-flow="continuous"][data-display-layout] .quiz-engine__question > h1,
+.quiz-theme[data-quiz-flow="continuous"][data-display-layout] .quiz-engine__question > .quiz-engine__answers,
+.quiz-theme[data-quiz-flow="continuous"][data-display-layout] .quiz-engine__landing-copy {
+  width: 100%;
+  max-width: 760px !important;
+  margin-inline: auto;
+}
+
+.quiz-theme[data-quiz-theme][data-quiz-flow="continuous"]:has([data-display-ads]),
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell[data-display-ads],
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell[data-display-ads] > .quiz-engine__question {
   overflow: visible;
