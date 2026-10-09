@@ -7,7 +7,13 @@ const read = (slug: string, locale: 'en' | 'es'): any => JSON.parse(fs.readFileS
 
 test('Spanish quiz question IDs and answer choices remain complete and distinct', () => {
   const slugs = fs.readdirSync('data/quizzes').filter((slug) => fs.existsSync(`data/quizzes/${slug}/es.json`));
-  assert.equal(slugs.length, fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)).length);
+  const spanishRollout = fs.readdirSync('data/quizzes').filter(slug => {
+    const file = `data/quizzes/${slug}/quiz.json`;
+    if (!fs.existsSync(file)) return false;
+    const manifest = JSON.parse(fs.readFileSync(file, 'utf8'));
+    return !manifest.activeLocales || manifest.activeLocales.includes('es');
+  });
+  assert.deepEqual(slugs.sort(), spanishRollout.sort());
   for (const slug of slugs) {
     const english = read(slug, 'en').stages['stage-1'].questions;
     const spanish = read(slug, 'es').stages['stage-1'].questions;

@@ -112,7 +112,20 @@ function validateTextOnlyLocale(value, config, location, locale) {
     exactObjectKeys(stage, ["difficulty", "preAdTitle", "preAdCopy", "preAdChecks", "preAdButton", "next"], `${location}#career.stages.${stageId}`);
     if (stage.next !== undefined) exactObjectKeys(stage.next, ["eyebrow", "tagline", "copy"], `${location}#career.stages.${stageId}.next`);
   }
-  exactObjectKeys(value?.results, ["name", "profiles", "dimensions", "estimate", "profileReveal", "score", "match"], `${location}#results`);
+  exactObjectKeys(value?.results, ["name", "profiles", "dimensions", "estimate", "profileReveal", "score", "match", "options"], `${location}#results`);
+  if (value?.results?.options !== undefined) {
+    const options = value.results.options;
+    exactObjectKeys(options, ["heading", "intro", "priorityLabel", "stepsHeading", "steps", "answersHeading", "sourcesHeading", "sources", "disclaimer"], `${location}#results.options`);
+    for (const key of ["heading", "intro", "priorityLabel", "stepsHeading", "answersHeading", "sourcesHeading", "disclaimer"]) fail(typeof options[key] === "string" && Boolean(options[key].trim()), `${location}: options.${key} is required.`);
+    fail(Array.isArray(options.steps) && options.steps.length >= 2 && options.steps.length <= 5 && options.steps.every(step => typeof step === "string" && Boolean(step.trim())), `${location}: options need two to five next steps.`);
+    fail(Array.isArray(options.sources) && options.sources.length > 0, `${location}: options need source links.`);
+    for (const [index, source] of (options.sources ?? []).entries()) {
+      exactObjectKeys(source, ["title", "url"], `${location}#results.options.sources.${index}`);
+      let validUrl = false;
+      try { const url = new URL(source.url); validUrl = url.protocol === "https:" && !url.username && !url.password; } catch {}
+      fail(validUrl && typeof source.title === "string" && Boolean(source.title.trim()), `${location}: invalid options source.`);
+    }
+  }
   for (const [profileId, profile] of Object.entries(value?.results?.profiles ?? {})) {
     exactObjectKeys(profile, ["tier", "title", "copy", "label", "icon", "aura", "traits", "firstFeature"], `${location}#results.profiles.${profileId}`);
   }
@@ -326,7 +339,7 @@ for (const folder of folders) {
     ...manifestEngine,
   };
   fail(config.slug === folder.name, `${folder.name}: quiz.json slug must match its folder.`);
-  fail(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens.`);
+  fail(/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/.test(config.slug ?? ""), `${folder.name}: slug must use lowercase URL-safe words separated by hyphens or underscores.`);
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
   fail(config.engine.flow === templateContract.flow

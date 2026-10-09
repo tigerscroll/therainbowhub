@@ -252,10 +252,22 @@ export type QuizResultProfile = {
 };
 
 export type QuizScoreDimension = { label: string; categories: string[] };
+export type QuizResultOptionsCopy = {
+  heading: string;
+  intro: string;
+  priorityLabel: string;
+  stepsHeading: string;
+  steps: string[];
+  answersHeading: string;
+  sourcesHeading: string;
+  sources: Array<{ title: string; url: string }>;
+  disclaimer: string;
+};
 export type QuizResultConfig = {
   profileName: string;
   profiles: QuizResultProfile[];
   scoreDimensions: QuizScoreDimension[];
+  options?: QuizResultOptionsCopy;
   estimate?: {
     eyebrow: string;
     ageSuffix: string;
@@ -554,6 +566,7 @@ type QuizLocaleFile = {
     profileReveal?: QuizResultConfig["profileReveal"];
     score?: QuizScoreResultCopy;
     match?: QuizMatchResultCopy;
+    options?: QuizResultOptionsCopy;
   };
   stages: Array<{
     title: string;
@@ -767,7 +780,7 @@ const ROOT = path.join(process.cwd(), "data", "quizzes");
 const LOCALES = new Set(getSupportedLocales());
 const DIFFICULTIES = new Set(["Quick", "Medium", "Hard", "Expert"]);
 const RESERVED_SLUGS = new Set([...getSupportedLocales(), "info", "api", "_next"]);
-const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const SLUG_PATTERN = /^[a-z0-9]+(?:[-_][a-z0-9]+)*$/;
 const ASSET_PATH = /^(?:\/(?:images|quizzes)\/|assets\/)[a-zA-Z0-9_./-]+$/;
 const quizCache = new Map<string, Quiz>();
 const quizListCache = new Map<string, Quiz[]>();
@@ -911,7 +924,21 @@ function validateLocaleSourceV2(localeObject: Record<string, unknown>, file: str
   });
 
   const results = object(localeObject.results, "results", file);
-  exactKeys(results, ["name", "profiles", "dimensions", "estimate", "profileReveal", "score", "match"], "results", file);
+  exactKeys(results, ["name", "profiles", "dimensions", "estimate", "profileReveal", "score", "match", "options"], "results", file);
+  const options = optionalLocaleObject(results.options, ["heading", "intro", "priorityLabel", "stepsHeading", "steps", "answersHeading", "sourcesHeading", "sources", "disclaimer"], "results.options", file);
+  if (options) {
+    for (const key of ["heading", "intro", "priorityLabel", "stepsHeading", "answersHeading", "sourcesHeading", "disclaimer"]) text(options[key], `results.options.${key}`, file);
+    const steps = strings(options.steps, "results.options.steps", file);
+    if (steps.length < 2 || steps.length > 5) throw new Error(`${file}: options results need two to five next steps.`);
+    if (!Array.isArray(options.sources) || !options.sources.length) throw new Error(`${file}: options results need source links.`);
+    options.sources.forEach((source, index) => {
+      const item = object(source, `results.options.sources[${index}]`, file);
+      exactKeys(item, ["title", "url"], `results.options.sources[${index}]`, file);
+      text(item.title, `results.options.sources[${index}].title`, file);
+      const url = new URL(text(item.url, `results.options.sources[${index}].url`, file));
+      if (url.protocol !== "https:" || url.username || url.password) throw new Error(`${file}: options sources must use public HTTPS URLs.`);
+    });
+  }
   const profiles = object(results.profiles, "results.profiles", file);
   Object.entries(profiles).forEach(([profileId, value]) => {
     optionalLocaleObject(value, ["tier", "title", "copy", "label", "icon", "aura", "traits", "firstFeature"], `results.profiles.${profileId}`, file);
@@ -1225,7 +1252,7 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     throw new Error(`${file}: thumbnail must be a local asset path.`);
   }
   const slug = text(raw.slug, "slug", file);
-  if (!SLUG_PATTERN.test(slug)) throw new Error(`${file}: slug must use lowercase URL-safe words separated by hyphens.`);
+  if (!SLUG_PATTERN.test(slug)) throw new Error(`${file}: slug must use lowercase URL-safe words separated by hyphens or underscores.`);
   if (RESERVED_SLUGS.has(slug)) throw new Error(`${file}: slug ${slug} is reserved by site routing.`);
   if (engine.scoring !== "correct-answer" && derivedScore) throw new Error(`${file}: derivedScore is only supported by correct-answer quizzes.`);
   if (engine.scoring === "weighted-profile" && engine.targetRatio !== undefined) throw new Error(`${file}: targetRatio is only supported by scored quizzes.`);
@@ -1736,6 +1763,7 @@ function normalizeLocale(
       score: value.results.score,
       match: value.results.match,
       profileReveal: value.results.profileReveal,
+      options: value.results.options,
     },
     questions,
   };

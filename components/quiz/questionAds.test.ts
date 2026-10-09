@@ -35,7 +35,7 @@ test("display ads are opt-in alongside rewarded ads, without native or interstit
   assert.match(engine, /quiz\.engine\.displayAds && questionIndex > 0/);
   for (const slug of fs.readdirSync("data/quizzes")) {
     const path = `data/quizzes/${slug}/quiz.json`;
-    if (fs.existsSync(path)) assert.equal(JSON.parse(fs.readFileSync(path, "utf8")).engine.displayAds === true, slug === "years-left", slug);
+    if (fs.existsSync(path)) assert.equal(JSON.parse(fs.readFileSync(path, "utf8")).engine.displayAds === true, ["years-left", "mobility_scooter"].includes(slug), slug);
   }
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.doesNotMatch(config, /quizNativeAdUnitPath/);

@@ -30,10 +30,11 @@ test('the site exposes exactly the eight agreed locales, with no alternate editi
 for (const slug of slugs) test(`${slug}: its normal folder supplies its intended template in every supported language`, () => {
   const manifest = read(slug,'quiz');
   const marry = slug === 'marry';
-  const short = slug === 'years-left';
+  const mobility = slug === 'mobility_scooter';
+  const short = slug === 'years-left' || mobility;
   const stageCount = short ? 1 : 10;
   const questionsPerStage = short ? 10 : marry ? 8 : 7;
-  const expectedLocales = locales;
+  const expectedLocales = mobility ? ['en'] : locales;
   assert.equal(manifest.template, short ? 'single-stage-rewarded-v1' : marry ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
   assert.equal(manifest.engine.hardRefreshCheckpoints, !short);
   assert.equal(manifest.listing.showSocialProof, false);
@@ -56,7 +57,7 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
     assert.equal(expanded.career.stages.length, stageCount);
     for (const [index, stage] of effective.structure.stages.entries()) {
       const checkpoint = copy.career.stages[stage.id];
-      assert.equal(checkpoint.preAdButton, marry && index === stageCount - 1 ? marryRevealLabels[locale] : locale === 'en' ? index === stageCount - 1 ? 'See My Result' : 'Continue' : index === stageCount - 1 ? ui[locale].result : ui[locale].next);
+      assert.equal(checkpoint.preAdButton, mobility ? 'See My Options' : marry && index === stageCount - 1 ? marryRevealLabels[locale] : locale === 'en' ? index === stageCount - 1 ? 'See My Result' : 'Continue' : index === stageCount - 1 ? ui[locale].result : ui[locale].next);
       if (index < stageCount - 1) {
         assert.equal(checkpoint.preAdCopy.match(/\{profile\}/g)?.length ?? 0, marry ? 0 : 1);
         assert.ok(checkpoint.next.tagline.trim());
@@ -69,7 +70,7 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
         const logic=effective.structure.questions[id], q=copy.stages[stage.id].questions[id];
         assert.ok(q.question.trim());
         assert.deepEqual(Object.keys(q.answers),logic.answerIds);
-        assert.equal(new Set(Object.values(q.answers).map((text:any)=>text.normalize('NFKC').trim().toLowerCase())).size,id === 'vision-s1q1' || ['years-left', 'nursing', 'midwifery', 'memory', 'iq'].includes(slug) ? 3 : 4,`${locale}/${id}`);
+        assert.equal(new Set(Object.values(q.answers).map((text:any)=>text.normalize('NFKC').trim().toLowerCase())).size,id === 'vision-s1q1' || ['years-left', 'mobility_scooter', 'nursing', 'midwifery', 'memory', 'iq'].includes(slug) ? 3 : 4,`${locale}/${id}`);
         if(logic.correctAnswerId)assert.ok(q.answers[logic.correctAnswerId]);
       }
     }

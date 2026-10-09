@@ -12,6 +12,7 @@ import { QuestionMedia, QuestionRenderer } from "./QuestionRenderer";
 import { QuestionDisplayAd } from "./QuestionDisplayAd";
 import { QuizText } from "./QuizText";
 import { QuizAbout } from "./QuizAbout";
+import { QuizOptionsResult } from "./QuizOptionsResult";
 import { scrollQuizToTop } from "./scrollToTop";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
@@ -617,7 +618,9 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         data-profile-id={profileReveal ? result.profile.id : undefined}
         data-display-ads={quiz.engine.displayAds || undefined}
       >
-        {profileReveal ? (
+        {quiz.result.options ? (
+          <QuizOptionsResult quiz={quiz} profileId={result.profile.id} answers={answers} />
+        ) : profileReveal ? (
           <>
             <span className="quiz-engine__eyebrow">{profileReveal.eyebrow}</span>
             {profileArtwork ? (

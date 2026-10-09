@@ -11,7 +11,7 @@ const option = (name) => {
   return index < 0 ? undefined : args[index + 1];
 };
 const abort = (message) => { console.error(message); process.exit(1); };
-if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+if (!slug || !/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/.test(slug)) {
   abort("Usage: npm run create:quiz -- <slug> [--title \"Title\"] [--icon 🧩] [--social-proof 321000] [--root /tmp/quizzes]");
 }
 
