@@ -12,6 +12,11 @@ test("full-document navigation has no page-load fade or cross-document transitio
   assert.doesNotMatch(css, /@view-transition|site-page-in|site-page-out/);
 });
 
+test("About This Quiz moves down an extra 600px on phones and tablets only", () => {
+  const css = fs.readFileSync("styles/quiz-shell-contract.css", "utf8");
+  assert.match(css, /@media \(max-width: 1024px\) \{\s*\.quiz-theme\[data-quiz-theme\]\[data-quiz-flow="continuous"\] \.quiz-engine__flow-container > \.quiz-engine__about \{\s*margin-top: 600px !important;/);
+});
+
 test("restoring a quiz keeps its matching shell visible without flashing landing content", () => {
   const css = fs.readFileSync("styles/quiz-engine.css", "utf8");
   assert.doesNotMatch(css, /\.quiz-resuming\s+\.quiz-theme\s*\{[^}]*visibility:\s*hidden/);
