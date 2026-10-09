@@ -79,7 +79,7 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
     rewardClosedAlreadySent: rewardClosedSent,
   }), "granted");
   assert.equal(requests, 3, "each early close must reopen until the reward is granted");
-  assert.deepEqual(metaEvents, ["QuizStart"], "only the granted-and-closed attempt emits the Meta event");
+  assert.deepEqual(metaEvents, ["QuizStart"], "only a granted attempt emits the Meta event");
   assert.equal(rewardClosedSent, true, "the quiz session is marked after its first completed reward");
 
   outcomes.push("unavailable", "unavailable", "unavailable");
@@ -104,14 +104,24 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
   );
   assert.equal(requests, 8);
 
+  let grantMarked = false;
+  let grantSettled = false;
   outcomes.push("granted-without-close");
+  const grantWithoutClose = requestRewardedAd({
+    adUnitPath: "/test", attempts: 1, timeoutMs: 100, visibleTimeoutMs: 100,
+    onRewardClosed: () => { grantMarked = true; },
+  }).then(result => { grantSettled = true; return result; });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(metaEvents, ["QuizStart", "QuizStart"], "grant emits QuizStart immediately without a close event");
+  assert.equal(grantMarked, true, "the session is marked as soon as the reward is granted");
+  assert.equal(grantSettled, false, "tracking does not advance the quiz while the ad remains open");
   assert.equal(
-    await requestRewardedAd({ adUnitPath: "/test", attempts: 1, timeoutMs: 10, visibleTimeoutMs: 10 }),
+    await grantWithoutClose,
     "granted",
     "the watchdog must preserve an earned reward even when GPT loses the close event",
   );
   assert.equal(requests, 9);
-  assert.deepEqual(metaEvents, ["QuizStart"], "a grant without the close event must not emit QuizStart");
+  assert.deepEqual(metaEvents, ["QuizStart", "QuizStart"], "the watchdog does not emit the event again");
 
   const controller = new AbortController();
   outcomes.push("pending");
@@ -126,6 +136,7 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
   outcomes.push("granted");
   assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3, retryOnClose: false, rewardClosedAlreadySent: true }), "granted");
   assert.equal(requests, 12, "a fresh user interaction can request another ad");
+  assert.equal(metaEvents.length, 2, "early closes and already-marked sessions do not emit again");
 
   let activate!: () => void;
   const permission = new Promise<void>(resolve => {activate = resolve;});

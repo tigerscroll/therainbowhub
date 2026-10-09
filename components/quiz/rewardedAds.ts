@@ -6,7 +6,6 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type ActiveRequest = {
   beforeVisible?: () => Promise<void>;
-  closed: boolean;
   cleanup?: () => void;
   granted: boolean;
   id: number;
@@ -25,12 +24,12 @@ let requestId = 0;
 let servicesEnabled = false;
 
 
-function sendQuizStartIfComplete(request: ActiveRequest) {
-  if (!request.granted || !request.closed || request.sent || request.rewardClosedAlreadySent) return;
+function sendQuizStartOnGrant(request: ActiveRequest) {
+  if (!request.granted || request.sent || request.rewardClosedAlreadySent) return;
   request.sent = true;
   request.rewardClosedAlreadySent = true;
   window.fbq?.("trackCustom", "QuizStart");
-  console.info("[RewardedAd] QuizStart conditions met; Meta event requested.");
+  console.info("[RewardedAd] Reward granted; QuizStart Meta event requested.");
   request.onRewardClosed?.();
 }
 
@@ -81,12 +80,10 @@ function installListeners() {
   pubads.addEventListener("rewardedSlotGranted", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
     activeRequest.granted = true;
-    sendQuizStartIfComplete(activeRequest);
+    sendQuizStartOnGrant(activeRequest);
   });
   pubads.addEventListener("rewardedSlotClosed", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
-    activeRequest.closed = true;
-    sendQuizStartIfComplete(activeRequest);
     finish(activeRequest.granted ? "granted" : "closed");
   });
   pubads.addEventListener("slotRenderEnded", (event) => {
@@ -115,7 +112,6 @@ function requestOnce(
     window.googletag = window.googletag ?? { cmd: [] };
     activeRequest = {
       beforeVisible,
-      closed: false,
       cleanup: signal ? () => signal.removeEventListener("abort", onAbort) : undefined,
       granted: false,
       id,
