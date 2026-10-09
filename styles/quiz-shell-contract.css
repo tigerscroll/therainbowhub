@@ -1077,8 +1077,12 @@
   padding-top: 28px;
 }
 
-.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__next-question > .quiz-engine__primary {
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell .quiz-engine__next-question > .quiz-engine__primary {
   margin: 0 !important;
+  min-height: 56px !important;
+  max-width: 320px !important;
+  padding: 12px 20px !important;
+  font-size: 18px !important;
 }
 
 .quiz-engine__display:not([data-empty]) + .quiz-engine__next-question { padding-top: 0; }

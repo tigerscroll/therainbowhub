@@ -13,6 +13,7 @@ const root = `data/quizzes/${slug}`;
 const manifest = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8')), locale);
 const firstAnswerEntry = manifest.engine.entry === 'first-answer';
 const hardRefreshCheckpoints = manifest.engine.hardRefreshCheckpoints === true;
+const displayAds = manifest.engine.displayAds === true;
 const totalQuestions = manifest.structure.stages.reduce((count, stage) => count + stage.questionIds.length, 0);
 const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
@@ -39,16 +40,37 @@ async function run(width) {
   await page.route('**/*', route => new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort());
   await page.addInitScript(() => {
     window.adCalls = [];
+    window.displayCalls = [];
+    window.displayRefreshes = [];
     const listeners = new Map();
     const pubads = {
       addEventListener(name, cb) { const callbacks = listeners.get(name) ?? []; callbacks.push(cb); listeners.set(name, callbacks); },
       removeEventListener(name, cb) { listeners.set(name, (listeners.get(name) ?? []).filter(value => value !== cb)); },
       updateCorrelator() {},
+      refresh(slots) { window.displayRefreshes.push(...slots.map(slot => slot.id)); slots.forEach(renderDisplay); },
     };
     const emit = (name, slot, extra = {}) => (listeners.get(name) ?? []).forEach(cb => cb({ slot, ...extra }));
+    const renderDisplay = slot => {
+      const node = document.getElementById(slot.id);
+      if (!node) return;
+      node.replaceChildren();
+      if (!window.noDisplayFill) {
+        const frame = document.createElement('iframe');
+        frame.title = 'Test creative';
+        frame.width = slot.sizes[0][0]; frame.height = slot.sizes[0][1];
+        frame.style.border = '0'; frame.style.display = 'block'; frame.style.margin = '0 auto';
+        frame.srcdoc = '<body style="margin:0;display:grid;place-items:center;height:100vh;background:white;color:black;font:18px Arial">Test creative</body>';
+        node.append(frame);
+      }
+      queueMicrotask(() => emit('slotRenderEnded', slot, {isEmpty: Boolean(window.noDisplayFill)}));
+    };
     window.googletag = {
       cmd: { push(cb) { cb(); } },
-      defineSlot() { throw Error('Unexpected display ad'); },
+      defineSlot(path, sizes, id) {
+        const slot = {path, sizes, id, config: null, addService(){return this;}, setConfig(config){this.config=config;}};
+        window.displayCalls.push(slot);
+        return slot;
+      },
       defineOutOfPageSlot(path, format) {
         const slot = { path, format, addService() { return this; } };
         window.adCalls.push(slot);
@@ -57,6 +79,7 @@ async function run(width) {
       pubads: () => pubads, enableServices() {}, setConfig() {}, destroySlots() {},
       enums: { OutOfPageFormat: { REWARDED: 'REWARDED' } },
       display(slot) {
+        if (typeof slot === 'string') { renderDisplay(window.displayCalls.find(value => value.id === slot)); return; }
         queueMicrotask(() => emit('rewardedSlotReady', slot, {
           makeRewardedVisible() { window.adShows = (window.adShows ?? 0) + 1; queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); }); },
         }));
@@ -148,6 +171,20 @@ async function run(width) {
       assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), manifest.structure.stages.length === 1 ? 1 : 0, 'short quizzes show progress; chapter journeys keep it hidden');
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'questions add no ad requests');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px ${id} overflow`);
+      if (displayAds) {
+        const count = index === 0 ? 1 : 2;
+        await page.waitForFunction(count => document.querySelectorAll('.quiz-engine__display iframe').length === count, count);
+        assert.equal(await question.locator('[data-display-placement="below-answers"]').count(), index === 0 ? 0 : 1);
+        assert.equal(await question.locator('.quiz-engine__next-question button').isDisabled(), true);
+        assert.equal(await question.locator('h1').evaluate(node => getComputedStyle(node).borderBottomWidth), '0px');
+        assert.equal(await page.evaluate(() => window.displayCalls.every(slot => slot.path === '/22677279144/display' && slot.sizes.every(size => (size[0] === 300 && size[1] === 250) || (size[0] === 336 && size[1] === 280)) && slot.config.adExpansion.enabled)), true);
+        const nextBox = await question.locator('.quiz-engine__next-question button').boundingBox();
+        assert.ok(nextBox.height >= 55 && nextBox.height < 60, 'Next is compact');
+        const questionBox = await question.boundingBox();
+        assert.ok(Math.abs(nextBox.x + nextBox.width/2 - questionBox.x - questionBox.width/2) < 1, 'Next is centred');
+        assert.equal(await page.evaluate(() => window.displayRefreshes.length), index === 0 ? 0 : 2 * index - 1, 'one refresh for each existing slot per question');
+        await capture({path:`/tmp/${artifactPrefix}-display-q${index + 1}-${width}.png`, fullPage:true, animations:'disabled'});
+      }
       if (slug === 'marry') {
         assert.equal(await page.locator('.quiz-engine__profile-portrait').count(), 0, 'no portrait reveal during questions');
         if (logic.icons) {
@@ -215,6 +252,11 @@ async function run(width) {
       expectedAnswers[id] = answerIds[choice];
       if (firstAnswerEntry && stageIndex === 0 && index === 0) expectedRewards++;
       if (fast) await page.clock.fastForward(700);
+      if (displayAds) {
+        assert.equal(await question.isVisible(), true, 'an answer does not advance the question');
+        assert.equal(await page.evaluate(() => window.displayRefreshes.length), index === 0 ? 0 : 2 * index - 1, 'answer selection never refreshes ads');
+        await question.locator('.quiz-engine__next-question button').click();
+      }
       await question.waitFor({ state: 'detached' });
     }
     const checkpoint = page.locator('.quiz-engine__checkpoint');
@@ -259,8 +301,14 @@ async function run(width) {
     assert.match(await button.innerText(), new RegExp(copy.career.stages[stage.id].preAdButton));
     assert.equal(await button.locator('.quiz-engine__primary-arrow svg').count(), manifest.structure.stages.length === 1 ? 0 : 1, 'chapter CTAs have an arrow; the short result gate keeps its original button');
     const geometry = await button.evaluate(node => ({ top: node.getBoundingClientRect().top, bottom: node.getBoundingClientRect().bottom, viewport: innerHeight }));
-    assert.ok(geometry.top >= 0 && geometry.bottom <= geometry.viewport, `checkpoint ${stageIndex + 1} CTA visible without scrolling: ${JSON.stringify(geometry)}`);
-    if (slug === 'vision' || textChapters) {
+    if (!displayAds) assert.ok(geometry.top >= 0 && geometry.bottom <= geometry.viewport, `checkpoint ${stageIndex + 1} CTA visible without scrolling: ${JSON.stringify(geometry)}`);
+    else {
+      assert.equal(await checkpoint.locator('[data-display-placement="before-result"]').count(), 1);
+      await page.waitForFunction(() => document.querySelector('[data-display-placement="before-result"] iframe'));
+      const adBox = await checkpoint.locator('.quiz-engine__display').boundingBox();
+      assert.ok(geometry.top - adBox.y - adBox.height >= 20, 'result button is separated from the display creative');
+    }
+    if (!displayAds && (slug === 'vision' || textChapters)) {
       assert.equal(await checkpoint.locator('.quiz-engine__ad-note').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, `chapter ${stageIndex + 1} ad note remains visible with its button`);
     }
     if ((slug === 'vision' || textChapters) && stageIndex === 9) {
@@ -283,6 +331,7 @@ async function run(width) {
   }
   const result = page.locator('.quiz-engine__results');
   await result.waitFor();
+  if (displayAds) assert.equal(await result.locator('.quiz-engine__display').count(), 2, 'results have summary and lower placements');
   assert.equal(expectedRewards + rewardsBeforeReload, manifest.structure.stages.length + 1, 'one reward per checkpoint plus the existing Start reward');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'REWARDED' && ad.path === '/22677279144/rewarded')), true);
@@ -337,6 +386,7 @@ async function run(width) {
       if (manifest.structure.questions[id].study) await question.getByRole('button', { name: copy.stages[manifest.structure.stages[0].id].questions[id].study.continueLabel, exact: true }).click();
       await question.locator('.quiz-engine__answer').first().click();
       if (fast) await page.clock.runFor(firstAnswerEntry && id === manifest.structure.stages[0].questionIds[0] ? 1800 : 700);
+      if (displayAds) await question.locator('.quiz-engine__next-question button').click();
       await question.waitFor({ state: 'detached' });
       if (id === manifest.structure.stages[0].questionIds[0]) {
         assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + noFillRequests, 'bounded unavailable-ad retry still continues the quiz');

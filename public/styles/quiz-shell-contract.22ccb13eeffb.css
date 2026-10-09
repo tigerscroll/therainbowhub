@@ -1032,6 +1032,60 @@
 /* Keep coordinates and short equations together; long puzzle sequences can
    still wrap within narrow cards without losing their reading direction. */
 .quiz-text__literal { overflow-wrap: anywhere; }
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell[data-display-ads],
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell[data-display-ads] > .quiz-engine__question {
+  overflow: visible;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell[data-display-ads] .quiz-engine__display {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-self: center;
+  width: calc(100% + 2 * var(--quiz-shell-content-inset));
+  max-width: none;
+  height: auto;
+  margin: 28px calc(-1 * var(--quiz-shell-content-inset));
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  text-align: center;
+}
+
+.quiz-engine__display-slot {
+  width: 100%;
+  min-height: 280px;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  text-align: center;
+}
+
+.quiz-engine__display[data-empty] { display: none; }
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell[data-display-ads] .quiz-engine__display[data-display-placement="below-question"] {
+  margin-top: 0;
+}
+
+.quiz-engine__next-question {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 28px;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__continuous-shell .quiz-engine__next-question > .quiz-engine__primary {
+  margin: 0 !important;
+  min-height: 56px !important;
+  max-width: 320px !important;
+  padding: 12px 20px !important;
+  font-size: 18px !important;
+}
+
+.quiz-engine__display:not([data-empty]) + .quiz-engine__next-question { padding-top: 0; }
 .quiz-text__literal--atomic { white-space: nowrap; }
 .quiz-text__literal--alphabet {
   display: block;
