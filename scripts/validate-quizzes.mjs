@@ -306,13 +306,18 @@ for (const folder of folders) {
     }
   }
   const manifestEngine = config.engine ?? {};
+  fail(manifestEngine.displayAds === undefined || typeof manifestEngine.displayAds === "boolean", `${folder.name}: engine.displayAds must be a boolean.`);
   fail([undefined, "landing", "first-answer"].includes(manifestEngine.entry), `${folder.name}: engine.entry must be landing or first-answer.`);
+  if (manifestEngine.startPrelude !== undefined) {
+    const prelude = exactObjectKeys(manifestEngine.startPrelude, ["delayMs", "preload"], `${folder.name}: engine.startPrelude`);
+    fail(Number.isInteger(prelude.delayMs) && prelude.delayMs >= 0 && prelude.delayMs <= 10000 && typeof prelude.preload === "boolean", `${folder.name}: invalid start prelude.`);
+  }
   const startOnLoad = manifestEngine.entry === "first-answer" || (templateContract.startOnLoad ?? false);
   const templateKeys = ["flow", "advance", "feedback", "checkpoint", "startOnLoad", "rewarded", "advanceDelayMs"];
   fail(templateKeys.every((key) => manifestEngine[key] === undefined), `${folder.name}: shared flow settings must come from the template, not individual manifests.`);
   config.engine = {
     flow: templateContract.flow,
-    advance: templateContract.advance ?? "automatic",
+    advance: manifestEngine.displayAds === true ? "manual" : templateContract.advance ?? "automatic",
     feedback: "selection-only",
     checkpoint: "ai",
     startOnLoad,
@@ -325,7 +330,7 @@ for (const folder of folders) {
   fail(!new Set([...supportedLocales, "info", "api", "_next"]).has(config.slug), `${folder.name}: slug ${config.slug} is reserved by site routing.`);
   fail(config.engine?.flow && config.engine?.scoring, `${folder.name}: quiz.json needs engine flow and scoring.`);
   fail(config.engine.flow === templateContract.flow
-    && config.engine.advance === (templateContract.advance ?? "automatic")
+    && config.engine.advance === (manifestEngine.displayAds === true ? "manual" : templateContract.advance ?? "automatic")
     && config.engine.feedback === "selection-only"
     && config.engine.checkpoint === "ai"
     && config.engine.startOnLoad === startOnLoad

@@ -6,10 +6,11 @@ import { requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
 test("rewarded ads reopen after early closes and only count genuine unavailability", async () => {
   type Listener = (event: { isEmpty?: boolean; makeRewardedVisible?: () => void; slot: object }) => void;
   const listeners = new Map<string, Listener>();
-  const outcomes: Array<RewardedResult | "granted-without-close" | "ready-only" | "pending"> = [];
+  const outcomes: Array<RewardedResult | "granted-without-close" | "ready-only" | "pending" | "deferred"> = [];
   const metaEvents: string[] = [];
   let rewardClosedSent = false;
   let requests = 0;
+  let deferredShows = 0;
 
   const pubads = {
     addEventListener(name: string, listener: Listener) {
@@ -35,6 +36,14 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
         if (outcome === "pending") return;
         if (outcome === "unavailable") {
           listeners.get("slotRenderEnded")?.({ isEmpty: true, slot });
+          return;
+        }
+        if (outcome === "deferred") {
+          listeners.get("rewardedSlotReady")?.({slot, makeRewardedVisible() {
+            deferredShows++;
+            listeners.get("rewardedSlotGranted")?.({slot});
+            listeners.get("rewardedSlotClosed")?.({slot});
+          }});
           return;
         }
 
@@ -117,4 +126,27 @@ test("rewarded ads reopen after early closes and only count genuine unavailabili
   outcomes.push("granted");
   assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3, retryOnClose: false, rewardClosedAlreadySent: true }), "granted");
   assert.equal(requests, 12, "a fresh user interaction can request another ad");
+
+  let activate!: () => void;
+  const permission = new Promise<void>(resolve => {activate = resolve;});
+  outcomes.push("deferred");
+  const preloaded = requestRewardedAd({adUnitPath: "/test", attempts: 1, beforeVisible: () => permission, rewardClosedAlreadySent: true});
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(requests, 13, "preloading fetches the slot immediately");
+  assert.equal(deferredShows, 0, "a loaded ad waits for the user's CTA and loader delay");
+  activate();
+  assert.equal(await preloaded, "granted");
+  assert.equal(deferredShows, 1);
+
+  const abortPreload = new AbortController();
+  let release!: () => void;
+  const pendingPermission = new Promise<void>(resolve => {release = resolve;});
+  outcomes.push("deferred");
+  const abandoned = requestRewardedAd({adUnitPath: "/test", attempts: 1, beforeVisible: () => pendingPermission, signal: abortPreload.signal});
+  await new Promise(resolve => setImmediate(resolve));
+  abortPreload.abort();
+  assert.equal(await abandoned, "closed");
+  release();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(deferredShows, 1, "leaving the landing destroys the prepared slot and prevents a late display");
 });

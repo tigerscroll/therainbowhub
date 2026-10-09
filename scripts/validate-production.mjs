@@ -184,8 +184,8 @@ const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"
 for (const declaration of ["useRewardedGate", "onStart={startQuiz}", "onAnswer={answerQuestion}", "window.setTimeout(moveForward", "reloadAtCheckpoint"]) {
   if (!quizEngineText.includes(declaration)) addError(`Rewarded quiz contract is missing: ${declaration}`);
 }
-if (/QuestionDisplayAd|QuizNativeAd|mountQuizInterstitial|INTERSTITIAL|data-quiz-next/.test(quizEngineText)) {
-  addError("Quizzes must use rewarded ads only and automatic question navigation, without in-page ads or interstitials.");
+if (/QuizNativeAd|mountQuizInterstitial|INTERSTITIAL|data-quiz-next/.test(quizEngineText)) {
+  addError("Quizzes must not restore retired native, interstitial or answer-link navigation.");
 }
 for (const source of [quizEngineText, experienceLandingText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText, rewardedGateText]) {
   if (/useQuizInterstitial|gamInterstitial|quizInterstitialAdUnitPath|writeQuizHistoryProgress/.test(source)) {

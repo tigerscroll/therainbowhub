@@ -27,19 +27,21 @@ test('the site exposes exactly the eight agreed locales, with no alternate editi
   for (const slug of slugs) assert.equal(fs.existsSync(`data/quizzes/${slug}/english-extended`), false, slug);
 });
 
-for (const slug of slugs) test(`${slug}: its normal folder supplies its locale-specific ten-round template in every supported language`, () => {
+for (const slug of slugs) test(`${slug}: its normal folder supplies its intended template in every supported language`, () => {
   const manifest = read(slug,'quiz');
   const marry = slug === 'marry';
-  const questionsPerStage = marry ? 8 : 7;
+  const short = slug === 'years-left';
+  const stageCount = short ? 1 : 10;
+  const questionsPerStage = short ? 10 : marry ? 8 : 7;
   const expectedLocales = locales;
-  assert.equal(manifest.template, marry ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
+  assert.equal(manifest.template, short ? 'single-stage-rewarded-v1' : marry ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(manifest.listing.showSocialProof, false);
   assert.equal(manifest.listing.compactLanding, true);
   const ids = manifest.structure.stages.flatMap((stage: any) => stage.questionIds);
-  assert.equal(ids.length, 10 * questionsPerStage);
-  assert.equal(new Set(ids).size, 10 * questionsPerStage);
-  assert.deepEqual(manifest.structure.stages.map((stage: any) => stage.questionIds.length), Array(10).fill(questionsPerStage));
+  assert.equal(ids.length, stageCount * questionsPerStage);
+  assert.equal(new Set(ids).size, stageCount * questionsPerStage);
+  assert.deepEqual(manifest.structure.stages.map((stage: any) => stage.questionIds.length), Array(stageCount).fill(questionsPerStage));
   assert.deepEqual(Object.keys(manifest.structure.questions).sort(), [...ids].sort());
   assert.deepEqual(fs.readdirSync(`data/quizzes/${slug}`).filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file=>file.slice(0,-5)).sort(), expectedLocales);
   if (manifest.activeLocales) assert.deepEqual([...manifest.activeLocales].sort(), expectedLocales);
@@ -48,13 +50,14 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its locale-s
     const contract = quizTemplateContract(effective.template)!;
     const copy = read(slug, locale), expanded = expandQuizLocale(manifest, copy, locale);
     assert.equal(copy.results.share, undefined);
-    assert.equal(copy.landing.cta, locale === 'en' ? 'Start' : ui[locale].start);
+    if (short) assert.ok(copy.landing.cta.trim());
+    else assert.equal(copy.landing.cta, locale === 'en' ? 'Start' : ui[locale].start);
     assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), Array(contract.stageCount).fill(contract.questionsPerStage));
-    assert.equal(expanded.career.stages.length, 10);
+    assert.equal(expanded.career.stages.length, stageCount);
     for (const [index, stage] of effective.structure.stages.entries()) {
       const checkpoint = copy.career.stages[stage.id];
-      assert.equal(checkpoint.preAdButton, marry && index === 9 ? marryRevealLabels[locale] : locale === 'en' ? index === 9 ? 'See My Result' : 'Continue' : index === 9 ? ui[locale].result : ui[locale].next);
-      if (index < 9) {
+      assert.equal(checkpoint.preAdButton, marry && index === stageCount - 1 ? marryRevealLabels[locale] : locale === 'en' ? index === stageCount - 1 ? 'See My Result' : 'Continue' : index === stageCount - 1 ? ui[locale].result : ui[locale].next);
+      if (index < stageCount - 1) {
         assert.equal(checkpoint.preAdCopy.match(/\{profile\}/g)?.length ?? 0, marry ? 0 : 1);
         assert.ok(checkpoint.next.tagline.trim());
         assert.equal(checkpoint.preAdChecks, undefined);

@@ -15,6 +15,30 @@
 .quiz-resuming .quiz-engine__about { visibility: hidden; }
 .quiz-resuming .quiz-engine__landing { pointer-events: none; }
 
+.quiz-engine__start-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: var(--quiz-surface);
+  color: var(--quiz-text);
+  text-align: center;
+}
+.quiz-engine__start-loader { display: flex; flex-direction: column; align-items: center; gap: 20px; transform: translateY(-48px); }
+.quiz-engine__start-loader small { margin-top: -10px; color: color-mix(in srgb, var(--quiz-text) 65%, transparent); font-size: 14px; line-height: 1.4; }
+.quiz-theme[data-quiz-theme]:has(.quiz-engine__start-overlay) { padding-top: var(--quiz-shell-header-gap) !important; }
+.quiz-engine__start-overlay p { margin: 0; max-width: 28ch; font-size: clamp(18px, 4vw, 24px); font-weight: 700; line-height: 1.4; }
+.quiz-engine__start-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid color-mix(in srgb, var(--quiz-primary) 20%, transparent);
+  border-top-color: var(--quiz-primary);
+  border-radius: 50%;
+  animation: quiz-start-spin .8s linear infinite;
+}
+@keyframes quiz-start-spin { to { transform: rotate(360deg); } }
+
 .quiz-theme[data-heading="serif"] h1,
 .quiz-theme[data-heading="serif"] h2 { font-family: Georgia, "Times New Roman", serif; }
 .quiz-theme[data-heading="rounded"] h1,

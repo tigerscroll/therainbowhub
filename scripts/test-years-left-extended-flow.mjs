@@ -58,7 +58,7 @@ async function run(width) {
       enums: { OutOfPageFormat: { REWARDED: 'REWARDED' } },
       display(slot) {
         queueMicrotask(() => emit('rewardedSlotReady', slot, {
-          makeRewardedVisible() { queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); }); },
+          makeRewardedVisible() { window.adShows = (window.adShows ?? 0) + 1; queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); }); },
         }));
       },
     };
@@ -76,13 +76,25 @@ async function run(width) {
   assert.equal(await landing.locator('h1').innerText(), copy.title);
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
   assert.equal((await landing.locator('.quiz-engine__primary').innerText()).replace(/[→←]/g, '').trim(), copy.landing.cta);
-  assert.equal(await page.evaluate(() => window.adCalls.length), 0);
+  if (slug === 'years-left') {
+    await page.waitForFunction(() => window.adCalls.length === 1);
+    assert.equal(await page.evaluate(() => window.adShows ?? 0), 0, 'preloading never displays an ad');
+  } else assert.equal(await page.evaluate(() => window.adCalls.length), 0);
   if ((slug === 'vision' || textChapters) && width === 320) {
     assert.equal(await landing.locator('.quiz-engine__primary').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, 'Start remains visible on a small phone');
     await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-small-phone.png`, animations: 'disabled' });
   }
   await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
   await landing.locator('.quiz-engine__primary').click();
+  if (slug === 'years-left') {
+    const overlay = page.locator('.quiz-engine__start-overlay');
+    await overlay.waitFor();
+    assert.equal(await landing.count(), 0, 'the landing is removed while the ad loads');
+    await page.waitForTimeout(1000);
+    assert.equal(await overlay.isVisible(), true, 'the two-second message is still visible');
+    assert.equal(await page.evaluate(() => window.adShows ?? 0), 0, 'the prepared ad waits for the message');
+    await capture({path: `/tmp/${artifactPrefix}-start-spinner-${width}.png`, animations: 'disabled'});
+  }
   }
   await page.locator('[data-question-id]').waitFor();
   let expectedRewards = firstAnswerEntry ? 0 : 1;
@@ -133,7 +145,7 @@ async function run(width) {
       if (index === 0) await header.evaluate(node => { window.quizTestProgressHeader = node.firstElementChild; });
       else assert.equal(await header.evaluate(node => window.quizTestProgressHeader === node.firstElementChild), true, 'the heading stays mounted as the question changes');
       assert.equal(await question.locator('.quiz-engine__answer').evaluateAll(nodes => nodes.every(node => getComputedStyle(node).animationName === 'none')), true, 'answers appear immediately');
-      assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), 0, 'questions do not reveal the journey length');
+      assert.equal(await page.locator('.quiz-engine__question-shell [role="progressbar"], .quiz-engine__chapter-progress, .quiz-engine__progress').count(), manifest.structure.stages.length === 1 ? 1 : 0, 'short quizzes show progress; chapter journeys keep it hidden');
       assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'questions add no ad requests');
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px ${id} overflow`);
       if (slug === 'marry') {
@@ -227,7 +239,7 @@ async function run(width) {
     assert.doesNotMatch(await checkpoint.innerText(), /halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'gate waits for a click');
     assert.doesNotMatch(await checkpoint.innerText(), /\{profile\}/);
-    if (stageIndex < 9 && copy.career.stages[stage.id].preAdCopy.includes('{profile}')) {
+    if (stageIndex < manifest.structure.stages.length - 1 && copy.career.stages[stage.id].preAdCopy.includes('{profile}')) {
       const leadingId = scored
         ? [...manifest.structure.results.profiles].sort((a, b) => b.min - a.min).find(profile => chapterCorrect / stage.questionIds.length >= profile.min).key
         : Object.entries(profileWeights).sort((a, b) => b[1] - a[1])[0][0];
@@ -240,12 +252,12 @@ async function run(width) {
       if (stageIndex < 9) assert.equal(await checkpoint.locator('.quiz-engine__primary').isEnabled(), true, 'no artificial wait at an intermediate checkpoint');
     }
     const animationNames = await checkpoint.locator('.quiz-engine__checkpoint-icon').evaluate(node => getComputedStyle(node).animationName);
-    assert.equal(animationNames, reduced ? 'none' : 'quiz-chapter-mark');
+    assert.equal(animationNames, reduced ? 'none' : manifest.structure.stages.length === 1 ? 'years-milestone-in' : 'quiz-chapter-mark');
     assert.equal(await checkpoint.evaluate(node => node.getAnimations({ subtree: true }).every(animation => animation.effect.getTiming().iterations === 1)), true, 'checkpoint animations never loop');
     const button = checkpoint.locator('.quiz-engine__primary');
     await button.waitFor({ state: 'visible' });
     assert.match(await button.innerText(), new RegExp(copy.career.stages[stage.id].preAdButton));
-    assert.equal(await button.locator('.quiz-engine__primary-arrow svg').count(), 1, 'Continue and See My Result both have an arrow');
+    assert.equal(await button.locator('.quiz-engine__primary-arrow svg').count(), manifest.structure.stages.length === 1 ? 0 : 1, 'chapter CTAs have an arrow; the short result gate keeps its original button');
     const geometry = await button.evaluate(node => ({ top: node.getBoundingClientRect().top, bottom: node.getBoundingClientRect().bottom, viewport: innerHeight }));
     assert.ok(geometry.top >= 0 && geometry.bottom <= geometry.viewport, `checkpoint ${stageIndex + 1} CTA visible without scrolling: ${JSON.stringify(geometry)}`);
     if (slug === 'vision' || textChapters) {
@@ -271,7 +283,7 @@ async function run(width) {
   }
   const result = page.locator('.quiz-engine__results');
   await result.waitFor();
-  assert.equal(expectedRewards + rewardsBeforeReload, 11, 'ten chapter rewards plus the existing Start reward');
+  assert.equal(expectedRewards + rewardsBeforeReload, manifest.structure.stages.length + 1, 'one reward per checkpoint plus the existing Start reward');
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards);
   assert.equal(await page.evaluate(() => window.adCalls.every(ad => ad.format === 'REWARDED' && ad.path === '/22677279144/rewarded')), true);
   assert.equal(documents, initialDocuments + reloads, 'only requested checkpoint and explicit test reloads occur');
@@ -309,14 +321,15 @@ async function run(width) {
   expectedRewards++;
   assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'optional breakdown keeps its existing reward');
   if (width === 390) {
-    await page.locator('.quiz-engine__about-restart').click();
     await page.evaluate(() => { window.noAdFill = true; });
+    await page.locator('.quiz-engine__about-restart').click();
     if (!firstAnswerEntry) {
       await landing.waitFor();
       await landing.locator('.quiz-engine__primary').click();
     }
     await page.locator('[data-question-id]').waitFor();
-    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + (firstAnswerEntry ? 0 : 3), 'direct entry waits for an answer; landing entry waits for Start');
+    const noFillRequests = slug === 'years-left' ? 4 : 3;
+    assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + (firstAnswerEntry ? 0 : noFillRequests), 'landing uses its preload plus bounded click retries');
     for (const id of manifest.structure.stages[0].questionIds) {
       const question = page.locator(`[data-question-id="${id}"]`);
       await question.waitFor();
@@ -326,7 +339,7 @@ async function run(width) {
       if (fast) await page.clock.runFor(firstAnswerEntry && id === manifest.structure.stages[0].questionIds[0] ? 1800 : 700);
       await question.waitFor({ state: 'detached' });
       if (id === manifest.structure.stages[0].questionIds[0]) {
-        assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'bounded unavailable-ad retry still continues the quiz');
+        assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + noFillRequests, 'bounded unavailable-ad retry still continues the quiz');
       }
     }
     await page.locator('.quiz-engine__checkpoint').waitFor();
@@ -334,18 +347,27 @@ async function run(width) {
       expectedRewards = 0;
       assert.equal(await page.evaluate(() => window.adCalls.length), 0, 'no-fill progress also resumes without an ad on checkpoint arrival');
       await page.evaluate(() => { window.noAdFill = true; });
-    } else expectedRewards += 3;
+    } else expectedRewards += noFillRequests;
     await page.locator('.quiz-engine__checkpoint .quiz-engine__primary').click();
-    await page.locator(`[data-question-id="${manifest.structure.stages[1].questionIds[0]}"]`).waitFor();
+    if (manifest.structure.stages.length === 1) await page.locator('.quiz-engine__results').waitFor();
+    else await page.locator(`[data-question-id="${manifest.structure.stages[1].questionIds[0]}"]`).waitFor();
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + 3, 'unavailable checkpoint ads do not strand the user');
   }
   assert.deepEqual(errors, []);
   fs.writeFileSync(`/tmp/${artifactPrefix}-engagement-browser-${width}.json`, JSON.stringify({ width, reducedMotion: reduced, chapters: checkpoints, age, totalCorrect: scored ? totalCorrect : undefined, result: 'PASS' }, null, 2));
   await context.close();
-  console.log(`${width}px PASS: ${totalQuestions} questions, 10 chapter gates, truthful previews, mobile CTA visibility, single-play animations and no sharing`);
+  console.log(`${width}px PASS: ${totalQuestions} questions, ${manifest.structure.stages.length} checkpoint(s), mobile CTA visibility, rewarded flow and no sharing`);
 }
 
 try {
+  if (manifest.engine.startPrelude) {
+    const context = await browser.newContext({javaScriptEnabled: false});
+    const page = await context.newPage();
+    await page.goto(`${base}/${locale === 'en' ? '' : `${locale}/`}${slug}`);
+    assert.equal((await page.locator('.quiz-engine__landing .quiz-engine__primary').innerText()).replace(/[→←]/g, '').trim(), copy.landing.cta, 'the server-rendered CTA is stable before hydration');
+    assert.equal(await page.locator('.quiz-engine__landing .quiz-engine__primary').isDisabled(), true, 'hydration temporarily disables the button without changing its label');
+    await context.close();
+  }
   const results = await Promise.allSettled((process.env.QUIZ_TEST_WIDTHS ?? '320,390,1440').split(',').map(Number).map(width => run(width).catch(async error => {
     console.error(`${slug} ${width}px: ${error.stack ?? error}`);
     const page = testPages.get(width);

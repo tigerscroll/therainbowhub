@@ -5,6 +5,7 @@ import type { GptSlot } from "./gpt";
 export type RewardedResult = "granted" | "closed" | "unavailable";
 
 type ActiveRequest = {
+  beforeVisible?: () => Promise<void>;
   closed: boolean;
   cleanup?: () => void;
   granted: boolean;
@@ -58,11 +59,24 @@ function installListeners() {
       finish("unavailable");
       return;
     }
-    try { event.makeRewardedVisible(); } catch { finish("unavailable"); return; }
-    if (!activeRequest || activeRequest.id !== request.id) return;
-    request.timer = window.setTimeout(() => {
-      if (activeRequest?.id === request.id) finish(activeRequest.granted ? "granted" : "unavailable");
-    }, request.visibleTimeoutMs);
+    const show = () => {
+      if (activeRequest?.id !== request.id) return;
+      window.clearTimeout(request.timer);
+      try { event.makeRewardedVisible!(); } catch { finish("unavailable"); return; }
+      if (activeRequest?.id !== request.id) return;
+      request.timer = window.setTimeout(() => {
+        if (activeRequest?.id === request.id) finish(activeRequest.granted ? "granted" : "unavailable");
+      }, request.visibleTimeoutMs);
+    };
+    if (request.beforeVisible) {
+      // A preloaded slot must wait for an explicit user action before display.
+      request.timer = window.setTimeout(() => {
+        if (activeRequest?.id === request.id) finish("unavailable");
+      }, request.visibleTimeoutMs);
+      void request.beforeVisible().then(show, () => {
+        if (activeRequest?.id === request.id) finish("unavailable");
+      });
+    } else show();
   });
   pubads.addEventListener("rewardedSlotGranted", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
@@ -88,6 +102,7 @@ function requestOnce(
   signal?: AbortSignal,
   rewardClosedAlreadySent = false,
   onRewardClosed?: () => void,
+  beforeVisible?: () => Promise<void>,
 ) {
   if (signal?.aborted) return Promise.resolve<RewardedResult>("closed");
   if (activeRequest) return Promise.resolve<RewardedResult>("unavailable");
@@ -99,6 +114,7 @@ function requestOnce(
     };
     window.googletag = window.googletag ?? { cmd: [] };
     activeRequest = {
+      beforeVisible,
       closed: false,
       cleanup: signal ? () => signal.removeEventListener("abort", onAbort) : undefined,
       granted: false,
@@ -173,6 +189,7 @@ export async function requestRewardedAd({
   retryOnClose = true,
   timeoutMs = 4000,
   visibleTimeoutMs = 120000,
+  beforeVisible,
 }: {
   adUnitPath: string;
   attempts: number;
@@ -183,6 +200,7 @@ export async function requestRewardedAd({
   signal?: AbortSignal;
   timeoutMs?: number;
   visibleTimeoutMs?: number;
+  beforeVisible?: () => Promise<void>;
 }) {
   const maximum = Math.max(1, attempts);
   let unavailableAttempts = 0;
@@ -198,6 +216,7 @@ export async function requestRewardedAd({
       signal,
       rewardClosedAlreadySent,
       onRewardClosed,
+      beforeVisible,
     );
     if (signal?.aborted) return "closed";
     if (result === "granted") return result;

@@ -1,5 +1,9 @@
 export type GptSlot = {
   addService(service: unknown): GptSlot;
+  setConfig?: (config: {
+    adExpansion?: { enabled: boolean };
+    safeFrame?: { allowOverlayExpansion: boolean; allowPushExpansion: boolean };
+  }) => void;
 };
 
 export type GptEvent = {

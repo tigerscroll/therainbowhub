@@ -7,6 +7,7 @@ import { QuizText } from './QuizText';
 
 type QuestionRendererProps = {
   answer?: number;
+  allowAnswerChange?: boolean;
   answerLabels?: string[];
   answerNoteId?: string;
   feedback: Quiz["engine"]["flow"]["feedback"];
@@ -123,7 +124,7 @@ export function QuestionMedia({ question }: { question: QuizQuestion }) {
   return <><QuestionImage question={question} /><QuestionVisual question={question} /></>;
 }
 
-function ChoiceQuestion({ answer, answerLabels, answerNoteId, feedback, onAnswer, pendingAnswer, question, studyBusy }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, allowAnswerChange, answerLabels, answerNoteId, feedback, onAnswer, pendingAnswer, question, studyBusy }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -172,7 +173,7 @@ function ChoiceQuestion({ answer, answerLabels, answerNoteId, feedback, onAnswer
               aria-describedby={answerNoteId}
               aria-busy={pending || undefined}
               aria-pressed={question.presentation === "scale" ? undefined : selected}
-              disabled={studyBusy || answer !== undefined}
+              disabled={studyBusy || (answer !== undefined && !allowAnswerChange)}
               key={`${question.id}-${question.choiceIds[index]}`}
               onClick={(event) => {
                 event.currentTarget.blur();

@@ -172,6 +172,8 @@ export type QuizEstimateConfig = {
   brainAdjustments: Record<string, number>;
 };
 export type QuizEngineConfig = {
+  startPrelude?: {delayMs: number; preload: boolean};
+  displayAds?: boolean;
   flow: QuizFlow;
   scoring: QuizScoring;
   checkpoint: "standard" | "ai";
@@ -424,7 +426,7 @@ export type Quiz = {
     topicText?: string;
     howToPlay?: { title: string; steps: string[] };
   };
-  landing: { compact?: boolean; quickStartText: string; infoBadge?: string; showSocialProof: boolean; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
+  landing: { compact?: boolean; quickStartText: string; ctaLabel?: string; infoBadge?: string; showSocialProof: boolean; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -446,6 +448,8 @@ type QuizManifest = {
     checkpoint?: QuizEngineConfig["checkpoint"];
     startOnLoad?: boolean;
     entry?: "landing" | "first-answer";
+    startPrelude?: QuizEngineConfig["startPrelude"];
+    displayAds?: boolean;
     localeParity?: QuizEngineConfig["localeParity"];
     rewarded?: Partial<QuizRewardedConfig>;
     advanceDelayMs?: number;
@@ -1121,7 +1125,15 @@ function validateManifest(value: unknown, file: string): QuizManifest {
   if (engine.localeParity !== undefined && !["strict", "independent"].includes(String(engine.localeParity))) throw new Error(`${file}: engine.localeParity must be strict or independent.`);
   const templateContract = QUIZ_TEMPLATE_CONTRACTS[template];
   if (engine.entry !== undefined && !["landing", "first-answer"].includes(String(engine.entry))) throw new Error(`${file}: engine.entry must be landing or first-answer.`);
+  let startPrelude: QuizEngineConfig["startPrelude"];
+  if (engine.startPrelude !== undefined) {
+    const prelude = object(engine.startPrelude, "engine.startPrelude", file);
+    exactKeys(prelude, ["delayMs", "preload"], "engine.startPrelude", file);
+    if (!Number.isInteger(prelude.delayMs) || Number(prelude.delayMs) < 0 || Number(prelude.delayMs) > 10000 || typeof prelude.preload !== "boolean") throw new Error(`${file}: invalid start prelude.`);
+    startPrelude = {delayMs: Number(prelude.delayMs), preload: prelude.preload};
+  }
   const advanceDelayMs = templateContract.engine.advanceDelayMs;
+  if (engine.displayAds !== undefined && typeof engine.displayAds !== "boolean") throw new Error(`${file}: engine.displayAds must be a boolean.`);
   if (engine.hardRefreshCheckpoints !== undefined && typeof engine.hardRefreshCheckpoints !== "boolean") throw new Error(`${file}: engine.hardRefreshCheckpoints must be a boolean.`);
   const targetRatio = engine.targetRatio === undefined ? undefined : Number(engine.targetRatio);
   if (targetRatio !== undefined && (!Number.isFinite(targetRatio) || targetRatio <= 0 || targetRatio > 1)) throw new Error(`${file}: engine.targetRatio must be greater than 0 and at most 1.`);
@@ -1237,7 +1249,9 @@ function validateManifest(value: unknown, file: string): QuizManifest {
     engine: {
       ...engine,
       ...templateContract.engine,
+      advance: engine.displayAds === true ? "manual" : templateContract.engine.advance,
       startOnLoad: engine.entry === "first-answer" || templateContract.engine.startOnLoad,
+      startPrelude,
       advanceDelayMs,
       targetRatio,
       estimate,
@@ -1662,6 +1676,8 @@ function normalizeLocale(
       scoring: { type: manifest.engine.scoring },
       checkpoint: manifest.engine.checkpoint ?? "standard",
       startOnLoad: manifest.engine.startOnLoad ?? false,
+      startPrelude: manifest.engine.startPrelude,
+      displayAds: manifest.engine.displayAds,
       localeParity: manifest.engine.localeParity ?? "strict",
       rewarded: {
         start: manifest.engine.rewarded?.start ?? false,
@@ -1697,6 +1713,7 @@ function normalizeLocale(
     } : undefined,
     landing: {
       quickStartText: value.landing?.intro ?? summary,
+      ctaLabel: value.landing?.cta,
       compact: manifest.listing.compactLanding ?? true,
       infoBadge: value.landing?.badge,
       showSocialProof: manifest.listing.showSocialProof ?? false,
