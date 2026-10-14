@@ -10,7 +10,7 @@ import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
 
 type GalleryPhase = "complete" | "gallery" | "landing";
-const unlockKey = "rainbowhub:gallery-unlock:v1:nude-art";
+const unlockKey = "rainbowhub:gallery-unlock:v1:art";
 
 function getDestination(path: string, story: number | "complete") {
   const destination = new URL(path, window.location.href);
@@ -93,7 +93,6 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
         ctaIcon="→"
         ctaIconPosition="end"
         ctaLabel={gallery.landing.cta}
-        disclaimer={gallery.disclaimer}
         icon={null}
         intro={gallery.landing.intro}
         onStart={start}
@@ -121,17 +120,8 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
   const item = gallery.items[index];
   const nextStory = index + 1 < gallery.items.length ? index + 2 : "complete";
   const nextHref = getDestination(path, nextStory).toString();
-  const previousHref = index > 0 ? getDestination(path, index).toString() : path;
-  const progress = ((index + 1) / gallery.items.length) * 100;
-
   return (
     <article aria-labelledby="gallery-story-title" className="gallery-article__story quiz-engine__continuous-shell" key={item.id}>
-      <header className="gallery-article__progress-head">
-        <span>{index + 1} OF {gallery.items.length}</span>
-        <strong>{gallery.gallery.progressLabel}</strong>
-      </header>
-      <div aria-hidden="true" className="gallery-article__progress"><i style={{ width: `${progress}%` }} /></div>
-
       <div className="gallery-article__archive-card">
         <small>CONTROVERSY FILE</small>
         <b>{String(item.number).padStart(2, "0")}</b>
@@ -144,19 +134,6 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
       </div>
 
       <nav aria-label="Gallery navigation" className="gallery-article__navigation">
-        {index > 0 ? (
-          <a
-            className="gallery-article__secondary"
-            data-google-interstitial="false"
-            href={previousHref}
-            onClick={(event) => {
-              event.preventDefault();
-              moveTo(index, false);
-            }}
-          >
-            ← {gallery.gallery.previousLabel}
-          </a>
-        ) : <span />}
         <a
           className="gallery-article__primary"
           data-google-interstitial="true"
@@ -169,7 +146,6 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
           {nextStory === "complete" ? gallery.gallery.finishLabel : gallery.gallery.nextLabel} <span aria-hidden="true">→</span>
         </a>
       </nav>
-      <p className="gallery-article__ad-choice">Interstitials may appear between stories when Google determines the visit is eligible.</p>
     </article>
   );
 }

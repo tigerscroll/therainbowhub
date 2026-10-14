@@ -31,11 +31,8 @@ export type GalleryManifest = {
     finishLabel: string;
     introduction: string[];
     nextLabel: string;
-    previousLabel: string;
-    progressLabel: string;
     restartLabel: string;
   };
-  disclaimer: string;
   items: GalleryItem[];
 };
 
@@ -55,15 +52,12 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.landing.eyebrow === "string"
     && typeof manifest.gallery?.nextLabel === "string"
     && typeof manifest.gallery.finishLabel === "string"
-    && typeof manifest.gallery.previousLabel === "string"
-    && typeof manifest.gallery.progressLabel === "string"
     && typeof manifest.gallery.completeEyebrow === "string"
     && typeof manifest.gallery.completeTitle === "string"
     && typeof manifest.gallery.completeCopy === "string"
     && typeof manifest.gallery.restartLabel === "string"
     && Array.isArray(manifest.gallery.introduction)
     && manifest.gallery.introduction.every(item => typeof item === "string")
-    && typeof manifest.disclaimer === "string"
     && Array.isArray(manifest.items)
     && manifest.items.length > 0
     && manifest.items.every((item, index) => item
