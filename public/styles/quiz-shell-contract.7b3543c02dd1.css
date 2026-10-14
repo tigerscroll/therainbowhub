@@ -1000,6 +1000,19 @@
   animation: none;
 }
 
+/* Years Left keeps its chapter topic prominent without a per-round counter. */
+.quiz-theme[data-quiz-theme="years-left"][data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__progress-head {
+  row-gap: 0;
+}
+
+.quiz-theme[data-quiz-theme="years-left"][data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__progress-head > span {
+  display: none !important;
+}
+
+.quiz-theme[data-quiz-theme="years-left"][data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__progress-head > strong {
+  grid-row: 1;
+}
+
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell--chapters .quiz-engine__question-context {
   max-width: 34rem;
   margin-bottom: 15px;
