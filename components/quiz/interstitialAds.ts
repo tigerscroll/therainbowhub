@@ -1,7 +1,7 @@
-import { SPA_NAVIGATION_EVENT } from "../experience/spaNavigation.ts";
 import type { GoogleTag, GptEvent, GptSlot, PubAds } from "./gpt";
 
 export const INTERSTITIAL_REARM_MS = 60_000;
+const SPA_NAVIGATION_EVENT = "rainbowhub:spa-navigation";
 const BLOCKED_RECHECK_MS = 1_000;
 
 const OVERLAY_SELECTOR = [
