@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { HomePageContent } from "@/components/HomePageContent";
+import { GalleryTemplate } from "@/components/GalleryTemplate";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getTopLevelContentRoutes } from "@/lib/contentCatalogue";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { galleryArticleTheme, getGalleryBySlug } from "@/lib/galleries";
 import { getQuizBySlug } from "@/lib/quizzes";
-import { buildMetadata, getHomePath, getQuizPath, localizedHomeAlternates, quizAlternates } from "@/lib/seo";
+import { buildMetadata, galleryAlternates, getGalleryPath, getHomePath, getQuizPath, localizedHomeAlternates, quizAlternates } from "@/lib/seo";
 
 type SegmentPageProps = {
   params: Promise<{
@@ -36,6 +38,17 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
         title: `${translations.site.name} - ${translations.home.headlinePrefix} ${translations.home.headlineHighlight}`,
       }),
     };
+  }
+
+  const gallery = getGalleryBySlug(segment, getDefaultLocale());
+
+  if (gallery) {
+    return buildMetadata({
+      alternates: galleryAlternates(gallery.slug),
+      description: gallery.metadata.description,
+      path: getGalleryPath(gallery.slug),
+      title: gallery.metadata.title,
+    });
   }
 
   const quiz = getQuizBySlug(segment, getDefaultLocale());
@@ -73,6 +86,16 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
 
   const locale = getDefaultLocale();
   const translations = getTranslations(locale);
+  const gallery = getGalleryBySlug(segment, locale);
+
+  if (gallery) {
+    return (
+      <SiteShell currentPath={getGalleryPath(gallery.slug)} locale={locale} quizTheme={galleryArticleTheme} translations={translations}>
+        <GalleryTemplate gallery={gallery} />
+      </SiteShell>
+    );
+  }
+
   const quiz = getQuizBySlug(segment, locale);
 
   if (quiz) {

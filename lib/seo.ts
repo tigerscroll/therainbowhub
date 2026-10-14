@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
+import { getAllGalleries } from "@/lib/galleries";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -19,6 +20,15 @@ export function getHomePath(locale: SupportedLocale) {
 
 export function getQuizPath(locale: SupportedLocale, slug: string) {
   return locale === defaultLocale ? `/${slug}` : `/${locale}/${slug}`;
+}
+
+export function getGalleryPath(slug: string) {
+  return `/${slug}`;
+}
+
+export function galleryAlternates(slug: string) {
+  const url = absoluteUrl(getGalleryPath(slug));
+  return { canonical: url, languages: { en: url, "x-default": url } };
 }
 
 export function getInfoPath(locale: SupportedLocale, slug: InfoPageSlug) {
@@ -202,6 +212,15 @@ export function getSitemapEntries() {
         priority: locale === defaultLocale ? 0.85 : 0.75,
       });
     }
+  }
+
+  for (const gallery of getAllGalleries()) {
+    entries.push({
+      url: absoluteUrl(getGalleryPath(gallery.slug)),
+      lastModified: new Date(gallery.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    });
   }
 
   for (const slug of infoPageSlugs) {

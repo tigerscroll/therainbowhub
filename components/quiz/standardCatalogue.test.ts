@@ -71,7 +71,7 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
         const logic=effective.structure.questions[id], q=copy.stages[stage.id].questions[id];
         assert.ok(q.question.trim());
         assert.deepEqual(Object.keys(q.answers),logic.answerIds);
-        assert.equal(new Set(Object.values(q.answers).map((text:any)=>text.normalize('NFKC').trim().toLowerCase())).size,id === 'vision-s1q1' || ['years-left', 'mobility_scooter', 'nursing', 'midwifery', 'memory', 'iq'].includes(slug) ? 3 : 4,`${locale}/${id}`);
+        assert.equal(new Set(Object.values(q.answers).map((text:any)=>text.normalize('NFKC').trim().toLowerCase())).size,id === 'vision-s1q1' || ['mobility_scooter', 'nursing', 'midwifery', 'memory', 'iq'].includes(slug) ? 3 : 4,`${locale}/${id}`);
         if(logic.correctAnswerId)assert.ok(q.answers[logic.correctAnswerId]);
       }
     }

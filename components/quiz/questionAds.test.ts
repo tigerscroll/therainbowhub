@@ -141,6 +141,6 @@ test("Years Left keeps each choice's score and calibration regardless of answer 
     assert.deepEqual(scoreQuiz(shuffledQuiz, answers(shuffledQuiz)), scoreQuiz(baselineQuiz, answers(baselineQuiz)));
   }
   const calibrationId = Object.keys(manifest.structure.questions).find(id => manifest.structure.questions[id].calibration)!;
-  assert.deepEqual(manifest.structure.questions[calibrationId].calibration, { a1: -1, a3: 0.5, a4: 1 });
+  assert.deepEqual(manifest.structure.questions[calibrationId].calibration, { a1: -1, a2: -0.25, a3: 0.5, a4: 1 });
   assert.doesNotMatch(questionCopy[calibrationId].question, /how far|clock.*run/i);
 });

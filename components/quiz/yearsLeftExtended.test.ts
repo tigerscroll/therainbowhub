@@ -34,10 +34,10 @@ test('Years Left is an English-only 100-question staged interstitial self-test',
         const logic = manifest.structure.questions[question.id];
         const native = copy.stages[`stage-${stageIndex + 1}`].questions[question.id];
         assert.ok(question.question.trim(), `${locale}/${question.id}`);
-        assert.equal(logic.answerIds.length, 3);
+        assert.equal(logic.answerIds.length, 4);
         assert.deepEqual(Object.keys(native.answers), logic.answerIds);
         assert.deepEqual(Object.keys(logic.choiceMeanings), logic.answerIds);
-        assert.equal(new Set(Object.values(native.answers)).size, 3);
+        assert.equal(new Set(Object.values(native.answers)).size, 4);
       }
     }
   }

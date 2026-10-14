@@ -1,8 +1,9 @@
 import { getDefaultLocale, getSupportedLocales } from "@/lib/i18n";
+import { getAllGalleries } from "@/lib/galleries";
 import { getAllQuizzes } from "@/lib/quizzes";
 
 export type TopLevelContentRoute = {
-  kind: "locale-home" | "quiz";
+  kind: "gallery" | "locale-home" | "quiz";
   segment: string;
 };
 
@@ -25,6 +26,10 @@ export function getTopLevelContentRoutes(): TopLevelContentRoute[] {
   for (const locale of getSupportedLocales().filter((item) => item !== defaultLocale)) {
     assertUniqueRoute(keys, locale, `Locale route /${locale}`);
     routes.push({ kind: "locale-home", segment: locale });
+  }
+  for (const gallery of getAllGalleries()) {
+    assertUniqueRoute(keys, gallery.slug, `Gallery route /${gallery.slug}`);
+    routes.push({ kind: "gallery", segment: gallery.slug });
   }
   for (const quiz of getAllQuizzes(defaultLocale)) {
     assertUniqueRoute(keys, quiz.slug, `Quiz route /${quiz.slug}`);
