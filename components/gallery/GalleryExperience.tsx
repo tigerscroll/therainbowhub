@@ -35,7 +35,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
   const [phase, setPhase] = useState<GalleryPhase>("landing");
   const [index, setIndex] = useState(0);
   const [hydrated, setHydrated] = useState(false);
-  const { busy, runGate } = useRewardedGate({ attempts: 3, preload: true });
+  const { busy, runGate } = useRewardedGate({ attempts: 3 });
 
   const restoreFromUrl = useCallback(() => {
     let unlocked = false;
