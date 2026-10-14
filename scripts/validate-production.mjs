@@ -181,19 +181,19 @@ const rewardedGateText = fs.readFileSync(path.join(rootDir, "components", "exper
 const rewardedAdsText = fs.readFileSync(path.join(rootDir, "components", "quiz", "rewardedAds.ts"), "utf8");
 const rootDocumentText = fs.readFileSync(path.join(rootDir, "components", "RootDocument.tsx"), "utf8");
 const siteConfigText = fs.readFileSync(path.join(rootDir, "lib", "siteConfig.ts"), "utf8");
-for (const declaration of ["useRewardedGate", "onStart={startQuiz}", "onAnswer={answerQuestion}", "window.setTimeout(moveForward", "reloadAtCheckpoint"]) {
+for (const declaration of ["useRewardedGate", "onStart={startQuiz}", "onAnswer={answerQuestion}", "window.setTimeout(moveForward", "reloadAtCheckpoint", "mountQuizInterstitial", "quiz.engine.interstitials"]) {
   if (!quizEngineText.includes(declaration)) addError(`Rewarded quiz contract is missing: ${declaration}`);
 }
-if (/QuizNativeAd|mountQuizInterstitial|INTERSTITIAL|data-quiz-next/.test(quizEngineText)) {
-  addError("Quizzes must not restore retired native, interstitial or answer-link navigation.");
+if (/QuizNativeAd|data-quiz-next/.test(quizEngineText)) {
+  addError("Quizzes must not restore retired native or legacy Next-link navigation.");
 }
 for (const source of [quizEngineText, experienceLandingText, rewardedAdsText, siteConfigText, questionRendererText, rootDocumentText, rewardedGateText]) {
   if (/useQuizInterstitial|gamInterstitial|quizInterstitialAdUnitPath|writeQuizHistoryProgress/.test(source)) {
     addError("Retired answer-link navigation code must not exist in the shared quiz flow.");
   }
 }
-if (fs.existsSync(path.join(rootDir, "components", "quiz", "QuizInterstitial.tsx"))) {
-  addError("The retired quiz interstitial component must not exist.");
+if (!fs.existsSync(path.join(rootDir, "components", "quiz", "interstitialAds.ts"))) {
+  addError("Managed SPA interstitial support is missing.");
 }
 if (!experienceLandingText.includes("onClick={onStart}")) {
   addError("Shared experience landing must connect its primary CTA to onStart.");

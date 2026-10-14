@@ -25,24 +25,27 @@ test("restoring a quiz keeps its matching shell visible without flashing landing
   assert.match(css, /:where\(html:not\(\.quiz-resuming\)\) \.quiz-theme\[data-quiz-theme\]:has\(\.quiz-engine__landing\)/);
 });
 
-test("display ads are opt-in alongside rewarded ads, without native or interstitial placements", () => {
+test("display, rewarded and managed interstitial ads remain explicit opt-in modes", () => {
   const engine = fs.readFileSync("components/quiz/QuizEngine.tsx", "utf8");
   assert.match(engine, /useRewardedGate/);
   assert.match(engine, /if \(quiz\.engine\.rewarded\.start\) void runRewardedGate/);
   assert.match(engine, /if \(quiz\.engine\.rewarded\.stages\) void runRewardedGate/);
-  assert.doesNotMatch(engine, /QuizNativeAd|mountQuizInterstitial|INTERSTITIAL|nextQuestionHref|data-quiz-next/);
+  assert.match(engine, /if \(!hydrated \|\| !quiz\.engine\.interstitials\) return;/);
+  assert.match(engine, /mountQuizInterstitial\(siteConfig\.displayAdUnitPath\)/);
+  assert.doesNotMatch(engine, /QuizNativeAd/);
   assert.match(engine, /quiz\.engine\.displayAds \? <QuestionDisplayAd/);
   assert.match(engine, /quiz\.engine\.displayAds && questionIndex > 0/);
   for (const slug of fs.readdirSync("data/quizzes")) {
     const path = `data/quizzes/${slug}/quiz.json`;
-    if (fs.existsSync(path)) assert.equal(JSON.parse(fs.readFileSync(path, "utf8")).engine.displayAds === true, ["years-left", "mobility_scooter"].includes(slug), slug);
+    if (fs.existsSync(path)) assert.equal(JSON.parse(fs.readFileSync(path, "utf8")).engine.displayAds === true, slug === "mobility_scooter", slug);
   }
   const config = fs.readFileSync("lib/siteConfig.ts", "utf8");
   assert.doesNotMatch(config, /quizNativeAdUnitPath/);
   assert.match(config, /displayAdUnitPath: "\/22677279144\/display"/);
   assert.match(config, /rewardedAdUnitPath: "\/22677279144\/rewarded"/);
   const templates = fs.readFileSync("lib/quizzes.ts", "utf8").split("export type QuizTemplateId")[0];
-  assert.equal((templates.match(/rewarded: \{ start: true, stages: true, attempts: 3, confirmStart: false \}/g) ?? []).length, Object.keys(QUIZ_TEMPLATE_CONTRACTS).length);
+  assert.equal((templates.match(/rewarded: \{ start: true, stages: true, attempts: 3, confirmStart: false \}/g) ?? []).length, Object.keys(QUIZ_TEMPLATE_CONTRACTS).length - 1);
+  assert.equal((templates.match(/rewarded: \{ start: false, stages: false, attempts: 3, confirmStart: false \}/g) ?? []).length, 1);
   for (const file of fs.readdirSync("data/i18n")) {
     if (!file.endsWith(".json")) continue;
     const copy = JSON.parse(fs.readFileSync(`data/i18n/${file}`, "utf8"));
@@ -67,7 +70,8 @@ test("manual Next is opt-in; automatic flows and checkpoint persistence stay int
   assert.match(source, /quiz\.engine\.flow\.advance === "manual" \?/);
   assert.match(source, /disabled=\{!hydrated \|\| adBusy \|\| selectedAnswer === undefined\} onClick=\{moveForward\}/);
   assert.match(source, /if \(!writeQuizProgress\(storageKey, JSON\.stringify\(saved\)\)\) return false;\s*window\.location\.reload\(\);/);
-  assert.match(renderer, /"data-google-interstitial": "false"/);
+  assert.match(renderer, /"data-google-interstitial": interstitialHref \? "true" : "false"/);
+  assert.match(renderer, /window\.history\.pushState/);
 });
 
 test("Meta QuizComplete is sent at the final result, never from an ad or answer interaction", () => {

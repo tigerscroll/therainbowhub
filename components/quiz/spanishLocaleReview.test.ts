@@ -6,7 +6,12 @@ import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
 const read = (slug: string, locale: 'en' | 'es'): any => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 
 test('Spanish quiz question IDs and answer choices remain complete and distinct', () => {
-  const slugs = fs.readdirSync('data/quizzes').filter((slug) => fs.existsSync(`data/quizzes/${slug}/es.json`));
+  const slugs = fs.readdirSync('data/quizzes').filter((slug) => {
+    const manifestPath = `data/quizzes/${slug}/quiz.json`;
+    if (!fs.existsSync(manifestPath)) return false;
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    return (!manifest.activeLocales || manifest.activeLocales.includes('es')) && fs.existsSync(`data/quizzes/${slug}/es.json`);
+  });
   const spanishRollout = fs.readdirSync('data/quizzes').filter(slug => {
     const file = `data/quizzes/${slug}/quiz.json`;
     if (!fs.existsSync(file)) return false;

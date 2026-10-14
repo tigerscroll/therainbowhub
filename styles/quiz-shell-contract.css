@@ -967,18 +967,36 @@
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell.quiz-engine__question-shell--chapters .quiz-engine__progress-head {
   grid-template-columns: minmax(0, 1fr);
   justify-items: center;
+  row-gap: 7px;
   padding-bottom: 14px !important;
+}
+
+.quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell.quiz-engine__question-shell--chapters .quiz-engine__progress-head > span {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--quiz-muted);
+  font-size: 11px;
+  letter-spacing: .13em;
 }
 
 .quiz-theme[data-quiz-flow="continuous"] .quiz-engine__question-shell.quiz-engine__continuous-shell.quiz-engine__question-shell--chapters .quiz-engine__progress-head > strong {
   grid-column: 1;
+  grid-row: 2;
   justify-self: center;
-  padding: 8px 14px;
+  width: fit-content;
+  max-width: min(100%, 560px);
+  padding: 9px 18px;
   border: 1px solid color-mix(in srgb, var(--quiz-primary) 35%, transparent);
   border-radius: 999px;
   background: color-mix(in srgb, var(--quiz-primary) 11%, var(--quiz-surface-raised));
   color: var(--quiz-primary);
+  line-height: 1.2;
   text-align: center;
+  text-wrap: balance;
   animation: none;
 }
 

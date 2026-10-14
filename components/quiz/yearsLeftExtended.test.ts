@@ -8,48 +8,50 @@ import {scoreQuiz} from './scoring.ts';
 
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, 'utf8'));
 
-test('Years Left restores the self-test landing and exactly ten questions in every enabled locale', () => {
+test('Years Left is an English-only 100-question staged interstitial self-test', () => {
   const source = read('quiz');
-  assert.equal(source.template, 'single-stage-rewarded-v1');
+  assert.equal(source.template, 'ten-stage-ten-question-interstitial-v1');
   assert.equal(source.engine.entry, 'landing');
-  assert.equal(source.engine.localeParity, 'strict');
-  assert.equal(source.engine.displayAds, true);
+  assert.equal(source.engine.localeParity, 'independent');
+  assert.equal(source.engine.displayAds, undefined);
   assert.equal(source.engine.hardRefreshCheckpoints, false, 'estimate readiness stays in the same document');
   assert.equal(source.localeExtensions, undefined);
-  assert.deepEqual(source.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
+  assert.deepEqual(source.activeLocales, ['en']);
   for (const locale of source.activeLocales) {
     const manifest = resolveQuizLocaleManifest(source, locale);
     const copy = read(locale);
     const quiz = expandQuizLocale(manifest, copy, locale);
-    assert.equal(quiz.stages.length, 1, locale);
-    assert.equal(quiz.stages[0].questions.length, 10, locale);
-    assert.equal(new Set(quiz.stages[0].questions.map((q: {id: string}) => q.id)).size, 10);
-    assert.equal(quiz.career.stages.length, 1);
-    assert.equal(quiz.career.stages[0].next, undefined);
-    assert.equal(quiz.career.stages[0].preAdChecks.length, 3);
+    assert.equal(quiz.stages.length, 10, locale);
+    assert.deepEqual(quiz.stages.map((stage: any) => stage.questions.length), Array(10).fill(10));
+    assert.equal(new Set(quiz.stages.flatMap((stage: any) => stage.questions.map((q: {id: string}) => q.id))).size, 100);
+    assert.equal(quiz.career.stages.length, 10);
+    assert.equal(quiz.career.stages.at(-1).next, undefined);
+    assert.equal(quiz.career.stages.at(-1).preAdChecks.length, 3);
     assert.ok(copy.landing.cta.trim());
     assert.ok(copy.landing.intro.trim());
-    for (const question of quiz.stages[0].questions) {
-      const logic = manifest.structure.questions[question.id];
-      const native = copy.stages['stage-1'].questions[question.id];
-      assert.ok(question.question.trim(), `${locale}/${question.id}`);
-      assert.equal(logic.answerIds.length, 3);
-      assert.deepEqual(Object.keys(native.answers), logic.answerIds);
-      assert.deepEqual(Object.keys(logic.choiceMeanings), logic.answerIds);
-      assert.equal(new Set(Object.values(native.answers)).size, 3);
+    for (const [stageIndex, stage] of quiz.stages.entries()) {
+      for (const question of stage.questions) {
+        const logic = manifest.structure.questions[question.id];
+        const native = copy.stages[`stage-${stageIndex + 1}`].questions[question.id];
+        assert.ok(question.question.trim(), `${locale}/${question.id}`);
+        assert.equal(logic.answerIds.length, 3);
+        assert.deepEqual(Object.keys(native.answers), logic.answerIds);
+        assert.deepEqual(Object.keys(logic.choiceMeanings), logic.answerIds);
+        assert.equal(new Set(Object.values(native.answers)).size, 3);
+      }
     }
   }
-  assert.deepEqual(read('en').landing, {intro: '10 quick questions.\nWhat age is hiding in your answers?', cta: 'Start Self Test'});
+  assert.deepEqual(read('en').landing, {intro: 'Your daily choices leave clues.\nWhat age is hiding in yours?', cta: 'Start Self Test'});
 });
 
-test('all eight clock personalities remain reachable with bounded estimates in the short quiz', () => {
+test('all eight clock personalities remain reachable with bounded estimates in the long quiz', () => {
   const manifest = read('quiz');
   const expanded = expandQuizLocale(manifest, read('en'), 'en');
   const quiz = {
     engine: {scoring: {type: 'weighted-profile'}, estimate: manifest.engine.estimate},
-    questions: expanded.stages[0].questions.map((question: any) => ({
-      id: question.id, stage: 0, choiceWeights: Object.values(question.answers), calibrationValues: question.calibration,
-    })),
+    questions: expanded.stages.flatMap((stage: any, stageIndex: number) => stage.questions.map((question: any) => ({
+      id: question.id, stage: stageIndex, choiceWeights: Object.values(question.answers), calibrationValues: question.calibration,
+    }))),
     result: {
       profiles: expanded.results.profiles,
       scoreDimensions: expanded.results.dimensions.map((dimension: any) => ({label: dimension.label, categories: dimension.profiles})),

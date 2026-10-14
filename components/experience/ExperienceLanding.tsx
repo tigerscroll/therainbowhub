@@ -3,6 +3,7 @@
 import { forwardRef, type ReactNode } from "react";
 
 import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
+import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 
 type ExperienceLandingProps = {
   adNote?: string;
@@ -17,6 +18,7 @@ type ExperienceLandingProps = {
   icon: ReactNode;
   intro: string;
   href?: string;
+  interstitialEligible?: boolean;
   navigationMode?: "document" | "spa";
   onStart: () => boolean | void;
   showCtaIcon?: boolean;
@@ -61,6 +63,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   icon,
   intro,
   href,
+  interstitialEligible = false,
   navigationMode = "document",
   onStart,
   showCtaIcon = true,
@@ -86,6 +89,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
         {href && !busy ? (
           <a
             className="quiz-engine__primary"
+            data-google-interstitial={interstitialEligible ? "true" : "false"}
             href={href}
             onClick={(event) => {
               const destination = new URL(href, window.location.href);
@@ -96,7 +100,10 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
               event.currentTarget.href = destination.toString();
               if (navigationMode === "spa") {
                 event.preventDefault();
-                if (onStart() !== false) window.history.pushState(null, "", destination);
+                if (onStart() !== false) {
+                  window.history.pushState(null, "", destination);
+                  signalSpaNavigation();
+                }
                 return;
               }
               prepareFullPageNavigation(event.currentTarget);
@@ -109,7 +116,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
             {ctaContent}
           </a>
         ) : (
-          <button className="quiz-engine__primary" disabled={busy} onClick={onStart} type="button">
+          <button className="quiz-engine__primary" data-google-interstitial="false" disabled={busy} onClick={onStart} type="button">
             {ctaContent}
           </button>
         )}

@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useState, type CSSProperties } from "react";
 
 import type { Quiz, QuizQuestion } from "@/lib/quizzes";
+import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 import { QuizText } from './QuizText';
 
 type QuestionRendererProps = {
@@ -11,6 +12,7 @@ type QuestionRendererProps = {
   answerLabels?: string[];
   answerNoteId?: string;
   feedback: Quiz["engine"]["flow"]["feedback"];
+  interstitialHref?: (choiceIndex: number) => string;
   onAnswer: (choiceIndex: number) => boolean | void;
   onStudyComplete: () => void;
   pendingAnswer?: number;
@@ -124,7 +126,7 @@ export function QuestionMedia({ question }: { question: QuizQuestion }) {
   return <><QuestionImage question={question} /><QuestionVisual question={question} /></>;
 }
 
-function ChoiceQuestion({ answer, allowAnswerChange, answerLabels, answerNoteId, feedback, onAnswer, pendingAnswer, question, studyBusy }: QuestionRendererProps) {
+function ChoiceQuestion({ answer, allowAnswerChange, answerLabels, answerNoteId, feedback, interstitialHref, onAnswer, pendingAnswer, question, studyBusy }: QuestionRendererProps) {
   const hasAnswerIcons = question.icons?.length === question.choices.length;
   const usesCompactMobileGrid = question.choices.length === 4 && question.choices.every((choice) => choice.length <= 22);
   const hasLongUnbrokenChoice = question.choices.some((choice) => choice.split(/\s+/).some((word) => word.length > 8));
@@ -155,7 +157,7 @@ function ChoiceQuestion({ answer, allowAnswerChange, answerLabels, answerNoteId,
             </>
           );
           const sharedProps = {
-            "data-google-interstitial": "false",
+            "data-google-interstitial": interstitialHref ? "true" : "false",
             "aria-checked": question.presentation === "scale" ? selected : undefined,
             className: "quiz-engine__answer",
             "data-answer-id": question.choiceIds[index],
@@ -165,6 +167,36 @@ function ChoiceQuestion({ answer, allowAnswerChange, answerLabels, answerNoteId,
             "data-selected": selected || undefined,
             role: question.presentation === "scale" ? "radio" : undefined,
           };
+
+          if (interstitialHref) {
+            const disabled = Boolean(studyBusy || (answer !== undefined && !allowAnswerChange));
+            return (
+              <a
+                {...sharedProps}
+                aria-describedby={answerNoteId}
+                aria-disabled={disabled || undefined}
+                aria-pressed={question.presentation === "scale" ? undefined : selected}
+                href={interstitialHref(index)}
+                key={`${question.id}-${question.choiceIds[index]}`}
+                onClick={(event) => {
+                  if (disabled) {
+                    event.preventDefault();
+                    return;
+                  }
+                  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                  event.preventDefault();
+                  event.currentTarget.blur();
+                  if (onAnswer(index) !== false) {
+                    window.history.pushState({ quizStep: question.id }, "", event.currentTarget.href);
+                    signalSpaNavigation();
+                  }
+                }}
+                role={question.presentation === "scale" ? "radio" : undefined}
+              >
+                {content}
+              </a>
+            );
+          }
 
           return (
             <button

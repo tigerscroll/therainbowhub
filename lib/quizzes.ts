@@ -29,9 +29,21 @@ export type QuizFlow = {
   feedback: "instant" | "selection-only" | "after-results";
 };
 
-const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "five-stage-six-question-v1", "five-stage-eight-question-v1", "ten-stage-seven-question-v1", "ten-stage-eight-question-v1", "ten-stage-ten-question-v1"] as const;
+const QUIZ_TEMPLATE_IDS = ["single-stage-rewarded-v1", "five-stage-six-question-v1", "five-stage-eight-question-v1", "ten-stage-seven-question-v1", "ten-stage-eight-question-v1", "ten-stage-ten-question-v1", "ten-stage-ten-question-interstitial-v1"] as const;
 type QuizTemplateId = (typeof QUIZ_TEMPLATE_IDS)[number];
 const QUIZ_TEMPLATE_CONTRACTS = {
+  "ten-stage-ten-question-interstitial-v1": {
+    stageCount: 10,
+    questionsPerStage: 10,
+    levels: ["foundation", "foundation", "developing", "developing", "skilled", "skilled", "advanced", "advanced", "advanced", "final"],
+    engine: {
+      flow: "staged", advance: "automatic", feedback: "selection-only", checkpoint: "ai",
+      startOnLoad: false,
+      rewarded: { start: false, stages: false, attempts: 3, confirmStart: false },
+      interstitials: true,
+      advanceDelayMs: 450,
+    },
+  },
   "ten-stage-eight-question-v1": {
     stageCount: 10,
     questionsPerStage: 8,
@@ -174,6 +186,7 @@ export type QuizEstimateConfig = {
 export type QuizEngineConfig = {
   startPrelude?: {delayMs: number; preload: boolean};
   displayAds?: boolean;
+  interstitials: boolean;
   flow: QuizFlow;
   scoring: QuizScoring;
   checkpoint: "standard" | "ai";
@@ -462,6 +475,7 @@ type QuizManifest = {
     entry?: "landing" | "first-answer";
     startPrelude?: QuizEngineConfig["startPrelude"];
     displayAds?: boolean;
+    interstitials?: boolean;
     localeParity?: QuizEngineConfig["localeParity"];
     rewarded?: Partial<QuizRewardedConfig>;
     advanceDelayMs?: number;
@@ -1705,6 +1719,7 @@ function normalizeLocale(
       startOnLoad: manifest.engine.startOnLoad ?? false,
       startPrelude: manifest.engine.startPrelude,
       displayAds: manifest.engine.displayAds,
+      interstitials: manifest.engine.interstitials ?? false,
       localeParity: manifest.engine.localeParity ?? "strict",
       rewarded: {
         start: manifest.engine.rewarded?.start ?? false,

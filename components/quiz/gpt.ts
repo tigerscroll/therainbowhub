@@ -2,8 +2,9 @@ export type GptSlot = {
   addService(service: unknown): GptSlot;
   setConfig?: (config: {
     adExpansion?: { enabled: boolean };
+    interstitial?: { triggers?: Partial<Record<"unhideWindow" | "navBar" | "inactivity" | "endOfArticle" | "continueReading" | "backward", boolean>> };
     safeFrame?: { allowOverlayExpansion: boolean; allowPushExpansion: boolean };
-  }) => void;
+  }) => GptSlot | void;
 };
 
 export type GptEvent = {
@@ -26,7 +27,7 @@ export type GoogleTag = {
   destroySlots?: (slots: GptSlot[]) => void;
   display?: (slotOrElementId: GptSlot | string) => void;
   enableServices?: () => void;
-  enums?: { OutOfPageFormat?: { REWARDED?: unknown } };
+  enums?: { OutOfPageFormat?: { REWARDED?: unknown; INTERSTITIAL?: unknown } };
   pubads?: () => PubAds;
   pubadsReady?: boolean;
 };

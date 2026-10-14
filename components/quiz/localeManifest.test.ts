@@ -6,11 +6,13 @@ import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
 function fixture() {
   const source = JSON.parse(fs.readFileSync('data/quizzes/years-left/quiz.json', 'utf8'));
   const stage = source.structure.stages[0];
+  const stageQuestionIds = Object.fromEntries(source.structure.stages.map((item: any) => [item.id, [...item.questionIds]]));
+  stageQuestionIds[stage.id].push('extra-1', 'extra-2');
   return {
     ...source,
     localeExtensions: {en: {
       template: 'fixture-extended',
-      stageQuestionIds: {[stage.id]: [...stage.questionIds, 'extra-1', 'extra-2']},
+      stageQuestionIds,
       questions: {'extra-1': structuredClone(source.structure.questions[stage.questionIds[0]]), 'extra-2': structuredClone(source.structure.questions[stage.questionIds[1]])},
     }},
   };
@@ -20,10 +22,10 @@ test('locale extensions add questions without mutating the base or other locales
   const manifest = fixture();
   const before = structuredClone(manifest);
   const english = resolveQuizLocaleManifest(manifest, 'en');
-  assert.equal(Object.keys(english.structure.questions).length, 12);
+  assert.equal(Object.keys(english.structure.questions).length, 102);
   assert.equal(english.localeExtensions, undefined);
   const french = resolveQuizLocaleManifest(manifest, 'fr');
-  assert.equal(Object.keys(french.structure.questions).length, 10);
+  assert.equal(Object.keys(french.structure.questions).length, 100);
   assert.deepEqual(french.structure, manifest.structure);
   for (const [id, question] of Object.entries(manifest.structure.questions)) assert.deepEqual(english.structure.questions[id], question);
   assert.deepEqual(manifest, before);

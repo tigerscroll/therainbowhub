@@ -6,6 +6,7 @@ import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
+import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress, STORAGE_VERSION } from "./progressStorage";
 import { QuestionMedia, QuestionRenderer } from "./QuestionRenderer";
@@ -18,6 +19,7 @@ import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
 import { QuizRecommendations } from "./QuizRecommendations";
 import { scoreQuiz, type QuizAnswers } from "./scoring";
 import { getChapterAnswers } from "./engagement";
+import { mountQuizInterstitial } from "./interstitialAds";
 
 type QuizEngineProps = {
   onReady?: () => void;
@@ -162,6 +164,11 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const displayedStageProgress = progress;
   const result = useMemo(() => scoreQuiz(quiz, answers), [answers, quiz]);
 
+  useEffect(() => {
+    if (!hydrated || !quiz.engine.interstitials) return;
+    return mountQuizInterstitial(siteConfig.displayAdUnitPath);
+  }, [hydrated, quiz.engine.interstitials]);
+
   useLayoutEffect(() => {
     try {
       const stored = readQuizProgress(storageKey);
@@ -248,6 +255,14 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   function scrollToTop(onTop?: () => void) {
     cancelScroll.current?.();
     cancelScroll.current = scrollQuizToTop(onTop);
+  }
+
+  function quizStepHref(step: number | "results") {
+    const fallback = `?quizStep=${step}`;
+    if (typeof window === "undefined") return fallback;
+    const url = new URL(window.location.href);
+    url.searchParams.set("quizStep", String(step));
+    return `${url.pathname}${url.search}${url.hash}`;
   }
 
   async function runRewardedGate(onComplete: () => void, scrollAfter = true) {
@@ -444,6 +459,9 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         ctaLabel={quiz.landing.ctaLabel ?? translations.quiz.start}
         icon={quiz.cardIcon}
         intro={quiz.landing.quickStartText}
+        href={quiz.engine.interstitials ? quizStepHref(1) : undefined}
+        interstitialEligible={quiz.engine.interstitials}
+        navigationMode={quiz.engine.interstitials ? "spa" : undefined}
         onStart={startQuiz}
         showSocialProof={quiz.landing.showSocialProof}
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
@@ -829,9 +847,11 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     <>
     <section className={`quiz-engine__question-shell quiz-engine__continuous-shell${isChapterFlow ? " quiz-engine__question-shell--chapters" : ""}`} data-round={currentStage + 1} data-display-ads={quiz.engine.displayAds || undefined}>
       <div className="quiz-engine__progress-head">
-        {!isChapterFlow ? <span>{quiz.career
+        <span>{quiz.career && !isChapterFlow
           ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
-          : translations.quiz.progressComplete.replace("{value}", String(progress))}</span> : null}
+          : isChapterFlow
+            ? `${stageQuestionIndex + 1} ${translations.quiz.of} ${stageQuestions.length}`
+            : translations.quiz.progressComplete.replace("{value}", String(progress))}</span>
         <strong data-entry={quiz.engine.startOnLoad && questionIndex === 0 || undefined}>
           {quiz.engine.startOnLoad && questionIndex === 0 ? (
             <span aria-hidden="true" className="quiz-engine__entry-mark">{quiz.cardIcon}</span>
@@ -855,6 +875,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
           answerNoteId={firstAnswerReward && selectedAnswer === undefined ? "quiz-first-answer-note" : undefined}
           answerLabels={locale === "ar" ? ["أ", "ب", "ج", "د", "هـ", "و"] : undefined}
           feedback={quiz.engine.flow.feedback}
+          interstitialHref={quiz.engine.interstitials ? () => quizStepHref(questionIndex + 1 >= quiz.questions.length ? "results" : questionIndex + 2) : undefined}
           onAnswer={answerQuestion}
           onStudyComplete={completeStudy}
           pendingAnswer={adBusy && pendingAnswer?.questionId === currentQuestion.id ? pendingAnswer.choiceIndex : undefined}
