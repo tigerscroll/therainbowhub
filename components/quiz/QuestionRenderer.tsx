@@ -254,12 +254,12 @@ function StudyCue({ onStudyComplete, question, studyBusy = false, studyBusyLabel
       )}
       {study.mode === "manual" ? (
         <>
-          <button className="quiz-engine__primary" disabled={studyBusy} onClick={onStudyComplete} type="button">
+          <button className="quiz-engine__primary" data-google-interstitial="false" disabled={studyBusy} onClick={onStudyComplete} type="button">
             {studyBusy ? studyBusyLabel : study.continueLabel}
           </button>
         </>
       ) : !started ? (
-        <button className="quiz-engine__primary quiz-engine__study-ready" onClick={() => setStarted(true)} type="button">
+        <button className="quiz-engine__primary quiz-engine__study-ready" data-google-interstitial="false" onClick={() => setStarted(true)} type="button">
           {study.readyLabel}
         </button>
       ) : <span className="quiz-engine__study-timer" aria-live="polite">•••</span>}
@@ -280,7 +280,7 @@ function MemoryCueQuestion({ answer, answerNoteId, onAnswer, question, studyBusy
       <div className="quiz-engine__memory-items" aria-label={question.memoryItems?.join(", ")}>
         {question.memoryItems?.map((item) => <strong key={item}>{item}</strong>)}
       </div>
-      <button aria-describedby={answerNoteId} className="quiz-engine__primary" disabled={studyBusy || !ready || answer !== undefined} onClick={() => onAnswer(0)} type="button">
+      <button aria-describedby={answerNoteId} className="quiz-engine__primary" data-google-interstitial="false" disabled={studyBusy || !ready || answer !== undefined} onClick={() => onAnswer(0)} type="button">
         {question.continueLabel}
       </button>
     </div>

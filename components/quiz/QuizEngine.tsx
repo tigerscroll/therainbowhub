@@ -573,7 +573,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
           </div>
         ) : null}
         {quiz.engine.displayAds ? <QuestionDisplayAd contentKey={`checkpoint-${completedStage}`} placement="before-result" /> : null}
-        <button className="quiz-engine__primary" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
+        <button className="quiz-engine__primary" data-google-interstitial="false" disabled={adBusy || (isFinalStage && !checkpointCtaReady)} onClick={continueAfterCheckpoint} type="button">
           {checkpointCtaContent}
         </button>
         {quiz.engine.rewarded.stages ? (
@@ -666,7 +666,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
                 <span>{profileBreakdown?.eyebrow ?? translations.results.matchBreakdown.eyebrow}</span>
                 <h3>{profileBreakdown?.title ?? translations.results.matchBreakdown.title}</h3>
                 <p>{profileBreakdown?.copy ?? translations.results.matchBreakdown.copy}</p>
-                <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+                <button className="quiz-engine__primary" data-google-interstitial="false" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
                   {adBusy ? translations.ad.loading : profileBreakdown?.button ?? translations.results.matchBreakdown.button}
                 </button>
                 <small>{profileBreakdown?.adNote ?? translations.results.matchBreakdown.adNote}</small>
@@ -720,7 +720,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
             <span>{translations.results.fullBreakdown.eyebrow}</span>
             <h3>{reviewUnlockCopy?.title ?? translations.results.fullBreakdown.title}</h3>
             <p>{reviewUnlockCopy?.copy ?? translations.results.fullBreakdown.copy}</p>
-            <button className="quiz-engine__primary" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
+            <button className="quiz-engine__primary" data-google-interstitial="false" disabled={adBusy} onClick={unlockIncorrectAnswers} type="button">
               {adBusy ? translations.ad.loading : reviewUnlockCopy?.button ?? translations.results.fullBreakdown.button}
             </button>
             <small>{reviewUnlockCopy?.adNote ?? translations.results.fullBreakdown.adNote}</small>
@@ -753,6 +753,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
             <p>{estimateReviewUnlockCopy?.copy}</p>
             <button
               className="quiz-engine__primary"
+              data-google-interstitial="false"
               disabled={adBusy}
               onClick={estimateReviewUnlockCopy?.rewarded === false ? () => setReviewUnlocked(true) : unlockIncorrectAnswers}
               type="button"
@@ -892,7 +893,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         {quiz.engine.displayAds && questionIndex > 0 ? <QuestionDisplayAd contentKey={currentQuestion.id} placement="below-answers" /> : null}
         {quiz.engine.flow.advance === "manual" ? (
           <div className="quiz-engine__next-question">
-            <button className="quiz-engine__primary" disabled={!hydrated || adBusy || selectedAnswer === undefined} onClick={moveForward} type="button">
+            <button className="quiz-engine__primary" data-google-interstitial="false" disabled={!hydrated || adBusy || selectedAnswer === undefined} onClick={moveForward} type="button">
               {translations.quiz.nextQuestion}
             </button>
           </div>
