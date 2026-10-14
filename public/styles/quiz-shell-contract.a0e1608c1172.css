@@ -908,16 +908,6 @@
 
 [dir="rtl"] .quiz-engine__landing--compact .quiz-engine__primary-icon { transform: scaleX(-1); }
 
-/* Years Left uses one compact CTA geometry from landing through checkpoints. */
-.quiz-theme[data-quiz-theme="years-left"][data-quiz-flow="continuous"] .quiz-engine__landing--compact .quiz-engine__primary,
-.quiz-theme[data-quiz-theme="years-left"][data-quiz-flow="continuous"] .quiz-engine__checkpoint[data-chapter-flow] > .quiz-engine__primary {
-  width: min(82%, 320px) !important;
-  max-width: 320px !important;
-  min-height: 56px !important;
-  padding: 9px 18px !important;
-  font-size: clamp(18px, 2vw, 20px) !important;
-}
-
 /* Long translated headlines still leave a usable Start button on small phones.
    Content stays complete and can grow normally with enlarged system text. */
 @media (max-width: 360px) and (max-height: 640px) {
