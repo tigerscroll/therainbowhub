@@ -8,13 +8,13 @@ import {scoreQuiz} from './scoring.ts';
 
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, 'utf8'));
 
-test('Years Left is an English-only 100-question staged interstitial self-test', () => {
+test('Years Left is an English-only 100-question staged rewarded self-test', () => {
   const source = read('quiz');
-  assert.equal(source.template, 'ten-stage-ten-question-interstitial-v1');
+  assert.equal(source.template, 'ten-stage-ten-question-v1');
   assert.equal(source.engine.entry, 'landing');
   assert.equal(source.engine.localeParity, 'independent');
   assert.equal(source.engine.displayAds, undefined);
-  assert.equal(source.engine.hardRefreshCheckpoints, false, 'estimate readiness stays in the same document');
+  assert.equal(source.engine.hardRefreshCheckpoints, true, 'rewarded stage transitions preserve progress across checkpoints');
   assert.equal(source.localeExtensions, undefined);
   assert.deepEqual(source.activeLocales, ['en']);
   for (const locale of source.activeLocales) {

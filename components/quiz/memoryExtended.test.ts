@@ -21,10 +21,10 @@ test('English memory has ten seven-question chapters, self-paced cues and no adv
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
   assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
-  assert.equal(manifest.engine.entry, 'first-answer');
+  assert.equal(manifest.engine.entry, 'landing');
   assert.equal(content('s1q2').headerLabel, 'Memory Test');
   assert.deepEqual(manifest.structure.stages[0].questionIds.slice(0, 2), [id('s1q2'), id('s1q1')]);
-  assert.equal(manifest.structure.questions[id('s1q2')].study, undefined, 'the first action is an answer, not a study-screen button');
+  assert.equal(manifest.structure.questions[id('s1q2')].study, undefined, 'the first question opens directly after the rewarded Start gate');
   assert.deepEqual(expanded.stages.map((stage: {questions: unknown[]}) => stage.questions.length), Array(10).fill(7));
   assert.deepEqual(copy.landing, { intro: 'Think your memory is sharp? Put it to the test.', cta: 'Start' });
   const all = expanded.stages.flatMap((stage: { questions: {id: string; question: string; answers: string[]}[] }) => stage.questions);
@@ -60,7 +60,7 @@ test('all Memory locales preserve study boards, correct-answer mapping and three
     for (const q of localized) assert.equal(new Set(q.answers).size, 3, `${locale}/${q.id}`);
     assert.equal(localized.filter((q: any) => q.study).length, 19);
     assert.equal(localized[0].id, id('s1q2'));
-    assert.equal(localized[0].study, undefined, 'an immediate answer triggers the entry reward');
+    assert.equal(localized[0].study, undefined, 'the rewarded entry gate belongs to the landing CTA, not the first question');
     assert.equal(localized[1].id, id('s1q1'));
     assert.equal(localized[1].study.items.length, 4, 'the opening cue keeps all four details for later callbacks');
     assert.equal(localized[1].study.rewarded, false, 'hiding the cue does not request another reward');

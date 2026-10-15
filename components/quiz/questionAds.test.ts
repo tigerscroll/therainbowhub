@@ -84,13 +84,13 @@ test("Meta QuizComplete is sent at the final result, never from an ad or answer 
   assert.doesNotMatch(fs.readFileSync("components/quiz/rewardedAds.ts", "utf8"), /AdClick|QuizComplete/);
 });
 
-test("Years Left uses Start while Vision, Nursing, Midwifery, Memory, IQ and Marry keep first-answer entry", () => {
+test("Years Left and Memory use rewarded Start while Vision, Nursing, Midwifery, IQ and Marry keep first-answer entry", () => {
   const locales = fs.readdirSync("data/i18n").filter(name => name.endsWith(".json")).map(file => file.slice(0, -5));
   for (const slug of fs.readdirSync("data/quizzes")) {
     const file = `data/quizzes/${slug}/quiz.json`;
     if (!fs.existsSync(file)) continue;
     const manifest = JSON.parse(fs.readFileSync(file, "utf8"));
-    const firstAnswerEntry = ["vision", "nursing", "midwifery", "memory", "iq", "marry"].includes(slug);
+    const firstAnswerEntry = ["vision", "nursing", "midwifery", "iq", "marry"].includes(slug);
     assert.equal(manifest.engine.entry === "first-answer", firstAnswerEntry, slug);
     if (firstAnswerEntry) {
       for (const locale of locales) assert.equal(resolveQuizLocaleManifest(manifest, locale).engine.entry, "first-answer");

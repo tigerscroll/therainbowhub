@@ -36,8 +36,8 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
   const stageCount = short ? 1 : 10;
   const questionsPerStage = yearsLeft ? 10 : short ? 10 : marry ? 8 : 7;
   const expectedLocales = manifest.activeLocales ?? locales;
-  assert.equal(manifest.template, yearsLeft ? 'ten-stage-ten-question-interstitial-v1' : short ? 'single-stage-rewarded-v1' : marry ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
-  assert.equal(manifest.engine.hardRefreshCheckpoints, !(short || yearsLeft));
+  assert.equal(manifest.template, yearsLeft ? 'ten-stage-ten-question-v1' : short ? 'single-stage-rewarded-v1' : marry ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
+  assert.equal(manifest.engine.hardRefreshCheckpoints, !short);
   assert.equal(manifest.listing.showSocialProof, false);
   assert.equal(manifest.listing.compactLanding, true);
   const ids = manifest.structure.stages.flatMap((stage: any) => stage.questionIds);

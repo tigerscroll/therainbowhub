@@ -27,6 +27,8 @@ const entryLabels = {
   },
 };
 
+const firstAnswerEntrySlugs = new Set(['marry', 'iq', 'vision', 'nursing', 'midwifery']);
+
 export function applyEntryLabel(manifest, copies) {
   const stage = manifest.structure.stages[0];
   const id = stage.questionIds[0];
@@ -35,7 +37,7 @@ export function applyEntryLabel(manifest, copies) {
     assert.ok(label, `${manifest.slug}/${locale}: missing first-question label`);
     copy.stages[stage.id].questions[id].headerLabel = label;
   }
-  manifest.engine.entry = 'first-answer';
+  if (firstAnswerEntrySlugs.has(manifest.slug)) manifest.engine.entry = 'first-answer';
 }
 
 // Preserve answer IDs and reading order, removing only a distractor. Keep the
