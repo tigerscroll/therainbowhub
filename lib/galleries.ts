@@ -1,4 +1,10 @@
+import adultOnlyEvents from "@/data/galleries/adult-only-events.json";
+import adultOnlyBeaches from "@/data/galleries/adult-only-beaches.json";
+import adultOnlyHotels from "@/data/galleries/adults-only-hotels.json";
+import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
 import nudeArt from "@/data/galleries/nude-art.json";
+import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
+import wildResorts from "@/data/galleries/wild-resorts.json";
 import type { QuizTheme } from "@/lib/quizzes";
 
 export type GalleryItem = {
@@ -25,6 +31,8 @@ export type GalleryManifest = {
     title: string;
   };
   gallery: {
+    cardEyebrow: string;
+    cardFooter: string;
     completeCopy: string;
     completeEyebrow: string;
     completeTitle: string;
@@ -52,6 +60,8 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.landing.eyebrow === "string"
     && typeof manifest.gallery?.nextLabel === "string"
     && typeof manifest.gallery.finishLabel === "string"
+    && typeof manifest.gallery.cardEyebrow === "string"
+    && typeof manifest.gallery.cardFooter === "string"
     && typeof manifest.gallery.completeEyebrow === "string"
     && typeof manifest.gallery.completeTitle === "string"
     && typeof manifest.gallery.completeCopy === "string"
@@ -69,7 +79,15 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
       && item.paragraphs.every(paragraph => typeof paragraph === "string"));
 }
 
-const galleryManifests = [nudeArt].map((value) => {
+const galleryManifests = [
+  adultOnlyBeaches,
+  adultOnlyEvents,
+  adultOnlyHotels,
+  adultOnlyParadise,
+  nudeArt,
+  perfectlyTimed,
+  wildResorts,
+].map((value) => {
   if (!isGalleryManifest(value)) throw new Error("Invalid gallery manifest.");
   return value;
 });

@@ -10,8 +10,6 @@ import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
 
 type GalleryPhase = "complete" | "gallery" | "landing";
-const unlockKey = "rainbowhub:gallery-unlock:v1:art";
-
 function getDestination(path: string, story: number | "complete") {
   const destination = new URL(path, window.location.href);
   const current = new URL(window.location.href);
@@ -36,6 +34,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
   const [index, setIndex] = useState(0);
   const [hydrated, setHydrated] = useState(false);
   const { busy, runGate } = useRewardedGate({ attempts: 3 });
+  const unlockKey = `rainbowhub:gallery-unlock:v1:${gallery.slug}`;
 
   const restoreFromUrl = useCallback(() => {
     let unlocked = false;
@@ -83,13 +82,16 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
   }
 
   if (phase === "landing") {
+    const landingClassName = gallery.landing.title.length > 58
+      ? "gallery-article__landing gallery-article__landing--long-title"
+      : "gallery-article__landing";
     return (
       <ExperienceLanding
         adNote={gallery.landing.adNote}
         avatars={[]}
         busy={busy}
         busyLabel="Opening gallery…"
-        className="gallery-article__landing"
+        className={landingClassName}
         ctaIcon="→"
         ctaIconPosition="end"
         ctaLabel={gallery.landing.cta}
@@ -123,9 +125,9 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
   return (
     <article aria-labelledby="gallery-story-title" className="gallery-article__story quiz-engine__continuous-shell" key={item.id}>
       <div className="gallery-article__archive-card">
-        <small>CONTROVERSY FILE</small>
+        <small>{gallery.gallery.cardEyebrow}</small>
         <b>{String(item.number).padStart(2, "0")}</b>
-        <span>ARCHIVE UNSEALED</span>
+        <span>{gallery.gallery.cardFooter}</span>
       </div>
 
       <div className="gallery-article__copy">
