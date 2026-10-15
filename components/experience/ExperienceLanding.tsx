@@ -3,6 +3,7 @@
 import { forwardRef, type ReactNode } from "react";
 
 import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
+import { ExperienceIcon } from "@/components/experience/ExperienceIcon";
 import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 
 type ExperienceLandingProps = {
@@ -82,7 +83,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   return (
     <section className={["quiz-engine__landing", className].filter(Boolean).join(" ")} ref={ref}>
       <div className="quiz-engine__landing-copy">
-        <div aria-hidden="true" className="quiz-engine__landing-badge"><span>{icon}</span></div>
+        <div aria-hidden="true" className="quiz-engine__landing-badge"><span><ExperienceIcon icon={icon} /></span></div>
         <h1>{title}</h1>
         <p className="quiz-engine__quick-start">{intro}</p>
         {showSocialProof ? <SocialProof avatars={avatars} text={socialProofText} /> : null}

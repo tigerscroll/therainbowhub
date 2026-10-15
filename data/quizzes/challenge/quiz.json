@@ -1,0 +1,1252 @@
+{
+  "schemaVersion": 2,
+  "slug": "challenge",
+  "activeLocales": [
+    "en"
+  ],
+  "engine": {
+    "scoring": "correct-answer",
+    "targetRatio": 0.8,
+    "tieBreaks": {
+      "categories": "harder-correct",
+      "bestRound": "later"
+    },
+    "localeParity": "independent",
+    "hardRefreshCheckpoints": true
+  },
+  "listing": {
+    "thumbnail": "assets/thumbnail.svg",
+    "published": "2026-10-15",
+    "difficulty": "Medium",
+    "icon": "lucide:zap",
+    "socialProofCount": 0,
+    "showSocialProof": false,
+    "compactLanding": true
+  },
+  "theme": {
+    "id": "challenge",
+    "preset": "editorial",
+    "layout": {
+      "landing": "split",
+      "questions": "card",
+      "results": "immersive"
+    },
+    "colors": {
+      "page": "#12223d",
+      "pageAlt": "#233b63",
+      "surface": "#f6f0e3",
+      "surfaceRaised": "#fffaf0",
+      "text": "#18233a",
+      "muted": "#687087",
+      "primary": "#e85f4c",
+      "primaryText": "#fffaf1",
+      "border": "#d7aa58",
+      "correct": "#328263",
+      "incorrect": "#b54953"
+    },
+    "typography": {
+      "heading": "sans",
+      "body": "sans"
+    },
+    "shape": {
+      "cardRadius": "22px",
+      "buttonRadius": "16px"
+    },
+    "effects": {
+      "shadow": "dramatic",
+      "texture": "grain"
+    },
+    "header": {
+      "background": "linear-gradient(90deg, #0c1930, #1e3961)",
+      "text": "#fff7e6",
+      "border": "#e0ad4f",
+      "shadow": "0 8px 26px rgba(5, 14, 30, 0.34)"
+    },
+    "artwork": {
+      "icon": "lucide:zap"
+    }
+  },
+  "template": "ten-stage-eight-question-v1",
+  "structure": {
+    "stages": [
+      {
+        "id": "stage-1",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "challenge-s1q1",
+          "challenge-s1q2",
+          "challenge-s1q3",
+          "challenge-s1q4",
+          "challenge-s1q5",
+          "challenge-s1q6",
+          "challenge-s1q7",
+          "challenge-s1q8"
+        ]
+      },
+      {
+        "id": "stage-2",
+        "difficultyLevel": "foundation",
+        "questionIds": [
+          "challenge-s2q1",
+          "challenge-s2q2",
+          "challenge-s2q3",
+          "challenge-s2q4",
+          "challenge-s2q5",
+          "challenge-s2q6",
+          "challenge-s2q7",
+          "challenge-s2q8"
+        ]
+      },
+      {
+        "id": "stage-3",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "challenge-s3q1",
+          "challenge-s3q2",
+          "challenge-s3q3",
+          "challenge-s3q4",
+          "challenge-s3q5",
+          "challenge-s3q6",
+          "challenge-s3q7",
+          "challenge-s3q8"
+        ]
+      },
+      {
+        "id": "stage-4",
+        "difficultyLevel": "developing",
+        "questionIds": [
+          "challenge-s4q1",
+          "challenge-s4q2",
+          "challenge-s4q3",
+          "challenge-s4q4",
+          "challenge-s4q5",
+          "challenge-s4q6",
+          "challenge-s4q7",
+          "challenge-s4q8"
+        ]
+      },
+      {
+        "id": "stage-5",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "challenge-s5q1",
+          "challenge-s5q2",
+          "challenge-s5q3",
+          "challenge-s5q4",
+          "challenge-s5q5",
+          "challenge-s5q6",
+          "challenge-s5q7",
+          "challenge-s5q8"
+        ]
+      },
+      {
+        "id": "stage-6",
+        "difficultyLevel": "skilled",
+        "questionIds": [
+          "challenge-s6q1",
+          "challenge-s6q2",
+          "challenge-s6q3",
+          "challenge-s6q4",
+          "challenge-s6q5",
+          "challenge-s6q6",
+          "challenge-s6q7",
+          "challenge-s6q8"
+        ]
+      },
+      {
+        "id": "stage-7",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "challenge-s7q1",
+          "challenge-s7q2",
+          "challenge-s7q3",
+          "challenge-s7q4",
+          "challenge-s7q5",
+          "challenge-s7q6",
+          "challenge-s7q7",
+          "challenge-s7q8"
+        ]
+      },
+      {
+        "id": "stage-8",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "challenge-s8q1",
+          "challenge-s8q2",
+          "challenge-s8q3",
+          "challenge-s8q4",
+          "challenge-s8q5",
+          "challenge-s8q6",
+          "challenge-s8q7",
+          "challenge-s8q8"
+        ]
+      },
+      {
+        "id": "stage-9",
+        "difficultyLevel": "advanced",
+        "questionIds": [
+          "challenge-s9q1",
+          "challenge-s9q2",
+          "challenge-s9q3",
+          "challenge-s9q4",
+          "challenge-s9q5",
+          "challenge-s9q6",
+          "challenge-s9q7",
+          "challenge-s9q8"
+        ]
+      },
+      {
+        "id": "stage-10",
+        "difficultyLevel": "final",
+        "questionIds": [
+          "challenge-s10q1",
+          "challenge-s10q2",
+          "challenge-s10q3",
+          "challenge-s10q4",
+          "challenge-s10q5",
+          "challenge-s10q6",
+          "challenge-s10q7",
+          "challenge-s10q8"
+        ]
+      }
+    ],
+    "questions": {
+      "challenge-s1q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "quick",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s1q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "quick",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s1q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "quick",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s1q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "quick",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s1q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "quick",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s1q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "quick",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s1q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "quick",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s1q8": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "quick",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "observation",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "observation",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "observation",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "observation",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "observation",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "observation",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s2q8": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "observation",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "words",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q2": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "words",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "words",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "words",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "words",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "words",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "words",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s3q8": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "words",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "numbers",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "numbers",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "numbers",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "numbers",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "numbers",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "numbers",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "numbers",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s4q8": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "numbers",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s5q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "memory",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ],
+        "study": {
+          "mode": "manual",
+          "rewarded": false
+        }
+      },
+      "challenge-s5q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "memory",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s5q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "memory",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s5q4": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "memory",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s5q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "memory",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s5q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "memory",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s5q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "memory",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s5q8": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "memory",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "judgement",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "judgement",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "judgement",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "judgement",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "judgement",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "judgement",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "judgement",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s6q8": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "judgement",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q1": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "social",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "social",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q3": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "social",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "social",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q5": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "social",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q6": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "social",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q7": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "social",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s7q8": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "social",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q1": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "pattern",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q2": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "pattern",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q3": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "pattern",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q4": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "pattern",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q5": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "pattern",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q6": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "pattern",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q7": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "pattern",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s8q8": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "pattern",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q1": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "recall",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q2": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "recall",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q3": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "recall",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q4": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "recall",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q5": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "recall",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q6": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "recall",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q7": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "recall",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s9q8": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "recall",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q1": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "final",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q2": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "final",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q3": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "final",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q4": {
+        "presentation": "text",
+        "correctAnswerId": "a2",
+        "category": "final",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q5": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "final",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q6": {
+        "presentation": "text",
+        "correctAnswerId": "a1",
+        "category": "final",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q7": {
+        "presentation": "text",
+        "correctAnswerId": "a4",
+        "category": "final",
+        "interactionStyle": "core-concept",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      },
+      "challenge-s10q8": {
+        "presentation": "text",
+        "correctAnswerId": "a3",
+        "category": "final",
+        "interactionStyle": "applied-scenario",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3",
+          "a4"
+        ]
+      }
+    },
+    "checkpoint": {
+      "finalIcon": "✓"
+    },
+    "results": {
+      "profiles": [
+        {
+          "key": "profile-1",
+          "min": 0.9
+        },
+        {
+          "key": "profile-2",
+          "min": 0.8
+        },
+        {
+          "key": "profile-3",
+          "min": 0.7
+        },
+        {
+          "key": "profile-4",
+          "min": 0.6
+        },
+        {
+          "key": "profile-5",
+          "min": 0.5
+        },
+        {
+          "key": "profile-6",
+          "min": 0
+        }
+      ],
+      "dimensions": [
+        {
+          "key": "dimension-1",
+          "categories": [
+            "observation",
+            "memory",
+            "recall"
+          ]
+        },
+        {
+          "key": "dimension-2",
+          "categories": [
+            "numbers",
+            "pattern"
+          ]
+        },
+        {
+          "key": "dimension-3",
+          "categories": [
+            "words"
+          ]
+        },
+        {
+          "key": "dimension-4",
+          "categories": [
+            "judgement",
+            "social"
+          ]
+        },
+        {
+          "key": "dimension-5",
+          "categories": [
+            "quick",
+            "final"
+          ]
+        }
+      ],
+      "score": {
+        "showPercentage": true,
+        "showBestRound": true
+      }
+    }
+  }
+}

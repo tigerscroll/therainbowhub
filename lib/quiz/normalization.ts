@@ -17,7 +17,7 @@ export function normalizeQuizAsset(root: string, slug: string, value?: string) {
   if (!value || value.startsWith("/")) return value;
   const file = path.join(root, slug, value);
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) throw new Error(`${slug}: missing asset ${value}.`);
-  const publicValue = /^assets\/thumbnail\.(?:jpe?g|png|webp)$/i.test(value)
+  const publicValue = /^assets\/thumbnail\.(?:jpe?g|png|webp|svg)$/i.test(value)
     ? "assets/thumbnail-960.webp"
     : value;
   const publicFile = path.join(process.cwd(), "public", "quizzes", slug, publicValue);

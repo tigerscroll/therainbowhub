@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
+import { ExperienceIcon } from "@/components/experience/ExperienceIcon";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
@@ -481,7 +482,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         role="status"
       >
         <div aria-hidden="true" className="quiz-engine__result-icon quiz-engine__preparing-icon">
-          {quiz.theme.artwork?.icon ?? quiz.cardIcon}
+          <ExperienceIcon icon={quiz.theme.artwork?.icon ?? quiz.cardIcon} />
         </div>
         <h2>{translations.quiz.preparingResultTitle}</h2>
         <p>{translations.quiz.preparingResultCopy}</p>
@@ -702,7 +703,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         ) : (
           <>
         <div className="quiz-engine__result-icon" aria-hidden="true">
-          {quiz.theme.artwork?.icon ?? quiz.cardIcon}
+          <ExperienceIcon icon={quiz.theme.artwork?.icon ?? quiz.cardIcon} />
         </div>
         <span className="quiz-engine__eyebrow">{hasDerivedScore ? scoreCopy?.derivedLabel : estimate?.eyebrow ?? quiz.result.profileName}</span>
         {matchCopy ? <div className="quiz-engine__match-name">{result.profile.title}</div> : null}

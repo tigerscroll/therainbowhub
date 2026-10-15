@@ -32,11 +32,12 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
   const marry = slug === 'marry';
   const mobility = slug === 'mobility_scooter';
   const yearsLeft = slug === 'years-left';
+  const challenge = slug === 'challenge';
   const short = mobility;
   const stageCount = short ? 1 : 10;
-  const questionsPerStage = yearsLeft ? 10 : short ? 10 : marry ? 8 : 7;
+  const questionsPerStage = yearsLeft ? 10 : short ? 10 : marry || challenge ? 8 : 7;
   const expectedLocales = manifest.activeLocales ?? locales;
-  assert.equal(manifest.template, yearsLeft ? 'ten-stage-ten-question-v1' : short ? 'single-stage-rewarded-v1' : marry ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
+  assert.equal(manifest.template, yearsLeft ? 'ten-stage-ten-question-v1' : short ? 'single-stage-rewarded-v1' : marry || challenge ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
   assert.equal(manifest.engine.hardRefreshCheckpoints, !short);
   assert.equal(manifest.listing.showSocialProof, false);
   assert.equal(manifest.listing.compactLanding, true);
@@ -52,7 +53,7 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
     const contract = quizTemplateContract(effective.template)!;
     const copy = read(slug, locale), expanded = expandQuizLocale(manifest, copy, locale);
     assert.equal(copy.results.share, undefined);
-    if (short || yearsLeft) assert.ok(copy.landing.cta.trim());
+    if (short || yearsLeft || challenge) assert.ok(copy.landing.cta.trim());
     else assert.equal(copy.landing.cta, locale === 'en' ? 'Start' : ui[locale].start);
     assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), Array(contract.stageCount).fill(contract.questionsPerStage));
     assert.equal(expanded.career.stages.length, stageCount);
