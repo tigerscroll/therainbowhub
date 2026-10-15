@@ -52,6 +52,19 @@ for (const [fileName, slug, title, itemCount] of additionalAdultTravelGalleries)
   });
 }
 
+test("nurse gallery preserves all 70 supplied stories and matching CDN images", () => {
+  const gallery = JSON.parse(fs.readFileSync("data/galleries/hospice-nurses.json", "utf8"));
+  assert.equal(gallery.slug, "nurse");
+  assert.equal(gallery.landing.title, "What Nurses See Before The End");
+  assert.equal(gallery.items.length, 70);
+  assert.equal(gallery.landing.cta, "Start");
+  assert.match(gallery.landing.adNote, /short ad/i);
+  assert.equal(new Set(gallery.items.map(item => item.id)).size, 70);
+  assert.equal(new Set(gallery.items.map(item => item.image.src)).size, 70);
+  assert.equal(gallery.items.every(item => item.image.src.startsWith("https://jobs.therainbowhub.com/media/")), true);
+  assert.equal(gallery.items.every(item => item.image.src.endsWith(".webp") && item.image.alt.length > 0), true);
+});
+
 test("gallery uses rewarded entry and interstitial-eligible story navigation", () => {
   const source = fs.readFileSync("components/gallery/GalleryExperience.tsx", "utf8");
   assert.match(source, /useRewardedGate\(\{ attempts: 3 \}\)/);
@@ -59,4 +72,5 @@ test("gallery uses rewarded entry and interstitial-eligible story navigation", (
   assert.match(source, /mountQuizInterstitial\(siteConfig\.displayAdUnitPath\)/);
   assert.match(source, /data-google-interstitial="true"/);
   assert.match(source, /signalSpaNavigation\(\)/);
+  assert.match(source, /item\.image/);
 });

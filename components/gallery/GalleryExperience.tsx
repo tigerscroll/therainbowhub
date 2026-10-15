@@ -109,7 +109,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
     return (
       <section className="gallery-article__complete quiz-engine__continuous-shell">
         <span>{gallery.gallery.completeEyebrow}</span>
-        <div aria-hidden="true" className="gallery-article__seal">85</div>
+        <div aria-hidden="true" className="gallery-article__seal">{gallery.items.length}</div>
         <h1>{gallery.gallery.completeTitle}</h1>
         <p>{gallery.gallery.completeCopy}</p>
         <button className="gallery-article__primary" data-google-interstitial="false" onClick={() => moveTo(1, false)} type="button">
@@ -132,6 +132,16 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
 
       <div className="gallery-article__copy">
         <h1 id="gallery-story-title">{item.title}</h1>
+        {item.image ? (
+          <figure className="gallery-article__image">
+            <img
+              alt={item.image.alt}
+              decoding="async"
+              loading={index === 0 ? "eager" : "lazy"}
+              src={item.image.src}
+            />
+          </figure>
+        ) : null}
         {item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
       </div>
 

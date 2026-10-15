@@ -2,6 +2,7 @@ import adultOnlyEvents from "@/data/galleries/adult-only-events.json";
 import adultOnlyBeaches from "@/data/galleries/adult-only-beaches.json";
 import adultOnlyHotels from "@/data/galleries/adults-only-hotels.json";
 import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
+import hospiceNurses from "@/data/galleries/hospice-nurses.json";
 import nudeArt from "@/data/galleries/nude-art.json";
 import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
 import wildResorts from "@/data/galleries/wild-resorts.json";
@@ -9,6 +10,10 @@ import type { QuizTheme } from "@/lib/quizzes";
 
 export type GalleryItem = {
   id: string;
+  image?: {
+    alt: string;
+    src: string;
+  };
   number: number;
   title: string;
   paragraphs: string[];
@@ -74,6 +79,11 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
       && typeof item.id === "string"
       && item.number === index + 1
       && typeof item.title === "string"
+      && (item.image === undefined || (typeof item.image === "object"
+        && typeof item.image.alt === "string"
+        && item.image.alt.length > 0
+        && typeof item.image.src === "string"
+        && item.image.src.length > 0))
       && Array.isArray(item.paragraphs)
       && item.paragraphs.length > 0
       && item.paragraphs.every(paragraph => typeof paragraph === "string"));
@@ -84,6 +94,7 @@ const galleryManifests = [
   adultOnlyEvents,
   adultOnlyHotels,
   adultOnlyParadise,
+  hospiceNurses,
   nudeArt,
   perfectlyTimed,
   wildResorts,
