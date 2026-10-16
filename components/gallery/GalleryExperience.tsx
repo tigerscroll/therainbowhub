@@ -38,6 +38,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
   const [hydrated, setHydrated] = useState(false);
   const { busy, runGate } = useRewardedGate({ attempts: 3 });
   const unlockKey = `rainbowhub:gallery-unlock:v1:${gallery.slug}`;
+  const articleUnlockKey = `rainbowhub:article-unlock:v1:${gallery.slug}`;
   const articleFlow = gallery.gallery.flow === "article";
 
   const restoreFromUrl = useCallback(() => {
@@ -48,9 +49,18 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
       return;
     }
     const nextState = getStateFromUrl(gallery.items.length, articleFlow);
+    if (articleFlow && nextState.phase === "gallery") {
+      let articleUnlocked = false;
+      try { articleUnlocked = window.sessionStorage.getItem(articleUnlockKey) === "1"; } catch { /* Keep the article reward gate. */ }
+      if (!articleUnlocked) {
+        setIndex(0);
+        setPhase("introduction");
+        return;
+      }
+    }
     setIndex(nextState.index);
     setPhase(nextState.phase);
-  }, [articleFlow, gallery.items.length]);
+  }, [articleFlow, articleUnlockKey, gallery.items.length, unlockKey]);
 
   useEffect(() => {
     setHydrated(true);
@@ -66,7 +76,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
     return () => { document.body.style.overflow = previousOverflow; };
   }, [gallery.landing.presentation, phase]);
 
-  const interstitialActive = hydrated && phase !== "landing";
+  const interstitialActive = hydrated && phase !== "landing" && !articleFlow;
   useEffect(() => {
     if (!interstitialActive) return;
     return mountQuizInterstitial(siteConfig.displayAdUnitPath);
@@ -92,6 +102,13 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
     void runGate(() => {
       try { window.sessionStorage.setItem(unlockKey, "1"); } catch { /* The current session still opens. */ }
       moveTo(articleFlow ? "intro" : 1, false);
+    }, { scrollAfter: false });
+  }
+
+  function continueArticle() {
+    void runGate(() => {
+      try { window.sessionStorage.setItem(articleUnlockKey, "1"); } catch { /* The current session still opens. */ }
+      moveTo(1, false);
     }, { scrollAfter: false });
   }
 
@@ -154,7 +171,6 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
   }
 
   if (phase === "introduction") {
-    const continueHref = getDestination(path, 1).toString();
     return (
       <article className="gallery-article__introduction quiz-engine__continuous-shell">
         <header className="gallery-article__article-header">
@@ -164,17 +180,15 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
         <div className="gallery-article__prose">
           {gallery.gallery.introduction.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
         </div>
-        <a
+        <button
           className="gallery-article__continue"
-          data-google-interstitial="true"
-          href={continueHref}
-          onClick={(event) => {
-            event.preventDefault();
-            moveTo(1, true);
-          }}
+          data-google-interstitial="false"
+          disabled={busy}
+          onClick={continueArticle}
+          type="button"
         >
-          {gallery.gallery.continueLabel ?? "Continue Reading"} <span aria-hidden="true">→</span>
-        </a>
+          {busy ? "Opening article…" : (gallery.gallery.continueLabel ?? "Continue Reading")} <span aria-hidden="true">→</span>
+        </button>
       </article>
     );
   }

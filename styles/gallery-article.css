@@ -28,7 +28,7 @@
 .gallery-article__story--preview {
   width: 100% !important;
   min-height: inherit !important;
-  border: 0 !important;
+  border: 1px solid #5b1020 !important;
   border-radius: inherit !important;
   filter: blur(5px) saturate(.72);
   opacity: .74;
@@ -267,10 +267,12 @@
   gap: 8px;
   margin: 28px auto 0;
   padding: 0 24px;
-  border: 0;
+  border: 1px solid #5b1020;
   border-radius: 10px;
   background: #7b1829;
   color: #fff;
+  cursor: pointer;
+  font-family: inherit;
   font-size: 18px;
   font-weight: 700;
   line-height: 1;
@@ -288,6 +290,7 @@
 .gallery-article__continue span { font-size: 20px; line-height: 1; }
 .gallery-article__continue:active { transform: translateY(0); }
 .gallery-article__continue:focus-visible { outline: 3px solid rgba(123, 24, 41, .3); outline-offset: 4px; }
+.gallery-article__continue:disabled { cursor: wait; opacity: .72; transform: none; }
 
 .gallery-article__article { min-height: 70svh; }
 .gallery-article__article-sections { display: grid; gap: clamp(38px, 7vw, 68px); }
