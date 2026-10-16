@@ -5,6 +5,10 @@ import test from "node:test";
 test("nude art gallery is a complete image-free 85-story experience", () => {
   const gallery = JSON.parse(fs.readFileSync("data/galleries/nude-art.json", "utf8"));
   assert.equal(gallery.items.length, 85);
+  assert.equal(gallery.landing.presentation, "overlay");
+  assert.equal(gallery.landing.eyebrow, "");
+  assert.equal(gallery.gallery.flow, "article");
+  assert.equal(gallery.gallery.continueLabel, "Continue Reading");
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 85);
