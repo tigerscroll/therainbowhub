@@ -33,6 +33,7 @@ export type GalleryManifest = {
     cta: string;
     eyebrow: string;
     intro: string;
+    presentation?: "overlay" | "page";
     title: string;
   };
   gallery: {
@@ -63,6 +64,7 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.landing.cta === "string"
     && typeof manifest.landing.adNote === "string"
     && typeof manifest.landing.eyebrow === "string"
+    && (manifest.landing.presentation === undefined || manifest.landing.presentation === "overlay" || manifest.landing.presentation === "page")
     && typeof manifest.gallery?.nextLabel === "string"
     && typeof manifest.gallery.finishLabel === "string"
     && typeof manifest.gallery.cardEyebrow === "string"

@@ -85,7 +85,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
     const landingClassName = gallery.landing.title.length > 58
       ? "gallery-article__landing gallery-article__landing--long-title"
       : "gallery-article__landing";
-    return (
+    const landing = (
       <ExperienceLanding
         adNote={gallery.landing.adNote}
         avatars={[]}
@@ -102,6 +102,42 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
         socialProofText=""
         title={gallery.landing.title}
       />
+    );
+
+    if (gallery.landing.presentation === "overlay") {
+      const preview = gallery.items[0];
+      return (
+        <div className="gallery-article__overlay-scene">
+          <article aria-hidden="true" className="gallery-article__story gallery-article__story--preview quiz-engine__continuous-shell">
+            <div className="gallery-article__archive-card">
+              <small>{gallery.gallery.cardEyebrow}</small>
+              <b>{String(preview.number).padStart(2, "0")}</b>
+              <span>{gallery.gallery.cardFooter}</span>
+            </div>
+            <div className="gallery-article__copy">
+              <h1>{preview.title}</h1>
+              {preview.image ? (
+                <figure className="gallery-article__image">
+                  <img alt="" decoding="async" src={preview.image.src} />
+                </figure>
+              ) : null}
+              {preview.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </article>
+          <div
+            aria-label={gallery.landing.title}
+            aria-modal="true"
+            className="gallery-article__overlay-scrim"
+            role="dialog"
+          >
+            {landing}
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      landing
     );
   }
 

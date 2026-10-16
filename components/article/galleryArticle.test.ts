@@ -15,6 +15,7 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   const gallery = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.json", "utf8"));
   assert.equal(gallery.slug, "perfectly-timed");
   assert.equal(gallery.items.length, 57);
+  assert.equal(gallery.landing.presentation, "overlay");
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 57);
@@ -73,4 +74,6 @@ test("gallery uses rewarded entry and interstitial-eligible story navigation", (
   assert.match(source, /data-google-interstitial="true"/);
   assert.match(source, /signalSpaNavigation\(\)/);
   assert.match(source, /item\.image/);
+  assert.match(source, /gallery\.landing\.presentation === "overlay"/);
+  assert.match(source, /gallery-article__overlay-scrim/);
 });
