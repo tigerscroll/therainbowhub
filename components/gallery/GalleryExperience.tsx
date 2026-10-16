@@ -32,7 +32,7 @@ function getStateFromUrl(itemCount: number, articleFlow: boolean): { index: numb
     : { index: 0, phase: articleFlow ? "introduction" : "gallery" };
 }
 
-export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest; path: string }) {
+export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: GalleryManifest; loadingLabel: string; path: string }) {
   const [phase, setPhase] = useState<GalleryPhase>("landing");
   const [index, setIndex] = useState(0);
   const [hydrated, setHydrated] = useState(false);
@@ -121,7 +121,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
         adNote={gallery.landing.adNote}
         avatars={[]}
         busy={busy}
-        busyLabel="Opening gallery…"
+        busyLabel={loadingLabel}
         className={landingClassName}
         ctaIcon="→"
         ctaIconPosition="end"
@@ -187,7 +187,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
           onClick={continueArticle}
           type="button"
         >
-          {busy ? "Opening article…" : (gallery.gallery.continueLabel ?? "Continue Reading")} <span aria-hidden="true">→</span>
+          {busy ? loadingLabel : (gallery.gallery.continueLabel ?? "Continue Reading")} <span aria-hidden="true">→</span>
         </button>
       </article>
     );

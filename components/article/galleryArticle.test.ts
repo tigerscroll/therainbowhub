@@ -90,6 +90,7 @@ test("gallery uses rewarded article gates and keeps interstitials out of article
   assert.match(source, /data-google-interstitial="false"/);
   assert.match(source, /function continueArticle\(\)/);
   assert.match(source, /window\.sessionStorage\.setItem\(articleUnlockKey, "1"\)/);
+  assert.match(source, /busyLabel=\{loadingLabel\}/);
   assert.match(source, /signalSpaNavigation\(\)/);
   assert.match(source, /item\.image/);
   assert.match(source, /gallery\.landing\.presentation === "overlay"/);
