@@ -17,7 +17,7 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(gallery.items.length, 57);
   assert.equal(gallery.landing.presentation, "overlay");
   assert.equal(gallery.gallery.flow, "article");
-  assert.equal(gallery.gallery.continueLabel, "Continue…");
+  assert.equal(gallery.gallery.continueLabel, "Continue Reading");
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 57);
