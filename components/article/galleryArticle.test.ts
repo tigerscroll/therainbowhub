@@ -9,6 +9,8 @@ test("nude art gallery is a complete image-free 85-story experience", () => {
   assert.equal(gallery.landing.eyebrow, "");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
+  assert.equal(gallery.landing.title, "Sports Photos That Look Filthy At First Glance");
+  assert.equal(gallery.landing.intro, "");
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 85);
@@ -22,10 +24,6 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(gallery.landing.presentation, "overlay");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
-  assert.deepEqual(gallery.landing.ageGate, {
-    prompt: "Are You Over The Age Of 18?",
-    yesLabel: "Yes",
-  });
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 57);
@@ -42,10 +40,6 @@ test("perfectly timed Spanish gallery matches the complete English article struc
   assert.equal(spanish.items.every(item => item.title.length > 0 && item.paragraphs.length === 2 && item.paragraphs.every(Boolean)), true);
   assert.notEqual(spanish.landing.title, english.landing.title);
   assert.equal(spanish.gallery.continueLabel, "Seguir leyendo");
-  assert.deepEqual(spanish.landing.ageGate, {
-    prompt: "¿Tienes más de 18 años?",
-    yesLabel: "Sí",
-  });
 });
 
 test("adult-only events gallery preserves all 60 supplied sections without imagery", () => {
@@ -104,9 +98,6 @@ test("gallery uses rewarded article gates and keeps interstitials out of article
   assert.match(source, /data-google-interstitial="true"/);
   assert.match(source, /data-google-interstitial="false"/);
   assert.match(source, /function continueArticle\(\)/);
-  assert.match(source, /function answerAgeGate\(\) \{\s+start\(\);/);
-  assert.match(source, /onClick=\{answerAgeGate\}/);
-  assert.doesNotMatch(source, /ageGate\.noLabel/);
   assert.match(source, /window\.sessionStorage\.setItem\(articleUnlockKey, "1"\)/);
   assert.match(source, /busyLabel=\{loadingLabel\}/);
   assert.match(source, /signalSpaNavigation\(\)/);

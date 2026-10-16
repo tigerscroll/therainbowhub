@@ -85,7 +85,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
       <div className="quiz-engine__landing-copy">
         <div aria-hidden="true" className="quiz-engine__landing-badge"><span><ExperienceIcon icon={icon} /></span></div>
         <h1>{title}</h1>
-        <p className="quiz-engine__quick-start">{intro}</p>
+        {intro ? <p className="quiz-engine__quick-start">{intro}</p> : null}
         {showSocialProof ? <SocialProof avatars={avatars} text={socialProofText} /> : null}
         {href && !busy ? (
           <a
