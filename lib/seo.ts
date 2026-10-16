@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
-import { getAllGalleries } from "@/lib/galleries";
+import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 
@@ -22,13 +22,20 @@ export function getQuizPath(locale: SupportedLocale, slug: string) {
   return locale === defaultLocale ? `/${slug}` : `/${locale}/${slug}`;
 }
 
-export function getGalleryPath(slug: string) {
-  return `/${slug}`;
+export function getGalleryPath(slug: string, locale: SupportedLocale = defaultLocale) {
+  return locale === defaultLocale ? `/${slug}` : `/${locale}/${slug}`;
 }
 
-export function galleryAlternates(slug: string) {
-  const url = absoluteUrl(getGalleryPath(slug));
-  return { canonical: url, languages: { en: url, "x-default": url } };
+export function galleryAlternates(slug: string, locale: SupportedLocale = defaultLocale) {
+  const locales = getGalleryLocales(slug);
+  const canonical = absoluteUrl(getGalleryPath(slug, locale));
+  return {
+    canonical,
+    languages: {
+      ...languageAlternates((item) => getGalleryPath(slug, item), locales),
+      "x-default": absoluteUrl(getGalleryPath(slug, defaultLocale)),
+    },
+  };
 }
 
 export function getInfoPath(locale: SupportedLocale, slug: InfoPageSlug) {
@@ -215,12 +222,15 @@ export function getSitemapEntries() {
   }
 
   for (const gallery of getAllGalleries()) {
-    entries.push({
-      url: absoluteUrl(getGalleryPath(gallery.slug)),
-      lastModified: new Date(gallery.publishedAt),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    });
+    for (const locale of getGalleryLocales(gallery.slug)) {
+      const localizedGallery = getAllGalleries(locale).find(item => item.slug === gallery.slug) ?? gallery;
+      entries.push({
+        url: absoluteUrl(getGalleryPath(gallery.slug, locale)),
+        lastModified: new Date(localizedGallery.publishedAt),
+        changeFrequency: "monthly" as const,
+        priority: locale === defaultLocale ? 0.8 : 0.7,
+      });
+    }
   }
 
   for (const slug of infoPageSlugs) {

@@ -3,11 +3,11 @@ import { ExperienceThemeBoundary } from "@/components/experience/ExperienceTheme
 import type { GalleryManifest } from "@/lib/galleries";
 import { galleryArticleTheme } from "@/lib/galleries";
 import { SHARED_SHELL_CSS_HREF } from "@/lib/quizzes";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, getGalleryPath } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
 
 export function GalleryTemplate({ gallery }: { gallery: GalleryManifest }) {
-  const path = `/${gallery.slug}`;
+  const path = getGalleryPath(gallery.slug, gallery.locale);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",

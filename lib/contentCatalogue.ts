@@ -9,7 +9,7 @@ export type TopLevelContentRoute = {
 
 export type TwoSegmentContentRoute = {
   first: string;
-  kind: "localized-quiz";
+  kind: "localized-gallery" | "localized-quiz";
   second: string;
 };
 
@@ -44,6 +44,11 @@ export function getTwoSegmentContentRoutes(): TwoSegmentContentRoute[] {
   const keys = new Set<string>();
 
   for (const locale of getSupportedLocales().filter((item) => item !== defaultLocale)) {
+    for (const gallery of getAllGalleries(locale)) {
+      const key = `${locale}/${gallery.slug}`;
+      assertUniqueRoute(keys, key, `Localized gallery route /${key}`);
+      routes.push({ first: locale, kind: "localized-gallery", second: gallery.slug });
+    }
     for (const quiz of getAllQuizzes(locale)) {
       const key = `${locale}/${quiz.slug}`;
       assertUniqueRoute(keys, key, `Localized quiz route /${key}`);

@@ -24,6 +24,18 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(JSON.stringify(gallery).includes('"image"'), false);
 });
 
+test("perfectly timed Spanish gallery matches the complete English article structure", () => {
+  const english = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.json", "utf8"));
+  const spanish = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.es.json", "utf8"));
+  assert.equal(spanish.locale, "es");
+  assert.equal(spanish.items.length, 57);
+  assert.deepEqual(spanish.items.map(item => item.id), english.items.map(item => item.id));
+  assert.deepEqual(spanish.items.map(item => item.number), english.items.map(item => item.number));
+  assert.equal(spanish.items.every(item => item.title.length > 0 && item.paragraphs.length === 2 && item.paragraphs.every(Boolean)), true);
+  assert.notEqual(spanish.landing.title, english.landing.title);
+  assert.equal(spanish.gallery.continueLabel, "Seguir leyendo");
+});
+
 test("adult-only events gallery preserves all 60 supplied sections without imagery", () => {
   const gallery = JSON.parse(fs.readFileSync("data/galleries/adult-only-events.json", "utf8"));
   assert.equal(gallery.slug, "events");

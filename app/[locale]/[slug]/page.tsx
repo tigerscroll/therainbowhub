@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { GalleryTemplate } from "@/components/GalleryTemplate";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getTwoSegmentContentRoutes } from "@/lib/contentCatalogue";
+import { galleryArticleTheme, getGalleryBySlug, getGalleryLocales } from "@/lib/galleries";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
 import { getQuizBySlug } from "@/lib/quizzes";
-import { buildMetadata, getQuizPath, localizedQuizAlternates } from "@/lib/seo";
+import { buildMetadata, galleryAlternates, getGalleryPath, getQuizPath, localizedQuizAlternates } from "@/lib/seo";
 
 type LocalizedQuizPageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -21,6 +23,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocalizedQuizPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!isSupportedLocale(locale) || locale === getDefaultLocale()) return {};
+  const gallery = getGalleryBySlug(slug, locale);
+  if (gallery) {
+    return buildMetadata({
+      alternates: galleryAlternates(gallery.slug, locale),
+      description: gallery.metadata.description,
+      locale,
+      path: getGalleryPath(gallery.slug, locale),
+      title: gallery.metadata.title,
+    });
+  }
   const quiz = getQuizBySlug(slug, locale);
   if (!quiz) return {};
 
@@ -42,9 +54,27 @@ export async function generateMetadata({ params }: LocalizedQuizPageProps): Prom
 export default async function LocalizedQuizPage({ params }: LocalizedQuizPageProps) {
   const { locale, slug } = await params;
   if (!isSupportedLocale(locale) || locale === getDefaultLocale()) notFound();
+  const gallery = getGalleryBySlug(slug, locale);
+  const translations = getTranslations(locale);
+  if (gallery) {
+    const localePaths = Object.fromEntries(
+      getGalleryLocales(gallery.slug).map(item => [item, getGalleryPath(gallery.slug, item)]),
+    );
+    return (
+      <SiteShell
+        availableLocales={getGalleryLocales(gallery.slug)}
+        currentPath={getGalleryPath(gallery.slug, locale)}
+        locale={locale}
+        localePaths={localePaths}
+        quizTheme={galleryArticleTheme}
+        translations={translations}
+      >
+        <GalleryTemplate gallery={gallery} />
+      </SiteShell>
+    );
+  }
   const quiz = getQuizBySlug(slug, locale);
   if (!quiz) notFound();
-  const translations = getTranslations(locale);
 
   return (
     <SiteShell currentPath={getQuizPath(locale, quiz.slug)} locale={locale} quizTheme={quiz.theme} translations={translations}>

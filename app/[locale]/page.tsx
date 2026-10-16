@@ -7,7 +7,7 @@ import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getTopLevelContentRoutes } from "@/lib/contentCatalogue";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
-import { galleryArticleTheme, getGalleryBySlug } from "@/lib/galleries";
+import { galleryArticleTheme, getGalleryBySlug, getGalleryLocales } from "@/lib/galleries";
 import { getQuizBySlug } from "@/lib/quizzes";
 import { buildMetadata, galleryAlternates, getGalleryPath, getHomePath, getQuizPath, localizedHomeAlternates, quizAlternates } from "@/lib/seo";
 
@@ -89,8 +89,18 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
   const gallery = getGalleryBySlug(segment, locale);
 
   if (gallery) {
+    const localePaths = Object.fromEntries(
+      getGalleryLocales(gallery.slug).map(item => [item, getGalleryPath(gallery.slug, item)]),
+    );
     return (
-      <SiteShell currentPath={getGalleryPath(gallery.slug)} locale={locale} quizTheme={galleryArticleTheme} translations={translations}>
+      <SiteShell
+        availableLocales={getGalleryLocales(gallery.slug)}
+        currentPath={getGalleryPath(gallery.slug, locale)}
+        locale={locale}
+        localePaths={localePaths}
+        quizTheme={galleryArticleTheme}
+        translations={translations}
+      >
         <GalleryTemplate gallery={gallery} />
       </SiteShell>
     );

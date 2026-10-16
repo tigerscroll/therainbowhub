@@ -5,7 +5,9 @@ import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
 import hospiceNurses from "@/data/galleries/hospice-nurses.json";
 import nudeArt from "@/data/galleries/nude-art.json";
 import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
+import perfectlyTimedEs from "@/data/galleries/perfectly-timed.es.json";
 import wildResorts from "@/data/galleries/wild-resorts.json";
+import { isSupportedLocale, type SupportedLocale } from "@/lib/localeConfig";
 import type { QuizTheme } from "@/lib/quizzes";
 
 export type GalleryItem = {
@@ -22,7 +24,7 @@ export type GalleryItem = {
 export type GalleryManifest = {
   version: 1;
   slug: string;
-  locale: "en";
+  locale: SupportedLocale;
   publishedAt: string;
   metadata: {
     description: string;
@@ -56,7 +58,8 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
   if (!value || typeof value !== "object") return false;
   const manifest = value as Partial<GalleryManifest>;
   return manifest.version === 1
-    && manifest.locale === "en"
+    && typeof manifest.locale === "string"
+    && isSupportedLocale(manifest.locale)
     && typeof manifest.slug === "string"
     && typeof manifest.publishedAt === "string"
     && typeof manifest.metadata?.title === "string"
@@ -103,6 +106,7 @@ const galleryManifests = [
   hospiceNurses,
   nudeArt,
   perfectlyTimed,
+  perfectlyTimedEs,
   wildResorts,
 ].map((value) => {
   if (!isGalleryManifest(value)) throw new Error("Invalid gallery manifest.");
@@ -137,11 +141,16 @@ export const galleryArticleTheme: QuizTheme = {
   },
 };
 
-export function getAllGalleries() {
-  return galleryManifests;
+export function getAllGalleries(locale: SupportedLocale = "en") {
+  return galleryManifests.filter(gallery => gallery.locale === locale);
 }
 
-export function getGalleryBySlug(slug: string, locale = "en") {
-  if (locale !== "en") return undefined;
-  return galleryManifests.find(gallery => gallery.slug === slug);
+export function getGalleryBySlug(slug: string, locale: SupportedLocale = "en") {
+  return galleryManifests.find(gallery => gallery.slug === slug && gallery.locale === locale);
+}
+
+export function getGalleryLocales(slug: string) {
+  return galleryManifests
+    .filter(gallery => gallery.slug === slug)
+    .map(gallery => gallery.locale);
 }
