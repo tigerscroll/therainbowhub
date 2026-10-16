@@ -32,6 +32,10 @@ export type GalleryManifest = {
   };
   landing: {
     adNote: string;
+    ageGate?: {
+      prompt: string;
+      yesLabel: string;
+    };
     cta: string;
     eyebrow: string;
     intro: string;
@@ -69,6 +73,10 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.landing.cta === "string"
     && typeof manifest.landing.adNote === "string"
     && typeof manifest.landing.eyebrow === "string"
+    && (manifest.landing.ageGate === undefined || (
+      typeof manifest.landing.ageGate.prompt === "string"
+      && typeof manifest.landing.ageGate.yesLabel === "string"
+    ))
     && (manifest.landing.presentation === undefined || manifest.landing.presentation === "overlay" || manifest.landing.presentation === "page")
     && typeof manifest.gallery?.nextLabel === "string"
     && typeof manifest.gallery.finishLabel === "string"

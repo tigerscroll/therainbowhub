@@ -105,6 +105,10 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     }, { scrollAfter: false });
   }
 
+  function answerAgeGate() {
+    start();
+  }
+
   function continueArticle() {
     void runGate(() => {
       try { window.sessionStorage.setItem(articleUnlockKey, "1"); } catch { /* The current session still opens. */ }
@@ -116,7 +120,25 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     const landingClassName = gallery.landing.title.length > 58
       ? "gallery-article__landing gallery-article__landing--long-title"
       : "gallery-article__landing";
-    const landing = (
+    const landing = gallery.landing.ageGate ? (
+      <section className={`${landingClassName} gallery-article__age-gate`}>
+        <div className="quiz-engine__landing-copy">
+          <h1>{gallery.landing.ageGate.prompt}</h1>
+          <div className="gallery-article__age-gate-actions">
+            <button
+              className="quiz-engine__primary"
+              data-google-interstitial="false"
+              disabled={busy}
+              onClick={answerAgeGate}
+              type="button"
+            >
+              {busy ? loadingLabel : gallery.landing.ageGate.yesLabel}
+            </button>
+          </div>
+          <p className="quiz-engine__ad-note"><span>✓</span>{gallery.landing.adNote}</p>
+        </div>
+      </section>
+    ) : (
       <ExperienceLanding
         adNote={gallery.landing.adNote}
         avatars={[]}
@@ -154,7 +176,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
             </div>
           </article>
           <div
-            aria-label={gallery.landing.title}
+            aria-label={gallery.landing.ageGate?.prompt ?? gallery.landing.title}
             aria-modal="true"
             className="gallery-article__overlay-scrim"
             role="dialog"
