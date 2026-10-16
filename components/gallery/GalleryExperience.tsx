@@ -173,7 +173,7 @@ export function GalleryExperience({ gallery, path }: { gallery: GalleryManifest;
             moveTo(1, true);
           }}
         >
-          {gallery.gallery.continueLabel ?? "Continue…"} <span aria-hidden="true">→</span>
+          {gallery.gallery.continueLabel ?? "Continue Article…"}
         </a>
       </article>
     );
