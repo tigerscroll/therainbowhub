@@ -42,7 +42,9 @@ export type GalleryManifest = {
     completeCopy: string;
     completeEyebrow: string;
     completeTitle: string;
+    continueLabel?: string;
     finishLabel: string;
+    flow?: "article" | "gallery";
     introduction: string[];
     nextLabel: string;
     restartLabel: string;
@@ -73,6 +75,8 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.gallery.completeTitle === "string"
     && typeof manifest.gallery.completeCopy === "string"
     && typeof manifest.gallery.restartLabel === "string"
+    && (manifest.gallery.continueLabel === undefined || typeof manifest.gallery.continueLabel === "string")
+    && (manifest.gallery.flow === undefined || manifest.gallery.flow === "article" || manifest.gallery.flow === "gallery")
     && Array.isArray(manifest.gallery.introduction)
     && manifest.gallery.introduction.every(item => typeof item === "string")
     && Array.isArray(manifest.items)

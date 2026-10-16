@@ -16,6 +16,8 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(gallery.slug, "perfectly-timed");
   assert.equal(gallery.items.length, 57);
   assert.equal(gallery.landing.presentation, "overlay");
+  assert.equal(gallery.gallery.flow, "article");
+  assert.equal(gallery.gallery.continueLabel, "Continue…");
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 57);
@@ -76,4 +78,8 @@ test("gallery uses rewarded entry and interstitial-eligible story navigation", (
   assert.match(source, /item\.image/);
   assert.match(source, /gallery\.landing\.presentation === "overlay"/);
   assert.match(source, /gallery-article__overlay-scrim/);
+  assert.match(source, /document\.body\.style\.overflow = "hidden"/);
+  assert.match(source, /data-google-interstitial="true"/);
+  assert.match(source, /gallery-article__introduction/);
+  assert.match(source, /gallery-article__article-sections/);
 });
