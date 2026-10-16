@@ -71,6 +71,9 @@ test("nurse gallery preserves all 70 supplied stories and matching CDN images", 
   const gallery = JSON.parse(fs.readFileSync("data/galleries/hospice-nurses.json", "utf8"));
   assert.equal(gallery.slug, "nurse");
   assert.equal(gallery.landing.title, "What Nurses See Before The End");
+  assert.equal(gallery.landing.presentation, "overlay");
+  assert.equal(gallery.gallery.flow, "article");
+  assert.equal(gallery.gallery.continueLabel, "Continue Reading");
   assert.equal(gallery.items.length, 70);
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
