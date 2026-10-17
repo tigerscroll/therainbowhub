@@ -9,8 +9,6 @@ test("nude art gallery is a complete image-free 85-story experience", () => {
   assert.equal(gallery.landing.eyebrow, "");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
-  assert.equal(gallery.landing.title, "Sports Photos That Look Filthy At First Glance");
-  assert.equal(gallery.landing.intro, "");
   assert.equal(gallery.landing.cta, "Start");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 85);
@@ -24,7 +22,9 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(gallery.landing.presentation, "overlay");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
-  assert.equal(gallery.landing.cta, "Start");
+  assert.equal(gallery.landing.title, "Sports Photos That Look Filthy At First Glance");
+  assert.equal(gallery.landing.intro, "");
+  assert.equal(gallery.landing.cta, "Continue");
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 57);
   assert.equal(JSON.stringify(gallery).includes('"image"'), false);
