@@ -1,3 +1,4 @@
+import {getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -19,7 +20,7 @@ const normalize = (text: string) => text.toUpperCase().replace(/[^A-Z0-9]/g, '')
 test('English memory has ten seven-question chapters, self-paced cues and no advertised length', () => {
   const expanded = expandQuizLocale(manifest, copy, 'en');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort());
+  assert.deepEqual(manifest.activeLocales, getQuizContentLocales());
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(manifest.engine.entry, 'landing');
   assert.equal(content('s1q2').headerLabel, 'Memory Test');

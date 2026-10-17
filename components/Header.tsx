@@ -1,5 +1,6 @@
 import { HeaderChrome, type HeaderLanguageOption } from "@/components/HeaderChrome";
 import {
+  getDefaultLocale,
   getLocaleOptions,
   getLocalePath,
   type SupportedLocale,
@@ -20,7 +21,7 @@ function localizedPath(locale: SupportedLocale, path: string) {
 }
 
 export function Header({ availableLocales, currentPath, locale, localePaths, translations }: HeaderProps) {
-  const quizSlug = currentPath.match(/^\/([a-z0-9_-]+)$/)?.[1];
+  const quizSlug = getLocalePath(getDefaultLocale(), currentPath).match(/^\/([a-z0-9_-]+)$/)?.[1];
   const availableLocaleSet = availableLocales ? new Set(availableLocales) : undefined;
   const languageOptions = getLocaleOptions().filter(
     (option) => (!availableLocaleSet || availableLocaleSet.has(option.code))

@@ -1,6 +1,6 @@
-import {getQuizSlugs, getSiteLocales} from '../quiz-catalogue.mjs';
+import {getQuizSlugs, getQuizContentLocales} from '../quiz-catalogue.mjs';
 export const slugs = getQuizSlugs();
-export const activeLocales = getSiteLocales();
+export const activeLocales = getQuizContentLocales();
 export const locales = activeLocales.filter(locale => locale !== 'en');
 // Authored pipe-delimited rows have a fixed column order, independent of
 // filesystem discovery order. Never index these rows with `locales`.

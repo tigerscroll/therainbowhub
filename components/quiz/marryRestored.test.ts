@@ -6,7 +6,7 @@ import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
 import {scoreQuiz} from './scoring.ts';
 import {resolveProfileArtwork} from './profileArtwork.ts';
-import {getSiteLocales} from '../../scripts/quiz-catalogue.mjs';
+import {getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
 import {marryRevealLabels, marryTranslations} from '../../scripts/localize-marry.mjs';
 import {marryChapterLabel} from '../../scripts/marry-content.mjs';
 import englishEdits from '../../scripts/marry-locales/en.mjs';
@@ -33,8 +33,8 @@ const quiz = {
 
 test('Marry restores its long edition as ten eight-question stages in every site locale', () => {
   assert.equal(copy.title, 'AI Will Draw The Person You’ll Marry');
-  assert.deepEqual(manifest.activeLocales, getSiteLocales());
-  assert.deepEqual(fs.readdirSync(root).filter(f => /^[a-z]{2,3}\.json$/.test(f)).sort(), getSiteLocales().map(locale => `${locale}.json`));
+  assert.deepEqual(manifest.activeLocales, getQuizContentLocales());
+  assert.deepEqual(fs.readdirSync(root).filter(f => /^[a-z]{2,3}\.json$/.test(f)).sort(), getQuizContentLocales().map(locale => `${locale}.json`));
   assert.equal(manifest.template, 'ten-stage-eight-question-v1');
   assert.equal(quizTemplateContract(manifest.template).questionsPerStage, 8);
   assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), Array(10).fill(8));
@@ -54,7 +54,7 @@ test('every Marry translation preserves all eighty questions, four choices and t
     calibration: q.calibration,
   })));
   const sourceShape = scoringShape(expanded);
-  for (const locale of getSiteLocales()) {
+  for (const locale of getQuizContentLocales()) {
     const words = read(locale), translated = expandQuizLocale(manifest, words, locale);
     assert.deepEqual(translated.stages.map((s: any) => s.questions.length), Array(10).fill(8), locale);
     assert.deepEqual(scoringShape(translated), sourceShape, `${locale}: translation must not change scoring`);
@@ -91,7 +91,7 @@ test('Marry topic labels preserve native punctuation and diacritics while removi
     ['Ein Umweg 🌦️', 'Ein Umweg'],
     ['Un trait-d’union', 'Un trait-d’union'],
   ]) assert.equal(marryChapterLabel(title), label);
-  for (const locale of getSiteLocales()) {
+  for (const locale of getQuizContentLocales()) {
     const words = read(locale);
     for (const [id, stage] of Object.entries(words.stages) as [string, any][]) {
       const label = marryChapterLabel(stage.title);

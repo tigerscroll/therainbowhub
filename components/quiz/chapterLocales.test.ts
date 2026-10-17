@@ -1,3 +1,4 @@
+import {getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -6,7 +7,7 @@ import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
 import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
 
-const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: fs.readdirSync('data/i18n').filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5))};
+const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: getQuizContentLocales()};
 const read = (slug: string, locale: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 const questions = (copy: any): Record<string, any> => Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
 const sameWord = (a: string, b: string, locale: string) => assert.equal(a.toLocaleUpperCase(locale), b.toLocaleUpperCase(locale));

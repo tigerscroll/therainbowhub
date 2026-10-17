@@ -7,6 +7,7 @@ import nudeArt from "@/data/galleries/nude-art.json";
 import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
 import perfectlyTimedAr from "@/data/galleries/perfectly-timed.ar.json";
 import perfectlyTimedDe from "@/data/galleries/perfectly-timed.de.json";
+import perfectlyTimedEl from "@/data/galleries/perfectly-timed.el.json";
 import perfectlyTimedEs from "@/data/galleries/perfectly-timed.es.json";
 import perfectlyTimedFr from "@/data/galleries/perfectly-timed.fr.json";
 import perfectlyTimedIt from "@/data/galleries/perfectly-timed.it.json";
@@ -114,6 +115,7 @@ const galleryManifests = [
   perfectlyTimed,
   perfectlyTimedAr,
   perfectlyTimedDe,
+  perfectlyTimedEl,
   perfectlyTimedEs,
   perfectlyTimedFr,
   perfectlyTimedIt,

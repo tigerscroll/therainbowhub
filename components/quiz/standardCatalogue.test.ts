@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import test from 'node:test';
-import {getQuizSlugs, getSiteLocales} from '../../scripts/quiz-catalogue.mjs';
+import {getQuizSlugs, getSiteLocales, getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
 import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
@@ -14,15 +14,17 @@ import {correctTerm} from '../../scripts/chapter-locales/corrections.mjs';
 import {answerNumbers, normalizedAnswer} from '../../scripts/localization-values.mjs';
 import {marryRevealLabels} from '../../scripts/localize-marry.mjs';
 
-const locales = getSiteLocales();
+const locales = getQuizContentLocales();
 const slugs = getQuizSlugs();
 const read = (slug: string, name: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${name}.json`, 'utf8'));
 
-test('the site exposes exactly the eight agreed locales, with no alternate edition directories', () => {
+test('Greek article support preserves the existing eight quiz languages and normal edition folders', () => {
   assert.deepEqual(locales, ['ar','de','en','es','fr','it','nl','pt']);
-  assert.deepEqual(fs.readdirSync('data/info-pages').filter(file => file.endsWith('.json')).map(file => file.slice(0,-5)).sort(), locales);
+  const siteLocales = getSiteLocales();
+  assert.deepEqual(siteLocales, ['ar','de','el','en','es','fr','it','nl','pt']);
+  assert.deepEqual(fs.readdirSync('data/info-pages').filter(file => file.endsWith('.json')).map(file => file.slice(0,-5)).sort(), siteLocales);
   const config = fs.readFileSync('lib/localeConfig.ts', 'utf8');
-  assert.deepEqual([...config.matchAll(/code: "([a-z]+)"/g)].map(match => match[1]).sort(), locales);
+  assert.deepEqual([...config.matchAll(/code: "([a-z]+)"/g)].map(match => match[1]).sort(), siteLocales);
   assert.ok(slugs.length > 0);
   for (const slug of slugs) assert.equal(fs.existsSync(`data/quizzes/${slug}/english-extended`), false, slug);
 });

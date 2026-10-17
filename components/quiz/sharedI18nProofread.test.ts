@@ -15,7 +15,7 @@ function strings(value: unknown): string[] {
 
 test("relationship results never describe a sporting match in the ad note", () => {
   const files = fs.readdirSync("data/i18n").filter((file) => file.endsWith(".json"));
-  assert.equal(files.length, 8);
+  assert.equal(files.length, 9);
   for (const file of files) {
     const note = read(file.slice(0, -5)).results.matchBreakdown.adNote as string;
     assert.doesNotMatch(note, /podział meczu|mérkőzés|otteluerittely|utakmica|rozpis zápas|разбивка на мача|แยกรายละเอียดการแข่งขัน|maç dökümü|розбивка матчів|trận đấu/u, file);

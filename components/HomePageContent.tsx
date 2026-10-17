@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
 import { getAllQuizzes } from "@/lib/quizzes";
+import { getAllGalleries } from "@/lib/galleries";
 
 type HomePageContentProps = {
   locale: SupportedLocale;
@@ -10,6 +11,7 @@ type HomePageContentProps = {
 
 export function HomePageContent({ locale, translations }: HomePageContentProps) {
   const quizzes = getAllQuizzes(locale, { includeFallback: false });
+  const galleries = quizzes.length ? [] : getAllGalleries(locale);
 
   return (
     <div className="hub-home">
@@ -50,6 +52,26 @@ export function HomePageContent({ locale, translations }: HomePageContentProps) 
                   label={quiz.engine.scoring.type === "weighted-profile" ? translations.home.personality : translations.home.difficulty[quiz.difficulty]}
                   summary={quiz.summary}
                   title={quiz.title}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
+        {galleries.length ? (
+          <section className="hub-quizzes" aria-labelledby="gallery-list-title">
+            <div className="hub-quizzes__heading">
+              <h2 id="gallery-list-title">{translations.nav.quickLinks}</h2>
+              <span aria-hidden="true" />
+            </div>
+            <div className="hub-quiz-grid" data-single={galleries.length === 1 ? "" : undefined}>
+              {galleries.map(gallery => (
+                <LinkCard
+                  href={getLocalePath(locale, `/${gallery.slug}`)}
+                  imageAlt=""
+                  key={gallery.slug}
+                  label={gallery.landing.cta}
+                  summary={gallery.metadata.description}
+                  title={gallery.metadata.title}
                 />
               ))}
             </div>
