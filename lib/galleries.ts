@@ -5,9 +5,12 @@ import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
 import hospiceNurses from "@/data/galleries/hospice-nurses.json";
 import nudeArt from "@/data/galleries/nude-art.json";
 import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
+import perfectlyTimedAr from "@/data/galleries/perfectly-timed.ar.json";
 import perfectlyTimedDe from "@/data/galleries/perfectly-timed.de.json";
 import perfectlyTimedEs from "@/data/galleries/perfectly-timed.es.json";
 import perfectlyTimedFr from "@/data/galleries/perfectly-timed.fr.json";
+import perfectlyTimedIt from "@/data/galleries/perfectly-timed.it.json";
+import perfectlyTimedPt from "@/data/galleries/perfectly-timed.pt.json";
 import wildResorts from "@/data/galleries/wild-resorts.json";
 import { isSupportedLocale, type SupportedLocale } from "@/lib/localeConfig";
 import type { QuizTheme } from "@/lib/quizzes";
@@ -108,9 +111,12 @@ const galleryManifests = [
   hospiceNurses,
   nudeArt,
   perfectlyTimed,
+  perfectlyTimedAr,
   perfectlyTimedDe,
   perfectlyTimedEs,
   perfectlyTimedFr,
+  perfectlyTimedIt,
+  perfectlyTimedPt,
   wildResorts,
 ].map((value) => {
   if (!isGalleryManifest(value)) throw new Error("Invalid gallery manifest.");

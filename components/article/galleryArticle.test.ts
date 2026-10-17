@@ -31,9 +31,12 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
 });
 
 for (const [locale, expectedTitle, expectedCta] of [
+  ["ar", "صور رياضية تبدو جريئة للوهلة الأولى", "متابعة"],
   ["de", "Sportfotos, die auf den ersten Blick anzüglich wirken", "Weiter"],
   ["es", "Fotos deportivas que parecen subidas de tono a primera vista", "Continuar"],
   ["fr", "Des photos de sport qui paraissent osées au premier regard", "Continuer"],
+  ["it", "Foto sportive che a prima vista sembrano piccanti", "Continua"],
+  ["pt", "Fotos de atletas que parecem atrevidas à primeira vista", "Continuar"],
 ]) test(`perfectly timed ${locale} gallery matches the complete English article structure`, () => {
   const english = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.json", "utf8"));
   const localized = JSON.parse(fs.readFileSync(`data/galleries/perfectly-timed.${locale}.json`, "utf8"));
