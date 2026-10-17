@@ -30,16 +30,24 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(JSON.stringify(gallery).includes('"image"'), false);
 });
 
-test("perfectly timed Spanish gallery matches the complete English article structure", () => {
+for (const [locale, expectedTitle, expectedCta] of [
+  ["de", "Sportfotos, die auf den ersten Blick anzüglich wirken", "Weiter"],
+  ["es", "Fotos deportivas que parecen subidas de tono a primera vista", "Continuar"],
+  ["fr", "Des photos de sport qui paraissent osées au premier regard", "Continuer"],
+]) test(`perfectly timed ${locale} gallery matches the complete English article structure`, () => {
   const english = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.json", "utf8"));
-  const spanish = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.es.json", "utf8"));
-  assert.equal(spanish.locale, "es");
-  assert.equal(spanish.items.length, 57);
-  assert.deepEqual(spanish.items.map(item => item.id), english.items.map(item => item.id));
-  assert.deepEqual(spanish.items.map(item => item.number), english.items.map(item => item.number));
-  assert.equal(spanish.items.every(item => item.title.length > 0 && item.paragraphs.length === 2 && item.paragraphs.every(Boolean)), true);
-  assert.notEqual(spanish.landing.title, english.landing.title);
-  assert.equal(spanish.gallery.continueLabel, "Seguir leyendo");
+  const localized = JSON.parse(fs.readFileSync(`data/galleries/perfectly-timed.${locale}.json`, "utf8"));
+  assert.equal(localized.locale, locale);
+  assert.equal(localized.landing.title, expectedTitle);
+  assert.equal(localized.landing.cta, expectedCta);
+  assert.equal(localized.landing.presentation, "overlay");
+  assert.equal(localized.landing.intro, "");
+  assert.equal(localized.gallery.flow, "article");
+  assert.equal(localized.items.length, 57);
+  assert.deepEqual(localized.items.map(item => item.id), english.items.map(item => item.id));
+  assert.deepEqual(localized.items.map(item => item.number), english.items.map(item => item.number));
+  assert.equal(localized.items.every(item => item.title.length > 0 && item.paragraphs.length === 2 && item.paragraphs.every(Boolean)), true);
+  assert.notEqual(localized.landing.title, english.landing.title);
 });
 
 test("adult-only events gallery preserves all 60 supplied sections without imagery", () => {
