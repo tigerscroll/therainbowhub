@@ -36,6 +36,7 @@ for (const [locale, expectedTitle, expectedCta] of [
   ["es", "Fotos deportivas que parecen subidas de tono a primera vista", "Continuar"],
   ["fr", "Des photos de sport qui paraissent osées au premier regard", "Continuer"],
   ["it", "Foto sportive che a prima vista sembrano piccanti", "Continua"],
+  ["nl", "Sportfoto's die op het eerste gezicht pikant lijken", "Doorgaan"],
   ["pt", "Fotos de atletas que parecem atrevidas à primeira vista", "Continuar"],
 ]) test(`perfectly timed ${locale} gallery matches the complete English article structure`, () => {
   const english = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.json", "utf8"));

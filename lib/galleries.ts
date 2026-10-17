@@ -10,6 +10,7 @@ import perfectlyTimedDe from "@/data/galleries/perfectly-timed.de.json";
 import perfectlyTimedEs from "@/data/galleries/perfectly-timed.es.json";
 import perfectlyTimedFr from "@/data/galleries/perfectly-timed.fr.json";
 import perfectlyTimedIt from "@/data/galleries/perfectly-timed.it.json";
+import perfectlyTimedNl from "@/data/galleries/perfectly-timed.nl.json";
 import perfectlyTimedPt from "@/data/galleries/perfectly-timed.pt.json";
 import wildResorts from "@/data/galleries/wild-resorts.json";
 import { isSupportedLocale, type SupportedLocale } from "@/lib/localeConfig";
@@ -116,6 +117,7 @@ const galleryManifests = [
   perfectlyTimedEs,
   perfectlyTimedFr,
   perfectlyTimedIt,
+  perfectlyTimedNl,
   perfectlyTimedPt,
   wildResorts,
 ].map((value) => {
