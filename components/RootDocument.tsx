@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import { FbclidHeaderVisibility } from "@/components/FbclidHeaderVisibility";
 import type { SupportedLocale } from "@/lib/i18n";
+import { localeLanguageTag } from "@/lib/localeConfig";
 import { siteConfig } from "@/lib/siteConfig";
 
 type RootDocumentProps = {
@@ -14,7 +15,7 @@ type RootDocumentProps = {
 
 export function RootDocument({ children, direction, head, locale }: RootDocumentProps) {
   return (
-    <html dir={direction} lang={locale} suppressHydrationWarning>
+    <html dir={direction} lang={localeLanguageTag(locale)} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

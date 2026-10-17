@@ -1,4 +1,5 @@
 import { localizeInternalPath } from "@/lib/localePath";
+export { localeLanguageTag } from "@/lib/localePath";
 
 export const localeOptions = [
   { code: "en", name: "English", flag: "🇬🇧" },
@@ -9,7 +10,7 @@ export const localeOptions = [
   { code: "es", name: "Spanish", flag: "🇪🇸" },
   { code: "pt", name: "Portuguese", flag: "🇵🇹" },
   { code: "ar", name: "Arabic", flag: "🌐" },
-  { code: "el", name: "Greek", flag: "🇬🇷" },
+  { code: "gr", name: "Greek", flag: "🇬🇷" },
 ] as const;
 
 export type SupportedLocale = (typeof localeOptions)[number]["code"];
@@ -35,5 +36,5 @@ export function isSupportedLocale(locale: string): locale is SupportedLocale {
 
 export function getLocalePath(locale: string, href: string) {
   const safeLocale = isSupportedLocale(locale) ? locale : defaultLocale;
-  return localizeInternalPath(safeLocale, href, supportedLocales, defaultLocale);
+  return localizeInternalPath(safeLocale, href, [...supportedLocales, "el"], defaultLocale);
 }

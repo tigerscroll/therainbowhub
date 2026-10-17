@@ -9,13 +9,14 @@ import de from "@/data/i18n/de.json";
 import en from "@/data/i18n/en.json";
 import es from "@/data/i18n/es.json";
 import fr from "@/data/i18n/fr.json";
+import gr from "@/data/i18n/gr.json";
 import it from "@/data/i18n/it.json";
 import nl from "@/data/i18n/nl.json";
 import pt from "@/data/i18n/pt.json";
-import { getLocaleOptions, getLocalePath } from "@/lib/localeConfig";
+import { getLocaleOptions, getLocalePath, localeLanguageTag } from "@/lib/localeConfig";
 import { companyLinks, legalLinks } from "@/lib/siteLinks";
 
-const translations = { de, en, es, fr, it, nl, pt };
+const translations = { de, en, es, fr, gr, it, nl, pt };
 type NotFoundLocale = keyof typeof translations;
 
 function isNotFoundLocale(value: string): value is NotFoundLocale {
@@ -35,7 +36,7 @@ export function GlobalNotFound() {
     const pathLocale = window.location.pathname.split("/").filter(Boolean)[0] ?? "";
     const nextLocale = isNotFoundLocale(pathLocale) ? pathLocale : "en";
     setLocale(nextLocale);
-    document.documentElement.lang = nextLocale;
+    document.documentElement.lang = localeLanguageTag(nextLocale);
     document.documentElement.dir = translations[nextLocale].locale.direction;
     document.title = `${translations[nextLocale].error.notFoundTitle} - ${translations[nextLocale].site.name}`;
   }, []);

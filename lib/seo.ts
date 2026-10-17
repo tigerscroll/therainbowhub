@@ -4,6 +4,7 @@ import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/l
 import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
+import { localeLanguageTag } from "@/lib/localeConfig";
 
 const defaultLocale = getDefaultLocale();
 
@@ -44,7 +45,7 @@ export function getInfoPath(locale: SupportedLocale, slug: InfoPageSlug) {
 
 function languageAlternates(pathForLocale: (locale: SupportedLocale) => string, locales = getSupportedLocales()) {
   return Object.fromEntries(
-    locales.map((locale) => [locale, absoluteUrl(pathForLocale(locale))]),
+    locales.map((locale) => [localeLanguageTag(locale), absoluteUrl(pathForLocale(locale))]),
   ) as Record<string, string>;
 }
 
@@ -158,7 +159,7 @@ export function buildMetadata({
     alternates,
     openGraph: {
       description: metadataDescription,
-      locale,
+      locale: localeLanguageTag(locale),
       siteName: siteConfig.name,
       title: metadataTitle,
       type: "website",

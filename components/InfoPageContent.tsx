@@ -86,7 +86,7 @@ const infoPageLabels: Record<SupportedLocale, { related: string }> = {
   en: { related: "Related information" },
   fr: { related: "Informations associées" },
   de: { related: "Verwandte Informationen" },
-  el: { related: "Σχετικές πληροφορίες" },
+  gr: { related: "Σχετικές πληροφορίες" },
   it: { related: "Informazioni correlate" },
   nl: { related: "Gerelateerde informatie" },
   es: { related: "Información relacionada" },

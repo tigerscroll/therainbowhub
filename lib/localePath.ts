@@ -1,3 +1,7 @@
+export function localeLanguageTag(locale: string) {
+  return locale === "gr" ? "el" : locale;
+}
+
 export function localizeInternalPath(
   locale: string,
   href: string,

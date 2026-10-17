@@ -1,4 +1,6 @@
 # Static export pages are emitted without a trailing slash. Keep the root route intact.
+/el /gr 301
+/el/* /gr/:splat 301
 /info/:page/ /info/:page 301
 /:locale/info/:page/ /:locale/info/:page 301
 /:locale/:slug/ /:locale/:slug 301

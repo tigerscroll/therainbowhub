@@ -21,7 +21,7 @@ const read = (slug: string, name: string) => JSON.parse(fs.readFileSync(`data/qu
 test('Greek article support preserves the existing eight quiz languages and normal edition folders', () => {
   assert.deepEqual(locales, ['ar','de','en','es','fr','it','nl','pt']);
   const siteLocales = getSiteLocales();
-  assert.deepEqual(siteLocales, ['ar','de','el','en','es','fr','it','nl','pt']);
+  assert.deepEqual(siteLocales, ['ar','de','en','es','fr','gr','it','nl','pt']);
   assert.deepEqual(fs.readdirSync('data/info-pages').filter(file => file.endsWith('.json')).map(file => file.slice(0,-5)).sort(), siteLocales);
   const config = fs.readFileSync('lib/localeConfig.ts', 'utf8');
   assert.deepEqual([...config.matchAll(/code: "([a-z]+)"/g)].map(match => match[1]).sort(), siteLocales);

@@ -3,6 +3,7 @@ import { ExperienceThemeBoundary } from "@/components/experience/ExperienceTheme
 import type { GalleryManifest } from "@/lib/galleries";
 import { galleryArticleTheme } from "@/lib/galleries";
 import { getTranslations } from "@/lib/i18n";
+import { localeLanguageTag } from "@/lib/localeConfig";
 import { SHARED_SHELL_CSS_HREF } from "@/lib/quizzes";
 import { absoluteUrl, getGalleryPath } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
@@ -15,7 +16,7 @@ export function GalleryTemplate({ gallery }: { gallery: GalleryManifest }) {
     "@type": "Article",
     headline: gallery.metadata.title,
     description: gallery.metadata.description,
-    inLanguage: gallery.locale,
+    inLanguage: localeLanguageTag(gallery.locale),
     datePublished: gallery.publishedAt,
     url: absoluteUrl(path),
     publisher: {

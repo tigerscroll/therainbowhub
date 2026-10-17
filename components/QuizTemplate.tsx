@@ -2,6 +2,7 @@ import { QuizEngine } from "@/components/quiz/QuizEngine";
 import { getQuizStorageKey, PROGRESS_TTL_MS } from "@/components/quiz/progressStorage";
 import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
+import { localeLanguageTag } from "@/lib/localeConfig";
 import type { Quiz } from "@/lib/quizzes";
 import { getQuizRecommendations } from "@/lib/quizzes";
 import { absoluteUrl, getQuizPath } from "@/lib/seo";
@@ -25,7 +26,7 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
     "@type": "Quiz",
     name: quiz.title,
     description: quiz.summary,
-    inLanguage: locale,
+    inLanguage: localeLanguageTag(locale),
     url: absoluteUrl(getQuizPath(locale, quiz.slug)),
     publisher: {
       "@type": "Organization",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { SupportedLocale, Translations } from "@/lib/i18n";
+import { localeLanguageTag } from "@/lib/localeConfig";
 
 export type HeaderLanguageOption = {
   code: SupportedLocale;
@@ -59,9 +60,9 @@ export function HeaderChrome({ homePath, languageOptions, locale, translations }
                       <Link
                         aria-current={option.code === locale ? "page" : undefined}
                         href={option.href}
-                        hrefLang={option.code}
+                        hrefLang={localeLanguageTag(option.code)}
                         key={option.code}
-                        lang={option.code}
+                        lang={localeLanguageTag(option.code)}
                         prefetch={false}
                       >
                         <span aria-hidden="true">{option.flag}</span>
