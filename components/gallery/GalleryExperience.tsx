@@ -113,10 +113,13 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
   }
 
   if (phase === "landing") {
+    const landingTitle = gallery.landing.presentation === "overlay"
+      ? gallery.landing.popupTitle ?? gallery.landing.title
+      : gallery.landing.title;
     const landingClassName = [
       "gallery-article__landing",
-      gallery.landing.title.length > 58 ? "gallery-article__landing--long-title" : "",
-      gallery.slug === "perfectly-timed" ? "gallery-article__landing--positive-cta" : "",
+      landingTitle.length > 58 ? "gallery-article__landing--long-title" : "",
+      gallery.landing.ctaTone === "positive" || gallery.slug === "perfectly-timed" ? "gallery-article__landing--positive-cta" : "",
     ].filter(Boolean).join(" ");
     const landing = (
       <ExperienceLanding
@@ -133,7 +136,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
         onStart={start}
         showSocialProof={false}
         socialProofText=""
-        title={gallery.landing.title}
+        title={landingTitle}
       />
     );
 
@@ -156,7 +159,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
             </div>
           </article>
           <div
-            aria-label={gallery.landing.title}
+            aria-label={landingTitle}
             aria-modal="true"
             className="gallery-article__overlay-scrim"
             role="dialog"
@@ -224,6 +227,18 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
               {item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
             </section>
           ))}
+          {gallery.gallery.sources ? (
+            <section className="gallery-article__section gallery-article__sources" aria-labelledby="gallery-sources-title">
+              <h2 id="gallery-sources-title">{gallery.gallery.sources.title}</h2>
+              <ul>
+                {gallery.gallery.sources.links.map(link => (
+                  <li key={link.url}>
+                    <a data-google-interstitial="false" href={link.url} rel="noopener noreferrer" target="_blank">{link.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
         </div>
       </article>
     );

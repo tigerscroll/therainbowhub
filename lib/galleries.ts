@@ -3,6 +3,7 @@ import adultOnlyBeaches from "@/data/galleries/adult-only-beaches.json";
 import adultOnlyHotels from "@/data/galleries/adults-only-hotels.json";
 import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
 import hospiceNurses from "@/data/galleries/hospice-nurses.json";
+import mobilityScooter from "@/data/galleries/mobilityscooter.json";
 import nudeArt from "@/data/galleries/nude-art.json";
 import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
 import perfectlyTimedAr from "@/data/galleries/perfectly-timed.ar.json";
@@ -40,8 +41,10 @@ export type GalleryManifest = {
   landing: {
     adNote: string;
     cta: string;
+    ctaTone?: "positive";
     eyebrow: string;
     intro: string;
+    popupTitle?: string;
     presentation?: "overlay" | "page";
     title: string;
   };
@@ -57,6 +60,10 @@ export type GalleryManifest = {
     introduction: string[];
     nextLabel: string;
     restartLabel: string;
+    sources?: {
+      title: string;
+      links: { title: string; url: string }[];
+    };
   };
   items: GalleryItem[];
 };
@@ -73,7 +80,9 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.metadata.description === "string"
     && typeof manifest.landing?.title === "string"
     && typeof manifest.landing.intro === "string"
+    && (manifest.landing.popupTitle === undefined || (typeof manifest.landing.popupTitle === "string" && manifest.landing.popupTitle.trim().length > 0))
     && typeof manifest.landing.cta === "string"
+    && (manifest.landing.ctaTone === undefined || manifest.landing.ctaTone === "positive")
     && typeof manifest.landing.adNote === "string"
     && typeof manifest.landing.eyebrow === "string"
     && (manifest.landing.presentation === undefined || manifest.landing.presentation === "overlay" || manifest.landing.presentation === "page")
@@ -85,6 +94,17 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.gallery.completeTitle === "string"
     && typeof manifest.gallery.completeCopy === "string"
     && typeof manifest.gallery.restartLabel === "string"
+    && (manifest.gallery.sources === undefined || (
+      typeof manifest.gallery.sources.title === "string"
+      && manifest.gallery.sources.title.length > 0
+      && Array.isArray(manifest.gallery.sources.links)
+      && manifest.gallery.sources.links.length > 0
+      && manifest.gallery.sources.links.every(link => link
+        && typeof link.title === "string"
+        && link.title.length > 0
+        && typeof link.url === "string"
+        && /^https:\/\//.test(link.url))
+    ))
     && (manifest.gallery.continueLabel === undefined || typeof manifest.gallery.continueLabel === "string")
     && (manifest.gallery.flow === undefined || manifest.gallery.flow === "article" || manifest.gallery.flow === "gallery")
     && Array.isArray(manifest.gallery.introduction)
@@ -111,6 +131,7 @@ const galleryManifests = [
   adultOnlyHotels,
   adultOnlyParadise,
   hospiceNurses,
+  mobilityScooter,
   nudeArt,
   perfectlyTimed,
   perfectlyTimedAr,

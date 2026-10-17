@@ -152,15 +152,34 @@ if (!fs.existsSync(outputRoot)) {
       return manifest.routeSlug ?? manifest.slug;
     });
   const removedArticles = [...savedArticleSlugs, "cloudstorage", "monetize", "makemoney"];
+  const galleryRegistry = fs.readFileSync(path.join(root, "lib", "galleries.ts"), "utf8");
+  const registeredGalleryNames = new Set(
+    galleryRegistry.match(/const galleryManifests = \[([\s\S]*?)\]\.map/)?.[1].match(/\b\w+\b/g) ?? [],
+  );
+  const activeGalleryRoutes = new Set(
+    [...galleryRegistry.matchAll(/import (\w+) from "@\/data\/galleries\/([^"\n]+\.json)";/g)]
+      .filter(([, name]) => registeredGalleryNames.has(name))
+      .map(([, , filename]) => {
+        const manifest = JSON.parse(fs.readFileSync(path.join(root, "data", "galleries", filename), "utf8"));
+        return `${manifest.locale === "en" ? "" : `/${manifest.locale}`}/${manifest.slug}`;
+      }),
+  );
+  for (const galleryRoute of activeGalleryRoutes) {
+    if (!routeFile(galleryRoute)) addError(`Missing exported gallery route: ${galleryRoute}`);
+  }
   const sitemap = fs.readFileSync(path.join(outputRoot, "sitemap.xml"), "utf8");
   const sitemapPaths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
   for (const slug of removedArticles) {
     for (const prefix of ["", ...locales.map((locale) => `/${locale}`)]) {
       const articleRoute = `${prefix}/${slug}`;
-      if (routeFile(articleRoute)) addError(`Removed article page is still exported: ${articleRoute}`);
+      const restoredAsGallery = activeGalleryRoutes.has(articleRoute);
+      if (!restoredAsGallery && routeFile(articleRoute)) addError(`Removed article page is still exported: ${articleRoute}`);
       const artifactRoot = path.join(outputRoot, articleRoute.replace(/^\//, ""));
-      if (fs.existsSync(artifactRoot)) addError(`Removed article chapter or embed assets remain: ${articleRoute}`);
-      if (sitemapPaths.some((route) => route === articleRoute || route.startsWith(`${articleRoute}/`))) {
+      if (fs.existsSync(artifactRoot) && (!restoredAsGallery || fs.readdirSync(artifactRoot)
+        .some((file) => !/^__next\..+\.txt$/.test(file)))) {
+        addError(`Removed article chapter or embed assets remain: ${articleRoute}`);
+      }
+      if (sitemapPaths.some((route) => (!restoredAsGallery && route === articleRoute) || route.startsWith(`${articleRoute}/`))) {
         addError(`Removed article is still listed in the sitemap: ${articleRoute}`);
       }
     }

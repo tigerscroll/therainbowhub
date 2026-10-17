@@ -312,6 +312,11 @@
 .gallery-article__article-sections { display: grid; gap: clamp(38px, 7vw, 68px); }
 .gallery-article__section { padding-bottom: clamp(34px, 6vw, 58px); border-bottom: 1px solid #e5e7eb; }
 .gallery-article__section:last-child { padding-bottom: 0; border-bottom: 0; }
+.gallery-article__sources ul { margin: 0; padding-inline-start: 22px; }
+.gallery-article__sources li { margin-bottom: 14px; color: #374151; font-size: 17px; line-height: 1.65; }
+.gallery-article__sources a { color: #7b1829; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.gallery-article__sources a:hover { color: #5b1020; }
+.gallery-article__sources a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 .gallery-article__section h2 {
   margin: 0 0 20px;
   color: #111827;
