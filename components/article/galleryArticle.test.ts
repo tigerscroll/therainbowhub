@@ -1,13 +1,42 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { shouldShowArticlePopup } from "../gallery/galleryPopup.ts";
+import { runInNewContext } from "node:vm";
+import { getArticlePopupBootstrapScript, shouldShowArticlePopup } from "../gallery/galleryPopup.ts";
 
 test("article popups require fbclid as a query parameter, not another attribution value or URL text", () => {
   for (const search of ["?fbclid=abc", "?utm_source=facebook&fbclid=abc", "?fbclid=", "?fbclid"])
     assert.equal(shouldShowArticlePopup(search), true, search);
   for (const search of ["", "?utm_source=facebook", "?notfbclid=abc", "?FBCLID=abc", "?redirect=%3Ffbclid%3Dabc", "?utm_campaign=fbclid"])
     assert.equal(shouldShowArticlePopup(search), false, search);
+});
+
+test("article bootstrap selects the entry synchronously and respects rewarded unlocks and unavailable storage", () => {
+  for (const [search, savedUnlock, storageBlocked, expected] of [
+    ["?fbclid=abc", null, false, "popup"],
+    ["?fbclid=", null, false, "popup"],
+    ["?fbclid=abc", "1", false, "intro"],
+    ["?fbclid=abc", null, true, "popup"],
+    ["", null, false, "intro"],
+    ["?utm_source=facebook", null, true, "intro"],
+    ["?redirect=%3Ffbclid%3Dabc", null, false, "intro"],
+  ] as const) {
+    let entry = "";
+    runInNewContext(getArticlePopupBootstrapScript("entry-key"), {
+      URLSearchParams,
+      document: { currentScript: { parentElement: { setAttribute(name: string, value: string) {
+        assert.equal(name, "data-gallery-entry");
+        entry = value;
+      } } } },
+      window: { location: { search }, sessionStorage: { getItem(key: string) {
+        assert.equal(key, "entry-key");
+        if (storageBlocked) throw new Error("Storage blocked");
+        return savedUnlock;
+      } } },
+    });
+    assert.equal(entry, expected, `${search}, saved=${savedUnlock}, blocked=${storageBlocked}`);
+  }
+  assert.equal(getArticlePopupBootstrapScript("</script>").includes("</script>"), false);
 });
 
 test("nude art gallery is a complete image-free 85-story experience", () => {

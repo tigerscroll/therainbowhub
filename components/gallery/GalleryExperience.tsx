@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
-import { shouldShowArticlePopup } from "@/components/gallery/galleryPopup";
+import { getArticlePopupBootstrapScript, shouldShowArticlePopup } from "@/components/gallery/galleryPopup";
 import { mountQuizInterstitial } from "@/components/quiz/interstitialAds";
 import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
@@ -36,7 +36,7 @@ function getStateFromUrl(itemCount: number, articleFlow: boolean): { index: numb
 export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: GalleryManifest; loadingLabel: string; path: string }) {
   const articleFlow = gallery.gallery.flow === "article";
   const overlayEntry = gallery.landing.presentation === "overlay";
-  // Static HTML must not flash a popup before the URL can be checked in the browser.
+  // The parser-time bootstrap selects the visible entry before React hydrates.
   const [phase, setPhase] = useState<GalleryPhase>(articleFlow && overlayEntry ? "introduction" : "landing");
   const [index, setIndex] = useState(0);
   const [hydrated, setHydrated] = useState(false);
@@ -67,14 +67,14 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     setPhase(nextState.phase);
   }, [articleFlow, articleUnlockKey, gallery.items.length, overlayEntry, unlockKey]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHydrated(true);
     restoreFromUrl();
     window.addEventListener("popstate", restoreFromUrl);
     return () => window.removeEventListener("popstate", restoreFromUrl);
   }, [restoreFromUrl]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (phase !== "landing" || gallery.landing.presentation !== "overlay") return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -117,7 +117,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     }, { scrollAfter: false });
   }
 
-  if (phase === "landing") {
+  function renderLanding() {
     const landingTitle = gallery.landing.presentation === "overlay"
       ? gallery.landing.popupTitle ?? gallery.landing.title
       : gallery.landing.title;
@@ -180,7 +180,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     );
   }
 
-  if (phase === "introduction") {
+  function renderIntroduction() {
     return (
       <article className="gallery-article__introduction quiz-engine__continuous-shell">
         <header className="gallery-article__article-header">
@@ -202,6 +202,23 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
       </article>
     );
   }
+
+  if (!hydrated && articleFlow && overlayEntry) {
+    return (
+      <div className="gallery-article__entry-preview" data-gallery-entry="intro" suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{ __html: getArticlePopupBootstrapScript(unlockKey) }}
+          suppressHydrationWarning
+          type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
+        />
+        <div className="gallery-article__entry-popup">{renderLanding()}</div>
+        <div className="gallery-article__entry-introduction">{renderIntroduction()}</div>
+      </div>
+    );
+  }
+
+  if (phase === "landing") return renderLanding();
+  if (phase === "introduction") return renderIntroduction();
 
   if (phase === "complete") {
     return (
