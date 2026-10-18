@@ -46,7 +46,12 @@ test("nude art gallery is a complete image-free 85-story experience", () => {
   assert.equal(gallery.landing.eyebrow, "");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
-  assert.equal(gallery.landing.cta, "Start");
+  assert.equal(gallery.landing.cta, "Continue");
+  assert.equal(gallery.landing.ctaTone, "positive");
+  assert.equal(gallery.landing.intro, "");
+  assert.equal(gallery.landing.popupTitle, "Adults Only: This Nude Art Caused Controversy");
+  assert.equal(gallery.landing.title, "Iconic Nude Art That Sparked Controversy");
+  assert.equal(gallery.metadata.title, gallery.landing.title);
   assert.match(gallery.landing.adNote, /short ad/i);
   assert.equal(new Set(gallery.items.map(item => item.id)).size, 85);
   assert.equal(JSON.stringify(gallery).includes('"image"'), false);
