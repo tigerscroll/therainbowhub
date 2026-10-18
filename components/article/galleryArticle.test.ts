@@ -41,15 +41,15 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
 
 test("perfectly timed popup headlines are localized separately from the article and metadata titles", () => {
   const headlines = {
-    en: "Adults Only: You Won't Believe What You're About To See",
-    ar: "للبالغين فقط: لن تصدق ما أنت على وشك رؤيته",
-    de: "Nur für Erwachsene: Du wirst nicht glauben, was du gleich siehst",
-    es: "Solo para adultos: no creerás lo que estás a punto de ver",
-    fr: "Réservé aux adultes : vous n’allez pas croire ce que vous allez voir",
-    gr: "Μόνο για ενηλίκους: Δεν θα πιστέψεις αυτό που θα δεις",
-    it: "Solo per adulti: non crederai a ciò che stai per vedere",
-    nl: "Alleen voor volwassenen: je gelooft niet wat je zo gaat zien",
-    pt: "Só para adultos: nem vai acreditar no que está prestes a ver",
+    en: "Adults Only: These Photos Aren’t What They Seem",
+    ar: "للبالغين فقط: هذه الصور ليست كما تبدو",
+    de: "Nur für Erwachsene: Bei diesen Fotos trügt der erste Eindruck",
+    es: "Solo para adultos: estas fotos no son lo que parecen",
+    fr: "Réservé aux adultes : ces photos ne sont pas ce que vous croyez",
+    gr: "Μόνο για ενηλίκους: Αυτές οι φωτογραφίες δεν είναι αυτό που νομίζεις",
+    it: "Solo per adulti: queste foto non sono quello che sembrano",
+    nl: "Alleen voor volwassenen: deze foto's zijn niet wat ze lijken",
+    pt: "Só para adultos: estas fotos não são o que parecem",
   };
   for (const [locale, headline] of Object.entries(headlines)) {
     const suffix = locale === "en" ? "" : `.${locale}`;
