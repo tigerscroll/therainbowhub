@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
+import { shouldShowArticlePopup } from "@/components/gallery/galleryPopup";
 import { mountQuizInterstitial } from "@/components/quiz/interstitialAds";
 import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
@@ -33,17 +34,21 @@ function getStateFromUrl(itemCount: number, articleFlow: boolean): { index: numb
 }
 
 export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: GalleryManifest; loadingLabel: string; path: string }) {
-  const [phase, setPhase] = useState<GalleryPhase>("landing");
+  const articleFlow = gallery.gallery.flow === "article";
+  const overlayEntry = gallery.landing.presentation === "overlay";
+  // Static HTML must not flash a popup before the URL can be checked in the browser.
+  const [phase, setPhase] = useState<GalleryPhase>(articleFlow && overlayEntry ? "introduction" : "landing");
   const [index, setIndex] = useState(0);
   const [hydrated, setHydrated] = useState(false);
   const { busy, runGate } = useRewardedGate({ attempts: 3 });
   const unlockKey = `rainbowhub:gallery-unlock:v1:${gallery.slug}`;
   const articleUnlockKey = `rainbowhub:article-unlock:v1:${gallery.slug}`;
-  const articleFlow = gallery.gallery.flow === "article";
 
   const restoreFromUrl = useCallback(() => {
-    let unlocked = false;
-    try { unlocked = window.sessionStorage.getItem(unlockKey) === "1"; } catch { /* Keep the rewarded entry gate. */ }
+    let unlocked = overlayEntry && !shouldShowArticlePopup(window.location.search);
+    if (!unlocked) {
+      try { unlocked = window.sessionStorage.getItem(unlockKey) === "1"; } catch { /* Keep the rewarded entry gate. */ }
+    }
     if (!unlocked) {
       setPhase("landing");
       return;
@@ -60,7 +65,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     }
     setIndex(nextState.index);
     setPhase(nextState.phase);
-  }, [articleFlow, articleUnlockKey, gallery.items.length, unlockKey]);
+  }, [articleFlow, articleUnlockKey, gallery.items.length, overlayEntry, unlockKey]);
 
   useEffect(() => {
     setHydrated(true);
@@ -188,7 +193,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
         <button
           className="gallery-article__continue"
           data-google-interstitial="false"
-          disabled={busy}
+          disabled={busy || !hydrated}
           onClick={continueArticle}
           type="button"
         >

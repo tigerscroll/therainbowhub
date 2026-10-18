@@ -1,6 +1,14 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
+import { shouldShowArticlePopup } from "../gallery/galleryPopup.ts";
+
+test("article popups require fbclid as a query parameter, not another attribution value or URL text", () => {
+  for (const search of ["?fbclid=abc", "?utm_source=facebook&fbclid=abc", "?fbclid=", "?fbclid"])
+    assert.equal(shouldShowArticlePopup(search), true, search);
+  for (const search of ["", "?utm_source=facebook", "?notfbclid=abc", "?FBCLID=abc", "?redirect=%3Ffbclid%3Dabc", "?utm_campaign=fbclid"])
+    assert.equal(shouldShowArticlePopup(search), false, search);
+});
 
 test("nude art gallery is a complete image-free 85-story experience", () => {
   const gallery = JSON.parse(fs.readFileSync("data/galleries/nude-art.json", "utf8"));
