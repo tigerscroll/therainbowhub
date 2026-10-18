@@ -30,7 +30,8 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(gallery.landing.presentation, "overlay");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
-  assert.equal(gallery.landing.title, "Sports Photos That Look Filthy At First Glance");
+  assert.equal(gallery.landing.title, "Photos That Will Make You Look Twice");
+  assert.equal(gallery.metadata.title, gallery.landing.title);
   assert.equal(gallery.landing.intro, "");
   assert.equal(gallery.landing.cta, "Continue");
   assert.match(gallery.landing.adNote, /short ad/i);
@@ -38,20 +39,42 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(JSON.stringify(gallery).includes('"image"'), false);
 });
 
+test("perfectly timed popup headlines are localized separately from the article and metadata titles", () => {
+  const headlines = {
+    en: "Adults Only: You Won't Believe What You're About To See",
+    ar: "للبالغين فقط: لن تصدق ما أنت على وشك رؤيته",
+    de: "Nur für Erwachsene: Du wirst nicht glauben, was du gleich siehst",
+    es: "Solo para adultos: no creerás lo que estás a punto de ver",
+    fr: "Réservé aux adultes : vous n’allez pas croire ce que vous allez voir",
+    gr: "Μόνο για ενηλίκους: Δεν θα πιστέψεις αυτό που θα δεις",
+    it: "Solo per adulti: non crederai a ciò che stai per vedere",
+    nl: "Alleen voor volwassenen: je gelooft niet wat je zo gaat zien",
+    pt: "Só para adultos: nem vai acreditar no que está prestes a ver",
+  };
+  for (const [locale, headline] of Object.entries(headlines)) {
+    const suffix = locale === "en" ? "" : `.${locale}`;
+    const gallery = JSON.parse(fs.readFileSync(`data/galleries/perfectly-timed${suffix}.json`, "utf8"));
+    assert.equal(gallery.landing.popupTitle, headline, locale);
+    assert.notEqual(gallery.landing.popupTitle, gallery.landing.title, locale);
+    assert.equal(gallery.metadata.title, gallery.landing.title, locale);
+  }
+});
+
 for (const [locale, expectedTitle, expectedCta] of [
-  ["ar", "صور رياضية تبدو جريئة للوهلة الأولى", "متابعة"],
-  ["de", "Sportfotos, die auf den ersten Blick anzüglich wirken", "Weiter"],
-  ["gr", "Αθλητικές φωτογραφίες που με την πρώτη ματιά φαίνονται πονηρές", "Συνέχεια"],
-  ["es", "Fotos deportivas que parecen subidas de tono a primera vista", "Continuar"],
-  ["fr", "Des photos de sport qui paraissent osées au premier regard", "Continuer"],
-  ["it", "Foto sportive che a prima vista sembrano piccanti", "Continua"],
-  ["nl", "Sportfoto's die op het eerste gezicht pikant lijken", "Doorgaan"],
-  ["pt", "Fotos de atletas que parecem atrevidas à primeira vista", "Continuar"],
+  ["ar", "صور ستجعلك تلقي نظرة ثانية", "متابعة"],
+  ["de", "Fotos, bei denen man zweimal hinschaut", "Weiter"],
+  ["gr", "Φωτογραφίες που θα σε κάνουν να κοιτάξεις δεύτερη φορά", "Συνέχεια"],
+  ["es", "Fotos que te harán mirar dos veces", "Continuar"],
+  ["fr", "Des photos qui vous feront y regarder à deux fois", "Continuer"],
+  ["it", "Foto che ti faranno guardare due volte", "Continua"],
+  ["nl", "Foto's waar je twee keer naar kijkt", "Doorgaan"],
+  ["pt", "Fotos que fazem olhar duas vezes", "Continuar"],
 ]) test(`perfectly timed ${locale} gallery matches the complete English article structure`, () => {
   const english = JSON.parse(fs.readFileSync("data/galleries/perfectly-timed.json", "utf8"));
   const localized = JSON.parse(fs.readFileSync(`data/galleries/perfectly-timed.${locale}.json`, "utf8"));
   assert.equal(localized.locale, locale);
   assert.equal(localized.landing.title, expectedTitle);
+  assert.equal(localized.metadata.title, expectedTitle);
   assert.equal(localized.landing.cta, expectedCta);
   assert.equal(localized.landing.presentation, "overlay");
   assert.equal(localized.landing.intro, "");
