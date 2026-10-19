@@ -33,30 +33,33 @@ try {
         }
         await route.continue();
       });
-      await context.addInitScript(({ slug, unlocked }) => {
+      const contentSelector = gallery.gallery.flow === 'article'
+        ? '.gallery-article__introduction'
+        : '.gallery-article__story:not(.gallery-article__story--preview)';
+      await context.addInitScript(({ slug, unlocked, contentSelector }) => {
         if (unlocked) sessionStorage.setItem(`rainbowhub:gallery-unlock:v1:${slug}`, '1');
         window.articleEntryFrames = [];
         const visible = selector => [...document.querySelectorAll(selector)].some(node => node.getClientRects().length > 0);
         const record = () => {
-          if (document.querySelector('.gallery-article__entry-preview, .gallery-article__overlay-scene, .gallery-article__introduction')) {
+          if (document.querySelector('.gallery-article__entry-preview, .gallery-article__overlay-scene') || document.querySelector(contentSelector)) {
             window.articleEntryFrames.push({
               popup: visible('[role="dialog"]'),
-              intro: visible('.gallery-article__introduction'),
+              intro: visible(contentSelector),
             });
           }
           requestAnimationFrame(record);
         };
         requestAnimationFrame(record);
-      }, { slug: gallery.slug, unlocked: scenario === 'unlocked' });
+      }, { slug: gallery.slug, unlocked: scenario === 'unlocked', contentSelector });
       const path = `${gallery.locale === 'en' ? '' : `/${gallery.locale}`}/${gallery.slug}`;
       const query = scenario === 'direct' ? '?utm_source=facebook' : '?fbclid=paint-test';
       const popupExpected = scenario === 'fbclid';
       await page.goto(`${base}${path}${query}`, { waitUntil: 'commit' });
       await page.locator(`.gallery-article__entry-preview[data-gallery-entry="${popupExpected ? 'popup' : 'intro'}"]`).waitFor();
-      const visibleSelector = popupExpected ? '[role="dialog"]' : '.gallery-article__introduction';
+      const visibleSelector = popupExpected ? '[role="dialog"]' : contentSelector;
       await page.locator(visibleSelector).waitFor();
       assert.equal(await page.getByRole('dialog').isVisible(), popupExpected, `${path} ${scenario} before hydration`);
-      assert.equal(await page.locator('.gallery-article__introduction').isVisible(), !popupExpected);
+      assert.equal(await page.locator(contentSelector).isVisible(), !popupExpected);
       assert(heldScripts > 0, 'React chunks must actually be delayed');
       await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       releaseScripts();

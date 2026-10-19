@@ -144,7 +144,14 @@ for (const [fileName, slug, title, itemCount] of additionalAdultTravelGalleries)
     assert.equal(gallery.slug, slug);
     assert.equal(gallery.landing.title, title);
     assert.equal(gallery.items.length, itemCount);
-    assert.equal(gallery.landing.cta, "Start");
+    assert.equal(gallery.landing.cta, slug === "wild-resorts" ? "Continue" : "Start");
+    if (slug === "wild-resorts") {
+      assert.equal(gallery.landing.presentation, "overlay");
+      assert.equal(gallery.landing.popupTitle, "Adults Only: The Resorts Get Wild After Dark");
+      assert.equal(gallery.landing.ctaTone, "positive");
+      assert.equal(gallery.landing.intro, "");
+      assert.notEqual(gallery.gallery.flow, "article", "keep story-by-story navigation unchanged");
+    }
     assert.match(gallery.landing.adNote, /short ad/i);
     assert.equal(new Set(gallery.items.map(item => item.id)).size, itemCount);
     assert.equal(JSON.stringify(gallery).includes('"image"'), false);

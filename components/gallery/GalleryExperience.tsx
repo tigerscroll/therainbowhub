@@ -203,7 +203,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     );
   }
 
-  if (!hydrated && articleFlow && overlayEntry) {
+  if (!hydrated && overlayEntry) {
     return (
       <div className="gallery-article__entry-preview" data-gallery-entry="intro" suppressHydrationWarning>
         <script
@@ -212,7 +212,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
           type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
         />
         <div className="gallery-article__entry-popup">{renderLanding()}</div>
-        <div className="gallery-article__entry-introduction">{renderIntroduction()}</div>
+        <div className="gallery-article__entry-introduction">{articleFlow ? renderIntroduction() : renderGalleryStory()}</div>
       </div>
     );
   }
@@ -266,45 +266,49 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     );
   }
 
-  const item = gallery.items[index];
-  const nextStory = index + 1 < gallery.items.length ? index + 2 : "complete";
-  const nextHref = getDestination(path, nextStory).toString();
-  return (
-    <article aria-labelledby="gallery-story-title" className="gallery-article__story quiz-engine__continuous-shell" key={item.id}>
-      <div className="gallery-article__archive-card">
-        <small>{gallery.gallery.cardEyebrow}</small>
-        <b>{String(item.number).padStart(2, "0")}</b>
-        <span>{gallery.gallery.cardFooter}</span>
-      </div>
+  return renderGalleryStory();
 
-      <div className="gallery-article__copy">
-        <h1 id="gallery-story-title">{item.title}</h1>
-        {item.image ? (
-          <figure className="gallery-article__image">
-            <img
-              alt={item.image.alt}
-              decoding="async"
-              loading={index === 0 ? "eager" : "lazy"}
-              src={item.image.src}
-            />
-          </figure>
-        ) : null}
-        {item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
-      </div>
+  function renderGalleryStory() {
+    const item = gallery.items[index];
+    const nextStory = index + 1 < gallery.items.length ? index + 2 : "complete";
+    const nextHref = hydrated ? getDestination(path, nextStory).toString() : `${path}?story=${nextStory}`;
+    return (
+      <article aria-labelledby="gallery-story-title" className="gallery-article__story quiz-engine__continuous-shell" key={item.id}>
+        <div className="gallery-article__archive-card">
+          <small>{gallery.gallery.cardEyebrow}</small>
+          <b>{String(item.number).padStart(2, "0")}</b>
+          <span>{gallery.gallery.cardFooter}</span>
+        </div>
 
-      <nav aria-label="Gallery navigation" className="gallery-article__navigation">
-        <a
-          className="gallery-article__primary"
-          data-google-interstitial="true"
-          href={nextHref}
-          onClick={(event) => {
-            event.preventDefault();
-            moveTo(nextStory, true);
-          }}
-        >
-          {nextStory === "complete" ? gallery.gallery.finishLabel : gallery.gallery.nextLabel} <span aria-hidden="true">→</span>
-        </a>
-      </nav>
-    </article>
-  );
+        <div className="gallery-article__copy">
+          <h1 id="gallery-story-title">{item.title}</h1>
+          {item.image ? (
+            <figure className="gallery-article__image">
+              <img
+                alt={item.image.alt}
+                decoding="async"
+                loading={index === 0 ? "eager" : "lazy"}
+                src={item.image.src}
+              />
+            </figure>
+          ) : null}
+          {item.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+
+        <nav aria-label="Gallery navigation" className="gallery-article__navigation">
+          <a
+            className="gallery-article__primary"
+            data-google-interstitial="true"
+            href={nextHref}
+            onClick={(event) => {
+              event.preventDefault();
+              moveTo(nextStory, true);
+            }}
+          >
+            {nextStory === "complete" ? gallery.gallery.finishLabel : gallery.gallery.nextLabel} <span aria-hidden="true">→</span>
+          </a>
+        </nav>
+      </article>
+    );
+  }
 }
