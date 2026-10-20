@@ -15,6 +15,8 @@ import perfectlyTimedIt from "@/data/galleries/perfectly-timed.it.json";
 import perfectlyTimedNl from "@/data/galleries/perfectly-timed.nl.json";
 import perfectlyTimedPt from "@/data/galleries/perfectly-timed.pt.json";
 import wildResorts from "@/data/galleries/wild-resorts.json";
+import wildResortsDe from "@/data/galleries/wild-resorts.de.json";
+import wildResortsFr from "@/data/galleries/wild-resorts.fr.json";
 import { isSupportedLocale, type SupportedLocale } from "@/lib/localeConfig";
 import type { QuizTheme } from "@/lib/quizzes";
 
@@ -143,6 +145,8 @@ const galleryManifests = [
   perfectlyTimedNl,
   perfectlyTimedPt,
   wildResorts,
+  wildResortsDe,
+  wildResortsFr,
 ].map((value) => {
   if (!isGalleryManifest(value)) throw new Error("Invalid gallery manifest.");
   return value;

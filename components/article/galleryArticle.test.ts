@@ -159,6 +159,51 @@ for (const [fileName, slug, title, itemCount] of additionalAdultTravelGalleries)
   });
 }
 
+for (const [locale, popupTitle, cta, continueLabel] of [
+  ["de", "Nur für Erwachsene: In diesen Resorts wird es nachts wild", "Weiter", "Weiterlesen"],
+  ["fr", "Réservé aux adultes : dans ces resorts, la nuit devient folle", "Continuer", "Lire la suite"],
+]) test(`wild resorts ${locale} translates the entire article while preserving its rewarded flow`, () => {
+  const english = JSON.parse(fs.readFileSync("data/galleries/wild-resorts.json", "utf8"));
+  const localized = JSON.parse(fs.readFileSync(`data/galleries/wild-resorts.${locale}.json`, "utf8"));
+  function structure(value: unknown): unknown {
+    if (Array.isArray(value)) return value.map(structure);
+    if (value !== null && typeof value === "object")
+      return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, structure(item)]));
+    return typeof value;
+  }
+  assert.deepEqual(structure(localized), structure(english));
+  assert.equal(localized.locale, locale);
+  assert.equal(localized.slug, english.slug);
+  assert.equal(localized.publishedAt, english.publishedAt);
+  assert.equal(localized.landing.presentation, "overlay");
+  assert.equal(localized.landing.popupTitle, popupTitle);
+  assert.equal(localized.landing.cta, cta);
+  assert.equal(localized.landing.ctaTone, english.landing.ctaTone);
+  assert.equal(localized.landing.intro, "");
+  assert.equal(localized.metadata.title, localized.landing.title);
+  assert.notEqual(localized.metadata.title, english.metadata.title);
+  assert.notEqual(localized.metadata.description, english.metadata.description);
+  assert.equal(localized.gallery.flow, "article");
+  assert.equal(localized.gallery.continueLabel, continueLabel);
+  for (const key of ["cardEyebrow", "cardFooter", "nextLabel", "finishLabel", "completeEyebrow", "completeTitle", "completeCopy", "restartLabel"]) {
+    assert(localized.gallery[key].trim().length > 0, key);
+    assert.notEqual(localized.gallery[key], english.gallery[key], key);
+  }
+  assert.equal(localized.items.length, 53);
+  assert.deepEqual(localized.items.map(item => item.id), english.items.map(item => item.id));
+  assert.deepEqual(localized.items.map(item => item.number), english.items.map(item => item.number));
+  assert.equal(localized.items.reduce((sum, item) => sum + item.paragraphs.length, 0), 159);
+  for (const [index, item] of localized.items.entries()) {
+    assert(item.title.trim().length > 0);
+    assert.notEqual(item.title, english.items[index].title, item.id);
+    for (const [paragraphIndex, paragraph] of item.paragraphs.entries()) {
+      assert(paragraph.trim().length > 0);
+      assert.notEqual(paragraph, english.items[index].paragraphs[paragraphIndex], `${item.id} paragraph ${paragraphIndex}`);
+    }
+  }
+  assert.notEqual(localized.gallery.introduction[0], english.gallery.introduction[0]);
+});
+
 test("nurse gallery preserves all 70 supplied stories and matching CDN images", () => {
   const gallery = JSON.parse(fs.readFileSync("data/galleries/hospice-nurses.json", "utf8"));
   assert.equal(gallery.slug, "nurse");
