@@ -78,6 +78,7 @@ try {
       assert.equal(await question.getAttribute('data-popup-question-id'), selection.questionIds[index]);
       assert.equal(selection.questionIds[index], ['gender', 'self-rated-smarts'][index]);
       assert.equal(await question.locator('button').count(), 3, 'each follow-up question has three answers');
+      await page.mouse.move(0, 0);
       assert.equal(await question.locator('button').first().evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(220, 38, 38)', 'answers match first popup CTA');
       assert.doesNotMatch(await dialog.innerText(), /article|introduction/i);
       const option = question.getByRole('button', { name: 'Prefer not to say', exact: true });
