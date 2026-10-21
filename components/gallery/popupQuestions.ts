@@ -6,6 +6,7 @@ export type PopupQuestion = {
 
 export type ArticlePopupQuestions = {
   questionCount: number;
+  requiredQuestionIds?: string[];
   title: string;
   instruction: string;
   progressLabel: string;
@@ -30,6 +31,9 @@ export function isArticlePopupQuestions(value: unknown): value is ArticlePopupQu
     || ![config.title, config.instruction, config.progressLabel, config.readyTitle, config.readyCopy, config.cta, config.adNote].every(nonempty)
     || !config.progressLabel.includes("{current}") || !config.progressLabel.includes("{total}")
     || !Array.isArray(config.questions) || config.questions.length < config.questionCount) return false;
+  const required = config.requiredQuestionIds ?? [];
+  if (!Array.isArray(required) || required.length > config.questionCount || new Set(required).size !== required.length
+    || !required.every(id => nonempty(id) && config.questions.some(question => question?.id === id))) return false;
   return config.questions.every(question => question && nonempty(question.id) && nonempty(question.prompt)
     && Array.isArray(question.choices) && question.choices.length >= 2 && question.choices.length <= 4
     && question.choices.every(choice => choice && nonempty(choice.id) && nonempty(choice.label))
@@ -38,12 +42,13 @@ export function isArticlePopupQuestions(value: unknown): value is ArticlePopupQu
 }
 
 export function createPopupQuestionProgress(config: ArticlePopupQuestions, random = Math.random): PopupQuestionProgress {
-  const ids = config.questions.map(question => question.id);
+  const required = config.requiredQuestionIds ?? [];
+  const ids = config.questions.map(question => question.id).filter(id => !required.includes(id));
   for (let index = ids.length - 1; index > 0; index--) {
     const other = Math.floor(random() * (index + 1));
     [ids[index], ids[other]] = [ids[other], ids[index]];
   }
-  return { questionIds: ids.slice(0, config.questionCount), answers: {} };
+  return { questionIds: [...required, ...ids.slice(0, config.questionCount - required.length)], answers: {} };
 }
 
 export function isPopupQuestionProgress(config: ArticlePopupQuestions, value: unknown): value is PopupQuestionProgress {
@@ -52,6 +57,7 @@ export function isPopupQuestionProgress(config: ArticlePopupQuestions, value: un
   if (!Array.isArray(progress.questionIds) || progress.questionIds.length !== config.questionCount
     || new Set(progress.questionIds).size !== config.questionCount
     || !progress.answers || typeof progress.answers !== "object" || Array.isArray(progress.answers)) return false;
+  if (!(config.requiredQuestionIds ?? []).every((id, index) => progress.questionIds[index] === id)) return false;
   let unanswered = false;
   for (const id of progress.questionIds) {
     const question = config.questions.find(item => item.id === id);

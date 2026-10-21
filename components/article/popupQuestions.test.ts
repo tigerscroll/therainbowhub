@@ -8,7 +8,7 @@ import { getArticlePopupBootstrapScript } from "../gallery/galleryPopup.ts";
 const gallery = JSON.parse(fs.readFileSync("data/galleries/memory-test.json", "utf8"));
 const config = gallery.landing.followUpQuestions;
 
-test("only memory-test opts into the five-question popup; questions are generic non-scored choices", () => {
+test("only memory-test opts into five personal questions, with optional demographic answers and no scoring", () => {
   assert(isArticlePopupQuestions(config));
   assert.equal(config.questionCount, 5);
   assert.equal(config.questions.length, 10);
@@ -16,7 +16,14 @@ test("only memory-test opts into the five-question popup; questions are generic 
     const value = JSON.parse(fs.readFileSync(`data/galleries/${filename}`, "utf8"));
     if (value.slug !== "memory-test") assert.equal(value.landing.followUpQuestions, undefined, filename);
   }
-  assert.match(config.instruction, /no right or wrong answers/);
+  assert.match(config.instruction, /Personal questions are optional/);
+  assert.deepEqual(config.requiredQuestionIds, ["gender", "self-rated-smarts"]);
+  assert.equal(config.readyTitle, "Your Quiz Is Ready");
+  assert.equal(config.cta, gallery.landing.cta);
+  assert.doesNotMatch(JSON.stringify(config), /article|introduction/i);
+  for (const id of config.requiredQuestionIds) {
+    assert(config.questions.find(question => question.id === id).choices.some(choice => choice.id === "skip"));
+  }
   assert.doesNotMatch(JSON.stringify(config), /correctAnswer|score|email|diagnos/i);
 });
 
@@ -28,6 +35,8 @@ test("popup configuration rejects invalid counts, duplicate IDs and incomplete U
   assert.equal(isArticlePopupQuestions(duplicateAnswers), false);
   assert.equal(isArticlePopupQuestions({ ...config, readyTitle: "" }), false);
   assert.equal(isArticlePopupQuestions({ ...config, progressLabel: "Questions" }), false);
+  assert.equal(isArticlePopupQuestions({ ...config, requiredQuestionIds: ["unknown"] }), false);
+  assert.equal(isArticlePopupQuestions({ ...config, requiredQuestionIds: ["gender", "gender"] }), false);
 });
 
 test("random selection picks exactly five distinct questions without mutating the bank", () => {
@@ -39,6 +48,7 @@ test("random selection picks exactly five distinct questions without mutating th
     const progress = createPopupQuestionProgress(config);
     assert.equal(progress.questionIds.length, 5);
     assert.equal(new Set(progress.questionIds).size, 5);
+    assert.deepEqual(progress.questionIds.slice(0, 2), config.requiredQuestionIds);
     assert(isPopupQuestionProgress(config, progress));
     assert.equal(Object.keys(progress.answers).length, 0);
   }

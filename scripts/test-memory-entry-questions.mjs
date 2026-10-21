@@ -76,7 +76,10 @@ try {
     assert.equal(new Set(selection.questionIds).size, 5);
     for (let index = 0; index < 2; index++) {
       assert.equal(await question.getAttribute('data-popup-question-id'), selection.questionIds[index]);
-      const option = question.locator('button').first();
+      assert.equal(selection.questionIds[index], ['gender', 'self-rated-smarts'][index]);
+      assert.equal(await question.locator('button').first().evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(220, 38, 38)', 'answers match first popup CTA');
+      assert.doesNotMatch(await dialog.innerText(), /article|introduction/i);
+      const option = question.getByRole('button', { name: 'Prefer not to say', exact: true });
       const box = await option.boundingBox();
       assert(box.x >= 0 && box.x + box.width <= width && box.y + box.height <= height, 'question options visible');
       const lastBox = await question.locator('button').last().boundingBox();
@@ -84,6 +87,7 @@ try {
       await option.click();
     }
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'answers do not request ads');
+    assert.deepEqual((await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), progressKey)).answers, { gender: 'skip', 'self-rated-smarts': 'skip' });
     if (width === 390) await page.screenshot({ path: '/tmp/memory-entry-questions.png' });
     await page.reload();
     await question.waitFor();
@@ -95,6 +99,8 @@ try {
       await question.locator('button').first().click();
     }
     await dialog.getByRole('heading', { name: config.readyTitle }).waitFor();
+    assert.equal(config.readyTitle, 'Your Quiz Is Ready');
+    assert.doesNotMatch(await dialog.innerText(), /article|introduction/i);
     assert.equal(await page.locator('.gallery-article__introduction').count(), 0);
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'extra reward waits for consent');
     assert.equal((await dialog.locator('.quiz-engine__ad-note').innerText()).replace(/^✓\s*/, ''), config.adNote);

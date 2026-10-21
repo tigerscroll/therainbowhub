@@ -86,7 +86,7 @@ test("memory-test is an English article with the requested Start popup and an ex
   assert.equal(gallery.landing.intro, "");
   assert.equal(gallery.landing.followUpQuestions.questionCount, 5);
   assert.equal(gallery.landing.followUpQuestions.questions.length, 10);
-  assert.equal(gallery.landing.followUpQuestions.cta, "Continue");
+  assert.equal(gallery.landing.followUpQuestions.cta, "Start");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
   assert.equal(gallery.items.length, 20);

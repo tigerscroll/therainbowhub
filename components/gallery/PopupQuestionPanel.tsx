@@ -39,9 +39,8 @@ export function PopupQuestionPanel({ config, progress, busy, loadingLabel, class
 
   const label = config.progressLabel.replace("{current}", String(answered + 1)).replace("{total}", String(config.questionCount));
   return (
-    <section className={`${className} gallery-article__landing--questions`} data-popup-question-id={question.id}>
+    <section aria-label={config.title} className={`${className} gallery-article__landing--questions`} data-popup-question-id={question.id}>
       <div className="quiz-engine__landing-copy">
-        <p className="gallery-article__question-kicker">{config.title}</p>
         <p aria-live="polite" className="gallery-article__question-progress">{label}</p>
         <div aria-label={label} aria-valuemax={config.questionCount} aria-valuemin={0} aria-valuenow={answered}
           className="gallery-article__question-track" role="progressbar">
@@ -51,7 +50,7 @@ export function PopupQuestionPanel({ config, progress, busy, loadingLabel, class
         <p className="gallery-article__question-instruction">{config.instruction}</p>
         <div className="gallery-article__question-answers">
           {question.choices.map(choice => (
-            <button className="gallery-article__question-answer" data-google-interstitial="false" disabled={busy}
+            <button className="quiz-engine__primary gallery-article__question-answer" data-google-interstitial="false" disabled={busy}
               key={`${question.id}:${choice.id}`} onClick={() => onAnswer(question.id, choice.id)} type="button">
               {choice.label}
             </button>
