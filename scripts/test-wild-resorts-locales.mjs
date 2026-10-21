@@ -69,7 +69,7 @@ try {
       assert.equal(await page.evaluate(() => window.galleryTest.requests.length), 0, 'no preload');
       await button.click();
       await page.waitForFunction(() => window.galleryTest.active !== null);
-      assert((await button.innerText()).includes(translations.ad.loading));
+      assert((await dialog.locator('button').innerText()).includes(translations.ad.loading));
       await page.evaluate(() => window.galleryTest.grant());
       const intro = page.locator('.gallery-article__introduction');
       await intro.waitFor();

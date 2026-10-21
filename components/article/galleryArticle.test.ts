@@ -73,6 +73,40 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(JSON.stringify(gallery).includes('"image"'), false);
 });
 
+test("memory-test is an English article with the requested popup and two rewarded gates", () => {
+  const gallery = JSON.parse(fs.readFileSync("data/galleries/memory-test.json", "utf8"));
+  assert.equal(gallery.slug, "memory-test");
+  assert.equal(gallery.locale, "en");
+  assert.equal(gallery.metadata.title, "Ways To Check How Good Your Memory Is");
+  assert.equal(gallery.landing.title, gallery.metadata.title);
+  assert.equal(gallery.landing.popupTitle, "Most Adults Cannot Pass This Test");
+  assert.equal(gallery.landing.presentation, "overlay");
+  assert.equal(gallery.landing.cta, "Continue");
+  assert.equal(gallery.landing.ctaTone, "positive");
+  assert.equal(gallery.landing.intro, "");
+  assert.equal(gallery.gallery.flow, "article");
+  assert.equal(gallery.gallery.continueLabel, "Continue Reading");
+  assert.equal(gallery.items.length, 20);
+  assert.equal(new Set(gallery.items.map(item => item.id)).size, 20);
+  assert.deepEqual(gallery.items.map(item => item.number), Array.from({ length: 20 }, (_, index) => index + 1));
+  assert(gallery.items.every(item => item.title.trim() && item.paragraphs.length >= 2 && item.paragraphs.every(paragraph => paragraph.trim())));
+  assert.equal(JSON.stringify(gallery).includes('"image"'), false);
+  assert.match(gallery.gallery.introduction[1], /not a medical assessment/);
+  assert.match(gallery.items[16].paragraphs[1], /no validated pass mark/);
+  assert.equal(gallery.gallery.sources.links.length, 2);
+  const opening = gallery.items[0].paragraphs[0];
+  const answers = gallery.items[18].paragraphs.join(" ");
+  for (const word of ["ANCHOR", "CANDLE", "LEMON", "MIRROR", "RABBIT"]) {
+    assert(opening.includes(word));
+    assert(answers.includes(word));
+  }
+  assert(answers.includes([3, 8, 1, 6].reverse().join(" — ")));
+  const shuffle = [4, 7, 2, 9];
+  shuffle.unshift(shuffle.pop()!);
+  [shuffle[1], shuffle[2]] = [shuffle[2], shuffle[1]];
+  assert(answers.includes(shuffle.join(" — ")));
+});
+
 test("perfectly timed popup headlines are localized separately from the article and metadata titles", () => {
   const headlines = {
     en: "Adults Only: These Photos Aren’t What They Seem",

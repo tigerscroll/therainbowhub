@@ -3,6 +3,7 @@ import adultOnlyBeaches from "@/data/galleries/adult-only-beaches.json";
 import adultOnlyHotels from "@/data/galleries/adults-only-hotels.json";
 import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
 import hospiceNurses from "@/data/galleries/hospice-nurses.json";
+import memoryTest from "@/data/galleries/memory-test.json";
 import mobilityScooter from "@/data/galleries/mobilityscooter.json";
 import nudeArt from "@/data/galleries/nude-art.json";
 import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
@@ -133,6 +134,7 @@ const galleryManifests = [
   adultOnlyHotels,
   adultOnlyParadise,
   hospiceNurses,
+  memoryTest,
   mobilityScooter,
   nudeArt,
   perfectlyTimed,
