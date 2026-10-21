@@ -77,6 +77,7 @@ try {
     for (let index = 0; index < 2; index++) {
       assert.equal(await question.getAttribute('data-popup-question-id'), selection.questionIds[index]);
       assert.equal(selection.questionIds[index], ['gender', 'self-rated-smarts'][index]);
+      assert.equal(await question.locator('button').count(), 3, 'each follow-up question has three answers');
       assert.equal(await question.locator('button').first().evaluate(el => getComputedStyle(el).backgroundColor), 'rgb(220, 38, 38)', 'answers match first popup CTA');
       assert.doesNotMatch(await dialog.innerText(), /article|introduction/i);
       const option = question.getByRole('button', { name: 'Prefer not to say', exact: true });
@@ -96,6 +97,7 @@ try {
     assert.deepEqual((await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), progressKey)).questionIds, selection.questionIds);
     for (let index = 2; index < 5; index++) {
       assert.equal(await question.getAttribute('data-popup-question-id'), selection.questionIds[index]);
+      assert.equal(await question.locator('button').count(), 3, 'each follow-up question has three answers');
       await question.locator('button').first().click();
     }
     await dialog.getByRole('heading', { name: config.readyTitle }).waitFor();
@@ -144,6 +146,7 @@ try {
   for (let index = 0; index < 5; index++) {
     const question = page.locator('[data-popup-question-id]');
     await question.waitFor();
+    assert.equal(await question.locator('button').count(), 3, 'each follow-up question has three answers');
     await question.locator('button').first().click();
   }
   await page.getByRole('dialog').getByRole('button', { name: config.cta, exact: true }).click();

@@ -12,6 +12,9 @@ test("only memory-test opts into five personal questions, with optional demograp
   assert(isArticlePopupQuestions(config));
   assert.equal(config.questionCount, 5);
   assert.equal(config.questions.length, 10);
+  for (const question of config.questions) {
+    assert.equal(question.choices.length, 3, `${question.id} must have exactly three answers`);
+  }
   for (const filename of fs.readdirSync("data/galleries").filter(file => file.endsWith(".json"))) {
     const value = JSON.parse(fs.readFileSync(`data/galleries/${filename}`, "utf8"));
     if (value.slug !== "memory-test") assert.equal(value.landing.followUpQuestions, undefined, filename);
