@@ -19,6 +19,7 @@ import wildResorts from "@/data/galleries/wild-resorts.json";
 import wildResortsDe from "@/data/galleries/wild-resorts.de.json";
 import wildResortsFr from "@/data/galleries/wild-resorts.fr.json";
 import { isSupportedLocale, type SupportedLocale } from "@/lib/localeConfig";
+import { isArticlePopupQuestions, type ArticlePopupQuestions } from "@/components/gallery/popupQuestions";
 import type { QuizTheme } from "@/lib/quizzes";
 
 export type GalleryItem = {
@@ -48,6 +49,7 @@ export type GalleryManifest = {
     eyebrow: string;
     intro: string;
     popupTitle?: string;
+    followUpQuestions?: ArticlePopupQuestions;
     presentation?: "overlay" | "page";
     title: string;
   };
@@ -84,6 +86,8 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && typeof manifest.landing?.title === "string"
     && typeof manifest.landing.intro === "string"
     && (manifest.landing.popupTitle === undefined || (typeof manifest.landing.popupTitle === "string" && manifest.landing.popupTitle.trim().length > 0))
+    && (manifest.landing.followUpQuestions === undefined || (manifest.landing.presentation === "overlay"
+      && manifest.gallery?.flow === "article" && isArticlePopupQuestions(manifest.landing.followUpQuestions)))
     && typeof manifest.landing.cta === "string"
     && (manifest.landing.ctaTone === undefined || manifest.landing.ctaTone === "positive")
     && typeof manifest.landing.adNote === "string"

@@ -35,7 +35,7 @@ export function GalleryTemplate({ gallery }: { gallery: GalleryManifest }) {
       <style dangerouslySetInnerHTML={{ __html: `html,body{background:${galleryArticleTheme.colors.page}}` }} />
       <ExperienceThemeBoundary shellCssHref={SHARED_SHELL_CSS_HREF} theme={galleryArticleTheme}>
         <div className="gallery-article quiz-engine__flow-container">
-          <GalleryExperience gallery={gallery} loadingLabel={translations.ad.loading} path={path} />
+          <GalleryExperience gallery={gallery} key={`${gallery.slug}:${gallery.locale}`} loadingLabel={translations.ad.loading} path={path} />
         </div>
       </ExperienceThemeBoundary>
     </>

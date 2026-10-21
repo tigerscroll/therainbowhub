@@ -148,6 +148,34 @@ body:has(.gallery-article__entry-preview[data-gallery-entry="popup"]) {
   text-align: center;
 }
 
+.gallery-article__question-kicker {
+  margin: 0 0 8px;
+  color: #6b7280;
+  font: 700 12px/1.3 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.gallery-article__question-progress { margin: 0 0 10px; color: #4b5563; font-size: 14px; font-weight: 650; }
+.gallery-article__question-track { width: 100%; height: 4px; margin-bottom: 20px; overflow: hidden; border-radius: 9px; background: #f3f4f6; }
+.gallery-article__question-track span { display: block; height: 100%; border-radius: inherit; background: #dc2626; }
+.quiz-theme[data-quiz-flow="continuous"] .gallery-article .gallery-article__overlay-scrim .gallery-article__landing--questions h1 {
+  font-size: clamp(24px, 3.8vw, 34px) !important;
+  line-height: 1.14 !important;
+  margin-bottom: 14px !important;
+  outline: none;
+}
+.gallery-article__question-instruction { margin: 0 0 20px; color: #6b7280; font-size: 14px; line-height: 1.45; }
+.gallery-article__question-answers { display: grid; width: 100%; gap: 10px; }
+.gallery-article__question-answer {
+  width: 100%; min-height: 52px; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 10px;
+  background: #fff; color: #111827; font: 650 16px/1.3 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: center; cursor: pointer; touch-action: manipulation;
+}
+.gallery-article__question-answer:hover { border-color: #dc2626; background: #fff1f2; }
+.gallery-article__question-answer:focus-visible { outline: 3px solid #dc2626; outline-offset: 3px; }
+.gallery-article__question-answer:disabled { opacity: .65; cursor: wait; }
+
 .gallery-article__landing .quiz-engine__landing-badge { display: none !important; }
 
 .quiz-theme[data-quiz-flow="continuous"] .gallery-article .gallery-article__landing h1 {

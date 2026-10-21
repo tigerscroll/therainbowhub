@@ -73,7 +73,7 @@ test("perfectly timed gallery preserves every supplied section in a fast image-f
   assert.equal(JSON.stringify(gallery).includes('"image"'), false);
 });
 
-test("memory-test is an English article with the requested popup and two rewarded gates", () => {
+test("memory-test is an English article with the requested Start popup and an extra question unlock", () => {
   const gallery = JSON.parse(fs.readFileSync("data/galleries/memory-test.json", "utf8"));
   assert.equal(gallery.slug, "memory-test");
   assert.equal(gallery.locale, "en");
@@ -81,9 +81,12 @@ test("memory-test is an English article with the requested popup and two rewarde
   assert.equal(gallery.landing.title, gallery.metadata.title);
   assert.equal(gallery.landing.popupTitle, "Most Adults Cannot Pass This Test");
   assert.equal(gallery.landing.presentation, "overlay");
-  assert.equal(gallery.landing.cta, "Continue");
+  assert.equal(gallery.landing.cta, "Start");
   assert.equal(gallery.landing.ctaTone, "positive");
   assert.equal(gallery.landing.intro, "");
+  assert.equal(gallery.landing.followUpQuestions.questionCount, 5);
+  assert.equal(gallery.landing.followUpQuestions.questions.length, 10);
+  assert.equal(gallery.landing.followUpQuestions.cta, "Continue");
   assert.equal(gallery.gallery.flow, "article");
   assert.equal(gallery.gallery.continueLabel, "Continue Reading");
   assert.equal(gallery.items.length, 20);

@@ -13,9 +13,31 @@
     "popupTitle": "Most Adults Cannot Pass This Test",
     "title": "Ways To Check How Good Your Memory Is",
     "intro": "",
-    "cta": "Continue",
+    "cta": "Start",
     "ctaTone": "positive",
-    "adNote": "One short ad, then read the article."
+    "adNote": "One short ad, then five quick questions.",
+    "followUpQuestions": {
+      "questionCount": 5,
+      "title": "Five Quick Picks",
+      "instruction": "Choose what fits you. There are no right or wrong answers.",
+      "progressLabel": "Question {current} of {total}",
+      "readyTitle": "Ready for the Article?",
+      "readyCopy": "Your five picks are complete. Continue to open the introduction.",
+      "cta": "Continue",
+      "adNote": "One more short ad, then read the article.",
+      "questions": [
+        {"id":"attention","prompt":"What usually catches your attention first?","choices":[{"id":"detail","label":"A surprising detail"},{"id":"familiar","label":"A familiar topic"},{"id":"question","label":"An unexpected question"}]},
+        {"id":"tricky","prompt":"When something gets tricky, what do you do?","choices":[{"id":"instinct","label":"Trust my first instinct"},{"id":"think","label":"Think it through"},{"id":"angle","label":"Look for another angle"}]},
+        {"id":"challenge","prompt":"Which challenge sounds most appealing?","choices":[{"id":"pattern","label":"Spotting a pattern"},{"id":"detail","label":"Remembering a detail"},{"id":"new","label":"Discovering something new"}]},
+        {"id":"explore","prompt":"How do you like to explore a topic?","choices":[{"id":"overview","label":"A quick overview"},{"id":"steps","label":"One clear step at a time"},{"id":"details","label":"All the interesting details"}]},
+        {"id":"motivation","prompt":"What makes you want to keep going?","choices":[{"id":"surprise","label":"A good surprise"},{"id":"takeaway","label":"A useful takeaway"},{"id":"ending","label":"Seeing how it all ends"}]},
+        {"id":"choice","prompt":"When making a choice, what comes first?","choices":[{"id":"feeling","label":"A gut feeling"},{"id":"look","label":"A closer look"},{"id":"compare","label":"Comparing the options"}]},
+        {"id":"pace","prompt":"Which pace suits you best?","choices":[{"id":"quick","label":"Quick and spontaneous"},{"id":"steady","label":"Steady and focused"},{"id":"depends","label":"It depends on the moment"}]},
+        {"id":"satisfaction","prompt":"What feels most satisfying?","choices":[{"id":"solve","label":"Solving something tricky"},{"id":"notice","label":"Noticing what others missed"},{"id":"learn","label":"Learning something unexpected"}]},
+        {"id":"discovery","prompt":"What kind of discovery do you enjoy?","choices":[{"id":"fact","label":"An unusual fact"},{"id":"tip","label":"A practical tip"},{"id":"perspective","label":"A fresh perspective"}]},
+        {"id":"unfamiliar","prompt":"How do you approach something unfamiliar?","choices":[{"id":"jump","label":"Jump straight in"},{"id":"look","label":"Take a moment to look"},{"id":"simple","label":"Start with something simple"}]}
+      ]
+    }
   },
   "gallery": {
     "flow": "article",

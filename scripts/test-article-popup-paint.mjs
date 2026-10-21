@@ -15,7 +15,8 @@ const browser = await chromium.launch({
 
 try {
   for (const gallery of galleries) {
-    for (const scenario of ['fbclid', 'direct', 'unlocked']) {
+    const scenarios = gallery.landing.followUpQuestions ? ['fbclid', 'direct', 'unlocked', 'questions-pending'] : ['fbclid', 'direct', 'unlocked'];
+    for (const scenario of scenarios) {
       const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
       const page = await context.newPage();
       const errors = [];
@@ -36,8 +37,9 @@ try {
       const contentSelector = gallery.gallery.flow === 'article'
         ? '.gallery-article__introduction'
         : '.gallery-article__story:not(.gallery-article__story--preview)';
-      await context.addInitScript(({ slug, unlocked, contentSelector }) => {
-        if (unlocked) sessionStorage.setItem(`rainbowhub:gallery-unlock:v1:${slug}`, '1');
+      await context.addInitScript(({ slug, unlocked, pending, followUp, contentSelector }) => {
+        if (unlocked || pending) sessionStorage.setItem(`rainbowhub:gallery-unlock:v1:${slug}`, '1');
+        if (unlocked && followUp) sessionStorage.setItem(`rainbowhub:article-entry-unlock:v1:${slug}`, '1');
         window.articleEntryFrames = [];
         const visible = selector => [...document.querySelectorAll(selector)].some(node => node.getClientRects().length > 0);
         const record = () => {
@@ -50,10 +52,10 @@ try {
           requestAnimationFrame(record);
         };
         requestAnimationFrame(record);
-      }, { slug: gallery.slug, unlocked: scenario === 'unlocked', contentSelector });
+      }, { slug: gallery.slug, unlocked: scenario === 'unlocked', pending: scenario === 'questions-pending', followUp: !!gallery.landing.followUpQuestions, contentSelector });
       const path = `${gallery.locale === 'en' ? '' : `/${gallery.locale}`}/${gallery.slug}`;
       const query = scenario === 'direct' ? '?utm_source=facebook' : '?fbclid=paint-test';
-      const popupExpected = scenario === 'fbclid';
+      const popupExpected = scenario === 'fbclid' || scenario === 'questions-pending';
       await page.goto(`${base}${path}${query}`, { waitUntil: 'commit' });
       await page.locator(`.gallery-article__entry-preview[data-gallery-entry="${popupExpected ? 'popup' : 'intro'}"]`).waitFor();
       const visibleSelector = popupExpected ? '[role="dialog"]' : contentSelector;

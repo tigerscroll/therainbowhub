@@ -1,16 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import { getArticlePopupBootstrapScript, shouldShowArticlePopup } from "@/components/gallery/galleryPopup";
+import { PopupQuestionPanel } from "@/components/gallery/PopupQuestionPanel";
+import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, isPopupQuestionProgress, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
 import { mountQuizInterstitial } from "@/components/quiz/interstitialAds";
 import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
 
-type GalleryPhase = "complete" | "gallery" | "introduction" | "landing";
+type GalleryPhase = "complete" | "gallery" | "introduction" | "landing" | "questions";
 type GalleryDestination = number | "complete" | "intro";
 
 function getDestination(path: string, story: GalleryDestination) {
@@ -43,15 +45,52 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
   const { busy, runGate } = useRewardedGate({ attempts: 3 });
   const unlockKey = `rainbowhub:gallery-unlock:v1:${gallery.slug}`;
   const articleUnlockKey = `rainbowhub:article-unlock:v1:${gallery.slug}`;
+  const followUp = gallery.landing.followUpQuestions;
+  const followUpUnlockKey = `rainbowhub:article-entry-unlock:v1:${gallery.slug}`;
+  const questionProgressKey = `rainbowhub:article-entry-questions:v1:${gallery.slug}`;
+  const [questionProgress, setQuestionProgress] = useState<PopupQuestionProgress | null>(null);
+  const questionProgressRef = useRef<PopupQuestionProgress | null>(null);
+  const entryGranted = useRef(false);
+  const followUpGranted = useRef(false);
+
+  const saveQuestionProgress = useCallback((progress: PopupQuestionProgress) => {
+    questionProgressRef.current = progress;
+    setQuestionProgress(progress);
+    try { window.sessionStorage.setItem(questionProgressKey, JSON.stringify(progress)); } catch { /* Keep progress in this mounted session. */ }
+  }, [questionProgressKey]);
+
+  const ensureQuestionProgress = useCallback(() => {
+    if (!followUp) return null;
+    let progress: unknown = questionProgressRef.current;
+    if (!isPopupQuestionProgress(followUp, progress)) {
+      try { progress = JSON.parse(window.sessionStorage.getItem(questionProgressKey) ?? "null"); } catch { /* Start a fresh valid selection. */ }
+    }
+    const valid = isPopupQuestionProgress(followUp, progress) ? progress : createPopupQuestionProgress(followUp);
+    saveQuestionProgress(valid);
+    return valid;
+  }, [followUp, questionProgressKey, saveQuestionProgress]);
 
   const restoreFromUrl = useCallback(() => {
     let unlocked = overlayEntry && !shouldShowArticlePopup(window.location.search);
     if (!unlocked) {
-      try { unlocked = window.sessionStorage.getItem(unlockKey) === "1"; } catch { /* Keep the rewarded entry gate. */ }
+      unlocked = entryGranted.current;
+      try { unlocked ||= window.sessionStorage.getItem(unlockKey) === "1"; } catch { /* Keep the rewarded entry gate. */ }
     }
     if (!unlocked) {
       setPhase("landing");
       return;
+    }
+    if (followUp && overlayEntry && shouldShowArticlePopup(window.location.search)) {
+      let complete = followUpGranted.current;
+      try {
+        complete ||= window.sessionStorage.getItem(followUpUnlockKey) === "1"
+          || window.sessionStorage.getItem(articleUnlockKey) === "1";
+      } catch { /* Do not bypass the follow-up gate when storage is blocked. */ }
+      if (!complete) {
+        ensureQuestionProgress();
+        setPhase("questions");
+        return;
+      }
     }
     const nextState = getStateFromUrl(gallery.items.length, articleFlow);
     if (articleFlow && nextState.phase === "gallery") {
@@ -65,7 +104,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     }
     setIndex(nextState.index);
     setPhase(nextState.phase);
-  }, [articleFlow, articleUnlockKey, gallery.items.length, overlayEntry, unlockKey]);
+  }, [articleFlow, articleUnlockKey, ensureQuestionProgress, followUp, followUpUnlockKey, gallery.items.length, overlayEntry, unlockKey]);
 
   useLayoutEffect(() => {
     setHydrated(true);
@@ -75,7 +114,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
   }, [restoreFromUrl]);
 
   useLayoutEffect(() => {
-    if (phase !== "landing" || gallery.landing.presentation !== "overlay") return;
+    if ((phase !== "landing" && phase !== "questions") || gallery.landing.presentation !== "overlay") return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = previousOverflow; };
@@ -105,9 +144,32 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
 
   function start() {
     void runGate(() => {
+      entryGranted.current = true;
       try { window.sessionStorage.setItem(unlockKey, "1"); } catch { /* The current session still opens. */ }
+      if (followUp) {
+        ensureQuestionProgress();
+        setPhase("questions");
+        return;
+      }
       moveTo(articleFlow ? "intro" : 1, false);
     }, { scrollAfter: false });
+  }
+
+  function answerEntryQuestion(questionId: string, answerId: string) {
+    const progress = questionProgressRef.current;
+    if (!followUp || !progress || busy || phase !== "questions") return;
+    const next = answerPopupQuestion(followUp, progress, questionId, answerId);
+    if (next !== progress) saveQuestionProgress(next);
+  }
+
+  function finishEntryQuestions() {
+    const progress = questionProgressRef.current;
+    if (!followUp || !progress || phase !== "questions" || getCurrentPopupQuestion(followUp, progress)) return;
+    void runGate(() => {
+      followUpGranted.current = true;
+      try { window.sessionStorage.setItem(followUpUnlockKey, "1"); } catch { /* Keep the unlock for this mounted session. */ }
+      moveTo("intro", false);
+    }, { retryOnClose: false, scrollAfter: false });
   }
 
   function continueArticle() {
@@ -126,7 +188,14 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
       landingTitle.length > 58 ? "gallery-article__landing--long-title" : "",
       gallery.landing.ctaTone === "positive" || gallery.slug === "perfectly-timed" ? "gallery-article__landing--positive-cta" : "",
     ].filter(Boolean).join(" ");
-    const landing = (
+    const showingQuestions = phase === "questions" && followUp && questionProgress;
+    const dialogTitle = showingQuestions
+      ? getCurrentPopupQuestion(followUp, questionProgress)?.prompt ?? followUp.readyTitle
+      : landingTitle;
+    const landing = showingQuestions ? (
+      <PopupQuestionPanel config={followUp} progress={questionProgress} busy={busy} loadingLabel={loadingLabel}
+        className={landingClassName} onAnswer={answerEntryQuestion} onContinue={finishEntryQuestions} />
+    ) : (
       <ExperienceLanding
         adNote={gallery.landing.adNote}
         avatars={[]}
@@ -164,7 +233,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
             </div>
           </article>
           <div
-            aria-label={landingTitle}
+            aria-label={dialogTitle}
             aria-modal="true"
             className="gallery-article__overlay-scrim"
             role="dialog"
@@ -207,7 +276,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     return (
       <div className="gallery-article__entry-preview" data-gallery-entry="intro" suppressHydrationWarning>
         <script
-          dangerouslySetInnerHTML={{ __html: getArticlePopupBootstrapScript(unlockKey) }}
+          dangerouslySetInnerHTML={{ __html: getArticlePopupBootstrapScript(unlockKey, followUp ? followUpUnlockKey : undefined, articleUnlockKey) }}
           suppressHydrationWarning
           type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
         />
@@ -217,7 +286,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     );
   }
 
-  if (phase === "landing") return renderLanding();
+  if (phase === "landing" || phase === "questions") return renderLanding();
   if (phase === "introduction") return renderIntroduction();
 
   if (phase === "complete") {
