@@ -24,6 +24,10 @@ if (chosen.some(locale => !locales.includes(locale))) throw Error('Unknown local
 const drafts = Object.fromEntries(chosen.map(locale => [locale, read(path.join(cache, `${locale}.draft.json`))]));
 
 for (const slug of selected) {
+  if (slug === 'memory') {
+    console.log('memory: curated general-knowledge locales retained; rebuild with node scripts/memory-general-knowledge.mjs');
+    continue;
+  }
   const root = `data/quizzes/${slug}`;
   const manifest = read(`${root}/quiz.json`), english = read(`${root}/en.json`);
   for (const locale of chosen) {

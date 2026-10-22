@@ -70,11 +70,12 @@ export function polishCatalogue(slug, locale, copy, source, manifest) {
       Object.values(copy.results.profiles).forEach((profile, index) => {profile.copy = germanProfileCopies[index];});
     }
   }
-  if (locale === 'de' && slug === 'memory') polishGermanMemory(copy);
+  const isMemoryRecall = slug === 'memory' && Object.values(copy.stages).some(stage => Object.values(stage.questions).some(question => question.study));
+  if (locale === 'de' && isMemoryRecall) polishGermanMemory(copy);
   if (locale === 'pt') polishPortugueseDomain(slug, copy, manifest);
   if (locale === 'de' && slug === 'personality') polishGermanPersonality(copy);
   if (locale === 'nl' && slug === 'personality') copy.about.body = 'Ontdek hoe je contact maakt, je dag indeelt, je nieuwsgierigheid volgt en omgaat met veranderingen. Kies wat natuurlijk voelt, zonder naar een bepaald resultaat toe te werken.\n\nNa elk onderwerp zie je welke op een land geïnspireerde stijl bij je antwoorden past. Je eindresultaat combineert al je keuzes. Je kunt daarna een uitgebreid overzicht van je voorkeuren bekijken. Een korte advertentie opent de quiz; bij elk tussenresultaat en voor het optionele overzicht krijg je opnieuw een advertentie aangeboden. Je voortgang wordt op dit apparaat bewaard.\n\nItalië, Japan, Australië en Zweden staan in deze quiz voor speelse levensstijlen. Het resultaat zegt niets over je nationaliteit, afkomst of culturele identiteit en bepaalt niet waar je zou moeten wonen.';
-  if (locale === 'nl' && slug === 'memory') {
+  if (locale === 'nl' && isMemoryRecall) {
     copy.about.body = 'Onthoud woorden, cijferreeksen, mensen, plaatsen en kleine details. Sommige daarvan komen later terug. Elke reeks vragen daagt je geheugen op een andere manier uit. Tussendoor zie je je profiel voor het onderwerp; aan het einde ontdek je je totaalscore en je sterke punten.\n\nBekijk elke geheugenkaart zo lang als je nodig hebt en tik op ‘Ik heb het onthouden’. De kaart verdwijnt voordat je antwoord geeft. Sommige details worden pas later opnieuw gevraagd. Snelheid heeft geen invloed op je score. Een korte advertentie opent de quiz. Na elk onderwerp wordt een nieuwe advertentie aangeboden om verder te gaan of je resultaat te bekijken. Het optionele antwoordenoverzicht heeft een eigen advertentie. Je voortgang blijft op dit apparaat bewaard.\n\nDit is een quiz voor ontspanning, geen gestandaardiseerde geheugentest. Aandacht, vermoeidheid, afleiding, vertrouwdheid en toeval kunnen het resultaat beïnvloeden. De quiz beoordeelt geen hersengezondheid en stelt geen geheugenproblemen vast.';
     copy.about.howToPlay.steps = ['Bekijk de hele geheugenkaart en tik op ‘Ik heb het onthouden’. Sommige details worden later opnieuw gevraagd.', 'Kies telkens één antwoord. Je snelheid heeft geen invloed op je score.', 'Ontdek de verschillende geheugenopdrachten, je eindresultaat en desgewenst de goede antwoorden.'];
   }

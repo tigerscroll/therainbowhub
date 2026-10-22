@@ -10,8 +10,8 @@ const entryLabels = {
     fr: 'Test d’intelligence', it: 'Test di intelligenza', nl: 'Intelligentietest', pt: 'Teste de inteligência',
   },
   memory: {
-    en: 'Memory Test', ar: 'اختبار الذاكرة', de: 'Gedächtnistest', es: 'Test de memoria',
-    fr: 'Test de mémoire', it: 'Test di memoria', nl: 'Geheugentest', pt: 'Teste de memória',
+    en: 'General Knowledge Test', ar: 'اختبار المعلومات العامة', de: 'Allgemeinwissenstest', es: 'Test de cultura general',
+    fr: 'Test de culture générale', it: 'Test di cultura generale', nl: 'Algemene kennisquiz', pt: 'Teste de cultura geral',
   },
   vision: {
     en: 'Vision Test', ar: 'اختبار بصري', de: 'Visueller Test', es: 'Test visual',

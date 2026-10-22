@@ -42,7 +42,8 @@ for (const slug of slugs) {
       const placeholders = text => [...(text?.matchAll(/\{[^{}]+\}/g) ?? [])].map(match => match[0]).sort();
       assert.deepEqual(placeholders(value), placeholders(source), `${parts.join('.')}: placeholders`);
       const sharedDutchPhrase = locale === 'nl' && source === 'In warm water';
-      const namedTerm = parts.includes('answers') && ((slug === 'italian' && ['Pesto alla genovese', 'Risotto alla milanese', 'Trentino-Alto Adige'].includes(source)) || (slug === 'nun' && source === 'Dominic de Guzmán'));
+      const namedTerm = parts.includes('answers') && ((slug === 'italian' && ['Pesto alla genovese', 'Risotto alla milanese', 'Trentino-Alto Adige'].includes(source)) || (slug === 'nun' && source === 'Dominic de Guzmán')
+        || (slug === 'memory' && locale !== 'ar' && ['Risotto alla milanese', 'Vincent van Gogh', 'Leonardo da Vinci', 'Ludwig van Beethoven', 'Wolfgang Amadeus Mozart', 'Johann Sebastian Bach'].includes(source)));
       const nameSequence = slug === 'iq' && parts.includes('iq-s7q1') && parts.includes('answers');
       const isSentence = (source?.match(/\b[A-Za-z]{2,}\b/g)?.length ?? 0) >= 3;
       if (isSentence && value === source && !sharedDutchPhrase && !nameSequence && !namedTerm && !/^[A-Z0-9\s.,:;→–—-]+$/.test(source)) failures.push(`${slug}/${locale}/${parts.join('.')}: English sentence remains: ${source}`);

@@ -10,7 +10,6 @@ import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
 const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: getQuizContentLocales()};
 const read = (slug: string, locale: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 const questions = (copy: any): Record<string, any> => Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
-const sameWord = (a: string, b: string, locale: string) => assert.equal(a.toLocaleUpperCase(locale), b.toLocaleUpperCase(locale));
 
 for (const locale of scope.locales.filter((value: string) => value !== 'en')) {
   test(`${locale}: translated questions retain all answer IDs and scoring positions`, () => {
@@ -27,15 +26,14 @@ for (const locale of scope.locales.filter((value: string) => value !== 'en')) {
     }
   });
 
-  test(`${locale}: delayed memory answers still match the original localized cue`, () => {
-    const q = questions(read('memory', locale)), manifest = read('memory', 'quiz');
-    const correct = (id: string) => q[id].answers[manifest.structure.questions[id].correctAnswerId];
-    sameWord(correct('memory-s1q4'), q['memory-s1q4'].study.items[2], locale);
-    sameWord(correct('memory-s1q6'), q['memory-s1q4'].study.items[0], locale);
-    sameWord(correct('memory-s2q5'), q['memory-s2q1'].study.items[3], locale);
-    sameWord(correct('memory-s7q7'), q['memory-s7q1'].study.items[1], locale);
-    assert.equal(correct('memory-s6q1'), q['memory-s6q1'].study.items[1].split(' · ')[1]);
-    assert.equal(correct('memory-s6q5'), q['memory-s6q1'].study.items[3].split(' · ')[1]);
+  test(`${locale}: /memory now uses general-knowledge questions without study boards`, () => {
+    const q = questions(read('memory', locale));
+    assert.equal(Object.keys(q).length, 70);
+    for (const [id, question] of Object.entries(q)) {
+      assert.match(id, /^memory-gk-/);
+      assert.equal(question.study, undefined);
+      assert.equal(Object.keys(question.answers).length, 3);
+    }
   });
 
   test(`${locale}: codes and image-coordinate labels keep the same literal symbols`, () => {

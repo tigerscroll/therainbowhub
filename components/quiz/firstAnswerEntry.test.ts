@@ -18,7 +18,7 @@ for (const slug of ['vision', 'nursing', 'midwifery', 'memory', 'iq', 'marry']) 
       const first = copy.stages[stage.id].questions[id];
       assert.ok(first.headerLabel.trim());
       assert.notEqual(first.headerLabel, copy.stages[stage.id].questions[secondId].headerLabel);
-      if (locale === 'en') assert.equal(first.headerLabel, slug === 'marry' ? 'Future Partner Test' : slug === 'iq' ? 'Intelligence Test' : `${slug[0].toUpperCase()}${slug.slice(1)} Test`);
+      if (locale === 'en') assert.equal(first.headerLabel, slug === 'memory' ? 'General Knowledge Test' : slug === 'marry' ? 'Future Partner Test' : slug === 'iq' ? 'Intelligence Test' : `${slug[0].toUpperCase()}${slug.slice(1)} Test`);
       else assert.notEqual(first.headerLabel, copies.en.stages[stage.id].questions[id].headerLabel);
       if (locale !== 'ar') assert.notEqual(first.headerLabel, first.headerLabel.toLocaleUpperCase(locale), 'opening labels use natural casing, not all caps');
     }

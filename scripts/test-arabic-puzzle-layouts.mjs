@@ -8,7 +8,7 @@ const selections = {
   cambridge:['cambridge-s9q4','cambridge-s6q3','cambridge-s5q7'],
   oxford:['oxford-s8q6','oxford-s10q1'],
   iq:['iq-s9q3','iq-s10q2','iq-s10q6'],
-  memory:['memory-s1q1'],
+  memory:['memory-gk-s10q4'],
 };
 const browser = await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 try {
@@ -48,8 +48,9 @@ try {
           assert.ok(expressions.includes('(0, 2)')&&expressions.includes('(2, 6)'),`${id}: coordinates include their brackets`);
         }
         if (slug==='memory') {
-          assert.match(await question.locator('.quiz-engine__study > p').innerText(),/من اليسار إلى اليمين/);
-          assert.equal(await question.locator('.quiz-engine__study-items').getAttribute('dir'),'ltr');
+          assert.equal(await question.locator('.quiz-engine__study').count(),0);
+          const expressions=await question.locator('h1 bdi[dir="ltr"]').allTextContents();
+          assert.ok(expressions.some(text=>text.includes('CAB')),'general-knowledge letter calculation keeps its Latin code left-to-right');
         }
         await page.screenshot({path:`/tmp/arabic-final-${id}-${width}.png`,animations:'disabled'});
         console.log(`PASS ${id}: ${width}px Arabic symbols and layout`);
