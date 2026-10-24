@@ -44,6 +44,14 @@ export function translateYearsLeft(locale, english, manifest) {
     }
     copy.stages[stage.id] = {title: yearsStageTitles[locale][stageIndex], questions};
   }
+  if (locale === 'fr') {
+    // French question/exclamation punctuation stays attached to the preceding
+    // word on small screens instead of wrapping onto a line of its own.
+    const typography = value => typeof value === 'string' ? value.replace(/ (?=[?!])/g, '\u202f')
+      : Array.isArray(value) ? value.map(typography)
+      : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value).map(([key, item]) => [key, typography(item)])) : value;
+    return typography(copy);
+  }
   return copy;
 }
 

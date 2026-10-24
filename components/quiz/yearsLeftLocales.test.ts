@@ -29,6 +29,10 @@ for (const locale of ['de', 'fr']) {
     }
     assert.equal(copy.landing.intro.split('\n').length, 2);
     if (locale === 'de') assert.equal(copy.stages['stage-1'].title, 'Dein Start in den Tag');
+    if (locale === 'fr') {
+      assert.equal(copy.landing.cta, 'Faire le test');
+      assert.match(copy.landing.intro, /choix\u202f\?/);
+    }
     const expanded = expandQuizLocale(manifest, copy, locale);
     assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), Array(10).fill(10));
     const nativeQuestions = expanded.stages.flatMap((s: any) => s.questions);

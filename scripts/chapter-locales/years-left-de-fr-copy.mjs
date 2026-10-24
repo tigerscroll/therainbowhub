@@ -103,7 +103,7 @@ export const yearsInterface = {
     title: 'Combien de temps te reste-t-il à vivre ?',
     eyebrow: 'Ton horloge de vie',
     summary: 'Tu construis sur la durée ou tu vis pour les belles histoires ? Découvre le profil de ton horloge et un âge estimé juste pour le plaisir.',
-    landing: {intro: 'Tes habitudes laissent des indices.\nQuel âge se cache derrière tes choix ?', cta: 'Commencer le test'},
+    landing: {intro: 'Tes habitudes laissent des indices.\nQuel âge révèlent tes choix ?', cta: 'Faire le test'},
     about: {
       body: 'Découvre ce que tes habitudes racontent sur ton horloge de vie. Dix étapes explorent ton quotidien, ton énergie, ton rythme, ton repos, la pression, tes relations, tes automatismes, ta curiosité, tes projets et tes instincts. À la fin, découvre un âge estimé pour le plaisir et ton profil de vie.\n\nCet âge est un résultat ludique calculé à partir de tes choix, pas une prévision. Le quiz ne prend en compte ni ton âge réel, ni ton dossier médical, ni tes antécédents familiaux, ni une évaluation personnelle des risques.',
       howToPlay: {steps: [
