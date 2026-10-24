@@ -8,7 +8,7 @@ import {scoreQuiz} from './scoring.ts';
 
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, 'utf8'));
 
-test('Years Left has matching English, German, French and Portuguese 100-question staged rewarded editions', () => {
+test('Years Left has matching English, German, Spanish, French and Portuguese 100-question staged rewarded editions', () => {
   const source = read('quiz');
   assert.equal(source.template, 'ten-stage-ten-question-v1');
   assert.equal(source.engine.entry, 'landing');
@@ -16,7 +16,7 @@ test('Years Left has matching English, German, French and Portuguese 100-questio
   assert.equal(source.engine.displayAds, undefined);
   assert.equal(source.engine.hardRefreshCheckpoints, true, 'rewarded stage transitions preserve progress across checkpoints');
   assert.equal(source.localeExtensions, undefined);
-  assert.deepEqual(source.activeLocales, ['de', 'en', 'fr', 'pt']);
+  assert.deepEqual(source.activeLocales, ['de', 'en', 'es', 'fr', 'pt']);
   for (const locale of source.activeLocales) {
     const manifest = resolveQuizLocaleManifest(source, locale);
     const copy = read(locale);

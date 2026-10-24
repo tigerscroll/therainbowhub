@@ -16,7 +16,7 @@ function leaves(value: any, path = '', output: Record<string, string> = {}) {
 }
 const placeholders = (text: string) => [...text.matchAll(/\{[^{}]+\}/g)].map(m => m[0]).sort();
 
-for (const locale of ['de', 'fr', 'pt']) {
+for (const locale of ['de', 'es', 'fr', 'pt']) {
   test(`Years Left ${locale}: complete, repeatable translation with identical IDs and no missing text`, () => {
     const copy = read(locale);
     assert.deepEqual(copy, translateYearsLeft(locale, english, manifest));
@@ -56,17 +56,29 @@ function scoringQuiz(locale: string): Quiz {
   } as Quiz;
 }
 
-test('identical choices produce the same age, profile and consistency in all four languages', () => {
+test('identical choices produce the same age, profile and consistency in all five languages', () => {
   const source = scoringQuiz('en');
   for (let pattern = 0; pattern < 20; pattern++) {
     const answers = Object.fromEntries(source.questions.map((q, i) => [q.id, (i * (pattern + 1) + pattern) % 4]));
     const expected = scoreQuiz(source, answers);
-    for (const locale of ['de', 'fr', 'pt']) {
+    for (const locale of ['de', 'es', 'fr', 'pt']) {
       const result = scoreQuiz(scoringQuiz(locale), answers);
       assert.equal(result.profile.id, expected.profile.id, `${locale}/${pattern}`);
       assert.equal(result.estimatedAge, expected.estimatedAge, `${locale}/${pattern}`);
       assert.equal(result.consistency, expected.consistency, `${locale}/${pattern}`);
     }
+  }
+});
+
+test('Years Left Spanish uses consistent international Spanish with complete question punctuation', () => {
+  const copy = read('es');
+  const visible = Object.values(leaves(copy)).join('\n');
+  assert.equal(copy.landing.cta, 'Empezar test');
+  assert.doesNotMatch(visible, /\b(?:vosotros|vosotras|vos|che|órale|móvil|celular)\b/iu);
+  assert.match(copy.stages['stage-8'].questions['yl-s8q1'].question, /martes/);
+  for (const [path, text] of Object.entries(leaves(copy))) {
+    assert.equal((text.match(/¿/g) ?? []).length, (text.match(/\?/g) ?? []).length, `${path}: paired Spanish question marks`);
+    assert.equal((text.match(/¡/g) ?? []).length, (text.match(/!/g) ?? []).length, `${path}: paired Spanish exclamation marks`);
   }
 });
 
