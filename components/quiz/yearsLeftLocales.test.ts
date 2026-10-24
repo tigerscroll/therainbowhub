@@ -16,7 +16,7 @@ function leaves(value: any, path = '', output: Record<string, string> = {}) {
 }
 const placeholders = (text: string) => [...text.matchAll(/\{[^{}]+\}/g)].map(m => m[0]).sort();
 
-for (const locale of ['de', 'fr']) {
+for (const locale of ['de', 'fr', 'pt']) {
   test(`Years Left ${locale}: complete, repeatable translation with identical IDs and no missing text`, () => {
     const copy = read(locale);
     assert.deepEqual(copy, translateYearsLeft(locale, english, manifest));
@@ -56,16 +56,26 @@ function scoringQuiz(locale: string): Quiz {
   } as Quiz;
 }
 
-test('identical choices produce the same age, profile and consistency in all three languages', () => {
+test('identical choices produce the same age, profile and consistency in all four languages', () => {
   const source = scoringQuiz('en');
   for (let pattern = 0; pattern < 20; pattern++) {
     const answers = Object.fromEntries(source.questions.map((q, i) => [q.id, (i * (pattern + 1) + pattern) % 4]));
     const expected = scoreQuiz(source, answers);
-    for (const locale of ['de', 'fr']) {
+    for (const locale of ['de', 'fr', 'pt']) {
       const result = scoreQuiz(scoringQuiz(locale), answers);
       assert.equal(result.profile.id, expected.profile.id, `${locale}/${pattern}`);
       assert.equal(result.estimatedAge, expected.estimatedAge, `${locale}/${pattern}`);
       assert.equal(result.consistency, expected.consistency, `${locale}/${pattern}`);
     }
   }
+});
+
+test('Years Left Portuguese uses neutral vocabulary and avoids region-specific alternatives', () => {
+  const copy = read('pt');
+  const visible = Object.values(leaves(copy)).join('\n');
+  assert.equal(copy.landing.cta, 'Iniciar teste');
+  assert.match(copy.stages['stage-2'].questions['yl-s2q1'].question, /primeira refeição do dia/);
+  assert.match(copy.stages['stage-4'].questions['yl-s4q1'].question, /telefone/);
+  assert.doesNotMatch(visible, /\b(?:telemóvel|celular|frigorífico|geladeira|autocarro|ônibus|comboio|trem|ecrã|tela|fixe|bacana|olhadela|algures|apetecer|planeei|você|tu)\b|pequeno-almoço|café da manhã|\b(?:estou|está|estamos|ando) a\b|\bpara si\b/iu);
+  assert.doesNotMatch(visible, /\([^)]*(?:Portugal|Brasil|PT|BR)[^)]*\)/u, 'no paired national variants in the reader-facing copy');
 });
