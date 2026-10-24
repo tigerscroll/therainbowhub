@@ -14,9 +14,11 @@ const manifest = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync(`${root}/q
 const firstAnswerEntry = manifest.engine.entry === 'first-answer';
 const hardRefreshCheckpoints = manifest.engine.hardRefreshCheckpoints === true;
 const displayAds = manifest.engine.displayAds === true;
+const preloadsStart = manifest.engine.startPrelude?.preload === true;
 const totalQuestions = manifest.structure.stages.reduce((count, stage) => count + stage.questionIds.length, 0);
 const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
 const scored = manifest.engine.scoring === 'correct-answer';
+const rewardedBreakdown = !(copy.results.estimate?.reviewUnlock && manifest.structure.results.estimate?.reviewUnlockRewarded === false);
 const textChapters = Object.values(manifest.structure.questions).every(question => question.presentation === 'text' && !question.image && !question.study);
 const testPages = new Map();
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
@@ -99,7 +101,7 @@ async function run(width) {
   assert.equal(await landing.locator('h1').innerText(), copy.title);
   assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
   assert.equal((await landing.locator('.quiz-engine__primary').innerText()).replace(/[→←]/g, '').trim(), copy.landing.cta);
-  if (slug === 'years-left') {
+  if (preloadsStart) {
     await page.waitForFunction(() => window.adCalls.length === 1);
     assert.equal(await page.evaluate(() => window.adShows ?? 0), 0, 'preloading never displays an ad');
   } else assert.equal(await page.evaluate(() => window.adCalls.length), 0);
@@ -109,7 +111,7 @@ async function run(width) {
   }
   await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
   await landing.locator('.quiz-engine__primary').click();
-  if (slug === 'years-left') {
+  if (manifest.engine.startPrelude?.delayMs > 0) {
     const overlay = page.locator('.quiz-engine__start-overlay');
     await overlay.waitFor();
     assert.equal(await landing.count(), 0, 'the landing is removed while the ad loads');
@@ -388,8 +390,8 @@ async function run(width) {
     await result.locator('.quiz-engine__answer-review').waitFor();
     assert.equal(await result.locator('.quiz-engine__answer-review article').count(), scored ? totalQuestions - totalCorrect : totalQuestions);
   }
-  expectedRewards++;
-  assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'optional breakdown keeps its existing reward');
+  if (rewardedBreakdown) expectedRewards++;
+  assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards, 'optional breakdown follows the existing rewarded/free configuration');
   if (width === 390) {
     await page.evaluate(() => { window.noAdFill = true; });
     await page.locator('.quiz-engine__about-restart').click();
@@ -398,7 +400,7 @@ async function run(width) {
       await landing.locator('.quiz-engine__primary').click();
     }
     await page.locator('[data-question-id]').waitFor();
-    const noFillRequests = slug === 'years-left' ? 4 : 3;
+    const noFillRequests = preloadsStart ? 4 : 3;
     assert.equal(await page.evaluate(() => window.adCalls.length), expectedRewards + (firstAnswerEntry ? 0 : noFillRequests), 'landing uses its preload plus bounded click retries');
     for (const id of manifest.structure.stages[0].questionIds) {
       const question = page.locator(`[data-question-id="${id}"]`);
