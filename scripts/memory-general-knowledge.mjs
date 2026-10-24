@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {checkpointTitles, checkpointProfile} from './chapter-locales/checkpoints.mjs';
 import {nativeNextTopic} from './chapter-locales/remaining-native.mjs';
 import {applyEntryLabel} from './three-choice-entry.mjs';
+import {reviewMemoryLocale, reviewedMemoryLocales} from './chapter-locales/memory-reviewed-locales.mjs';
 
 const read = (slug, locale) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 const facts = {
@@ -274,6 +275,7 @@ export function buildMemoryGeneralKnowledge() {
       };
     }
   }
+  for (const locale of reviewedMemoryLocales) if (copies[locale]) copies[locale] = reviewMemoryLocale(copies[locale], manifest, locale);
   applyEntryLabel(manifest, copies);
   return {manifest, copies, bank};
 }

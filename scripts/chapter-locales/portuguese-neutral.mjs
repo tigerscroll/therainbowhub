@@ -1,6 +1,8 @@
 import {applyReviewedPortugueseQuestions} from './portuguese-reviewed-questions.mjs';
 import {polishPortugueseInterface} from './portuguese-interface.mjs';
 import {portugueseContext} from './portuguese-context.mjs';
+import {reviewMemoryLocale} from './memory-reviewed-locales.mjs';
+import {applyEntryLabel} from '../three-choice-entry.mjs';
 
 // One PT edition: use shared vocabulary and an implicit, polite form of address.
 // Keep both technical names where choosing one would privilege a national usage.
@@ -215,6 +217,14 @@ export function neutralPortugueseText(value, parts = []) {
 }
 
 export function polishNeutralPortuguese(slug, copy, manifest) {
+ // The current general-knowledge edition has its own reviewed, single-wording
+ // PT/BR copy. Keep it repeatable instead of reintroducing paired national
+ // aliases or replacing its intentional topic-specific result labels.
+ if (slug === 'memory' && manifest.structure.stages[0]?.questionIds[0]?.startsWith('memory-gk-')) {
+  Object.assign(copy, reviewMemoryLocale(copy, manifest, 'pt'));
+  applyEntryLabel(manifest, {pt: copy});
+  return;
+ }
  walk(copy, neutralPortugueseText);
  applyReviewedPortugueseQuestions(slug, copy);
  polishPortugueseInterface(slug, copy);
