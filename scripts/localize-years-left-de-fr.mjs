@@ -8,15 +8,18 @@ import {portugueseYearsQuestions} from './chapter-locales/years-left-pt-100.mjs'
 import {portugueseYearsCopy, portugueseYearsStageTitles} from './chapter-locales/years-left-pt-copy.mjs';
 import {spanishYearsQuestions} from './chapter-locales/years-left-es-100.mjs';
 import {spanishYearsCopy, spanishYearsStageTitles} from './chapter-locales/years-left-es-copy.mjs';
+import {arabicYearsQuestions} from './chapter-locales/years-left-ar-100.mjs';
+import {arabicYearsCopy, arabicYearsStageTitles} from './chapter-locales/years-left-ar-copy.mjs';
 
 // Author by stable stage/question/answer IDs, never by the shuffled display
 // order. In particular, yl-s10q7 remains the final calibration question.
 export function translateYearsLeft(locale, english, manifest) {
-  assert.ok(['de', 'es', 'fr', 'pt'].includes(locale));
+  assert.ok(['ar', 'de', 'es', 'fr', 'pt'].includes(locale));
   const reviewed = locale === 'de' ? germanYears : locale === 'fr' ? frenchYears : undefined;
   if (reviewed) assert.equal(reviewed.length, 70);
-  const interfaceCopy = locale === 'es' ? spanishYearsCopy : locale === 'pt' ? portugueseYearsCopy : yearsInterface[locale];
-  const stageTitles = locale === 'es' ? spanishYearsStageTitles : locale === 'pt' ? portugueseYearsStageTitles : yearsStageTitles[locale];
+  const interfaceCopy = {...yearsInterface, ar: arabicYearsCopy, es: spanishYearsCopy, pt: portugueseYearsCopy}[locale];
+  const stageTitles = {...yearsStageTitles, ar: arabicYearsStageTitles, es: spanishYearsStageTitles, pt: portugueseYearsStageTitles}[locale];
+  const fullQuestions = {ar: arabicYearsQuestions, es: spanishYearsQuestions, pt: portugueseYearsQuestions}[locale];
   const copy = {...structuredClone(english), ...structuredClone(interfaceCopy), stages: {}};
   for (const [stageIndex, stage] of manifest.structure.stages.entries()) {
     const heading = copy.career.stages[stage.id].difficulty;
@@ -27,7 +30,7 @@ export function translateYearsLeft(locale, english, manifest) {
       const match = id.match(/^yl-s(\d+)q(\d+)$/);
       assert.ok(match, id);
       const number = Number(match[2]);
-      const row = locale === 'es' ? spanishYearsQuestions[id]?.split('|') : locale === 'pt' ? portugueseYearsQuestions[id]?.split('|')
+      const row = fullQuestions ? fullQuestions[id]?.split('|')
         : number <= 7 ? reviewed[stageIndex * 7 + number - 1] : additionalYearsQuestions[locale][id]?.split('|');
       assert.equal(row?.length, 5, `${locale}/${id}: prompt plus four answers required`);
       const [question, ...answers] = row;
@@ -35,7 +38,7 @@ export function translateYearsLeft(locale, english, manifest) {
       const logic = manifest.structure.questions[id];
       questions[id] = {
         question: overrides.question ?? question,
-        headerLabel: `${locale === 'es' ? 'EN FOCO: ' : locale === 'pt' ? 'EM FOCO: ' : locale === 'de' ? 'IM FOKUS: ' : 'ON EXPLORE : '}${heading}`,
+        headerLabel: `${{ar: 'نستكشف: ', es: 'EN FOCO: ', pt: 'EM FOCO: ', de: 'IM FOKUS: ', fr: 'ON EXPLORE : '}[locale]}${heading}`,
         answers: Object.fromEntries(logic.answerIds.map((answerId, i) => {
           let answer = overrides[answerId] ?? answers[i];
           if (!overrides[answerId] && question.endsWith('Du…')) answer = `Ich ${answer[0].toLocaleLowerCase('de')}${answer.slice(1)}`;

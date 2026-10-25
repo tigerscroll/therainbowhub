@@ -90,7 +90,7 @@ function scoringQuiz(locale: string): Quiz {
   } as Quiz;
 }
 
-test('Memory score, pass threshold and profile band match English in the four reviewed languages', () => {
+test('Memory score, pass threshold and profile band match English in the reviewed languages', () => {
   const source = scoringQuiz('en');
   for (let pattern = 0; pattern < 20; pattern++) {
     const answers = Object.fromEntries(source.questions.map((q, i) => [q.id, (i * (pattern + 1) + pattern) % 3]));

@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
+import {arabicMemoryInterface, arabicMemoryQuestions} from './memory-ar-review.mjs';
 
 // Editorial corrections for the current English general-knowledge edition.
 // Keep source quizzes untouched: these revisions belong specifically to /memory.
-export const reviewedMemoryLocales = ['de', 'es', 'fr', 'pt'];
+export const reviewedMemoryLocales = ['ar', 'de', 'es', 'fr', 'pt'];
 
 const interfaceCopy = {
+  ar: arabicMemoryInterface,
   de: {
     intro: 'Du hältst dich für schlau? Stell dich auf die Probe.',
     summary: 'Wissenschaft, Geografie, Geschichte, Essen, Sprache und logisches Denken: Schaffst du 80 %?',
@@ -87,6 +89,7 @@ const interfaceCopy = {
 
 // Partial, ID-keyed visible-copy fixes; correctness and order stay in quiz.json.
 const questionCopy = {
+  ar: arabicMemoryQuestions,
   de: {
     'memory-gk-s2q3': {answers: {a3: 'Die beiden Lungenflügel'}},
     'memory-gk-s5q6': {answers: {a1: 'Die zuvor verdoppelten Chromosomen werden auf zwei Zellkerne verteilt'}},
@@ -151,6 +154,7 @@ const questionCopy = {
 
 function typography(value, locale) {
   if (typeof value === 'string') {
+    if (locale === 'ar') return value.replace(/%/g, '٪');
     if (locale === 'fr') return value.replace(/[ \u00a0\u202f]+(?=[?!;])/g, '\u202f').replace(/[ \u00a0\u202f]+(?=[:%])/g, '\u00a0');
     if (locale === 'es' || locale === 'de') return value.replace(/([0-9])[ \u00a0\u202f]*(?=%)/g, '$1\u00a0');
     return value;
