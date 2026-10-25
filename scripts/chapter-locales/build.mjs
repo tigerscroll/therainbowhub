@@ -31,7 +31,7 @@ for (const slug of selected) {
   const root = `data/quizzes/${slug}`;
   const manifest = read(`${root}/quiz.json`), english = read(`${root}/en.json`);
   if (slug === 'years-left' && manifest.template === 'ten-stage-ten-question-v1') {
-    console.log('years-left: curated 100-question editions retained; rebuild with scripts/localize-years-left-de-fr.mjs, scripts/localize-years-left-pt.mjs, scripts/localize-years-left-es.mjs or scripts/localize-memory-years-ar.mjs');
+    console.log('years-left: curated 100-question editions retained; use the matching scripts/localize-years-left-* or scripts/localize-memory-years-* authoring script');
     continue;
   }
   for (const locale of chosen) {

@@ -74,6 +74,20 @@ test('Memory Spanish has paired punctuation and consistent answer capitalization
   }
 });
 
+test('Memory Italian and Dutch retain native word relationships and correct measurement answers', () => {
+  for (const [locale, listen, write, shoe] of [['it', 'Si ascolta', 'A scrivere', 'Scarpa'], ['nl', 'Je luistert ernaar', 'Om te schrijven', 'Schoen']]) {
+    const native = read(locale);
+    const question = (stage: number, n: number) => native.stages[`stage-${stage}`].questions[`memory-gk-s${stage}q${n}`];
+    assert.equal(question(8, 4).answers.a2, listen);
+    assert.equal(question(8, 5).answers.a2, write);
+    assert.equal(question(8, 3).answers.a3, shoe);
+    assert.equal(question(9, 4).answers.a1, '3 g/cm³');
+    assert.equal(question(10, 4).answers.a3, '6');
+  }
+  assert.match(read('it').stages['stage-8'].questions['memory-gk-s8q3'].question, /alla…$/u);
+  assert.equal(read('nl').stages['stage-7'].questions['memory-gk-s7q1'].answers.a1, 'Aerodynamische weerstand');
+});
+
 function scoringQuiz(locale: string): Quiz {
   const native = read(locale), expanded = expandQuizLocale(manifest, native, locale);
   return {

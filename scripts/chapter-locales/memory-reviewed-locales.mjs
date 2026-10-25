@@ -1,12 +1,15 @@
 import assert from 'node:assert/strict';
 import {arabicMemoryInterface, arabicMemoryQuestions} from './memory-ar-review.mjs';
+import {italianMemoryInterface, italianMemoryQuestions, dutchMemoryInterface, dutchMemoryQuestions} from './memory-it-nl-review.mjs';
 
 // Editorial corrections for the current English general-knowledge edition.
 // Keep source quizzes untouched: these revisions belong specifically to /memory.
-export const reviewedMemoryLocales = ['ar', 'de', 'es', 'fr', 'pt'];
+export const reviewedMemoryLocales = ['ar', 'de', 'es', 'fr', 'it', 'nl', 'pt'];
 
 const interfaceCopy = {
   ar: arabicMemoryInterface,
+  it: italianMemoryInterface,
+  nl: dutchMemoryInterface,
   de: {
     intro: 'Du hältst dich für schlau? Stell dich auf die Probe.',
     summary: 'Wissenschaft, Geografie, Geschichte, Essen, Sprache und logisches Denken: Schaffst du 80 %?',
@@ -90,6 +93,8 @@ const interfaceCopy = {
 // Partial, ID-keyed visible-copy fixes; correctness and order stay in quiz.json.
 const questionCopy = {
   ar: arabicMemoryQuestions,
+  it: italianMemoryQuestions,
+  nl: dutchMemoryQuestions,
   de: {
     'memory-gk-s2q3': {answers: {a3: 'Die beiden Lungenflügel'}},
     'memory-gk-s5q6': {answers: {a1: 'Die zuvor verdoppelten Chromosomen werden auf zwei Zellkerne verteilt'}},

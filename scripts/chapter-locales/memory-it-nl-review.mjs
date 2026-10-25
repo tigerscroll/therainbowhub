@@ -1,0 +1,72 @@
+export const italianMemoryInterface = {
+  intro: 'Pensi di essere brillante? Mettiti alla prova.',
+  summary: 'Scienza, geografia, storia, cucina, parole e logica: riuscirai a raggiungere l’80%?',
+  steps: ['Leggi ogni domanda e scegli una risposta.', 'Scopri il tuo profilo dopo ogni argomento, poi passa alla sfida successiva.', 'Scopri il risultato complessivo e, se vuoi, rivedi le risposte corrette alle domande che hai sbagliato.'],
+  stageTitles: ['Per cominciare', 'Le basi del corpo umano', 'Riconosci il piatto', 'Intorno al mondo', 'Dentro la cellula', 'Storia e cultura', 'Le forze del volo', 'Relazioni tra parole', 'Misure e calcoli', 'La sfida finale'],
+  checkpointTitles: ['La prima sfida è completata', 'Hai completato la sfida sul corpo', 'Il tuo profilo a tavola è pronto', 'Hai completato il giro del mondo', 'Hai completato la sfida sulla cellula', 'Il tuo profilo storico è pronto', 'Hai completato la sfida sul volo', 'Hai completato la sfida delle parole', 'Misure e calcoli sono verificati', 'Il tuo risultato è pronto'],
+  checkpointCopy: 'Il tuo profilo in questo argomento: {profile}.',
+  teasers: ['Ora tocca al corpo umano. Quanto sai del suo funzionamento?', 'Saprai riconoscere i piatti e i loro ingredienti?', 'Dagli oceani alle capitali: quanto conosci il mondo?', 'Cambiamo scala: cosa succede dentro una cellula?', 'Arte, storia e scoperte: cosa ricordi?', 'Quali forze permettono a un aereo di volare?', 'Ora cerca i collegamenti tra le parole.', 'Unità, misure e piccoli calcoli: attenzione ai dettagli.', 'Ti aspetta un’ultima combinazione di argomenti. Leggi bene ogni domanda.'],
+  finalCopy: 'Hai raggiunto l’80%? Scopri il tuo punteggio complessivo e gli argomenti in cui hai dato il meglio.',
+  progress: 'La tua sfida',
+  profiles: [
+    ['Maestro del quiz', 'Hai risposto correttamente a quasi tutte le domande. L’analisi per argomento mostra come si distribuiscono le tue risposte corrette tra i diversi temi della sfida.'],
+    ['Talento a tutto campo', 'Hai riconosciuto molti collegamenti corretti in questa sfida. Esplora l’analisi per scoprire gli argomenti in cui hai dato il meglio.'],
+    ['Una mente attenta', 'Hai collegato molti indizi e informazioni. L’analisi evidenzia gli argomenti che hai affrontato meglio e quelli che meritano un altro sguardo.'],
+    ['Stai trovando il ritmo', 'Hai individuato indizi utili in diversi argomenti. Rivedere le risposte può aiutarti a capire le domande che ti hanno messo in difficoltà.'],
+    ['Curiosità in gioco', 'Alcuni argomenti ti erano più familiari di altri. La revisione mostra le risposte corrette e ti offre un punto di partenza per riprovare.'],
+    ['Un nuovo punto di partenza', 'Questa sfida ha mescolato idee note e nuove. Rivedi le risposte per scoprire gli indizi che ti sono sfuggiti.'],
+  ],
+  score: {strongest: 'Il tuo argomento più forte', trickiest: 'L’argomento che ti ha messo più in difficoltà', bestRound: 'La tua migliore tappa'},
+};
+
+export const dutchMemoryInterface = {
+  intro: 'Denk je dat je slim bent? Stel jezelf op de proef.',
+  summary: 'Wetenschap, aardrijkskunde, geschiedenis, eten, woorden en logisch denken: haal jij 80%?',
+  steps: ['Lees elke vraag en kies één antwoord.', 'Ontdek na elk onderwerp je profiel en ga verder met de volgende uitdaging.', 'Bekijk je eindresultaat en bekijk daarna, als je wilt, de juiste antwoorden bij de vragen die je fout had.'],
+  stageTitles: ['Even opwarmen', 'Het menselijk lichaam', 'Herken het gerecht', 'Rond de wereld', 'In de cel', 'Geschiedenis en cultuur', 'Krachten tijdens het vliegen', 'Verbanden tussen woorden', 'Meten en rekenen', 'De laatste mix'],
+  checkpointTitles: ['De eerste uitdaging zit erop', 'Je lichaamskennis in beeld', 'Je culinaire profiel is bekend', 'Je wereldreis zit erop', 'Je celkennis in beeld', 'Je geschiedenisprofiel is bekend', 'Je vliegkennis in beeld', 'Je woordverbanden zijn gecontroleerd', 'Je metingen en berekeningen zijn gecontroleerd', 'Je resultaat is bekend'],
+  checkpointCopy: 'Jouw profiel bij dit onderwerp: {profile}.',
+  teasers: ['Nu het menselijk lichaam. Wat weet je over hoe het werkt?', 'Herken jij de gerechten en hun ingrediënten?', 'Van oceanen tot hoofdsteden: hoe goed ken je de wereld?', 'We zoomen in: wat gebeurt er in een cel?', 'Kunst, geschiedenis en ontdekkingen: wat weet jij nog?', 'Welke krachten laten een vliegtuig vliegen?', 'Nu draait het om verbanden tussen woorden.', 'Eenheden, metingen en kleine berekeningen: let goed op.', 'Nog een laatste mix van onderwerpen. Lees elke vraag goed.'],
+  finalCopy: 'Heb je 80% gehaald? Ontdek je totaalscore en de onderwerpen waarin je het sterkst was.',
+  progress: 'Jouw uitdaging',
+  profiles: [
+    ['Quizmeester', 'Je hebt bijna alle vragen goed beantwoord. In het overzicht per onderwerp zie je hoe je juiste antwoorden over deze uitdaging zijn verdeeld.'],
+    ['Van alle markten thuis', 'Je hebt tijdens deze uitdaging veel juiste verbanden gelegd. Bekijk je resultaten per onderwerp om je sterke punten te ontdekken.'],
+    ['Een scherpe blik', 'Je hebt veel aanwijzingen en feiten met elkaar verbonden. Het overzicht laat zien welke onderwerpen je goed afgingen en welke een tweede blik waard zijn.'],
+    ['Je vindt je ritme', 'Je hebt bij verschillende onderwerpen bruikbare aanwijzingen gevonden. In het antwoordenoverzicht kun je de vragen bekijken die je lastig vond.'],
+    ['Nieuwsgierig op pad', 'Sommige onderwerpen waren bekender dan andere. Het antwoordenoverzicht toont de juiste antwoorden en helpt je op weg bij een nieuwe poging.'],
+    ['Een nieuw begin', 'In deze uitdaging kwamen bekende en nieuwe ideeën aan bod. Gebruik het antwoordenoverzicht om de aanwijzingen te ontdekken die je hebt gemist.'],
+  ],
+  score: {strongest: 'Je sterkste onderwerp', trickiest: 'Je lastigste onderwerp', bestRound: 'Je beste ronde'},
+};
+
+export const italianMemoryQuestions = {
+  'memory-gk-s2q5': {question: 'Quali organi filtrano il sangue per produrre l’urina?'},
+  'memory-gk-s2q6': {question: 'Quale organo rimescola il cibo insieme ai succhi gastrici acidi?'},
+  'memory-gk-s2q7': {question: 'Quale organo conserva l’urina prima che venga espulsa dal corpo?'},
+  'memory-gk-s3q2': {question: 'Qual è il principale ingrediente ricco di amido della polenta tradizionale?'},
+  'memory-gk-s3q4': {question: 'Che cos’è il minestrone?'},
+  'memory-gk-s3q6': {question: 'Quale piatto unisce tipicamente pomodoro, mozzarella e basilico?'},
+  'memory-gk-s3q7': {question: 'Che cos’è la frittata?'},
+  'memory-gk-s5q5': {question: 'Che cos’è la diffusione?'},
+  'memory-gk-s5q6': {answers: {a1: 'I cromosomi già duplicati vengono distribuiti in due nuclei'}},
+  'memory-gk-s7q3': {question: 'In un volo rettilineo e livellato a velocità costante, qual è il rapporto tra portanza e peso?'},
+  'memory-gk-s7q4': {answers: {a3: 'Una forma progettata per generare una forza aerodinamica quando l’aria le scorre attorno'}},
+  'memory-gk-s7q7': {question: 'Che cosa comprende il peso di un aereo?', answers: {a1: 'L’aereo e tutto ciò che trasporta'}},
+  'memory-gk-s8q2': {question: 'Un termometro misura la temperatura. Un orologio misura…'},
+  'memory-gk-s8q3': {question: 'La mano sta al guanto come il piede sta alla…'},
+  'memory-gk-s9q1': {question: 'Immergendo un oggetto, il volume d’acqua indicato passa da 40 mL a 55 mL. Qual è il volume d’acqua spostato?'},
+  'memory-gk-s9q4': {question: 'Un campione ha una massa di 24 g e un volume di 8 cm³. Con la formula densità = massa ÷ volume, qual è la sua densità?'},
+  'memory-gk-s9q7': {question: 'Un recipiente contiene 0,75 litri. A quanti millilitri corrispondono?'},
+};
+
+export const dutchMemoryQuestions = {
+  'memory-gk-s3q6': {question: 'Welk gerecht combineert meestal tomaten, mozzarella en basilicum?'},
+  'memory-gk-s5q6': {answers: {a1: 'De verdubbelde chromosomen worden over twee celkernen verdeeld'}},
+  'memory-gk-s7q1': {answers: {a1: 'Aerodynamische weerstand'}},
+  'memory-gk-s7q4': {answers: {a3: 'Een vorm die een aerodynamische kracht opwekt wanneer er lucht omheen stroomt'}},
+  'memory-gk-s8q2': {question: 'Een thermometer meet de temperatuur. Een klok meet…'},
+  'memory-gk-s9q1': {question: 'Het afgelezen watervolume stijgt van 40 mL naar 55 mL als je een voorwerp onderdompelt. Welk volume is verplaatst?'},
+  'memory-gk-s9q4': {question: 'Een monster heeft een massa van 24 g en een volume van 8 cm³. Met de formule dichtheid = massa ÷ volume: wat is de dichtheid?'},
+  'memory-gk-s9q6': {question: 'Een weegschaal geeft altijd 2 g te veel aan. Er staat 18 g. Wat is de werkelijke massa?', answers: {a1: '36 g', a2: '20 g', a3: '16 g'}},
+};

@@ -16,7 +16,7 @@ function leaves(value: any, path = '', output: Record<string, string> = {}) {
 }
 const placeholders = (text: string) => [...text.matchAll(/\{[^{}]+\}/g)].map(m => m[0]).sort();
 
-for (const locale of ['ar', 'de', 'es', 'fr', 'pt']) {
+for (const locale of ['ar', 'de', 'es', 'fr', 'it', 'nl', 'pt']) {
   test(`Years Left ${locale}: complete, repeatable translation with identical IDs and no missing text`, () => {
     const copy = read(locale);
     assert.deepEqual(copy, translateYearsLeft(locale, english, manifest));
@@ -56,18 +56,36 @@ function scoringQuiz(locale: string): Quiz {
   } as Quiz;
 }
 
-test('identical choices produce the same age, profile and consistency in all six languages', () => {
+test('identical choices produce the same age, profile and consistency in all eight languages', () => {
   const source = scoringQuiz('en');
   for (let pattern = 0; pattern < 20; pattern++) {
     const answers = Object.fromEntries(source.questions.map((q, i) => [q.id, (i * (pattern + 1) + pattern) % 4]));
     const expected = scoreQuiz(source, answers);
-    for (const locale of ['ar', 'de', 'es', 'fr', 'pt']) {
+    for (const locale of ['ar', 'de', 'es', 'fr', 'it', 'nl', 'pt']) {
       const result = scoreQuiz(scoringQuiz(locale), answers);
       assert.equal(result.profile.id, expected.profile.id, `${locale}/${pattern}`);
       assert.equal(result.estimatedAge, expected.estimatedAge, `${locale}/${pattern}`);
       assert.equal(result.consistency, expected.consistency, `${locale}/${pattern}`);
     }
   }
+});
+
+test('Years Left Italian never receives French answer prefixes from shared authoring', () => {
+  const copy = read('it');
+  assert.equal(copy.landing.cta, 'Inizia il test');
+  assert.match(copy.stages['stage-8'].questions['yl-s8q1'].question, /martedì/);
+  assert.match(copy.stages['stage-5'].questions['yl-s5q2'].answers.a1, /^Dico sì/);
+  assert.match(copy.stages['stage-7'].questions['yl-s7q1'].answers.a1, /^Riparto/);
+  assert.doesNotMatch(Object.values(leaves(copy)).join('\n'), /\bJe\b|\bIch\b|\bJ’/u);
+});
+
+test('Years Left Dutch keeps native question wording and translated review actions', () => {
+  const copy = read('nl');
+  assert.equal(copy.landing.cta, 'Start de test');
+  assert.match(copy.stages['stage-8'].questions['yl-s8q1'].question, /dinsdag/);
+  assert.match(copy.stages['stage-1'].questions['yl-s1q6'].answers.a2, /dat ik achterloop/);
+  assert.equal(copy.results.estimate.reviewUnlock.raisedCopy, 'Deze keuze verhoogde de schatting.');
+  assert.equal(copy.results.estimate.reviewUnlock.loweredCopy, 'Deze keuze verlaagde de schatting.');
 });
 
 test('Years Left Spanish uses consistent international Spanish with complete question punctuation', () => {
