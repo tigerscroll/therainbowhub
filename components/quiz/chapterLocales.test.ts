@@ -1,4 +1,4 @@
-import {getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
+import {getQuizContentLocales, getQuizLocaleFiles} from '../../scripts/quiz-catalogue.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -37,14 +37,18 @@ for (const locale of scope.locales.filter((value: string) => value !== 'en')) {
   });
 
   test(`${locale}: codes and image-coordinate labels keep the same literal symbols`, () => {
+    if (getQuizLocaleFiles('iq').includes(locale)) {
     const native = questions(read('iq', locale)), english = questions(read('iq', 'en'));
     for (const id of ['iq-s6q1','iq-s6q2','iq-s6q4','iq-s6q5','iq-s6q6','iq-s6q7','iq-s9q3','iq-s9q7','iq-s10q2','iq-s10q6']) {
       assert.deepEqual(native[id].answers, english[id].answers, id);
     }
+    }
+    if (getQuizLocaleFiles('vision').includes(locale)) {
     const vision = questions(read('vision', locale)), source = questions(read('vision', 'en'));
     for (const [id, question] of Object.entries(source)) for (const [key, value] of Object.entries(question.answers)) {
       const label = String(value).match(/^(?:Row|Tile) ([A-D])$/);
       if (label) assert.equal(vision[id].answers[key].match(/[A-D]$/)?.[0], label[1], `${id}/${key}`);
+    }
     }
   });
 }

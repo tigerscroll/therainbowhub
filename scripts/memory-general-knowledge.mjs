@@ -7,6 +7,7 @@ import {checkpointTitles, checkpointProfile} from './chapter-locales/checkpoints
 import {nativeNextTopic} from './chapter-locales/remaining-native.mjs';
 import {applyEntryLabel} from './three-choice-entry.mjs';
 import {reviewMemoryLocale, reviewedMemoryLocales} from './chapter-locales/memory-reviewed-locales.mjs';
+import {translateMemoryHindi} from './chapter-locales/memory-hi.mjs';
 
 const read = (slug, locale) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 const facts = {
@@ -168,6 +169,9 @@ const rounds = [
 
 export function buildMemoryGeneralKnowledge() {
   const manifest = read('memory', 'quiz');
+  // Hindi is a self-contained edition; it does not require unrelated quizzes
+  // such as Harvard or Anatomy to have Hindi files first.
+  const bankLocales = manifest.activeLocales.filter(locale => locale !== 'hi');
   const copies = {};
   const bank = [];
   manifest.structure.stages = [];
@@ -175,7 +179,7 @@ export function buildMemoryGeneralKnowledge() {
   manifest.structure.results.dimensions = ['world', 'science', 'reasoning'].map((category, i) => ({key: `dimension-${i + 1}`, categories: [category]}));
   manifest.template = 'ten-stage-seven-question-v1';
   const stagesByLocale = {};
-  for (const locale of manifest.activeLocales) {
+  for (const locale of bankLocales) {
     assert.ok(interfaceCopy[locale] && facts[locale]?.length === 14);
     const old = read('memory', locale), shared = read('harvard', locale);
     const [title, eyebrow, intro, summary, disclaimer, dimensions, , resultName] = interfaceCopy[locale];
@@ -227,7 +231,7 @@ export function buildMemoryGeneralKnowledge() {
     const sourceManifest = source ? read(source, 'quiz') : undefined;
     const sourceIds = source ? selected?.map(q => `${source}-s${number}q${q}`) ?? sourceManifest.structure.stages[number - 1].questionIds : Array.from({length: 7}, (_, i) => i + number);
     assert.equal(sourceIds.length, 7);
-    for (const locale of manifest.activeLocales) {
+    for (const locale of bankLocales) {
       const {title} = stagesByLocale[locale][index];
       copies[locale].stages[stageId] = {title, questions: {}};
     }
@@ -238,7 +242,7 @@ export function buildMemoryGeneralKnowledge() {
   // Balanced but non-cycling answer positions: 24 A, 23 B, 23 C.
       const position = answerPositions[ordinal];
       manifest.structure.questions[id] = {presentation: 'text', answerIds: ['a1','a2','a3'], correctAnswerId: `a${position + 1}`, category};
-      for (const locale of manifest.activeLocales) {
+      for (const locale of bankLocales) {
         let prompt, correct, wrong;
         if (!source) {
           [prompt, correct, ...wrong] = facts[locale][sourceId].split('|');
@@ -277,6 +281,7 @@ export function buildMemoryGeneralKnowledge() {
   }
   for (const locale of reviewedMemoryLocales) if (copies[locale]) copies[locale] = reviewMemoryLocale(copies[locale], manifest, locale);
   applyEntryLabel(manifest, copies);
+  if (manifest.activeLocales.includes('hi')) copies.hi = translateMemoryHindi(copies.en, manifest);
   return {manifest, copies, bank};
 }
 

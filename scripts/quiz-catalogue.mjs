@@ -11,6 +11,13 @@ export function getSiteLocales(root = path.join(process.cwd(), 'data/i18n')) {
   return fs.readdirSync(root).filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort();
 }
 
+// A quiz may launch in fewer languages than the site or the catalogue union.
+export function getQuizLocaleFiles(slug, root = path.join(process.cwd(), 'data/quizzes')) {
+  return fs.readdirSync(path.join(root, slug))
+    .filter(file => /^[a-z]{2,3}\.json$/.test(file))
+    .map(file => file.slice(0, -5)).sort();
+}
+
 // Article editions can introduce a site language before quizzes are translated.
 export function getQuizContentLocales(root = path.join(process.cwd(), 'data/quizzes')) {
   return [...new Set(getQuizSlugs(root).flatMap(slug => {

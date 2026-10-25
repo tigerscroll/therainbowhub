@@ -1,4 +1,4 @@
-import {getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
+import {getQuizLocaleFiles} from '../../scripts/quiz-catalogue.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -20,7 +20,7 @@ test('English treatments preserves the title and subtitle in a ten-by-seven chap
   assert.equal(copy.landing.intro, original.landing.intro);
   assert.equal(copy.landing.cta, 'Start');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, getQuizContentLocales());
+  assert.deepEqual(manifest.activeLocales, getQuizLocaleFiles('treatments'));
   assert.equal(manifest.engine.localeParity, 'independent');
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(manifest.listing.compactLanding, true);

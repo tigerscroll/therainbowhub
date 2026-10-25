@@ -1,4 +1,4 @@
-import {getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
+import {getQuizLocaleFiles} from '../../scripts/quiz-catalogue.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -28,7 +28,7 @@ test('English Vision preserves its headline and intro in ten seven-question roun
   assert.equal(copy.landing.intro, original.landing.intro);
   assert.equal(copy.landing.cta, 'Start');
   assert.equal(manifest.template, 'ten-stage-seven-question-v1');
-  assert.deepEqual(manifest.activeLocales, getQuizContentLocales());
+  assert.deepEqual(manifest.activeLocales, getQuizLocaleFiles('vision'));
   assert.equal(manifest.engine.localeParity, 'independent');
   assert.equal(manifest.engine.hardRefreshCheckpoints, true);
   assert.equal(manifest.engine.entry, 'first-answer');

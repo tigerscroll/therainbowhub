@@ -1,4 +1,4 @@
-import {getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
+import {getQuizLocaleFiles} from '../../scripts/quiz-catalogue.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
@@ -80,7 +80,7 @@ test('Oxford truth puzzle has exactly one consistent solution', () => {
 });
 
 test('localized university puzzles preserve theatrical meaning and Arabic symbol labels', () => {
-  const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: getQuizContentLocales()};
+  const scope = {locales: getQuizLocaleFiles('oxford')};
   const plays: Record<string, string> = {fr:'Pièce de théâtre',de:'Theaterstück',it:'Opera teatrale',nl:'Toneelstuk',es:'Obra de teatro',pt:'Peça de teatro',ar:'مسرحية'};
   const logic = read('oxford', 'quiz');
   for (const locale of scope.locales.filter((l: string) => l !== 'en')) {

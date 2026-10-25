@@ -18,10 +18,10 @@ const locales = getQuizContentLocales();
 const slugs = getQuizSlugs();
 const read = (slug: string, name: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${name}.json`, 'utf8'));
 
-test('Greek article support preserves the existing eight quiz languages and normal edition folders', () => {
-  assert.deepEqual(locales, ['ar','de','en','es','fr','it','nl','pt']);
+test('Greek articles and the two Hindi quiz editions keep language coverage explicit', () => {
+  assert.deepEqual(locales, ['ar','de','en','es','fr','hi','it','nl','pt']);
   const siteLocales = getSiteLocales();
-  assert.deepEqual(siteLocales, ['ar','de','en','es','fr','gr','it','nl','pt']);
+  assert.deepEqual(siteLocales, ['ar','de','en','es','fr','gr','hi','it','nl','pt']);
   assert.deepEqual(fs.readdirSync('data/info-pages').filter(file => file.endsWith('.json')).map(file => file.slice(0,-5)).sort(), siteLocales);
   const config = fs.readFileSync('lib/localeConfig.ts', 'utf8');
   assert.deepEqual([...config.matchAll(/code: "([a-z]+)"/g)].map(match => match[1]).sort(), siteLocales);
@@ -100,7 +100,7 @@ test('creating a new quiz changes only its folder and discovers its ten-round ma
 });
 
 test('reviewed aviation translations distinguish three controls and do not confuse pitch with sound',()=>{
-  for(const slug of ['airforce','pilot'])for(const locale of locales){
+  for(const slug of ['airforce','pilot'])for(const locale of read(slug,'quiz').activeLocales){
     const copy=read(slug,locale),manifest=read(slug,'quiz');
     const q=copy.stages['stage-2'].questions[`${slug}-s2q1`];
     assert.equal(new Set(Object.values(q.answers)).size,4);
@@ -136,7 +136,7 @@ test('localization checks respect native numbers and retain mathematical differe
 });
 
 test('localized domain meanings retain witness accounts, named people and dental distinctions', () => {
-  for (const locale of locales) {
+  for (const locale of read('barrister', 'quiz').activeLocales) {
     const barrister = read('barrister', locale), m = read('barrister','quiz');
     const q = barrister.stages['stage-7'].questions['barrister-s7q7'];
     assert.equal(q.answers[m.structure.questions['barrister-s7q7'].correctAnswerId],locale === 'ar' ? 'كام' : 'Cam');

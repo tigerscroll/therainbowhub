@@ -9,6 +9,7 @@ export const translationRowLocales = ['fr', 'de', 'it', 'nl', 'es', 'pt', 'ar'];
 // Copy is deliberately compact enough for narrow checkpoint cards. Portuguese
 // uses shared vocabulary and infinitives, rather than a regional form of address.
 const rows = {
+  hi: ['शुरू करें', 'आगे बढ़ें', 'मेरा नतीजा देखें', 'आगे क्या है', 'जवाब जाँच लिए गए', 'विषयों की मज़बूती की तुलना हुई', 'स्कोर की गणना हो गई', 'क्या आपने 80% का लक्ष्य पूरा किया? अपना स्कोर और खूबियाँ देखें।', 'आपकी चुनौती', 'याद कर लिया'],
   fr: ['Commencer', 'Continuer', 'Voir mon résultat', 'À SUIVRE', 'Réponses vérifiées', 'Points forts comparés', 'Score calculé', 'Ai-je atteint 80 % ? Mon score et mes points forts sont prêts.', 'Mon défi', 'J’ai mémorisé'],
   de: ['Starten', 'Weiter', 'Mein Ergebnis', 'ALS NÄCHSTES', 'Antworten geprüft', 'Stärken verglichen', 'Punktzahl berechnet', '80 % erreicht? Die Punktzahl und die Stärken stehen fest.', 'Die Herausforderung', 'Ich bin bereit'],
   it: ['Inizia', 'Continua', 'Vedi il risultato', 'PROSSIMA SFIDA', 'Risposte verificate', 'Punti di forza confrontati', 'Punteggio calcolato', 'Hai raggiunto l’80%? Il punteggio e i tuoi punti di forza sono pronti.', 'La tua sfida', 'Ho memorizzato'],
