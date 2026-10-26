@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
-import { getCurrentPopupQuestion, type ArticlePopupQuestions, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
+import { getCurrentPopupQuestion, getPopupAudienceStatus, type ArticlePopupQuestions, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
 
 export function PopupQuestionPanel({ config, progress, busy, loadingLabel, className, onAnswer, onContinue }: {
   config: ArticlePopupQuestions;
@@ -15,6 +15,7 @@ export function PopupQuestionPanel({ config, progress, busy, loadingLabel, class
   onContinue: () => void;
 }) {
   const question = getCurrentPopupQuestion(config, progress);
+  const restricted = getPopupAudienceStatus(config, progress) === "restricted";
   const heading = useRef<HTMLHeadingElement>(null);
   const ready = useRef<HTMLElement>(null);
   const answered = Object.keys(progress.answers).length;
@@ -29,10 +30,10 @@ export function PopupQuestionPanel({ config, progress, busy, loadingLabel, class
     return (
       <ExperienceLanding
         ref={ready}
-        adNote={config.adNote} avatars={[]} busy={busy} busyLabel={loadingLabel}
-        className={className} ctaIcon="→" ctaIconPosition="end" ctaLabel={config.cta}
-        icon={null} intro={config.readyCopy} onStart={onContinue} showSocialProof={false}
-        socialProofText="" title={config.readyTitle}
+        adNote={restricted ? undefined : config.adNote} avatars={[]} busy={busy} busyLabel={loadingLabel}
+        className={className} ctaIcon="→" ctaIconPosition="end" ctaLabel={restricted ? config.adultOnly!.exitCta : config.cta}
+        icon={null} intro={restricted ? config.adultOnly!.exitCopy : config.readyCopy} onStart={onContinue} showSocialProof={false}
+        socialProofText="" title={restricted ? config.adultOnly!.exitTitle : config.readyTitle}
       />
     );
   }

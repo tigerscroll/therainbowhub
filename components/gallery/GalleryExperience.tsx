@@ -7,7 +7,7 @@ import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import { getArticlePopupBootstrapScript, shouldShowArticlePopup } from "@/components/gallery/galleryPopup";
 import { PopupQuestionPanel } from "@/components/gallery/PopupQuestionPanel";
-import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, isPopupQuestionProgress, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
+import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, getPopupAudienceStatus, isPopupQuestionProgress, restorePopupQuestionProgress, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
 import { mountQuizInterstitial } from "@/components/quiz/interstitialAds";
 import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
@@ -65,7 +65,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     if (!isPopupQuestionProgress(followUp, progress)) {
       try { progress = JSON.parse(window.sessionStorage.getItem(questionProgressKey) ?? "null"); } catch { /* Start a fresh valid selection. */ }
     }
-    const valid = isPopupQuestionProgress(followUp, progress) ? progress : createPopupQuestionProgress(followUp);
+    const valid = restorePopupQuestionProgress(followUp, progress) ?? createPopupQuestionProgress(followUp);
     saveQuestionProgress(valid);
     return valid;
   }, [followUp, questionProgressKey, saveQuestionProgress]);
@@ -165,18 +165,38 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
   function finishEntryQuestions() {
     const progress = questionProgressRef.current;
     if (!followUp || !progress || phase !== "questions" || getCurrentPopupQuestion(followUp, progress)) return;
-    void runGate(() => {
+    const finish = () => {
       followUpGranted.current = true;
       try { window.sessionStorage.setItem(followUpUnlockKey, "1"); } catch { /* Keep the unlock for this mounted session. */ }
       moveTo("intro", false);
-    }, { retryOnClose: false, scrollAfter: false });
+    };
+    const audience = getPopupAudienceStatus(followUp, progress);
+    if (audience === "restricted") {
+      finish();
+      return;
+    }
+    if (followUp.adultOnly && audience !== "adult") return;
+    void runGate(finish, { retryOnClose: false, scrollAfter: false });
   }
 
   function continueArticle() {
-    void runGate(() => {
+    const finish = () => {
       try { window.sessionStorage.setItem(articleUnlockKey, "1"); } catch { /* The current session still opens. */ }
       moveTo(1, false);
-    }, { scrollAfter: false });
+    };
+    // Restore the age decision even after a reload or removal of fbclid.
+    let progress = questionProgressRef.current;
+    if (followUp?.adultOnly && !isPopupQuestionProgress(followUp, progress)) {
+      try {
+        const saved: unknown = JSON.parse(window.sessionStorage.getItem(questionProgressKey) ?? "null");
+        progress = restorePopupQuestionProgress(followUp, saved);
+      } catch { /* The mounted session still retains its age decision. */ }
+    }
+    if (followUp && progress && getPopupAudienceStatus(followUp, progress) === "restricted") {
+      finish();
+      return;
+    }
+    void runGate(finish, { scrollAfter: false });
   }
 
   function renderLanding() {
@@ -190,7 +210,8 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     ].filter(Boolean).join(" ");
     const showingQuestions = phase === "questions" && followUp && questionProgress;
     const dialogTitle = showingQuestions
-      ? getCurrentPopupQuestion(followUp, questionProgress)?.prompt ?? followUp.readyTitle
+      ? getCurrentPopupQuestion(followUp, questionProgress)?.prompt
+        ?? (getPopupAudienceStatus(followUp, questionProgress) === "restricted" ? followUp.adultOnly!.exitTitle : followUp.readyTitle)
       : landingTitle;
     const landing = showingQuestions ? (
       <PopupQuestionPanel config={followUp} progress={questionProgress} busy={busy} loadingLabel={loadingLabel}

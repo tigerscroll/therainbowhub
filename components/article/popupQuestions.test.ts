@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
-import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, isArticlePopupQuestions, isPopupQuestionProgress } from "../gallery/popupQuestions.ts";
+import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, getPopupAudienceStatus, isArticlePopupQuestions, isPopupQuestionProgress, restorePopupQuestionProgress } from "../gallery/popupQuestions.ts";
 import { getArticlePopupBootstrapScript } from "../gallery/galleryPopup.ts";
 
 const gallery = JSON.parse(fs.readFileSync("data/galleries/memory-test.json", "utf8"));
 const config = gallery.landing.followUpQuestions;
 
-test("only memory-test opts into five personal questions, with optional demographic answers and no scoring", () => {
+test("memory-test keeps five personal questions; only mobilityscooter adds the adult-confirmed guide flow", () => {
   assert(isArticlePopupQuestions(config));
   assert.equal(config.questionCount, 5);
   assert.equal(config.questions.length, 10);
@@ -17,7 +17,7 @@ test("only memory-test opts into five personal questions, with optional demograp
   }
   for (const filename of fs.readdirSync("data/galleries").filter(file => file.endsWith(".json"))) {
     const value = JSON.parse(fs.readFileSync(`data/galleries/${filename}`, "utf8"));
-    if (value.slug !== "memory-test") assert.equal(value.landing.followUpQuestions, undefined, filename);
+    if (!["memory-test", "mobilityscooter"].includes(value.slug)) assert.equal(value.landing.followUpQuestions, undefined, filename);
   }
   assert.match(config.instruction, /Personal questions are optional/);
   assert.deepEqual(config.requiredQuestionIds, ["gender", "self-rated-smarts"]);
@@ -28,6 +28,81 @@ test("only memory-test opts into five personal questions, with optional demograp
     assert(config.questions.find(question => question.id === id).choices.some(choice => choice.id === "skip"));
   }
   assert.doesNotMatch(JSON.stringify(config), /correctAnswer|score|email|diagnos/i);
+});
+
+const mobility = JSON.parse(fs.readFileSync("data/galleries/mobilityscooter.json", "utf8"));
+const mobilityQuestions = mobility.landing.followUpQuestions;
+
+test("mobility popup asks age, gender, adult confirmation and content preference without guide-specific copy", () => {
+  assert(isArticlePopupQuestions(mobilityQuestions));
+  assert.equal(mobilityQuestions.questionCount, 4);
+  assert.deepEqual(createPopupQuestionProgress(mobilityQuestions).questionIds, ["age-range", "gender", "adult-confirmation", "content-interest"]);
+  assert(mobilityQuestions.questions.find((q: any) => q.id === "gender").choices.some((c: any) => c.id === "skip"));
+  assert.doesNotMatch(JSON.stringify(mobilityQuestions), /guide|funding|application|eligibility|No further questions or ads/i);
+  assert.equal(mobilityQuestions.questions.find((q: any) => q.id === "content-interest").prompt, "What type of content are you interested in?");
+  assert.equal(mobilityQuestions.readyTitle, "Your Content Is Ready");
+  assert.equal(mobilityQuestions.cta, "View Content");
+  assert.match(mobilityQuestions.adNote, /Watch one short ad/);
+});
+
+test("extra mobility reward requires both an adult age range and explicit confirmation", () => {
+  let progress = createPopupQuestionProgress(mobilityQuestions);
+  assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "unconfirmed");
+  progress = answerPopupQuestion(mobilityQuestions, progress, "age-range", "65-plus");
+  progress = answerPopupQuestion(mobilityQuestions, progress, "gender", "skip");
+  assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "unconfirmed");
+  progress = answerPopupQuestion(mobilityQuestions, progress, "adult-confirmation", "confirmed-adult");
+  assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "adult");
+  assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress)?.id, "content-interest");
+  progress = answerPopupQuestion(mobilityQuestions, progress, "content-interest", "everything");
+  assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress), undefined);
+});
+
+test("appending a content question preserves prior answers and underage decisions", () => {
+  const oldIds = ["age-range", "gender", "adult-confirmation"];
+  for (const answers of [
+    {"age-range": "under-18"},
+    {"age-range": "18-64", gender: "skip", "adult-confirmation": "under-18"},
+    {"age-range": "65-plus", gender: "skip", "adult-confirmation": "confirmed-adult"},
+  ]) {
+    const restored = restorePopupQuestionProgress(mobilityQuestions, {questionIds: oldIds, answers});
+    assert(restored);
+    assert.deepEqual(restored.answers, answers);
+    assert.equal(restored.questionIds.length, 4);
+    assert.equal(getPopupAudienceStatus(mobilityQuestions, restored), answers["adult-confirmation"] === "confirmed-adult" ? "adult" : "restricted");
+  }
+  assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: ["gender", "age-range", "adult-confirmation"], answers: {}}), null);
+  assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: oldIds, answers: {"content-interest": "everything"}}), null);
+});
+
+test("an underage or unconfirmed answer ends the extra flow, including after restoring progress", () => {
+  for (const answer of ["under-18", "skip"]) {
+    let progress = createPopupQuestionProgress(mobilityQuestions);
+    progress = answerPopupQuestion(mobilityQuestions, progress, "age-range", "18-64");
+    progress = answerPopupQuestion(mobilityQuestions, progress, "gender", "skip");
+    progress = answerPopupQuestion(mobilityQuestions, progress, "adult-confirmation", answer);
+    assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "restricted");
+    assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress), undefined);
+  }
+  const initial = createPopupQuestionProgress(mobilityQuestions);
+  const minor = answerPopupQuestion(mobilityQuestions, initial, "age-range", "under-18");
+  assert(isPopupQuestionProgress(mobilityQuestions, minor));
+  assert.equal(getPopupAudienceStatus(mobilityQuestions, JSON.parse(JSON.stringify(minor))), "restricted");
+  assert.equal(getCurrentPopupQuestion(mobilityQuestions, minor), undefined);
+  assert.equal(answerPopupQuestion(mobilityQuestions, minor, "gender", "woman"), minor);
+});
+
+test("adult-gate config rejects missing questions, invalid allowed answers and incomplete exit copy", () => {
+  for (const mutate of [
+    (c: any) => { c.adultOnly.requirements[0].questionId = "unknown"; },
+    (c: any) => { c.adultOnly.requirements[0].allowedAnswerIds = ["unknown"]; },
+    (c: any) => { c.requiredQuestionIds = ["gender", "adult-confirmation"]; },
+    (c: any) => { c.adultOnly.exitCopy = ""; },
+  ]) {
+    const invalid = structuredClone(mobilityQuestions);
+    mutate(invalid);
+    assert.equal(isArticlePopupQuestions(invalid), false);
+  }
 });
 
 test("popup configuration rejects invalid counts, duplicate IDs and incomplete UI copy", () => {
