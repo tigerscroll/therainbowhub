@@ -7,11 +7,10 @@ import { signalSpaNavigation } from "@/components/experience/spaNavigation";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import { getArticlePopupBootstrapScript, shouldShowArticlePopup } from "@/components/gallery/galleryPopup";
 import { PopupQuestionPanel } from "@/components/gallery/PopupQuestionPanel";
-import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, getPopupAudienceStatus, isPopupQuestionProgress, restorePopupQuestionProgress, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
+import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, isPopupQuestionProgress, restorePopupQuestionProgress, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
 import { mountQuizInterstitial } from "@/components/quiz/interstitialAds";
 import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
-import { getLocalePath } from "@/lib/localeConfig";
 
 type GalleryPhase = "complete" | "gallery" | "introduction" | "landing" | "questions";
 type GalleryDestination = number | "complete" | "intro";
@@ -78,12 +77,6 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
   }, [followUp, readQuestionProgress, saveQuestionProgress]);
 
   const restoreFromUrl = useCallback(() => {
-    const savedProgress = readQuestionProgress();
-    if (followUp && savedProgress && getPopupAudienceStatus(followUp, savedProgress) === "restricted") {
-      saveQuestionProgress(savedProgress);
-      setPhase("questions");
-      return;
-    }
     let unlocked = overlayEntry && !shouldShowArticlePopup(window.location.search);
     if (!unlocked) {
       unlocked = entryGranted.current;
@@ -117,7 +110,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     }
     setIndex(nextState.index);
     setPhase(nextState.phase);
-  }, [articleFlow, articleUnlockKey, ensureQuestionProgress, followUp, followUpUnlockKey, gallery.items.length, overlayEntry, readQuestionProgress, saveQuestionProgress, unlockKey]);
+  }, [articleFlow, articleUnlockKey, ensureQuestionProgress, followUp, followUpUnlockKey, gallery.items.length, overlayEntry, unlockKey]);
 
   useLayoutEffect(() => {
     setHydrated(true);
@@ -183,12 +176,6 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
       try { window.sessionStorage.setItem(followUpUnlockKey, "1"); } catch { /* Keep the unlock for this mounted session. */ }
       moveTo("intro", false);
     };
-    const audience = getPopupAudienceStatus(followUp, progress);
-    if (audience === "restricted") {
-      window.location.assign(getLocalePath(gallery.locale, "/"));
-      return;
-    }
-    if (followUp.adultOnly && audience !== "adult") return;
     setFollowUpAdUnavailable(false);
     void runGate(finish, {
       retryOnClose: false,
@@ -202,12 +189,6 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
       try { window.sessionStorage.setItem(articleUnlockKey, "1"); } catch { /* The current session still opens. */ }
       moveTo(1, false);
     };
-    const progress = readQuestionProgress();
-    if (followUp && progress && getPopupAudienceStatus(followUp, progress) === "restricted") {
-      saveQuestionProgress(progress);
-      setPhase("questions");
-      return;
-    }
     void runGate(finish, { scrollAfter: false });
   }
 
@@ -222,8 +203,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     ].filter(Boolean).join(" ");
     const showingQuestions = phase === "questions" && followUp && questionProgress;
     const dialogTitle = showingQuestions
-      ? getCurrentPopupQuestion(followUp, questionProgress)?.prompt
-        ?? (getPopupAudienceStatus(followUp, questionProgress) === "restricted" ? followUp.adultOnly!.exitTitle : followUp.readyTitle)
+      ? getCurrentPopupQuestion(followUp, questionProgress)?.prompt ?? followUp.readyTitle
       : landingTitle;
     const landing = showingQuestions ? (
       <PopupQuestionPanel config={followUp} progress={questionProgress} busy={busy} loadingLabel={loadingLabel}
@@ -310,11 +290,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     return (
       <div className="gallery-article__entry-preview" data-gallery-entry="intro" suppressHydrationWarning>
         <script
-          dangerouslySetInnerHTML={{ __html: getArticlePopupBootstrapScript(unlockKey, followUp ? followUpUnlockKey : undefined, articleUnlockKey,
-            followUp?.adultOnly ? {progressKey: questionProgressKey, rejectedAnswers: Object.fromEntries(followUp.adultOnly.requirements.map(requirement => [
-              requirement.questionId,
-              followUp.questions.find(question => question.id === requirement.questionId)!.choices.filter(choice => !requirement.allowedAnswerIds.includes(choice.id)).map(choice => choice.id),
-            ]))} : undefined) }}
+          dangerouslySetInnerHTML={{ __html: getArticlePopupBootstrapScript(unlockKey, followUp ? followUpUnlockKey : undefined, articleUnlockKey) }}
           suppressHydrationWarning
           type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
         />
