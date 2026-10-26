@@ -85,16 +85,14 @@ try {
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'answer clicks never request ads');
     if (width === 390) {
       await page.reload();
-      await page.locator('[data-popup-question-id="adult-confirmation"]').waitFor();
+      await page.locator('[data-popup-question-id="content-interest"]').waitFor();
     }
     const priorRequests = width === 390 ? 0 : 1;
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests, 'resume never repeats first reward; other viewports test both ads without a page reload');
     assert.deepEqual((await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), progressKey)).answers, {'age-range': '65-plus', gender: 'skip'});
-    if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-confirm.png'});
-    await pick(page, 'adult-confirmation', 'Yes, I am 18 or older');
     await page.locator('[data-popup-question-id="content-interest"]').waitFor();
     if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-content.png'});
-    await pick(page, 'content-interest', 'A bit of everything');
+    await pick(page, 'content-interest', 'Fun');
     await dialog.getByRole('heading', {name: config.readyTitle, exact: true}).waitFor();
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests, 'extra reward waits for separate consent');
     assert.match(await dialog.innerText(), /Watch one short ad/);
@@ -129,32 +127,30 @@ try {
     assert.equal(await page.locator('.gallery-article__article-sections > section[id^="mobilityscooter-"]').count(), 16);
     assert.ok((await page.evaluate(() => window.entryTest.requests)).every(slot => slot.path === '/22677279144/rewarded' && slot.format === 'REWARDED'));
     assert.deepEqual(errors, []);
-    console.log(`${width}px PASS: same popup, four questions, content preference, saved progress, adult confirmation, extra reward consent/retry and unchanged article reward.`);
+    console.log(`${width}px PASS: same popup, age > gender > content interest, saved progress, extra reward consent/retry and unchanged article reward.`);
     await context.close();
   }
-  for (const mode of ['underage-range', 'underage-confirmation', 'decline-confirmation', 'blocked-storage']) {
-    const {context, page, dialog, errors} = await setup(390, mode === 'blocked-storage');
-    if (mode === 'underage-range' || mode === 'blocked-storage') await pick(page, 'age-range', 'Under 18');
-    else {
-      await pick(page, 'age-range', '18–64');
-      await pick(page, 'gender', 'Man');
-      await pick(page, 'adult-confirmation', mode === 'underage-confirmation' ? 'No, I am under 18' : 'Prefer not to confirm');
+  // Every combination uses precisely the same screens and two entry rewards.
+  for (let combination = 0; combination < 28; combination++) {
+    const blocked = combination === 27;
+    const {context, page, dialog, errors} = await setup(390, blocked);
+    for (let index = 0; index < config.questions.length; index++) {
+      const question = config.questions[index];
+      const choice = question.choices[blocked ? 0 : Math.floor(combination / 3 ** Math.min(index, 2)) % 3];
+      await pick(page, question.id, choice.label);
     }
-    await dialog.getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
-    assert.equal(await dialog.getByRole('button', {name: 'View Content', exact: true}).count(), 0, 'age-restricted exit cannot impersonate a content unlock');
-    assert.equal(await dialog.locator('.quiz-engine__ad-note').count(), 0);
-    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'no extra ad after age restriction');
-    assert.equal(await page.locator('.gallery-article__introduction, .gallery-article__article').count(), 0, 'restricted answers do not unlock any article content');
-    await dialog.getByRole('button', {name: config.adultOnly.exitCta, exact: true}).click();
-    await page.waitForURL(`${base}/`);
-    if (mode !== 'blocked-storage') {
-      await page.goto(`${base}/${slug}`);
-      await page.getByRole('dialog').getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
-      assert.equal(await page.locator('.gallery-article__introduction, .gallery-article__article').count(), 0, 'removing fbclid does not bypass the known age restriction');
-      assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0);
-    }
+    await dialog.getByRole('heading', {name: config.readyTitle, exact: true}).waitFor();
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'every set of answers waits for the same second CTA');
+    assert.equal(await page.locator('.gallery-article__introduction').count(), 0);
+    assert.equal(await page.evaluate(() => window.initialDialog === document.querySelector('[role="dialog"]')), true);
+    await dialog.getByRole('button', {name: config.cta, exact: true}).click();
+    await page.waitForFunction(() => window.entryTest.active !== null);
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 2, 'View Content requests a separate rewarded ad for every answer combination');
+    assert.equal(await page.locator('.gallery-article__introduction').count(), 0, 'no answer bypasses the pending reward');
+    await grant(page);
+    await page.locator('.gallery-article__introduction').waitFor();
     assert.deepEqual(errors, []);
-    console.log(`${mode} PASS: exit returns home, no content unlock or extra ads.`);
+    console.log(`${blocked ? 'Storage unavailable' : `Answer combination ${combination + 1}/27`} PASS: identical three questions, View Content and second rewarded ad.`);
     await context.close();
   }
   for (const completed of [false, true]) {
@@ -170,14 +166,19 @@ try {
       }
     }, {progressKey, completed, slug});
     await page.reload();
-    const dialog = page.getByRole('dialog');
-    await dialog.getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
-    assert.equal(await page.locator('.gallery-article__introduction, .gallery-article__article').count(), 0, 'legacy unlock flags cannot override age restriction');
-    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0);
-    await dialog.getByRole('button', {name: config.adultOnly.exitCta, exact: true}).click();
-    await page.waitForURL(`${base}/`);
+    if (!completed) {
+      // The retired confirmation question invalidates the old selection, but
+      // the completed first reward is still retained.
+      for (const question of config.questions) await pick(page, question.id, question.choices[0].label);
+      const dialog = page.getByRole('dialog');
+      await dialog.getByRole('heading', {name: config.readyTitle, exact: true}).waitFor();
+      assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0);
+      await dialog.getByRole('button', {name: config.cta, exact: true}).click();
+      await grant(page);
+    }
+    await page.locator('.gallery-article__introduction, .gallery-article__article').waitFor();
     assert.deepEqual(errors, []);
-    console.log(`Legacy ${completed ? 'completed' : 'pending'} session PASS: no article bypass from old unlocks.`);
+    console.log(`Legacy ${completed ? 'completed' : 'pending'} session PASS: answers restore without age-dependent routing.`);
     await context.close();
   }
 } finally {await browser.close();}

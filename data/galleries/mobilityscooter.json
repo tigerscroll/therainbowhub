@@ -17,8 +17,8 @@
     "ctaTone": "positive",
     "adNote": "One short ad, then continue.",
     "followUpQuestions": {
-      "questionCount": 4,
-      "requiredQuestionIds": ["age-range", "gender", "adult-confirmation", "content-interest"],
+      "questionCount": 3,
+      "requiredQuestionIds": ["age-range", "gender", "content-interest"],
       "title": "A Few Quick Questions",
       "instruction": "Choose the answer that suits you best.",
       "progressLabel": "Question {current} of {total}",
@@ -48,21 +48,12 @@
           ]
         },
         {
-          "id": "adult-confirmation",
-          "prompt": "Please confirm: are you 18 or older?",
-          "choices": [
-            { "id": "confirmed-adult", "label": "Yes, I am 18 or older" },
-            { "id": "under-18", "label": "No, I am under 18" },
-            { "id": "skip", "label": "Prefer not to confirm" }
-          ]
-        },
-        {
           "id": "content-interest",
           "prompt": "What type of content are you interested in?",
           "choices": [
-            { "id": "practical-tips", "label": "Practical tips" },
-            { "id": "step-by-step", "label": "Step-by-step advice" },
-            { "id": "everything", "label": "A bit of everything" }
+            { "id": "fun", "label": "Fun" },
+            { "id": "cheeky", "label": "Cheeky" },
+            { "id": "serious", "label": "Serious" }
           ]
         }
       ]

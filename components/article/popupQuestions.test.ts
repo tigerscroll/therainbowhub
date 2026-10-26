@@ -33,10 +33,11 @@ test("memory-test keeps five personal questions; mobilityscooter adds its own co
 const mobility = JSON.parse(fs.readFileSync("data/galleries/mobilityscooter.json", "utf8"));
 const mobilityQuestions = mobility.landing.followUpQuestions;
 
-test("mobility popup asks age, gender, adult confirmation and content preference without guide-specific copy", () => {
+test("mobility popup asks only age, gender and Fun/Cheeky/Serious content preference", () => {
   assert(isArticlePopupQuestions(mobilityQuestions));
-  assert.equal(mobilityQuestions.questionCount, 4);
-  assert.deepEqual(createPopupQuestionProgress(mobilityQuestions).questionIds, ["age-range", "gender", "adult-confirmation", "content-interest"]);
+  assert.equal(mobilityQuestions.questionCount, 3);
+  assert.deepEqual(createPopupQuestionProgress(mobilityQuestions).questionIds, ["age-range", "gender", "content-interest"]);
+  assert.deepEqual(mobilityQuestions.questions[2].choices.map((choice: any) => choice.label), ["Fun", "Cheeky", "Serious"]);
   assert(mobilityQuestions.questions.find((q: any) => q.id === "gender").choices.some((c: any) => c.id === "skip"));
   assert.doesNotMatch(JSON.stringify(mobilityQuestions), /guide|funding|application|eligibility|No further questions or ads/i);
   assert.equal(mobilityQuestions.questions.find((q: any) => q.id === "content-interest").prompt, "What type of content are you interested in?");
@@ -49,10 +50,10 @@ test("mobility popup asks age, gender, adult confirmation and content preference
   assert.match(mobilityQuestions.unavailableCopy, /try again/);
 });
 
-test("all 81 answer combinations follow the same four questions and rewarded View Content step", () => {
-  for (let combination = 0; combination < 81; combination++) {
+test("all 27 answer combinations follow the same three questions and rewarded View Content step", () => {
+  for (let combination = 0; combination < 27; combination++) {
     let progress = createPopupQuestionProgress(mobilityQuestions);
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < 3; index++) {
       const expected = mobilityQuestions.questions[index];
       assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress)?.id, expected.id);
       const choice = expected.choices[Math.floor(combination / 3 ** index) % 3];
@@ -60,27 +61,28 @@ test("all 81 answer combinations follow the same four questions and rewarded Vie
       assert(isPopupQuestionProgress(mobilityQuestions, progress));
     }
     assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress), undefined);
-    assert.equal(Object.keys(progress.answers).length, 4);
+    assert.equal(Object.keys(progress.answers).length, 3);
     assert.equal(mobilityQuestions.cta, "View Content");
     assert.equal(mobilityQuestions.requireReward, true);
   }
 });
 
 test("appending a content question preserves all prior answers without age-dependent routing", () => {
-  const oldIds = ["age-range", "gender", "adult-confirmation"];
+  const oldIds = ["age-range", "gender"];
   for (const answers of [
     {"age-range": "under-18"},
-    {"age-range": "18-64", gender: "skip", "adult-confirmation": "under-18"},
-    {"age-range": "65-plus", gender: "skip", "adult-confirmation": "confirmed-adult"},
+    {"age-range": "18-64", gender: "skip"},
+    {"age-range": "65-plus", gender: "skip"},
   ]) {
     const restored = restorePopupQuestionProgress(mobilityQuestions, {questionIds: oldIds, answers});
     assert(restored);
     assert.deepEqual(restored.answers, answers);
-    assert.equal(restored.questionIds.length, 4);
+    assert.equal(restored.questionIds.length, 3);
     assert.equal(getCurrentPopupQuestion(mobilityQuestions, restored)?.id, Object.keys(answers).length === 1 ? "gender" : "content-interest");
   }
   assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: ["gender", "age-range", "adult-confirmation"], answers: {}}), null);
-  assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: oldIds, answers: {"content-interest": "everything"}}), null);
+  assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: oldIds, answers: {"content-interest": "fun"}}), null);
+  assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: ["age-range", "gender", "adult-confirmation", "content-interest"], answers: {"age-range": "under-18"}}), null, "obsolete four-question selections reset safely");
 });
 
 test("strict rewarded popup requires valid reward behaviour and retry copy", () => {

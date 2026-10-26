@@ -15,7 +15,7 @@ const browser = await chromium.launch({
 
 try {
   for (const gallery of galleries) {
-    const scenarios = gallery.landing.followUpQuestions ? ['fbclid', 'direct', 'unlocked', 'questions-pending', ...(gallery.landing.followUpQuestions.adultOnly ? ['age-restricted', 'age-restricted-direct'] : [])] : ['fbclid', 'direct', 'unlocked'];
+    const scenarios = gallery.landing.followUpQuestions ? ['fbclid', 'direct', 'unlocked', 'questions-pending', ...(gallery.slug === 'mobilityscooter' ? ['saved-answers-pending', 'saved-answers-unlocked'] : [])] : ['fbclid', 'direct', 'unlocked'];
     for (const scenario of scenarios) {
       const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
       const page = await context.newPage();
@@ -37,13 +37,10 @@ try {
       const contentSelector = gallery.gallery.flow === 'article'
         ? '.gallery-article__introduction'
         : '.gallery-article__story:not(.gallery-article__story--preview)';
-      await context.addInitScript(({ slug, unlocked, pending, restricted, followUp, contentSelector }) => {
+      await context.addInitScript(({ slug, unlocked, pending, savedAnswers, followUp, contentSelector }) => {
         if (unlocked || pending) sessionStorage.setItem(`rainbowhub:gallery-unlock:v1:${slug}`, '1');
         if (unlocked && followUp) sessionStorage.setItem(`rainbowhub:article-entry-unlock:v1:${slug}`, '1');
-        if (restricted) {
-          sessionStorage.setItem(`rainbowhub:gallery-unlock:v1:${slug}`, '1');
-          sessionStorage.setItem(`rainbowhub:article-entry-unlock:v1:${slug}`, '1');
-          sessionStorage.setItem(`rainbowhub:article-unlock:v1:${slug}`, '1');
+        if (savedAnswers) {
           sessionStorage.setItem(`rainbowhub:article-entry-questions:v1:${slug}`, JSON.stringify({questionIds: ['age-range', 'gender', 'adult-confirmation'], answers: {'age-range': 'under-18'}}));
         }
         window.articleEntryFrames = [];
@@ -58,10 +55,10 @@ try {
           requestAnimationFrame(record);
         };
         requestAnimationFrame(record);
-      }, { slug: gallery.slug, unlocked: scenario === 'unlocked', pending: scenario === 'questions-pending', restricted: scenario.startsWith('age-restricted'), followUp: !!gallery.landing.followUpQuestions, contentSelector });
+      }, { slug: gallery.slug, unlocked: scenario === 'unlocked' || scenario === 'saved-answers-unlocked', pending: scenario === 'questions-pending' || scenario === 'saved-answers-pending', savedAnswers: scenario.startsWith('saved-answers'), followUp: !!gallery.landing.followUpQuestions, contentSelector });
       const path = `${gallery.locale === 'en' ? '' : `/${gallery.locale}`}/${gallery.slug}`;
-      const query = scenario === 'direct' || scenario === 'age-restricted-direct' ? '?utm_source=facebook' : '?fbclid=paint-test';
-      const popupExpected = scenario === 'fbclid' || scenario === 'questions-pending' || scenario.startsWith('age-restricted');
+      const query = scenario === 'direct' ? '?utm_source=facebook' : '?fbclid=paint-test';
+      const popupExpected = scenario === 'fbclid' || scenario === 'questions-pending' || scenario === 'saved-answers-pending';
       await page.goto(`${base}${path}${query}`, { waitUntil: 'commit' });
       await page.locator(`.gallery-article__entry-preview[data-gallery-entry="${popupExpected ? 'popup' : 'intro'}"]`).waitFor();
       const visibleSelector = popupExpected ? '[role="dialog"]' : contentSelector;
