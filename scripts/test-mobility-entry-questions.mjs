@@ -112,6 +112,8 @@ try {
     await page.waitForFunction(() => window.entryTest.active !== null);
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests + 4, 'View Content retries with a new rewarded ad on click');
     assert.deepEqual(await page.evaluate(() => window.entryTest.requests.at(-1)), {path: '/22677279144/rewarded', format: 'REWARDED'});
+    assert.equal(await page.locator('.gallery-article__introduction').count(), 0, 'requesting or displaying an ad alone never unlocks the page');
+    assert.equal(await page.evaluate(slug => sessionStorage.getItem(`rainbowhub:article-entry-unlock:v1:${slug}`), slug), null, 'the first popup reward cannot unlock the View Content step');
     await page.evaluate(() => window.entryTest.close());
     await page.waitForFunction(() => !document.querySelector('[role="dialog"] button')?.disabled);
     assert.equal(await page.locator('.gallery-article__introduction').count(), 0, 'closing without a reward leaves the popup ready');
@@ -139,21 +141,20 @@ try {
       await pick(page, 'adult-confirmation', mode === 'underage-confirmation' ? 'No, I am under 18' : 'Prefer not to confirm');
     }
     await dialog.getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
-    assert.equal(await dialog.getByRole('button', {name: 'View Content', exact: true}).count(), 0, 'ad-free exit has a different CTA label');
+    assert.equal(await dialog.getByRole('button', {name: 'View Content', exact: true}).count(), 0, 'age-restricted exit cannot impersonate a content unlock');
     assert.equal(await dialog.locator('.quiz-engine__ad-note').count(), 0);
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'no extra ad after age restriction');
+    assert.equal(await page.locator('.gallery-article__introduction, .gallery-article__article').count(), 0, 'restricted answers do not unlock any article content');
     await dialog.getByRole('button', {name: config.adultOnly.exitCta, exact: true}).click();
-    await page.locator('.gallery-article__introduction').waitFor();
+    await page.waitForURL(`${base}/`);
     if (mode !== 'blocked-storage') {
       await page.goto(`${base}/${slug}`);
-      await page.locator('.gallery-article__introduction').waitFor();
+      await page.getByRole('dialog').getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
+      assert.equal(await page.locator('.gallery-article__introduction, .gallery-article__article').count(), 0, 'removing fbclid does not bypass the known age restriction');
+      assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0);
     }
-    const before = await page.evaluate(() => window.entryTest.requests.length);
-    await page.getByRole('button', {name: /Continue Reading/}).click();
-    await page.locator('.gallery-article__article').waitFor();
-    assert.equal(await page.evaluate(() => window.entryTest.requests.length), before, 'article continues ad-free even after removing fbclid');
     assert.deepEqual(errors, []);
-    console.log(`${mode} PASS: no more rewarded ads, guide remains accessible.`);
+    console.log(`${mode} PASS: exit returns home, no content unlock or extra ads.`);
     await context.close();
   }
   for (const completed of [false, true]) {
@@ -163,20 +164,20 @@ try {
         questionIds: ['age-range', 'gender', 'adult-confirmation'],
         answers: {'age-range': '18-64', gender: 'skip', 'adult-confirmation': 'under-18'},
       }));
-      if (completed) sessionStorage.setItem(`rainbowhub:article-entry-unlock:v1:${slug}`, '1');
+      if (completed) {
+        sessionStorage.setItem(`rainbowhub:article-entry-unlock:v1:${slug}`, '1');
+        sessionStorage.setItem(`rainbowhub:article-unlock:v1:${slug}`, '1');
+      }
     }, {progressKey, completed, slug});
     await page.reload();
-    if (!completed) {
-      const dialog = page.getByRole('dialog');
-      await dialog.getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
-      await dialog.getByRole('button', {name: config.adultOnly.exitCta, exact: true}).click();
-    }
-    await page.locator('.gallery-article__introduction').waitFor();
-    await page.getByRole('button', {name: /Continue Reading/}).click();
-    await page.locator('.gallery-article__article').waitFor();
-    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'legacy minor progress remains ad-free');
+    const dialog = page.getByRole('dialog');
+    await dialog.getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
+    assert.equal(await page.locator('.gallery-article__introduction, .gallery-article__article').count(), 0, 'legacy unlock flags cannot override age restriction');
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0);
+    await dialog.getByRole('button', {name: config.adultOnly.exitCta, exact: true}).click();
+    await page.waitForURL(`${base}/`);
     assert.deepEqual(errors, []);
-    console.log(`Legacy ${completed ? 'completed' : 'pending'} session PASS: prior age decision survives added content question.`);
+    console.log(`Legacy ${completed ? 'completed' : 'pending'} session PASS: no article bypass from old unlocks.`);
     await context.close();
   }
 } finally {await browser.close();}

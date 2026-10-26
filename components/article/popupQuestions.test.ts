@@ -42,7 +42,8 @@ test("mobility popup asks age, gender, adult confirmation and content preference
   assert.equal(mobilityQuestions.questions.find((q: any) => q.id === "content-interest").prompt, "What type of content are you interested in?");
   assert.equal(mobilityQuestions.readyTitle, "Your Content Is Ready");
   assert.equal(mobilityQuestions.cta, "View Content");
-  assert.equal(mobilityQuestions.adultOnly.exitCta, "Continue");
+  assert.equal(mobilityQuestions.adultOnly.exitCta, "Back To Home");
+  assert.match(mobilityQuestions.adultOnly.exitTitle, /Adults Only/);
   assert.notEqual(mobilityQuestions.cta, mobilityQuestions.adultOnly.exitCta, "only the rewarded action is labelled View Content");
   assert.match(mobilityQuestions.adNote, /Watch one short ad/);
   assert.equal(mobility.landing.adNote, "One short ad, then continue.");
@@ -190,5 +191,17 @@ test("first-paint bootstrap keeps pending questions inside the popup but respect
       window: { location: { search: "?fbclid=abc" }, sessionStorage: { getItem(key: keyof typeof saved) { return saved[key]; } } },
     });
     assert.equal(visible, expected);
+  }
+});
+
+test("saved underage answers cannot expose the article on first paint, even with legacy unlocks or no fbclid", () => {
+  for (const search of ["", "?fbclid=test"]) {
+    let visible = "";
+    runInNewContext(getArticlePopupBootstrapScript("entry", "followUp", "article", {progressKey: "answers", rejectedAnswers: {"adult-confirmation": ["under-18", "skip"]}}), {
+      URLSearchParams,
+      document: {currentScript: {parentElement: {setAttribute(_name: string, value: string) {visible = value;}}}},
+      window: {location: {search}, sessionStorage: {getItem(key: string) {return key === "answers" ? JSON.stringify({answers: {"adult-confirmation": "under-18"}}) : "1";}}},
+    });
+    assert.equal(visible, "popup");
   }
 });

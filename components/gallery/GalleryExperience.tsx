@@ -11,6 +11,7 @@ import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuesti
 import { mountQuizInterstitial } from "@/components/quiz/interstitialAds";
 import type { GalleryManifest } from "@/lib/galleries";
 import { siteConfig } from "@/lib/siteConfig";
+import { getLocalePath } from "@/lib/localeConfig";
 
 type GalleryPhase = "complete" | "gallery" | "introduction" | "landing" | "questions";
 type GalleryDestination = number | "complete" | "intro";
@@ -60,18 +61,29 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     try { window.sessionStorage.setItem(questionProgressKey, JSON.stringify(progress)); } catch { /* Keep progress in this mounted session. */ }
   }, [questionProgressKey]);
 
-  const ensureQuestionProgress = useCallback(() => {
+  const readQuestionProgress = useCallback(() => {
     if (!followUp) return null;
     let progress: unknown = questionProgressRef.current;
     if (!isPopupQuestionProgress(followUp, progress)) {
       try { progress = JSON.parse(window.sessionStorage.getItem(questionProgressKey) ?? "null"); } catch { /* Start a fresh valid selection. */ }
     }
-    const valid = restorePopupQuestionProgress(followUp, progress) ?? createPopupQuestionProgress(followUp);
+    return restorePopupQuestionProgress(followUp, progress);
+  }, [followUp, questionProgressKey]);
+
+  const ensureQuestionProgress = useCallback(() => {
+    if (!followUp) return null;
+    const valid = readQuestionProgress() ?? createPopupQuestionProgress(followUp);
     saveQuestionProgress(valid);
     return valid;
-  }, [followUp, questionProgressKey, saveQuestionProgress]);
+  }, [followUp, readQuestionProgress, saveQuestionProgress]);
 
   const restoreFromUrl = useCallback(() => {
+    const savedProgress = readQuestionProgress();
+    if (followUp && savedProgress && getPopupAudienceStatus(followUp, savedProgress) === "restricted") {
+      saveQuestionProgress(savedProgress);
+      setPhase("questions");
+      return;
+    }
     let unlocked = overlayEntry && !shouldShowArticlePopup(window.location.search);
     if (!unlocked) {
       unlocked = entryGranted.current;
@@ -105,7 +117,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     }
     setIndex(nextState.index);
     setPhase(nextState.phase);
-  }, [articleFlow, articleUnlockKey, ensureQuestionProgress, followUp, followUpUnlockKey, gallery.items.length, overlayEntry, unlockKey]);
+  }, [articleFlow, articleUnlockKey, ensureQuestionProgress, followUp, followUpUnlockKey, gallery.items.length, overlayEntry, readQuestionProgress, saveQuestionProgress, unlockKey]);
 
   useLayoutEffect(() => {
     setHydrated(true);
@@ -173,7 +185,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     };
     const audience = getPopupAudienceStatus(followUp, progress);
     if (audience === "restricted") {
-      finish();
+      window.location.assign(getLocalePath(gallery.locale, "/"));
       return;
     }
     if (followUp.adultOnly && audience !== "adult") return;
@@ -190,16 +202,10 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
       try { window.sessionStorage.setItem(articleUnlockKey, "1"); } catch { /* The current session still opens. */ }
       moveTo(1, false);
     };
-    // Restore the age decision even after a reload or removal of fbclid.
-    let progress = questionProgressRef.current;
-    if (followUp?.adultOnly && !isPopupQuestionProgress(followUp, progress)) {
-      try {
-        const saved: unknown = JSON.parse(window.sessionStorage.getItem(questionProgressKey) ?? "null");
-        progress = restorePopupQuestionProgress(followUp, saved);
-      } catch { /* The mounted session still retains its age decision. */ }
-    }
+    const progress = readQuestionProgress();
     if (followUp && progress && getPopupAudienceStatus(followUp, progress) === "restricted") {
-      finish();
+      saveQuestionProgress(progress);
+      setPhase("questions");
       return;
     }
     void runGate(finish, { scrollAfter: false });
@@ -304,7 +310,11 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     return (
       <div className="gallery-article__entry-preview" data-gallery-entry="intro" suppressHydrationWarning>
         <script
-          dangerouslySetInnerHTML={{ __html: getArticlePopupBootstrapScript(unlockKey, followUp ? followUpUnlockKey : undefined, articleUnlockKey) }}
+          dangerouslySetInnerHTML={{ __html: getArticlePopupBootstrapScript(unlockKey, followUp ? followUpUnlockKey : undefined, articleUnlockKey,
+            followUp?.adultOnly ? {progressKey: questionProgressKey, rejectedAnswers: Object.fromEntries(followUp.adultOnly.requirements.map(requirement => [
+              requirement.questionId,
+              followUp.questions.find(question => question.id === requirement.questionId)!.choices.filter(choice => !requirement.allowedAnswerIds.includes(choice.id)).map(choice => choice.id),
+            ]))} : undefined) }}
           suppressHydrationWarning
           type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
         />
