@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
 import { runInNewContext } from "node:vm";
-import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, getPopupAudienceStatus, isArticlePopupQuestions, isPopupQuestionProgress, restorePopupQuestionProgress } from "../gallery/popupQuestions.ts";
+import { answerPopupQuestion, createPopupQuestionProgress, getCurrentPopupQuestion, isArticlePopupQuestions, isPopupQuestionProgress, restorePopupQuestionProgress } from "../gallery/popupQuestions.ts";
 import { getArticlePopupBootstrapScript } from "../gallery/galleryPopup.ts";
 
 const gallery = JSON.parse(fs.readFileSync("data/galleries/memory-test.json", "utf8"));
 const config = gallery.landing.followUpQuestions;
 
-test("memory-test keeps five personal questions; only mobilityscooter adds the adult-confirmed guide flow", () => {
+test("memory-test keeps five personal questions; mobilityscooter adds its own content-question flow", () => {
   assert(isArticlePopupQuestions(config));
   assert.equal(config.questionCount, 5);
   assert.equal(config.questions.length, 10);
@@ -42,29 +42,31 @@ test("mobility popup asks age, gender, adult confirmation and content preference
   assert.equal(mobilityQuestions.questions.find((q: any) => q.id === "content-interest").prompt, "What type of content are you interested in?");
   assert.equal(mobilityQuestions.readyTitle, "Your Content Is Ready");
   assert.equal(mobilityQuestions.cta, "View Content");
-  assert.equal(mobilityQuestions.adultOnly.exitCta, "Back To Home");
-  assert.match(mobilityQuestions.adultOnly.exitTitle, /Adults Only/);
-  assert.notEqual(mobilityQuestions.cta, mobilityQuestions.adultOnly.exitCta, "only the rewarded action is labelled View Content");
+  assert.equal(Object.hasOwn(mobilityQuestions, "adultOnly"), false, "answers never select a different flow");
   assert.match(mobilityQuestions.adNote, /Watch one short ad/);
   assert.equal(mobility.landing.adNote, "One short ad, then continue.");
   assert.equal(mobilityQuestions.requireReward, true);
   assert.match(mobilityQuestions.unavailableCopy, /try again/);
 });
 
-test("extra mobility reward requires both an adult age range and explicit confirmation", () => {
-  let progress = createPopupQuestionProgress(mobilityQuestions);
-  assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "unconfirmed");
-  progress = answerPopupQuestion(mobilityQuestions, progress, "age-range", "65-plus");
-  progress = answerPopupQuestion(mobilityQuestions, progress, "gender", "skip");
-  assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "unconfirmed");
-  progress = answerPopupQuestion(mobilityQuestions, progress, "adult-confirmation", "confirmed-adult");
-  assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "adult");
-  assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress)?.id, "content-interest");
-  progress = answerPopupQuestion(mobilityQuestions, progress, "content-interest", "everything");
-  assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress), undefined);
+test("all 81 answer combinations follow the same four questions and rewarded View Content step", () => {
+  for (let combination = 0; combination < 81; combination++) {
+    let progress = createPopupQuestionProgress(mobilityQuestions);
+    for (let index = 0; index < 4; index++) {
+      const expected = mobilityQuestions.questions[index];
+      assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress)?.id, expected.id);
+      const choice = expected.choices[Math.floor(combination / 3 ** index) % 3];
+      progress = answerPopupQuestion(mobilityQuestions, progress, expected.id, choice.id);
+      assert(isPopupQuestionProgress(mobilityQuestions, progress));
+    }
+    assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress), undefined);
+    assert.equal(Object.keys(progress.answers).length, 4);
+    assert.equal(mobilityQuestions.cta, "View Content");
+    assert.equal(mobilityQuestions.requireReward, true);
+  }
 });
 
-test("appending a content question preserves prior answers and underage decisions", () => {
+test("appending a content question preserves all prior answers without age-dependent routing", () => {
   const oldIds = ["age-range", "gender", "adult-confirmation"];
   for (const answers of [
     {"age-range": "under-18"},
@@ -75,35 +77,14 @@ test("appending a content question preserves prior answers and underage decision
     assert(restored);
     assert.deepEqual(restored.answers, answers);
     assert.equal(restored.questionIds.length, 4);
-    assert.equal(getPopupAudienceStatus(mobilityQuestions, restored), answers["adult-confirmation"] === "confirmed-adult" ? "adult" : "restricted");
+    assert.equal(getCurrentPopupQuestion(mobilityQuestions, restored)?.id, Object.keys(answers).length === 1 ? "gender" : "content-interest");
   }
   assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: ["gender", "age-range", "adult-confirmation"], answers: {}}), null);
   assert.equal(restorePopupQuestionProgress(mobilityQuestions, {questionIds: oldIds, answers: {"content-interest": "everything"}}), null);
 });
 
-test("an underage or unconfirmed answer ends the extra flow, including after restoring progress", () => {
-  for (const answer of ["under-18", "skip"]) {
-    let progress = createPopupQuestionProgress(mobilityQuestions);
-    progress = answerPopupQuestion(mobilityQuestions, progress, "age-range", "18-64");
-    progress = answerPopupQuestion(mobilityQuestions, progress, "gender", "skip");
-    progress = answerPopupQuestion(mobilityQuestions, progress, "adult-confirmation", answer);
-    assert.equal(getPopupAudienceStatus(mobilityQuestions, progress), "restricted");
-    assert.equal(getCurrentPopupQuestion(mobilityQuestions, progress), undefined);
-  }
-  const initial = createPopupQuestionProgress(mobilityQuestions);
-  const minor = answerPopupQuestion(mobilityQuestions, initial, "age-range", "under-18");
-  assert(isPopupQuestionProgress(mobilityQuestions, minor));
-  assert.equal(getPopupAudienceStatus(mobilityQuestions, JSON.parse(JSON.stringify(minor))), "restricted");
-  assert.equal(getCurrentPopupQuestion(mobilityQuestions, minor), undefined);
-  assert.equal(answerPopupQuestion(mobilityQuestions, minor, "gender", "woman"), minor);
-});
-
-test("adult-gate config rejects missing questions, invalid allowed answers and incomplete exit copy", () => {
+test("strict rewarded popup requires valid reward behaviour and retry copy", () => {
   for (const mutate of [
-    (c: any) => { c.adultOnly.requirements[0].questionId = "unknown"; },
-    (c: any) => { c.adultOnly.requirements[0].allowedAnswerIds = ["unknown"]; },
-    (c: any) => { c.requiredQuestionIds = ["gender", "adult-confirmation"]; },
-    (c: any) => { c.adultOnly.exitCopy = ""; },
     (c: any) => { delete c.unavailableCopy; },
     (c: any) => { c.requireReward = "true"; },
   ]) {
@@ -194,14 +175,14 @@ test("first-paint bootstrap keeps pending questions inside the popup but respect
   }
 });
 
-test("saved underage answers cannot expose the article on first paint, even with legacy unlocks or no fbclid", () => {
-  for (const search of ["", "?fbclid=test"]) {
+test("first paint depends on rewarded unlocks, never the visitor's answers", () => {
+  for (const unlocked of [false, true]) {
     let visible = "";
-    runInNewContext(getArticlePopupBootstrapScript("entry", "followUp", "article", {progressKey: "answers", rejectedAnswers: {"adult-confirmation": ["under-18", "skip"]}}), {
+    runInNewContext(getArticlePopupBootstrapScript("entry", "followUp", "article"), {
       URLSearchParams,
       document: {currentScript: {parentElement: {setAttribute(_name: string, value: string) {visible = value;}}}},
-      window: {location: {search}, sessionStorage: {getItem(key: string) {return key === "answers" ? JSON.stringify({answers: {"adult-confirmation": "under-18"}}) : "1";}}},
+      window: {location: {search: "?fbclid=test"}, sessionStorage: {getItem(key: string) {return key === "entry" || unlocked ? "1" : null;}}},
     });
-    assert.equal(visible, "popup");
+    assert.equal(visible, unlocked ? "intro" : "popup");
   }
 });
