@@ -45,6 +45,9 @@ test("mobility popup asks age, gender, adult confirmation and content preference
   assert.equal(mobilityQuestions.adultOnly.exitCta, "Continue");
   assert.notEqual(mobilityQuestions.cta, mobilityQuestions.adultOnly.exitCta, "only the rewarded action is labelled View Content");
   assert.match(mobilityQuestions.adNote, /Watch one short ad/);
+  assert.equal(mobility.landing.adNote, "One short ad, then continue.");
+  assert.equal(mobilityQuestions.requireReward, true);
+  assert.match(mobilityQuestions.unavailableCopy, /try again/);
 });
 
 test("extra mobility reward requires both an adult age range and explicit confirmation", () => {
@@ -100,6 +103,8 @@ test("adult-gate config rejects missing questions, invalid allowed answers and i
     (c: any) => { c.adultOnly.requirements[0].allowedAnswerIds = ["unknown"]; },
     (c: any) => { c.requiredQuestionIds = ["gender", "adult-confirmation"]; },
     (c: any) => { c.adultOnly.exitCopy = ""; },
+    (c: any) => { delete c.unavailableCopy; },
+    (c: any) => { c.requireReward = "true"; },
   ]) {
     const invalid = structuredClone(mobilityQuestions);
     mutate(invalid);

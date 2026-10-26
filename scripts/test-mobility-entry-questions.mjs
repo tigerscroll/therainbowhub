@@ -20,7 +20,7 @@ async function setup(width, blocked = false) {
     const listeners = new Map();
     const emit = (name, slot, extra = {}) => (listeners.get(name) ?? []).forEach(fn => fn({slot, ...extra}));
     const state = {
-      requests: [], active: null,
+      requests: [], active: null, noFill: false,
       grant() {const slot = this.active; emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); this.active = null;},
       close() {const slot = this.active; emit('rewardedSlotClosed', slot); this.active = null;},
     };
@@ -35,7 +35,10 @@ async function setup(width, blocked = false) {
       enableServices() {}, setConfig() {}, destroySlots() {},
       enums: {OutOfPageFormat: {REWARDED: 'REWARDED', INTERSTITIAL: 'INTERSTITIAL'}},
       defineOutOfPageSlot(path, format) {state.requests.push({path, format}); return {path, format, addService() {return this;}};},
-      display(slot) {queueMicrotask(() => emit('rewardedSlotReady', slot, {makeRewardedVisible() {state.active = slot;}}));},
+      display(slot) {queueMicrotask(() => {
+        if (state.noFill) emit('slotRenderEnded', slot, {isEmpty: true});
+        else emit('rewardedSlotReady', slot, {makeRewardedVisible() {state.active = slot;}});
+      });},
     };
   }, blocked);
   const page = await context.newPage();
@@ -80,9 +83,12 @@ try {
     await pick(page, 'age-range', '65 or older');
     await pick(page, 'gender', 'Prefer not to say');
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'answer clicks never request ads');
-    await page.reload();
-    await page.locator('[data-popup-question-id="adult-confirmation"]').waitFor();
-    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'resume never repeats first reward');
+    if (width === 390) {
+      await page.reload();
+      await page.locator('[data-popup-question-id="adult-confirmation"]').waitFor();
+    }
+    const priorRequests = width === 390 ? 0 : 1;
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests, 'resume never repeats first reward; other viewports test both ads without a page reload');
     assert.deepEqual((await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), progressKey)).answers, {'age-range': '65-plus', gender: 'skip'});
     if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-confirm.png'});
     await pick(page, 'adult-confirmation', 'Yes, I am 18 or older');
@@ -90,12 +96,21 @@ try {
     if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-content.png'});
     await pick(page, 'content-interest', 'A bit of everything');
     await dialog.getByRole('heading', {name: config.readyTitle, exact: true}).waitFor();
-    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'extra reward waits for separate consent');
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests, 'extra reward waits for separate consent');
     assert.match(await dialog.innerText(), /Watch one short ad/);
     if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-ready.png'});
+    await page.evaluate(() => {window.entryTest.noFill = true;});
+    await dialog.getByRole('button', {name: config.cta, exact: true}).click();
+    await dialog.getByRole('status').waitFor();
+    assert.equal(await dialog.getByRole('status').innerText(), config.unavailableCopy);
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests + 3, 'no-fill uses three bounded requests');
+    assert.equal(await page.locator('.gallery-article__introduction').count(), 0, 'no-fill no longer silently unlocks View Content');
+    assert.equal(await page.evaluate(slug => sessionStorage.getItem(`rainbowhub:article-entry-unlock:v1:${slug}`), slug), null);
+    if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-no-fill.png'});
+    await page.evaluate(() => {window.entryTest.noFill = false;});
     await dialog.getByRole('button', {name: config.cta, exact: true}).click();
     await page.waitForFunction(() => window.entryTest.active !== null);
-    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'View Content requests a new rewarded ad on click');
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests + 4, 'View Content retries with a new rewarded ad on click');
     assert.deepEqual(await page.evaluate(() => window.entryTest.requests.at(-1)), {path: '/22677279144/rewarded', format: 'REWARDED'});
     await page.evaluate(() => window.entryTest.close());
     await page.waitForFunction(() => !document.querySelector('[role="dialog"] button')?.disabled);

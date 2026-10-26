@@ -14,6 +14,7 @@ type RewardedGateOptions = {
 };
 
 type RunGateOptions = {
+  onUnavailable?: () => void;
   retryOnClose?: boolean;
   scrollAfter?: boolean;
   scrollBehavior?: ScrollBehavior;
@@ -92,7 +93,7 @@ export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadyS
 
   const runGate = useCallback(async (
     onComplete: () => void,
-    { retryOnClose = true, scrollAfter = true, scrollBehavior = "auto", minimumVisibleDelayMs = 0 }: RunGateOptions = {},
+    { onUnavailable, retryOnClose = true, scrollAfter = true, scrollBehavior = "auto", minimumVisibleDelayMs = 0 }: RunGateOptions = {},
   ) => {
     if (active.current) return;
     const requestGeneration = ++generation.current;
@@ -122,6 +123,15 @@ export function useRewardedGate({ attempts, onRewardClosed, rewardClosedAlreadyS
       active.current = false;
       if (outcome === "closed") {
         setBusy(false);
+        return;
+      }
+      // A strict content unlock must not mistake no-fill for an earned reward.
+      // Other experiences retain their existing unavailable-ad fallback.
+      if (outcome === "unavailable" && onUnavailable) {
+        flushSync(() => {
+          onUnavailable();
+          setBusy(false);
+        });
         return;
       }
       flushSync(() => {

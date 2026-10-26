@@ -5,12 +5,13 @@ import { useLayoutEffect, useRef } from "react";
 import { ExperienceLanding } from "@/components/experience/ExperienceLanding";
 import { getCurrentPopupQuestion, getPopupAudienceStatus, type ArticlePopupQuestions, type PopupQuestionProgress } from "@/components/gallery/popupQuestions";
 
-export function PopupQuestionPanel({ config, progress, busy, loadingLabel, className, onAnswer, onContinue }: {
+export function PopupQuestionPanel({ config, progress, busy, loadingLabel, className, statusMessage, onAnswer, onContinue }: {
   config: ArticlePopupQuestions;
   progress: PopupQuestionProgress;
   busy: boolean;
   loadingLabel: string;
   className: string;
+  statusMessage?: string;
   onAnswer: (questionId: string, answerId: string) => void;
   onContinue: () => void;
 }) {
@@ -34,6 +35,7 @@ export function PopupQuestionPanel({ config, progress, busy, loadingLabel, class
         className={className} ctaIcon="→" ctaIconPosition="end" ctaLabel={restricted ? config.adultOnly!.exitCta : config.cta}
         icon={null} intro={restricted ? config.adultOnly!.exitCopy : config.readyCopy} onStart={onContinue} showSocialProof={false}
         socialProofText="" title={restricted ? config.adultOnly!.exitTitle : config.readyTitle}
+        statusMessage={statusMessage}
       />
     );
   }

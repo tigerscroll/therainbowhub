@@ -15,7 +15,7 @@
     "intro": "",
     "cta": "Continue",
     "ctaTone": "positive",
-    "adNote": "One short ad, then a few quick questions.",
+    "adNote": "One short ad, then continue.",
     "followUpQuestions": {
       "questionCount": 4,
       "requiredQuestionIds": ["age-range", "gender", "adult-confirmation", "content-interest"],
@@ -26,6 +26,8 @@
       "readyCopy": "Continue to take a closer look.",
       "cta": "View Content",
       "adNote": "Watch one short ad to view the content.",
+      "requireReward": true,
+      "unavailableCopy": "An ad isn't available right now. Tap View Content to try again.",
       "adultOnly": {
         "requirements": [
           { "questionId": "age-range", "allowedAnswerIds": ["18-64", "65-plus"] },

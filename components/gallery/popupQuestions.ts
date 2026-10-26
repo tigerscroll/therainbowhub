@@ -14,6 +14,8 @@ export type ArticlePopupQuestions = {
   readyCopy: string;
   cta: string;
   adNote: string;
+  requireReward?: boolean;
+  unavailableCopy?: string;
   questions: PopupQuestion[];
   adultOnly?: {
     requirements: { questionId: string; allowedAnswerIds: string[] }[];
@@ -37,6 +39,9 @@ export function isArticlePopupQuestions(value: unknown): value is ArticlePopupQu
     || ![config.title, config.instruction, config.progressLabel, config.readyTitle, config.readyCopy, config.cta, config.adNote].every(nonempty)
     || !config.progressLabel.includes("{current}") || !config.progressLabel.includes("{total}")
     || !Array.isArray(config.questions) || config.questions.length < config.questionCount) return false;
+  if ((config.requireReward !== undefined && typeof config.requireReward !== "boolean")
+    || (config.unavailableCopy !== undefined && !nonempty(config.unavailableCopy))
+    || (config.requireReward === true && !nonempty(config.unavailableCopy))) return false;
   const required = config.requiredQuestionIds ?? [];
   if (!Array.isArray(required) || required.length > config.questionCount || new Set(required).size !== required.length
     || !required.every(id => nonempty(id) && config.questions.some(question => question?.id === id))) return false;

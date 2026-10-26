@@ -25,6 +25,7 @@ type ExperienceLandingProps = {
   showCtaIcon?: boolean;
   showSocialProof?: boolean;
   socialProofText: string;
+  statusMessage?: string;
   title: string;
 };
 
@@ -70,6 +71,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   showCtaIcon = true,
   showSocialProof = true,
   socialProofText,
+  statusMessage,
   title,
 }, ref) {
   const ctaContent = (
@@ -122,6 +124,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
           </button>
         )}
         {adNote ? <p className="quiz-engine__ad-note"><span>✓</span>{adNote}</p> : null}
+        {statusMessage ? <p className="quiz-engine__ad-status" role="status">{statusMessage}</p> : null}
         {disclaimer ? <p className="quiz-engine__landing-disclaimer">{disclaimer}</p> : null}
       </div>
     </section>

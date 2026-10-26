@@ -49,6 +49,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
   const followUpUnlockKey = `rainbowhub:article-entry-unlock:v1:${gallery.slug}`;
   const questionProgressKey = `rainbowhub:article-entry-questions:v1:${gallery.slug}`;
   const [questionProgress, setQuestionProgress] = useState<PopupQuestionProgress | null>(null);
+  const [followUpAdUnavailable, setFollowUpAdUnavailable] = useState(false);
   const questionProgressRef = useRef<PopupQuestionProgress | null>(null);
   const entryGranted = useRef(false);
   const followUpGranted = useRef(false);
@@ -176,7 +177,12 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
       return;
     }
     if (followUp.adultOnly && audience !== "adult") return;
-    void runGate(finish, { retryOnClose: false, scrollAfter: false });
+    setFollowUpAdUnavailable(false);
+    void runGate(finish, {
+      retryOnClose: false,
+      scrollAfter: false,
+      onUnavailable: followUp.requireReward ? () => setFollowUpAdUnavailable(true) : undefined,
+    });
   }
 
   function continueArticle() {
@@ -215,6 +221,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
       : landingTitle;
     const landing = showingQuestions ? (
       <PopupQuestionPanel config={followUp} progress={questionProgress} busy={busy} loadingLabel={loadingLabel}
+        statusMessage={followUpAdUnavailable ? followUp.unavailableCopy : undefined}
         className={landingClassName} onAnswer={answerEntryQuestion} onContinue={finishEntryQuestions} />
     ) : (
       <ExperienceLanding
