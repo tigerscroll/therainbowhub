@@ -42,6 +42,8 @@ test("mobility popup asks age, gender, adult confirmation and content preference
   assert.equal(mobilityQuestions.questions.find((q: any) => q.id === "content-interest").prompt, "What type of content are you interested in?");
   assert.equal(mobilityQuestions.readyTitle, "Your Content Is Ready");
   assert.equal(mobilityQuestions.cta, "View Content");
+  assert.equal(mobilityQuestions.adultOnly.exitCta, "Continue");
+  assert.notEqual(mobilityQuestions.cta, mobilityQuestions.adultOnly.exitCta, "only the rewarded action is labelled View Content");
   assert.match(mobilityQuestions.adNote, /Watch one short ad/);
 });
 

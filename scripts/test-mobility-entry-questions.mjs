@@ -48,6 +48,9 @@ async function setup(width, blocked = false) {
   assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'no ad preload');
   await page.evaluate(() => {window.initialDialog = document.querySelector('[role="dialog"]');});
   await dialog.getByRole('button', {name: gallery.landing.cta, exact: true}).click();
+  await page.waitForFunction(() => window.entryTest.active !== null);
+  assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'first popup requests its own rewarded ad on click');
+  assert.deepEqual(await page.evaluate(() => window.entryTest.requests[0]), {path: '/22677279144/rewarded', format: 'REWARDED'});
   await grant(page);
   await page.locator('[data-popup-question-id="age-range"]').waitFor();
   assert.equal(await page.evaluate(() => window.initialDialog === document.querySelector('[role="dialog"]')), true, 'same popup stays mounted');
@@ -92,6 +95,8 @@ try {
     if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-ready.png'});
     await dialog.getByRole('button', {name: config.cta, exact: true}).click();
     await page.waitForFunction(() => window.entryTest.active !== null);
+    assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'View Content requests a new rewarded ad on click');
+    assert.deepEqual(await page.evaluate(() => window.entryTest.requests.at(-1)), {path: '/22677279144/rewarded', format: 'REWARDED'});
     await page.evaluate(() => window.entryTest.close());
     await page.waitForFunction(() => !document.querySelector('[role="dialog"] button')?.disabled);
     assert.equal(await page.locator('.gallery-article__introduction').count(), 0, 'closing without a reward leaves the popup ready');
@@ -119,6 +124,7 @@ try {
       await pick(page, 'adult-confirmation', mode === 'underage-confirmation' ? 'No, I am under 18' : 'Prefer not to confirm');
     }
     await dialog.getByRole('heading', {name: config.adultOnly.exitTitle}).waitFor();
+    assert.equal(await dialog.getByRole('button', {name: 'View Content', exact: true}).count(), 0, 'ad-free exit has a different CTA label');
     assert.equal(await dialog.locator('.quiz-engine__ad-note').count(), 0);
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'no extra ad after age restriction');
     await dialog.getByRole('button', {name: config.adultOnly.exitCta, exact: true}).click();
