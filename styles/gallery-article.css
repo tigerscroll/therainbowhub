@@ -62,6 +62,13 @@ body:has(.gallery-article__entry-preview[data-gallery-entry="popup"]) {
   backdrop-filter: blur(8px) saturate(.72);
 }
 
+.gallery-article__landing .quiz-engine__cta-options {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
 .quiz-theme[data-quiz-flow="continuous"] .gallery-article .gallery-article__overlay-scrim .gallery-article__landing {
   width: min(620px, 100%) !important;
   min-height: 0 !important;

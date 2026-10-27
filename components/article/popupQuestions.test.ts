@@ -17,7 +17,7 @@ test("memory-test keeps five personal questions; mobilityscooter adds its own co
   }
   for (const filename of fs.readdirSync("data/galleries").filter(file => file.endsWith(".json"))) {
     const value = JSON.parse(fs.readFileSync(`data/galleries/${filename}`, "utf8"));
-    if (!["memory-test", "mobilityscooter"].includes(value.slug)) assert.equal(value.landing.followUpQuestions, undefined, filename);
+    if (!["memory-test", "mobilityscooter", "jobs"].includes(value.slug)) assert.equal(value.landing.followUpQuestions, undefined, filename);
   }
   assert.match(config.instruction, /Personal questions are optional/);
   assert.deepEqual(config.requiredQuestionIds, ["gender", "self-rated-smarts"]);

@@ -11,13 +11,15 @@ import es from "@/data/i18n/es.json";
 import fr from "@/data/i18n/fr.json";
 import gr from "@/data/i18n/gr.json";
 import hi from "@/data/i18n/hi.json";
+import id from "@/data/i18n/id.json";
+import th from "@/data/i18n/th.json";
 import it from "@/data/i18n/it.json";
 import nl from "@/data/i18n/nl.json";
 import pt from "@/data/i18n/pt.json";
 import { getLocaleOptions, getLocalePath, localeLanguageTag } from "@/lib/localeConfig";
 import { companyLinks, legalLinks } from "@/lib/siteLinks";
 
-const translations = { de, en, es, fr, gr, hi, it, nl, pt };
+const translations = { de, en, es, fr, gr, hi, id, it, nl, pt, th };
 type NotFoundLocale = keyof typeof translations;
 
 function isNotFoundLocale(value: string): value is NotFoundLocale {

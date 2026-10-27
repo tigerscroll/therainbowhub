@@ -3,6 +3,7 @@ import adultOnlyBeaches from "@/data/galleries/adult-only-beaches.json";
 import adultOnlyHotels from "@/data/galleries/adults-only-hotels.json";
 import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
 import hospiceNurses from "@/data/galleries/hospice-nurses.json";
+import jobs from "@/data/galleries/jobs.json";
 import memoryTest from "@/data/galleries/memory-test.json";
 import mobilityScooter from "@/data/galleries/mobilityscooter.json";
 import nudeArt from "@/data/galleries/nude-art.json";
@@ -45,6 +46,7 @@ export type GalleryManifest = {
   landing: {
     adNote: string;
     cta: string;
+    ctaOptions?: string[];
     ctaTone?: "positive";
     eyebrow: string;
     intro: string;
@@ -89,6 +91,10 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
     && (manifest.landing.followUpQuestions === undefined || (manifest.landing.presentation === "overlay"
       && manifest.gallery?.flow === "article" && isArticlePopupQuestions(manifest.landing.followUpQuestions)))
     && typeof manifest.landing.cta === "string"
+    && (manifest.landing.ctaOptions === undefined || (Array.isArray(manifest.landing.ctaOptions)
+      && manifest.landing.ctaOptions.length >= 2 && manifest.landing.ctaOptions.length <= 4
+      && manifest.landing.ctaOptions.every(option => typeof option === "string" && option.trim().length > 0)
+      && new Set(manifest.landing.ctaOptions).size === manifest.landing.ctaOptions.length))
     && (manifest.landing.ctaTone === undefined || manifest.landing.ctaTone === "positive")
     && typeof manifest.landing.adNote === "string"
     && typeof manifest.landing.eyebrow === "string"
@@ -138,6 +144,7 @@ const galleryManifests = [
   adultOnlyHotels,
   adultOnlyParadise,
   hospiceNurses,
+  jobs,
   memoryTest,
   mobilityScooter,
   nudeArt,

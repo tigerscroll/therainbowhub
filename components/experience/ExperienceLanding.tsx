@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, type ReactNode } from "react";
+import { forwardRef, useState, type ReactNode } from "react";
 
 import { cancelFullPageNavigation, prepareFullPageNavigation } from "@/components/experience/fullPageNavigation";
 import { ExperienceIcon } from "@/components/experience/ExperienceIcon";
@@ -15,6 +15,7 @@ type ExperienceLandingProps = {
   ctaIcon?: ReactNode;
   ctaIconPosition?: "start" | "end";
   ctaLabel: string;
+  ctaOptions?: string[];
   className?: string;
   icon: ReactNode;
   intro: string;
@@ -61,6 +62,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   ctaIcon = "▶",
   ctaIconPosition = "start",
   ctaLabel,
+  ctaOptions,
   className,
   icon,
   intro,
@@ -74,6 +76,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   statusMessage,
   title,
 }, ref) {
+  const [selectedCta, setSelectedCta] = useState<string | null>(null);
   const ctaContent = (
     <>
       {showCtaIcon && ctaIconPosition === "start" ? <span aria-hidden="true" className="quiz-engine__primary-icon">{ctaIcon}</span> : null}
@@ -89,7 +92,16 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
         <h1>{title}</h1>
         {intro ? <p className="quiz-engine__quick-start">{intro}</p> : null}
         {showSocialProof ? <SocialProof avatars={avatars} text={socialProofText} /> : null}
-        {href && !busy ? (
+        {ctaOptions?.length ? (
+          <div className="quiz-engine__cta-options">
+            {ctaOptions.map(option => (
+              <button className="quiz-engine__primary" data-google-interstitial="false" disabled={busy}
+                key={option} onClick={() => { setSelectedCta(option); onStart(); }} type="button">
+                {busy && selectedCta === option ? busyLabel : option}
+              </button>
+            ))}
+          </div>
+        ) : href && !busy ? (
           <a
             className="quiz-engine__primary"
             data-google-interstitial={interstitialEligible ? "true" : "false"}

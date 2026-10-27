@@ -1246,3 +1246,23 @@
   max-height: none !important;
   padding-block: 12px !important;
 }
+
+/* Thai vowel and tone marks need more vertical room than the condensed Latin
+   heading treatment; tracking is inappropriate for its connected clusters. */
+.quiz-theme:lang(th) h1,
+.quiz-theme:lang(th) h2,
+.quiz-theme:lang(th) h3 {
+  line-height: 1.3 !important;
+  letter-spacing: normal !important;
+}
+.quiz-theme:lang(th) :is(
+  .quiz-engine__eyebrow,
+  .quiz-engine__question-context,
+  .quiz-engine__progress-head > strong,
+  .quiz-engine__career-result-progress strong,
+  .quiz-engine__answer-review-unlock > span,
+  .quiz-engine__checkpoint-next > span,
+  .quiz-engine__answer-review article > span
+) {
+  letter-spacing: normal !important;
+}

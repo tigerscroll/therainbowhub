@@ -12,6 +12,8 @@ export const localeOptions = [
   { code: "ar", name: "Arabic", flag: "🌐" },
   { code: "gr", name: "Greek", flag: "🇬🇷" },
   { code: "hi", name: "Hindi", flag: "🇮🇳" },
+  { code: "th", name: "Thai", flag: "🇹🇭" },
+  { code: "id", name: "Indonesian", flag: "🇮🇩" },
 ] as const;
 
 export type SupportedLocale = (typeof localeOptions)[number]["code"];

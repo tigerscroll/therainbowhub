@@ -16,7 +16,7 @@ function leaves(value: any, path = '', output: Record<string, string> = {}) {
 }
 const placeholders = (text: string) => [...text.matchAll(/\{[^{}]+\}/g)].map(m => m[0]).sort();
 
-for (const locale of ['ar', 'de', 'es', 'fr', 'hi', 'it', 'nl', 'pt']) {
+for (const locale of ['ar', 'de', 'es', 'fr', 'hi', 'id', 'it', 'nl', 'pt', 'th']) {
   test(`Years Left ${locale}: complete, repeatable translation with identical IDs and no missing text`, () => {
     const copy = read(locale);
     assert.deepEqual(copy, translateYearsLeft(locale, english, manifest));
@@ -56,12 +56,12 @@ function scoringQuiz(locale: string): Quiz {
   } as Quiz;
 }
 
-test('identical choices produce the same age, profile and consistency in all nine languages', () => {
+test('identical choices produce the same age, profile and consistency in all eleven languages', () => {
   const source = scoringQuiz('en');
   for (let pattern = 0; pattern < 20; pattern++) {
     const answers = Object.fromEntries(source.questions.map((q, i) => [q.id, (i * (pattern + 1) + pattern) % 4]));
     const expected = scoreQuiz(source, answers);
-    for (const locale of ['ar', 'de', 'es', 'fr', 'hi', 'it', 'nl', 'pt']) {
+    for (const locale of ['ar', 'de', 'es', 'fr', 'hi', 'id', 'it', 'nl', 'pt', 'th']) {
       const result = scoreQuiz(scoringQuiz(locale), answers);
       assert.equal(result.profile.id, expected.profile.id, `${locale}/${pattern}`);
       assert.equal(result.estimatedAge, expected.estimatedAge, `${locale}/${pattern}`);

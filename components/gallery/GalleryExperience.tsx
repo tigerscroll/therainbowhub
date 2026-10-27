@@ -100,8 +100,8 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     }
     const nextState = getStateFromUrl(gallery.items.length, articleFlow);
     if (articleFlow && nextState.phase === "gallery") {
-      let articleUnlocked = false;
-      try { articleUnlocked = window.sessionStorage.getItem(articleUnlockKey) === "1"; } catch { /* Keep the article reward gate. */ }
+      let articleUnlocked = Boolean(followUp?.unlockArticle && followUpGranted.current);
+      try { articleUnlocked ||= window.sessionStorage.getItem(articleUnlockKey) === "1"; } catch { /* Keep the article reward gate. */ }
       if (!articleUnlocked) {
         setIndex(0);
         setPhase("introduction");
@@ -174,6 +174,11 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
     const finish = () => {
       followUpGranted.current = true;
       try { window.sessionStorage.setItem(followUpUnlockKey, "1"); } catch { /* Keep the unlock for this mounted session. */ }
+      if (followUp.unlockArticle) {
+        try { window.sessionStorage.setItem(articleUnlockKey, "1"); } catch { /* The mounted session remains unlocked. */ }
+        moveTo(1, false);
+        return;
+      }
       moveTo("intro", false);
     };
     setFollowUpAdUnavailable(false);
@@ -219,6 +224,7 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
         ctaIcon="→"
         ctaIconPosition="end"
         ctaLabel={gallery.landing.cta}
+        ctaOptions={gallery.landing.ctaOptions}
         icon={null}
         intro={gallery.landing.intro}
         onStart={start}
@@ -320,6 +326,14 @@ export function GalleryExperience({ gallery, loadingLabel, path }: { gallery: Ga
   if (articleFlow) {
     return (
       <article className="gallery-article__article quiz-engine__continuous-shell">
+        {followUp?.unlockArticle ? (
+          <>
+            <header className="gallery-article__article-header"><h1>{gallery.landing.title}</h1></header>
+            <div className="gallery-article__prose">
+              {gallery.gallery.introduction.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+          </>
+        ) : null}
         <div className="gallery-article__article-sections">
           {gallery.items.map(item => (
             <section className="gallery-article__section" id={item.id} key={item.id}>

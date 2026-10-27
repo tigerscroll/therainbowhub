@@ -9,6 +9,8 @@ export const translationRowLocales = ['fr', 'de', 'it', 'nl', 'es', 'pt', 'ar'];
 // Copy is deliberately compact enough for narrow checkpoint cards. Portuguese
 // uses shared vocabulary and infinitives, rather than a regional form of address.
 const rows = {
+  id: ['Mulai', 'Lanjut', 'Lihat Hasil Saya', 'SELANJUTNYA', 'Jawaban diperiksa', 'Kekuatan tiap topik dibandingkan', 'Skor dihitung', 'Sudahkah Anda mencapai 80%? Lihat skor dan kekuatan Anda.', 'Tantangan Anda', 'Sudah saya ingat'],
+  th: ['เริ่ม', 'ไปต่อ', 'ดูผลลัพธ์', 'ถัดไป', 'ตรวจคำตอบแล้ว', 'เปรียบเทียบจุดแข็งแต่ละหัวข้อแล้ว', 'คำนวณคะแนนแล้ว', 'คุณทำได้ถึง 80% หรือยัง? ดูคะแนนและจุดแข็งของคุณ', 'ความท้าทายของคุณ', 'จำได้แล้ว'],
   hi: ['शुरू करें', 'आगे बढ़ें', 'मेरा नतीजा देखें', 'आगे क्या है', 'जवाब जाँच लिए गए', 'विषयों की मज़बूती की तुलना हुई', 'स्कोर की गणना हो गई', 'क्या आपने 80% का लक्ष्य पूरा किया? अपना स्कोर और खूबियाँ देखें।', 'आपकी चुनौती', 'याद कर लिया'],
   fr: ['Commencer', 'Continuer', 'Voir mon résultat', 'À SUIVRE', 'Réponses vérifiées', 'Points forts comparés', 'Score calculé', 'Ai-je atteint 80 % ? Mon score et mes points forts sont prêts.', 'Mon défi', 'J’ai mémorisé'],
   de: ['Starten', 'Weiter', 'Mein Ergebnis', 'ALS NÄCHSTES', 'Antworten geprüft', 'Stärken verglichen', 'Punktzahl berechnet', '80 % erreicht? Die Punktzahl und die Stärken stehen fest.', 'Die Herausforderung', 'Ich bin bereit'],

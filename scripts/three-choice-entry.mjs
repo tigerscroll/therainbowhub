@@ -10,6 +10,7 @@ const entryLabels = {
     fr: 'Test d’intelligence', it: 'Test di intelligenza', nl: 'Intelligentietest', pt: 'Teste de inteligência',
   },
   memory: {
+    id: 'Tes Pengetahuan Umum', th: 'แบบทดสอบความรู้รอบตัว',
     hi: 'सामान्य ज्ञान का टेस्ट',
     en: 'General Knowledge Test', ar: 'اختبار المعلومات العامة', de: 'Allgemeinwissenstest', es: 'Test de cultura general',
     fr: 'Test de culture générale', it: 'Test di cultura generale', nl: 'Algemene kennisquiz', pt: 'Teste de cultura geral',

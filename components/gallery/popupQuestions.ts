@@ -15,6 +15,7 @@ export type ArticlePopupQuestions = {
   cta: string;
   adNote: string;
   requireReward?: boolean;
+  unlockArticle?: boolean;
   unavailableCopy?: string;
   questions: PopupQuestion[];
 };
@@ -34,6 +35,7 @@ export function isArticlePopupQuestions(value: unknown): value is ArticlePopupQu
     || !config.progressLabel.includes("{current}") || !config.progressLabel.includes("{total}")
     || !Array.isArray(config.questions) || config.questions.length < config.questionCount) return false;
   if ((config.requireReward !== undefined && typeof config.requireReward !== "boolean")
+    || (config.unlockArticle !== undefined && typeof config.unlockArticle !== "boolean")
     || (config.unavailableCopy !== undefined && !nonempty(config.unavailableCopy))
     || (config.requireReward === true && !nonempty(config.unavailableCopy))) return false;
   const required = config.requiredQuestionIds ?? [];

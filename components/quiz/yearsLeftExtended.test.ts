@@ -16,7 +16,7 @@ test('Years Left has matching nine-language 100-question staged rewarded edition
   assert.equal(source.engine.displayAds, undefined);
   assert.equal(source.engine.hardRefreshCheckpoints, true, 'rewarded stage transitions preserve progress across checkpoints');
   assert.equal(source.localeExtensions, undefined);
-  assert.deepEqual(source.activeLocales, ['ar', 'de', 'en', 'es', 'fr', 'hi', 'it', 'nl', 'pt']);
+  assert.deepEqual(source.activeLocales, ['ar', 'de', 'en', 'es', 'fr', 'hi', 'id', 'it', 'nl', 'pt', 'th']);
   for (const locale of source.activeLocales) {
     const manifest = resolveQuizLocaleManifest(source, locale);
     const copy = read(locale);
