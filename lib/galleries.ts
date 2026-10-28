@@ -7,6 +7,8 @@ import catAffection from "@/data/galleries/cat.json";
 import jobs from "@/data/galleries/jobs.json";
 import memoryTest from "@/data/galleries/memory-test.json";
 import mobilityScooter from "@/data/galleries/mobilityscooter.json";
+import mobilityScooterDe from "@/data/galleries/mobilityscooter.de.json";
+import mobilityScooterFr from "@/data/galleries/mobilityscooter.fr.json";
 import nudeArt from "@/data/galleries/nude-art.json";
 import perfectlyTimed from "@/data/galleries/perfectly-timed.json";
 import perfectlyTimedAr from "@/data/galleries/perfectly-timed.ar.json";
@@ -149,6 +151,8 @@ const galleryManifests = [
   jobs,
   memoryTest,
   mobilityScooter,
+  mobilityScooterDe,
+  mobilityScooterFr,
   nudeArt,
   perfectlyTimed,
   perfectlyTimedAr,

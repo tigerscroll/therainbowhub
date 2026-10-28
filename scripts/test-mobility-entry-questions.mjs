@@ -3,9 +3,13 @@ import fs from 'node:fs';
 import {chromium} from 'playwright-core';
 
 const base = process.env.ARTICLE_TEST_URL ?? 'http://localhost:3198';
-const gallery = JSON.parse(fs.readFileSync('data/galleries/mobilityscooter.json', 'utf8'));
+const locale = process.env.ARTICLE_LOCALE ?? 'en';
+const gallery = JSON.parse(fs.readFileSync(`data/galleries/mobilityscooter${locale === 'en' ? '' : `.${locale}`}.json`, 'utf8'));
 const config = gallery.landing.followUpQuestions;
 const slug = gallery.slug;
+const routePath = `${locale === 'en' ? '' : `/${locale}`}/${slug}`;
+const loadingLabel = JSON.parse(fs.readFileSync(`data/i18n/${locale}.json`, 'utf8')).ad.loading;
+const label = (id, answerId) => config.questions.find(question => question.id === id).choices.find(choice => choice.id === answerId).label;
 const progressKey = `rainbowhub:article-entry-questions:v1:${slug}`;
 const browser = await chromium.launch({executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true});
 
@@ -45,13 +49,17 @@ async function setup(width, blocked = false) {
   page.setDefaultTimeout(15000);
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.goto(`${base}/${slug}?fbclid=local-flow-test`);
+  await page.goto(`${base}${routePath}?fbclid=local-flow-test`);
   await page.waitForFunction(() => !document.querySelector('.gallery-article__entry-preview'));
+  const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll(links => links.map(link => new URL(link.href).pathname));
+  for (const path of ['/mobilityscooter', '/de/mobilityscooter', '/fr/mobilityscooter']) assert(alternates.includes(path), `missing language alternative ${path}`);
   const dialog = page.getByRole('dialog');
   assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'no ad preload');
   await page.evaluate(() => {window.initialDialog = document.querySelector('[role="dialog"]');});
   await dialog.getByRole('button', {name: gallery.landing.cta, exact: true}).click();
   await page.waitForFunction(() => window.entryTest.active !== null);
+  assert.equal(await page.locator('html').getAttribute('lang'), locale);
+  assert((await dialog.locator('button').innerText()).includes(loadingLabel), 'localized loading copy');
   assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'first popup requests its own rewarded ad on click');
   assert.deepEqual(await page.evaluate(() => window.entryTest.requests[0]), {path: '/22677279144/rewarded', format: 'REWARDED'});
   await grant(page);
@@ -79,9 +87,9 @@ try {
     const last = page.locator('[data-popup-question-id] button').last();
     assert.ok(await last.evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), 'all choices fit on screen');
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-    if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-age.png'});
-    await pick(page, 'age-range', '65 or older');
-    await pick(page, 'gender', 'Prefer not to say');
+    if (width === 390) await page.screenshot({path: `/tmp/mobility-${locale}-entry-age.png`});
+    await pick(page, 'age-range', label('age-range', '65-plus'));
+    await pick(page, 'gender', label('gender', 'skip'));
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 1, 'answer clicks never request ads');
     if (width === 390) {
       await page.reload();
@@ -91,12 +99,12 @@ try {
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests, 'resume never repeats first reward; other viewports test both ads without a page reload');
     assert.deepEqual((await page.evaluate(key => JSON.parse(sessionStorage.getItem(key)), progressKey)).answers, {'age-range': '65-plus', gender: 'skip'});
     await page.locator('[data-popup-question-id="content-interest"]').waitFor();
-    if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-content.png'});
-    await pick(page, 'content-interest', 'Fun');
+    if (width === 390) await page.screenshot({path: `/tmp/mobility-${locale}-entry-content.png`});
+    await pick(page, 'content-interest', label('content-interest', 'fun'));
     await dialog.getByRole('heading', {name: config.readyTitle, exact: true}).waitFor();
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests, 'extra reward waits for separate consent');
-    assert.match(await dialog.innerText(), /Watch one short ad/);
-    if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-ready.png'});
+    assert((await dialog.innerText()).includes(config.adNote));
+    if (width === 390) await page.screenshot({path: `/tmp/mobility-${locale}-entry-ready.png`});
     await page.evaluate(() => {window.entryTest.noFill = true;});
     await dialog.getByRole('button', {name: config.cta, exact: true}).click();
     await dialog.getByRole('status').waitFor();
@@ -104,7 +112,7 @@ try {
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), priorRequests + 3, 'no-fill uses three bounded requests');
     assert.equal(await page.locator('.gallery-article__introduction').count(), 0, 'no-fill no longer silently unlocks View Content');
     assert.equal(await page.evaluate(slug => sessionStorage.getItem(`rainbowhub:article-entry-unlock:v1:${slug}`), slug), null);
-    if (width === 390) await page.screenshot({path: '/tmp/mobility-entry-no-fill.png'});
+    if (width === 390) await page.screenshot({path: `/tmp/mobility-${locale}-entry-no-fill.png`});
     await page.evaluate(() => {window.entryTest.noFill = false;});
     await dialog.getByRole('button', {name: config.cta, exact: true}).click();
     await page.waitForFunction(() => window.entryTest.active !== null);
@@ -121,10 +129,16 @@ try {
     await page.reload();
     await page.locator('.gallery-article__introduction').waitFor();
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'completed popup restores without another ad');
-    await page.getByRole('button', {name: /Continue Reading/}).click();
+    await page.getByRole('button', {name: gallery.gallery.continueLabel}).click();
     await grant(page);
     await page.locator('.gallery-article__article').waitFor();
     assert.equal(await page.locator('.gallery-article__article-sections > section[id^="mobilityscooter-"]').count(), 16);
+    for (const item of gallery.items) {
+      const section = page.locator(`[id="${item.id}"]`);
+      assert.equal(await section.locator('h2').innerText(), item.title);
+      assert.deepEqual(await section.locator('p').allTextContents(), item.paragraphs);
+    }
+    if (width === 390) await page.screenshot({path: `/tmp/mobility-${locale}-article.png`});
     assert.ok((await page.evaluate(() => window.entryTest.requests)).every(slot => slot.path === '/22677279144/rewarded' && slot.format === 'REWARDED'));
     assert.deepEqual(errors, []);
     console.log(`${width}px PASS: same popup, age > gender > content interest, saved progress, extra reward consent/retry and unchanged article reward.`);
