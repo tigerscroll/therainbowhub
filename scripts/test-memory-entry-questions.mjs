@@ -35,7 +35,7 @@ async function setup(width, height = 844, storageBlocked = false) {
       enableServices() {}, setConfig() {}, destroySlots() {},
       enums: { OutOfPageFormat: { REWARDED: 'REWARDED', INTERSTITIAL: 'INTERSTITIAL' } },
       defineOutOfPageSlot(path, format) { state.requests.push({ path, format }); return { path, format, addService() { return this; } }; },
-      display(slot) { queueMicrotask(() => emit('rewardedSlotReady', slot, { makeRewardedVisible() { state.active = slot; } })); },
+      display(slot) { queueMicrotask(() => emit('rewardedSlotReady', slot, { makeRewardedVisible() { state.active = slot;  return true; } })); },
     };
     window.popupFrames = [];
     const sample = () => {

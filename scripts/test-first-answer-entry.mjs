@@ -53,7 +53,7 @@ try {
         },
         display(slot) {
           window.testReward = {
-            ready: () => emit('rewardedSlotReady', slot, {makeRewardedVisible() {}}),
+            ready: () => emit('rewardedSlotReady', slot, {makeRewardedVisible() { return true; }}),
             grant: () => emit('rewardedSlotGranted', slot),
             close: () => emit('rewardedSlotClosed', slot),
           };

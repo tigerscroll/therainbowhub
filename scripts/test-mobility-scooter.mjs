@@ -42,7 +42,7 @@ try {
         pubads:()=>pubads, enableServices(){},setConfig(){},destroySlots(){},
         display(slot){
           if(typeof slot==='string'){render(window.displayCalls.find(item=>item.id===slot));return;}
-          queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){window.rewardShows++;queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);});}}));
+          queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){window.rewardShows++;queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);}); return true; }}));
         }
       };
     });

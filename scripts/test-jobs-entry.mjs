@@ -21,11 +21,12 @@ async function setup(width, blocked = false) {
     const listeners = new Map();
     const emit = (name, slot, extra = {}) => (listeners.get(name) ?? []).forEach(fn => fn({slot, ...extra}));
     const state = {
-      requests: [], active: null, noFill: false,
+      requests: [], events: [], active: null, noFill: false,
       grant() {const slot = this.active; emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); this.active = null;},
       close() {const slot = this.active; emit('rewardedSlotClosed', slot); this.active = null;},
     };
     window.entryTest = state;
+    window.fbq = (command, name) => {if (command === 'trackCustom') state.events.push(name);};
     const pubads = {
       addEventListener(name, fn) {listeners.set(name, [...(listeners.get(name) ?? []), fn]);},
       removeEventListener(name, fn) {listeners.set(name, (listeners.get(name) ?? []).filter(item => item !== fn));},
@@ -38,7 +39,7 @@ async function setup(width, blocked = false) {
       defineOutOfPageSlot(path, format) {state.requests.push({path, format}); return {path, format, addService() {return this;}};},
       display(slot) {queueMicrotask(() => {
         if (state.noFill) emit('slotRenderEnded', slot, {isEmpty: true});
-        else emit('rewardedSlotReady', slot, {makeRewardedVisible() {state.active = slot;}});
+        else emit('rewardedSlotReady', slot, {makeRewardedVisible() {state.active = slot; return true; }});
       });},
     };
   }, blocked);
@@ -53,7 +54,10 @@ async function setup(width, blocked = false) {
 
 async function grant(page) {
   await page.waitForFunction(() => window.entryTest.active !== null);
+  const starts = await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length);
+  assert(starts > 0, 'QuizStart fires when the ad opens, before any reward');
   await page.evaluate(() => window.entryTest.grant());
+  assert.equal(await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length), starts, 'grant never repeats the display-based pixel');
 }
 
 try {
@@ -63,6 +67,7 @@ try {
     const {context, page, errors} = await setup(width, combination === answerPathCount);
     const dialog = page.getByRole('dialog');
     assert.equal(await page.evaluate(() => window.entryTest.requests.length), 0, 'no preload');
+    assert.equal(await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length), 0, 'landing does not fire QuizStart');
     assert.equal(await dialog.getByRole('button').count(), 2);
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     if (combination === 0) await page.screenshot({path: `/tmp/${slug}-entry.png`});
@@ -110,7 +115,10 @@ try {
     assert.equal(await page.locator('.gallery-article__article-sections > section:not(.gallery-article__sources)').count(), gallery.items.length);
     assert.equal(await page.getByRole('button', {name: /Continue Reading/}).count(), 0, 'no third gate');
     const requests = await page.evaluate(() => window.entryTest.requests);
-    if (combination !== answerPathCount + 1) assert.equal(requests.length, 2, 'exactly two rewards in successful flow');
+    if (combination !== answerPathCount + 1) {
+      assert.equal(requests.length, 2, 'exactly two rewards in successful flow');
+      assert.equal(await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length), 2, 'articles retain one QuizStart per separate ad gate');
+    }
     assert.ok(requests.every(slot => slot.path === '/22677279144/rewarded' && slot.format === 'REWARDED'));
     if (combination === 0) {
       await page.screenshot({path: `/tmp/${slug}-article.png`});

@@ -34,7 +34,7 @@ try {
         enums: { OutOfPageFormat: { REWARDED: "REWARDED", INTERSTITIAL: "INTERSTITIAL" } },
         display(target) {
           queueMicrotask(() => emit("rewardedSlotReady", target, {
-            makeRewardedVisible() { queueMicrotask(() => { emit("rewardedSlotGranted", target); emit("rewardedSlotClosed", target); }); },
+            makeRewardedVisible() { queueMicrotask(() => { emit("rewardedSlotGranted", target); emit("rewardedSlotClosed", target); });  return true; },
           }));
         },
       };

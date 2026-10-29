@@ -41,7 +41,7 @@ async function setup(width, blocked = false) {
       defineOutOfPageSlot(path, format) {state.requests.push({path, format}); return {path, format, addService() {return this;}};},
       display(slot) {queueMicrotask(() => {
         if (state.noFill) emit('slotRenderEnded', slot, {isEmpty: true});
-        else emit('rewardedSlotReady', slot, {makeRewardedVisible() {state.active = slot;}});
+        else emit('rewardedSlotReady', slot, {makeRewardedVisible() {state.active = slot; return true; }});
       });},
     };
   }, blocked);

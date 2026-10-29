@@ -44,6 +44,7 @@ type SavedProgress = {
   completedStage: number;
   screen: SavedScreen;
   studiedQuestions?: string[];
+  // Legacy persisted key: records whether QuizStart was sent, now on ad display.
   rewardClosedSent?: boolean;
   reviewUnlocked?: boolean;
   updatedAt: string;
@@ -149,8 +150,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const storageKey = getQuizStorageKey(quiz.slug, locale);
   const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
     attempts: quiz.engine.rewarded.attempts,
-    onRewardClosed: () => setRewardClosedSent(true),
-    rewardClosedAlreadySent: rewardClosedSent,
+    onQuizStart: () => setRewardClosedSent(true),
+    quizStartAlreadySent: rewardClosedSent,
     preload: Boolean(quiz.engine.startPrelude?.preload && hydrated && screen === "landing" && !startOverlay),
   });
   const currentQuestion = quiz.questions[questionIndex];

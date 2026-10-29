@@ -34,7 +34,7 @@ function mockAds() {
             emit('rewardedSlotGranted', slot);
             emit('rewardedSlotClosed', slot);
           });
-        },
+         return true; },
       });
       if (state.mode !== 'loading') queueMicrotask(state.ready);
     },

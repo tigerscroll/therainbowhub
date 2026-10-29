@@ -19,7 +19,7 @@ try {
       const listeners = new Map();
       const emit=(name,slot,more={})=>(listeners.get(name)??[]).forEach(fn=>fn({slot,...more}));
       const ads={addEventListener(name,fn){listeners.set(name,[...(listeners.get(name)??[]),fn]);},removeEventListener(name,fn){listeners.set(name,(listeners.get(name)??[]).filter(x=>x!==fn));},updateCorrelator(){}};
-      window.googletag={cmd:{push(fn){fn();}},pubads:()=>ads,enableServices(){},setConfig(){},destroySlots(){},defineOutOfPageSlot(){return{addService(){return this;}};},enums:{OutOfPageFormat:{REWARDED:'REWARDED',INTERSTITIAL:'INTERSTITIAL'}},display(slot){queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);});}}));}};
+      window.googletag={cmd:{push(fn){fn();}},pubads:()=>ads,enableServices(){},setConfig(){},destroySlots(){},defineOutOfPageSlot(){return{addService(){return this;}};},enums:{OutOfPageFormat:{REWARDED:'REWARDED',INTERSTITIAL:'INTERSTITIAL'}},display(slot){queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);}); return true; }}));}};
     });
     const page=await context.newPage();
     page.setDefaultTimeout(10_000);

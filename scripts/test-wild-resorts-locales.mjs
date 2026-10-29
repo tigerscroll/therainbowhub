@@ -42,7 +42,7 @@ try {
             return { path, format, addService() { return this; } };
           },
           display(slot) {
-            queueMicrotask(() => emit('rewardedSlotReady', slot, { makeRewardedVisible() { state.active = slot; } }));
+            queueMicrotask(() => emit('rewardedSlotReady', slot, { makeRewardedVisible() { state.active = slot;  return true; } }));
           },
         };
       });

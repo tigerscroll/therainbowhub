@@ -16,7 +16,7 @@ function mockRewardedAds() {
     cmd: { push(cb) { cb(); } }, pubads: () => ads, enableServices() {}, setConfig() {}, destroySlots() {},
     enums: { OutOfPageFormat: { REWARDED: 'REWARDED' } },
     defineOutOfPageSlot() { return { addService() { return this; } }; },
-    display(slot) { queueMicrotask(() => emit('rewardedSlotReady', slot, { makeRewardedVisible() { queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); }); } })); },
+    display(slot) { queueMicrotask(() => emit('rewardedSlotReady', slot, { makeRewardedVisible() { queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); });  return true; } })); },
   };
 }
 

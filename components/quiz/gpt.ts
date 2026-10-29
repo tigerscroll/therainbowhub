@@ -9,7 +9,7 @@ export type GptSlot = {
 
 export type GptEvent = {
   slot: GptSlot;
-  makeRewardedVisible?: () => void;
+  makeRewardedVisible?: () => boolean;
   isEmpty?: boolean;
 };
 

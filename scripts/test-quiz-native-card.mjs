@@ -58,7 +58,7 @@ async function open(path, width = 390, mode = 'filled') {
           queueMicrotask(() => emit('slotRenderEnded', slot, { isEmpty: mode !== 'filled' }));
         } else {
           queueMicrotask(() => emit('rewardedSlotReady', slot, {
-            makeRewardedVisible() { queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); }); },
+            makeRewardedVisible() { queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); });  return true; },
           }));
         }
       },

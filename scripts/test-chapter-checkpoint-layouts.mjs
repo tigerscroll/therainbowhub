@@ -28,7 +28,7 @@ async function check({slug, locale}) {
       cmd:{push(fn){fn();}},pubads:()=>ads,enableServices(){},setConfig(){},destroySlots(){},
       defineOutOfPageSlot(){return {addService(){return this;}};},
       enums:{OutOfPageFormat:{REWARDED:'REWARDED',INTERSTITIAL:'INTERSTITIAL'}},
-      display(slot){queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);});}}));},
+      display(slot){queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);}); return true; }}));},
     };
   });
   try {

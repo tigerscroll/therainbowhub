@@ -83,7 +83,7 @@ async function run(width) {
       display(slot) {
         if (typeof slot === 'string') { renderDisplay(window.displayCalls.find(value => value.id === slot)); return; }
         queueMicrotask(() => emit('rewardedSlotReady', slot, {
-          makeRewardedVisible() { window.adShows = (window.adShows ?? 0) + 1; queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); }); },
+          makeRewardedVisible() { window.adShows = (window.adShows ?? 0) + 1; queueMicrotask(() => { emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); });  return true; },
         }));
       },
     };

@@ -20,7 +20,7 @@ async function check(slug,locale){
    window.adCalls=[];const listeners=new Map();
    const pubads={addEventListener(n,cb){const a=listeners.get(n)??[];a.push(cb);listeners.set(n,a);},removeEventListener(n,cb){listeners.set(n,(listeners.get(n)??[]).filter(x=>x!==cb));},updateCorrelator(){}};
    const emit=(n,slot,extra={})=>(listeners.get(n)??[]).forEach(cb=>cb({slot,...extra}));
-   window.googletag={cmd:{push(cb){cb();}},pubads:()=>pubads,enableServices(){},setConfig(){},destroySlots(){},defineSlot(){throw Error('Unexpected display ad');},enums:{OutOfPageFormat:{REWARDED:'REWARDED'}},defineOutOfPageSlot(path,format){const s={path,format,addService(){return this;}};window.adCalls.push(s);return s;},display(slot){queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);});}}));}};
+   window.googletag={cmd:{push(cb){cb();}},pubads:()=>pubads,enableServices(){},setConfig(){},destroySlots(){},defineSlot(){throw Error('Unexpected display ad');},enums:{OutOfPageFormat:{REWARDED:'REWARDED'}},defineOutOfPageSlot(path,format){const s={path,format,addService(){return this;}};window.adCalls.push(s);return s;},display(slot){queueMicrotask(()=>emit('rewardedSlotReady',slot,{makeRewardedVisible(){queueMicrotask(()=>{emit('rewardedSlotGranted',slot);emit('rewardedSlotClosed',slot);}); return true; }}));}};
   });
   await page.goto(`${base}/${locale==='en'?slug:locale+'/'+slug}`);
   await page.locator('.quiz-engine__landing').waitFor();

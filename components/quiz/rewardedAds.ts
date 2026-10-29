@@ -7,10 +7,11 @@ export type RewardedResult = "granted" | "closed" | "unavailable";
 type ActiveRequest = {
   beforeVisible?: () => Promise<void>;
   cleanup?: () => void;
+  displayed: boolean;
   granted: boolean;
   id: number;
-  onRewardClosed?: () => void;
-  rewardClosedAlreadySent: boolean;
+  onQuizStart?: () => void;
+  quizStartAlreadySent: boolean;
   resolve: (result: RewardedResult) => void;
   sent: boolean;
   slot: GptSlot | null;
@@ -24,13 +25,13 @@ let requestId = 0;
 let servicesEnabled = false;
 
 
-function sendQuizStartOnGrant(request: ActiveRequest) {
-  if (!request.granted || request.sent || request.rewardClosedAlreadySent) return;
+function sendQuizStartOnDisplay(request: ActiveRequest) {
+  if (request.sent || request.quizStartAlreadySent) return;
   request.sent = true;
-  request.rewardClosedAlreadySent = true;
-  window.fbq?.("trackCustom", "QuizStart");
-  console.info("[RewardedAd] Reward granted; QuizStart Meta event requested.");
-  request.onRewardClosed?.();
+  request.quizStartAlreadySent = true;
+  try { window.fbq?.("trackCustom", "QuizStart"); } catch { /* Tracking must not interrupt the ad or its reward. */ }
+  console.info("[RewardedAd] Ad displayed; QuizStart Meta event requested.");
+  request.onQuizStart?.();
 }
 
 function finish(result: RewardedResult) {
@@ -51,7 +52,7 @@ function installListeners() {
   if (!pubads) return;
 
   pubads.addEventListener("rewardedSlotReady", (event) => {
-    if (!activeRequest || event.slot !== activeRequest.slot) return;
+    if (!activeRequest || event.slot !== activeRequest.slot || activeRequest.displayed) return;
     const request = activeRequest;
     window.clearTimeout(request.timer);
     if (!event.makeRewardedVisible) {
@@ -59,9 +60,17 @@ function installListeners() {
       return;
     }
     const show = () => {
-      if (activeRequest?.id !== request.id) return;
+      if (activeRequest?.id !== request.id || request.displayed) return;
       window.clearTimeout(request.timer);
-      try { event.makeRewardedVisible!(); } catch { finish("unavailable"); return; }
+      try {
+        // GPT returns true only when it successfully displays the rewarded ad.
+        if (event.makeRewardedVisible!() !== true) {
+          if (activeRequest?.id === request.id) finish("unavailable");
+          return;
+        }
+      } catch { finish("unavailable"); return; }
+      request.displayed = true;
+      sendQuizStartOnDisplay(request);
       if (activeRequest?.id !== request.id) return;
       request.timer = window.setTimeout(() => {
         if (activeRequest?.id === request.id) finish(activeRequest.granted ? "granted" : "unavailable");
@@ -80,7 +89,6 @@ function installListeners() {
   pubads.addEventListener("rewardedSlotGranted", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
     activeRequest.granted = true;
-    sendQuizStartOnGrant(activeRequest);
   });
   pubads.addEventListener("rewardedSlotClosed", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
@@ -97,8 +105,8 @@ function requestOnce(
   timeoutMs: number,
   visibleTimeoutMs: number,
   signal?: AbortSignal,
-  rewardClosedAlreadySent = false,
-  onRewardClosed?: () => void,
+  quizStartAlreadySent = false,
+  onQuizStart?: () => void,
   beforeVisible?: () => Promise<void>,
 ) {
   if (signal?.aborted) return Promise.resolve<RewardedResult>("closed");
@@ -113,10 +121,11 @@ function requestOnce(
     activeRequest = {
       beforeVisible,
       cleanup: signal ? () => signal.removeEventListener("abort", onAbort) : undefined,
+      displayed: false,
       granted: false,
       id,
-      onRewardClosed,
-      rewardClosedAlreadySent,
+      onQuizStart,
+      quizStartAlreadySent,
       resolve,
       sent: false,
       slot: null,
@@ -179,8 +188,8 @@ export async function requestRewardedAd({
   adUnitPath,
   attempts,
   onAttempt,
-  onRewardClosed,
-  rewardClosedAlreadySent = false,
+  onQuizStart,
+  quizStartAlreadySent = false,
   signal,
   retryOnClose = true,
   timeoutMs = 4000,
@@ -190,8 +199,8 @@ export async function requestRewardedAd({
   adUnitPath: string;
   attempts: number;
   onAttempt?: (attempt: number, maximum: number) => void;
-  onRewardClosed?: () => void;
-  rewardClosedAlreadySent?: boolean;
+  onQuizStart?: () => void;
+  quizStartAlreadySent?: boolean;
   retryOnClose?: boolean;
   signal?: AbortSignal;
   timeoutMs?: number;
@@ -200,6 +209,12 @@ export async function requestRewardedAd({
 }) {
   const maximum = Math.max(1, attempts);
   let unavailableAttempts = 0;
+  // A user can close and reopen an ad within this request. Count its start once.
+  let quizStartSent = quizStartAlreadySent;
+  const markQuizStart = () => {
+    quizStartSent = true;
+    onQuizStart?.();
+  };
 
   while (unavailableAttempts < maximum) {
     if (signal?.aborted) return "closed";
@@ -210,8 +225,8 @@ export async function requestRewardedAd({
       timeoutMs,
       visibleTimeoutMs,
       signal,
-      rewardClosedAlreadySent,
-      onRewardClosed,
+      quizStartSent,
+      markQuizStart,
       beforeVisible,
     );
     if (signal?.aborted) return "closed";
