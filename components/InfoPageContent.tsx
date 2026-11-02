@@ -88,6 +88,7 @@ const infoPageLabels: Record<SupportedLocale, { related: string }> = {
   vi: { related: "Thông tin liên quan" },
   ur: { related: "متعلقہ معلومات" },
   ms: { related: "Maklumat berkaitan" },
+  ja: { related: "関連情報" },
   id: { related: "Informasi terkait" },
   th: { related: "ข้อมูลที่เกี่ยวข้อง" },
   hi: { related: "संबंधित जानकारी" },

@@ -8,7 +8,7 @@ import {createHash} from 'node:crypto';
 const cacheRoot = process.env.ARTICLE_TRANSLATION_CACHE;
 if (!cacheRoot || !path.isAbsolute(cacheRoot)) throw Error('Set an absolute ARTICLE_TRANSLATION_CACHE directory.');
 const locales = (process.env.ARTICLE_LOCALES ?? 'th,hi,tr,id,bn,fil,vi,ur,ms').split(',');
-const languageNames = {th:'Thai', hi:'Hindi', tr:'Turkish', id:'Indonesian', bn:'Bengali', fil:'Filipino', vi:'Vietnamese', ur:'Urdu', ms:'Malay'};
+const languageNames = {th:'Thai', hi:'Hindi', tr:'Turkish', id:'Indonesian', bn:'Bengali', fil:'Filipino', vi:'Vietnamese', ur:'Urdu', ms:'Malay', ja:'Japanese'};
 if (locales.some(locale => !languageNames[locale])) throw Error('Unknown article locale.');
 const archivedRevision = '01872180eaeeefeda87f2712ab03b1add0d7ffff^';
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));

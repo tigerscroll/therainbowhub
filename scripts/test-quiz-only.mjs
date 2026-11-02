@@ -185,7 +185,7 @@ try {
     assert.equal(saved.answers['yl-s1q1'], answerId, 'the chosen answer is saved after completion');
     assert.equal(saved.questionIndex, 1, 'answer and next question are saved together');
     assert.equal(Object.keys(saved.answers).length, 1, 'the first answer is recorded only once');
-    assert.equal(await page.evaluate(() => window.quizOnlyTest.events.filter(event => event[1] === 'QuizStart').length), 1);
+    assert.equal(await page.evaluate(() => window.quizOnlyTest.events.filter(event => event[1] === 'QuizStart').length), 0);
     await page.locator('.quiz-engine__answer').first().click();
     await page.locator('[data-question-id="yl-s1q3"]').waitFor();
     assert.equal(await page.evaluate(() => window.quizOnlyTest.requests.length), 2, 'later answers do not request ads');

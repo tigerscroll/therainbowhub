@@ -4,7 +4,7 @@ import { chromium } from 'playwright-core';
 
 // Local export only. External traffic is blocked; GPT is mocked, not live-served.
 const base = process.env.ARTICLE_TEST_URL ?? 'http://localhost:3198';
-const locales = ['th', 'hi', 'tr', 'id', 'bn', 'fil', 'vi', 'ur', 'ms'];
+const locales = (process.env.ARTICLE_LOCALES ?? 'th,hi,tr,id,bn,fil,vi,ur,ms,ja').split(',');
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 try {
   for (const locale of locales) {
@@ -41,6 +41,8 @@ try {
       await page.waitForFunction(() => !document.querySelector('.gallery-article__entry-preview'));
       assert.equal(await page.locator('html').getAttribute('lang'), locale);
       assert.equal(await page.locator('html').getAttribute('dir'), locale === 'ur' ? 'rtl' : 'ltr');
+      assert.equal(await page.locator('meta[name="description"]').getAttribute('content'), article.metadata.description);
+      assert.equal(await page.locator(`link[rel="alternate"][hreflang="${locale}"]`).count(), 1, 'localized SEO alternative exists');
       const dialog = page.getByRole('dialog');
       await dialog.getByRole('heading', { name: article.landing.popupTitle, exact: true }).waitFor();
       if (['th', 'hi', 'bn', 'ur'].includes(locale)) {

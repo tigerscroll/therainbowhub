@@ -4,10 +4,12 @@ import { chromium } from 'playwright-core';
 
 // Run after `npm run build` with the static export preview running.
 const base = process.env.ARTICLE_TEST_URL ?? 'http://localhost:3198';
+const localeFilter = process.env.ARTICLE_LOCALES?.split(',');
 const galleries = fs.readdirSync('data/galleries')
   .filter(file => file.endsWith('.json'))
   .map(file => JSON.parse(fs.readFileSync(`data/galleries/${file}`, 'utf8')))
-  .filter(gallery => gallery.landing.presentation === 'overlay');
+  .filter(gallery => gallery.landing.presentation === 'overlay' && (!localeFilter || localeFilter.includes(gallery.locale)));
+assert(galleries.length > 0, 'at least one article must match the paint check');
 const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   headless: true,

@@ -21,7 +21,7 @@ const read = (slug: string, name: string) => JSON.parse(fs.readFileSync(`data/qu
 test('article and limited quiz editions keep language coverage explicit', () => {
   assert.deepEqual(locales, ['ar','de','en','es','fr','hi','id','it','nl','pt','th']);
   const siteLocales = getSiteLocales();
-  assert.deepEqual(siteLocales, ['ar','bn','de','en','es','fil','fr','gr','hi','id','it','ms','nl','pt','th','tr','ur','vi']);
+  assert.deepEqual(siteLocales, ['ar','bn','de','en','es','fil','fr','gr','hi','id','it','ja','ms','nl','pt','th','tr','ur','vi']);
   assert.deepEqual(fs.readdirSync('data/info-pages').filter(file => file.endsWith('.json')).map(file => file.slice(0,-5)).sort(), siteLocales);
   const config = fs.readFileSync('lib/localeConfig.ts', 'utf8');
   assert.deepEqual([...config.matchAll(/code: "([a-z]+)"/g)].map(match => match[1]).sort(), siteLocales);

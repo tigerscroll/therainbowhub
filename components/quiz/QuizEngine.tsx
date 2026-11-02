@@ -44,8 +44,6 @@ type SavedProgress = {
   completedStage: number;
   screen: SavedScreen;
   studiedQuestions?: string[];
-  // Legacy persisted key: records whether QuizStart was sent, now on ad display.
-  rewardClosedSent?: boolean;
   reviewUnlocked?: boolean;
   updatedAt: string;
 };
@@ -69,7 +67,6 @@ function safeSavedProgress(raw: unknown, quiz: Quiz, signature: string): Restore
   if (!Number.isInteger(saved.questionIndex) || saved.questionIndex! < 0 || saved.questionIndex! >= quiz.questions.length) return null;
   if (!Number.isInteger(saved.completedStage) || saved.completedStage! < 0 || saved.completedStage! >= quiz.stages.length) return null;
   if (!saved.screen || !["question", "preparing", "checkpoint", "results"].includes(saved.screen)) return null;
-  if (saved.rewardClosedSent !== undefined && typeof saved.rewardClosedSent !== "boolean") return null;
   if (saved.reviewUnlocked !== undefined && typeof saved.reviewUnlocked !== "boolean") return null;
 
   const answers: QuizAnswers = {};
@@ -97,7 +94,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const starting = useRef(false);
   useLayoutEffect(() => { if (hydrated) onReady?.(); }, [hydrated, onReady]);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
-  const [rewardClosedSent, setRewardClosedSent] = useState(false);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
   const [checkpointCtaReady, setCheckpointCtaReady] = useState(false);
   const preloadedArtwork = useRef(new Set<string>());
@@ -150,8 +146,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const storageKey = getQuizStorageKey(quiz.slug, locale);
   const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
     attempts: quiz.engine.rewarded.attempts,
-    onQuizStart: () => setRewardClosedSent(true),
-    quizStartAlreadySent: rewardClosedSent,
     preload: Boolean(quiz.engine.startPrelude?.preload && hydrated && screen === "landing" && !startOverlay),
   });
   const currentQuestion = quiz.questions[questionIndex];
@@ -180,7 +174,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         setQuestionIndex(saved.questionIndex);
         setCompletedStage(saved.completedStage);
         setScreen(saved.screen);
-        setRewardClosedSent(saved.rewardClosedSent ?? false);
         setReviewUnlocked(saved.reviewUnlocked ?? false);
         setStudiedQuestions((saved.studiedQuestions ?? []).filter((id) => quiz.questions.some((question) => question.id === id && question.study)));
       } else if (stored) {
@@ -210,12 +203,11 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       completedStage,
       screen,
       studiedQuestions,
-      rewardClosedSent,
       reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
     writeQuizProgress(storageKey, JSON.stringify(saved));
-  }, [answers, completedStage, hydrated, progressSignature, questionIndex, rewardClosedSent, reviewUnlocked, screen, storageKey, studiedQuestions]);
+  }, [answers, completedStage, hydrated, progressSignature, questionIndex, reviewUnlocked, screen, storageKey, studiedQuestions]);
 
   useEffect(() => {
     // Warm only the current and next visual interaction. Decoding the next
@@ -287,7 +279,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       completedStage: nextCompletedStage,
       screen: nextScreen,
       studiedQuestions,
-      rewardClosedSent,
       reviewUnlocked,
       updatedAt: new Date().toISOString(),
     };
@@ -429,7 +420,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     setQuestionIndex(0);
     setCompletedStage(0);
     setStudiedQuestions([]);
-    setRewardClosedSent(false);
     setReviewUnlocked(false);
     setScreen(startsOnQuestion ? "question" : "landing");
     scrollToTop();

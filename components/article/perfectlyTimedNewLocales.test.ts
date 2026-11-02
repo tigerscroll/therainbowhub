@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
+import {reviewJapaneseArticle, reviewJapaneseShared, reviewJapaneseInfo} from '../../scripts/perfectly-timed-japanese.mjs';
 
 const source = JSON.parse(fs.readFileSync('data/galleries/perfectly-timed.json','utf8'));
-const locales = ['th','hi','tr','id','bn','fil','vi','ur','ms'];
-const scripts: Record<string, RegExp> = {th:/\p{Script=Thai}/u,hi:/\p{Script=Devanagari}/u,bn:/\p{Script=Bengali}/u,ur:/\p{Script=Arabic}/u};
+const locales = ['th','hi','tr','id','bn','fil','vi','ur','ms','ja'];
+const scripts: Record<string, RegExp> = {th:/\p{Script=Thai}/u,hi:/\p{Script=Devanagari}/u,bn:/\p{Script=Bengali}/u,ur:/\p{Script=Arabic}/u,ja:/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u};
 
 function compare(english: unknown, localized: unknown, path = ''): void {
   assert.equal(typeof localized,typeof english,path);
@@ -43,9 +44,26 @@ for (const locale of locales) test(`perfectly-timed ${locale}: all 57 sections a
   assert.doesNotMatch(JSON.stringify(copy),/magpapaganda|nagpapaganda|cuộc thi lặn|thợ lặn|kepekatan yang diperlukan|ความนิยมของไวรัส|ক্ষতিকারক ফটোগ্রাফিক/u);
 });
 
+test('Japanese article and shell retain reviewed wording with reproducible source mapping', () => {
+  const article = JSON.parse(fs.readFileSync('data/galleries/perfectly-timed.ja.json','utf8'));
+  const shared = JSON.parse(fs.readFileSync('data/i18n/ja.json','utf8'));
+  const info = JSON.parse(fs.readFileSync('data/info-pages/ja.json','utf8'));
+  assert.deepEqual(reviewJapaneseArticle(source), article);
+  assert.deepEqual(reviewJapaneseShared(shared), shared);
+  assert.deepEqual(reviewJapaneseInfo(info), info);
+  assert.equal(shared.ad.loading, '読み込み中…');
+  assert.equal(article.landing.cta, '続ける');
+  assert.equal(article.gallery.continueLabel, '続きを読む');
+  assert.match(article.items[29].title, /飛び込み競技/);
+  assert.match(article.items[51].paragraphs.join(''), /拡散|出典|元の情報/);
+  assert.match(article.items[54].paragraphs.join(''), /同意/);
+  assert.doesNotMatch(JSON.stringify(article), /写真爆弾|ウイルス|頭がおかしく|遠近法を強制/);
+  assert.doesNotMatch(JSON.stringify(info), /QuizStart|国際送金|化学パーセント/);
+});
+
 test('new article-only languages include translated shell, footer pages and explicit Urdu RTL; Punjabi is not activated', () => {
   const config = fs.readFileSync('lib/localeConfig.ts','utf8');
-  for (const locale of ['tr','bn','fil','vi','ur','ms']) {
+  for (const locale of ['tr','bn','fil','vi','ur','ms','ja']) {
     assert(config.includes(`code: "${locale}"`));
     const shared=JSON.parse(fs.readFileSync(`data/i18n/${locale}.json`,'utf8'));
     const info=JSON.parse(fs.readFileSync(`data/info-pages/${locale}.json`,'utf8'));

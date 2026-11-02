@@ -3,12 +3,11 @@ import test from "node:test";
 
 import { requestRewardedAd, type RewardedResult } from "./rewardedAds.ts";
 
-test("rewarded ads track confirmed starts, preserve reward gates and deduplicate retries", async () => {
+test("rewarded ads preserve reward gates and retries without emitting Meta events", async () => {
   type Listener = (event: { isEmpty?: boolean; makeRewardedVisible?: () => boolean; slot: object }) => void;
   const listeners = new Map<string, Listener>();
   const outcomes: Array<RewardedResult | "granted-without-close" | "ready-only" | "pending" | "deferred" | "failed-show" | "throw-on-show" | "missing-show" | "grant-only"> = [];
   const metaEvents: string[] = [];
-  let quizStartSent = false;
   let requests = 0;
   let deferredShows = 0;
   let lastSlot: object;
@@ -91,12 +90,9 @@ test("rewarded ads track confirmed starts, preserve reward gates and deduplicate
   assert.equal(await requestRewardedAd({
     adUnitPath: "/test",
     attempts: 3,
-    onQuizStart: () => { quizStartSent = true; },
-    quizStartAlreadySent: quizStartSent,
   }), "granted");
   assert.equal(requests, 3, "each early close must reopen until the reward is granted");
-  assert.deepEqual(metaEvents, ["QuizStart"], "the first display emits once, not once per early-close retry");
-  assert.equal(quizStartSent, true, "the quiz session is marked on ad display");
+  assert.deepEqual(metaEvents, [], "rewarded ads never emit Meta events");
 
   outcomes.push("unavailable", "unavailable", "unavailable");
   assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3 }), "unavailable");
@@ -106,11 +102,9 @@ test("rewarded ads track confirmed starts, preserve reward gates and deduplicate
   assert.equal(await requestRewardedAd({
     adUnitPath: "/test",
     attempts: 3,
-    onQuizStart: () => { quizStartSent = true; },
-    quizStartAlreadySent: quizStartSent,
   }), "granted");
   assert.equal(requests, 7);
-  assert.deepEqual(metaEvents, ["QuizStart"], "later rewards in the same saved quiz session do not emit again");
+  assert.deepEqual(metaEvents, [], "rewarded ads never emit Meta events");
 
   outcomes.push("ready-only");
   assert.equal(
@@ -119,26 +113,23 @@ test("rewarded ads track confirmed starts, preserve reward gates and deduplicate
     "a ready ad that never closes must settle through the visible-ad watchdog",
   );
   assert.equal(requests, 8);
-  assert.equal(metaEvents.length, 2, "a displayed ad counts even without a reward or close event");
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
 
-  let grantMarked = false;
   let grantSettled = false;
   outcomes.push("granted-without-close");
   const grantWithoutClose = requestRewardedAd({
     adUnitPath: "/test", attempts: 1, timeoutMs: 100, visibleTimeoutMs: 100,
-    onQuizStart: () => { grantMarked = true; },
   }).then(result => { grantSettled = true; return result; });
   await new Promise(resolve => setImmediate(resolve));
-  assert.equal(metaEvents.length, 3, "display emits QuizStart before the close event");
-  assert.equal(grantMarked, true, "the session is marked as soon as the ad is displayed");
-  assert.equal(grantSettled, false, "tracking does not advance the quiz while the ad remains open");
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
+  assert.equal(grantSettled, false, "the quiz does not advance while the ad remains open");
   assert.equal(
     await grantWithoutClose,
     "granted",
     "the watchdog must preserve an earned reward even when GPT loses the close event",
   );
   assert.equal(requests, 9);
-  assert.equal(metaEvents.length, 3, "the reward and watchdog do not emit the event again");
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
 
   const controller = new AbortController();
   outcomes.push("pending");
@@ -151,25 +142,22 @@ test("rewarded ads track confirmed starts, preserve reward gates and deduplicate
   assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3, retryOnClose: false }), "closed");
   assert.equal(requests, 11, "a first-answer gate does not reopen after the user closes it");
   outcomes.push("granted");
-  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3, retryOnClose: false, quizStartAlreadySent: true }), "granted");
+  assert.equal(await requestRewardedAd({ adUnitPath: "/test", attempts: 3, retryOnClose: false }), "granted");
   assert.equal(requests, 12, "a fresh user interaction can request another ad");
-  assert.equal(metaEvents.length, 4, "early close counts a displayed ad; already-marked sessions do not emit again");
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
 
   let activate!: () => void;
   const permission = new Promise<void>(resolve => {activate = resolve;});
   outcomes.push("deferred");
-  let preloadedStarted = false;
-  const preloaded = requestRewardedAd({adUnitPath: "/test", attempts: 1, beforeVisible: () => permission, onQuizStart: () => {preloadedStarted = true;}});
+  const preloaded = requestRewardedAd({adUnitPath: "/test", attempts: 1, beforeVisible: () => permission});
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(requests, 13, "preloading fetches the slot immediately");
   assert.equal(deferredShows, 0, "a loaded ad waits for the user's CTA and loader delay");
-  assert.equal(metaEvents.length, 4, "ad ready/preloaded alone does not count as a start");
-  assert.equal(preloadedStarted, false);
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
   activate();
   assert.equal(await preloaded, "granted");
   assert.equal(deferredShows, 1);
-  assert.equal(metaEvents.length, 5);
-  assert.equal(preloadedStarted, true);
+  assert.equal(metaEvents.length, 0);
 
   const abortPreload = new AbortController();
   let release!: () => void;
@@ -182,16 +170,16 @@ test("rewarded ads track confirmed starts, preserve reward gates and deduplicate
   release();
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(deferredShows, 1, "leaving the landing destroys the prepared slot and prevents a late display");
-  assert.equal(metaEvents.length, 5, "cancelled preload never counts");
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
 
   for (const outcome of ["failed-show", "throw-on-show", "missing-show"] as const) {
     outcomes.push(outcome);
     assert.equal(await requestRewardedAd({adUnitPath: "/test", attempts: 1}), "unavailable");
-    assert.equal(metaEvents.length, 5, `${outcome} never counts as a start`);
+    assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
   }
   outcomes.push("grant-only");
   assert.equal(await requestRewardedAd({adUnitPath: "/test", attempts: 1}), "granted");
-  assert.equal(metaEvents.length, 5, "a grant alone never sends the display-based pixel");
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
 
   outcomes.push("pending");
   const duplicated = requestRewardedAd({adUnitPath: "/test", attempts: 1});
@@ -203,10 +191,10 @@ test("rewarded ads track confirmed starts, preserve reward gates and deduplicate
   listeners.get("rewardedSlotReady")?.(ready);
   listeners.get("rewardedSlotReady")?.(ready);
   assert.equal(shows, 1, "duplicate ready events do not show the same ad twice");
-  assert.equal(metaEvents.length, 6);
+  assert.equal(metaEvents.length, 0, "duplicate ready events never emit Meta events");
   listeners.get("rewardedSlotGranted")?.({slot});
   listeners.get("rewardedSlotGranted")?.({slot});
-  assert.equal(metaEvents.length, 6, "grant never repeats QuizStart");
+  assert.equal(metaEvents.length, 0, "no Meta events on display, grant, close, retry or cancellation");
   listeners.get("rewardedSlotClosed")?.({slot});
   assert.equal(await duplicated, "granted");
 });

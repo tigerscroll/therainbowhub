@@ -55,7 +55,7 @@ async function setup(width, blocked = false) {
 async function grant(page) {
   await page.waitForFunction(() => window.entryTest.active !== null);
   const starts = await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length);
-  assert(starts > 0, 'QuizStart fires when the ad opens, before any reward');
+  assert.equal(starts, 0, 'ad display never emits QuizStart');
   await page.evaluate(() => window.entryTest.grant());
   assert.equal(await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length), starts, 'grant never repeats the display-based pixel');
 }
@@ -117,7 +117,7 @@ try {
     const requests = await page.evaluate(() => window.entryTest.requests);
     if (combination !== answerPathCount + 1) {
       assert.equal(requests.length, 2, 'exactly two rewards in successful flow');
-      assert.equal(await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length), 2, 'articles retain one QuizStart per separate ad gate');
+      assert.equal(await page.evaluate(() => window.entryTest.events.filter(name => name === 'QuizStart').length), 0, 'article ad gates never emit QuizStart');
     }
     assert.ok(requests.every(slot => slot.path === '/22677279144/rewarded' && slot.format === 'REWARDED'));
     if (combination === 0) {

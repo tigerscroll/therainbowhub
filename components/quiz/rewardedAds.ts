@@ -10,10 +10,7 @@ type ActiveRequest = {
   displayed: boolean;
   granted: boolean;
   id: number;
-  onQuizStart?: () => void;
-  quizStartAlreadySent: boolean;
   resolve: (result: RewardedResult) => void;
-  sent: boolean;
   slot: GptSlot | null;
   timer: number;
   visibleTimeoutMs: number;
@@ -24,15 +21,6 @@ let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
 
-
-function sendQuizStartOnDisplay(request: ActiveRequest) {
-  if (request.sent || request.quizStartAlreadySent) return;
-  request.sent = true;
-  request.quizStartAlreadySent = true;
-  try { window.fbq?.("trackCustom", "QuizStart"); } catch { /* Tracking must not interrupt the ad or its reward. */ }
-  console.info("[RewardedAd] Ad displayed; QuizStart Meta event requested.");
-  request.onQuizStart?.();
-}
 
 function finish(result: RewardedResult) {
   const request = activeRequest;
@@ -70,7 +58,6 @@ function installListeners() {
         }
       } catch { finish("unavailable"); return; }
       request.displayed = true;
-      sendQuizStartOnDisplay(request);
       if (activeRequest?.id !== request.id) return;
       request.timer = window.setTimeout(() => {
         if (activeRequest?.id === request.id) finish(activeRequest.granted ? "granted" : "unavailable");
@@ -105,8 +92,6 @@ function requestOnce(
   timeoutMs: number,
   visibleTimeoutMs: number,
   signal?: AbortSignal,
-  quizStartAlreadySent = false,
-  onQuizStart?: () => void,
   beforeVisible?: () => Promise<void>,
 ) {
   if (signal?.aborted) return Promise.resolve<RewardedResult>("closed");
@@ -124,10 +109,7 @@ function requestOnce(
       displayed: false,
       granted: false,
       id,
-      onQuizStart,
-      quizStartAlreadySent,
       resolve,
-      sent: false,
       slot: null,
       timer: window.setTimeout(() => {
         if (activeRequest?.id === id) finish("unavailable");
@@ -188,8 +170,6 @@ export async function requestRewardedAd({
   adUnitPath,
   attempts,
   onAttempt,
-  onQuizStart,
-  quizStartAlreadySent = false,
   signal,
   retryOnClose = true,
   timeoutMs = 4000,
@@ -199,8 +179,6 @@ export async function requestRewardedAd({
   adUnitPath: string;
   attempts: number;
   onAttempt?: (attempt: number, maximum: number) => void;
-  onQuizStart?: () => void;
-  quizStartAlreadySent?: boolean;
   retryOnClose?: boolean;
   signal?: AbortSignal;
   timeoutMs?: number;
@@ -209,12 +187,6 @@ export async function requestRewardedAd({
 }) {
   const maximum = Math.max(1, attempts);
   let unavailableAttempts = 0;
-  // A user can close and reopen an ad within this request. Count its start once.
-  let quizStartSent = quizStartAlreadySent;
-  const markQuizStart = () => {
-    quizStartSent = true;
-    onQuizStart?.();
-  };
 
   while (unavailableAttempts < maximum) {
     if (signal?.aborted) return "closed";
@@ -225,8 +197,6 @@ export async function requestRewardedAd({
       timeoutMs,
       visibleTimeoutMs,
       signal,
-      quizStartSent,
-      markQuizStart,
       beforeVisible,
     );
     if (signal?.aborted) return "closed";

@@ -298,7 +298,7 @@ async function run(width) {
     assert.deepEqual(savedCheckpoint.answers, expectedAnswers, 'every chosen answer, including the last one, survives the checkpoint');
     assert.equal(savedCheckpoint.completedStage, stageIndex);
     assert.equal(savedCheckpoint.questionIndex, Math.min(Object.keys(expectedAnswers).length, totalQuestions - 1));
-    assert.equal(savedCheckpoint.rewardClosedSent, true, 'completed Start reward remains recorded across reloads');
+    assert.equal(savedCheckpoint.rewardClosedSent, undefined, 'retired tracking state is not persisted at checkpoints');
     assert.equal(await checkpoint.getAttribute('data-round'), String(stageIndex + 1));
     assert.equal(await checkpoint.getByRole('progressbar').count(), 0, 'checkpoints focus on the next topic without progress indicators');
     assert.doesNotMatch(await checkpoint.innerText(), /halfway|\b(?:one|two|\d+) chapters? (?:left|to go)\b/i);

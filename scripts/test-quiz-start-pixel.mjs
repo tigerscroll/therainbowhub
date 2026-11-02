@@ -49,7 +49,7 @@ try {
     if (mode === 'manual') {
       await page.evaluate(() => window.pixelTest.ready());
       await page.waitForFunction(() => window.pixelTest.active !== null);
-      assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), 1, 'display sends QuizStart before reward');
+      assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), 0, 'display does not send QuizStart');
       if (firstAnswer) assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId, 'ad start does not advance the quiz');
       else assert.equal(await page.locator('[data-question-id]').count(), 0, 'ad start does not unlock question one');
       await page.evaluate(() => window.pixelTest.emit('rewardedSlotClosed'));
@@ -65,7 +65,7 @@ try {
       await page.evaluate(() => {window.pixelTest.active = null;});
       await page.evaluate(() => window.pixelTest.ready());
       await page.waitForFunction(() => window.pixelTest.active !== null);
-      const expectedStarts = firstAnswer ? 0 : 1;
+      const expectedStarts = 0;
       assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), expectedStarts, 'quiz retries never send a second QuizStart');
       await page.evaluate(() => window.pixelTest.emit('rewardedSlotGranted'));
       if (firstAnswer) assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId, 'reward still waits for close before advancing');
@@ -77,13 +77,13 @@ try {
       }, {id: firstId, firstAnswer});
       assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), expectedStarts, 'grant and close never repeat the pixel');
       const saved = await page.evaluate(slug => JSON.parse(sessionStorage.getItem(`rainbowhub:quiz-progress:v4:${slug}:en`)), slug);
-      assert.equal(saved.rewardClosedSent, true, 'existing persisted deduplication marker records the ad start');
+      assert.equal(saved.rewardClosedSent, undefined, 'retired tracking marker is no longer persisted');
     } else {
       await page.waitForFunction(() => window.pixelTest.requests >= 3);
       assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), 0, `${mode} never sends QuizStart`);
     }
     assert.deepEqual(errors, []);
-    console.log(`${slug} ${mode}: QuizStart timing and reward gating PASS.`);
+    console.log(`${slug} ${mode}: No QuizStart events; reward gating PASS.`);
     await context.close();
   }
 } finally {await browser.close();}

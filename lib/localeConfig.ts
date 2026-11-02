@@ -20,6 +20,7 @@ export const localeOptions = [
   { code: "vi", name: "Vietnamese", flag: "🇻🇳" },
   { code: "ur", name: "Urdu", flag: "🇵🇰" },
   { code: "ms", name: "Malay", flag: "🇲🇾" },
+  { code: "ja", name: "Japanese", flag: "🇯🇵" },
 ] as const;
 
 export type SupportedLocale = (typeof localeOptions)[number]["code"];

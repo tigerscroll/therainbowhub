@@ -8,8 +8,6 @@ import { siteConfig } from "@/lib/siteConfig";
 
 type RewardedGateOptions = {
   attempts: number;
-  onQuizStart?: () => void;
-  quizStartAlreadySent?: boolean;
   preload?: boolean;
 };
 
@@ -39,14 +37,12 @@ function scrollExperienceToTop(behavior: ScrollBehavior) {
   window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior }));
 }
 
-export function useRewardedGate({ attempts, onQuizStart, quizStartAlreadySent, preload = false }: RewardedGateOptions) {
+export function useRewardedGate({ attempts, preload = false }: RewardedGateOptions) {
   const [busy, setBusy] = useState(false);
   const active = useRef(false);
   const controller = useRef<AbortController | null>(null);
   const generation = useRef(0);
-  const options = useRef({attempts, onQuizStart, quizStartAlreadySent});
-  options.current = {attempts, onQuizStart, quizStartAlreadySent};
-  const prepared = useRef<{controller: AbortController; activate: (time: number) => void; startState: {sent: boolean}; outcome: Promise<RewardedResult>} | null>(null);
+  const prepared = useRef<{controller: AbortController; activate: (time: number) => void; outcome: Promise<RewardedResult>} | null>(null);
 
   const cancelGate = useCallback(() => {
     generation.current += 1;
@@ -69,17 +65,13 @@ export function useRewardedGate({ attempts, onQuizStart, quizStartAlreadySent, p
     const requestController = new AbortController();
     let activate!: (time: number) => void;
     const consent = new Promise<number>(resolve => {activate = resolve;});
-    const startState = {sent: false};
     requestController.signal.addEventListener("abort", () => activate(Date.now()), {once: true});
     const cached = {
       controller: requestController,
       activate,
-      startState,
       outcome: requestRewardedAd({
         adUnitPath: siteConfig.rewardedAdUnitPath,
         attempts: 1,
-        onQuizStart: () => { startState.sent = true; options.current.onQuizStart?.(); },
-        quizStartAlreadySent: options.current.quizStartAlreadySent,
         signal: requestController.signal,
         retryOnClose: false,
         beforeVisible: async () => waitUntil(await consent, requestController.signal),
@@ -113,8 +105,6 @@ export function useRewardedGate({ attempts, onQuizStart, quizStartAlreadySent, p
       if (!cached || outcome === "unavailable") outcome = await requestRewardedAd({
         adUnitPath: siteConfig.rewardedAdUnitPath,
         attempts,
-        onQuizStart,
-        quizStartAlreadySent: quizStartAlreadySent || cached?.startState.sent,
         retryOnClose,
         signal: requestController.signal,
         beforeVisible: minimumVisibleDelayMs > 0 ? () => waitUntil(visibleAt, requestController.signal) : undefined,
@@ -147,7 +137,7 @@ export function useRewardedGate({ attempts, onQuizStart, quizStartAlreadySent, p
       active.current = false;
       setBusy(false);
     }
-  }, [attempts, onQuizStart, quizStartAlreadySent]);
+  }, [attempts]);
 
   return { busy, cancelGate, runGate };
 }
