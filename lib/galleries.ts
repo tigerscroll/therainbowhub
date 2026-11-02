@@ -19,6 +19,15 @@ import perfectlyTimedFr from "@/data/galleries/perfectly-timed.fr.json";
 import perfectlyTimedIt from "@/data/galleries/perfectly-timed.it.json";
 import perfectlyTimedNl from "@/data/galleries/perfectly-timed.nl.json";
 import perfectlyTimedPt from "@/data/galleries/perfectly-timed.pt.json";
+import perfectlyTimedTh from "@/data/galleries/perfectly-timed.th.json";
+import perfectlyTimedHi from "@/data/galleries/perfectly-timed.hi.json";
+import perfectlyTimedTr from "@/data/galleries/perfectly-timed.tr.json";
+import perfectlyTimedId from "@/data/galleries/perfectly-timed.id.json";
+import perfectlyTimedBn from "@/data/galleries/perfectly-timed.bn.json";
+import perfectlyTimedFil from "@/data/galleries/perfectly-timed.fil.json";
+import perfectlyTimedVi from "@/data/galleries/perfectly-timed.vi.json";
+import perfectlyTimedUr from "@/data/galleries/perfectly-timed.ur.json";
+import perfectlyTimedMs from "@/data/galleries/perfectly-timed.ms.json";
 import wildResorts from "@/data/galleries/wild-resorts.json";
 import wildResortsDe from "@/data/galleries/wild-resorts.de.json";
 import wildResortsFr from "@/data/galleries/wild-resorts.fr.json";
@@ -163,6 +172,15 @@ const galleryManifests = [
   perfectlyTimedIt,
   perfectlyTimedNl,
   perfectlyTimedPt,
+  perfectlyTimedTh,
+  perfectlyTimedHi,
+  perfectlyTimedTr,
+  perfectlyTimedId,
+  perfectlyTimedBn,
+  perfectlyTimedFil,
+  perfectlyTimedVi,
+  perfectlyTimedUr,
+  perfectlyTimedMs,
   wildResorts,
   wildResortsDe,
   wildResortsFr,

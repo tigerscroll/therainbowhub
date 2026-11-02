@@ -82,6 +82,12 @@ export function InfoPageContent({ locale, slug }: InfoPageContentProps) {
 }
 
 const infoPageLabels: Record<SupportedLocale, { related: string }> = {
+  tr: { related: "İlgili bilgiler" },
+  bn: { related: "সম্পর্কিত তথ্য" },
+  fil: { related: "Kaugnay na impormasyon" },
+  vi: { related: "Thông tin liên quan" },
+  ur: { related: "متعلقہ معلومات" },
+  ms: { related: "Maklumat berkaitan" },
   id: { related: "Informasi terkait" },
   th: { related: "ข้อมูลที่เกี่ยวข้อง" },
   hi: { related: "संबंधित जानकारी" },

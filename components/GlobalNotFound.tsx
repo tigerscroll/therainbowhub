@@ -13,13 +13,19 @@ import gr from "@/data/i18n/gr.json";
 import hi from "@/data/i18n/hi.json";
 import id from "@/data/i18n/id.json";
 import th from "@/data/i18n/th.json";
+import tr from "@/data/i18n/tr.json";
+import bn from "@/data/i18n/bn.json";
+import fil from "@/data/i18n/fil.json";
+import vi from "@/data/i18n/vi.json";
+import ur from "@/data/i18n/ur.json";
+import ms from "@/data/i18n/ms.json";
 import it from "@/data/i18n/it.json";
 import nl from "@/data/i18n/nl.json";
 import pt from "@/data/i18n/pt.json";
 import { getLocaleOptions, getLocalePath, localeLanguageTag } from "@/lib/localeConfig";
 import { companyLinks, legalLinks } from "@/lib/siteLinks";
 
-const translations = { de, en, es, fr, gr, hi, id, it, nl, pt, th };
+const translations = { de, en, es, fr, gr, hi, id, it, nl, pt, th, tr, bn, fil, vi, ur, ms };
 type NotFoundLocale = keyof typeof translations;
 
 function isNotFoundLocale(value: string): value is NotFoundLocale {

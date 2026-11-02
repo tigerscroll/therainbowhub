@@ -466,6 +466,12 @@ body:has(.gallery-article__entry-preview[data-gallery-entry="popup"]) {
   .gallery-article__primary { min-height: 60px; }
 }
 
+/* Latin display tracking crowds connected scripts and stacked vowel marks. */
+html:is(:lang(hi), :lang(th), :lang(bn), :lang(ur)) .quiz-theme[data-quiz-flow="continuous"] .gallery-article :is(.gallery-article__landing, .gallery-article__article-header, .gallery-article__section) :is(h1, h2) {
+  line-height: 1.3 !important;
+  letter-spacing: normal !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .gallery-article__primary { transition: none; }
 }

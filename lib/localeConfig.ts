@@ -14,6 +14,12 @@ export const localeOptions = [
   { code: "hi", name: "Hindi", flag: "🇮🇳" },
   { code: "th", name: "Thai", flag: "🇹🇭" },
   { code: "id", name: "Indonesian", flag: "🇮🇩" },
+  { code: "tr", name: "Turkish", flag: "🇹🇷" },
+  { code: "bn", name: "Bengali", flag: "🇧🇩" },
+  { code: "fil", name: "Filipino", flag: "🇵🇭" },
+  { code: "vi", name: "Vietnamese", flag: "🇻🇳" },
+  { code: "ur", name: "Urdu", flag: "🇵🇰" },
+  { code: "ms", name: "Malay", flag: "🇲🇾" },
 ] as const;
 
 export type SupportedLocale = (typeof localeOptions)[number]["code"];
