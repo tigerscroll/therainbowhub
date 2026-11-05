@@ -21,6 +21,20 @@ let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
 
+function trackRewardedAdStart() {
+  const sendTo = "AW-18146485081/nWCKCJu12rIdENnG9cxD";
+  try {
+    // Preserve a fast user's conversion even if the shared Google tag has not
+    // initialized yet. Its normal loader will consume this same queue.
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer!.push(arguments); };
+    window.gtag("event", "conversion", { send_to: sendTo });
+    console.log("[RewardedAd] Rewarded ad started; Google Ads conversion queued.", { send_to: sendTo });
+  } catch (error) {
+    // Tracking must never block ad cleanup or an earned content unlock.
+    console.warn("[RewardedAd] Ad started, but Google Ads conversion tracking failed.", error);
+  }
+}
 
 function finish(result: RewardedResult) {
   const request = activeRequest;
@@ -58,6 +72,7 @@ function installListeners() {
         }
       } catch { finish("unavailable"); return; }
       request.displayed = true;
+      trackRewardedAdStart();
       if (activeRequest?.id !== request.id) return;
       request.timer = window.setTimeout(() => {
         if (activeRequest?.id === request.id) finish(activeRequest.granted ? "granted" : "unavailable");

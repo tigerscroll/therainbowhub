@@ -17,10 +17,11 @@ try {
         const listeners = new Map();
         const emit = (name, slot, extra = {}) => (listeners.get(name) ?? []).forEach(fn => fn({ slot, ...extra }));
         const state = {
-          requests: [], active: null,
+          requests: [], conversions: [], active: null,
           grant() { const slot = this.active; emit('rewardedSlotGranted', slot); emit('rewardedSlotClosed', slot); this.active = null; },
         };
         window.articleLocaleTest = state;
+        window.gtag = (command, name, payload) => {if (command === 'event' && name === 'conversion') state.conversions.push(payload);};
         const pubads = {
           addEventListener(name, fn) { listeners.set(name, [...(listeners.get(name) ?? []), fn]); },
           removeEventListener(name, fn) { listeners.set(name, (listeners.get(name) ?? []).filter(item => item !== fn)); },
@@ -51,6 +52,7 @@ try {
         assert(typography.leading >= 1.29, `${locale}: room for vowel marks and stacked characters`);
       }
       assert.equal(await page.evaluate(() => window.articleLocaleTest.requests.length), 0, 'no preload');
+      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 0, 'popup alone never sends a conversion');
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${locale}: no horizontal overflow`);
       const button = dialog.getByRole('button', { name: article.landing.cta, exact: true });
       assert(await button.evaluate(node => { const r = node.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth && r.bottom <= innerHeight && r.top >= 0; }), `${locale}: CTA fits viewport`);
@@ -59,6 +61,7 @@ try {
       await page.waitForFunction(() => window.articleLocaleTest.active !== null);
       assert((await dialog.innerText()).includes(shared.ad.loading), `${locale}: translated loading`);
       assert.equal(await page.evaluate(() => window.articleLocaleTest.requests.length), 1);
+      assert.deepEqual(await page.evaluate(() => window.articleLocaleTest.conversions), [{send_to: 'AW-18146485081/nWCKCJu12rIdENnG9cxD'}], 'first display sends the exact Google conversion before its reward');
       await page.evaluate(() => window.articleLocaleTest.grant());
       await page.locator('.gallery-article__introduction').waitFor();
       assert.equal(await dialog.count(), 0);
@@ -66,8 +69,10 @@ try {
       await continuation.click();
       await page.waitForFunction(() => window.articleLocaleTest.active !== null);
       assert.equal(await page.evaluate(() => window.articleLocaleTest.requests.length), 2);
+      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 2, 'second separately displayed rewarded ad sends another conversion');
       await page.evaluate(() => window.articleLocaleTest.grant());
       await page.locator('.gallery-article__article').waitFor();
+      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 2, 'rewards and closes do not duplicate conversions');
       assert.equal(await page.locator('.gallery-article__article-sections > section').count(), 57);
       for (const item of article.items) {
         const section = page.locator(`[id="${item.id}"]`);
