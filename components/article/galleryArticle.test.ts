@@ -4,10 +4,10 @@ import test from "node:test";
 import { runInNewContext } from "node:vm";
 import { getArticlePopupBootstrapScript, shouldShowArticlePopup } from "../gallery/galleryPopup.ts";
 
-test("article popups require fbclid as a query parameter, not another attribution value or URL text", () => {
-  for (const search of ["?fbclid=abc", "?utm_source=facebook&fbclid=abc", "?fbclid=", "?fbclid"])
+test("article popups accept fbclid or utm_source=google query parameters, not unrelated values or nested URL text", () => {
+  for (const search of ["?fbclid=abc", "?utm_source=facebook&fbclid=abc", "?fbclid=", "?fbclid", "?utm_source=google", "?utm_medium=cpc&utm_source=google&utm_campaign=test", "?utm_source=%67oogle", "?utm_source=google&fbclid=test"])
     assert.equal(shouldShowArticlePopup(search), true, search);
-  for (const search of ["", "?utm_source=facebook", "?notfbclid=abc", "?FBCLID=abc", "?redirect=%3Ffbclid%3Dabc", "?utm_campaign=fbclid"])
+  for (const search of ["", "?utm_source=facebook", "?notfbclid=abc", "?FBCLID=abc", "?redirect=%3Ffbclid%3Dabc", "?utm_campaign=fbclid", "?utm_source=", "?utm_source=googleads", "?notutm_source=google", "?utm_campaign=google", "?redirect=%3Futm_source%3Dgoogle", "?gclid=test"])
     assert.equal(shouldShowArticlePopup(search), false, search);
 });
 
@@ -17,9 +17,14 @@ test("article bootstrap selects the entry synchronously and respects rewarded un
     ["?fbclid=", null, false, "popup"],
     ["?fbclid=abc", "1", false, "intro"],
     ["?fbclid=abc", null, true, "popup"],
+    ["?utm_source=google", null, false, "popup"],
+    ["?utm_source=google&utm_medium=cpc", "1", false, "intro"],
+    ["?utm_source=google", null, true, "popup"],
+    ["?utm_source=google&fbclid=abc", null, false, "popup"],
     ["", null, false, "intro"],
     ["?utm_source=facebook", null, true, "intro"],
     ["?redirect=%3Ffbclid%3Dabc", null, false, "intro"],
+    ["?redirect=%3Futm_source%3Dgoogle", null, false, "intro"],
   ] as const) {
     let entry = "";
     runInNewContext(getArticlePopupBootstrapScript("entry-key"), {

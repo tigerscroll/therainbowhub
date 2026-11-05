@@ -17,7 +17,7 @@ const browser = await chromium.launch({
 
 try {
   for (const gallery of galleries) {
-    const scenarios = gallery.landing.followUpQuestions ? ['fbclid', 'direct', 'unlocked', 'questions-pending', ...(gallery.slug === 'mobilityscooter' ? ['saved-answers-pending', 'saved-answers-unlocked'] : [])] : ['fbclid', 'direct', 'unlocked'];
+    const scenarios = gallery.landing.followUpQuestions ? ['fbclid', 'google', 'direct', 'unlocked', 'google-unlocked', 'questions-pending', 'google-questions-pending', ...(gallery.slug === 'mobilityscooter' ? ['saved-answers-pending', 'saved-answers-unlocked'] : [])] : ['fbclid', 'google', 'direct', 'unlocked', 'google-unlocked'];
     for (const scenario of scenarios) {
       const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
       const page = await context.newPage();
@@ -57,10 +57,10 @@ try {
           requestAnimationFrame(record);
         };
         requestAnimationFrame(record);
-      }, { slug: gallery.slug, unlocked: scenario === 'unlocked' || scenario === 'saved-answers-unlocked', pending: scenario === 'questions-pending' || scenario === 'saved-answers-pending', savedAnswers: scenario.startsWith('saved-answers'), followUp: !!gallery.landing.followUpQuestions, contentSelector });
+      }, { slug: gallery.slug, unlocked: scenario === 'unlocked' || scenario === 'google-unlocked' || scenario === 'saved-answers-unlocked', pending: scenario === 'questions-pending' || scenario === 'google-questions-pending' || scenario === 'saved-answers-pending', savedAnswers: scenario.startsWith('saved-answers'), followUp: !!gallery.landing.followUpQuestions, contentSelector });
       const path = `${gallery.locale === 'en' ? '' : `/${gallery.locale}`}/${gallery.slug}`;
-      const query = scenario === 'direct' ? '?utm_source=facebook' : '?fbclid=paint-test';
-      const popupExpected = scenario === 'fbclid' || scenario === 'questions-pending' || scenario === 'saved-answers-pending';
+      const query = scenario === 'direct' ? '?utm_source=facebook' : scenario.startsWith('google') ? '?utm_source=google&utm_medium=cpc' : '?fbclid=paint-test';
+      const popupExpected = scenario === 'fbclid' || scenario === 'google' || scenario === 'questions-pending' || scenario === 'google-questions-pending' || scenario === 'saved-answers-pending';
       await page.goto(`${base}${path}${query}`, { waitUntil: 'commit' });
       await page.locator(`.gallery-article__entry-preview[data-gallery-entry="${popupExpected ? 'popup' : 'intro'}"]`).waitFor();
       const visibleSelector = popupExpected ? '[role="dialog"]' : contentSelector;

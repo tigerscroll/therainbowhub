@@ -4,6 +4,7 @@ import { chromium } from 'playwright-core';
 
 // Local export only. External traffic is blocked; GPT is mocked, not live-served.
 const base = process.env.ARTICLE_TEST_URL ?? 'http://localhost:3198';
+const entryQuery = process.env.ARTICLE_ENTRY_QUERY ?? 'fbclid=local-locale-test';
 const locales = (process.env.ARTICLE_LOCALES ?? 'th,hi,tr,id,bn,fil,vi,ur,ms,ja').split(',');
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 try {
@@ -38,7 +39,7 @@ try {
       const page = await context.newPage();
       const errors = [];
       page.on('pageerror', error => errors.push(error.message));
-      await page.goto(`${base}/${locale}/perfectly-timed?fbclid=local-locale-test`);
+      await page.goto(`${base}/${locale}/perfectly-timed?${entryQuery}`);
       await page.waitForFunction(() => !document.querySelector('.gallery-article__entry-preview'));
       assert.equal(await page.locator('html').getAttribute('lang'), locale);
       assert.equal(await page.locator('html').getAttribute('dir'), locale === 'ur' ? 'rtl' : 'ltr');

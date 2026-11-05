@@ -162,18 +162,20 @@ test("corrupted or reordered saved progress is rejected", () => {
 });
 
 test("first-paint bootstrap keeps pending questions inside the popup but respects completed unlocks", () => {
-  for (const [entry, followUp, article, expected] of [
-    [null, null, null, "popup"], ["1", null, null, "popup"],
-    ["1", "1", null, "intro"], ["1", null, "1", "intro"],
-  ]) {
-    let visible = "";
-    const saved = { entry, followUp, article };
-    runInNewContext(getArticlePopupBootstrapScript("entry", "followUp", "article"), {
-      URLSearchParams,
-      document: { currentScript: { parentElement: { setAttribute(_name: string, value: string) { visible = value; } } } },
-      window: { location: { search: "?fbclid=abc" }, sessionStorage: { getItem(key: keyof typeof saved) { return saved[key]; } } },
-    });
-    assert.equal(visible, expected);
+  for (const search of ["?fbclid=abc", "?utm_source=google"]) {
+    for (const [entry, followUp, article, expected] of [
+      [null, null, null, "popup"], ["1", null, null, "popup"],
+      ["1", "1", null, "intro"], ["1", null, "1", "intro"],
+    ]) {
+      let visible = "";
+      const saved = { entry, followUp, article };
+      runInNewContext(getArticlePopupBootstrapScript("entry", "followUp", "article"), {
+        URLSearchParams,
+        document: { currentScript: { parentElement: { setAttribute(_name: string, value: string) { visible = value; } } } },
+        window: { location: { search }, sessionStorage: { getItem(key: keyof typeof saved) { return saved[key]; } } },
+      });
+      assert.equal(visible, expected);
+    }
   }
 });
 
