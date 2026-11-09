@@ -62,7 +62,7 @@ try {
       await page.waitForFunction(() => window.articleLocaleTest.active !== null);
       assert((await dialog.innerText()).includes(shared.ad.loading), `${locale}: translated loading`);
       assert.equal(await page.evaluate(() => window.articleLocaleTest.requests.length), 1);
-      assert.deepEqual(await page.evaluate(() => window.articleLocaleTest.conversions), [{send_to: 'AW-18146485081/nWCKCJu12rIdENnG9cxD'}], 'first display sends the exact Google conversion before its reward');
+      assert.deepEqual(await page.evaluate(() => window.articleLocaleTest.conversions), [], 'first display never sends a conversion');
       await page.evaluate(() => window.articleLocaleTest.grant());
       await page.locator('.gallery-article__introduction').waitFor();
       assert.equal(await dialog.count(), 0);
@@ -70,10 +70,10 @@ try {
       await continuation.click();
       await page.waitForFunction(() => window.articleLocaleTest.active !== null);
       assert.equal(await page.evaluate(() => window.articleLocaleTest.requests.length), 2);
-      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 2, 'second separately displayed rewarded ad sends another conversion');
+      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 0, 'second rewarded display never sends a conversion');
       await page.evaluate(() => window.articleLocaleTest.grant());
       await page.locator('.gallery-article__article').waitFor();
-      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 2, 'rewards and closes do not duplicate conversions');
+      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 0, 'rewards and closes never send conversions');
       assert.equal(await page.locator('.gallery-article__article-sections > section').count(), 57);
       for (const item of article.items) {
         const section = page.locator(`[id="${item.id}"]`);

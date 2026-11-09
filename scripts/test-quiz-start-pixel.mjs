@@ -55,8 +55,8 @@ try {
       await page.evaluate(() => window.pixelTest.ready());
       await page.waitForFunction(() => window.pixelTest.active !== null);
       await page.evaluate(() => window.pixelTest.ready());
-      assert.deepEqual(await page.evaluate(() => window.pixelTest.conversions), [{send_to: 'AW-18146485081/nWCKCJu12rIdENnG9cxD'}], 'successful display fires once before reward, including duplicate ready callbacks');
-      assert.equal(conversionLogs.length, 1, 'start also logs once');
+      assert.deepEqual(await page.evaluate(() => window.pixelTest.conversions), [], 'successful display never sends conversions, including duplicate ready callbacks');
+      assert.equal(conversionLogs.length, 0, 'retired conversion log is absent');
       assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), 0, 'display does not send QuizStart');
       if (firstAnswer) assert.equal(await page.locator('[data-question-id]').getAttribute('data-question-id'), firstId, 'ad start does not advance the quiz');
       else assert.equal(await page.locator('[data-question-id]').count(), 0, 'ad start does not unlock question one');
@@ -73,8 +73,8 @@ try {
       await page.evaluate(() => {window.pixelTest.active = null;});
       await page.evaluate(() => window.pixelTest.ready());
       await page.waitForFunction(() => window.pixelTest.active !== null);
-      const expectedConversions = firstAnswer ? 1 : 2;
-      assert.equal(await page.evaluate(() => window.pixelTest.conversions.length), expectedConversions, 'a separately reopened ad counts again');
+      const expectedConversions = 0;
+      assert.equal(await page.evaluate(() => window.pixelTest.conversions.length), expectedConversions, 'reopened ads never send conversions');
       const expectedStarts = 0;
       assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), expectedStarts, 'quiz retries never send a second QuizStart');
       await page.evaluate(() => window.pixelTest.emit('rewardedSlotGranted'));
@@ -89,7 +89,7 @@ try {
       const saved = await page.evaluate(slug => JSON.parse(sessionStorage.getItem(`rainbowhub:quiz-progress:v4:${slug}:en`)), slug);
       assert.equal(saved.rewardClosedSent, undefined, 'retired tracking marker is no longer persisted');
       assert.equal(await page.evaluate(() => window.pixelTest.conversions.length), expectedConversions, 'grant and close never send another conversion');
-      assert.equal(conversionLogs.length, 2, 'exactly one console log per separately displayed ad');
+      assert.equal(conversionLogs.length, 0, 'no retired conversion logs after retries or rewards');
     } else {
       await page.waitForFunction(() => window.pixelTest.requests >= 3);
       assert.equal(await page.evaluate(() => window.pixelTest.events.filter(name => name === 'QuizStart').length), 0, `${mode} never sends QuizStart`);
@@ -97,7 +97,7 @@ try {
       assert.equal(conversionLogs.length, 0);
     }
     assert.deepEqual(errors, []);
-    console.log(`${slug} ${mode}: Google conversion and console log on successful display only; no QuizStart; reward gating PASS.`);
+    console.log(`${slug} ${mode}: No Google conversions or conversion logs; no QuizStart; reward gating PASS.`);
     await context.close();
   }
 } finally {await browser.close();}

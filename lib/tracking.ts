@@ -7,13 +7,12 @@ type FacebookPixel = {
   (method: "track", eventName: string, payload?: TrackingPayload): void;
 };
 
-type GoogleTag = (command: "config" | "event", id: string, payload?: TrackingPayload) => void;
+type GoogleTag = (command: "config", id: string, payload?: TrackingPayload) => void;
 
 declare global {
   interface Window {
     fbq?: FacebookPixel;
     gtag?: GoogleTag;
-    dataLayer?: unknown[];
   }
 }
 
