@@ -3,23 +3,22 @@
 import { useLayoutEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-const TRAFFIC_CLASS = "fbclid-traffic";
-const TRAFFIC_STORAGE_KEY = "rainbowhub:fbclid-traffic";
+import { hasAdClickId, TRAFFIC_HEADER_CLASS, TRAFFIC_HEADER_STORAGE_KEY } from "@/lib/trafficHeader";
 
 export function FbclidHeaderVisibility() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useLayoutEffect(() => {
-    const hasFbclid = searchParams.has("fbclid");
-    let isFacebookTraffic = hasFbclid;
+    const hasClickId = hasAdClickId(searchParams);
+    let isAdTraffic = hasClickId;
     try {
-      if (hasFbclid) sessionStorage.setItem(TRAFFIC_STORAGE_KEY, "1");
-      isFacebookTraffic ||= sessionStorage.getItem(TRAFFIC_STORAGE_KEY) === "1";
+      if (hasClickId) sessionStorage.setItem(TRAFFIC_HEADER_STORAGE_KEY, "1");
+      isAdTraffic ||= sessionStorage.getItem(TRAFFIC_HEADER_STORAGE_KEY) === "1";
     } catch {
       // The URL check still works when browser storage is unavailable.
     }
-    document.documentElement.classList.toggle(TRAFFIC_CLASS, isFacebookTraffic);
+    document.documentElement.classList.toggle(TRAFFIC_HEADER_CLASS, isAdTraffic);
   }, [pathname, searchParams]);
 
   return null;
