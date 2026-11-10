@@ -50,7 +50,6 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
             window.gtag = window.gtag || function(){dataLayer.push(arguments);};
             gtag('js', new Date());
             gtag('config', 'G-44LV753KWN', { send_page_view: false });
-            gtag('config', 'AW-18146485081');
           `}
         </Script>
         <Script id="meta-pixel" strategy="afterInteractive">
