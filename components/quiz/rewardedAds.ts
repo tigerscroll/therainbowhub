@@ -21,6 +21,20 @@ let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
 
+function trackRewardGranted() {
+  const sendTo = "AW-18146485081/0p8ACLL9tv4cENnG9cxD";
+  try {
+    if (!window.gtag) {
+      console.warn("[RewardedAd] Reward granted; Google tag unavailable, conversion not queued.");
+      return;
+    }
+    window.gtag("event", "conversion", { send_to: sendTo });
+    console.log("[RewardedAd] Reward granted; Google Ads conversion queued.", { send_to: sendTo });
+  } catch (error) {
+    console.warn("[RewardedAd] Reward granted; Google Ads conversion tracking failed.", error);
+  }
+}
+
 function finish(result: RewardedResult) {
   const request = activeRequest;
   if (!request) return;
@@ -73,8 +87,9 @@ function installListeners() {
     } else show();
   });
   pubads.addEventListener("rewardedSlotGranted", (event) => {
-    if (!activeRequest || event.slot !== activeRequest.slot) return;
+    if (!activeRequest || event.slot !== activeRequest.slot || activeRequest.granted) return;
     activeRequest.granted = true;
+    trackRewardGranted();
   });
   pubads.addEventListener("rewardedSlotClosed", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;

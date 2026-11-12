@@ -66,14 +66,16 @@ try {
       await page.evaluate(() => window.articleLocaleTest.grant());
       await page.locator('.gallery-article__introduction').waitFor();
       assert.equal(await dialog.count(), 0);
+      const conversion = {send_to: 'AW-18146485081/0p8ACLL9tv4cENnG9cxD'};
+      assert.deepEqual(await page.evaluate(() => window.articleLocaleTest.conversions), [conversion], 'first reward sends only the requested conversion payload');
       const continuation = page.getByRole('button', { name: article.gallery.continueLabel, exact: true });
       await continuation.click();
       await page.waitForFunction(() => window.articleLocaleTest.active !== null);
       assert.equal(await page.evaluate(() => window.articleLocaleTest.requests.length), 2);
-      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 0, 'second rewarded display never sends a conversion');
+      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 1, 'second display does not count before grant');
       await page.evaluate(() => window.articleLocaleTest.grant());
       await page.locator('.gallery-article__article').waitFor();
-      assert.equal(await page.evaluate(() => window.articleLocaleTest.conversions.length), 0, 'rewards and closes never send conversions');
+      assert.deepEqual(await page.evaluate(() => window.articleLocaleTest.conversions), [conversion, conversion], 'each rewarded article gate sends exactly one conversion');
       assert.equal(await page.locator('.gallery-article__article-sections > section').count(), 57);
       for (const item of article.items) {
         const section = page.locator(`[id="${item.id}"]`);
