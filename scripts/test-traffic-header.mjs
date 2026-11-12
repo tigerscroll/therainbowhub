@@ -46,7 +46,7 @@ try {
     assert.equal(await page.locator('.hub-header').isVisible(), !hidden);
     release();
     // This inline Script is mounted after hydration by the shared root.
-    await page.locator('#google-analytics').waitFor({state: 'attached'});
+    await page.locator('#meta-pixel').waitFor({state: 'attached'});
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     assert.equal(await page.locator('.hub-header').isVisible(), !hidden, 'hydration preserves visibility');
     const frames = await page.evaluate(() => window.headerPaintFrames);

@@ -19,6 +19,20 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
     <html dir={direction} lang={localeLanguageTag(locale)} suppressHydrationWarning>
       <head>
         <script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              if (!window.gtag) {
+                window.gtag = function(){window.dataLayer.push(arguments);};
+                gtag('js', new Date());
+              }
+              gtag('config', 'G-44LV753KWN', { send_page_view: false });
+              gtag('config', 'AW-18146485081');
+            `,
+          }}
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: getTrafficHeaderBootstrapScript(),
           }}
@@ -44,14 +58,6 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
           src="https://www.googletagmanager.com/gtag/js?id=G-44LV753KWN"
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = window.gtag || function(){dataLayer.push(arguments);};
-            gtag('js', new Date());
-            gtag('config', 'G-44LV753KWN', { send_page_view: false });
-          `}
-        </Script>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
