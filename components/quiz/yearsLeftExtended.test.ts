@@ -41,7 +41,7 @@ test('Years Left has matching nine-language 100-question staged rewarded edition
       }
     }
   }
-  assert.deepEqual(read('en').landing, {intro: 'Your daily choices leave clues.\nWhat age is hiding in yours?', cta: 'Start Self Test'});
+  assert.deepEqual(read('en').landing, {intro: 'Your daily choices leave clues.\nWhat age is hiding in yours?', cta: 'Start Test'});
 });
 
 test('all eight clock personalities remain reachable with bounded estimates in the long quiz', () => {
