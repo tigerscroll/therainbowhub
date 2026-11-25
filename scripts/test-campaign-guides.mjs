@@ -1,14 +1,32 @@
 import assert from "node:assert/strict";
 import { chromium } from "playwright-core";
 
-const base = new URL(process.env.DENTAL_TEST_URL ?? "http://localhost:3217");
+const base = new URL(process.env.CAMPAIGN_GUIDE_TEST_URL ?? "http://localhost:3217");
 assert(["localhost", "127.0.0.1", "[::1]"].includes(base.hostname), "Use a local build only");
 const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
 });
+const guides = [
+  {
+    path: "/dental",
+    popup: "Need Dental Work?",
+    section: "2. Call a community clinic or dental school",
+    source: "Canada: Canadian Dental Care Plan",
+    notice: "Need urgent care?",
+    screenshot: process.env.DENTAL_SCREENSHOT,
+  },
+  {
+    path: "/mobility",
+    popup: "Want A Mobility Scooter?",
+    section: "2. Ask about an assessment before buying",
+    source: "United States: Medicare wheelchair and scooter coverage",
+    screenshot: process.env.MOBILITY_SCREENSHOT,
+  },
+];
+const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
 try {
-  for (const [width, key] of [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]]) {
+  for (const [guide, width, key] of guides.flatMap(guide => cases.map(([width, key]) => [guide, width, key]))) {
     const campaign = key.startsWith("utm_");
     const context = await browser.newContext({ viewport: { width, height: 760 } });
     let releaseHydration;
@@ -22,7 +40,7 @@ try {
     await context.addInitScript(() => {
       const listeners = new Map();
       const state = { requests: 0, slot: null, noFill: false };
-      window.dentalTest = state;
+      window.guideTest = state;
       const emit = (event, slot, extra = {}) => listeners.get(event)?.({ slot, ...extra });
       const service = { addEventListener: (name, fn) => listeners.set(name, fn) };
       window.googletag = {
@@ -48,20 +66,22 @@ try {
     page.setDefaultTimeout(10_000);
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
-    const dialog = page.getByRole("dialog", { name: "Need Dental Work?" });
+    const dialog = page.getByRole("dialog", { name: guide.popup });
     const cta = dialog.getByRole("button", { name: "CONTINUE", exact: true });
-    const section = page.getByRole("heading", { name: "2. Call a community clinic or dental school" });
-    const prerendered = page.locator("[data-dental-entry-preview]");
-    const requests = () => page.evaluate(() => window.dentalTest.requests);
-    const waitAd = () => page.waitForFunction(() => Boolean(window.dentalTest.slot));
+    const section = page.getByRole("heading", { name: guide.section });
+    const prerendered = page.locator("[data-campaign-guide-preview]");
+    const requests = () => page.evaluate(() => window.guideTest.requests);
+    const waitAd = () => page.waitForFunction(() => Boolean(window.guideTest.slot));
 
     try {
-      assert.equal((await page.goto(new URL(key ? `/dental?${key}=test` : "/dental", base).href, { waitUntil: "commit" })).status(), 200);
+      const url = new URL(guide.path, base);
+      if (key) url.searchParams.set(key, "test");
+      assert.equal((await page.goto(url.href, { waitUntil: "commit" })).status(), 200);
       await prerendered.waitFor({ state: "attached" });
       if (campaign) {
         await cta.waitFor();
         await page.waitForFunction(() => performance.getEntriesByName("first-contentful-paint").length > 0);
-        assert.equal(await page.locator("html").getAttribute("data-dental-entry-boot"), "");
+        assert.equal(await page.locator("html").getAttribute("data-campaign-guide-boot"), "");
         assert.equal(await section.isVisible(), false);
       } else {
         assert.equal(await prerendered.isVisible(), false);
@@ -87,17 +107,17 @@ try {
       if (width === 390) {
         await page.emulateMedia({ reducedMotion: "reduce" });
         assert.equal(await cta.locator("span").evaluate(el => getComputedStyle(el).animationName), "none");
-        if (process.env.DENTAL_SCREENSHOT) await page.screenshot({ path: process.env.DENTAL_SCREENSHOT });
+        if (guide.screenshot) await page.screenshot({ path: guide.screenshot });
         await page.emulateMedia({ reducedMotion: "no-preference" });
         await dialog.press("Escape");
-        await page.getByText("Need urgent care?", { exact: true }).waitFor();
+        if (guide.notice) await page.getByText(guide.notice, { exact: true }).waitFor();
         assert.equal(await section.isVisible(), false);
         assert.equal(await requests(), 0);
         await page.getByRole("button", { name: "Open Guide Popup" }).click();
       }
 
       if (width === 1200) {
-        await page.evaluate(() => { window.dentalTest.noFill = true; });
+        await page.evaluate(() => { window.guideTest.noFill = true; });
         await cta.click();
         await dialog.getByText("No ad is available right now.").waitFor();
         assert.equal(await section.isVisible(), false);
@@ -108,22 +128,22 @@ try {
         await waitAd();
         const loading = dialog.getByRole("button", { name: "LOADING...", exact: true });
         assert.equal(await loading.locator("span").evaluate(el => getComputedStyle(el).animationName), "none");
-        await page.evaluate(() => window.dentalTest.close(false));
+        await page.evaluate(() => window.guideTest.close(false));
         await cta.waitFor();
         assert.equal(await section.isVisible(), false, "closing without a reward must not unlock the guide");
         await cta.click();
         await waitAd();
-        await page.evaluate(() => window.dentalTest.close(true));
+        await page.evaluate(() => window.guideTest.close(true));
         assert.equal(await requests(), 2);
       }
     }
     await section.waitFor();
     assert.equal(await dialog.count(), 0);
     assert.equal(await page.locator("h1").count(), 1);
-    await page.getByRole("link", { name: "Canada: Canadian Dental Care Plan" }).waitFor();
+    await page.getByRole("link", { name: guide.source }).waitFor();
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     assert.deepEqual(errors, []);
-    console.log(`${width}px ${key || "direct"}: passed`);
+    console.log(`${guide.path} ${width}px ${key || "direct"}: passed`);
     await context.close();
   }
 } finally {

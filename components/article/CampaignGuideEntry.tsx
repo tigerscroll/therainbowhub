@@ -2,12 +2,16 @@
 
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
-import { dentalEntryBootAttribute, dentalGuide, hasDentalCampaign } from "@/lib/dentalGuide";
-import styles from "./DentalGuideEntry.module.css";
+import { campaignGuideBootAttribute, hasGuideCampaign } from "@/lib/campaignGuides";
+import styles from "./CampaignGuideEntry.module.css";
 
 type Entry = "initial" | "prompt" | "dismissed" | "guide";
 
-export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode; urgentCare: ReactNode }) {
+export function CampaignGuideEntry({ children, guide, publicNotice }: {
+  children: ReactNode;
+  guide: { title: string; intro: string; popupTitle: string };
+  publicNotice?: ReactNode;
+}) {
   const [entry, setEntry] = useState<Entry>("initial");
   const [adUnavailable, setAdUnavailable] = useState(false);
   const { busy, runGate } = useRewardedGate({ attempts: 1 });
@@ -17,11 +21,11 @@ export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode
   const didUnlock = useRef(false);
 
   useLayoutEffect(() => {
-    setEntry(hasDentalCampaign(window.location.search) ? "prompt" : "guide");
+    setEntry(hasGuideCampaign(window.location.search) ? "prompt" : "guide");
   }, []);
 
   useLayoutEffect(() => {
-    if (entry !== "initial") document.documentElement.removeAttribute(dentalEntryBootAttribute);
+    if (entry !== "initial") document.documentElement.removeAttribute(campaignGuideBootAttribute);
   }, [entry]);
 
   useEffect(() => {
@@ -47,11 +51,11 @@ export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode
 
   return (
     <>
-      <article className={styles.guide} aria-labelledby="dental-guide-title" hidden={entry === "prompt"}>
+      <article className={styles.guide} aria-labelledby="campaign-guide-title" hidden={entry === "prompt"}>
         <p className={styles.eyebrow}>A quick guide</p>
-        <h1 id="dental-guide-title" ref={title} tabIndex={-1}>{dentalGuide.title}</h1>
-        <p className={styles.intro}>If the cost of dental work feels out of reach, start with these steps. What’s available depends on where you live, your income and the treatment you need.</p>
-        {urgentCare}
+        <h1 id="campaign-guide-title" ref={title} tabIndex={-1}>{guide.title}</h1>
+        <p className={styles.intro}>{guide.intro}</p>
+        {publicNotice}
         {entry === "dismissed" ? (
           <button className={styles.primary} data-google-interstitial="false" ref={reopen} type="button" onClick={() => setEntry("prompt")}>Open Guide Popup</button>
         ) : children}
@@ -59,12 +63,12 @@ export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode
       {(entry === "initial" || entry === "prompt") && (
         <div
           className={styles.overlay}
-          data-dental-entry-preview={entry === "initial" ? "" : undefined}
+          data-campaign-guide-preview={entry === "initial" ? "" : undefined}
           ref={dialog}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="dental-entry-title"
-          aria-describedby="dental-ad-note"
+          aria-labelledby="campaign-guide-entry-title"
+          aria-describedby="campaign-guide-ad-note"
           tabIndex={-1}
           onKeyDown={event => {
             if (busy) return;
@@ -81,8 +85,8 @@ export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode
           }}
         >
           <div className={styles.popup}>
-            <h2 id="dental-entry-title">Need Dental Work?</h2>
-            <button className={styles.popupAction} type="button" disabled={busy} data-google-interstitial="false" aria-describedby="dental-ad-note" onClick={requestAd}>
+            <h2 id="campaign-guide-entry-title">{guide.popupTitle}</h2>
+            <button className={styles.popupAction} type="button" disabled={busy} data-google-interstitial="false" aria-describedby="campaign-guide-ad-note" onClick={requestAd}>
               <span className={styles.actionFace}>{busy ? "LOADING..." : "CONTINUE"}</span>
             </button>
             {adUnavailable ? (
@@ -92,7 +96,7 @@ export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode
               </>
             ) : null}
           </div>
-          <p className={`${styles.adNote} ${styles.adFooter}`} id="dental-ad-note">Watch one short ad to open the guide.</p>
+          <p className={`${styles.adNote} ${styles.adFooter}`} id="campaign-guide-ad-note">Watch one short ad to open the guide.</p>
         </div>
       )}
     </>

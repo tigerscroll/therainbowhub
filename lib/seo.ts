@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { dentalGuide } from "@/lib/dentalGuide";
+import { dentalGuide, mobilityGuide } from "@/lib/campaignGuides";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
 import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
@@ -207,12 +207,12 @@ export function getSitemapEntries() {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
-      url: absoluteUrl(dentalGuide.path),
-      lastModified: new Date(dentalGuide.publishedAt),
-      changeFrequency: "monthly",
+    ...[dentalGuide, mobilityGuide].map(guide => ({
+      url: absoluteUrl(guide.path),
+      lastModified: new Date(guide.publishedAt),
+      changeFrequency: "monthly" as const,
       priority: 0.8,
-    },
+    })),
   ];
 
   for (const locale of getSupportedLocales().filter((item) => item !== defaultLocale)) {

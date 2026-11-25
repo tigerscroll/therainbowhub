@@ -1,6 +1,6 @@
 import { SiteShell } from "@/components/SiteShell";
-import { DentalGuideEntry } from "@/components/article/DentalGuideEntry";
-import { dentalGuide } from "@/lib/dentalGuide";
+import { CampaignGuideEntry } from "@/components/article/CampaignGuideEntry";
+import { dentalGuide } from "@/lib/campaignGuides";
 import { getDefaultLocale, getTranslations } from "@/lib/i18n";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 
@@ -14,7 +14,7 @@ export default function DentalGuidePage() {
 
   return (
     <SiteShell availableLocales={[locale]} currentPath={dentalGuide.path} locale={locale} translations={getTranslations(locale)}>
-      <DentalGuideEntry urgentCare={
+      <CampaignGuideEntry guide={dentalGuide} publicNotice={
         <aside><strong>Need urgent care?</strong> Contact a local dental service for severe tooth pain. If you have swelling and trouble breathing, call your local emergency number. <a href="https://www.nhs.uk/nhs-services/dentists/how-to-find-an-nhs-dentist-in-an-emergency/">NHS urgent dental advice</a>.</aside>
       }>
         <section>
@@ -39,7 +39,7 @@ export default function DentalGuidePage() {
           </ul>
           <p>Elsewhere, start with your national health ministry or local public health office. This guide is information only, not an application or a decision about eligibility.</p>
         </section>
-      </DentalGuideEntry>
+      </CampaignGuideEntry>
     </SiteShell>
   );
 }
