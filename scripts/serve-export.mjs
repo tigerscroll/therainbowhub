@@ -4,6 +4,31 @@ import path from "node:path";
 
 const root = path.resolve(process.cwd(), "out");
 const port = Number.parseInt(process.argv[2] ?? "3010", 10);
+const photoDemo = process.argv.includes("--photo-demo");
+const demoScript = `<script>
+  (() => {
+    const listeners = new Map();
+    const service = { addEventListener: (name, callback) => listeners.set(name, callback) };
+    const emit = (name, slot, args) => listeners.get(name)?.({slot, ...args});
+    window.gtag = () => {};
+    window.fbq = () => {};
+    window.googletag = {
+      cmd: { push: callback => callback() },
+      pubads: () => service,
+      enums: { OutOfPageFormat: { REWARDED: "rewarded" } },
+      defineOutOfPageSlot: () => ({ addService() {} }),
+      display: slot => queueMicrotask(() => emit("rewardedSlotReady", slot, {
+        makeRewardedVisible() {
+          setTimeout(() => {
+            emit("rewardedSlotGranted", slot);
+            emit("rewardedSlotClosed", slot);
+          }, 400);
+          return true;
+        },
+      })),
+    };
+  })();
+</script>`;
 
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
@@ -54,11 +79,13 @@ const server = http.createServer((request, response) => {
 
   const status = resolveRequest(pathname) ? 200 : 404;
   const isQuizPayload = file.startsWith(path.join(root, "quiz-data") + path.sep);
+  const mockAds = photoDemo && /^\/perfectly-timed-photos\/?$/.test(pathname) && status === 200;
   response.writeHead(status, {
     "Cache-Control": "no-cache",
     "Content-Type": isQuizPayload
       ? "application/json; charset=utf-8"
       : contentTypes[path.extname(file).toLowerCase()] ?? "application/octet-stream",
+    ...(mockAds ? { "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src 'none'; connect-src 'self'" } : {}),
   });
 
   if (request.method === "HEAD") {
@@ -66,9 +93,10 @@ const server = http.createServer((request, response) => {
     return;
   }
 
-  fs.createReadStream(file).pipe(response);
+  if (mockAds) response.end(fs.readFileSync(file, "utf8").replace("<head>", `<head>${demoScript}`));
+  else fs.createReadStream(file).pipe(response);
 });
 
-server.listen(port, "0.0.0.0", () => {
+server.listen(port, photoDemo ? "127.0.0.1" : "0.0.0.0", () => {
   console.log(`Static export ready at http://localhost:${port}`);
 });

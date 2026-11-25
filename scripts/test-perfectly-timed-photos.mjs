@@ -10,8 +10,8 @@ const browser = await chromium.launch({
 });
 
 try {
-  for (const [width, campaign] of [[390, false], [320, true], [1240, true]]) {
-    const context = await browser.newContext({ viewport: { width, height: 840 } });
+  for (const [width, campaign] of [[390, ""], [320, "utm_source"], [390, "utm_campaign"], [1240, "utm_medium"]]) {
+    const context = await browser.newContext({ viewport: { width, height: 840 }, reducedMotion: "reduce" });
     await context.route("**/*", (route) => (
       new URL(route.request().url()).origin === base.origin ? route.continue() : route.abort()
     ));
@@ -44,13 +44,15 @@ try {
     });
 
     const page = await context.newPage();
+    page.setDefaultTimeout(8000);
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    await page.goto(campaign ? `${url}?utm_source=test` : url.href);
+    await page.goto(campaign ? `${url}?${campaign}=test` : url.href);
     assert.equal(await page.locator("h1").count(), 1);
     assert.equal(await page.locator("h1").innerText(), "The Timing Of This Was Just Perfect");
     const gallery = page.getByRole("region", { name: "Sports photo gallery" });
-    const entry = gallery.getByRole("button", { name: "Open Photo Gallery" });
+    const overlay = gallery.getByRole("dialog", { name: "See Content" });
+    const entry = overlay.getByRole("button", { name: "Continue", exact: true });
     const next = gallery.getByRole("button", { name: "Next photo" });
     const requests = () => page.evaluate(() => window.sportsTest.requests.length);
     const close = (granted) => page.evaluate(granted => window.sportsTest.close(granted), granted);
@@ -58,18 +60,32 @@ try {
 
     if (campaign) {
       await entry.waitFor();
+      assert.equal(await overlay.evaluate(node => getComputedStyle(node).position), "fixed");
+      assert.equal(await overlay.evaluate(node => getComputedStyle(node).backgroundColor), "rgb(0, 0, 0)");
+      assert.equal(await overlay.getByText("The Timing Of This Was Just Perfect", { exact: true }).count(), 0);
+      assert.equal(await overlay.getByText("Photo gallery", { exact: true }).count(), 0);
+      await overlay.getByText("Watch a short ad to continue.", { exact: true }).waitFor();
+      await entry.press("Escape");
+      await overlay.waitFor({ state: "hidden" });
+      await gallery.getByRole("button", { name: "Open player" }).click();
+      await overlay.click({ position: { x: 2, y: 2 } });
+      if (width === 390 && process.env.PHOTO_DEMO_SCREENSHOT) {
+        await page.screenshot({ path: process.env.PHOTO_DEMO_SCREENSHOT, animations: "disabled" });
+      }
       assert.equal(await requests(), 0);
       assert.equal(await gallery.getByRole("img").count(), 0);
-      await entry.click();
+      await overlay.getByText("See Content", { exact: true }).click();
       await waitForAd();
       await close(false);
-      await entry.click();
+      await entry.locator("svg").last().click();
       await waitForAd();
+      assert.equal(await requests(), 2, "each player tap requests one ad; tapping the backdrop requests none");
       assert.equal(await gallery.getByRole("img").count(), 0, "display alone must not open the gallery");
       await close(true);
     }
 
     await gallery.getByText("Photo 1 of 50").waitFor();
+    assert.equal(await overlay.count(), 0, "the player is closed after grant and never opens for direct traffic");
     if (!campaign) assert.equal(await requests(), 0, "direct traffic has no entry ad");
     const image = gallery.getByRole("img");
     await page.waitForFunction(() => document.querySelector("figure img")?.naturalWidth > 0);
