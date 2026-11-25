@@ -22,6 +22,13 @@ const guides = [
     source: "United States: Medicare wheelchair and scooter coverage",
     screenshot: process.env.MOBILITY_SCREENSHOT,
   },
+  {
+    path: "/retired",
+    popup: "Retired? Looking For A Job?",
+    section: "2. Look for real openings",
+    source: "United States: USAGov job search resources",
+    screenshot: process.env.RETIRED_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 

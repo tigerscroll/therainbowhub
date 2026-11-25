@@ -16,6 +16,16 @@ export const mobilityGuide = {
   publishedAt: "2026-11-25",
 } as const;
 
+export const retiredGuide = {
+  path: "/retired",
+  title: "Everything You Need To Know About Jobs For Retirees",
+  description: "Explore flexible work after retirement, where to find genuine openings and what to check before accepting an offer.",
+  intro: "Looking for extra income or a reason to get out of the house? Start with the hours and type of work you actually want, then look for roles that fit your life now.",
+  popupTitle: "Retired? Looking For A Job?",
+  publishedAt: "2026-11-25",
+} as const;
+
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 
@@ -23,7 +33,7 @@ export function hasGuideCampaign(search: string) {
   return [...new URLSearchParams(search).keys()].some(key => campaignParameter.test(key));
 }
 
-export const campaignGuideBootScript = `if (${JSON.stringify([dentalGuide.path, mobilityGuide.path])}.includes(location.pathname.replace(/\\/$/, "")) &&
+export const campaignGuideBootScript = `if (${JSON.stringify(campaignGuides.map(guide => guide.path))}.includes(location.pathname.replace(/\\/$/, "")) &&
   Array.from(new URLSearchParams(location.search).keys()).some(function(key) { return ${campaignParameter}.test(key); })) {
   document.documentElement.setAttribute("${campaignGuideBootAttribute}", "");
 }`;

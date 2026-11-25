@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { dentalGuide, mobilityGuide } from "@/lib/campaignGuides";
+import { campaignGuides } from "@/lib/campaignGuides";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
 import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
@@ -207,7 +207,7 @@ export function getSitemapEntries() {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    ...[dentalGuide, mobilityGuide].map(guide => ({
+    ...campaignGuides.map(guide => ({
       url: absoluteUrl(guide.path),
       lastModified: new Date(guide.publishedAt),
       changeFrequency: "monthly" as const,
