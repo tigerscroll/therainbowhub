@@ -82,8 +82,8 @@ export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode
         >
           <div className={styles.popup}>
             <h2 id="dental-entry-title">Need Dental Work?</h2>
-            <button className={styles.primary} type="button" disabled={busy} data-google-interstitial="false" aria-describedby="dental-ad-note" onClick={requestAd}>
-              {busy ? "Loading..." : <>See Options <span aria-hidden="true">→</span></>}
+            <button className={styles.popupAction} type="button" disabled={busy} data-google-interstitial="false" aria-describedby="dental-ad-note" onClick={requestAd}>
+              <span className={styles.actionFace}>{busy ? "LOADING..." : "CONTINUE"}</span>
             </button>
             {adUnavailable ? (
               <>

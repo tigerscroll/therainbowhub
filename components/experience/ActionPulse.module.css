@@ -1,0 +1,8 @@
+.pulse { animation: actionPulse 1s ease-in-out infinite; }
+
+@keyframes actionPulse {
+  0%, 100% { transform: scale(.96); }
+  50% { transform: scale(1); background: var(--action-pulse-peak); }
+}
+
+@media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }

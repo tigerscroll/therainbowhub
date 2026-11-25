@@ -49,7 +49,7 @@ try {
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
     const dialog = page.getByRole("dialog", { name: "Need Dental Work?" });
-    const cta = dialog.getByRole("button", { name: "See Options" });
+    const cta = dialog.getByRole("button", { name: "CONTINUE", exact: true });
     const section = page.getByRole("heading", { name: "2. Call a community clinic or dental school" });
     const prerendered = page.locator("[data-dental-entry-preview]");
     const requests = () => page.evaluate(() => window.dentalTest.requests);
@@ -79,11 +79,16 @@ try {
       assert.equal(await section.isVisible(), false);
       assert.equal(await requests(), 0, "no ad request until opt-in");
       assert.equal((await cta.boundingBox()).height, Math.min(112, Math.max(72, width * .25)));
+      const pulse = await cta.locator("span").evaluate(el => [getComputedStyle(el).animationDuration, getComputedStyle(el).animationIterationCount]);
+      assert.deepEqual(pulse, ["1s", "infinite"]);
       const note = dialog.getByText("Watch one short ad to open the guide.", { exact: true });
       assert(await note.evaluate(el => window.innerHeight - el.getBoundingClientRect().bottom < 80), "disclosure sits at the bottom");
       assert.equal(await dialog.getByRole("button").count(), 1, "the default popup has no close button or secondary CTA");
       if (width === 390) {
+        await page.emulateMedia({ reducedMotion: "reduce" });
+        assert.equal(await cta.locator("span").evaluate(el => getComputedStyle(el).animationName), "none");
         if (process.env.DENTAL_SCREENSHOT) await page.screenshot({ path: process.env.DENTAL_SCREENSHOT });
+        await page.emulateMedia({ reducedMotion: "no-preference" });
         await dialog.press("Escape");
         await page.getByText("Need urgent care?", { exact: true }).waitFor();
         assert.equal(await section.isVisible(), false);
@@ -101,6 +106,8 @@ try {
       } else {
         await cta.click();
         await waitAd();
+        const loading = dialog.getByRole("button", { name: "LOADING...", exact: true });
+        assert.equal(await loading.locator("span").evaluate(el => getComputedStyle(el).animationName), "none");
         await page.evaluate(() => window.dentalTest.close(false));
         await cta.waitFor();
         assert.equal(await section.isVisible(), false, "closing without a reward must not unlock the guide");
