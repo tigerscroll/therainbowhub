@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { FbclidHeaderVisibility } from "@/components/FbclidHeaderVisibility";
 import type { SupportedLocale } from "@/lib/i18n";
 import { localeLanguageTag } from "@/lib/localeConfig";
+import { getSportsEntryBootstrapScript, sportsEntryBootStyle } from "@/lib/perfectlyTimedPhotos";
 import { siteConfig } from "@/lib/siteConfig";
 import { getTrafficHeaderBootstrapScript } from "@/lib/trafficHeader";
 
@@ -18,6 +19,8 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
   return (
     <html dir={direction} lang={localeLanguageTag(locale)} suppressHydrationWarning>
       <head>
+        <style dangerouslySetInnerHTML={{ __html: sportsEntryBootStyle }} />
+        <script dangerouslySetInnerHTML={{ __html: getSportsEntryBootstrapScript() }} />
         <script
           id="google-analytics"
           dangerouslySetInnerHTML={{

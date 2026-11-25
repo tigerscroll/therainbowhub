@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
+import { hasSportsCampaign, sportsEntryBootAttribute } from "@/lib/perfectlyTimedPhotos";
 import styles from "./SportsPhotoGallery.module.css";
 
 type Photo = {
@@ -38,22 +39,25 @@ export function SportsPhotoGallery({
   const { busy, runGate } = useRewardedGate({ attempts: 1 });
   const photo = progress ? photos[progress.index] : null;
   const nextNeedsAd = Boolean(progress && progress.views >= adInterval);
-  const showPlayer = ready && !progress && !dismissed;
+  const showPlayer = !progress && !dismissed;
 
-  useEffect(() => {
-    // Keep the first server and client renders identical. Campaign visits
-    // must never briefly display the first photo before the gate is known.
-    const params = new URLSearchParams(window.location.search);
-    if (![...params.keys()].some(key => /^utm_.+/i.test(key))) {
+  useLayoutEffect(() => {
+    // The server and initial client render include the same popup markup.
+    // The document head selects its visibility before the first paint.
+    if (!hasSportsCampaign(window.location.search)) {
       setProgress({ index: 0, views: 1 });
     }
     setReady(true);
   }, []);
 
+  useLayoutEffect(() => {
+    if (ready) document.documentElement.removeAttribute(sportsEntryBootAttribute);
+  }, [ready]);
+
   useEffect(() => {
-    if (showPlayer) continueButton.current?.focus({ preventScroll: true });
+    if (ready && showPlayer) continueButton.current?.focus({ preventScroll: true });
     else if (dismissed) reopenButton.current?.focus({ preventScroll: true });
-  }, [showPlayer, dismissed]);
+  }, [ready, showPlayer, dismissed]);
 
   useEffect(() => {
     if (!photo || !focusAfterUnlock.current) return;
@@ -99,9 +103,7 @@ export function SportsPhotoGallery({
           navigate(event.key === "ArrowRight" ? 1 : -1);
         }}
       >
-        {!ready ? (
-          <p className={styles.entry} role="status">Loading photos…</p>
-        ) : photo && progress ? (
+        {photo && progress ? (
           <>
             <figure className={styles.figure}>
               <div
@@ -158,11 +160,12 @@ export function SportsPhotoGallery({
         ) : (
           <>
             <div className={styles.entry} inert={showPlayer}>
-              <p>{photos.length} perfectly timed sports photos</p>
+              <p>{ready ? `${photos.length} perfectly timed sports photos` : "Loading photos…"}</p>
               {dismissed && <button ref={reopenButton} className={styles.primary} type="button" onClick={() => setDismissed(false)}>Open player</button>}
             </div>
             {showPlayer && <div
               className={styles.overlay}
+              data-sports-entry-preview={ready ? undefined : ""}
               role="dialog"
               aria-modal="true"
               aria-label="See Content"

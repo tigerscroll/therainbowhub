@@ -77,7 +77,7 @@
 
 .entry p { margin-block: 0 12px; }
 .entry button { width: min(100%, 300px); }
-:global(body):has(.overlay) { overflow: hidden; }
+:global(body):has(.overlay:not([data-sports-entry-preview])) { overflow: hidden; }
 .overlay {
   position: fixed;
   z-index: 900;

@@ -12,9 +12,15 @@ const browser = await chromium.launch({
 try {
   for (const [width, campaign] of [[390, ""], [320, "utm_source"], [390, "utm_campaign"], [1240, "utm_medium"]]) {
     const context = await browser.newContext({ viewport: { width, height: 840 }, reducedMotion: "reduce" });
-    await context.route("**/*", (route) => (
-      new URL(route.request().url()).origin === base.origin ? route.continue() : route.abort()
-    ));
+    let releaseHydration;
+    const hydration = new Promise(resolve => { releaseHydration = resolve; });
+    await context.route("**/*", async (route) => {
+      const request = route.request();
+      const target = new URL(request.url());
+      if (target.origin !== base.origin) return route.abort();
+      if (request.resourceType() === "script" && target.pathname.startsWith("/_next/static/")) await hydration;
+      await route.continue();
+    });
     await context.addInitScript(() => {
       const listeners = new Map();
       const emit = (name, slot, extra = {}) => listeners.get(name)?.({ slot, ...extra });
@@ -47,16 +53,40 @@ try {
     page.setDefaultTimeout(8000);
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    await page.goto(campaign ? `${url}?${campaign}=test` : url.href);
+    await page.goto(campaign ? `${url}?${campaign}=test` : url.href, { waitUntil: "commit" });
+    await page.locator("h1").waitFor({ state: "attached" });
     assert.equal(await page.locator("h1").count(), 1);
-    assert.equal(await page.locator("h1").innerText(), "The Timing Of This Was Just Perfect");
+    assert.equal(await page.locator("h1").textContent(), "The Timing Of This Was Just Perfect");
     const gallery = page.getByRole("region", { name: "Sports photo gallery" });
-    const overlay = gallery.getByRole("dialog", { name: "See Content" });
+    const overlay = page.getByRole("dialog", { name: "See Content" });
     const entry = overlay.getByRole("button", { name: "Continue", exact: true });
     const next = gallery.getByRole("button", { name: "Next photo" });
     const requests = () => page.evaluate(() => window.sportsTest.requests.length);
     const close = (granted) => page.evaluate(granted => window.sportsTest.close(granted), granted);
     const waitForAd = () => page.waitForFunction(() => Boolean(window.sportsTest.displayed));
+
+    // Inspect the actual first paint while every Next client script is held.
+    const prerendered = page.locator("[data-sports-entry-preview]");
+    try {
+      await prerendered.waitFor({ state: "attached" });
+      if (campaign) {
+        await entry.waitFor();
+        await page.waitForFunction(() => performance.getEntriesByName("first-contentful-paint").length > 0);
+        assert.equal(await page.locator("html").getAttribute("data-sports-entry-boot"), "");
+        assert.equal(await page.locator(".site-shell").evaluate(node => getComputedStyle(node).visibility), "hidden");
+        assert.equal(await prerendered.evaluate(node => getComputedStyle(node).position), "fixed");
+        assert.equal(await prerendered.evaluate(node => getComputedStyle(node).backgroundColor), "rgb(0, 0, 0)");
+        assert.equal(await gallery.getByRole("img").count(), 0);
+        assert.equal(await requests(), 0, "first paint does not preload or request a rewarded ad");
+      } else {
+        assert.equal(await page.locator("html").getAttribute("data-sports-entry-boot"), null);
+        assert.equal(await prerendered.isVisible(), false, "direct traffic must not flash the server-rendered popup");
+      }
+    } finally {
+      releaseHydration();
+    }
+    await prerendered.waitFor({ state: "detached" });
+    assert.equal(await page.locator("html").getAttribute("data-sports-entry-boot"), null);
 
     if (campaign) {
       await entry.waitFor();
