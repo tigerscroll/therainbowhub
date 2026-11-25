@@ -21,17 +21,17 @@ let listenersInstalled = false;
 let requestId = 0;
 let servicesEnabled = false;
 
-function trackRewardGranted() {
+function trackRewardedAdStarted() {
   const sendTo = "AW-18146485081/0p8ACLL9tv4cENnG9cxD";
   try {
     if (!window.gtag) {
-      console.warn("[RewardedAd] Reward granted; Google tag unavailable, conversion not queued.");
+      console.warn("[RewardedAd] Ad started; Google tag unavailable, conversion not queued.");
       return;
     }
     window.gtag("event", "conversion", { send_to: sendTo });
-    console.log("[RewardedAd] Reward granted; Google Ads conversion queued.", { send_to: sendTo });
+    console.log("[RewardedAd] Ad started; Google Ads conversion queued.", { send_to: sendTo });
   } catch (error) {
-    console.warn("[RewardedAd] Reward granted; Google Ads conversion tracking failed.", error);
+    console.warn("[RewardedAd] Ad started; Google Ads conversion tracking failed.", error);
   }
 }
 
@@ -71,6 +71,7 @@ function installListeners() {
         }
       } catch { finish("unavailable"); return; }
       request.displayed = true;
+      trackRewardedAdStarted();
       if (activeRequest?.id !== request.id) return;
       request.timer = window.setTimeout(() => {
         if (activeRequest?.id === request.id) finish(activeRequest.granted ? "granted" : "unavailable");
@@ -89,7 +90,6 @@ function installListeners() {
   pubads.addEventListener("rewardedSlotGranted", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot || activeRequest.granted) return;
     activeRequest.granted = true;
-    trackRewardGranted();
   });
   pubads.addEventListener("rewardedSlotClosed", (event) => {
     if (!activeRequest || event.slot !== activeRequest.slot) return;
