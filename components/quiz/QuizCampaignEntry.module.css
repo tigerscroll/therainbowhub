@@ -1,0 +1,68 @@
+:global(body):has(.overlay:not([data-quiz-campaign-preview])) { overflow: hidden; }
+:global(.site-shell):has(.overlay:not([data-quiz-campaign-preview])) :global(:is(.hub-header, .site-footer)) { visibility: hidden; }
+
+.overlay {
+  position: fixed;
+  z-index: 900;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  align-items: safe center;
+  justify-items: center;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.overlay:focus { outline: none; }
+
+.panel {
+  display: grid;
+  grid-row: 2;
+  width: min(100%, 520px);
+  gap: clamp(16px, 4vw, 24px);
+  padding: clamp(30px, 7vw, 56px) clamp(18px, 5vw, 36px);
+  border-radius: 14px;
+  background: #151515;
+}
+
+.overlay .panel .title {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(30px, 6.5vw, 44px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -.05em;
+}
+
+.panel .start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(72px, 25vw, 112px);
+  border-radius: var(--quiz-shell-action-radius);
+  padding: 10px 12px;
+  font-size: clamp(21px, 2.5vw, 24px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.panel .start:focus-visible { outline: 2px solid #fff1d5; outline-offset: 4px; }
+.panel .start:active:not(:disabled) { transform: translateY(3px); filter: brightness(.96); }
+.startIcon { font-size: 1.15em; }
+.disclosure, .status { margin: 0; font-size: .8125rem; line-height: 1.5; }
+.disclosure { grid-row: 3; align-self: end; padding-top: 16px; color: #aaa; }
+.status { color: #ddd; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .panel .start:not(:hover, :active, :disabled) { animation: startPulse 1s ease-in-out infinite; }
+}
+
+@keyframes startPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.1); }
+}
