@@ -92,10 +92,7 @@ export function DentalGuideEntry({ children, urgentCare }: { children: ReactNode
               </>
             ) : null}
           </div>
-          <div className={styles.adFooter}>
-            <p className={styles.adNote} id="dental-ad-note">Watch one short ad to open the guide.</p>
-            <button className={styles.secondary} type="button" disabled={busy} data-google-interstitial="false" onClick={dismiss}>Not now</button>
-          </div>
+          <p className={`${styles.adNote} ${styles.adFooter}`} id="dental-ad-note">Watch one short ad to open the guide.</p>
         </div>
       )}
     </>

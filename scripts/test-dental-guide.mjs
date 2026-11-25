@@ -81,9 +81,10 @@ try {
       assert.equal((await cta.boundingBox()).height, Math.min(112, Math.max(72, width * .25)));
       const note = dialog.getByText("Watch one short ad to open the guide.", { exact: true });
       assert(await note.evaluate(el => window.innerHeight - el.getBoundingClientRect().bottom < 80), "disclosure sits at the bottom");
+      assert.equal(await dialog.getByRole("button").count(), 1, "the default popup has no close button or secondary CTA");
       if (width === 390) {
         if (process.env.DENTAL_SCREENSHOT) await page.screenshot({ path: process.env.DENTAL_SCREENSHOT });
-        await dialog.getByRole("button", { name: "Not now" }).click();
+        await dialog.press("Escape");
         await page.getByText("Need urgent care?", { exact: true }).waitFor();
         assert.equal(await section.isVisible(), false);
         assert.equal(await requests(), 0);
