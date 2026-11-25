@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { dentalGuide } from "@/lib/dentalGuide";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
 import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
 import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
@@ -203,6 +204,12 @@ export function getSitemapEntries() {
     {
       url: absoluteUrl(perfectlyTimedPhotos.path),
       lastModified: new Date(perfectlyTimedPhotos.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: absoluteUrl(dentalGuide.path),
+      lastModified: new Date(dentalGuide.publishedAt),
       changeFrequency: "monthly",
       priority: 0.8,
     },

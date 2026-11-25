@@ -2,6 +2,7 @@ import Script from "next/script";
 import { Suspense } from "react";
 
 import { FbclidHeaderVisibility } from "@/components/FbclidHeaderVisibility";
+import { dentalEntryBootScript, dentalEntryBootStyle } from "@/lib/dentalGuide";
 import type { SupportedLocale } from "@/lib/i18n";
 import { localeLanguageTag } from "@/lib/localeConfig";
 import { getSportsEntryBootstrapScript, sportsEntryBootStyle } from "@/lib/perfectlyTimedPhotos";
@@ -20,6 +21,8 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
   return (
     <html dir={direction} lang={localeLanguageTag(locale)} suppressHydrationWarning>
       <head>
+        <style dangerouslySetInnerHTML={{ __html: dentalEntryBootStyle }} />
+        <script dangerouslySetInnerHTML={{ __html: dentalEntryBootScript }} />
         <style dangerouslySetInnerHTML={{ __html: quizCampaignBootStyle }} />
         <script dangerouslySetInnerHTML={{ __html: getQuizCampaignBootstrapScript() }} />
         <style dangerouslySetInnerHTML={{ __html: sportsEntryBootStyle }} />
