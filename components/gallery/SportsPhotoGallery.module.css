@@ -1,0 +1,79 @@
+.page {
+  width: min(100% - 32px, 672px);
+  margin-inline: auto;
+  padding-block: clamp(26px, 6vw, 56px);
+}
+
+.heading { margin: 0 auto 24px; text-align: center; }
+.heading h1 {
+  margin: 0;
+  font-size: clamp(34px, 7vw, 56px);
+  font-weight: 850;
+  letter-spacing: -.045em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.heading p { margin: 14px auto 0; color: #4b5563; line-height: 1.5; text-wrap: pretty; }
+
+.card {
+  overflow: hidden;
+  border: 1px solid var(--brand-teal-line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(23, 32, 51, .09);
+}
+
+.figure { margin: 0; }
+.frame {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  background: #111827;
+  color: #fff;
+  text-align: center;
+  touch-action: pan-y pinch-zoom;
+}
+.frame img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.frame p { padding-inline: 18px; }
+
+.caption { padding: 18px clamp(14px, 4vw, 24px) 12px; }
+.caption p { margin: 0 0 6px; color: #4b5563; font-size: .875rem; }
+.caption .position { color: var(--brand-teal-deep); font-weight: 750; }
+.caption h2 { margin: 0 0 8px; font-size: clamp(20px, 4vw, 26px); line-height: 1.2; }
+.credits { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.credits a, .page noscript a {
+  color: var(--brand-teal-deep);
+  font-size: .875rem;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 4px clamp(14px, 4vw, 24px) 18px;
+}
+.card button {
+  min-height: 48px;
+  border: 1px solid var(--brand-teal-line);
+  border-radius: 10px;
+  padding: 8px;
+  background: var(--brand-teal-soft);
+  color: #152f30;
+  font-weight: 750;
+}
+.card button.primary { border-color: transparent; background: var(--brand-teal-deep); color: #fff; }
+.card button.primary:not(:disabled):hover { background: #105b5c; }
+.card button:not(.primary):not(:disabled):hover { background: #d7ebe9; }
+.card button:focus-visible, .credits a:focus-visible {
+  outline: 2px solid var(--brand-teal-deep);
+  outline-offset: 3px;
+}
+.card button:disabled { cursor: wait; opacity: .72; }
+.entry { margin: 0; padding: 28px clamp(16px, 5vw, 32px); text-align: center; }
+.entry p, .note { color: #4b5563; font-size: .875rem; line-height: 1.5; }
+.entry p { margin: 0; }
+.entry button { width: min(100%, 360px); margin-block: 14px; }
+.note { margin: 0; padding: 0 16px 16px; text-align: center; }

@@ -5,6 +5,7 @@ import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { localeLanguageTag } from "@/lib/localeConfig";
+import { perfectlyTimedPhotos } from "@/lib/perfectlyTimedPhotos";
 
 const defaultLocale = getDefaultLocale();
 
@@ -198,6 +199,12 @@ export function getSitemapEntries() {
       lastModified: localeContentDate(defaultLocale),
       changeFrequency: "daily" as const,
       priority: 1,
+    },
+    {
+      url: absoluteUrl(perfectlyTimedPhotos.path),
+      lastModified: new Date(perfectlyTimedPhotos.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 
