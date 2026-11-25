@@ -84,6 +84,11 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
           />
         </noscript>
         {children}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{ __html: "ggv2id='r17tdxya';" }}
+        />
+        <script type="text/javascript" src="https://js.gumgum.com/services.js" />
       </body>
     </html>
   );
