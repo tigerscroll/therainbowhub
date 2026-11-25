@@ -104,9 +104,12 @@ try {
       }
       assert.equal(await requests(), 0);
       assert.equal(await gallery.getByRole("img").count(), 0);
+      const action = overlay.locator("#sports-player-action");
+      const continueFontSize = await action.evaluate(el => getComputedStyle(el).fontSize);
       await overlay.getByText("See Content", { exact: true }).click();
       await waitForAd();
       await overlay.getByRole("button", { name: "LOADING...", exact: true }).waitFor();
+      assert.equal(await action.evaluate(el => getComputedStyle(el).fontSize), continueFontSize);
       await close(false);
       await entry.locator("svg").last().click();
       await waitForAd();
