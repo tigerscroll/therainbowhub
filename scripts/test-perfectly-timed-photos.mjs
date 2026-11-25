@@ -106,6 +106,7 @@ try {
       assert.equal(await gallery.getByRole("img").count(), 0);
       await overlay.getByText("See Content", { exact: true }).click();
       await waitForAd();
+      await overlay.getByRole("button", { name: "LOADING...", exact: true }).waitFor();
       await close(false);
       await entry.locator("svg").last().click();
       await waitForAd();

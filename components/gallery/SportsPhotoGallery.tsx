@@ -202,7 +202,7 @@ export function SportsPhotoGallery({
                 >
                   <span className={styles.stage}>
                     <span className={styles.playerHeading}>See Content</span>
-                    <span id="sports-player-action" className={styles.continue}>{busy ? "Loading ad…" : "Continue"}</span>
+                    <span id="sports-player-action" className={styles.continue}>{busy ? "LOADING..." : "Continue"}</span>
                   </span>
                   <span className={styles.playerControls} aria-hidden="true">
                     <span className={styles.track} />
