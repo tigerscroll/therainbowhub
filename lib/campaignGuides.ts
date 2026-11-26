@@ -82,6 +82,17 @@ export const governmentHelpGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
+export const fullyFundedGuide = {
+  path: "/fullyfunded",
+  title: "Fully Funded Options: What Can Be Covered at No Cost?",
+  description: "Explore real funding examples for mobility scooters, hearing aids, home adaptations, energy upgrades, training and more. See who to ask before buying.",
+  intro: "Some programmes pay the full approved cost of an item or service. Others offer a loan, a contribution or a rebate. These examples show what to look for and where to check the rules in your area.",
+  campaignIntro: "A mobility scooter is only one thing worth checking. Hearing aids, stairlifts, home insulation and even job training can be covered by some programmes. The catch is knowing which costs are included, what you get to keep, and when to get approval before you spend anything.",
+  popupTitle: "Fully Funded Opportunities",
+  continueLabel: "See What Can Be Fully Funded",
+  publishedAt: "2026-11-26",
+} as const;
+
 // These galleries retain their original titles, article text and sitemap entries.
 export const campaignGalleryEntries = [
   {
@@ -97,7 +108,7 @@ export const campaignGalleryEntries = [
   },
 ] as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 

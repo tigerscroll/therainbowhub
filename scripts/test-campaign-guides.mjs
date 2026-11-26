@@ -100,6 +100,17 @@ const guides = [
     source: "United States: USAGov Benefit Finder",
     screenshot: process.env.GOVERNMENT_HELP_SCREENSHOT,
   },
+  {
+    path: "/fullyfunded",
+    popup: "Fully Funded Opportunities",
+    continueLabel: "See What Can Be Fully Funded",
+    teaser: "A mobility scooter is only one thing worth checking.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. Mobility scooters, wheelchairs and walking aids",
+    sectionCount: 8,
+    source: "DVA electric mobility aid rules",
+    screenshot: process.env.FULLY_FUNDED_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
