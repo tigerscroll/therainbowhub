@@ -10,6 +10,7 @@ const guides = [
   {
     path: "/dental",
     popup: "Need Dental Work?",
+    teaser: "That dental quote might not be your only option.",
     section: "2. Call a community clinic or dental school",
     source: "Canada: Canadian Dental Care Plan",
     notice: "Need urgent care?",
@@ -18,6 +19,7 @@ const guides = [
   {
     path: "/mobility",
     popup: "Want A Mobility Scooter?",
+    teaser: "Before you pay for a mobility scooter, check who might cover it.",
     section: "2. Ask about an assessment before buying",
     source: "United States: Medicare wheelchair and scooter coverage",
     screenshot: process.env.MOBILITY_SCREENSHOT,
@@ -25,6 +27,7 @@ const guides = [
   {
     path: "/retired",
     popup: "Retired? Looking For A Job?",
+    teaser: "You don’t have to go back to full-time work to earn again.",
     section: "2. Look for real openings",
     source: "United States: USAGov job search resources",
     screenshot: process.env.RETIRED_SCREENSHOT,
@@ -32,6 +35,7 @@ const guides = [
   {
     path: "/retreats",
     popup: "Business Retreats Adults Only",
+    teaser: "An adults-only venue can look perfect online and still be wrong for your team.",
     actionColor: "rgb(162, 29, 44)",
     section: "2. Make sure the venue fits the group",
     screenshot: process.env.RETREATS_SCREENSHOT,
@@ -82,6 +86,8 @@ try {
     page.on("pageerror", error => errors.push(error.message));
     const dialog = page.getByRole("dialog", { name: guide.popup });
     const cta = dialog.getByRole("button", { name: "CONTINUE", exact: true });
+    const seeMore = page.getByRole("button", { name: "See more", exact: true });
+    const teaser = page.getByText(guide.teaser);
     const section = page.getByRole("heading", { name: guide.section });
     const prerendered = page.locator("[data-campaign-guide-preview]");
     const requests = () => page.evaluate(() => window.guideTest.requests);
@@ -115,7 +121,7 @@ try {
       assert.equal((await cta.boundingBox()).height, Math.min(112, Math.max(72, width * .25)));
       const pulse = await cta.locator("span").evaluate(el => [getComputedStyle(el).animationDuration, getComputedStyle(el).animationIterationCount]);
       assert.deepEqual(pulse, ["1s", "infinite"]);
-      const note = dialog.getByText("Watch one short ad to open the guide.", { exact: true });
+      const note = dialog.getByText("Watch a short ad to start. A second ad unlocks the full guide.", { exact: true });
       assert(await note.evaluate(el => window.innerHeight - el.getBoundingClientRect().bottom < 80), "disclosure sits at the bottom");
       assert.equal(await dialog.getByRole("button").count(), 1, "the default popup has no close button or secondary CTA");
       if (width === 390) {
@@ -127,6 +133,7 @@ try {
         await dialog.press("Escape");
         if (guide.notice) await page.getByText(guide.notice, { exact: true }).waitFor();
         assert.equal(await section.isVisible(), false);
+        assert.equal(await seeMore.count(), 0, "the second gate isn't offered before the intro is unlocked");
         assert.equal(await requests(), 0);
         await page.getByRole("button", { name: "Open Guide Popup" }).click();
       }
@@ -146,14 +153,46 @@ try {
         await page.evaluate(() => window.guideTest.close(false));
         await cta.waitFor();
         assert.equal(await section.isVisible(), false, "closing without a reward must not unlock the guide");
+        assert.equal(await seeMore.count(), 0);
         await cta.click();
         await waitAd();
         await page.evaluate(() => window.guideTest.close(true));
         assert.equal(await requests(), 2);
       }
+
+      await teaser.waitFor();
+      await seeMore.waitFor();
+      await page.getByText("Watch one short ad to read the rest.", { exact: true }).waitFor();
+      assert.equal(await dialog.count(), 0);
+      assert.equal(await section.isVisible(), false, "the first gate only opens the intro");
+      const firstStageRequests = await requests();
+      assert.equal(firstStageRequests, width === 1200 ? 1 : 2, "no second ad is requested until See more is clicked");
+      await seeMore.click();
+
+      if (width === 1200) {
+        await page.getByRole("status").getByText("No ad is available right now.").waitFor();
+        assert.equal(await section.isVisible(), false);
+        await page.getByRole("button", { name: "Read without an ad" }).click();
+        assert.equal(await requests(), firstStageRequests + 1);
+      } else {
+        await waitAd();
+        await page.getByRole("button", { name: "Loading...", exact: true }).waitFor();
+        assert.equal(await section.isVisible(), false);
+        await page.evaluate(() => window.guideTest.close(false));
+        await seeMore.waitFor();
+        assert.equal(await section.isVisible(), false, "closing the second ad early must not open the full article");
+        await seeMore.click();
+        await waitAd();
+        await page.evaluate(() => window.guideTest.close(true));
+        assert.equal(await requests(), firstStageRequests + 2);
+      }
+    } else {
+      assert.equal(await teaser.count(), 0);
+      assert.equal(await requests(), 0);
     }
     await section.waitFor();
     assert.equal(await dialog.count(), 0);
+    assert.equal(await seeMore.count(), 0);
     assert.equal(await page.locator("h1").count(), 1);
     if (guide.source) await page.getByRole("link", { name: guide.source }).waitFor();
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));

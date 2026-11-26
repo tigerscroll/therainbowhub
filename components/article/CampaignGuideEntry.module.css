@@ -18,7 +18,14 @@
 .primary:hover:not(:disabled) { background: linear-gradient(#2a8554, #186b40); }
 .primary:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 2px 0 #0d4f2c; }
 .primary:disabled { opacity: .72; cursor: wait; }
-.primary:focus-visible, .guide a:focus-visible { outline: 2px solid #16432d; outline-offset: 4px; }
+.primary:focus-visible, .guide a:focus-visible, .readWithoutAd:focus-visible { outline: 2px solid #16432d; outline-offset: 4px; }
+.teaserActions { width: min(100%, 400px); margin: 24px auto 0; text-align: center; }
+.seeMore { width: 100%; margin: 0; }
+.red { border-color: #a21d2c; background: #a21d2c; box-shadow: 0 4px 0 #751522; }
+.red:hover:not(:disabled) { background: #b52536; }
+.red:active:not(:disabled) { box-shadow: 0 2px 0 #751522; }
+.moreNote { margin: 10px 0 0; color: #42584d; font-size: .875rem; line-height: 1.4; }
+.readWithoutAd { min-height: 44px; border: 0; padding: 4px 12px; background: transparent; color: #245841; text-decoration: underline; text-underline-offset: 3px; }
 
 .guide {
   max-width: 740px;
@@ -37,7 +44,7 @@
   letter-spacing: -.035em;
   text-wrap: balance;
 }
-.guide h1:focus { outline: none; }
+.guide h1:focus, .fullGuide:focus { outline: none; }
 .eyebrow { margin: 0 0 8px; color: #276846; font-size: .825rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .intro { color: #354e41; font-size: 1.125rem; }
 .guide h2 { margin: 30px 0 6px; font-size: clamp(21px, 3.6vw, 25px); line-height: 1.25; }
