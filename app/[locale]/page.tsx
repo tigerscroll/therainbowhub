@@ -6,7 +6,7 @@ import { CampaignGuideEntry } from "@/components/article/CampaignGuideEntry";
 import { GalleryTemplate } from "@/components/GalleryTemplate";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
-import { beachesCampaign } from "@/lib/campaignGuides";
+import { campaignGalleryEntries } from "@/lib/campaignGuides";
 import { getTopLevelContentRoutes } from "@/lib/contentCatalogue";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
 import { galleryArticleTheme, getGalleryBySlug, getGalleryLocales } from "@/lib/galleries";
@@ -92,7 +92,7 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
 
   if (gallery) {
     const galleryPath = getGalleryPath(gallery.slug, locale);
-    const usesBeachesCampaign = galleryPath === beachesCampaign.path;
+    const campaign = campaignGalleryEntries.find(entry => entry.path === galleryPath);
     const localePaths = Object.fromEntries(
       getGalleryLocales(gallery.slug).map(item => [item, getGalleryPath(gallery.slug, item)]),
     );
@@ -102,12 +102,12 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
         currentPath={galleryPath}
         locale={locale}
         localePaths={localePaths}
-        quizTheme={usesBeachesCampaign ? undefined : galleryArticleTheme}
+        quizTheme={campaign ? undefined : galleryArticleTheme}
         translations={translations}
       >
-        {usesBeachesCampaign ? (
+        {campaign ? (
           <CampaignGuideEntry
-            guide={{ ...beachesCampaign, title: gallery.landing.title, intro: gallery.gallery.introduction.join(" ") }}
+            guide={{ ...campaign, title: gallery.landing.title, intro: gallery.gallery.introduction.join(" ") }}
             actionTone="red"
           >
             {gallery.items.map(item => (

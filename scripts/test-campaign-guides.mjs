@@ -68,6 +68,15 @@ const guides = [
     source: "United States: USAGov job search resources",
     screenshot: process.env.JOBS_SCREENSHOT,
   },
+  {
+    path: "/paradise",
+    popup: "Adults Only Paradise",
+    teaser: "The pool may look peaceful by day, but some adults-only escapes change completely after sunset.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "What Makes Adults-Only Resorts So Different?",
+    sectionCount: 34,
+    screenshot: process.env.PARADISE_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 

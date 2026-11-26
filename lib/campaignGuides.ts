@@ -60,12 +60,19 @@ export const jobsGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
-// The existing beaches gallery owns its title, article text and sitemap entry.
-export const beachesCampaign = {
-  path: "/beaches",
-  popupTitle: "Adults Only Beaches",
-  campaignIntro: "An adults-only resort doesn’t always mean the beach is adults-only. Before you book, see what’s actually private, what a day pass might not include, and how to tell a quiet escape from a beach party.",
-} as const;
+// These galleries retain their original titles, article text and sitemap entries.
+export const campaignGalleryEntries = [
+  {
+    path: "/beaches",
+    popupTitle: "Adults Only Beaches",
+    campaignIntro: "An adults-only resort doesn’t always mean the beach is adults-only. Before you book, see what’s actually private, what a day pass might not include, and how to tell a quiet escape from a beach party.",
+  },
+  {
+    path: "/paradise",
+    popupTitle: "Adults Only Paradise",
+    campaignIntro: "The pool may look peaceful by day, but some adults-only escapes change completely after sunset. See which swim-up suites are actually private, what ‘all-inclusive’ might leave out, and how to tell a quiet hideaway from a resort that parties late.",
+  },
+] as const;
 
 export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
@@ -75,7 +82,7 @@ export function hasGuideCampaign(search: string) {
   return [...new URLSearchParams(search).keys()].some(key => campaignParameter.test(key));
 }
 
-const campaignEntryPaths = [...campaignGuides.map(guide => guide.path), beachesCampaign.path, perfectlyTimedPhotos.path];
+const campaignEntryPaths = [...campaignGuides, ...campaignGalleryEntries, perfectlyTimedPhotos].map(entry => entry.path);
 
 export const campaignGuideBootScript = `if (${JSON.stringify(campaignEntryPaths)}.includes(location.pathname.replace(/\\/$/, "")) &&
   Array.from(new URLSearchParams(location.search).keys()).some(function(key) { return ${campaignParameter}.test(key); })) {
