@@ -78,6 +78,17 @@ const guides = [
     sectionCount: 34,
     screenshot: process.env.PARADISE_SCREENSHOT,
   },
+  {
+    path: "/makemoney",
+    popup: "Ready To Make Money?",
+    continueLabel: "See Which Options Are Worth It",
+    teaser: "Two online gigs can pay the same on paper.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. Compare take-home pay, not the headline number",
+    sectionCount: 8,
+    source: "FTC guide to spotting task scams",
+    screenshot: process.env.MAKE_MONEY_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 

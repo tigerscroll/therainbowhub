@@ -169,17 +169,23 @@ if (!fs.existsSync(outputRoot)) {
   }
   const sitemap = fs.readFileSync(path.join(outputRoot, "sitemap.xml"), "utf8");
   const sitemapPaths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
+  // A standalone campaign guide may reuse a retired slug, never its old chapter or embed routes.
+  const restoredCampaignRoutes = new Set(["/makemoney"]);
+  for (const route of restoredCampaignRoutes) {
+    if (!routeFile(route)) addError(`Missing restored campaign guide: ${route}`);
+    if (sitemapPaths.filter(entry => entry === route).length !== 1) addError(`Restored campaign guide must appear once in the sitemap: ${route}`);
+  }
   for (const slug of removedArticles) {
     for (const prefix of ["", ...locales.map((locale) => `/${locale}`)]) {
       const articleRoute = `${prefix}/${slug}`;
-      const restoredAsGallery = activeGalleryRoutes.has(articleRoute);
-      if (!restoredAsGallery && routeFile(articleRoute)) addError(`Removed article page is still exported: ${articleRoute}`);
+      const restored = activeGalleryRoutes.has(articleRoute) || restoredCampaignRoutes.has(articleRoute);
+      if (!restored && routeFile(articleRoute)) addError(`Removed article page is still exported: ${articleRoute}`);
       const artifactRoot = path.join(outputRoot, articleRoute.replace(/^\//, ""));
-      if (fs.existsSync(artifactRoot) && (!restoredAsGallery || fs.readdirSync(artifactRoot)
+      if (fs.existsSync(artifactRoot) && (!restored || fs.readdirSync(artifactRoot)
         .some((file) => !/^__next\..+\.txt$/.test(file)))) {
         addError(`Removed article chapter or embed assets remain: ${articleRoute}`);
       }
-      if (sitemapPaths.some((route) => (!restoredAsGallery && route === articleRoute) || route.startsWith(`${articleRoute}/`))) {
+      if (sitemapPaths.some((route) => (!restored && route === articleRoute) || route.startsWith(`${articleRoute}/`))) {
         addError(`Removed article is still listed in the sitemap: ${articleRoute}`);
       }
     }

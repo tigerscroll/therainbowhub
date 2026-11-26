@@ -57,7 +57,8 @@ try {
   assert.equal(await page.locator('.site-footer').count(), 1);
   assert.equal(await page.locator('.simple-footer, .article-display, [data-embedded-quiz]').count(), 0);
   assert.equal(await page.evaluate(() => window.quizOnlyTest.requests.length), 0);
-  for (const route of ['/makemoney', '/monetize', '/cloudstorage', '/cloudstorage?q=years-left', '/cloudstorage/years-left', '/cloudstorage/memory', '/fr/cloudstorage/years-left', '/article-data/cloudstorage/1', '/article-data/prostate/1', '/prostate', '/monetize/1']) {
+  assert.equal((await page.request.get(`${base}/makemoney`)).status(), 200, 'the new standalone guide exists');
+  for (const route of ['/makemoney/1', '/fr/makemoney', '/article-data/makemoney/1', '/monetize', '/cloudstorage', '/cloudstorage?q=years-left', '/cloudstorage/years-left', '/cloudstorage/memory', '/fr/cloudstorage/years-left', '/article-data/cloudstorage/1', '/article-data/prostate/1', '/prostate', '/monetize/1']) {
     assert.equal((await page.request.get(`${base}${route}`)).status(), 404, route);
   }
   for (const slug of ['memory', 'vision']) {

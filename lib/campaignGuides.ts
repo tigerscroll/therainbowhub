@@ -60,6 +60,17 @@ export const jobsGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
+export const makeMoneyGuide = {
+  path: "/makemoney",
+  title: "Ways to Make Money Online",
+  description: "Compare realistic ways to earn online, work out what you keep after costs, and learn how to spot offers that aren’t worth your time.",
+  intro: "Think about what you already know, what you can sell and how much time you have. Use this guide to compare ways to earn online without assuming you’ll make a particular amount.",
+  campaignIntro: "Two online gigs can pay the same on paper. One leaves you with a decent hourly rate; the other eats it up in fees and unpaid work. Here’s how to spot the difference before giving up an evening—or paying for a course you don’t need.",
+  popupTitle: "Ready To Make Money?",
+  continueLabel: "See Which Options Are Worth It",
+  publishedAt: "2026-11-26",
+} as const;
+
 // These galleries retain their original titles, article text and sitemap entries.
 export const campaignGalleryEntries = [
   {
@@ -75,7 +86,7 @@ export const campaignGalleryEntries = [
   },
 ] as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 
