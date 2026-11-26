@@ -50,6 +50,16 @@ export const resortsGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
+export const jobsGuide = {
+  path: "/jobs",
+  title: "Jobs Available Now: Where to Find Real Openings",
+  description: "Find live job listings, search for roles with a near-term start and learn what to check before applying or accepting an offer.",
+  intro: "Start with current listings in your area. This guide shows where to look, how to find roles that may start soon and what to check before applying.",
+  campaignIntro: "A job marked ‘urgent’ can still be a dead end. Before you send another application, see where to find live openings, which search terms surface jobs with a faster start, and the details that tell you whether a listing is worth your time.",
+  popupTitle: "Jobs Available Now",
+  publishedAt: "2026-11-26",
+} as const;
+
 // The existing beaches gallery owns its title, article text and sitemap entry.
 export const beachesCampaign = {
   path: "/beaches",
@@ -57,7 +67,7 @@ export const beachesCampaign = {
   campaignIntro: "An adults-only resort doesn’t always mean the beach is adults-only. Before you book, see what’s actually private, what a day pass might not include, and how to tell a quiet escape from a beach party.",
 } as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 

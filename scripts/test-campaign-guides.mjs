@@ -58,6 +58,16 @@ const guides = [
     sectionCount: 4,
     screenshot: process.env.RESORTS_SCREENSHOT,
   },
+  {
+    path: "/jobs",
+    popup: "Jobs Available Now",
+    teaser: "A job marked ‘urgent’ can still be a dead end.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. Start with live listings near you",
+    sectionCount: 8,
+    source: "United States: USAGov job search resources",
+    screenshot: process.env.JOBS_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
