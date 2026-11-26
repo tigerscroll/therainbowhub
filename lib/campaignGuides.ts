@@ -40,6 +40,16 @@ export const retreatsGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
+export const resortsGuide = {
+  path: "/resorts",
+  title: "Adults Only Resorts",
+  description: "What to check before booking an adults-only resort, from the atmosphere and age policy to what’s included in the price.",
+  intro: "An adults-only resort can be a quiet escape or a trip built around nightlife. Here’s how to tell the difference and check what your booking actually includes.",
+  campaignIntro: "Two adults-only resorts can look identical online. At one, the pool goes quiet by sunset; at the other, the party is just getting started. Here’s how to spot the difference, find out what’s really included, and avoid paying for a trip that isn’t your style.",
+  popupTitle: "Adults Only Resorts",
+  publishedAt: "2026-11-26",
+} as const;
+
 // The existing beaches gallery owns its title, article text and sitemap entry.
 export const beachesCampaign = {
   path: "/beaches",
@@ -47,7 +57,7 @@ export const beachesCampaign = {
   campaignIntro: "An adults-only resort doesn’t always mean the beach is adults-only. Before you book, see what’s actually private, what a day pass might not include, and how to tell a quiet escape from a beach party.",
 } as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 

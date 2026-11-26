@@ -49,6 +49,15 @@ const guides = [
     sectionCount: 48,
     screenshot: process.env.BEACHES_SCREENSHOT,
   },
+  {
+    path: "/resorts",
+    popup: "Adults Only Resorts",
+    teaser: "Two adults-only resorts can look identical online.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "2. Look past the pool photos",
+    sectionCount: 4,
+    screenshot: process.env.RESORTS_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
