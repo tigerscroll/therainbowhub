@@ -71,6 +71,17 @@ export const makeMoneyGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
+export const governmentHelpGuide = {
+  path: "/governmenthelp",
+  title: "Government-Funded Help You Might Be Missing",
+  description: "Find official starting points for help with food, bills, housing, healthcare, disability and family costs, and learn how to check eligibility.",
+  intro: "Government help can take the form of a payment, a discount or a publicly funded service. What’s available depends on where you live and your circumstances. Here’s where to start checking.",
+  campaignIntro: "The help you’re looking for might not be called a grant. It could be a lower energy bill, help with rent or a discount on healthcare. See which kinds of support are worth checking, where to find the official tools, and how to spot the offers you should walk away from.",
+  popupTitle: "Government Help Options",
+  continueLabel: "See What Help You Might Be Missing",
+  publishedAt: "2026-11-26",
+} as const;
+
 // These galleries retain their original titles, article text and sitemap entries.
 export const campaignGalleryEntries = [
   {
@@ -86,7 +97,7 @@ export const campaignGalleryEntries = [
   },
 ] as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 
