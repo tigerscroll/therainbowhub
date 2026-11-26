@@ -40,6 +40,13 @@ export const retreatsGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
+// The existing beaches gallery owns its title, article text and sitemap entry.
+export const beachesCampaign = {
+  path: "/beaches",
+  popupTitle: "Adults Only Beaches",
+  campaignIntro: "An adults-only resort doesn’t always mean the beach is adults-only. Before you book, see what’s actually private, what a day pass might not include, and how to tell a quiet escape from a beach party.",
+} as const;
+
 export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
@@ -48,7 +55,7 @@ export function hasGuideCampaign(search: string) {
   return [...new URLSearchParams(search).keys()].some(key => campaignParameter.test(key));
 }
 
-const campaignEntryPaths = [...campaignGuides.map(guide => guide.path), perfectlyTimedPhotos.path];
+const campaignEntryPaths = [...campaignGuides.map(guide => guide.path), beachesCampaign.path, perfectlyTimedPhotos.path];
 
 export const campaignGuideBootScript = `if (${JSON.stringify(campaignEntryPaths)}.includes(location.pathname.replace(/\\/$/, "")) &&
   Array.from(new URLSearchParams(location.search).keys()).some(function(key) { return ${campaignParameter}.test(key); })) {

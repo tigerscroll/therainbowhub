@@ -10,6 +10,7 @@ const dentalDemo = process.argv.includes("--dental-demo");
 const mobilityDemo = process.argv.includes("--mobility-demo");
 const retiredDemo = process.argv.includes("--retired-demo");
 const retreatsDemo = process.argv.includes("--retreats-demo");
+const beachesDemo = process.argv.includes("--beaches-demo");
 const demoScript = `<script>
   (() => {
     const listeners = new Map();
@@ -90,7 +91,8 @@ const server = http.createServer((request, response) => {
     dentalDemo && /^\/dental\/?$/.test(pathname) ||
     mobilityDemo && /^\/mobility\/?$/.test(pathname) ||
     retiredDemo && /^\/retired\/?$/.test(pathname) ||
-    retreatsDemo && /^\/retreats\/?$/.test(pathname)
+    retreatsDemo && /^\/retreats\/?$/.test(pathname) ||
+    beachesDemo && /^\/beaches\/?$/.test(pathname)
   );
   response.writeHead(status, {
     "Cache-Control": "no-cache",
@@ -109,6 +111,6 @@ const server = http.createServer((request, response) => {
   else fs.createReadStream(file).pipe(response);
 });
 
-server.listen(port, photoDemo || yearsLeftDemo || dentalDemo || mobilityDemo || retiredDemo || retreatsDemo ? "127.0.0.1" : "0.0.0.0", () => {
+server.listen(port, photoDemo || yearsLeftDemo || dentalDemo || mobilityDemo || retiredDemo || retreatsDemo || beachesDemo ? "127.0.0.1" : "0.0.0.0", () => {
   console.log(`Static export ready at http://localhost:${port}`);
 });

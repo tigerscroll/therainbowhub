@@ -55,7 +55,6 @@ export function CampaignGuideEntry({ children, guide, publicNotice, actionTone }
   return (
     <>
       <article className={styles.guide} aria-labelledby="campaign-guide-title" hidden={entry === "prompt"}>
-        <p className={styles.eyebrow}>A quick guide</p>
         <h1 id="campaign-guide-title" ref={title} tabIndex={-1}>{guide.title}</h1>
         <p className={styles.intro}>{useCampaignIntro ? guide.campaignIntro : guide.intro}</p>
         {publicNotice}
@@ -96,7 +95,7 @@ export function CampaignGuideEntry({ children, guide, publicNotice, actionTone }
           prerendered={entry === "initial"}
           busy={busy}
           adUnavailable={adUnavailable}
-          adNote="Watch a short ad to start. A second ad unlocks the full guide."
+          adNote="Watch a short ad to continue"
           onStart={() => requestAd("teaser")}
           onDismiss={dismiss}
           onContinueWithoutAd={() => reveal("teaser")}

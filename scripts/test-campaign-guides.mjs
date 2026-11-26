@@ -40,6 +40,15 @@ const guides = [
     section: "2. Make sure the venue fits the group",
     screenshot: process.env.RETREATS_SCREENSHOT,
   },
+  {
+    path: "/beaches",
+    popup: "Adults Only Beaches",
+    teaser: "An adults-only resort doesn’t always mean the beach is adults-only.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "What Exactly Is An Adults-Only Beach?",
+    sectionCount: 48,
+    screenshot: process.env.BEACHES_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
@@ -121,7 +130,7 @@ try {
       assert.equal((await cta.boundingBox()).height, Math.min(112, Math.max(72, width * .25)));
       const pulse = await cta.locator("span").evaluate(el => [getComputedStyle(el).animationDuration, getComputedStyle(el).animationIterationCount]);
       assert.deepEqual(pulse, ["1s", "infinite"]);
-      const note = dialog.getByText("Watch a short ad to start. A second ad unlocks the full guide.", { exact: true });
+      const note = dialog.getByText("Watch a short ad to continue", { exact: true });
       assert(await note.evaluate(el => window.innerHeight - el.getBoundingClientRect().bottom < 80), "disclosure sits at the bottom");
       assert.equal(await dialog.getByRole("button").count(), 1, "the default popup has no close button or secondary CTA");
       if (width === 390) {
@@ -194,6 +203,7 @@ try {
     assert.equal(await dialog.count(), 0);
     assert.equal(await seeMore.count(), 0);
     assert.equal(await page.locator("h1").count(), 1);
+    if (guide.sectionCount) assert.equal(await page.getByRole("region", { name: "Full guide" }).locator("section").count(), guide.sectionCount);
     if (guide.source) await page.getByRole("link", { name: guide.source }).waitFor();
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     assert.deepEqual(errors, []);
