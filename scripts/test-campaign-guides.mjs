@@ -71,6 +71,7 @@ const guides = [
   {
     path: "/paradise",
     popup: "Adults Only Paradise",
+    continueLabel: "See What Happens After Dark",
     teaser: "The pool may look peaceful by day, but some adults-only escapes change completely after sunset.",
     actionColor: "rgb(162, 29, 44)",
     section: "What Makes Adults-Only Resorts So Different?",
@@ -123,7 +124,7 @@ try {
     page.on("pageerror", error => errors.push(error.message));
     const dialog = page.getByRole("dialog", { name: guide.popup });
     const cta = dialog.getByRole("button", { name: "CONTINUE", exact: true });
-    const seeMore = page.getByRole("button", { name: "See more", exact: true });
+    const seeMore = page.getByRole("button", { name: guide.continueLabel ?? "See more", exact: true });
     const teaser = page.getByText(guide.teaser);
     const section = page.getByRole("heading", { name: guide.section });
     const prerendered = page.locator("[data-campaign-guide-preview]");
@@ -203,7 +204,7 @@ try {
       assert.equal(await dialog.count(), 0);
       assert.equal(await section.isVisible(), false, "the first gate only opens the intro");
       const firstStageRequests = await requests();
-      assert.equal(firstStageRequests, width === 1200 ? 1 : 2, "no second ad is requested until See more is clicked");
+      assert.equal(firstStageRequests, width === 1200 ? 1 : 2, "no second ad is requested until the article button is clicked");
       await seeMore.click();
 
       if (width === 1200) {

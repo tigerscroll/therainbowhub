@@ -10,7 +10,7 @@ type Entry = "initial" | "prompt" | "dismissed" | "teaser" | "full" | "direct";
 
 export function CampaignGuideEntry({ children, guide, publicNotice, actionTone }: {
   children: ReactNode;
-  guide: { title: string; intro: string; campaignIntro: string; popupTitle: string };
+  guide: { title: string; intro: string; campaignIntro: string; popupTitle: string; continueLabel?: string };
   publicNotice?: ReactNode;
   actionTone?: CampaignActionTone;
 }) {
@@ -71,7 +71,7 @@ export function CampaignGuideEntry({ children, guide, publicNotice, actionTone }
               disabled={busy}
               onClick={() => requestAd("full")}
             >
-              {busy ? "Loading..." : <>See more <span aria-hidden="true">→</span></>}
+              {busy ? "Loading..." : <>{guide.continueLabel ?? "See more"} <span aria-hidden="true">→</span></>}
             </button>
             <p className={styles.moreNote} id="campaign-guide-more-note">Watch one short ad to read the rest.</p>
             {adUnavailable && (

@@ -70,6 +70,7 @@ export const campaignGalleryEntries = [
   {
     path: "/paradise",
     popupTitle: "Adults Only Paradise",
+    continueLabel: "See What Happens After Dark",
     campaignIntro: "The pool may look peaceful by day, but some adults-only escapes change completely after sunset. See which swim-up suites are actually private, what ‘all-inclusive’ might leave out, and how to tell a quiet hideaway from a resort that parties late.",
   },
 ] as const;
