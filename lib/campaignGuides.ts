@@ -1,3 +1,5 @@
+import { perfectlyTimedPhotos } from "./perfectlyTimedPhotos";
+
 export const dentalGuide = {
   path: "/dental",
   title: "How to Find Affordable Dental Care in Retirement",
@@ -33,7 +35,9 @@ export function hasGuideCampaign(search: string) {
   return [...new URLSearchParams(search).keys()].some(key => campaignParameter.test(key));
 }
 
-export const campaignGuideBootScript = `if (${JSON.stringify(campaignGuides.map(guide => guide.path))}.includes(location.pathname.replace(/\\/$/, "")) &&
+const campaignEntryPaths = [...campaignGuides.map(guide => guide.path), perfectlyTimedPhotos.path];
+
+export const campaignGuideBootScript = `if (${JSON.stringify(campaignEntryPaths)}.includes(location.pathname.replace(/\\/$/, "")) &&
   Array.from(new URLSearchParams(location.search).keys()).some(function(key) { return ${campaignParameter}.test(key); })) {
   document.documentElement.setAttribute("${campaignGuideBootAttribute}", "");
 }`;

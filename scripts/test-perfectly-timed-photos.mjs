@@ -58,68 +58,84 @@ try {
     assert.equal(await page.locator("h1").count(), 1);
     assert.equal(await page.locator("h1").textContent(), "The Timing Of This Was Just Perfect");
     const gallery = page.getByRole("region", { name: "Sports photo gallery" });
-    const overlay = page.getByRole("dialog", { name: "See Content" });
-    const entry = overlay.getByRole("button", { name: "Continue", exact: true });
+    const overlay = page.getByRole("dialog", { name: "Perfectly Timed Photos" });
+    const entry = overlay.getByRole("button", { name: "CONTINUE", exact: true });
     const next = gallery.getByRole("button", { name: "Next photo" });
     const requests = () => page.evaluate(() => window.sportsTest.requests.length);
     const close = (granted) => page.evaluate(granted => window.sportsTest.close(granted), granted);
     const waitForAd = () => page.waitForFunction(() => Boolean(window.sportsTest.displayed));
 
     // Inspect the actual first paint while every Next client script is held.
-    const prerendered = page.locator("[data-sports-entry-preview]");
+    const prerendered = page.locator("[data-campaign-guide-preview]");
     try {
       await prerendered.waitFor({ state: "attached" });
       if (campaign) {
         await entry.waitFor();
         await page.waitForFunction(() => performance.getEntriesByName("first-contentful-paint").length > 0);
-        assert.equal(await page.locator("html").getAttribute("data-sports-entry-boot"), "");
+        assert.equal(await page.locator("html").getAttribute("data-campaign-guide-boot"), "");
         assert.equal(await page.locator(".site-shell").evaluate(node => getComputedStyle(node).visibility), "hidden");
         assert.equal(await prerendered.evaluate(node => getComputedStyle(node).position), "fixed");
-        assert.equal(await prerendered.evaluate(node => getComputedStyle(node).backgroundColor), "rgb(0, 0, 0)");
+        assert.equal(await prerendered.evaluate(node => getComputedStyle(node).backgroundColor), "rgb(237, 246, 240)");
         assert.equal(await gallery.getByRole("img").count(), 0);
         assert.equal(await requests(), 0, "first paint does not preload or request a rewarded ad");
       } else {
-        assert.equal(await page.locator("html").getAttribute("data-sports-entry-boot"), null);
+        assert.equal(await page.locator("html").getAttribute("data-campaign-guide-boot"), null);
         assert.equal(await prerendered.isVisible(), false, "direct traffic must not flash the server-rendered popup");
       }
     } finally {
       releaseHydration();
     }
     await prerendered.waitFor({ state: "detached" });
-    assert.equal(await page.locator("html").getAttribute("data-sports-entry-boot"), null);
+    assert.equal(await page.locator("html").getAttribute("data-campaign-guide-boot"), null);
 
     if (campaign) {
       await entry.waitFor();
       assert.equal(await overlay.evaluate(node => getComputedStyle(node).position), "fixed");
-      assert.equal(await overlay.evaluate(node => getComputedStyle(node).backgroundColor), "rgb(0, 0, 0)");
-      assert.equal(await overlay.getByText("The Timing Of This Was Just Perfect", { exact: true }).count(), 0);
-      assert.equal(await overlay.getByText("Photo gallery", { exact: true }).count(), 0);
-      await overlay.getByText("Watch a short ad to continue.", { exact: true }).waitFor();
+      assert.equal(await overlay.evaluate(node => getComputedStyle(node).backgroundColor), "rgb(237, 246, 240)");
+      assert.equal(await overlay.getByRole("button").count(), 1, "only the continue button is shown");
+      assert.equal(await page.locator(".hub-header").isVisible(), false);
+      const note = overlay.getByText("Watch one short ad to open the gallery.", { exact: true });
+      await note.waitFor();
+      assert(await note.evaluate(el => innerHeight - el.getBoundingClientRect().bottom < 45));
       await entry.press("Escape");
       await overlay.waitFor({ state: "hidden" });
-      await gallery.getByRole("button", { name: "Open player" }).click();
+      await gallery.getByRole("button", { name: "Open Gallery Popup" }).click();
       await overlay.click({ position: { x: 2, y: 2 } });
+      await overlay.getByRole("heading", { name: "Perfectly Timed Photos" }).click();
       if (width === 390 && process.env.PHOTO_DEMO_SCREENSHOT) {
         await page.screenshot({ path: process.env.PHOTO_DEMO_SCREENSHOT, animations: "disabled" });
       }
       assert.equal(await requests(), 0);
       assert.equal(await gallery.getByRole("img").count(), 0);
-      const action = overlay.locator("#sports-player-action");
+      const action = overlay.getByRole("button").locator("span");
       const continueFontSize = await action.evaluate(el => getComputedStyle(el).fontSize);
-      await overlay.getByText("See Content", { exact: true }).click();
-      await waitForAd();
-      await overlay.getByRole("button", { name: "LOADING...", exact: true }).waitFor();
-      assert.equal(await action.evaluate(el => getComputedStyle(el).fontSize), continueFontSize);
-      await close(false);
-      await entry.locator("svg").last().click();
-      await waitForAd();
-      assert.equal(await requests(), 2, "each player tap requests one ad; tapping the backdrop requests none");
-      assert.equal(await gallery.getByRole("img").count(), 0, "display alone must not open the gallery");
-      await close(true);
+      assert.equal(await action.evaluate(el => getComputedStyle(el).backgroundColor), "rgb(24, 114, 67)");
+      await page.emulateMedia({ reducedMotion: "no-preference" });
+      assert.equal(await action.evaluate(el => getComputedStyle(el).animationDuration), "1s");
+      if (width === 1240) {
+        await page.evaluate(() => { window.sportsTest.noFill = true; });
+        await entry.click();
+        await overlay.getByRole("button", { name: "View without an ad" }).click();
+        await page.evaluate(() => { window.sportsTest.noFill = false; });
+        assert.equal(await requests(), 1);
+      } else {
+        await entry.click();
+        await waitForAd();
+        const loading = overlay.getByRole("button", { name: "LOADING...", exact: true }).locator("span");
+        assert.equal(await loading.evaluate(el => getComputedStyle(el).fontSize), continueFontSize);
+        assert.equal(await loading.evaluate(el => getComputedStyle(el).animationName), "none");
+        await close(false);
+        assert.equal(await page.locator("figure img").count(), 0, "closing early must not open the gallery");
+        await entry.click();
+        await waitForAd();
+        assert.equal(await requests(), 2, "each Continue click requests one ad; tapping the backdrop or heading requests none");
+        assert.equal(await page.locator("figure img").count(), 0, "display alone must not open the gallery");
+        await close(true);
+      }
     }
 
     await gallery.getByText("Photo 1 of 50").waitFor();
-    assert.equal(await overlay.count(), 0, "the player is closed after grant and never opens for direct traffic");
+    assert.equal(await overlay.count(), 0, "the popup closes when the gallery opens and never appears for direct traffic");
     if (!campaign) assert.equal(await requests(), 0, "direct traffic has no entry ad");
     const image = gallery.getByRole("img");
     await page.waitForFunction(() => document.querySelector("figure img")?.naturalWidth > 0);

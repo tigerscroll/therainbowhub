@@ -5,7 +5,6 @@ import { FbclidHeaderVisibility } from "@/components/FbclidHeaderVisibility";
 import { campaignGuideBootScript, campaignGuideBootStyle } from "@/lib/campaignGuides";
 import type { SupportedLocale } from "@/lib/i18n";
 import { localeLanguageTag } from "@/lib/localeConfig";
-import { getSportsEntryBootstrapScript, sportsEntryBootStyle } from "@/lib/perfectlyTimedPhotos";
 import { getQuizCampaignBootstrapScript, quizCampaignBootStyle } from "@/lib/quizCampaignEntry";
 import { siteConfig } from "@/lib/siteConfig";
 import { getTrafficHeaderBootstrapScript } from "@/lib/trafficHeader";
@@ -25,8 +24,6 @@ export function RootDocument({ children, direction, head, locale }: RootDocument
         <script dangerouslySetInnerHTML={{ __html: campaignGuideBootScript }} />
         <style dangerouslySetInnerHTML={{ __html: quizCampaignBootStyle }} />
         <script dangerouslySetInnerHTML={{ __html: getQuizCampaignBootstrapScript() }} />
-        <style dangerouslySetInnerHTML={{ __html: sportsEntryBootStyle }} />
-        <script dangerouslySetInnerHTML={{ __html: getSportsEntryBootstrapScript() }} />
         <script
           id="google-analytics"
           dangerouslySetInnerHTML={{
