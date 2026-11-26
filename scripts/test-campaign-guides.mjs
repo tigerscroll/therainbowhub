@@ -29,6 +29,13 @@ const guides = [
     source: "United States: USAGov job search resources",
     screenshot: process.env.RETIRED_SCREENSHOT,
   },
+  {
+    path: "/retreats",
+    popup: "Business Retreats Adults Only",
+    actionColor: "rgb(162, 29, 44)",
+    section: "2. Make sure the venue fits the group",
+    screenshot: process.env.RETREATS_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
@@ -114,6 +121,7 @@ try {
       if (width === 390) {
         await page.emulateMedia({ reducedMotion: "reduce" });
         assert.equal(await cta.locator("span").evaluate(el => getComputedStyle(el).animationName), "none");
+        assert.equal(await cta.locator("span").evaluate(el => getComputedStyle(el).backgroundColor), guide.actionColor ?? "rgb(24, 114, 67)");
         if (guide.screenshot) await page.screenshot({ path: guide.screenshot });
         await page.emulateMedia({ reducedMotion: "no-preference" });
         await dialog.press("Escape");
@@ -147,7 +155,7 @@ try {
     await section.waitFor();
     assert.equal(await dialog.count(), 0);
     assert.equal(await page.locator("h1").count(), 1);
-    await page.getByRole("link", { name: guide.source }).waitFor();
+    if (guide.source) await page.getByRole("link", { name: guide.source }).waitFor();
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     assert.deepEqual(errors, []);
     console.log(`${guide.path} ${width}px ${key || "direct"}: passed`);

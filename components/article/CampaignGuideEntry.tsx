@@ -1,17 +1,18 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
-import { CampaignEntryPopup } from "@/components/experience/CampaignEntryPopup";
+import { CampaignEntryPopup, type CampaignActionTone } from "@/components/experience/CampaignEntryPopup";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import { campaignGuideBootAttribute, hasGuideCampaign } from "@/lib/campaignGuides";
 import styles from "./CampaignGuideEntry.module.css";
 
 type Entry = "initial" | "prompt" | "dismissed" | "guide";
 
-export function CampaignGuideEntry({ children, guide, publicNotice }: {
+export function CampaignGuideEntry({ children, guide, publicNotice, actionTone }: {
   children: ReactNode;
   guide: { title: string; intro: string; popupTitle: string };
   publicNotice?: ReactNode;
+  actionTone?: CampaignActionTone;
 }) {
   const [entry, setEntry] = useState<Entry>("initial");
   const [adUnavailable, setAdUnavailable] = useState(false);
@@ -62,6 +63,7 @@ export function CampaignGuideEntry({ children, guide, publicNotice }: {
       {(entry === "initial" || entry === "prompt") && (
         <CampaignEntryPopup
           title={guide.popupTitle}
+          actionTone={actionTone}
           prerendered={entry === "initial"}
           busy={busy}
           adUnavailable={adUnavailable}

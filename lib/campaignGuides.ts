@@ -27,7 +27,16 @@ export const retiredGuide = {
   publishedAt: "2026-11-25",
 } as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide] as const;
+export const retreatsGuide = {
+  path: "/retreats",
+  title: "Adults-Only Business Retreats: What to Know Before You Book",
+  description: "A short guide to planning an adults-only business retreat, from choosing a venue to building an agenda and comparing quotes.",
+  intro: "A good business retreat gives the team time to work together and room to switch off. If you’re considering an adults-only venue, here’s what to check before you book.",
+  popupTitle: "Business Retreats Adults Only",
+  publishedAt: "2026-11-26",
+} as const;
+
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 

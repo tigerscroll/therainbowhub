@@ -68,6 +68,11 @@
   line-height: 1.3;
 }
 .popupAction:not(:disabled):hover .actionFace { background: var(--action-pulse-peak); }
+.actionFace.redActionFace {
+  --action-pulse-peak: #b52536;
+  border-color: #c04450;
+  background-color: #a21d2c;
+}
 .popupAction:disabled { cursor: wait; }
 .popupAction:disabled .actionFace { animation: none; opacity: .8; }
 

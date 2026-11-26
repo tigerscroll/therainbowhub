@@ -3,10 +3,13 @@
 import { useEffect, useId, useRef } from "react";
 import styles from "./CampaignEntryPopup.module.css";
 
+export type CampaignActionTone = "green" | "red";
+
 export function CampaignEntryPopup({
   title, prerendered, busy, adUnavailable, onStart, onDismiss, onContinueWithoutAd,
   adNote = "Watch one short ad to open the guide.",
   noAdLabel = "Read without an ad",
+  actionTone = "green",
 }: {
   title: string;
   prerendered: boolean;
@@ -17,6 +20,7 @@ export function CampaignEntryPopup({
   onContinueWithoutAd: () => void;
   adNote?: string;
   noAdLabel?: string;
+  actionTone?: CampaignActionTone;
 }) {
   const dialog = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -55,7 +59,7 @@ export function CampaignEntryPopup({
       <div className={styles.popup}>
         <h2 id={titleId}>{title}</h2>
         <button className={styles.popupAction} type="button" disabled={busy} data-google-interstitial="false" aria-describedby={noteId} onClick={onStart}>
-          <span className={styles.actionFace}>{busy ? "LOADING..." : "CONTINUE"}</span>
+          <span className={actionTone === "red" ? `${styles.actionFace} ${styles.redActionFace}` : styles.actionFace}>{busy ? "LOADING..." : "CONTINUE"}</span>
         </button>
         {adUnavailable ? (
           <>
