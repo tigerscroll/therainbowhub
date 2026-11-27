@@ -93,6 +93,17 @@ export const fullyFundedGuide = {
   publishedAt: "2026-11-26",
 } as const;
 
+export const prostateGuide = {
+  path: "/prostate",
+  title: "Hidden Signs Of Prostate Cancer",
+  description: "Learn which changes are worth discussing with a clinician, why early prostate cancer often has no symptoms, and what a PSA test can and cannot tell you.",
+  intro: "Early prostate cancer often causes no symptoms. Changes in urination and other symptoms can have non-cancer causes, too. This guide explains what to get checked and what may happen at an appointment.",
+  campaignIntro: "The surprising part is how little symptoms alone can tell you. Early prostate cancer often has no symptoms, and a change such as getting up more often at night can have other causes. Here’s what’s worth getting checked, what needs urgent care, and what a PSA test can and can’t tell you.",
+  popupTitle: "Prostate Cancer Hidden Signs",
+  continueLabel: "See Hidden Signs",
+  publishedAt: "2026-11-27",
+} as const;
+
 // These galleries retain their original titles, article text and sitemap entries.
 export const campaignGalleryEntries = [
   {
@@ -113,7 +124,7 @@ export const campaignGalleryEntries = [
   },
 ] as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 

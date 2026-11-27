@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { createHash } from "node:crypto";
+import { restoredCampaignRoutes } from "./restored-campaign-routes.mjs";
 
 const root = process.cwd();
 const outputRoot = path.join(root, "out");
@@ -169,8 +170,6 @@ if (!fs.existsSync(outputRoot)) {
   }
   const sitemap = fs.readFileSync(path.join(outputRoot, "sitemap.xml"), "utf8");
   const sitemapPaths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
-  // A standalone campaign guide may reuse a retired slug, never its old chapter or embed routes.
-  const restoredCampaignRoutes = new Set(["/makemoney"]);
   for (const route of restoredCampaignRoutes) {
     if (!routeFile(route)) addError(`Missing restored campaign guide: ${route}`);
     if (sitemapPaths.filter(entry => entry === route).length !== 1) addError(`Restored campaign guide must appear once in the sitemap: ${route}`);

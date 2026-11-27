@@ -5,6 +5,7 @@ import { quizTemplateContract } from "./quiz-template-contracts.mjs";
 import { resolveQuizLocaleManifest } from "../lib/quiz/localeManifest.mjs";
 import process from "node:process";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
+import { restoredCampaignRoutes } from "./restored-campaign-routes.mjs";
 
 const rootDir = process.cwd();
 const errors = [];
@@ -463,7 +464,7 @@ for (const entry of fs.readdirSync(articleRoot, { withFileTypes: true })) {
       if (quizRouteSegments.has(routeSlug) || supportedLocaleSegments.has(routeSlug)) {
         addError(`English article route /${routeSlug} conflicts with a quiz or locale route.`);
       }
-      if (fs.existsSync(path.join(rootDir, "app", "(default)", routeSlug, "page.tsx"))) {
+      if (!restoredCampaignRoutes.has(`/${routeSlug}`) && fs.existsSync(path.join(rootDir, "app", "(default)", routeSlug, "page.tsx"))) {
         addError(`Article /${routeSlug} must use the automatic JSON router; remove its handwritten app/(default) wrapper.`);
       }
     }

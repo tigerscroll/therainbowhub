@@ -120,6 +120,17 @@ const guides = [
     sectionCount: 61,
     screenshot: process.env.EVENTS_SCREENSHOT,
   },
+  {
+    path: "/prostate",
+    popup: "Prostate Cancer Hidden Signs",
+    continueLabel: "See Hidden Signs",
+    teaser: "The surprising part is how little symptoms alone can tell you.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. Early prostate cancer often has no symptoms",
+    sectionCount: 7,
+    source: "CDC’s prostate cancer symptoms guide",
+    screenshot: process.env.PROSTATE_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
@@ -204,6 +215,7 @@ try {
       const note = dialog.getByText("Watch a short ad to continue", { exact: true });
       assert(await note.evaluate(el => window.innerHeight - el.getBoundingClientRect().bottom < 80), "disclosure sits at the bottom");
       assert.equal(await dialog.getByRole("button").count(), 1, "the default popup has no close button or secondary CTA");
+      assert.equal(await dialog.getByRole("link").count(), 0, "the default popup only shows the single CTA and ad note");
       if (width === 390) {
         await page.emulateMedia({ reducedMotion: "reduce" });
         assert.equal(await cta.locator("span").evaluate(el => getComputedStyle(el).animationName), "none");
