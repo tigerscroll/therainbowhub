@@ -111,6 +111,15 @@ const guides = [
     source: "DVA electric mobility aid rules",
     screenshot: process.env.FULLY_FUNDED_SCREENSHOT,
   },
+  {
+    path: "/events",
+    popup: "Adults Only Events",
+    teaser: "The invitation tells you where to go, but not always what to expect.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "What Really Happens At Adult-Only Events?",
+    sectionCount: 61,
+    screenshot: process.env.EVENTS_SCREENSHOT,
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 

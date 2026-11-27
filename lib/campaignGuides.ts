@@ -106,6 +106,11 @@ export const campaignGalleryEntries = [
     continueLabel: "See What Happens After Dark",
     campaignIntro: "The pool may look peaceful by day, but some adults-only escapes change completely after sunset. See which swim-up suites are actually private, what ‘all-inclusive’ might leave out, and how to tell a quiet hideaway from a resort that parties late.",
   },
+  {
+    path: "/events",
+    popupTitle: "Adults Only Events",
+    campaignIntro: "The invitation tells you where to go, but not always what to expect. From dress codes and guest lists to phone rules and personal boundaries, here’s what to check before you show up.",
+  },
 ] as const;
 
 export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide] as const;
