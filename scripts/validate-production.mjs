@@ -137,7 +137,9 @@ for (const contract of ["<HeaderChrome", "<FooterChrome"]) {
 
 const uiPageFiles = files.filter((filePath) => /(?:^|\/)app\/.+(?:page|not-found)\.tsx$/.test(filePath))
   .filter((filePath) => !filePath.endsWith("app/global-not-found.tsx"));
-const sharedShellEntrypoints = ["SiteShell", "ArticleTemplate", "NotFoundContent", "GlobalNotFound"];
+const sharedShellEntrypoints = ["SiteShell", "ArticleTemplate", "NotFoundContent", "GlobalNotFound", "SportsPhotoRoute"];
+const sportsPhotoRoute = fs.readFileSync(path.join(rootDir, "components", "gallery", "SportsPhotoRoute.tsx"), "utf8");
+if (!sportsPhotoRoute.includes("<SiteShell")) addError("SportsPhotoRoute must render the shared site shell.");
 for (const filePath of uiPageFiles) {
   const source = fs.readFileSync(filePath, "utf8");
   if (!sharedShellEntrypoints.some((entrypoint) => source.includes(entrypoint))) {

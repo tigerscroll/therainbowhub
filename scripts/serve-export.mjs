@@ -5,6 +5,11 @@ import path from "node:path";
 const root = path.resolve(process.cwd(), "out");
 const port = Number.parseInt(process.argv[2] ?? "3010", 10);
 const photoDemo = process.argv.includes("--photo-demo");
+const photoDemoPaths = photoDemo ? new Set([
+  "/perfectly-timed-photos",
+  ...Object.keys(JSON.parse(fs.readFileSync(new URL("../data/media/perfectly-timed-photos-ui.json", import.meta.url), "utf8")))
+    .map(locale => `/${locale}/perfectly-timed-photos`),
+]) : undefined;
 const yearsLeftDemo = process.argv.includes("--years-left-demo");
 const dentalDemo = process.argv.includes("--dental-demo");
 const mobilityDemo = process.argv.includes("--mobility-demo");
@@ -106,7 +111,7 @@ const server = http.createServer((request, response) => {
   const status = resolveRequest(pathname) ? 200 : 404;
   const isQuizPayload = file.startsWith(path.join(root, "quiz-data") + path.sep);
   const mockAds = status === 200 && (
-    photoDemo && /^\/perfectly-timed-photos\/?$/.test(pathname) ||
+    photoDemoPaths?.has(pathname.replace(/\/$/, "")) ||
     yearsLeftDemo && /^\/years-left\/?$/.test(pathname) ||
     dentalDemo && /^\/dental\/?$/.test(pathname) ||
     mobilityDemo && /^\/mobility\/?$/.test(pathname) ||

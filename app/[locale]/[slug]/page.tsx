@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { GalleryRoute } from "@/components/article/GalleryRoute";
+import { SportsPhotoRoute, sportsPhotoMetadata } from "@/components/gallery/SportsPhotoRoute";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getTwoSegmentContentRoutes } from "@/lib/contentCatalogue";
 import { getGalleryBySlug } from "@/lib/galleries";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { isPhotoLocale, perfectlyTimedPhotos } from "@/lib/perfectlyTimedPhotos";
 import { getQuizBySlug } from "@/lib/quizzes";
 import { buildMetadata, galleryAlternates, getGalleryPath, getQuizPath, localizedQuizAlternates } from "@/lib/seo";
 
@@ -23,6 +25,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocalizedQuizPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!isSupportedLocale(locale) || locale === getDefaultLocale()) return {};
+  if (slug === perfectlyTimedPhotos.slug && isPhotoLocale(locale)) return sportsPhotoMetadata(locale);
   const gallery = getGalleryBySlug(slug, locale);
   if (gallery) {
     return buildMetadata({
@@ -54,6 +57,7 @@ export async function generateMetadata({ params }: LocalizedQuizPageProps): Prom
 export default async function LocalizedQuizPage({ params }: LocalizedQuizPageProps) {
   const { locale, slug } = await params;
   if (!isSupportedLocale(locale) || locale === getDefaultLocale()) notFound();
+  if (slug === perfectlyTimedPhotos.slug && isPhotoLocale(locale)) return <SportsPhotoRoute locale={locale} />;
   const gallery = getGalleryBySlug(slug, locale);
   if (gallery) return <GalleryRoute gallery={gallery} />;
   const quiz = getQuizBySlug(slug, locale);

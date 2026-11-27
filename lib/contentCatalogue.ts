@@ -1,6 +1,7 @@
 import { getDefaultLocale, getSupportedLocales } from "@/lib/i18n";
 import { getAllGalleries } from "@/lib/galleries";
 import { getAllQuizzes } from "@/lib/quizzes";
+import { isPhotoLocale, perfectlyTimedPhotos } from "@/lib/perfectlyTimedPhotos";
 
 export type TopLevelContentRoute = {
   kind: "gallery" | "locale-home" | "quiz";
@@ -44,6 +45,11 @@ export function getTwoSegmentContentRoutes(): TwoSegmentContentRoute[] {
   const keys = new Set<string>();
 
   for (const locale of getSupportedLocales().filter((item) => item !== defaultLocale)) {
+    if (isPhotoLocale(locale)) {
+      const key = `${locale}/${perfectlyTimedPhotos.slug}`;
+      assertUniqueRoute(keys, key, `Localized gallery route /${key}`);
+      routes.push({ first: locale, kind: "localized-gallery", second: perfectlyTimedPhotos.slug });
+    }
     for (const gallery of getAllGalleries(locale)) {
       const key = `${locale}/${gallery.slug}`;
       assertUniqueRoute(keys, key, `Localized gallery route /${key}`);

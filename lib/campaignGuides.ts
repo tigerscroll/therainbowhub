@@ -1,4 +1,4 @@
-import { perfectlyTimedPhotos } from "./perfectlyTimedPhotos";
+import { getPerfectlyTimedPhotosPath, perfectlyTimedPhotoLocales } from "./perfectlyTimedPhotos";
 import localizedBeachCampaigns from "@/data/beaches-campaign-copy.json";
 import localizedParadiseCampaigns from "@/data/paradise-campaign-copy.json";
 
@@ -182,7 +182,10 @@ export function hasGuideCampaign(search: string) {
   return [...new URLSearchParams(search).keys()].some(key => campaignParameter.test(key));
 }
 
-const campaignEntryPaths = [...campaignGuides, ...campaignGalleryEntries, perfectlyTimedPhotos].map(entry => entry.path);
+const campaignEntryPaths = [
+  ...[...campaignGuides, ...campaignGalleryEntries].map(entry => entry.path),
+  ...perfectlyTimedPhotoLocales.map(getPerfectlyTimedPhotosPath),
+];
 
 export const campaignGuideBootScript = `if (${JSON.stringify(campaignEntryPaths)}.includes(location.pathname.replace(/\\/$/, "")) &&
   Array.from(new URLSearchParams(location.search).keys()).some(function(key) { return ${campaignParameter}.test(key); })) {

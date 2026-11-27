@@ -6,7 +6,7 @@ import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { localeLanguageTag } from "@/lib/localeConfig";
-import { perfectlyTimedPhotos } from "@/lib/perfectlyTimedPhotos";
+import { getPerfectlyTimedPhotosPath, perfectlyTimedPhotoLocales, perfectlyTimedPhotos, type PhotoLocale } from "@/lib/perfectlyTimedPhotos";
 
 const defaultLocale = getDefaultLocale();
 
@@ -41,11 +41,21 @@ export function galleryAlternates(slug: string, locale: SupportedLocale = defaul
   };
 }
 
+export function perfectlyTimedPhotosAlternates(locale: "en" | PhotoLocale) {
+  return {
+    canonical: absoluteUrl(getPerfectlyTimedPhotosPath(locale)),
+    languages: {
+      ...languageAlternates(getPerfectlyTimedPhotosPath, perfectlyTimedPhotoLocales),
+      "x-default": absoluteUrl(perfectlyTimedPhotos.path),
+    },
+  };
+}
+
 export function getInfoPath(locale: SupportedLocale, slug: InfoPageSlug) {
   return locale === defaultLocale ? `/info/${slug}` : `/${locale}/info/${slug}`;
 }
 
-function languageAlternates(pathForLocale: (locale: SupportedLocale) => string, locales = getSupportedLocales()) {
+function languageAlternates<Locale extends SupportedLocale>(pathForLocale: (locale: Locale) => string, locales: readonly Locale[]) {
   return Object.fromEntries(
     locales.map((locale) => [localeLanguageTag(locale), absoluteUrl(pathForLocale(locale))]),
   ) as Record<string, string>;
@@ -55,7 +65,7 @@ export function homeAlternates() {
   return {
     canonical: absoluteUrl("/"),
     languages: {
-      ...languageAlternates(getHomePath),
+      ...languageAlternates(getHomePath, getSupportedLocales()),
       "x-default": absoluteUrl("/"),
     },
   };
@@ -89,7 +99,7 @@ export function localizedHomeAlternates(locale: SupportedLocale) {
   return {
     canonical: absoluteUrl(getHomePath(locale)),
     languages: {
-      ...languageAlternates(getHomePath),
+      ...languageAlternates(getHomePath, getSupportedLocales()),
       "x-default": absoluteUrl("/"),
     },
   };
@@ -99,7 +109,7 @@ export function infoAlternates(locale: SupportedLocale, slug: InfoPageSlug) {
   return {
     canonical: absoluteUrl(getInfoPath(locale, slug)),
     languages: {
-      ...languageAlternates((item) => getInfoPath(item, slug)),
+      ...languageAlternates((item) => getInfoPath(item, slug), getSupportedLocales()),
       "x-default": absoluteUrl(getInfoPath(defaultLocale, slug)),
     },
   };
@@ -201,12 +211,12 @@ export function getSitemapEntries() {
       changeFrequency: "daily" as const,
       priority: 1,
     },
-    {
-      url: absoluteUrl(perfectlyTimedPhotos.path),
+    ...perfectlyTimedPhotoLocales.map(locale => ({
+      url: absoluteUrl(getPerfectlyTimedPhotosPath(locale)),
       lastModified: new Date(perfectlyTimedPhotos.publishedAt),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
-    },
+    })),
     ...campaignGuides.map(guide => ({
       url: absoluteUrl(guide.path),
       lastModified: new Date(guide.publishedAt),

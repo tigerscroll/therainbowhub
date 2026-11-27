@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { CampaignEntryPopup } from "@/components/experience/CampaignEntryPopup";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import { campaignGuideBootAttribute, hasGuideCampaign } from "@/lib/campaignGuides";
+import type { PhotoGalleryCopy } from "@/lib/perfectlyTimedPhotos";
 import styles from "./SportsPhotoGallery.module.css";
 
 type Photo = {
@@ -22,11 +23,13 @@ const adInterval = 5;
 const firstPhoto = { index: 0, views: 1 };
 
 export function SportsPhotoGallery({
-  photos,
-  content,
+  photos, copy, source, locale, rtl,
 }: {
   photos: readonly Photo[];
-  content: { title: string; popupTitle: string; description: string; source: string };
+  copy: PhotoGalleryCopy;
+  source: string;
+  locale: string;
+  rtl: boolean;
 }) {
   const [progress, setProgress] = useState<Progress | null>(null);
   const [ready, setReady] = useState(false);
@@ -41,6 +44,10 @@ export function SportsPhotoGallery({
   const photo = progress ? photos[progress.index] : null;
   const nextNeedsAd = Boolean(progress && progress.views >= adInterval);
   const showPopup = !progress && !dismissed;
+  const numberFormat = useMemo(() => new Intl.NumberFormat(locale), [locale]);
+  const total = numberFormat.format(photos.length);
+  const nextArrow = rtl ? "←" : "→";
+  const previousArrow = rtl ? "→" : "←";
 
   useLayoutEffect(() => {
     // The server and initial client render include the same popup markup.
@@ -90,18 +97,18 @@ export function SportsPhotoGallery({
   return (
     <article className={styles.page} aria-labelledby="sports-gallery-title">
       <header className={styles.heading} inert={showPopup && ready}>
-        <h1 id="sports-gallery-title">{content.title}</h1>
-        <p>{content.description}</p>
+        <h1 id="sports-gallery-title">{copy.title}</h1>
+        <p>{copy.description}</p>
       </header>
       <section
-        aria-label="Sports photo gallery"
+        aria-label={copy.galleryLabel}
         className={styles.card}
         inert={showPopup && ready}
         onKeyDown={(event) => {
           if (!progress || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
           if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
           event.preventDefault();
-          navigate(event.key === "ArrowRight" ? 1 : -1);
+          navigate(event.key === (rtl ? "ArrowLeft" : "ArrowRight") ? 1 : -1);
         }}
       >
         {photo && progress ? (
@@ -120,30 +127,30 @@ export function SportsPhotoGallery({
                   const touch = event.changedTouches[0];
                   if (!start || !touch) return;
                   const x = touch.clientX - start.x;
-                  if (Math.abs(x) >= 45 && Math.abs(x) > Math.abs(touch.clientY - start.y)) navigate(x < 0 ? 1 : -1);
+                  if (Math.abs(x) >= 45 && Math.abs(x) > Math.abs(touch.clientY - start.y)) navigate((rtl ? x > 0 : x < 0) ? 1 : -1);
                 }}
               >
                 {failedPhoto === photo.src ? (
-                  <p role="status">This photo couldn’t load. Try the next one or open the original below.</p>
+                  <p role="status">{copy.photoError}</p>
                 ) : (
                   <img key={photo.src} src={photo.src} alt={photo.alt} decoding="async" onError={() => setFailedPhoto(photo.src)} />
                 )}
               </div>
               <figcaption className={styles.caption}>
                 <div aria-live="polite">
-                  <p className={styles.position}>Photo {progress.index + 1} of {photos.length}</p>
+                  <p className={styles.position}>{copy.position.replace("{number}", numberFormat.format(progress.index + 1)).replace("{total}", total)}</p>
                   <h2>{photo.title}</h2>
                 </div>
-                <p>{photo.credit}</p>
+                <p><bdi>{photo.credit}</bdi></p>
                 <div className={styles.credits}>
-                  <a href={photo.source} title={photo.originalTitle} target="_blank" rel="noopener noreferrer">Original photo</a>
-                  <a href={photo.licenseUrl || photo.source} target="_blank" rel="noopener noreferrer">{photo.license}</a>
+                  <a href={photo.source} title={photo.originalTitle} target="_blank" rel="noopener noreferrer">{copy.originalPhoto}</a>
+                  <a href={photo.licenseUrl || photo.source} dir="ltr" target="_blank" rel="noopener noreferrer">{photo.license}</a>
                 </div>
               </figcaption>
             </figure>
-            <nav className={styles.controls} aria-label="Photo navigation">
+            <nav className={styles.controls} aria-label={copy.navigationLabel}>
               <button type="button" onClick={() => navigate(-1)} disabled={busy}>
-                <span aria-hidden="true">←</span> Previous photo
+                <span aria-hidden="true">{previousArrow}</span> {copy.previousPhoto}
               </button>
               <button
                 type="button"
@@ -153,33 +160,36 @@ export function SportsPhotoGallery({
                 disabled={busy}
                 aria-describedby={nextNeedsAd ? "sports-next-disclosure" : undefined}
               >
-                {busy ? "Loading…" : "Next photo"} <span aria-hidden="true">→</span>
+                {busy ? copy.loading : copy.nextPhoto} <span aria-hidden="true">{nextArrow}</span>
               </button>
             </nav>
-            {nextNeedsAd && <p id="sports-next-disclosure" className={styles.note}>Watch a short ad to see the next photo.</p>}
+            {nextNeedsAd && <p id="sports-next-disclosure" className={styles.note}>{copy.nextAd}</p>}
           </>
         ) : (
           <div className={styles.entry}>
-            <p>{ready ? `${photos.length} perfectly timed sports photos` : "Loading photos…"}</p>
-            {dismissed && <button ref={reopenButton} className={styles.primary} type="button" onClick={() => setDismissed(false)}>Open Gallery Popup</button>}
+            <p>{ready ? copy.photoCount.replace("{total}", total) : copy.loadingPhotos}</p>
+            {dismissed && <button ref={reopenButton} className={styles.primary} type="button" onClick={() => setDismissed(false)}>{copy.reopen}</button>}
           </div>
         )}
-        {adError && photo && <p className={styles.note} role="status">No ad is available right now. Please try again shortly.</p>}
+        {adError && photo && <p className={styles.note} role="status">{copy.adError}</p>}
       </section>
       {showPopup && (
         <CampaignEntryPopup
-          title={content.popupTitle}
+          title={copy.popupTitle}
           prerendered={!ready}
           busy={busy}
           adUnavailable={adError}
-          adNote="Watch one short ad to open the gallery."
-          noAdLabel="View without an ad"
+          adNote={copy.popupAdNote}
+          noAdLabel={copy.viewWithoutAd}
+          continueLabel={copy.popupStart}
+          loadingLabel={copy.popupLoading}
+          unavailableLabel={copy.popupUnavailable}
           onStart={() => openWithAd(firstPhoto, true)}
           onDismiss={() => { setAdError(false); setDismissed(true); }}
           onContinueWithoutAd={() => { focusAfterUnlock.current = true; show(firstPhoto); }}
         />
       )}
-      <noscript><p>Enable JavaScript to browse, or <a href={content.source}>view the original gallery</a>.</p></noscript>
+      <noscript><p>{copy.enableJavascript} <a href={source}>{copy.originalGallery}</a>.</p></noscript>
     </article>
   );
 }

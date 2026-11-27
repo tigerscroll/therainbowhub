@@ -170,6 +170,12 @@ if (!fs.existsSync(outputRoot)) {
   }
   const sitemap = fs.readFileSync(path.join(outputRoot, "sitemap.xml"), "utf8");
   const sitemapPaths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
+  const photoTranslations = JSON.parse(fs.readFileSync(path.join(root, "data", "media", "perfectly-timed-photos-ui.json"), "utf8"));
+  for (const locale of ["en", ...Object.keys(photoTranslations)]) {
+    const route = `${locale === "en" ? "" : `/${locale}`}/perfectly-timed-photos`;
+    if (!routeFile(route)) addError(`Missing exported photo gallery: ${route}`);
+    if (sitemapPaths.filter(entry => entry === route).length !== 1) addError(`Photo gallery must appear once in the sitemap: ${route}`);
+  }
   for (const route of restoredCampaignRoutes) {
     if (!routeFile(route)) addError(`Missing restored campaign guide: ${route}`);
     if (sitemapPaths.filter(entry => entry === route).length !== 1) addError(`Restored campaign guide must appear once in the sitemap: ${route}`);
