@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { GalleryTemplate } from "@/components/GalleryTemplate";
+import { GalleryRoute } from "@/components/article/GalleryRoute";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getTwoSegmentContentRoutes } from "@/lib/contentCatalogue";
-import { galleryArticleTheme, getGalleryBySlug, getGalleryLocales } from "@/lib/galleries";
+import { getGalleryBySlug } from "@/lib/galleries";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
 import { getQuizBySlug } from "@/lib/quizzes";
 import { buildMetadata, galleryAlternates, getGalleryPath, getQuizPath, localizedQuizAlternates } from "@/lib/seo";
@@ -55,26 +55,10 @@ export default async function LocalizedQuizPage({ params }: LocalizedQuizPagePro
   const { locale, slug } = await params;
   if (!isSupportedLocale(locale) || locale === getDefaultLocale()) notFound();
   const gallery = getGalleryBySlug(slug, locale);
-  const translations = getTranslations(locale);
-  if (gallery) {
-    const localePaths = Object.fromEntries(
-      getGalleryLocales(gallery.slug).map(item => [item, getGalleryPath(gallery.slug, item)]),
-    );
-    return (
-      <SiteShell
-        availableLocales={getGalleryLocales(gallery.slug)}
-        currentPath={getGalleryPath(gallery.slug, locale)}
-        locale={locale}
-        localePaths={localePaths}
-        quizTheme={galleryArticleTheme}
-        translations={translations}
-      >
-        <GalleryTemplate gallery={gallery} />
-      </SiteShell>
-    );
-  }
+  if (gallery) return <GalleryRoute gallery={gallery} />;
   const quiz = getQuizBySlug(slug, locale);
   if (!quiz) notFound();
+  const translations = getTranslations(locale);
 
   return (
     <SiteShell currentPath={getQuizPath(locale, quiz.slug)} locale={locale} quizTheme={quiz.theme} translations={translations}>

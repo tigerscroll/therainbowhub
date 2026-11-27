@@ -1,4 +1,25 @@
 import { perfectlyTimedPhotos } from "./perfectlyTimedPhotos";
+import localizedBeachCampaigns from "@/data/beaches-campaign-copy.json";
+
+export type CampaignGuideLabels = {
+  start: string;
+  startLoading: string;
+  loading: string;
+  startNote: string;
+  readNote: string;
+  unavailable: string;
+  readWithoutAd: string;
+  reopen: string;
+  fullGuide: string;
+};
+
+type CampaignGalleryEntry = {
+  path: string;
+  popupTitle: string;
+  campaignIntro: string;
+  continueLabel?: string;
+  labels?: CampaignGuideLabels;
+};
 
 export const dentalGuide = {
   path: "/dental",
@@ -127,7 +148,7 @@ export const datingGuide = {
 } as const;
 
 // These galleries retain their original titles, article text and sitemap entries.
-export const campaignGalleryEntries = [
+export const campaignGalleryEntries: readonly CampaignGalleryEntry[] = [
   {
     path: "/beaches",
     popupTitle: "Adults Only Beaches",
@@ -144,7 +165,8 @@ export const campaignGalleryEntries = [
     popupTitle: "Adults Only Events",
     campaignIntro: "The invitation tells you where to go, but not always what to expect. From dress codes and guest lists to phone rules and personal boundaries, here’s what to check before you show up.",
   },
-] as const;
+  ...Object.entries(localizedBeachCampaigns).map(([locale, copy]) => ({ path: `/${locale}/beaches`, ...copy })),
+];
 
 export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide, tvGuide, datingGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";

@@ -9,6 +9,9 @@ export function CampaignEntryPopup({
   title, prerendered, busy, adUnavailable, onStart, onDismiss, onContinueWithoutAd,
   adNote = "Watch one short ad to open the guide.",
   noAdLabel = "Read without an ad",
+  continueLabel = "CONTINUE",
+  loadingLabel = "LOADING...",
+  unavailableLabel = "No ad is available right now.",
   actionTone = "green",
 }: {
   title: string;
@@ -20,6 +23,9 @@ export function CampaignEntryPopup({
   onContinueWithoutAd: () => void;
   adNote?: string;
   noAdLabel?: string;
+  continueLabel?: string;
+  loadingLabel?: string;
+  unavailableLabel?: string;
   actionTone?: CampaignActionTone;
 }) {
   const dialog = useRef<HTMLDivElement>(null);
@@ -59,11 +65,11 @@ export function CampaignEntryPopup({
       <div className={styles.popup}>
         <h2 id={titleId}>{title}</h2>
         <button className={styles.popupAction} type="button" disabled={busy} data-google-interstitial="false" aria-describedby={noteId} onClick={onStart}>
-          <span className={actionTone === "red" ? `${styles.actionFace} ${styles.redActionFace}` : styles.actionFace}>{busy ? "LOADING..." : "CONTINUE"}</span>
+          <span className={actionTone === "red" ? `${styles.actionFace} ${styles.redActionFace}` : styles.actionFace}>{busy ? loadingLabel : continueLabel}</span>
         </button>
         {adUnavailable ? (
           <>
-            <p className={styles.adNote} role="status">No ad is available right now.</p>
+            <p className={styles.adNote} role="status">{unavailableLabel}</p>
             <button className={styles.secondary} type="button" data-google-interstitial="false" onClick={onContinueWithoutAd}>{noAdLabel}</button>
           </>
         ) : null}

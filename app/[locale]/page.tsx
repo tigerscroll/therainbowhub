@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { HomePageContent } from "@/components/HomePageContent";
-import { CampaignGuideEntry } from "@/components/article/CampaignGuideEntry";
-import { GalleryTemplate } from "@/components/GalleryTemplate";
+import { GalleryRoute } from "@/components/article/GalleryRoute";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
-import { campaignGalleryEntries } from "@/lib/campaignGuides";
 import { getTopLevelContentRoutes } from "@/lib/contentCatalogue";
 import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
-import { galleryArticleTheme, getGalleryBySlug, getGalleryLocales } from "@/lib/galleries";
+import { getGalleryBySlug } from "@/lib/galleries";
 import { getQuizBySlug } from "@/lib/quizzes";
 import { buildMetadata, galleryAlternates, getGalleryPath, getHomePath, getQuizPath, localizedHomeAlternates, quizAlternates } from "@/lib/seo";
 
@@ -90,41 +88,7 @@ export default async function SegmentPage({ params }: SegmentPageProps) {
   const translations = getTranslations(locale);
   const gallery = getGalleryBySlug(segment, locale);
 
-  if (gallery) {
-    const galleryPath = getGalleryPath(gallery.slug, locale);
-    const campaign = campaignGalleryEntries.find(entry => entry.path === galleryPath);
-    const localePaths = Object.fromEntries(
-      getGalleryLocales(gallery.slug).map(item => [item, getGalleryPath(gallery.slug, item)]),
-    );
-    return (
-      <SiteShell
-        availableLocales={getGalleryLocales(gallery.slug)}
-        currentPath={galleryPath}
-        locale={locale}
-        localePaths={localePaths}
-        quizTheme={campaign ? undefined : galleryArticleTheme}
-        translations={translations}
-      >
-        {campaign ? (
-          <CampaignGuideEntry
-            guide={{ ...campaign, title: gallery.landing.title, intro: gallery.gallery.introduction.join(" ") }}
-            actionTone="red"
-          >
-            {gallery.items.map(item => (
-              <section key={item.id}>
-                <h2>{item.title}</h2>
-                {item.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-              </section>
-            ))}
-            <section>
-              <h2>{gallery.gallery.completeTitle}</h2>
-              <p>{gallery.gallery.completeCopy}</p>
-            </section>
-          </CampaignGuideEntry>
-        ) : <GalleryTemplate gallery={gallery} />}
-      </SiteShell>
-    );
-  }
+  if (gallery) return <GalleryRoute gallery={gallery} />;
 
   const quiz = getQuizBySlug(segment, locale);
 

@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { restoredCampaignRoutes } from "../../scripts/restored-campaign-routes.mjs";
 import { isArticleManifest, isArticleSection } from "./articleSchema.ts";
 
 test("article schema accepts optional gate notes, callouts and conclusions", () => {
@@ -94,7 +95,7 @@ test("saved article locale files remain complete validated manifests", () => {
   }
 });
 
-test("saved English article identities remain unique without public page wrappers", () => {
+test("saved English article identities remain unique and only restored guides have public page wrappers", () => {
   const root = process.cwd();
   const articleRoot = path.join(root, "data", "articles");
   const quizRoot = path.join(root, "data", "quizzes");
@@ -113,8 +114,9 @@ test("saved English article identities remain unique without public page wrapper
     const routeSlug = value.routeSlug ?? value.slug;
     assert.equal(routeSlugs.has(routeSlug), false, `duplicate English article route: /${routeSlug}`);
     assert.equal(quizSlugs.has(routeSlug), false, `article route /${routeSlug} conflicts with a quiz`);
-    assert.equal(fs.existsSync(path.join(root, "app", "(default)", routeSlug, "page.tsx")), false,
-      `/${routeSlug} must not have a public page wrapper in the quiz-only site`);
+    assert.equal(fs.existsSync(path.join(root, "app", "(default)", routeSlug, "page.tsx")),
+      restoredCampaignRoutes.has(`/${routeSlug}`),
+      `/${routeSlug} may have a public page wrapper only if restored as a standalone campaign guide`);
     routeSlugs.add(routeSlug);
   }
 

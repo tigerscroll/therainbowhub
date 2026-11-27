@@ -1,8 +1,39 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { chromium } from "playwright-core";
 
 const base = new URL(process.env.CAMPAIGN_GUIDE_TEST_URL ?? "http://localhost:3217");
 assert(["localhost", "127.0.0.1", "[::1]"].includes(base.hostname), "Use a local build only");
+const readGallery = filename => JSON.parse(readFileSync(new URL(`../data/galleries/${filename}.json`, import.meta.url), "utf8"));
+const beachEditions = JSON.parse(readFileSync(new URL("../data/beaches-campaign-copy.json", import.meta.url), "utf8"));
+const englishBeach = readGallery("adult-only-beaches");
+assert.deepEqual(Object.keys(beachEditions).sort(), ["ar", "de", "es", "fr", "hi", "id", "it", "nl", "pt"]);
+const beaches = Object.entries(beachEditions).map(([locale, copy]) => {
+  const article = readGallery(`adult-only-beaches.${locale}`);
+  assert.equal(article.locale, locale);
+  assert.equal(article.slug, englishBeach.slug);
+  assert.deepEqual(article.items.map(item => [item.id, item.number]), englishBeach.items.map(item => [item.id, item.number]));
+  for (const [index, item] of article.items.entries()) {
+    assert(item.title.trim() && item.title !== englishBeach.items[index].title, `${locale}: untranslated heading ${item.id}`);
+    assert(item.paragraphs.length > 0 && item.paragraphs.every(text => text.trim() && !englishBeach.items[index].paragraphs.includes(text)), `${locale}: empty or untranslated body ${item.id}`);
+  }
+  return {
+    path: `/${locale}/beaches`,
+    locale,
+    popup: copy.popupTitle,
+    continueLabel: copy.continueLabel,
+    labels: copy.labels,
+    teaser: copy.campaignIntro,
+    actionColor: "rgb(162, 29, 44)",
+    section: article.items[0].title,
+    sectionCount: 48,
+  };
+});
+const defaultLabels = {
+  start: "CONTINUE", startLoading: "LOADING...", loading: "Loading...", startNote: "Watch a short ad to continue",
+  readNote: "Watch one short ad to read the rest.", unavailable: "No ad is available right now.",
+  readWithoutAd: "Read without an ad", reopen: "Open Guide Popup", fullGuide: "Full guide",
+};
 const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
 });
@@ -152,12 +183,18 @@ const guides = [
     sectionCount: 6,
     source: "FTC guide to romance scams",
   },
+  ...beaches,
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
 try {
-  for (const [guide, width, key] of guides.flatMap(guide => cases.map(([width, key]) => [guide, width, key]))) {
+  const selected = process.env.CAMPAIGN_GUIDE_TEST_PATH
+    ? guides.filter(guide => guide.path.endsWith(process.env.CAMPAIGN_GUIDE_TEST_PATH))
+    : guides;
+  assert(selected.length > 0, "No campaign pages selected");
+  for (const [guide, width, key] of selected.flatMap(guide => cases.map(([width, key]) => [guide, width, key]))) {
     const campaign = key.startsWith("utm_");
+    const labels = guide.labels ?? defaultLabels;
     const context = await browser.newContext({ viewport: { width, height: 760 } });
     let releaseHydration;
     const hydration = new Promise(resolve => { releaseHydration = resolve; });
@@ -197,7 +234,7 @@ try {
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
     const dialog = page.getByRole("dialog", { name: guide.popup });
-    const cta = dialog.getByRole("button", { name: "CONTINUE", exact: true });
+    const cta = dialog.getByRole("button", { name: labels.start, exact: true });
     const seeMore = page.getByRole("button", { name: guide.continueLabel ?? "See more", exact: true });
     const teaser = page.getByText(guide.teaser);
     const section = page.getByRole("heading", { name: guide.section });
@@ -210,6 +247,13 @@ try {
       if (key) url.searchParams.set(key, "test");
       assert.equal((await page.goto(url.href, { waitUntil: "commit" })).status(), 200);
       await prerendered.waitFor({ state: "attached" });
+      if (guide.locale) {
+        assert.equal(await page.locator("html").getAttribute("lang"), guide.locale);
+        assert.equal(await page.locator("html").getAttribute("dir"), guide.locale === "ar" ? "rtl" : "ltr");
+        assert.equal(new URL(await page.locator('link[rel="canonical"]').getAttribute("href")).pathname, guide.path);
+        const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll(links => links.map(link => new URL(link.href).pathname));
+        assert.deepEqual([...new Set(alternates)].sort(), ["/beaches", ...beaches.map(edition => edition.path)].sort());
+      }
       if (campaign) {
         await cta.waitFor();
         await page.waitForFunction(() => performance.getEntriesByName("first-contentful-paint").length > 0);
@@ -233,7 +277,7 @@ try {
       assert.equal((await cta.boundingBox()).height, Math.min(112, Math.max(72, width * .25)));
       const pulse = await cta.locator("span").evaluate(el => [getComputedStyle(el).animationDuration, getComputedStyle(el).animationIterationCount]);
       assert.deepEqual(pulse, ["1s", "infinite"]);
-      const note = dialog.getByText("Watch a short ad to continue", { exact: true });
+      const note = dialog.getByText(labels.startNote, { exact: true });
       assert(await note.evaluate(el => window.innerHeight - el.getBoundingClientRect().bottom < 80), "disclosure sits at the bottom");
       assert.equal(await dialog.getByRole("button").count(), 1, "the default popup has no close button or secondary CTA");
       assert.equal(await dialog.getByRole("link").count(), 0, "the default popup only shows the single CTA and ad note");
@@ -248,21 +292,22 @@ try {
         assert.equal(await section.isVisible(), false);
         assert.equal(await seeMore.count(), 0, "the second gate isn't offered before the intro is unlocked");
         assert.equal(await requests(), 0);
-        await page.getByRole("button", { name: "Open Guide Popup" }).click();
+        await page.getByRole("button", { name: labels.reopen }).click();
       }
 
       if (width === 1200) {
         await page.evaluate(() => { window.guideTest.noFill = true; });
         await cta.click();
-        await dialog.getByText("No ad is available right now.").waitFor();
+        await dialog.getByText(labels.unavailable).waitFor();
         assert.equal(await section.isVisible(), false);
-        await dialog.getByRole("button", { name: "Read without an ad" }).click();
+        await dialog.getByRole("button", { name: labels.readWithoutAd }).click();
         assert.equal(await requests(), 1);
       } else {
         await cta.click();
         await waitAd();
-        const loading = dialog.getByRole("button", { name: "LOADING...", exact: true });
+        const loading = dialog.getByRole("button", { name: labels.startLoading, exact: true });
         assert.equal(await loading.locator("span").evaluate(el => getComputedStyle(el).animationName), "none");
+        assert(await loading.locator("span").evaluate(el => el.scrollWidth <= el.clientWidth), "popup loading copy must fit");
         await page.evaluate(() => window.guideTest.close(false));
         await cta.waitFor();
         assert.equal(await section.isVisible(), false, "closing without a reward must not unlock the guide");
@@ -275,7 +320,7 @@ try {
 
       await teaser.waitFor();
       await seeMore.waitFor();
-      await page.getByText("Watch one short ad to read the rest.", { exact: true }).waitFor();
+      await page.getByText(labels.readNote, { exact: true }).waitFor();
       assert.equal(await dialog.count(), 0);
       assert.equal(await section.isVisible(), false, "the first gate only opens the intro");
       const firstStageRequests = await requests();
@@ -283,13 +328,13 @@ try {
       await seeMore.click();
 
       if (width === 1200) {
-        await page.getByRole("status").getByText("No ad is available right now.").waitFor();
+        await page.getByRole("status").getByText(labels.unavailable).waitFor();
         assert.equal(await section.isVisible(), false);
-        await page.getByRole("button", { name: "Read without an ad" }).click();
+        await page.getByRole("button", { name: labels.readWithoutAd }).click();
         assert.equal(await requests(), firstStageRequests + 1);
       } else {
         await waitAd();
-        await page.getByRole("button", { name: "Loading...", exact: true }).waitFor();
+        await page.getByRole("button", { name: labels.loading, exact: true }).waitFor();
         assert.equal(await section.isVisible(), false);
         await page.evaluate(() => window.guideTest.close(false));
         await seeMore.waitFor();
@@ -307,7 +352,7 @@ try {
     assert.equal(await dialog.count(), 0);
     assert.equal(await seeMore.count(), 0);
     assert.equal(await page.locator("h1").count(), 1);
-    if (guide.sectionCount) assert.equal(await page.getByRole("region", { name: "Full guide" }).locator("section").count(), guide.sectionCount);
+    if (guide.sectionCount) assert.equal(await page.getByRole("region", { name: labels.fullGuide }).locator("section").count(), guide.sectionCount);
     if (guide.source) await page.getByRole("link", { name: guide.source }).waitFor();
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     assert.deepEqual(errors, []);

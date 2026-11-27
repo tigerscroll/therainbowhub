@@ -1,5 +1,14 @@
 import adultOnlyEvents from "@/data/galleries/adult-only-events.json";
 import adultOnlyBeaches from "@/data/galleries/adult-only-beaches.json";
+import adultOnlyBeachesAr from "@/data/galleries/adult-only-beaches.ar.json";
+import adultOnlyBeachesDe from "@/data/galleries/adult-only-beaches.de.json";
+import adultOnlyBeachesEs from "@/data/galleries/adult-only-beaches.es.json";
+import adultOnlyBeachesFr from "@/data/galleries/adult-only-beaches.fr.json";
+import adultOnlyBeachesHi from "@/data/galleries/adult-only-beaches.hi.json";
+import adultOnlyBeachesId from "@/data/galleries/adult-only-beaches.id.json";
+import adultOnlyBeachesIt from "@/data/galleries/adult-only-beaches.it.json";
+import adultOnlyBeachesNl from "@/data/galleries/adult-only-beaches.nl.json";
+import adultOnlyBeachesPt from "@/data/galleries/adult-only-beaches.pt.json";
 import adultOnlyHotels from "@/data/galleries/adults-only-hotels.json";
 import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
 import hospiceNurses from "@/data/galleries/hospice-nurses.json";
@@ -152,6 +161,15 @@ function isGalleryManifest(value: unknown): value is GalleryManifest {
 
 const galleryManifests = [
   adultOnlyBeaches,
+  adultOnlyBeachesAr,
+  adultOnlyBeachesDe,
+  adultOnlyBeachesEs,
+  adultOnlyBeachesFr,
+  adultOnlyBeachesHi,
+  adultOnlyBeachesId,
+  adultOnlyBeachesIt,
+  adultOnlyBeachesNl,
+  adultOnlyBeachesPt,
   adultOnlyEvents,
   adultOnlyHotels,
   adultOnlyParadise,
