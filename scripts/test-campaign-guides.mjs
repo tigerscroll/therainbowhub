@@ -131,6 +131,27 @@ const guides = [
     source: "CDC’s prostate cancer symptoms guide",
     screenshot: process.env.PROSTATE_SCREENSHOT,
   },
+  {
+    path: "/tv",
+    popup: "Unforgettable Forecast Slip-Ups",
+    continueLabel: "See What Went Wrong",
+    teaser: "One weather map showed impossible heat.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. The Arizona heat map that went off the scale",
+    sectionCount: 5,
+    source: "FOX 9: the original graphics glitch",
+    screenshot: process.env.TV_SCREENSHOT,
+  },
+  {
+    path: "/dating",
+    popup: "Adults Only Dating",
+    continueLabel: "See What to Check Before You Meet",
+    teaser: "A great chat doesn’t always mean a great first date.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. Pick a way to meet that suits you",
+    sectionCount: 6,
+    source: "FTC guide to romance scams",
+  },
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 

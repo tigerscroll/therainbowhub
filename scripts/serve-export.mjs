@@ -19,6 +19,8 @@ const governmentHelpDemo = process.argv.includes("--governmenthelp-demo");
 const fullyFundedDemo = process.argv.includes("--fullyfunded-demo");
 const eventsDemo = process.argv.includes("--events-demo");
 const prostateDemo = process.argv.includes("--prostate-demo");
+const tvDemo = process.argv.includes("--tv-demo");
+const datingDemo = process.argv.includes("--dating-demo");
 const demoScript = `<script>
   (() => {
     const listeners = new Map();
@@ -108,7 +110,9 @@ const server = http.createServer((request, response) => {
     governmentHelpDemo && /^\/governmenthelp\/?$/.test(pathname) ||
     fullyFundedDemo && /^\/fullyfunded\/?$/.test(pathname) ||
     eventsDemo && /^\/events\/?$/.test(pathname) ||
-    prostateDemo && /^\/prostate\/?$/.test(pathname)
+    prostateDemo && /^\/prostate\/?$/.test(pathname) ||
+    tvDemo && /^\/tv\/?$/.test(pathname) ||
+    datingDemo && /^\/dating\/?$/.test(pathname)
   );
   response.writeHead(status, {
     "Cache-Control": "no-cache",
@@ -127,6 +131,6 @@ const server = http.createServer((request, response) => {
   else fs.createReadStream(file).pipe(response);
 });
 
-server.listen(port, photoDemo || yearsLeftDemo || dentalDemo || mobilityDemo || retiredDemo || retreatsDemo || beachesDemo || resortsDemo || jobsDemo || paradiseDemo || makeMoneyDemo || governmentHelpDemo || fullyFundedDemo || eventsDemo || prostateDemo ? "127.0.0.1" : "0.0.0.0", () => {
+server.listen(port, photoDemo || yearsLeftDemo || dentalDemo || mobilityDemo || retiredDemo || retreatsDemo || beachesDemo || resortsDemo || jobsDemo || paradiseDemo || makeMoneyDemo || governmentHelpDemo || fullyFundedDemo || eventsDemo || prostateDemo || tvDemo || datingDemo ? "127.0.0.1" : "0.0.0.0", () => {
   console.log(`Static export ready at http://localhost:${port}`);
 });

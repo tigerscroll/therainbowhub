@@ -104,6 +104,28 @@ export const prostateGuide = {
   publishedAt: "2026-11-27",
 } as const;
 
+export const tvGuide = {
+  path: "/tv",
+  title: "Unforgettable Forecast Slip-Ups That Took Over the Internet On Live TV",
+  description: "Real live-TV weather bloopers, from an impossible Arizona heat map to a forecaster who multiplied on screen and guests who stole the show.",
+  intro: "The weather forecast is supposed to be the predictable part of the news. In these five live broadcasts, the graphics or the guests had other plans. Each story links to the original broadcaster’s account or clip.",
+  campaignIntro: "One weather map showed impossible heat. Another made the forecaster multiply. Then a surprise guest crawled into a live forecast and grabbed the presenter’s leg. The best part isn’t what went wrong—it’s what each presenter did next.",
+  popupTitle: "Unforgettable Forecast Slip-Ups",
+  continueLabel: "See What Went Wrong",
+  publishedAt: "2026-11-27",
+} as const;
+
+export const datingGuide = {
+  path: "/dating",
+  title: "Adults Only Dating",
+  description: "A practical guide to dating as an adult, from choosing how to meet people to planning a first date and spotting red flags.",
+  intro: "Dating apps, singles events and introductions through friends can all work. The best starting point is the one that fits how you like to meet people and what you’re looking for.",
+  campaignIntro: "A great chat doesn’t always mean a great first date. Before you swap numbers or make plans, here’s one question that can reveal a mismatch early—and which red flags are worth taking seriously.",
+  popupTitle: "Adults Only Dating",
+  continueLabel: "See What to Check Before You Meet",
+  publishedAt: "2026-11-27",
+} as const;
+
 // These galleries retain their original titles, article text and sitemap entries.
 export const campaignGalleryEntries = [
   {
@@ -124,7 +146,7 @@ export const campaignGalleryEntries = [
   },
 ] as const;
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide, tvGuide, datingGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 
