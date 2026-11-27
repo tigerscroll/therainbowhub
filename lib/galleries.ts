@@ -11,6 +11,15 @@ import adultOnlyBeachesNl from "@/data/galleries/adult-only-beaches.nl.json";
 import adultOnlyBeachesPt from "@/data/galleries/adult-only-beaches.pt.json";
 import adultOnlyHotels from "@/data/galleries/adults-only-hotels.json";
 import adultOnlyParadise from "@/data/galleries/adults-only-paradise.json";
+import adultOnlyParadiseAr from "@/data/galleries/adults-only-paradise.ar.json";
+import adultOnlyParadiseDe from "@/data/galleries/adults-only-paradise.de.json";
+import adultOnlyParadiseEs from "@/data/galleries/adults-only-paradise.es.json";
+import adultOnlyParadiseFr from "@/data/galleries/adults-only-paradise.fr.json";
+import adultOnlyParadiseHi from "@/data/galleries/adults-only-paradise.hi.json";
+import adultOnlyParadiseId from "@/data/galleries/adults-only-paradise.id.json";
+import adultOnlyParadiseIt from "@/data/galleries/adults-only-paradise.it.json";
+import adultOnlyParadiseNl from "@/data/galleries/adults-only-paradise.nl.json";
+import adultOnlyParadisePt from "@/data/galleries/adults-only-paradise.pt.json";
 import hospiceNurses from "@/data/galleries/hospice-nurses.json";
 import catAffection from "@/data/galleries/cat.json";
 import memoryTest from "@/data/galleries/memory-test.json";
@@ -173,6 +182,15 @@ const galleryManifests = [
   adultOnlyEvents,
   adultOnlyHotels,
   adultOnlyParadise,
+  adultOnlyParadiseAr,
+  adultOnlyParadiseDe,
+  adultOnlyParadiseEs,
+  adultOnlyParadiseFr,
+  adultOnlyParadiseHi,
+  adultOnlyParadiseId,
+  adultOnlyParadiseIt,
+  adultOnlyParadiseNl,
+  adultOnlyParadisePt,
   hospiceNurses,
   catAffection,
   memoryTest,

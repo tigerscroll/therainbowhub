@@ -1,5 +1,6 @@
 import { perfectlyTimedPhotos } from "./perfectlyTimedPhotos";
 import localizedBeachCampaigns from "@/data/beaches-campaign-copy.json";
+import localizedParadiseCampaigns from "@/data/paradise-campaign-copy.json";
 
 export type CampaignGuideLabels = {
   start: string;
@@ -166,6 +167,11 @@ export const campaignGalleryEntries: readonly CampaignGalleryEntry[] = [
     campaignIntro: "The invitation tells you where to go, but not always what to expect. From dress codes and guest lists to phone rules and personal boundaries, here’s what to check before you show up.",
   },
   ...Object.entries(localizedBeachCampaigns).map(([locale, copy]) => ({ path: `/${locale}/beaches`, ...copy })),
+  ...Object.entries(localizedParadiseCampaigns).map(([locale, copy]) => ({
+    path: `/${locale}/paradise`,
+    ...copy,
+    labels: localizedBeachCampaigns[locale as keyof typeof localizedParadiseCampaigns].labels,
+  })),
 ];
 
 export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide, tvGuide, datingGuide] as const;

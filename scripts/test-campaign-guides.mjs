@@ -5,30 +5,39 @@ import { chromium } from "playwright-core";
 const base = new URL(process.env.CAMPAIGN_GUIDE_TEST_URL ?? "http://localhost:3217");
 assert(["localhost", "127.0.0.1", "[::1]"].includes(base.hostname), "Use a local build only");
 const readGallery = filename => JSON.parse(readFileSync(new URL(`../data/galleries/${filename}.json`, import.meta.url), "utf8"));
-const beachEditions = JSON.parse(readFileSync(new URL("../data/beaches-campaign-copy.json", import.meta.url), "utf8"));
-const englishBeach = readGallery("adult-only-beaches");
-assert.deepEqual(Object.keys(beachEditions).sort(), ["ar", "de", "es", "fr", "hi", "id", "it", "nl", "pt"]);
-const beaches = Object.entries(beachEditions).map(([locale, copy]) => {
-  const article = readGallery(`adult-only-beaches.${locale}`);
-  assert.equal(article.locale, locale);
-  assert.equal(article.slug, englishBeach.slug);
-  assert.deepEqual(article.items.map(item => [item.id, item.number]), englishBeach.items.map(item => [item.id, item.number]));
-  for (const [index, item] of article.items.entries()) {
-    assert(item.title.trim() && item.title !== englishBeach.items[index].title, `${locale}: untranslated heading ${item.id}`);
-    assert(item.paragraphs.length > 0 && item.paragraphs.every(text => text.trim() && !englishBeach.items[index].paragraphs.includes(text)), `${locale}: empty or untranslated body ${item.id}`);
-  }
-  return {
-    path: `/${locale}/beaches`,
-    locale,
-    popup: copy.popupTitle,
-    continueLabel: copy.continueLabel,
-    labels: copy.labels,
-    teaser: copy.campaignIntro,
-    actionColor: "rgb(162, 29, 44)",
-    section: article.items[0].title,
-    sectionCount: 48,
-  };
-});
+const readCopy = slug => JSON.parse(readFileSync(new URL(`../data/${slug}-campaign-copy.json`, import.meta.url), "utf8"));
+const beachEditions = readCopy("beaches");
+const campaignGalleryLocales = ["ar", "de", "es", "fr", "hi", "id", "it", "nl", "pt"];
+
+function localizedCampaignGalleryCases(slug, filename, editions) {
+  const english = readGallery(filename);
+  assert.deepEqual(Object.keys(editions).sort(), campaignGalleryLocales);
+  const localeAlternates = [`/${slug}`, ...campaignGalleryLocales.map(locale => `/${locale}/${slug}`)].sort();
+
+  return Object.entries(editions).map(([locale, copy]) => {
+    const article = readGallery(`${filename}.${locale}`);
+    assert.equal(article.locale, locale);
+    assert.equal(article.slug, english.slug);
+    assert.deepEqual(article.items.map(item => [item.id, item.number]), english.items.map(item => [item.id, item.number]));
+    for (const [index, item] of article.items.entries()) {
+      assert(item.title.trim() && item.title !== english.items[index].title, `${locale}/${slug}: untranslated heading ${item.id}`);
+      assert(item.paragraphs.length > 0 && item.paragraphs.every(text => text.trim() && !english.items[index].paragraphs.includes(text)),
+        `${locale}/${slug}: empty or untranslated body ${item.id}`);
+    }
+    return {
+      path: `/${locale}/${slug}`,
+      locale,
+      localeAlternates,
+      popup: copy.popupTitle,
+      continueLabel: copy.continueLabel,
+      labels: beachEditions[locale].labels,
+      teaser: copy.campaignIntro,
+      actionColor: "rgb(162, 29, 44)",
+      section: article.items[0].title,
+      sectionCount: english.items.length + 1,
+    };
+  });
+}
 const defaultLabels = {
   start: "CONTINUE", startLoading: "LOADING...", loading: "Loading...", startNote: "Watch a short ad to continue",
   readNote: "Watch one short ad to read the rest.", unavailable: "No ad is available right now.",
@@ -183,7 +192,8 @@ const guides = [
     sectionCount: 6,
     source: "FTC guide to romance scams",
   },
-  ...beaches,
+  ...localizedCampaignGalleryCases("beaches", "adult-only-beaches", beachEditions),
+  ...localizedCampaignGalleryCases("paradise", "adults-only-paradise", readCopy("paradise")),
 ];
 const cases = [[320, "utm_source"], [390, "utm_campaign"], [1200, "utm_medium"], [390, "ref"], [390, ""]];
 
@@ -252,7 +262,7 @@ try {
         assert.equal(await page.locator("html").getAttribute("dir"), guide.locale === "ar" ? "rtl" : "ltr");
         assert.equal(new URL(await page.locator('link[rel="canonical"]').getAttribute("href")).pathname, guide.path);
         const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll(links => links.map(link => new URL(link.href).pathname));
-        assert.deepEqual([...new Set(alternates)].sort(), ["/beaches", ...beaches.map(edition => edition.path)].sort());
+        assert.deepEqual([...new Set(alternates)].sort(), guide.localeAlternates);
       }
       if (campaign) {
         await cta.waitFor();
@@ -320,6 +330,7 @@ try {
 
       await teaser.waitFor();
       await seeMore.waitFor();
+      assert(await seeMore.evaluate(el => el.scrollWidth <= el.clientWidth), "article CTA copy must fit");
       await page.getByText(labels.readNote, { exact: true }).waitFor();
       assert.equal(await dialog.count(), 0);
       assert.equal(await section.isVisible(), false, "the first gate only opens the intro");

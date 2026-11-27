@@ -19,6 +19,11 @@ const beachesDemoPaths = beachesDemo ? new Set([
 const resortsDemo = process.argv.includes("--resorts-demo");
 const jobsDemo = process.argv.includes("--jobs-demo");
 const paradiseDemo = process.argv.includes("--paradise-demo");
+const paradiseDemoPaths = paradiseDemo ? new Set([
+  "/paradise",
+  ...Object.keys(JSON.parse(fs.readFileSync(new URL("../data/paradise-campaign-copy.json", import.meta.url), "utf8")))
+    .map(locale => `/${locale}/paradise`),
+]) : undefined;
 const makeMoneyDemo = process.argv.includes("--makemoney-demo");
 const governmentHelpDemo = process.argv.includes("--governmenthelp-demo");
 const fullyFundedDemo = process.argv.includes("--fullyfunded-demo");
@@ -110,7 +115,7 @@ const server = http.createServer((request, response) => {
     beachesDemoPaths?.has(pathname.replace(/\/$/, "")) ||
     resortsDemo && /^\/resorts\/?$/.test(pathname) ||
     jobsDemo && /^\/jobs\/?$/.test(pathname) ||
-    paradiseDemo && /^\/paradise\/?$/.test(pathname) ||
+    paradiseDemoPaths?.has(pathname.replace(/\/$/, "")) ||
     makeMoneyDemo && /^\/makemoney\/?$/.test(pathname) ||
     governmentHelpDemo && /^\/governmenthelp\/?$/.test(pathname) ||
     fullyFundedDemo && /^\/fullyfunded\/?$/.test(pathname) ||
