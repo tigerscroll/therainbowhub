@@ -148,6 +148,17 @@ export const datingGuide = {
   publishedAt: "2026-11-27",
 } as const;
 
+export const escapesGuide = {
+  path: "/escapes",
+  title: "Adults Only Escapes",
+  description: "See what resort photos leave out: how private your room really is, where the party happens, and which extras can change the cost of an adults-only escape.",
+  intro: "The best-looking room in the gallery can have the worst spot in the resort. A look at the property map, the evening schedule and the extras can tell you whether you’ve found a quiet escape or booked a front-row seat to the party.",
+  campaignIntro: "That pool looks deserted. That terrace looks private. Now look at what the photos don’t show: who can walk past your room, which pool your booking actually gets you into, and how loud it gets after dark. A room map and a few recent reviews can tell you more than the whole photo gallery.",
+  popupTitle: "Adults Only Escapes",
+  continueLabel: "See What the Photos Leave Out",
+  publishedAt: "2026-11-27",
+} as const;
+
 // These galleries retain their original titles, article text and sitemap entries.
 export const campaignGalleryEntries: readonly CampaignGalleryEntry[] = [
   {
@@ -174,7 +185,7 @@ export const campaignGalleryEntries: readonly CampaignGalleryEntry[] = [
   })),
 ];
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide, tvGuide, datingGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide, tvGuide, datingGuide, escapesGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 

@@ -192,6 +192,15 @@ const guides = [
     sectionCount: 6,
     source: "FTC guide to romance scams",
   },
+  {
+    path: "/escapes",
+    popup: "Adults Only Escapes",
+    continueLabel: "See What the Photos Leave Out",
+    teaser: "That pool looks deserted. That terrace looks private.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. Ask for the room map",
+    sectionCount: 7,
+  },
   ...localizedCampaignGalleryCases("beaches", "adult-only-beaches", beachEditions),
   ...localizedCampaignGalleryCases("paradise", "adults-only-paradise", readCopy("paradise")),
 ];
