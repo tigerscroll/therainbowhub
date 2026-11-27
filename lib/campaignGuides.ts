@@ -159,6 +159,17 @@ export const escapesGuide = {
   publishedAt: "2026-11-27",
 } as const;
 
+export const cruisesGuide = {
+  path: "/cruises",
+  title: "Adults Only Cruises",
+  description: "What to check before booking an adults-only cruise: cabin locations, quiet decks, evening entertainment and what the fare actually includes.",
+  intro: "Two cabins can have the same sea view and completely different nights. One is surrounded by other cabins. The other sits directly below the dance floor. Here’s how to read the deck plan and the fare before choosing an adults-only cruise.",
+  campaignIntro: "The brochure shows you the sunset. It doesn’t show you the dance floor that might be directly above your cabin—or whether that quiet adults-only deck comes with your fare. Before you pick a ship, find out what really changes after dark, where to look on the deck plan and which extras can turn a cheap fare into an expensive week.",
+  popupTitle: "Adults Only Cruises",
+  continueLabel: "See What the Brochure Leaves Out",
+  publishedAt: "2026-11-27",
+} as const;
+
 // These galleries retain their original titles, article text and sitemap entries.
 export const campaignGalleryEntries: readonly CampaignGalleryEntry[] = [
   {
@@ -185,7 +196,7 @@ export const campaignGalleryEntries: readonly CampaignGalleryEntry[] = [
   })),
 ];
 
-export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide, tvGuide, datingGuide, escapesGuide] as const;
+export const campaignGuides = [dentalGuide, mobilityGuide, retiredGuide, retreatsGuide, resortsGuide, jobsGuide, makeMoneyGuide, governmentHelpGuide, fullyFundedGuide, prostateGuide, tvGuide, datingGuide, escapesGuide, cruisesGuide] as const;
 export const campaignGuideBootAttribute = "data-campaign-guide-boot";
 const campaignParameter = /^utm_.+/i;
 

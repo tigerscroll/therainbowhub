@@ -201,6 +201,16 @@ const guides = [
     section: "1. Ask for the room map",
     sectionCount: 7,
   },
+  {
+    path: "/cruises",
+    popup: "Adults Only Cruises",
+    continueLabel: "See What the Brochure Leaves Out",
+    teaser: "The brochure shows you the sunset.",
+    actionColor: "rgb(162, 29, 44)",
+    section: "1. Is it the whole ship or just one deck?",
+    sectionCount: 6,
+    source: "Virgin Voyages’ minimum-age policy",
+  },
   ...localizedCampaignGalleryCases("beaches", "adult-only-beaches", beachEditions),
   ...localizedCampaignGalleryCases("paradise", "adults-only-paradise", readCopy("paradise")),
 ];
