@@ -74,6 +74,10 @@ if (!fs.existsSync(outputRoot)) {
         continue;
       }
       const html = fs.readFileSync(file, "utf8");
+      if (/<section\b[^>]*class="quiz-engine__landing\b/.test(html)) {
+        const start = html.match(/<(?:button|a)\b[^>]*\bdata-quiz-start=""[^>]*>/)?.[0];
+        if (!start || /\sdisabled(?:[\s=>])/.test(start)) addError(`${route}: Start must be enabled on first paint.`);
+      }
       if (slug === "years-left" && !siteLocales.has(locale)) {
         if (routeFile(`/${locale}`) || routeFile(`/${locale}/info/privacy-policy`)) {
           addError(`${route}: quiz-only locale must not publish home or info pages.`);

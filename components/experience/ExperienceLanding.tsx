@@ -23,6 +23,7 @@ type ExperienceLandingProps = {
   interstitialEligible?: boolean;
   navigationMode?: "document" | "spa";
   onStart: () => boolean | void;
+  quizStart?: boolean;
   showCtaIcon?: boolean;
   showSocialProof?: boolean;
   socialProofText: string;
@@ -70,6 +71,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
   interstitialEligible = false,
   navigationMode = "document",
   onStart,
+  quizStart,
   showCtaIcon = true,
   showSocialProof = true,
   socialProofText,
@@ -105,6 +107,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
           <a
             className="quiz-engine__primary"
             data-google-interstitial={interstitialEligible ? "true" : "false"}
+            data-quiz-start={quizStart ? "" : undefined}
             href={href}
             onClick={(event) => {
               const destination = new URL(href, window.location.href);
@@ -131,7 +134,7 @@ export const ExperienceLanding = forwardRef<HTMLElement, ExperienceLandingProps>
             {ctaContent}
           </a>
         ) : (
-          <button className="quiz-engine__primary" data-google-interstitial="false" disabled={busy} onClick={onStart} type="button">
+          <button className="quiz-engine__primary" data-google-interstitial="false" data-quiz-start={quizStart ? "" : undefined} disabled={busy} onClick={onStart} type="button">
             {ctaContent}
           </button>
         )}

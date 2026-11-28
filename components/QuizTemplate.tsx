@@ -1,4 +1,5 @@
 import { QuizEngine } from "@/components/quiz/QuizEngine";
+import { quizStartBridgeScript } from "@/components/quiz/earlyQuizStart";
 import { getQuizStorageKey, PROGRESS_TTL_MS } from "@/components/quiz/progressStorage";
 import { ExperienceThemeBoundary } from "@/components/experience/ExperienceThemeBoundary";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
@@ -45,6 +46,11 @@ export function QuizTemplate({ locale, quiz, translations }: QuizTemplateProps) 
         data-quiz-boot-background={quiz.slug}
         dangerouslySetInnerHTML={{
           __html: `html,body{background:${quiz.theme.colors.page}}`,
+        }}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: quizStartBridgeScript(storageKey),
         }}
       />
       <script

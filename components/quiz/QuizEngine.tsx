@@ -9,6 +9,7 @@ import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
+import { quizStartSelector, takeEarlyQuizStart } from "./earlyQuizStart";
 import { getQuizStorageKey, isProgressTimestampFresh, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress, STORAGE_VERSION } from "./progressStorage";
 import { QuestionMedia, QuestionRenderer } from "./QuestionRenderer";
 import { QuestionDisplayAd } from "./QuestionDisplayAd";
@@ -92,6 +93,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const [hydrated, setHydrated] = useState(false);
   const [startOverlay, setStartOverlay] = useState(false);
   const starting = useRef(false);
+  const landingRef = useRef<HTMLElement>(null);
   useLayoutEffect(() => { if (hydrated) onReady?.(); }, [hydrated, onReady]);
   const [studiedQuestions, setStudiedQuestions] = useState<string[]>([]);
   const [reviewUnlocked, setReviewUnlocked] = useState(false);
@@ -188,6 +190,13 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       document.body.style.removeProperty("background");
     }
   }, [progressSignature, quiz, storageKey]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    // Progress restoration wins if there is an existing session to resume.
+    const queued = takeEarlyQuizStart(storageKey);
+    if (queued && screen === "landing") landingRef.current?.querySelector<HTMLElement>(quizStartSelector)?.click();
+  }, [hydrated, screen, storageKey]);
 
   useEffect(() => {
     if (!hydrated || screen === "landing") return;
@@ -374,7 +383,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   }
 
   function startQuiz() {
-    if (!hydrated || adBusy || starting.current) return;
+    if (adBusy || starting.current) return false;
     const begin = () => {
       setScreen("question");
       scrollToTop();
@@ -446,8 +455,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         ctaIcon={quiz.landing.compact ? "→" : undefined}
         ctaIconPosition={quiz.landing.compact ? "end" : undefined}
         avatars={quiz.landing.socialAvatars}
-        busy={!hydrated || adBusy}
-        busyLabel={adBusy ? translations.ad.loading : quiz.landing.ctaLabel ?? translations.quiz.start}
+        busy={adBusy}
+        busyLabel={translations.ad.loading}
         ctaLabel={quiz.landing.ctaLabel ?? translations.quiz.start}
         icon={quiz.cardIcon}
         intro={quiz.landing.quickStartText}
@@ -455,6 +464,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
         interstitialEligible={quiz.engine.interstitials}
         navigationMode={quiz.engine.interstitials ? "spa" : undefined}
         onStart={startQuiz}
+        quizStart
+        ref={landingRef}
         showSocialProof={quiz.landing.showSocialProof}
         socialProofText={formatSocialProof(translations.quiz.socialProofTaken, quiz.landing.socialProofCount, locale)}
         title={quiz.title}
