@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import { chromium } from 'playwright-core';
-import { resolveQuizLocaleManifest } from '../lib/quiz/localeManifest.mjs';
+import { resolveQuizLocaleManifest, resolveQuizLocaleText } from '../lib/quiz/localeManifest.mjs';
 import { localeLanguageTag } from '../lib/localePath.ts';
 
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3198';
@@ -11,13 +11,14 @@ const locale = process.env.QUIZ_TEST_LOCALE ?? 'en';
 const fast = process.env.QUIZ_TEST_FAST === '1';
 const artifactPrefix = locale === 'en' ? slug : `${slug}-${locale}`;
 const root = `data/quizzes/${slug}`;
-const manifest = resolveQuizLocaleManifest(JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8')), locale);
+const sourceManifest = JSON.parse(fs.readFileSync(`${root}/quiz.json`, 'utf8'));
+const manifest = resolveQuizLocaleManifest(sourceManifest, locale);
 const firstAnswerEntry = manifest.engine.entry === 'first-answer';
 const hardRefreshCheckpoints = manifest.engine.hardRefreshCheckpoints === true;
 const displayAds = manifest.engine.displayAds === true;
 const preloadsStart = manifest.engine.startPrelude?.preload === true;
 const totalQuestions = manifest.structure.stages.reduce((count, stage) => count + stage.questionIds.length, 0);
-const copy = JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8'));
+const copy = resolveQuizLocaleText(sourceManifest, JSON.parse(fs.readFileSync(`${root}/${locale}.json`, 'utf8')), locale);
 const scored = manifest.engine.scoring === 'correct-answer';
 const rewardedBreakdown = !(copy.results.estimate?.reviewUnlock && manifest.structure.results.estimate?.reviewUnlockRewarded === false);
 const textChapters = Object.values(manifest.structure.questions).every(question => question.presentation === 'text' && !question.image && !question.study);
@@ -114,7 +115,7 @@ async function run(width) {
   }
   await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
   const startButton = landing.locator('.quiz-engine__primary');
-  if (slug === 'years-left' && !reduced) await startButton.hover({ force: true });
+  if (['years-left', 'memory'].includes(slug) && !reduced) await startButton.hover({ force: true });
   await startButton.click();
   if (manifest.engine.startPrelude?.delayMs > 0) {
     const overlay = page.locator('.quiz-engine__start-overlay');

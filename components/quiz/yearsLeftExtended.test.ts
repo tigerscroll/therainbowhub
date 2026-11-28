@@ -8,10 +8,10 @@ import {scoreQuiz} from './scoring.ts';
 
 const read = (file: string) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, 'utf8'));
 const expectedEditions = [
-  'ar', 'bg', 'bn', 'cs', 'da', 'de', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'gr', 'gu',
+  'ar', 'bg', 'bn', 'cs', 'da', 'de', 'el', 'en', 'es', 'fa', 'fi', 'fil', 'fr', 'gu',
   'he', 'hi', 'hr', 'hu', 'id', 'it', 'ja', 'jv', 'km', 'kn', 'ko', 'ml', 'mr', 'ms',
   'nb', 'ne', 'nl', 'pa', 'pl', 'pt', 'ro', 'ru', 'si', 'sk', 'sr', 'sv', 'sw', 'ta',
-  'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh-hans',
+  'te', 'th', 'tr', 'uk', 'ur', 'vi', 'zh',
 ];
 
 test('Years Left has one ten-question round with the same structure in every active edition', () => {

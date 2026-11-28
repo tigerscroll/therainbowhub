@@ -91,7 +91,7 @@ const profiles = [
 
 export function translateMemoryHindi(english, manifest) {
   const copy = structuredClone(english);
-  Object.assign(copy, {title: 'ज़्यादातर वयस्क इस टेस्ट में 80% अंक नहीं ला पाते', eyebrow: 'सामान्य ज्ञान की चुनौती', summary, landing: {intro: 'खुद को होशियार समझते हैं? आज़माकर देखिए।', cta: 'शुरू करें'}, about: {body: `${summary}\n\n${steps.join(' ')}\n\n${disclaimer}`, howToPlay: {steps}, disclaimer}, career: {resultProgressLabel: 'आपकी चुनौती', stages: {}}, stages: {}});
+  Object.assign(copy, {title: 'ज़्यादातर वयस्क इस टेस्ट में 80% अंक नहीं ला पाते', eyebrow: 'सामान्य ज्ञान की चुनौती', summary, landing: {cta: 'शुरू करें'}, about: {body: `${summary}\n\n${steps.join(' ')}\n\n${disclaimer}`, howToPlay: {steps}, disclaimer}, career: {resultProgressLabel: 'आपकी चुनौती', stages: {}}, stages: {}});
   for (const [i, stage] of manifest.structure.stages.entries()) {
     const questions = {};
     for (const id of Object.keys(english.stages[stage.id].questions)) {

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { resolveQuizLocaleManifest } from "../lib/quiz/localeManifest.mjs";
+import { resolveQuizLocaleManifest, resolveQuizLocaleText } from "../lib/quiz/localeManifest.mjs";
 
 function compact(value) {
   if (Array.isArray(value)) return value.map(compact);
@@ -22,7 +22,9 @@ function sharedQuizCopy(locale) {
 
 export function expandQuizLocale(manifest, text, locale) {
   if (manifest?.schemaVersion !== 2) return text;
-  manifest = resolveQuizLocaleManifest(manifest, locale);
+  const sourceManifest = manifest;
+  manifest = resolveQuizLocaleManifest(sourceManifest, locale);
+  text = resolveQuizLocaleText(sourceManifest, text, locale);
   const shared = sharedQuizCopy(locale);
   const structure = manifest.structure;
   const stages = structure.stages.map((stage) => {

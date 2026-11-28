@@ -2,6 +2,7 @@ import {applyReviewedPortugueseQuestions} from './portuguese-reviewed-questions.
 import {polishPortugueseInterface} from './portuguese-interface.mjs';
 import {portugueseContext} from './portuguese-context.mjs';
 import {reviewMemoryLocale} from './memory-reviewed-locales.mjs';
+import {reuseShortMemoryCopy} from './memory-short-authoring.mjs';
 import {applyEntryLabel} from '../three-choice-entry.mjs';
 
 // One PT edition: use shared vocabulary and an implicit, polite form of address.
@@ -221,7 +222,9 @@ export function polishNeutralPortuguese(slug, copy, manifest) {
  // PT/BR copy. Keep it repeatable instead of reintroducing paired national
  // aliases or replacing its intentional topic-specific result labels.
  if (slug === 'memory' && manifest.structure.stages[0]?.questionIds[0]?.startsWith('memory-gk-')) {
-  Object.assign(copy, reviewMemoryLocale(copy, manifest, 'pt'));
+  Object.assign(copy, manifest.template === 'single-stage-rewarded-v1'
+    ? reuseShortMemoryCopy(copy, manifest, 'pt')
+    : reviewMemoryLocale(copy, manifest, 'pt'));
   applyEntryLabel(manifest, {pt: copy});
   return;
  }

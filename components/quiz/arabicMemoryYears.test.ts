@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
-import {directionalParts} from './directionalText.ts';
 
 const read = (slug: string, locale: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 function leaves(value: any, path = '', output: Record<string, string> = {}) {
@@ -30,18 +29,11 @@ test('Arabic Memory and Years Left translate every narrative field without direc
   assert.equal(read('memory', 'ar').landing.cta, 'ابدأ');
 });
 
-test('Arabic Memory retains unambiguous maths, Latin answer tokens and native word relationships', () => {
+test('Arabic Memory uses native word relationships and localized facts', () => {
   const copy = read('memory', 'ar'), manifest = read('memory', 'quiz');
   const questions = Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
   const answer = (id: string) => questions[id].answers[manifest.structure.questions[id].correctAnswerId];
-  assert.equal(answer('memory-gk-s1q7'), 'R');
+  assert.equal(answer('memory-gk-s1q1'), 'المريخ');
   assert.equal(answer('memory-gk-s8q4'), 'نستمع إليها');
-  assert.equal(answer('memory-gk-s8q5'), 'الكتابة');
-  assert.equal(answer('memory-gk-s8q6'), 'سمكة وسرب من الأسماك');
-  assert.equal(answer('memory-gk-s9q4'), '3 غ/سم³');
-  assert.match(questions['memory-gk-s9q5'].question, /سالب 3/);
-  assert.equal(answer('memory-gk-s9q5'), '8');
-  const final = questions['memory-gk-s10q4'].question;
-  for (const token of ['A = 1', 'B = 2', 'C = 3', 'CAB']) assert.ok(directionalParts(final).some(part => part.ltr && part.text.includes(token)), token);
-  assert.equal(answer('memory-gk-s10q4'), '6');
+  assert.equal(answer('memory-gk-s10q2'), 'الثاني');
 });

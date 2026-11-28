@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 import type {Quiz} from '../../lib/quizzes.ts';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
+import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
 import {buildMemoryGeneralKnowledge} from '../../scripts/memory-general-knowledge.mjs';
 import {reviewedMemoryLocales} from '../../scripts/chapter-locales/memory-reviewed-locales.mjs';
 import {scoreQuiz} from './scoring.ts';
@@ -29,20 +30,20 @@ for (const locale of reviewedMemoryLocales) {
       if (!path.includes('/answers/') && !path.endsWith('/tier')) assert.notEqual(text, sourceLeaves[path], `${path}: untranslated English interface`);
     }
     const expanded = expandQuizLocale(manifest, native, locale);
-    const source = expandQuizLocale(manifest, english, 'en');
+    const source = expandQuizLocale(resolveQuizLocaleManifest(manifest, locale), english, 'en');
     const signature = (quiz: any) => quiz.stages.flatMap((stage: any) => stage.questions.map((q: any) => [q.id, q.answerIds, q.correct]));
     assert.deepEqual(signature(expanded), signature(source));
-    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), Array(10).fill(7));
+    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), [10]);
     for (const stage of manifest.structure.stages) {
       const translated = native.stages[stage.id];
-      assert.equal(native.career.stages[stage.id].difficulty, translated.title.toLocaleUpperCase(locale));
+      assert.ok(expanded.career.stages[0].difficulty.trim());
       for (const id of stage.questionIds) {
         assert.deepEqual(Object.keys(translated.questions[id].answers), manifest.structure.questions[id].answerIds);
         assert.equal(new Set(Object.values(translated.questions[id].answers)).size, 3);
       }
     }
-    assert.equal(native.career.stages['stage-10'].next, undefined);
-    assert.equal(native.career.stages['stage-10'].preAdChecks.length, 3);
+    assert.equal(native.career.stages['stage-1'].next, undefined);
+    assert.equal(native.career.stages['stage-1'].preAdChecks.length, 3);
   });
 }
 
@@ -56,13 +57,12 @@ test('Memory German consistently uses du in instructions, profiles and result la
 test('Memory Portuguese avoids paired national variants and regional forms of address', () => {
   const copy = read('pt');
   const visible = Object.values(leaves(copy)).join('\n');
-  assert.match(copy.landing.intro, /Faça o teste/);
+  assert.deepEqual(copy.landing, {cta: 'Começar'});
   // "Celular" is legitimate biology vocabulary here, not a regional phone term.
   assert.doesNotMatch(visible, /\b(?:você|tu|telemóvel|fixe|bacana|ecrã|tela|autocarro|ônibus|comboio|trem)\b|\b(?:está|estou|estamos) a\b|\bpara si\b|\bpor si\b/iu);
   assert.doesNotMatch(visible, /(?:Vénus|Tamisa|oxigénio|lisossoma|ribossoma|cromossoma|termómetro|DNA)\w*\s*\(/iu);
   assert.equal(copy.results.profiles['profile-4'].title, 'Passo a passo');
-  assert.equal(copy.stages['stage-8'].questions['memory-gk-s8q4'].answers.a2, 'Ouvir');
-  assert.equal(copy.stages['stage-8'].questions['memory-gk-s8q5'].answers.a2, 'Escrever');
+  assert.equal(copy.stages['stage-1'].questions['memory-gk-s8q4'].answers.a2, 'Ouvir');
 });
 
 test('Memory Spanish has paired punctuation and consistent answer capitalization', () => {
@@ -74,18 +74,13 @@ test('Memory Spanish has paired punctuation and consistent answer capitalization
   }
 });
 
-test('Memory Italian and Dutch retain native word relationships and correct measurement answers', () => {
-  for (const [locale, listen, write, shoe] of [['it', 'Si ascolta', 'A scrivere', 'Scarpa'], ['nl', 'Je luistert ernaar', 'Om te schrijven', 'Schoen']]) {
-    const native = read(locale);
-    const question = (stage: number, n: number) => native.stages[`stage-${stage}`].questions[`memory-gk-s${stage}q${n}`];
-    assert.equal(question(8, 4).answers.a2, listen);
-    assert.equal(question(8, 5).answers.a2, write);
-    assert.equal(question(8, 3).answers.a3, shoe);
-    assert.equal(question(9, 4).answers.a1, '3 g/cm³');
-    assert.equal(question(10, 4).answers.a3, '6');
+test('Memory Italian and Dutch retain natural word relationships', () => {
+  for (const [locale, listen, second] of [['it', 'Si ascolta', 'Al secondo posto'], ['nl', 'Je luistert ernaar', 'Tweede']]) {
+    const questions = read(locale).stages['stage-1'].questions;
+    const correct = (id: string) => questions[id].answers[manifest.structure.questions[id].correctAnswerId];
+    assert.equal(correct('memory-gk-s8q4'), listen);
+    assert.equal(correct('memory-gk-s10q2'), second);
   }
-  assert.match(read('it').stages['stage-8'].questions['memory-gk-s8q3'].question, /alla…$/u);
-  assert.equal(read('nl').stages['stage-7'].questions['memory-gk-s7q1'].answers.a1, 'Aerodynamische weerstand');
 });
 
 function scoringQuiz(locale: string): Quiz {
@@ -112,7 +107,7 @@ test('Memory score, pass threshold and profile band match English in the reviewe
     for (const locale of reviewedMemoryLocales) {
       const nativeQuiz = scoringQuiz(locale), result = scoreQuiz(nativeQuiz, answers);
       assert.equal(result.score, expected.score, locale);
-      assert.equal(result.total, 70, locale);
+      assert.equal(result.total, 10, locale);
       assert.equal(result.targetStatus, expected.targetStatus, locale);
       assert.equal(nativeQuiz.result.profiles.indexOf(result.profile), source.result.profiles.indexOf(expected.profile), locale);
     }

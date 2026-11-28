@@ -5,7 +5,7 @@ import test from "node:test";
 const locales = JSON.parse(fs.readFileSync("data/quizzes/memory/quiz.json", "utf8")).activeLocales as string[];
 
 test("every quiz locale has the reviewed shared Start label", () => {
-  assert.equal(locales.length, 11);
+  assert.deepEqual(locales, JSON.parse(fs.readFileSync("data/quizzes/years-left/quiz.json", "utf8")).activeLocales);
   assert.ok(locales.includes('id') && locales.includes('th'));
   assert.ok(locales.includes('hi'));
   for (const locale of locales) {

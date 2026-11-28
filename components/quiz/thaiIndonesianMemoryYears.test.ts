@@ -2,9 +2,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import {getQuizSlugs, getQuizLocaleFiles} from '../../scripts/quiz-catalogue.mjs';
-import {translateMemoryAdditional} from '../../scripts/chapter-locales/memory-id-th.mjs';
+import {buildMemoryGeneralKnowledge} from '../../scripts/memory-general-knowledge.mjs';
 import {translateYearsLeft} from '../../scripts/localize-years-left-de-fr.mjs';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
+import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
 
 const read = (slug: string, file: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${file}.json`, 'utf8'));
 
@@ -40,7 +41,7 @@ for (const locale of ['id', 'th']) {
   for (const slug of ['memory', 'years-left']) test(`${locale}/${slug}: complete repeatable translation with unchanged answer relationships`, () => {
     const manifest = read(slug, 'quiz'), english = read(slug, 'en'), copy = read(slug, locale);
     const before = structuredClone(manifest);
-    assert.deepEqual(copy, slug === 'memory' ? translateMemoryAdditional(locale, english, manifest) : translateYearsLeft(locale, english, manifest));
+    assert.deepEqual(copy, slug === 'memory' ? buildMemoryGeneralKnowledge().copies[locale] : translateYearsLeft(locale, english, manifest));
     assert.deepEqual(manifest, before);
     const source = leaves(english), native = leaves(copy);
     const optionalIntro = slug === 'years-left' && source['/landing/intro'] === undefined;
@@ -52,8 +53,8 @@ for (const locale of ['id', 'th']) {
       assert.deepEqual(tokens(text), tokens(source[path]), path);
     }
     const expanded = expandQuizLocale(manifest, copy, locale);
-    const sourceExpanded = expandQuizLocale(manifest, english, 'en');
-    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), slug === 'memory' ? Array(10).fill(7) : [10]);
+    const sourceExpanded = expandQuizLocale(resolveQuizLocaleManifest(manifest, locale), english, 'en');
+    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), [10]);
     const relationships = (data: any) => data.stages.flatMap((s: any) => s.questions.map((q: any) => [q.id, q.answerIds, q.correct, q.weights, q.calibration]));
     assert.deepEqual(relationships(expanded), relationships(sourceExpanded));
     for (const stage of Object.values(copy.stages) as any[]) for (const question of Object.values(stage.questions) as any[]) {
@@ -63,17 +64,12 @@ for (const locale of ['id', 'th']) {
     if (slug === 'years-left') assert.equal(expanded.stages.at(-1).questions.at(-1).id, 'yl-s10q7');
   });
 
-  test(`${locale}: native word relationships and protected calculations keep the correct choices`, () => {
+  test(`${locale}: native word relationships and position question keep the correct choices`, () => {
     const manifest = read('memory', 'quiz'), copy = read('memory', locale);
     const questions = Object.assign({}, ...Object.values(copy.stages).map((s: any) => s.questions));
     const correct = (id: string) => questions[id].answers[manifest.structure.questions[id].correctAnswerId];
-    assert.equal(correct('memory-gk-s1q7'), 'R');
+    assert.equal(correct('memory-gk-s1q1'), locale === 'th' ? 'ดาวอังคาร' : 'Mars');
     assert.equal(correct('memory-gk-s8q4'), locale === 'th' ? 'ฟัง' : 'Didengarkan');
-    assert.equal(correct('memory-gk-s8q5'), locale === 'th' ? 'เขียน' : 'Menulis');
-    assert.equal(correct('memory-gk-s9q4'), '3 g/cm³');
-    assert.equal(correct('memory-gk-s9q5'), '8');
-    assert.equal(correct('memory-gk-s10q4'), '6');
-    assert.match(questions['memory-gk-s10q4'].question, /A = 1.*B = 2.*C = 3.*CAB/);
-    assert.match(questions['memory-gk-s9q3'].question, locale === 'id' ? /1,5/ : /1\.5/);
+    assert.equal(correct('memory-gk-s10q2'), locale === 'th' ? 'สอง' : 'Kedua');
   });
 }

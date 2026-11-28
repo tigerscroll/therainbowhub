@@ -11,6 +11,7 @@ const photoDemoPaths = photoDemo ? new Set([
     .map(locale => `/${locale}/perfectly-timed-photos`),
 ]) : undefined;
 const yearsLeftDemo = process.argv.includes("--years-left-demo");
+const memoryDemo = process.argv.includes("--memory-demo");
 const dentalDemo = process.argv.includes("--dental-demo");
 const mobilityDemo = process.argv.includes("--mobility-demo");
 const retiredDemo = process.argv.includes("--retired-demo");
@@ -38,6 +39,15 @@ const tvDemo = process.argv.includes("--tv-demo");
 const datingDemo = process.argv.includes("--dating-demo");
 const escapesDemo = process.argv.includes("--escapes-demo");
 const cruisesDemo = process.argv.includes("--cruises-demo");
+const mockQuizPaths = new Set(
+  ["years-left", "memory"].filter(slug => slug === "years-left" ? yearsLeftDemo : memoryDemo)
+    .flatMap(slug => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/quiz.json`, "utf8")).activeLocales
+      .map(locale => locale === "en" ? `/${slug}` : `/${locale}/${slug}`)),
+);
+const explicitRedirects = new Map(fs.readFileSync("public/_redirects", "utf8").split("\n")
+  .map(line => line.trim().split(/\s+/))
+  .filter(([from, to, status]) => from?.startsWith("/") && to?.startsWith("/") && !from.includes(":") && !from.includes("*") && status === "301")
+  .map(([from, to]) => [from, to]));
 const demoScript = `<script>
   (() => {
     const listeners = new Map();
@@ -101,7 +111,12 @@ function resolveRequest(pathname) {
 }
 
 const server = http.createServer((request, response) => {
-  const pathname = new URL(request.url ?? "/", "http://localhost").pathname;
+  const {pathname, search} = new URL(request.url ?? "/", "http://localhost");
+  if (explicitRedirects.has(pathname)) {
+    response.writeHead(301, { Location: explicitRedirects.get(pathname) + search });
+    response.end();
+    return;
+  }
   const file = resolveRequest(pathname) ?? safeFile("404.html");
 
   if (!file || !fs.existsSync(file)) {
@@ -114,7 +129,7 @@ const server = http.createServer((request, response) => {
   const isQuizPayload = file.startsWith(path.join(root, "quiz-data") + path.sep);
   const mockAds = status === 200 && (
     photoDemoPaths?.has(pathname.replace(/\/$/, "")) ||
-    yearsLeftDemo && /^\/years-left\/?$/.test(pathname) ||
+    mockQuizPaths.has(pathname.replace(/\/$/, "")) ||
     dentalDemo && /^\/dental\/?$/.test(pathname) ||
     mobilityDemo && /^\/mobility\/?$/.test(pathname) ||
     retiredDemo && /^\/retired\/?$/.test(pathname) ||
@@ -150,6 +165,8 @@ const server = http.createServer((request, response) => {
   else fs.createReadStream(file).pipe(response);
 });
 
-server.listen(port, photoDemo || yearsLeftDemo || dentalDemo || mobilityDemo || retiredDemo || retreatsDemo || beachesDemo || resortsDemo || jobsDemo || paradiseDemo || makeMoneyDemo || governmentHelpDemo || fullyFundedDemo || eventsDemo || prostateDemo || tvDemo || datingDemo || escapesDemo || cruisesDemo ? "127.0.0.1" : "0.0.0.0", () => {
-  console.log(`Static export ready at http://localhost:${port}`);
+const defaultHost = photoDemo || mockQuizPaths.size || dentalDemo || mobilityDemo || retiredDemo || retreatsDemo || beachesDemo || resortsDemo || jobsDemo || paradiseDemo || makeMoneyDemo || governmentHelpDemo || fullyFundedDemo || eventsDemo || prostateDemo || tvDemo || datingDemo || escapesDemo || cruisesDemo ? "127.0.0.1" : "0.0.0.0";
+const host = process.argv.find(arg => arg.startsWith("--host="))?.slice("--host=".length) || defaultHost;
+server.listen(port, host, () => {
+  console.log(`Static export ready at http://${host}:${port}`);
 });

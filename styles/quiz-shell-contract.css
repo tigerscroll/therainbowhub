@@ -824,13 +824,13 @@
   transition: filter .16s ease, transform .16s ease, box-shadow .16s ease;
 }
 
-.quiz-theme[data-quiz-theme="years-left"] .quiz-engine__landing-copy > .quiz-engine__primary {
+.quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__landing-copy > .quiz-engine__primary {
   --quiz-shell-action-height: 88px;
   --quiz-shell-action-width: 504px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .quiz-theme[data-quiz-theme="years-left"] .quiz-engine__landing-copy > .quiz-engine__primary:not(:disabled):not(:hover):not(:focus-visible):not(:active) {
+  .quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__landing-copy > .quiz-engine__primary:not(:disabled):not(:hover):not(:focus-visible):not(:active) {
     animation: years-start-pulse 1.45s ease-in-out infinite;
   }
 }
@@ -950,21 +950,22 @@
   }
 }
 
-/* With no subtitle, center the Years Left title between the badge and CTA. */
-.quiz-theme[data-quiz-theme="years-left"] .quiz-engine__landing--compact .quiz-engine__landing-copy:has(> h1 + .quiz-engine__primary) {
-  --years-left-title-gap: clamp(24px, 4svh, 32px);
+/* Center the title between the badge and CTA on the simplified landings. */
+.quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__landing--compact .quiz-engine__landing-copy:has(> h1 + .quiz-engine__primary) {
+  --compact-title-gap: clamp(24px, 4svh, 32px);
+  padding-block-start: 0;
 }
 
-.quiz-theme[data-quiz-theme="years-left"] .quiz-engine__landing--compact .quiz-engine__landing-copy:has(> h1 + .quiz-engine__primary) > .quiz-engine__landing-badge {
-  margin-block-end: var(--years-left-title-gap) !important;
+.quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__landing--compact .quiz-engine__landing-copy:has(> h1 + .quiz-engine__primary) > .quiz-engine__landing-badge {
+  margin-block-end: var(--compact-title-gap) !important;
 }
 
-.quiz-theme[data-quiz-theme="years-left"] .quiz-engine__landing--compact .quiz-engine__landing-copy > h1:has(+ .quiz-engine__primary) {
+.quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__landing--compact .quiz-engine__landing-copy > h1:has(+ .quiz-engine__primary) {
   margin-block: 0 !important;
 }
 
-.quiz-theme[data-quiz-theme="years-left"] .quiz-engine__landing--compact .quiz-engine__landing-copy > h1 + .quiz-engine__primary {
-  margin-block-start: var(--years-left-title-gap) !important;
+.quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__landing--compact .quiz-engine__landing-copy > h1 + .quiz-engine__primary {
+  margin-block-start: var(--compact-title-gap) !important;
 }
 
 /* Keep every screen and its supporting content in the same persistent layout.

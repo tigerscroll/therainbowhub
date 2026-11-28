@@ -202,7 +202,7 @@ export function translateMemoryAdditional(locale, english, manifest) {
   const copy = structuredClone(english);
   Object.assign(copy, {
     title: c.title, eyebrow: c.eyebrow, summary: c.summary,
-    landing: {intro: c.intro, cta: c.start},
+    landing: {cta: c.start},
     about: {body: `${c.summary}\n\n${c.steps.join(' ')}\n\n${c.disclaimer}`, howToPlay: {steps: c.steps}, disclaimer: c.disclaimer},
     career: {resultProgressLabel: c.challenge, stages: {}}, stages: {},
   });

@@ -29,7 +29,7 @@ for (const locale of scope.locales.filter((value: string) => value !== 'en')) {
 
   if (memoryLocales.has(locale)) test(`${locale}: /memory now uses general-knowledge questions without study boards`, () => {
     const q = questions(read('memory', locale));
-    assert.equal(Object.keys(q).length, 70);
+    assert.equal(Object.keys(q).length, 10);
     for (const [id, question] of Object.entries(q)) {
       assert.match(id, /^memory-gk-/);
       assert.equal(question.study, undefined);

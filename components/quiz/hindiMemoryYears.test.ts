@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import {getQuizSlugs, getQuizLocaleFiles} from '../../scripts/quiz-catalogue.mjs';
-import {translateMemoryHindi} from '../../scripts/chapter-locales/memory-hi.mjs';
+import {buildMemoryGeneralKnowledge} from '../../scripts/memory-general-knowledge.mjs';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
 
 const read = (slug: string, name: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${name}.json`, 'utf8'));
@@ -34,24 +34,21 @@ test('Hindi launches only the two requested quiz editions, with Hindi shared con
       assert.deepEqual(tokens(value), tokens(english[path]), path);
     }
     const expanded = expandQuizLocale(manifest, copy, 'hi');
-    assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), slug === 'memory' ? Array(10).fill(7) : [10]);
+    assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), [10]);
     for (const stage of Object.values(copy.stages) as any[]) for (const question of Object.values(stage.questions) as any[]) {
       assert.match(question.question, /\p{Script=Devanagari}/u);
     }
   }
 });
 
-test('Hindi Memory regenerates exactly and preserves correct answer IDs and protected puzzles', () => {
+test('Hindi Memory regenerates exactly and preserves correct answer IDs and native word relationships', () => {
   const manifest = read('memory', 'quiz'), copy = read('memory', 'hi');
-  assert.deepEqual(translateMemoryHindi(read('memory', 'en'), manifest), copy);
+  assert.deepEqual(buildMemoryGeneralKnowledge().copies.hi, copy);
   const questions = Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
   const correct = (id: string) => questions[id].answers[manifest.structure.questions[id].correctAnswerId];
-  assert.equal(correct('memory-gk-s1q7'), 'R');
+  assert.equal(correct('memory-gk-s1q1'), 'मंगल');
   assert.equal(correct('memory-gk-s8q4'), 'उसे सुना जाता है');
-  assert.equal(correct('memory-gk-s8q5'), 'लिखने');
-  assert.equal(correct('memory-gk-s9q4'), '3 g/cm³');
-  assert.equal(correct('memory-gk-s10q4'), '6');
-  assert.match(questions['memory-gk-s10q4'].question, /CAB/);
+  assert.equal(correct('memory-gk-s10q2'), 'दूसरा');
   for (const [id, question] of Object.entries(questions) as [string, any][]) {
     assert.deepEqual(Object.keys(question.answers), manifest.structure.questions[id].answerIds);
     assert.equal(Object.keys(question.answers).length, 3);

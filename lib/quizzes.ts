@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { resolveQuizLocaleManifest } from "./quiz/localeManifest.mjs";
+import { resolveQuizLocaleManifest, resolveQuizLocaleText } from "./quiz/localeManifest.mjs";
 
 import {
   getDefaultLocale,
@@ -1799,7 +1799,8 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const cached = quizCache.get(cacheKey);
   if (cached) return cached;
   const contentDirectory = directory(slug);
-  const manifest = validateManifest(resolveQuizLocaleManifest(json(path.join(contentDirectory, "quiz.json")), locale), `${slug}/${locale}/quiz.json`);
+  const sourceManifest = json(path.join(contentDirectory, "quiz.json"));
+  const manifest = validateManifest(resolveQuizLocaleManifest(sourceManifest, locale), `${slug}/${locale}/quiz.json`);
   if (manifest.slug !== slug) throw new Error(`${slug}: folder and quiz id must match.`);
   manifest.listing.thumbnail = normalizeQuizAsset(ROOT, slug, manifest.listing.thumbnail);
   if (manifest.theme.artwork) {
@@ -1828,7 +1829,7 @@ function readQuiz(slug: string, locale: SupportedLocale) {
   const socialAvatars = normalizedSocialAvatars(slug);
   const localeFile = `${slug}/${locale}.json`;
   const rawLocale = json<unknown>(path.join(contentDirectory, `${locale}.json`));
-  const localized = expandLocaleV2(rawLocale, manifest, locale, localeFile);
+  const localized = expandLocaleV2(resolveQuizLocaleText(sourceManifest, rawLocale, locale), manifest, locale, localeFile);
   const quiz = normalizeLocale(localized, manifest, manifest.theme, themeCssHref, socialAvatars, localeFile);
   if (slug === "vision") {
     // Immutable CDN assets need new URLs whenever a puzzle board changes.

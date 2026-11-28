@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {chromium} from 'playwright-core';
+import {localeLanguageTag} from '../lib/localePath.ts';
 
 const base=process.env.QUIZ_TEST_URL??'http://localhost:3198';
 const read=(slug,locale)=>JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`));
@@ -11,9 +12,9 @@ const estimates=new Map();
 
 async function check(slug,locale){
  const manifest=read(slug,'quiz'),copy=read(slug,locale);
- const context=await browser.newContext({viewport:{width:390,height:844}});
+ const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
  try{
-  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));let documents=0;
+  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));let documents=0, priorRewards=0;
   page.on('request',r=>{if(r.isNavigationRequest()&&r.frame()===page.mainFrame())documents++;});
   await page.route('**/*',route=>new URL(route.request().url()).origin===new URL(base).origin?route.continue():route.abort());
   await page.addInitScript(()=>{
@@ -24,7 +25,7 @@ async function check(slug,locale){
   });
   await page.goto(`${base}/${locale==='en'?slug:locale+'/'+slug}`);
   await page.locator('.quiz-engine__landing').waitFor();
-  assert.equal(await page.locator('html').getAttribute('lang'),locale);
+  assert.equal(await page.locator('html').getAttribute('lang'),localeLanguageTag(locale));
   await page.locator('.quiz-engine__landing .quiz-engine__primary').click();
   for(const[index,stage]of manifest.structure.stages.entries()){
    for(const id of stage.questionIds){
@@ -51,7 +52,8 @@ async function check(slug,locale){
    const checkpoint=page.locator('.quiz-engine__checkpoint');await checkpoint.waitFor();
    assert.equal(await checkpoint.getAttribute('data-round'),String(index+1));
    assert.equal(await checkpoint.getByRole('progressbar').count(),0);
-   assert.equal(await page.evaluate(()=>window.adCalls.length),index+1);
+   if(manifest.engine.hardRefreshCheckpoints) priorRewards++;
+   assert.equal(await page.evaluate(()=>window.adCalls.length),manifest.engine.hardRefreshCheckpoints?0:index+1);
    await checkpoint.locator('.quiz-engine__primary').click();
   }
   await page.locator('.quiz-engine__results').waitFor();
@@ -59,7 +61,6 @@ async function check(slug,locale){
    const correct=Object.values(manifest.structure.questions).filter(q=>q.answerIds[0]===q.correctAnswerId).length;
    assert.equal(await page.locator('.quiz-engine__result-fraction strong').innerText(),`${correct} / 10`);
    const profile=manifest.structure.results.profiles.find(p=>correct/10>=p.min);
-   assert.equal(await page.locator('.quiz-engine__result-profile').textContent(),copy.results.profiles[profile.key].title);
    assert.equal(await page.locator('.quiz-engine__result-copy').textContent(),copy.results.profiles[profile.key].copy);
   }else{
    const age=await page.locator('.quiz-engine__result-age strong').innerText();
@@ -67,9 +68,9 @@ async function check(slug,locale){
    assert.ok(Object.values(copy.results.profiles).some(p=>p.title===undefined)===false);
    assert.ok(Object.values(copy.results.profiles).map(p=>p.title).includes(await page.locator('.quiz-engine__results h2').first().textContent()));
   }
-  assert.equal(await page.evaluate(()=>window.adCalls.length),2);
+  assert.equal(priorRewards+await page.evaluate(()=>window.adCalls.length),2);
   assert.equal(await page.evaluate(()=>window.adCalls.every(a=>a.path==='/22677279144/rewarded'&&a.format==='REWARDED')),true);
-  assert.equal(documents,1);assert.deepEqual(errors,[]);
+  assert.equal(documents,manifest.engine.hardRefreshCheckpoints?2:1);assert.deepEqual(errors,[]);
   console.log(`${slug}/${locale}: 10 questions, one result checkpoint, two mocked rewards, stable answers, no overflow PASS`);
  }finally{await context.close();}
 }

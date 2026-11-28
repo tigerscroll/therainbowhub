@@ -5,7 +5,9 @@ import { localeLanguageTag } from "../lib/localePath.ts";
 
 const base = new URL(process.env.QUIZ_TEST_URL ?? "http://127.0.0.1:3252");
 assert(["127.0.0.1", "localhost", "[::1]"].includes(base.hostname), "Run against a local export");
-const read = (file) => JSON.parse(fs.readFileSync(`data/quizzes/years-left/${file}.json`, "utf8"));
+const slug = process.env.QUIZ_TEST_SLUG ?? "years-left";
+assert(["years-left", "memory"].includes(slug));
+const read = (file) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${file}.json`, "utf8"));
 const { activeLocales } = read("quiz");
 const browser = await chromium.launch({
   executablePath: process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -16,7 +18,7 @@ try {
   await context.route("**/*", route => new URL(route.request().url()).origin === base.origin ? route.continue() : route.abort());
   const page = await context.newPage();
   for (const locale of activeLocales) {
-    const path = locale === "en" ? "/years-left" : `/${locale}/years-left`;
+    const path = locale === "en" ? `/${slug}` : `/${locale}/${slug}`;
     const copy = read(locale);
     const lang = localeLanguageTag(locale);
     const direction = ["ar", "fa", "he", "ur"].includes(locale) ? "rtl" : "ltr";
@@ -39,7 +41,7 @@ try {
       page.off("pageerror", onError);
     }
   }
-  console.log(`${activeLocales.length} Years Left landing editions passed mobile checks.`);
+  console.log(`${activeLocales.length} /${slug} landing editions passed mobile checks.`);
 } finally {
   await browser.close();
 }

@@ -1,6 +1,16 @@
 # Static export pages are emitted without a trailing slash. Keep the root route intact.
+/gr/years-left /el/years-left 301
+/gr/years-left/ /el/years-left 301
+/gr/memory /el/memory 301
+/gr/memory/ /el/memory 301
 /el /gr 301
-/el/* /gr/:splat 301
+/el/ /gr 301
+/el/info/:page /gr/info/:page 301
+/el/info/:page/ /gr/info/:page 301
+/el/perfectly-timed /gr/perfectly-timed 301
+/el/perfectly-timed/ /gr/perfectly-timed 301
+/zh-hans/years-left /zh/years-left 301
+/zh-hans/years-left/ /zh/years-left 301
 /info/:page/ /info/:page 301
 /:locale/info/:page/ /:locale/info/:page 301
 /:locale/:slug/ /:locale/:slug 301

@@ -35,9 +35,10 @@ export function applyEntryLabel(manifest, copies) {
   const stage = manifest.structure.stages[0];
   const id = stage.questionIds[0];
   for (const [locale, copy] of Object.entries(copies)) {
-    const label = entryLabels[manifest.slug]?.[locale];
+    const question = copy.stages[stage.id].questions[id];
+    const label = entryLabels[manifest.slug]?.[locale] ?? (manifest.slug === 'memory' ? question.headerLabel : undefined);
     assert.ok(label, `${manifest.slug}/${locale}: missing first-question label`);
-    copy.stages[stage.id].questions[id].headerLabel = label;
+    question.headerLabel = label;
   }
   if (firstAnswerEntrySlugs.has(manifest.slug)) manifest.engine.entry = 'first-answer';
 }

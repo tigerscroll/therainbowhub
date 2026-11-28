@@ -6,7 +6,7 @@ import {execFileSync} from 'node:child_process';
 import test from 'node:test';
 import {getQuizSlugs, getSiteLocales, getQuizContentLocales} from '../../scripts/quiz-catalogue.mjs';
 import {expandQuizLocale} from '../../scripts/quiz-schema-v2.mjs';
-import {resolveQuizLocaleManifest} from '../../lib/quiz/localeManifest.mjs';
+import {resolveQuizLocaleManifest, resolveQuizLocaleText} from '../../lib/quiz/localeManifest.mjs';
 import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
 import {ui} from '../../scripts/chapter-locales/config.mjs';
 import {correctClinicalTerm} from '../../scripts/chapter-locales/clinical-language.mjs';
@@ -36,7 +36,8 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
   const mobility = slug === 'mobility_scooter';
   const yearsLeft = slug === 'years-left';
   const challenge = slug === 'challenge';
-  const short = mobility || yearsLeft;
+  const memory = slug === 'memory';
+  const short = mobility || yearsLeft || memory;
   const stageCount = short ? 1 : 10;
   const questionsPerStage = short ? 10 : marry || challenge ? 8 : 7;
   const expectedLocales = manifest.activeLocales ?? locales;
@@ -54,17 +55,19 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
   for (const locale of expectedLocales) {
     const effective = resolveQuizLocaleManifest(manifest, locale);
     const contract = quizTemplateContract(effective.template)!;
-    const copy = read(slug, locale), expanded = expandQuizLocale(manifest, copy, locale);
+    const raw = read(slug, locale);
+    const copy = resolveQuizLocaleText(manifest, raw, locale), expanded = expandQuizLocale(manifest, raw, locale);
     assert.equal(copy.results.share, undefined);
     if (short || yearsLeft || challenge) assert.ok(copy.landing.cta.trim());
     else assert.equal(copy.landing.cta, locale === 'en' ? 'Start' : ui[locale].start);
     assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), Array(contract.stageCount).fill(contract.questionsPerStage));
-    assert.equal(expanded.career.stages.length, stageCount);
+    assert.equal(expanded.career.stages.length, contract.stageCount);
     for (const [index, stage] of effective.structure.stages.entries()) {
       const checkpoint = copy.career.stages[stage.id];
-      if (yearsLeft && locale !== 'en') assert.ok(checkpoint.preAdButton.trim());
-      else assert.equal(checkpoint.preAdButton, mobility ? 'See My Options' : marry && index === stageCount - 1 ? marryRevealLabels[locale] : locale === 'en' ? index === stageCount - 1 ? 'See My Result' : 'Continue' : index === stageCount - 1 ? ui[locale].result : ui[locale].next);
-      if (index < stageCount - 1) {
+      if (memory) assert.ok(expanded.career.stages[index].preAdButton.trim());
+      else if (yearsLeft && locale !== 'en') assert.ok(checkpoint.preAdButton.trim());
+      else assert.equal(checkpoint.preAdButton, mobility ? 'See My Options' : marry && index === contract.stageCount - 1 ? marryRevealLabels[locale] : locale === 'en' ? index === contract.stageCount - 1 ? 'See My Result' : 'Continue' : index === contract.stageCount - 1 ? ui[locale].result : ui[locale].next);
+      if (index < contract.stageCount - 1) {
         assert.equal(checkpoint.preAdCopy.match(/\{profile\}/g)?.length ?? 0, marry ? 0 : 1);
         assert.ok(checkpoint.next.tagline.trim());
         assert.equal(checkpoint.preAdChecks, undefined);

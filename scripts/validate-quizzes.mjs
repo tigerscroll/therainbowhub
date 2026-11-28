@@ -3,7 +3,7 @@ import path from "node:path";
 import { SOCIAL_PROOF_COUNTS } from "./social-proof.mjs";
 import { expandQuizLocale } from "./quiz-schema-v2.mjs";
 import { quizTemplateContract } from "./quiz-template-contracts.mjs";
-import { resolveQuizLocaleManifest } from "../lib/quiz/localeManifest.mjs";
+import { resolveQuizLocaleManifest, resolveQuizLocaleText } from "../lib/quiz/localeManifest.mjs";
 
 const root = path.join(process.cwd(), "data", "quizzes");
 const supportedLocales = new Set(fs.readdirSync(path.join(process.cwd(), "data", "i18n"))
@@ -388,7 +388,7 @@ for (const folder of folders) {
     const effective = resolveQuizLocaleManifest(config, locale);
     const contract = quizTemplateContract(effective.template);
     fail(Boolean(contract) && effective.structure.stages.length === contract.stageCount && effective.structure.stages.every(stage => stage.questionIds.length === contract.questionsPerStage), `${folder.name}/${locale}: extension must match a supported template.`);
-    for (const [id, question] of Object.entries(config.localeExtensions[locale].questions)) {
+    for (const [id, question] of Object.entries(config.localeExtensions[locale].questions ?? {})) {
       const answerIds = question.answerIds;
       fail(Array.isArray(answerIds) && answerIds.length >= 1 && answerIds.length <= 5 && new Set(answerIds).size === answerIds.length, `${folder.name}/${locale}: ${id} needs unique answerIds.`);
       fail(question.choiceCount === undefined && question.correct === undefined, `${folder.name}/${locale}: ${id} must use named answer IDs.`);
@@ -405,7 +405,7 @@ for (const folder of folders) {
   const sourceRaw = read(path.join(directory, "en.json"));
   const englishConfig = resolveQuizLocaleManifest(config, "en");
   const englishContract = quizTemplateContract(englishConfig.template);
-  if (sourceRaw) validateTextOnlyLocale(sourceRaw, englishConfig, `${folder.name}/en.json`, "en");
+  if (sourceRaw) validateTextOnlyLocale(sourceRaw, config.localeExtensions?.en?.select ? config : englishConfig, `${folder.name}/en.json`, "en");
   const source = sourceRaw ? expandQuizLocale(config, sourceRaw, "en") : null;
   if (!source) continue;
   fail(!source.landing?.intro?.includes("—"), `${folder.name}/en.json: landing subtitles must not use em dashes.`);
@@ -427,7 +427,7 @@ for (const folder of folders) {
   const obsoleteCareerKeys = ["hideJourneyLength", "continuousShell", "showStageResults", "stageResultMode", "showCurrentScore", "showResultProgress", "currentScoreLabel", "levelLabel", "scoreSuffix", "journeyLabel", "kitchensCleared", "currentRank", "ranks", "unlockEyebrow", "unlockTitle", "unlockCopy", "finalEyebrow", "finalCareerTitle", "strongestLabel", "compactGate"];
   fail(Boolean(source.career) && obsoleteCareerKeys.every((key) => source.career?.[key] === undefined), `${folder.name}/en.json: shared shell geometry and flow settings must not be repeated in locale content.`);
   fail(typeof source.career?.resultProgressLabel === "string" && source.career?.resultProgressComplete?.includes("{value}"), `${folder.name}: themed progress label and shared completion copy are required after expansion.`);
-  fail(source.career?.stages?.length === expectedStageCount, `${folder.name}/en.json: shared career/checkpoint data must match the quiz stages.`);
+  fail(source.career?.stages?.length === englishContract?.stageCount, `${folder.name}/en.json: shared career/checkpoint data must match the quiz stages.`);
   fail(source.career?.stages?.slice(0, -1).every((stage) => (
     Boolean(stage.preAdButton?.trim())
       && stage.preAdChecks === undefined
@@ -466,7 +466,7 @@ for (const folder of folders) {
       Math.floor(sourceQuestions.length / scoredChoiceCount) + (index < sourceQuestions.length % scoredChoiceCount ? 1 : 0)
     ));
     fail(JSON.stringify(sharedPositions.sort()) === JSON.stringify(expectedPositions.sort()), `${folder.name}/en.json: answer positions must match the shared template balance.`);
-    fail(expectedStageCount > 1 || source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage quizzes must not show a redundant best-round module.`);
+    fail(englishContract?.stageCount > 1 || source.results?.score?.showBestRound === false, `${folder.name}/en.json: single-stage quizzes must not show a redundant best-round module.`);
     const questionCategories = [...new Set(sourceQuestions.map((question) => question.category).filter(Boolean))].sort();
     const dimensionCategories = (source.results?.dimensions ?? []).flatMap((dimension) => dimension.categories ?? []).sort();
     fail(JSON.stringify(dimensionCategories) === JSON.stringify(questionCategories), `${folder.name}/en.json: every scored category must appear in exactly one result dimension.`);
@@ -475,10 +475,10 @@ for (const folder of folders) {
     const locale = localeFile.replace(/\.json$/, "");
     const localeConfig = resolveQuizLocaleManifest(config, locale);
     const localeContract = quizTemplateContract(localeConfig.template);
-    const comparableSource = expandQuizLocale(localeConfig, sourceRaw, "en");
+    const comparableSource = locale === "en" ? source : expandQuizLocale(localeConfig, sourceRaw, "en");
     const comparableQuestions = comparableSource.stages.flatMap((stage) => stage.questions);
     const localizedRaw = read(path.join(directory, localeFile));
-    if (localizedRaw) validateTextOnlyLocale(localizedRaw, localeConfig, `${folder.name}/${localeFile}`, locale);
+    if (localizedRaw) validateTextOnlyLocale(resolveQuizLocaleText(config, localizedRaw, locale), localeConfig, `${folder.name}/${localeFile}`, locale);
     const localized = localizedRaw ? expandQuizLocale(config, localizedRaw, localeFile.replace(/\.json$/, "")) : null;
     if (!localized) continue;
     const landingIntro = localizedRaw?.landing?.intro;

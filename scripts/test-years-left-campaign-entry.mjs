@@ -14,8 +14,11 @@ try {
     [1200, "/years-left?utm_medium=demo"],
     [390, "/years-left?ref=demo"],
     [390, "/fr/years-left?utm_source=demo"],
+    [320, "/memory?utm_source=demo"],
+    [390, "/memory?utm_campaign=demo"],
+    [390, "/fr/memory?utm_source=demo"],
   ]) {
-    const campaign = path.startsWith("/years-left?utm_");
+    const campaign = /^\/(?:years-left|memory)\?utm_/.test(path);
     const context = await browser.newContext({ viewport: { width, height: width === 320 ? 568 : 780 }, reducedMotion: "reduce" });
     let releaseHydration;
     const hydration = new Promise(resolve => { releaseHydration = resolve; });
@@ -59,7 +62,9 @@ try {
     page.on("pageerror", error => errors.push(error.message));
     const landing = page.locator(".quiz-engine__landing");
     const button = landing.locator(".quiz-engine__primary");
-    const question = page.getByText("Your alarm goes off. Which version of you shows up?", { exact: true });
+    const question = page.getByText(path.startsWith("/memory?")
+      ? "Which planet is commonly known as the Red Planet?"
+      : "Your alarm goes off. Which version of you shows up?", { exact: true });
     const requests = () => page.evaluate(() => window.quizCampaignTest.requests.length);
     const waitForAd = () => page.waitForFunction(() => Boolean(window.quizCampaignTest.displayed));
     const verifyNoPopup = async () => {

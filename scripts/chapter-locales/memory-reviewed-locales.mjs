@@ -173,7 +173,6 @@ export function reviewMemoryLocale(copy, manifest, locale) {
   const reviewed = interfaceCopy[locale];
   assert.ok(reviewed, `${locale}: no reviewed memory edition`);
   copy.summary = reviewed.summary;
-  copy.landing.intro = reviewed.intro;
   copy.about.howToPlay.steps = [...reviewed.steps];
   copy.about.body = `${copy.summary}\n\n${reviewed.steps.join(' ')}\n\n${copy.about.disclaimer}`;
   copy.career.resultProgressLabel = reviewed.progress;

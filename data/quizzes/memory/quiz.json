@@ -3,16 +3,54 @@
   "slug": "memory",
   "activeLocales": [
     "ar",
+    "bg",
+    "bn",
+    "cs",
+    "da",
     "de",
+    "el",
     "en",
     "es",
+    "fa",
+    "fi",
+    "fil",
     "fr",
+    "gu",
+    "he",
     "hi",
+    "hr",
+    "hu",
     "id",
     "it",
+    "ja",
+    "jv",
+    "km",
+    "kn",
+    "ko",
+    "ml",
+    "mr",
+    "ms",
+    "nb",
+    "ne",
     "nl",
+    "pa",
+    "pl",
     "pt",
-    "th"
+    "ro",
+    "ru",
+    "si",
+    "sk",
+    "sr",
+    "sv",
+    "sw",
+    "ta",
+    "te",
+    "th",
+    "tr",
+    "uk",
+    "ur",
+    "vi",
+    "zh"
   ],
   "engine": {
     "scoring": "correct-answer",
@@ -76,137 +114,23 @@
       "icon": "🧠"
     }
   },
-  "template": "ten-stage-seven-question-v1",
+  "template": "single-stage-rewarded-v1",
   "structure": {
     "stages": [
       {
         "id": "stage-1",
-        "difficultyLevel": "foundation",
-        "questionIds": [
-          "memory-gk-s1q1",
-          "memory-gk-s1q2",
-          "memory-gk-s1q3",
-          "memory-gk-s1q4",
-          "memory-gk-s1q5",
-          "memory-gk-s1q6",
-          "memory-gk-s1q7"
-        ]
-      },
-      {
-        "id": "stage-2",
-        "difficultyLevel": "foundation",
-        "questionIds": [
-          "memory-gk-s2q1",
-          "memory-gk-s2q2",
-          "memory-gk-s2q3",
-          "memory-gk-s2q4",
-          "memory-gk-s2q5",
-          "memory-gk-s2q6",
-          "memory-gk-s2q7"
-        ]
-      },
-      {
-        "id": "stage-3",
-        "difficultyLevel": "developing",
-        "questionIds": [
-          "memory-gk-s3q1",
-          "memory-gk-s3q2",
-          "memory-gk-s3q3",
-          "memory-gk-s3q4",
-          "memory-gk-s3q5",
-          "memory-gk-s3q6",
-          "memory-gk-s3q7"
-        ]
-      },
-      {
-        "id": "stage-4",
-        "difficultyLevel": "developing",
-        "questionIds": [
-          "memory-gk-s4q1",
-          "memory-gk-s4q2",
-          "memory-gk-s4q3",
-          "memory-gk-s4q4",
-          "memory-gk-s4q5",
-          "memory-gk-s4q6",
-          "memory-gk-s4q7"
-        ]
-      },
-      {
-        "id": "stage-5",
-        "difficultyLevel": "skilled",
-        "questionIds": [
-          "memory-gk-s5q1",
-          "memory-gk-s5q2",
-          "memory-gk-s5q3",
-          "memory-gk-s5q4",
-          "memory-gk-s5q5",
-          "memory-gk-s5q6",
-          "memory-gk-s5q7"
-        ]
-      },
-      {
-        "id": "stage-6",
-        "difficultyLevel": "skilled",
-        "questionIds": [
-          "memory-gk-s6q1",
-          "memory-gk-s6q2",
-          "memory-gk-s6q3",
-          "memory-gk-s6q4",
-          "memory-gk-s6q5",
-          "memory-gk-s6q6",
-          "memory-gk-s6q7"
-        ]
-      },
-      {
-        "id": "stage-7",
-        "difficultyLevel": "advanced",
-        "questionIds": [
-          "memory-gk-s7q1",
-          "memory-gk-s7q2",
-          "memory-gk-s7q3",
-          "memory-gk-s7q4",
-          "memory-gk-s7q5",
-          "memory-gk-s7q6",
-          "memory-gk-s7q7"
-        ]
-      },
-      {
-        "id": "stage-8",
-        "difficultyLevel": "advanced",
-        "questionIds": [
-          "memory-gk-s8q1",
-          "memory-gk-s8q2",
-          "memory-gk-s8q3",
-          "memory-gk-s8q4",
-          "memory-gk-s8q5",
-          "memory-gk-s8q6",
-          "memory-gk-s8q7"
-        ]
-      },
-      {
-        "id": "stage-9",
-        "difficultyLevel": "advanced",
-        "questionIds": [
-          "memory-gk-s9q1",
-          "memory-gk-s9q2",
-          "memory-gk-s9q3",
-          "memory-gk-s9q4",
-          "memory-gk-s9q5",
-          "memory-gk-s9q6",
-          "memory-gk-s9q7"
-        ]
-      },
-      {
-        "id": "stage-10",
         "difficultyLevel": "final",
         "questionIds": [
-          "memory-gk-s10q1",
-          "memory-gk-s10q2",
-          "memory-gk-s10q3",
-          "memory-gk-s10q4",
-          "memory-gk-s10q5",
-          "memory-gk-s10q6",
-          "memory-gk-s10q7"
+          "memory-gk-s1q1",
+          "memory-gk-s1q3",
+          "memory-gk-s4q1",
+          "memory-gk-s3q1",
+          "memory-gk-s2q2",
+          "memory-gk-s4q3",
+          "memory-gk-s6q1",
+          "memory-gk-s8q4",
+          "memory-gk-s6q6",
+          "memory-gk-s10q2"
         ]
       }
     ],
@@ -221,197 +145,7 @@
         "correctAnswerId": "a3",
         "category": "world"
       },
-      "memory-gk-s1q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "world"
-      },
       "memory-gk-s1q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s1q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s1q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s1q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s1q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "world"
-      },
-      "memory-gk-s2q1": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s2q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "science"
-      },
-      "memory-gk-s2q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s2q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "science"
-      },
-      "memory-gk-s2q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s2q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "science"
-      },
-      "memory-gk-s2q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s3q1": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "world"
-      },
-      "memory-gk-s3q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "world"
-      },
-      "memory-gk-s3q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s3q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s3q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "world"
-      },
-      "memory-gk-s3q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s3q7": {
         "presentation": "text",
         "answerIds": [
           "a1",
@@ -431,7 +165,17 @@
         "correctAnswerId": "a2",
         "category": "world"
       },
-      "memory-gk-s4q2": {
+      "memory-gk-s3q1": {
+        "presentation": "text",
+        "answerIds": [
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "correctAnswerId": "a3",
+        "category": "world"
+      },
+      "memory-gk-s2q2": {
         "presentation": "text",
         "answerIds": [
           "a1",
@@ -439,7 +183,7 @@
           "a3"
         ],
         "correctAnswerId": "a2",
-        "category": "world"
+        "category": "science"
       },
       "memory-gk-s4q3": {
         "presentation": "text",
@@ -451,116 +195,6 @@
         "correctAnswerId": "a1",
         "category": "world"
       },
-      "memory-gk-s4q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s4q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "world"
-      },
-      "memory-gk-s4q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "world"
-      },
-      "memory-gk-s4q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s5q1": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s5q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "science"
-      },
-      "memory-gk-s5q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "science"
-      },
-      "memory-gk-s5q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "science"
-      },
-      "memory-gk-s5q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "science"
-      },
-      "memory-gk-s5q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "science"
-      },
-      "memory-gk-s5q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
       "memory-gk-s6q1": {
         "presentation": "text",
         "answerIds": [
@@ -570,166 +204,6 @@
         ],
         "correctAnswerId": "a3",
         "category": "world"
-      },
-      "memory-gk-s6q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "world"
-      },
-      "memory-gk-s6q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "world"
-      },
-      "memory-gk-s6q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "world"
-      },
-      "memory-gk-s6q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s6q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s6q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "world"
-      },
-      "memory-gk-s7q1": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "science"
-      },
-      "memory-gk-s7q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s7q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "science"
-      },
-      "memory-gk-s7q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s7q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "science"
-      },
-      "memory-gk-s7q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "science"
-      },
-      "memory-gk-s7q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "science"
-      },
-      "memory-gk-s8q1": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
-      },
-      "memory-gk-s8q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
-      },
-      "memory-gk-s8q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
       },
       "memory-gk-s8q4": {
         "presentation": "text",
@@ -741,17 +215,7 @@
         "correctAnswerId": "a2",
         "category": "reasoning"
       },
-      "memory-gk-s8q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "reasoning"
-      },
-      "memory-gk-s8q6": {
+      "memory-gk-s6q6": {
         "presentation": "text",
         "answerIds": [
           "a1",
@@ -759,97 +223,7 @@
           "a3"
         ],
         "correctAnswerId": "a1",
-        "category": "reasoning"
-      },
-      "memory-gk-s8q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
-      },
-      "memory-gk-s9q1": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "reasoning"
-      },
-      "memory-gk-s9q2": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
-      },
-      "memory-gk-s9q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "reasoning"
-      },
-      "memory-gk-s9q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a1",
-        "category": "reasoning"
-      },
-      "memory-gk-s9q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
-      },
-      "memory-gk-s9q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
-      },
-      "memory-gk-s9q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "reasoning"
-      },
-      "memory-gk-s10q1": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "reasoning"
+        "category": "world"
       },
       "memory-gk-s10q2": {
         "presentation": "text",
@@ -859,56 +233,6 @@
           "a3"
         ],
         "correctAnswerId": "a1",
-        "category": "reasoning"
-      },
-      "memory-gk-s10q3": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "reasoning"
-      },
-      "memory-gk-s10q4": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a3",
-        "category": "reasoning"
-      },
-      "memory-gk-s10q5": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "reasoning"
-      },
-      "memory-gk-s10q6": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
-        "category": "reasoning"
-      },
-      "memory-gk-s10q7": {
-        "presentation": "text",
-        "answerIds": [
-          "a1",
-          "a2",
-          "a3"
-        ],
-        "correctAnswerId": "a2",
         "category": "reasoning"
       }
     },

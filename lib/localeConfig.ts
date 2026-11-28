@@ -25,7 +25,8 @@ const siteLocaleOptions = [
 
 // These editions localize quiz content and its interface, not the home or legal pages.
 const quizLocaleOptions = [
-  { code: "zh-hans", name: "Chinese", flag: "🌐" },
+  { code: "el", name: "Greek", flag: "🇬🇷" },
+  { code: "zh", name: "Chinese", flag: "🌐" },
   { code: "ko", name: "Korean", flag: "🇰🇷" },
   { code: "ru", name: "Russian", flag: "🌐" },
   { code: "pl", name: "Polish", flag: "🇵🇱" },
@@ -91,7 +92,7 @@ export function isSupportedLocale(locale: string): locale is SupportedLocale {
 
 export function getLocalePath(locale: string, href: string) {
   const safeLocale = isSupportedLocale(locale) ? locale : defaultLocale;
-  const prefixes = [...supportedLocales, "el"];
+  const prefixes = supportedLocales;
   if (!isSiteLocale(safeLocale)) {
     const englishPath = localizeInternalPath(defaultLocale, href, prefixes, defaultLocale);
     const pathname = englishPath.split(/[?#]/, 1)[0];

@@ -1,6 +1,6 @@
 export function localeLanguageTag(locale: string) {
   return locale === "gr" ? "el"
-    : locale === "zh-hans" ? "zh-Hans"
+    : locale === "zh" ? "zh-Hans"
     : locale === "pa" ? "pa-Guru"
     : locale;
 }

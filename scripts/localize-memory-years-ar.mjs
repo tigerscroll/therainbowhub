@@ -13,4 +13,4 @@ const yearsManifest = read('years-left', 'quiz');
 save('years-left', 'ar', translateYearsLeft('ar', read('years-left', 'en'), yearsManifest));
 yearsManifest.activeLocales = [...new Set([...(yearsManifest.activeLocales ?? ['en']), 'ar'])].sort();
 save('years-left', 'quiz', yearsManifest);
-console.log('Arabic: Memory 10 × 7 and Years Left 10 × 10, including checkpoints and results; English scoring and flows retained.');
+console.log('Arabic: Memory and Years Left, 10 questions each, including checkpoints and results; English scoring and flows retained.');
