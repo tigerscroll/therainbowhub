@@ -34,7 +34,27 @@ try {
       assert.equal((await landing.locator("h1").innerText()).trim(), copy.title, path);
       assert.equal((await button.innerText()).replace(/[→←]/g, "").trim(), copy.landing.cta, path);
       assert.equal(await landing.locator(".quiz-engine__quick-start").count(), 0, path);
-      assert(await button.evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), `${path}: CTA below the fold`);
+      const layout = await landing.evaluate(card => {
+        const frame = card.getBoundingClientRect();
+        const group = card.querySelector(".quiz-engine__landing-copy").getBoundingClientRect();
+        const start = card.querySelector(".quiz-engine__primary").getBoundingClientRect();
+        const note = card.querySelector(".quiz-engine__ad-note").getBoundingClientRect();
+        const midpoint = rect => (rect.top + rect.height / 2 - frame.top) / frame.height;
+        return {
+          contentMidpoint: midpoint(group),
+          startMidpoint: midpoint(start),
+          startHeight: start.height,
+          disclosureGap: note.top - start.bottom,
+          disclosureAboveFold: note.bottom <= innerHeight,
+        };
+      });
+      assert(Math.abs(layout.contentMidpoint - .45) < .01, `${path}: landing group midpoint ${layout.contentMidpoint}`);
+      // Headlines and disclosures wrap differently in translated editions.
+      const [min, max] = locale === "en" ? [.55, .605] : [.52, .66];
+      assert(layout.startMidpoint >= min && layout.startMidpoint <= max, `${path}: Start midpoint ${layout.startMidpoint}`);
+      assert.equal(layout.startHeight, 88, `${path}: Start keeps its large height`);
+      assert(layout.disclosureGap >= 0 && layout.disclosureGap <= 20, `${path}: ad disclosure stays directly below Start`);
+      assert(layout.disclosureAboveFold, `${path}: ad disclosure below the fold`);
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${path}: content overflows the viewport`);
       assert.deepEqual(errors, [], path);
     } finally {

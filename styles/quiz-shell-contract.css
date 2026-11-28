@@ -950,9 +950,26 @@
   }
 }
 
-/* Center the title between the badge and CTA on the simplified landings. */
+/* Center the whole hero at 45% of the card. The extra bottom inset is 10%
+   of the minimum card height; the grid can still grow for larger text. */
+.quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__flow-container > .quiz-engine__landing--compact:has(> .quiz-engine__landing-copy > h1 + .quiz-engine__primary) {
+  --compact-landing-height: clamp(700px, calc(100svh - var(--site-header-height, 40px) - 56px), 840px);
+  --compact-landing-inset: clamp(18px, 4svh, 44px);
+  min-height: var(--compact-landing-height) !important;
+  padding-block: var(--compact-landing-inset) calc(var(--compact-landing-inset) + var(--compact-landing-height) * .10) !important;
+  align-items: center !important;
+}
+
+@media (max-width: 820px) {
+  .quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__flow-container > .quiz-engine__landing--compact:has(> .quiz-engine__landing-copy > h1 + .quiz-engine__primary) {
+    --compact-landing-height: calc(100svh - var(--site-header-height, 40px) - 12px);
+  }
+}
+
+/* Keep the title between the badge and CTA. Let those gaps grow on taller
+   screens so the button stays around 55–60%, not up beside the heading. */
 .quiz-theme:is([data-quiz-theme="years-left"], [data-quiz-theme="memory"]) .quiz-engine__landing--compact .quiz-engine__landing-copy:has(> h1 + .quiz-engine__primary) {
-  --compact-title-gap: clamp(24px, 4svh, 32px);
+  --compact-title-gap: clamp(22px, calc(var(--compact-landing-height) * .12 - 50px), 64px);
   padding-block-start: 0;
 }
 
