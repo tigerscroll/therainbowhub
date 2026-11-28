@@ -18,7 +18,7 @@ type ExperienceLandingProps = {
   ctaOptions?: string[];
   className?: string;
   icon: ReactNode;
-  intro: string;
+  intro?: string;
   href?: string;
   interstitialEligible?: boolean;
   navigationMode?: "document" | "spa";

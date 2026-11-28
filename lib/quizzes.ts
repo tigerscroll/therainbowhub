@@ -451,7 +451,7 @@ export type Quiz = {
     topicText?: string;
     howToPlay?: { title: string; steps: string[] };
   };
-  landing: { compact?: boolean; quickStartText: string; ctaLabel?: string; infoBadge?: string; showSocialProof: boolean; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
+  landing: { compact?: boolean; quickStartText?: string; ctaLabel?: string; infoBadge?: string; showSocialProof: boolean; socialProofCount: number; socialAvatars: string[]; startPrompt?: QuizRewardPrompt };
   stages: string[];
   stageEncouragement: string[];
   checkpoint?: QuizCheckpointCopy;
@@ -1754,7 +1754,7 @@ function normalizeLocale(
       howToPlay: value.about.howToPlay,
     } : undefined,
     landing: {
-      quickStartText: value.landing?.intro ?? summary,
+      quickStartText: value.landing ? value.landing.intro : summary,
       ctaLabel: value.landing?.cta,
       compact: manifest.listing.compactLanding ?? true,
       infoBadge: value.landing?.badge,

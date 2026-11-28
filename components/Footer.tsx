@@ -1,5 +1,5 @@
 import { FooterChrome } from "@/components/FooterChrome";
-import { getLocalePath, type SupportedLocale, type Translations } from "@/lib/i18n";
+import { getLocalePath, isSiteLocale, type SupportedLocale, type Translations } from "@/lib/i18n";
 import { companyLinks, legalLinks } from "@/lib/siteLinks";
 
 type FooterProps = {
@@ -22,16 +22,19 @@ const footerLegalLabels: Record<string, keyof Translations["footer"]["links"]> =
 
 export function Footer({ locale, translations }: FooterProps) {
   const homePath = getLocalePath(locale, "/");
+  const hrefLang = isSiteLocale(locale) ? undefined : "en";
 
   return (
     <FooterChrome
       companyLinks={companyLinks.map((link) => ({
         href: getLocalePath(locale, link.href),
+        hrefLang,
         label: translations.footer.links[footerCompanyLabels[link.href]],
       }))}
       homePath={homePath}
       legalLinks={legalLinks.map((link) => ({
         href: getLocalePath(locale, link.href),
+        hrefLang,
         label: translations.footer.links[footerLegalLabels[link.href]],
       }))}
       translations={translations}

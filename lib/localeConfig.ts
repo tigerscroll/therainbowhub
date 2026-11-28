@@ -1,7 +1,7 @@
 import { localizeInternalPath } from "@/lib/localePath";
 export { localeLanguageTag } from "@/lib/localePath";
 
-export const localeOptions = [
+const siteLocaleOptions = [
   { code: "en", name: "English", flag: "🇬🇧" },
   { code: "fr", name: "French", flag: "🇫🇷" },
   { code: "de", name: "German", flag: "🇩🇪" },
@@ -23,10 +23,47 @@ export const localeOptions = [
   { code: "ja", name: "Japanese", flag: "🇯🇵" },
 ] as const;
 
-export type SupportedLocale = (typeof localeOptions)[number]["code"];
+// These editions localize quiz content and its interface, not the home or legal pages.
+const quizLocaleOptions = [
+  { code: "zh-hans", name: "Chinese", flag: "🌐" },
+  { code: "ko", name: "Korean", flag: "🇰🇷" },
+  { code: "ru", name: "Russian", flag: "🌐" },
+  { code: "pl", name: "Polish", flag: "🇵🇱" },
+  { code: "ta", name: "Tamil", flag: "🌐" },
+  { code: "te", name: "Telugu", flag: "🌐" },
+  { code: "mr", name: "Marathi", flag: "🌐" },
+  { code: "pa", name: "Punjabi (Gurmukhi)", flag: "🌐" },
+  { code: "jv", name: "Javanese", flag: "🇮🇩" },
+  { code: "gu", name: "Gujarati", flag: "🌐" },
+  { code: "uk", name: "Ukrainian", flag: "🇺🇦" },
+  { code: "ro", name: "Romanian", flag: "🇷🇴" },
+  { code: "sw", name: "Swahili", flag: "🌐" },
+  { code: "fa", name: "Persian", flag: "🌐" },
+  { code: "ml", name: "Malayalam", flag: "🌐" },
+  { code: "kn", name: "Kannada", flag: "🌐" },
+  { code: "cs", name: "Czech", flag: "🇨🇿" },
+  { code: "sv", name: "Swedish", flag: "🇸🇪" },
+  { code: "hu", name: "Hungarian", flag: "🇭🇺" },
+  { code: "he", name: "Hebrew", flag: "🌐" },
+  { code: "km", name: "Khmer", flag: "🇰🇭" },
+  { code: "si", name: "Sinhala", flag: "🇱🇰" },
+  { code: "da", name: "Danish", flag: "🇩🇰" },
+  { code: "nb", name: "Norwegian (Bokmål)", flag: "🇳🇴" },
+  { code: "fi", name: "Finnish", flag: "🇫🇮" },
+  { code: "sk", name: "Slovak", flag: "🇸🇰" },
+  { code: "bg", name: "Bulgarian", flag: "🇧🇬" },
+  { code: "hr", name: "Croatian", flag: "🇭🇷" },
+  { code: "sr", name: "Serbian", flag: "🇷🇸" },
+  { code: "ne", name: "Nepali", flag: "🇳🇵" },
+] as const;
 
-export const defaultLocale: SupportedLocale = "en";
+export const localeOptions = [...siteLocaleOptions, ...quizLocaleOptions] as const;
+export type SupportedLocale = (typeof localeOptions)[number]["code"];
+export type SiteLocale = (typeof siteLocaleOptions)[number]["code"];
+
+export const defaultLocale: SiteLocale = "en";
 export const supportedLocales: SupportedLocale[] = localeOptions.map((locale) => locale.code);
+const siteLocales: SiteLocale[] = siteLocaleOptions.map((locale) => locale.code);
 
 export function getDefaultLocale() {
   return defaultLocale;
@@ -34,6 +71,14 @@ export function getDefaultLocale() {
 
 export function getSupportedLocales() {
   return supportedLocales;
+}
+
+export function getSiteLocales() {
+  return siteLocales;
+}
+
+export function isSiteLocale(locale: string): locale is SiteLocale {
+  return siteLocales.includes(locale as SiteLocale);
 }
 
 export function getLocaleOptions() {
@@ -46,5 +91,11 @@ export function isSupportedLocale(locale: string): locale is SupportedLocale {
 
 export function getLocalePath(locale: string, href: string) {
   const safeLocale = isSupportedLocale(locale) ? locale : defaultLocale;
-  return localizeInternalPath(safeLocale, href, [...supportedLocales, "el"], defaultLocale);
+  const prefixes = [...supportedLocales, "el"];
+  if (!isSiteLocale(safeLocale)) {
+    const englishPath = localizeInternalPath(defaultLocale, href, prefixes, defaultLocale);
+    const pathname = englishPath.split(/[?#]/, 1)[0];
+    if (pathname === "/" || pathname === "/info" || pathname.startsWith("/info/")) return englishPath;
+  }
+  return localizeInternalPath(safeLocale, href, prefixes, defaultLocale);
 }

@@ -17,6 +17,7 @@ import {hindiYearsCopy, hindiYearsStageTitles} from './chapter-locales/years-lef
 import {indonesianYearsQuestions} from './chapter-locales/years-left-id-100.mjs';
 import {thaiYearsQuestions} from './chapter-locales/years-left-th-100.mjs';
 import {additionalYearsCopies, additionalYearsStageTitles} from './chapter-locales/years-left-id-th-copy.mjs';
+import {yearsLeftSingleCopy} from './chapter-locales/years-left-single-copy.mjs';
 
 // Author by stable stage/question/answer IDs, never by the shuffled display
 // order. In particular, yl-s10q7 remains the final calibration question.
@@ -28,17 +29,19 @@ export function translateYearsLeft(locale, english, manifest) {
   const stageTitles = {...yearsStageTitles, ...additionalYearsStageTitles, ar: arabicYearsStageTitles, es: spanishYearsStageTitles, hi: hindiYearsStageTitles, it: italianYearsStageTitles, nl: dutchYearsStageTitles, pt: portugueseYearsStageTitles}[locale];
   const fullQuestions = {ar: arabicYearsQuestions, es: spanishYearsQuestions, hi: hindiYearsQuestions, id: indonesianYearsQuestions, it: italianYearsQuestions, nl: dutchYearsQuestions, pt: portugueseYearsQuestions, th: thaiYearsQuestions}[locale];
   const copy = {...structuredClone(english), ...structuredClone(interfaceCopy), stages: {}};
+  const short = manifest.template === 'single-stage-rewarded-v1' ? yearsLeftSingleCopy[locale] : undefined;
   for (const [stageIndex, stage] of manifest.structure.stages.entries()) {
-    const heading = copy.career.stages[stage.id].difficulty;
     const sourceStage = english.stages[stage.id];
     const questions = {};
     // Preserve JSON key parity as well as the manifest's actual display order.
     for (const id of Object.keys(sourceStage.questions)) {
       const match = id.match(/^yl-s(\d+)q(\d+)$/);
       assert.ok(match, id);
+      const originalStage = Number(match[1]);
+      const heading = interfaceCopy.career.stages[`stage-${originalStage}`].difficulty;
       const number = Number(match[2]);
       const row = fullQuestions ? fullQuestions[id]?.split('|')
-        : number <= 7 ? reviewed[stageIndex * 7 + number - 1] : additionalYearsQuestions[locale][id]?.split('|');
+        : number <= 7 ? reviewed[(originalStage - 1) * 7 + number - 1] : additionalYearsQuestions[locale][id]?.split('|');
       assert.equal(row?.length, 5, `${locale}/${id}: prompt plus four answers required`);
       const [question, ...answers] = row;
       const overrides = reviewedYearsQuestionOverrides[locale]?.[id] ?? {};
@@ -59,7 +62,16 @@ export function translateYearsLeft(locale, english, manifest) {
       };
       assert.equal(new Set(Object.values(questions[id].answers)).size, 4, `${locale}/${id}: distinct answers`);
     }
-    copy.stages[stage.id] = {title: stageTitles[stageIndex], questions};
+    copy.stages[stage.id] = {title: short?.title ?? stageTitles[stageIndex], questions};
+  }
+  if (short) {
+    copy.landing = {cta: short.cta};
+    copy.career.stages = {'stage-1': {...copy.career.stages['stage-10'], preAdCopy: short.ready}};
+    copy.about = {
+      ...copy.about,
+      body: [short.body, ...copy.about.body.split('\n\n').slice(1)].join('\n\n'),
+      howToPlay: {...copy.about.howToPlay, steps: [copy.about.howToPlay.steps[0], short.questions, short.result]},
+    };
   }
   if (locale === 'fr') {
     // French question/exclamation punctuation stays attached to the preceding
@@ -82,5 +94,5 @@ if (process.argv[1]?.endsWith('/localize-years-left-de-fr.mjs')) {
   }
   manifest.activeLocales = [...new Set([...(manifest.activeLocales ?? ['en']), 'de', 'fr'])].sort();
   fs.writeFileSync(`${root}/quiz.json`, JSON.stringify(manifest, null, 2) + '\n');
-  console.log('Years Left: German and French enabled with the same 10 × 10 questions, IDs and scoring as English.');
+  console.log('Years Left: German and French enabled with the same questions, IDs and scoring as English.');
 }

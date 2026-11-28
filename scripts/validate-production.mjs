@@ -12,7 +12,7 @@ const errors = [];
 const quizEngineSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizEngine.tsx"), "utf8");
 const quizRecommendationsSource = fs.readFileSync(path.join(rootDir, "components", "quiz", "QuizRecommendations.tsx"), "utf8");
 const quizDataSource = fs.readFileSync(path.join(rootDir, "lib", "quizzes.ts"), "utf8");
-const multilingualLocaleFiles = fs.readdirSync(path.join(rootDir, "data/i18n")).filter(file => /^[a-z]{2,3}\.json$/.test(file)).sort();
+const multilingualLocaleFiles = fs.readdirSync(path.join(rootDir, "data/i18n")).filter(file => /^[a-z]{2,3}(?:-[a-z]{4})?\.json$/.test(file)).sort();
 
 if (quizEngineSource.includes('<span className="quiz-engine__eyebrow">{quiz.eyebrow}</span>')) {
   errors.push("The shared landing page must not render a quiz eyebrow above its title.");
@@ -381,7 +381,7 @@ for (const entry of fs.readdirSync(quizRoot, { withFileTypes: true })) {
     if (englishContent.landing?.socialProof !== undefined) {
       addError(`Landing social-proof wording must come from shared i18n: data/quizzes/${entry.name}/en.json`);
     }
-    if (JSON.stringify(Object.keys(englishContent.landing ?? {}).sort()) !== JSON.stringify(["cta", "intro"])) {
+    if (Object.keys(englishContent.landing ?? {}).some(key => key !== "cta" && key !== "intro")) {
       addError(`Landing content may contain only intro and CTA copy: data/quizzes/${entry.name}/en.json`);
     }
 

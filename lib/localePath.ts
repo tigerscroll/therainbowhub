@@ -1,5 +1,8 @@
 export function localeLanguageTag(locale: string) {
-  return locale === "gr" ? "el" : locale;
+  return locale === "gr" ? "el"
+    : locale === "zh-hans" ? "zh-Hans"
+    : locale === "pa" ? "pa-Guru"
+    : locale;
 }
 
 export function localizeInternalPath(

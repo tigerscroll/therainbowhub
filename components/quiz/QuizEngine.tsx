@@ -7,7 +7,6 @@ import { ExperienceIcon } from "@/components/experience/ExperienceIcon";
 import { useRewardedGate } from "@/components/experience/useRewardedGate";
 import type { SupportedLocale, Translations } from "@/lib/i18n";
 import type { Quiz, QuizQuestion, QuizRecommendation } from "@/lib/quizzes";
-import { hasQuizCampaign, quizCampaignBootAttribute, yearsLeftCampaignPath } from "@/lib/quizCampaignEntry";
 import { siteConfig } from "@/lib/siteConfig";
 import { getStageCompletionPercentage } from "./engineState";
 import { getQuizStorageKey, isProgressTimestampFresh, quizProgressSignaturesMatch, readQuizProgress, removeQuizProgress, writeQuizProgress, STORAGE_VERSION } from "./progressStorage";
@@ -15,7 +14,6 @@ import { QuestionMedia, QuestionRenderer } from "./QuestionRenderer";
 import { QuestionDisplayAd } from "./QuestionDisplayAd";
 import { QuizText } from "./QuizText";
 import { QuizAbout } from "./QuizAbout";
-import { QuizCampaignEntry } from "./QuizCampaignEntry";
 import { QuizOptionsResult } from "./QuizOptionsResult";
 import { scrollQuizToTop } from "./scrollToTop";
 import { resolveArtworkVariant, resolveProfileArtwork } from "./profileArtwork";
@@ -92,9 +90,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const [completedStage, setCompletedStage] = useState(0);
   const [screen, setScreen] = useState<QuizScreen>(() => startsOnQuestion ? "question" : "landing");
   const [hydrated, setHydrated] = useState(false);
-  const supportsCampaignEntry = locale === "en" && `/${quiz.slug}` === yearsLeftCampaignPath && !startsOnQuestion && quiz.engine.rewarded.start;
-  const [campaignEntry, setCampaignEntry] = useState(false);
-  const [campaignAdUnavailable, setCampaignAdUnavailable] = useState(false);
   const [startOverlay, setStartOverlay] = useState(false);
   const starting = useRef(false);
   useLayoutEffect(() => { if (hydrated) onReady?.(); }, [hydrated, onReady]);
@@ -151,7 +146,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   const storageKey = getQuizStorageKey(quiz.slug, locale);
   const { busy: adBusy, cancelGate, runGate } = useRewardedGate({
     attempts: quiz.engine.rewarded.attempts,
-    preload: Boolean(quiz.engine.startPrelude?.preload && hydrated && screen === "landing" && !startOverlay && !campaignEntry),
+    preload: Boolean(quiz.engine.startPrelude?.preload && hydrated && screen === "landing" && !startOverlay),
   });
   const currentQuestion = quiz.questions[questionIndex];
   const isChapterFlow = quiz.engine.flow.type === "staged" && quiz.stages.length === 10;
@@ -187,17 +182,12 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     } catch {
       removeQuizProgress(storageKey);
     } finally {
-      if (supportsCampaignEntry) setCampaignEntry(hasQuizCampaign(window.location.search));
       setHydrated(true);
       document.documentElement.classList.remove("quiz-resuming");
       document.documentElement.style.removeProperty("background");
       document.body.style.removeProperty("background");
     }
-  }, [progressSignature, quiz, storageKey, supportsCampaignEntry]);
-
-  useLayoutEffect(() => {
-    if (hydrated && supportsCampaignEntry) document.documentElement.removeAttribute(quizCampaignBootAttribute);
-  }, [hydrated, supportsCampaignEntry]);
+  }, [progressSignature, quiz, storageKey]);
 
   useEffect(() => {
     if (!hydrated || screen === "landing") return;
@@ -389,11 +379,7 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
       setScreen("question");
       scrollToTop();
     };
-    if (supportsCampaignEntry && campaignEntry) {
-      setCampaignAdUnavailable(false);
-      void runGate(begin, { scrollAfter: false, retryOnClose: false, onUnavailable: () => setCampaignAdUnavailable(true) });
-    }
-    else if (quiz.engine.rewarded.start && quiz.engine.startPrelude) {
+    if (quiz.engine.rewarded.start && quiz.engine.startPrelude) {
       starting.current = true;
       setStartOverlay(true);
       void runGate(begin, {scrollAfter: false, retryOnClose: false, minimumVisibleDelayMs: quiz.engine.startPrelude.delayMs}).finally(() => {
@@ -428,7 +414,6 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
     cancelGate();
     starting.current = false;
     setStartOverlay(false);
-    setCampaignAdUnavailable(false);
     removeQuizProgress(storageKey);
     setAnswers({});
     setPendingAnswer(undefined);
@@ -453,14 +438,8 @@ export function QuizEngine({ locale, quiz, recommendations, translations, onRead
   }
 
   if (screen === "landing") {
-    const campaignPopup = supportsCampaignEntry && (!hydrated || campaignEntry) ? (
-      <QuizCampaignEntry busy={adBusy} prerendered={!hydrated} unavailable={campaignAdUnavailable} onStart={startQuiz} />
-    ) : null;
-    if (hydrated && campaignPopup) return campaignPopup;
-
     return (
       <>
-      {campaignPopup}
       <ExperienceLanding
         adNote={quiz.engine.rewarded.start ? translations.ad.startNote : undefined}
         className={quiz.landing.compact ? "quiz-engine__landing--compact" : undefined}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { campaignGuides } from "@/lib/campaignGuides";
 import { getInfoPage, infoPageSlugs, type InfoPageSlug } from "@/lib/infoPages";
-import { getDefaultLocale, getSupportedLocales, type SupportedLocale } from "@/lib/i18n";
+import { getDefaultLocale, getSiteLocales, type SupportedLocale } from "@/lib/i18n";
 import { getAllGalleries, getGalleryLocales } from "@/lib/galleries";
 import { getAllQuizzes, getQuizLocales } from "@/lib/quizzes";
 import { siteConfig } from "@/lib/siteConfig";
@@ -65,7 +65,7 @@ export function homeAlternates() {
   return {
     canonical: absoluteUrl("/"),
     languages: {
-      ...languageAlternates(getHomePath, getSupportedLocales()),
+      ...languageAlternates(getHomePath, getSiteLocales()),
       "x-default": absoluteUrl("/"),
     },
   };
@@ -99,7 +99,7 @@ export function localizedHomeAlternates(locale: SupportedLocale) {
   return {
     canonical: absoluteUrl(getHomePath(locale)),
     languages: {
-      ...languageAlternates(getHomePath, getSupportedLocales()),
+      ...languageAlternates(getHomePath, getSiteLocales()),
       "x-default": absoluteUrl("/"),
     },
   };
@@ -109,7 +109,7 @@ export function infoAlternates(locale: SupportedLocale, slug: InfoPageSlug) {
   return {
     canonical: absoluteUrl(getInfoPath(locale, slug)),
     languages: {
-      ...languageAlternates((item) => getInfoPath(item, slug), getSupportedLocales()),
+      ...languageAlternates((item) => getInfoPath(item, slug), getSiteLocales()),
       "x-default": absoluteUrl(getInfoPath(defaultLocale, slug)),
     },
   };
@@ -225,7 +225,7 @@ export function getSitemapEntries() {
     })),
   ];
 
-  for (const locale of getSupportedLocales().filter((item) => item !== defaultLocale)) {
+  for (const locale of getSiteLocales().filter((item) => item !== defaultLocale)) {
     entries.push({
       url: absoluteUrl(getHomePath(locale)),
       lastModified: localeContentDate(locale),
@@ -259,7 +259,7 @@ export function getSitemapEntries() {
   }
 
   for (const slug of infoPageSlugs) {
-    for (const locale of getSupportedLocales()) {
+    for (const locale of getSiteLocales()) {
       entries.push({
         url: absoluteUrl(getInfoPath(locale, slug)),
         lastModified: new Date(`${getInfoPage(locale, slug).lastModified}T00:00:00Z`),

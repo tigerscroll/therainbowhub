@@ -7,13 +7,13 @@ import {
   isInfoPageSlug,
   type InfoPageSlug,
 } from "@/lib/infoPages";
-import { getLocalePath, type SupportedLocale } from "@/lib/i18n";
+import { getLocalePath, type SiteLocale } from "@/lib/i18n";
 import { ObfuscatedEmail } from "@/components/ObfuscatedEmail";
 
 export { getInfoPageMetadata, infoPageSlugs, isInfoPageSlug };
 
 type InfoPageContentProps = {
-  locale: SupportedLocale;
+  locale: SiteLocale;
   slug: InfoPageSlug;
 };
 
@@ -81,7 +81,7 @@ export function InfoPageContent({ locale, slug }: InfoPageContentProps) {
   );
 }
 
-const infoPageLabels: Record<SupportedLocale, { related: string }> = {
+const infoPageLabels: Record<SiteLocale, { related: string }> = {
   tr: { related: "İlgili bilgiler" },
   bn: { related: "সম্পর্কিত তথ্য" },
   fil: { related: "Kaugnay na impormasyon" },

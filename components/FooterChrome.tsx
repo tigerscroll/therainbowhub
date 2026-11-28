@@ -4,6 +4,7 @@ import type { Translations } from "@/lib/i18n";
 
 export type FooterChromeLink = {
   href: string;
+  hrefLang?: string;
   label: string;
 };
 
@@ -31,13 +32,13 @@ export function FooterChrome({ companyLinks, homePath, legalLinks, translations 
             <div className="site-footer__links">
               <strong>{translations.footer.company}</strong>
               {companyLinks.map((link) => (
-                <Link key={link.href} href={link.href} prefetch={false}>{link.label}</Link>
+                <Link key={link.href} href={link.href} hrefLang={link.hrefLang} prefetch={false}>{link.label}</Link>
               ))}
             </div>
             <div className="site-footer__links">
               <strong>{translations.footer.legal}</strong>
               {legalLinks.map((link) => (
-                <Link key={link.href} href={link.href} prefetch={false}>{link.label}</Link>
+                <Link key={link.href} href={link.href} hrefLang={link.hrefLang} prefetch={false}>{link.label}</Link>
               ))}
             </div>
           </nav>

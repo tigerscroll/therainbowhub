@@ -3,6 +3,7 @@ import {
   getDefaultLocale,
   getLocaleOptions,
   getLocalePath,
+  isSiteLocale,
   type SupportedLocale,
   type Translations,
 } from "@/lib/i18n";
@@ -25,7 +26,9 @@ export function Header({ availableLocales, currentPath, locale, localePaths, tra
   const availableLocaleSet = availableLocales ? new Set(availableLocales) : undefined;
   const languageOptions = getLocaleOptions().filter(
     (option) => (!availableLocaleSet || availableLocaleSet.has(option.code))
-      && (localePaths ? Boolean(localePaths[option.code]) : (!quizSlug || Boolean(getQuizBySlug(quizSlug, option.code)))),
+      && (localePaths ? Boolean(localePaths[option.code]) : (quizSlug
+        ? Boolean(getQuizBySlug(quizSlug, option.code))
+        : isSiteLocale(option.code))),
   );
   const homePath = getLocalePath(locale, "/");
   const chromeLanguageOptions: HeaderLanguageOption[] = languageOptions.map((option) => ({

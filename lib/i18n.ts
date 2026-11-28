@@ -11,8 +11,11 @@ export {
   getDefaultLocale,
   getLocaleOptions,
   getLocalePath,
+  getSiteLocales,
   getSupportedLocales,
+  isSiteLocale,
   isSupportedLocale,
+  type SiteLocale,
   type SupportedLocale,
 } from "@/lib/localeConfig";
 

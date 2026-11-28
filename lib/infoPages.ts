@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { getDefaultLocale, isSupportedLocale, type SupportedLocale } from "@/lib/i18n";
+import { getDefaultLocale, isSiteLocale, type SupportedLocale } from "@/lib/i18n";
 
 export type InfoPageSlug =
   | "about"
@@ -75,7 +75,7 @@ export function isInfoPageSlug(slug: string): slug is InfoPageSlug {
 }
 
 export function getInfoPage(locale: string, slug: InfoPageSlug): InfoPage {
-  const safeLocale: SupportedLocale = isSupportedLocale(locale) ? locale : getDefaultLocale();
+  const safeLocale: SupportedLocale = isSiteLocale(locale) ? locale : getDefaultLocale();
   const filePath = path.join(infoPagesDirectory, `${safeLocale}.json`);
   const pages = JSON.parse(fs.readFileSync(filePath, "utf8")) as Record<InfoPageSlug, InfoPage>;
 

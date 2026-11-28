@@ -27,14 +27,14 @@ for (const locale of ['ar', 'de', 'es', 'fr', 'hi', 'id', 'it', 'nl', 'pt', 'th'
       assert.deepEqual(placeholders(text), placeholders(sourceLeaves[path]), path);
       assert.notEqual(text, sourceLeaves[path], `${path}: English has been translated`);
     }
-    assert.equal(copy.landing.intro.split('\n').length, 2);
-    if (locale === 'de') assert.equal(copy.stages['stage-1'].title, 'Dein Start in den Tag');
+    assert.deepEqual(Object.keys(copy.landing), ['cta']);
+    if (locale === 'de') assert.equal(copy.stages['stage-1'].title, 'Deine Lebensuhr');
     if (locale === 'fr') {
-      assert.equal(copy.landing.cta, 'Faire le test');
-      assert.match(copy.landing.intro, /choix\u202f\?/);
+      assert.equal(copy.landing.cta, 'Commencer');
+      assert.match(copy.title, /\u202f\?/);
     }
     const expanded = expandQuizLocale(manifest, copy, locale);
-    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), Array(10).fill(10));
+    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), [10]);
     const nativeQuestions = expanded.stages.flatMap((s: any) => s.questions);
     const sourceQuestions = expandQuizLocale(manifest, english, 'en').stages.flatMap((s: any) => s.questions);
     assert.deepEqual(nativeQuestions.map((q: any) => [q.id, q.answerIds, Object.values(q.answers), q.calibration]), sourceQuestions.map((q: any) => [q.id, q.answerIds, Object.values(q.answers), q.calibration]));
@@ -56,12 +56,12 @@ function scoringQuiz(locale: string): Quiz {
   } as Quiz;
 }
 
-test('identical choices produce the same age, profile and consistency in all eleven languages', () => {
+test('identical choices produce the same age, profile and consistency in all active editions', () => {
   const source = scoringQuiz('en');
   for (let pattern = 0; pattern < 20; pattern++) {
     const answers = Object.fromEntries(source.questions.map((q, i) => [q.id, (i * (pattern + 1) + pattern) % 4]));
     const expected = scoreQuiz(source, answers);
-    for (const locale of ['ar', 'de', 'es', 'fr', 'hi', 'id', 'it', 'nl', 'pt', 'th']) {
+    for (const locale of manifest.activeLocales.filter((item: string) => item !== 'en')) {
       const result = scoreQuiz(scoringQuiz(locale), answers);
       assert.equal(result.profile.id, expected.profile.id, `${locale}/${pattern}`);
       assert.equal(result.estimatedAge, expected.estimatedAge, `${locale}/${pattern}`);
@@ -72,18 +72,16 @@ test('identical choices produce the same age, profile and consistency in all ele
 
 test('Years Left Italian never receives French answer prefixes from shared authoring', () => {
   const copy = read('it');
-  assert.equal(copy.landing.cta, 'Inizia il test');
-  assert.match(copy.stages['stage-8'].questions['yl-s8q1'].question, /martedì/);
-  assert.match(copy.stages['stage-5'].questions['yl-s5q2'].answers.a1, /^Dico sì/);
-  assert.match(copy.stages['stage-7'].questions['yl-s7q1'].answers.a1, /^Riparto/);
+  assert.equal(copy.landing.cta, 'Inizia');
+  assert.match(copy.stages['stage-1'].questions['yl-s8q1'].question, /martedì/);
+  assert.match(copy.stages['stage-1'].questions['yl-s5q2'].answers.a1, /^Dico sì/);
   assert.doesNotMatch(Object.values(leaves(copy)).join('\n'), /\bJe\b|\bIch\b|\bJ’/u);
 });
 
 test('Years Left Dutch keeps native question wording and translated review actions', () => {
   const copy = read('nl');
-  assert.equal(copy.landing.cta, 'Start de test');
-  assert.match(copy.stages['stage-8'].questions['yl-s8q1'].question, /dinsdag/);
-  assert.match(copy.stages['stage-1'].questions['yl-s1q6'].answers.a2, /dat ik achterloop/);
+  assert.equal(copy.landing.cta, 'Begin');
+  assert.match(copy.stages['stage-1'].questions['yl-s8q1'].question, /dinsdag/);
   assert.equal(copy.results.estimate.reviewUnlock.raisedCopy, 'Deze keuze verhoogde de schatting.');
   assert.equal(copy.results.estimate.reviewUnlock.loweredCopy, 'Deze keuze verlaagde de schatting.');
 });
@@ -91,9 +89,9 @@ test('Years Left Dutch keeps native question wording and translated review actio
 test('Years Left Spanish uses consistent international Spanish with complete question punctuation', () => {
   const copy = read('es');
   const visible = Object.values(leaves(copy)).join('\n');
-  assert.equal(copy.landing.cta, 'Empezar test');
+  assert.equal(copy.landing.cta, 'Empezar');
   assert.doesNotMatch(visible, /\b(?:vosotros|vosotras|vos|che|órale|móvil|celular)\b/iu);
-  assert.match(copy.stages['stage-8'].questions['yl-s8q1'].question, /martes/);
+  assert.match(copy.stages['stage-1'].questions['yl-s8q1'].question, /martes/);
   for (const [path, text] of Object.entries(leaves(copy))) {
     assert.equal((text.match(/¿/g) ?? []).length, (text.match(/\?/g) ?? []).length, `${path}: paired Spanish question marks`);
     assert.equal((text.match(/¡/g) ?? []).length, (text.match(/!/g) ?? []).length, `${path}: paired Spanish exclamation marks`);
@@ -103,9 +101,9 @@ test('Years Left Spanish uses consistent international Spanish with complete que
 test('Years Left Portuguese uses neutral vocabulary and avoids region-specific alternatives', () => {
   const copy = read('pt');
   const visible = Object.values(leaves(copy)).join('\n');
-  assert.equal(copy.landing.cta, 'Iniciar teste');
-  assert.match(copy.stages['stage-2'].questions['yl-s2q1'].question, /primeira refeição do dia/);
-  assert.match(copy.stages['stage-4'].questions['yl-s4q1'].question, /telefone/);
+  assert.equal(copy.landing.cta, 'Começar');
+  assert.match(copy.stages['stage-1'].questions['yl-s2q1'].question, /primeira refeição do dia/);
+  assert.match(copy.stages['stage-1'].questions['yl-s4q1'].question, /telefone/);
   assert.doesNotMatch(visible, /\b(?:telemóvel|celular|frigorífico|geladeira|autocarro|ônibus|comboio|trem|ecrã|tela|fixe|bacana|olhadela|algures|apetecer|planeei|você|tu)\b|pequeno-almoço|café da manhã|\b(?:estou|está|estamos|ando) a\b|\bpara si\b/iu);
   assert.doesNotMatch(visible, /\([^)]*(?:Portugal|Brasil|PT|BR)[^)]*\)/u, 'no paired national variants in the reader-facing copy');
 });

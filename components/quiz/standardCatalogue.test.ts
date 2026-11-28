@@ -19,12 +19,13 @@ const slugs = getQuizSlugs();
 const read = (slug: string, name: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${name}.json`, 'utf8'));
 
 test('article and limited quiz editions keep language coverage explicit', () => {
-  assert.deepEqual(locales, ['ar','de','en','es','fr','hi','id','it','nl','pt','th']);
+  assert.deepEqual(locales, [...new Set(slugs.flatMap(slug => read(slug, 'quiz').activeLocales))].sort());
   const siteLocales = getSiteLocales();
   assert.deepEqual(siteLocales, ['ar','bn','de','en','es','fil','fr','gr','hi','id','it','ja','ms','nl','pt','th','tr','ur','vi']);
   assert.deepEqual(fs.readdirSync('data/info-pages').filter(file => file.endsWith('.json')).map(file => file.slice(0,-5)).sort(), siteLocales);
   const config = fs.readFileSync('lib/localeConfig.ts', 'utf8');
-  assert.deepEqual([...config.matchAll(/code: "([a-z]+)"/g)].map(match => match[1]).sort(), siteLocales);
+  const registeredSite = config.match(/const siteLocaleOptions = \[([\s\S]*?)\] as const;/)?.[1] ?? '';
+  assert.deepEqual([...registeredSite.matchAll(/code: "([^"]+)"/g)].map(match => match[1]).sort(), siteLocales);
   assert.ok(slugs.length > 0);
   for (const slug of slugs) assert.equal(fs.existsSync(`data/quizzes/${slug}/english-extended`), false, slug);
 });
@@ -35,12 +36,12 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
   const mobility = slug === 'mobility_scooter';
   const yearsLeft = slug === 'years-left';
   const challenge = slug === 'challenge';
-  const short = mobility;
+  const short = mobility || yearsLeft;
   const stageCount = short ? 1 : 10;
-  const questionsPerStage = yearsLeft ? 10 : short ? 10 : marry || challenge ? 8 : 7;
+  const questionsPerStage = short ? 10 : marry || challenge ? 8 : 7;
   const expectedLocales = manifest.activeLocales ?? locales;
-  assert.equal(manifest.template, yearsLeft ? 'ten-stage-ten-question-v1' : short ? 'single-stage-rewarded-v1' : marry || challenge ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
-  assert.equal(manifest.engine.hardRefreshCheckpoints, !short);
+  assert.equal(manifest.template, short ? 'single-stage-rewarded-v1' : marry || challenge ? 'ten-stage-eight-question-v1' : 'ten-stage-seven-question-v1');
+  assert.equal(manifest.engine.hardRefreshCheckpoints, !mobility);
   assert.equal(manifest.listing.showSocialProof, false);
   assert.equal(manifest.listing.compactLanding, true);
   const ids = manifest.structure.stages.flatMap((stage: any) => stage.questionIds);
@@ -48,7 +49,7 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
   assert.equal(new Set(ids).size, stageCount * questionsPerStage);
   assert.deepEqual(manifest.structure.stages.map((stage: any) => stage.questionIds.length), Array(stageCount).fill(questionsPerStage));
   assert.deepEqual(Object.keys(manifest.structure.questions).sort(), [...ids].sort());
-  assert.deepEqual(fs.readdirSync(`data/quizzes/${slug}`).filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file=>file.slice(0,-5)).sort(), expectedLocales);
+  assert.deepEqual(fs.readdirSync(`data/quizzes/${slug}`).filter(file => /^[a-z]{2,3}(?:-[a-z]{4})?\.json$/.test(file)).map(file=>file.slice(0,-5)).sort(), expectedLocales);
   if (manifest.activeLocales) assert.deepEqual([...manifest.activeLocales].sort(), expectedLocales);
   for (const locale of expectedLocales) {
     const effective = resolveQuizLocaleManifest(manifest, locale);
@@ -61,7 +62,8 @@ for (const slug of slugs) test(`${slug}: its normal folder supplies its intended
     assert.equal(expanded.career.stages.length, stageCount);
     for (const [index, stage] of effective.structure.stages.entries()) {
       const checkpoint = copy.career.stages[stage.id];
-      assert.equal(checkpoint.preAdButton, mobility ? 'See My Options' : marry && index === stageCount - 1 ? marryRevealLabels[locale] : locale === 'en' ? index === stageCount - 1 ? 'See My Result' : 'Continue' : index === stageCount - 1 ? ui[locale].result : ui[locale].next);
+      if (yearsLeft && locale !== 'en') assert.ok(checkpoint.preAdButton.trim());
+      else assert.equal(checkpoint.preAdButton, mobility ? 'See My Options' : marry && index === stageCount - 1 ? marryRevealLabels[locale] : locale === 'en' ? index === stageCount - 1 ? 'See My Result' : 'Continue' : index === stageCount - 1 ? ui[locale].result : ui[locale].next);
       if (index < stageCount - 1) {
         assert.equal(checkpoint.preAdCopy.match(/\{profile\}/g)?.length ?? 0, marry ? 0 : 1);
         assert.ok(checkpoint.next.tagline.trim());

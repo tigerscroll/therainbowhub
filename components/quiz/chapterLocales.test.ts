@@ -10,6 +10,7 @@ import {quizTemplateContract} from '../../scripts/quiz-template-contracts.mjs';
 const scope = {quizzes: fs.readdirSync('data/quizzes').filter(slug => fs.existsSync(`data/quizzes/${slug}/quiz.json`)), locales: getQuizContentLocales()};
 const read = (slug: string, locale: string) => JSON.parse(fs.readFileSync(`data/quizzes/${slug}/${locale}.json`, 'utf8'));
 const questions = (copy: any): Record<string, any> => Object.assign({}, ...Object.values(copy.stages).map((stage: any) => stage.questions));
+const memoryLocales = new Set<string>(read('memory', 'quiz').activeLocales);
 
 for (const locale of scope.locales.filter((value: string) => value !== 'en')) {
   test(`${locale}: translated questions retain all answer IDs and scoring positions`, () => {
@@ -26,7 +27,7 @@ for (const locale of scope.locales.filter((value: string) => value !== 'en')) {
     }
   });
 
-  test(`${locale}: /memory now uses general-knowledge questions without study boards`, () => {
+  if (memoryLocales.has(locale)) test(`${locale}: /memory now uses general-knowledge questions without study boards`, () => {
     const q = questions(read('memory', locale));
     assert.equal(Object.keys(q).length, 70);
     for (const [id, question] of Object.entries(q)) {

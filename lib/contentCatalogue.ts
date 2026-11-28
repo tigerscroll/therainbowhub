@@ -1,4 +1,4 @@
-import { getDefaultLocale, getSupportedLocales } from "@/lib/i18n";
+import { getDefaultLocale, getSiteLocales, getSupportedLocales } from "@/lib/i18n";
 import { getAllGalleries } from "@/lib/galleries";
 import { getAllQuizzes } from "@/lib/quizzes";
 import { isPhotoLocale, perfectlyTimedPhotos } from "@/lib/perfectlyTimedPhotos";
@@ -24,7 +24,7 @@ export function getTopLevelContentRoutes(): TopLevelContentRoute[] {
   const routes: TopLevelContentRoute[] = [];
   const keys = new Set<string>();
 
-  for (const locale of getSupportedLocales().filter((item) => item !== defaultLocale)) {
+  for (const locale of getSiteLocales().filter((item) => item !== defaultLocale)) {
     assertUniqueRoute(keys, locale, `Locale route /${locale}`);
     routes.push({ kind: "locale-home", segment: locale });
   }

@@ -16,7 +16,7 @@ try {
     [390, "/fr/years-left?utm_source=demo"],
   ]) {
     const campaign = path.startsWith("/years-left?utm_");
-    const context = await browser.newContext({ viewport: { width, height: 780 }, reducedMotion: "reduce" });
+    const context = await browser.newContext({ viewport: { width, height: width === 320 ? 568 : 780 }, reducedMotion: "reduce" });
     let releaseHydration;
     const hydration = new Promise(resolve => { releaseHydration = resolve; });
     await context.route("**/*", async (route) => {
@@ -57,85 +57,78 @@ try {
     page.setDefaultTimeout(10000);
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
-    const popup = page.getByRole("dialog", { name: "Ready to Start?" });
-    const button = popup.getByRole("button", { name: "Start Test" });
+    const landing = page.locator(".quiz-engine__landing");
+    const button = landing.locator(".quiz-engine__primary");
     const question = page.getByText("Your alarm goes off. Which version of you shows up?", { exact: true });
-    const boot = page.locator("html");
-    const preview = page.locator("[data-quiz-campaign-preview]");
     const requests = () => page.evaluate(() => window.quizCampaignTest.requests.length);
     const waitForAd = () => page.waitForFunction(() => Boolean(window.quizCampaignTest.displayed));
+    const verifyNoPopup = async () => {
+      assert.equal(await page.locator("html").getAttribute("data-quiz-campaign-boot"), null);
+      assert.equal(await page.getByRole("dialog", { name: "Ready to Start?" }).count(), 0);
+      assert.equal(await page.locator("[data-quiz-campaign-preview], [data-quiz-campaign-entry]").count(), 0);
+    };
 
     try {
       assert.equal((await page.goto(new URL(path, base).href, { waitUntil: "commit" })).status(), 200);
-      await page.locator("h1").waitFor({ state: "attached" });
-      if (campaign) {
-        await preview.waitFor();
-        await page.waitForFunction(() => performance.getEntriesByName("first-contentful-paint").length > 0);
-        assert.equal(await boot.getAttribute("data-quiz-campaign-boot"), "");
-        assert.equal(await page.locator(".site-shell").evaluate(el => getComputedStyle(el).visibility), "hidden");
-        assert.equal(await preview.evaluate(el => getComputedStyle(el).backgroundColor), "rgb(0, 0, 0)");
-        assert.equal(await button.isVisible(), true);
-        assert.equal(await requests(), 0, "the ad must not preload");
-      } else {
-        assert.equal(await boot.getAttribute("data-quiz-campaign-boot"), null);
-        assert.equal(await preview.isVisible(), false);
-      }
+      await landing.getByRole("heading", { level: 1 }).waitFor();
+      await page.waitForFunction(() => performance.getEntriesByName("first-contentful-paint").length > 0);
+      assert.equal(await page.locator(".site-shell").evaluate(el => getComputedStyle(el).visibility), "visible");
+      await verifyNoPopup();
+      assert.equal(await button.isDisabled(), true, "the Start label is visible before hydration");
+      assert.equal(await requests(), 0, "there must be no ad preload");
     } finally {
       releaseHydration();
     }
 
-    await preview.waitFor({ state: "detached" });
-    assert.equal(await boot.getAttribute("data-quiz-campaign-boot"), null);
-    if (campaign) {
-      await button.waitFor();
-      assert.equal(await page.locator(".hub-header").isVisible(), false, "site chrome must stay hidden after hydration");
-      await page.waitForFunction(() => document.activeElement?.hasAttribute("data-quiz-campaign-entry"));
-      assert.equal(await button.evaluate(el => getComputedStyle(el).outlineStyle), "none", "no focus ring on load");
-      const disclosure = popup.getByText("Watch a short ad to start.", { exact: true });
-      assert(await disclosure.evaluate(el => innerHeight - el.getBoundingClientRect().bottom <= 40), "disclosure sits at the viewport bottom");
-      const { width: buttonWidth, height: buttonHeight } = await button.boundingBox();
-      const expectedWidth = Math.min(width - 32, 520) - 2 * Math.min(36, Math.max(18, width * .05));
-      assert(Math.abs(buttonWidth - expectedWidth) <= 1, "retain the popup button width");
-      assert.equal(buttonHeight, Math.min(112, Math.max(72, width * .25)), "retain the popup button height");
-
-      const direct = await context.newPage();
-      try {
-        await direct.goto(new URL("/years-left", base).href);
-        const properties = ["backgroundImage", "color", "borderTop", "borderRadius", "boxShadow", "fontFamily", "fontSize", "fontWeight"];
-        const readStyle = (locator) => locator.evaluate((el, keys) => keys.map(key => getComputedStyle(el)[key]), properties);
-        assert.deepEqual(await readStyle(button), await readStyle(direct.locator(".quiz-engine__landing .quiz-engine__primary")));
-        const fontFamily = locator => locator.evaluate(el => getComputedStyle(el).fontFamily);
-        assert.equal(await fontFamily(popup.getByRole("heading")), await fontFamily(direct.locator(".quiz-engine__landing h1")));
-      } finally {
-        await direct.close();
-      }
-      if (width === 390 && process.env.QUIZ_CAMPAIGN_SCREENSHOT) {
-        await page.screenshot({ path: process.env.QUIZ_CAMPAIGN_SCREENSHOT, animations: "disabled" });
-      }
-      await page.keyboard.press("Tab");
-      assert.equal(await button.evaluate(el => el === document.activeElement && el.matches(":focus-visible")), true);
-      assert.equal(await requests(), 0);
-      await button.click();
-      await waitForAd();
-      await popup.getByRole("button", { name: "Loading..." }).waitFor();
-      await page.evaluate(() => window.quizCampaignTest.close());
-      await button.waitFor();
-      assert.equal(await question.isVisible(), false, "closing without a reward must not open Question 1");
-
-      await button.click();
-      await waitForAd();
-      assert.equal(await requests(), 2, "one ad request for each press");
-      await page.evaluate(() => { window.quizCampaignTest.grant(); window.quizCampaignTest.close(); });
-      await question.waitFor();
-      assert.equal(await popup.count(), 0);
-      assert.equal(await requests(), 2, "the first question must not request a second ad");
-      await page.reload();
-      await question.waitFor();
-      assert.equal(await popup.count(), 0, "saved progress must resume without the start popup");
+    await page.waitForFunction(() => !document.querySelector(".quiz-engine__landing .quiz-engine__primary")?.disabled);
+    await verifyNoPopup();
+    if (path.startsWith("/fr/")) {
+      assert.match(await button.innerText(), /Commencer/);
+      assert.equal(await landing.locator(".quiz-engine__quick-start").count(), 0, "French has the same compact landing");
       assert.equal(await requests(), 0);
     } else {
-      await page.locator("h1").waitFor();
-      assert.equal(await popup.count(), 0);
+      assert.equal(await button.getAttribute("data-google-interstitial"), "false");
+      assert.equal(await landing.getByRole("button", { name: "Start", exact: true }).count(), 1);
+      assert.equal(await landing.locator(".quiz-engine__quick-start").count(), 0, "English subtitle is not rendered");
+      const { upper, lower, offset } = await landing.evaluate(el => {
+        const badge = el.querySelector(".quiz-engine__landing-badge").getBoundingClientRect();
+        const title = el.querySelector("h1").getBoundingClientRect();
+        const cta = el.querySelector(".quiz-engine__primary").getBoundingClientRect();
+        return { upper: title.top - badge.bottom, lower: cta.top - title.bottom, offset: title.x + title.width / 2 - cta.x - cta.width / 2 };
+      });
+      assert(upper >= 20 && Math.abs(upper - lower) < 1, `the title is centered vertically: ${upper}px above, ${lower}px below`);
+      assert(Math.abs(offset) < 1, "the title is centered horizontally over Start");
+      assert.equal(await button.evaluate(el => parseFloat(getComputedStyle(el).minHeight)), 88);
+      assert(await button.evaluate(el => el.getBoundingClientRect().bottom <= innerHeight), "Start is visible without scrolling");
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      assert.equal(await button.evaluate(el => getComputedStyle(el).animationName), "none", "honor reduced motion");
+      await page.emulateMedia({ reducedMotion: "no-preference" });
+      assert.equal(await button.evaluate(el => getComputedStyle(el).animationName), "years-start-pulse");
+      assert.equal(await button.evaluate(el => getComputedStyle(el).animationIterationCount), "infinite", "the idle pulse keeps going");
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      if (width === 390 && campaign && process.env.QUIZ_CAMPAIGN_SCREENSHOT) {
+        await page.screenshot({ path: process.env.QUIZ_CAMPAIGN_SCREENSHOT, animations: "disabled" });
+      }
+      if (campaign) {
+        await button.click();
+        await waitForAd();
+        await landing.getByRole("button", { name: "Loading...", exact: true }).waitFor();
+        await page.evaluate(() => window.quizCampaignTest.close());
+        await landing.getByRole("button", { name: "Start", exact: true }).waitFor();
+        assert.equal(await question.isVisible(), false, "closing without a reward does not open Question 1");
+
+        await button.click();
+        await waitForAd();
+        assert.equal(await requests(), 2, "each click requests one rewarded ad");
+        await page.evaluate(() => { window.quizCampaignTest.grant(); window.quizCampaignTest.close(); });
+        await question.waitFor();
+        assert.equal(await landing.count(), 0);
+        assert.equal(await requests(), 2, "Question 1 does not request a second ad");
+        await page.reload();
+        await question.waitFor();
+        await verifyNoPopup();
+        assert.equal(await requests(), 0, "saved progress resumes without a new ad");
+      }
     }
     assert.deepEqual(errors, []);
     console.log(`${width}px ${path}: passed`);

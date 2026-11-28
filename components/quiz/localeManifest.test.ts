@@ -21,11 +21,12 @@ function fixture() {
 test('locale extensions add questions without mutating the base or other locales', () => {
   const manifest = fixture();
   const before = structuredClone(manifest);
+  const baseCount = Object.keys(manifest.structure.questions).length;
   const english = resolveQuizLocaleManifest(manifest, 'en');
-  assert.equal(Object.keys(english.structure.questions).length, 102);
+  assert.equal(Object.keys(english.structure.questions).length, baseCount + 2);
   assert.equal(english.localeExtensions, undefined);
   const french = resolveQuizLocaleManifest(manifest, 'fr');
-  assert.equal(Object.keys(french.structure.questions).length, 100);
+  assert.equal(Object.keys(french.structure.questions).length, baseCount);
   assert.deepEqual(french.structure, manifest.structure);
   for (const [id, question] of Object.entries(manifest.structure.questions)) assert.deepEqual(english.structure.questions[id], question);
   assert.deepEqual(manifest, before);

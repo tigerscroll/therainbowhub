@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import { chromium } from 'playwright-core';
 import { resolveQuizLocaleManifest } from '../lib/quiz/localeManifest.mjs';
+import { localeLanguageTag } from '../lib/localePath.ts';
 
 const base = process.env.QUIZ_TEST_URL ?? 'http://localhost:3198';
 const slug = process.env.QUIZ_TEST_SLUG ?? 'years-left';
@@ -24,7 +25,7 @@ const testPages = new Map();
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 
 async function run(width) {
-  const reduced = width === 320;
+  const reduced = width === 320 || fast;
   const height = (slug === 'vision' || textChapters) && width === 320 ? 568 : width < 500 ? 844 : 960;
   const context = await browser.newContext({ viewport: { width, height }, reducedMotion: reduced ? 'reduce' : 'no-preference' });
   const page = await context.newPage();
@@ -89,8 +90,8 @@ async function run(width) {
     };
   });
   await page.goto(`${base}/${locale === 'en' ? '' : `${locale}/`}${slug}?test_keep=1`);
-  assert.equal(await page.locator('html').getAttribute('lang'), locale);
-  if (locale === 'ar') assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
+  assert.equal(await page.locator('html').getAttribute('lang'), localeLanguageTag(locale));
+  if (['ar', 'fa', 'he', 'ur'].includes(locale)) assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   const landing = page.locator('.quiz-engine__landing');
   if (firstAnswerEntry) {
     assert.equal(await landing.count(), 0, 'first-answer entry has no Start screen');
@@ -99,7 +100,9 @@ async function run(width) {
   } else {
   await landing.waitFor();
   assert.equal(await landing.locator('h1').innerText(), copy.title);
-  assert.equal(await landing.locator('.quiz-engine__quick-start').textContent(), copy.landing.intro);
+  const intro = landing.locator('.quiz-engine__quick-start');
+  if (copy.landing.intro) assert.equal(await intro.textContent(), copy.landing.intro);
+  else assert.equal(await intro.count(), 0);
   assert.equal((await landing.locator('.quiz-engine__primary').innerText()).replace(/[→←]/g, '').trim(), copy.landing.cta);
   if (preloadsStart) {
     await page.waitForFunction(() => window.adCalls.length === 1);
@@ -110,7 +113,9 @@ async function run(width) {
     await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-small-phone.png`, animations: 'disabled' });
   }
   await capture({ path: `/tmp/${artifactPrefix}-engagement-landing-${width}.png`, animations: 'disabled' });
-  await landing.locator('.quiz-engine__primary').click();
+  const startButton = landing.locator('.quiz-engine__primary');
+  if (slug === 'years-left' && !reduced) await startButton.hover({ force: true });
+  await startButton.click();
   if (manifest.engine.startPrelude?.delayMs > 0) {
     const overlay = page.locator('.quiz-engine__start-overlay');
     await overlay.waitFor();
@@ -334,7 +339,7 @@ async function run(width) {
     if (!displayAds && (slug === 'vision' || textChapters)) {
       assert.equal(await checkpoint.locator('.quiz-engine__ad-note').evaluate(node => node.getBoundingClientRect().bottom <= innerHeight), true, `chapter ${stageIndex + 1} ad note remains visible with its button`);
     }
-    if ((slug === 'vision' || textChapters) && stageIndex === 9) {
+    if ((slug === 'vision' || textChapters) && stageIndex === manifest.structure.stages.length - 1) {
       assert.deepEqual(await checkpoint.locator('.quiz-engine__checklist li').allTextContents(), copy.career.stages[stage.id].preAdChecks.map(item => `✓${item}`));
     }
     checkpoints.push({ chapter: stageIndex + 1, button: copy.career.stages[stage.id].preAdButton, animation: animationNames });

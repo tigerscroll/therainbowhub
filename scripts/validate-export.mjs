@@ -12,6 +12,9 @@ const locales = fs.readdirSync(path.join(root, "data", "i18n"))
   .filter((file) => file.endsWith(".json"))
   .map((file) => file.slice(0, -5))
   .sort();
+const siteLocales = new Set(fs.readdirSync(path.join(root, "data", "info-pages"))
+  .filter((file) => file.endsWith(".json"))
+  .map((file) => file.slice(0, -5)));
 const errors = [];
 const shellCss = fs.readFileSync(path.join(root, "styles", "quiz-shell-contract.css"), "utf8");
 const shellHash = createHash("sha256").update(shellCss).digest("hex").slice(0, 12);
@@ -71,6 +74,14 @@ if (!fs.existsSync(outputRoot)) {
         continue;
       }
       const html = fs.readFileSync(file, "utf8");
+      if (slug === "years-left" && !siteLocales.has(locale)) {
+        if (routeFile(`/${locale}`) || routeFile(`/${locale}/info/privacy-policy`)) {
+          addError(`${route}: quiz-only locale must not publish home or info pages.`);
+        }
+        if (!/<a\b[^>]*hreflang="en"[^>]*href="\/info\/privacy-policy"|<a\b[^>]*href="\/info\/privacy-policy"[^>]*hreflang="en"/i.test(html)) {
+          addError(`${route}: English policy link must be available as an explicit language fallback.`);
+        }
+      }
       if (slug === "vision") {
         for (const question of Object.values(quizConfig.structure.questions)) {
           if (!question.image) continue;

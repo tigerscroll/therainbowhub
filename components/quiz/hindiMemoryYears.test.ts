@@ -25,14 +25,16 @@ test('Hindi launches only the two requested quiz editions, with Hindi shared con
     const manifest = read(slug, 'quiz'), copy = read(slug, 'hi');
     assert.ok(manifest.activeLocales.includes('hi'));
     const english = leaves(read(slug, 'en')), hindi = leaves(copy);
-    assert.deepEqual(Object.keys(hindi).sort(), Object.keys(english).sort());
+    const optionalIntro = slug === 'years-left' && english['/landing/intro'] === undefined;
+    assert.deepEqual(Object.keys(hindi).filter(path => !optionalIntro || path !== '/landing/intro').sort(), Object.keys(english).sort());
     for (const [path, value] of Object.entries(hindi)) {
       assert.ok(value.trim(), path);
+      if (optionalIntro && path === '/landing/intro') continue;
       const tokens = (s: string) => [...s.matchAll(/\{[^{}]+\}/g)].map(m => m[0]).sort();
       assert.deepEqual(tokens(value), tokens(english[path]), path);
     }
     const expanded = expandQuizLocale(manifest, copy, 'hi');
-    assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), Array(10).fill(slug === 'memory' ? 7 : 10));
+    assert.deepEqual(expanded.stages.map((stage: any) => stage.questions.length), slug === 'memory' ? Array(10).fill(7) : [10]);
     for (const stage of Object.values(copy.stages) as any[]) for (const question of Object.values(stage.questions) as any[]) {
       assert.match(question.question, /\p{Script=Devanagari}/u);
     }

@@ -437,7 +437,7 @@ for (const folder of folders) {
   fail(source.career?.stages?.at(-1)?.preAdChecks?.length === 3, `${folder.name}/en.json: only the final checkpoint may use the three-row result checklist.`);
   fail(source.checkpoint?.reveals === undefined && source.checkpoint?.nextPrefix === undefined, `${folder.name}/en.json: duplicate checkpoint progression copy must not be retained.`);
   fail(typeof source.landing?.cta === "string" && source.landing.cta.trim(), `${folder.name}/en.json: configurable landing CTA copy is required.`);
-  fail(JSON.stringify(Object.keys(source.landing ?? {}).sort()) === JSON.stringify(["cta", "intro"]), `${folder.name}/en.json: landing content may contain only intro and CTA copy; social proof is shared i18n.`);
+  fail(Object.keys(source.landing ?? {}).every(key => key === "cta" || key === "intro"), `${folder.name}/en.json: landing content may contain only intro and CTA copy; social proof is shared i18n.`);
   fail(source.landing?.startNote === undefined && source.landing?.startPrompt === undefined, `${folder.name}/en.json: rewarded Start helper copy must come from the shared template.`);
   fail(sourceRaw.checkpoint === undefined, `${folder.name}/en.json: rewarded results helper copy must come from the shared template.`);
   fail(sourceQuestions.every((question) => question.explanation === undefined), `${folder.name}/en.json: question explanations are no longer supported.`);
@@ -481,8 +481,11 @@ for (const folder of folders) {
     if (localizedRaw) validateTextOnlyLocale(localizedRaw, localeConfig, `${folder.name}/${localeFile}`, locale);
     const localized = localizedRaw ? expandQuizLocale(config, localizedRaw, localeFile.replace(/\.json$/, "")) : null;
     if (!localized) continue;
-    const landingIntroLines = localizedRaw?.landing?.intro?.split("\n") ?? [];
-    fail(landingIntroLines.length >= 1 && landingIntroLines.length <= 2 && landingIntroLines.every((line) => line.trim()), `${folder.name}/${localeFile}: landing intro must contain one or two non-empty lines.`);
+    const landingIntro = localizedRaw?.landing?.intro;
+    if (landingIntro !== undefined) {
+      const lines = typeof landingIntro === "string" ? landingIntro.split("\n") : [];
+      fail(lines.length >= 1 && lines.length <= 2 && lines.every(line => line.trim()), `${folder.name}/${localeFile}: a supplied landing intro must contain one or two non-empty lines.`);
+    }
     const questions = (localized.stages ?? []).flatMap((stage) => stage.questions ?? []);
     const questionIds = questions.map((question) => question.id);
     fail(questionIds.every((id) => typeof id === "string" && Boolean(id.trim())), `${folder.name}/${localeFile}: every question needs a stable id.`);

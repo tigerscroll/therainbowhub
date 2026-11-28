@@ -43,15 +43,17 @@ for (const locale of ['id', 'th']) {
     assert.deepEqual(copy, slug === 'memory' ? translateMemoryAdditional(locale, english, manifest) : translateYearsLeft(locale, english, manifest));
     assert.deepEqual(manifest, before);
     const source = leaves(english), native = leaves(copy);
-    assert.deepEqual(Object.keys(native).sort(), Object.keys(source).sort());
+    const optionalIntro = slug === 'years-left' && source['/landing/intro'] === undefined;
+    assert.deepEqual(Object.keys(native).filter(path => !optionalIntro || path !== '/landing/intro').sort(), Object.keys(source).sort());
     const tokens = (s: string) => [...s.matchAll(/\{[^{}]+\}/g)].map(m => m[0]).sort();
     for (const [path, text] of Object.entries(native)) {
       assert.ok(text.trim(), path);
+      if (optionalIntro && path === '/landing/intro') continue;
       assert.deepEqual(tokens(text), tokens(source[path]), path);
     }
     const expanded = expandQuizLocale(manifest, copy, locale);
     const sourceExpanded = expandQuizLocale(manifest, english, 'en');
-    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), Array(10).fill(slug === 'memory' ? 7 : 10));
+    assert.deepEqual(expanded.stages.map((s: any) => s.questions.length), slug === 'memory' ? Array(10).fill(7) : [10]);
     const relationships = (data: any) => data.stages.flatMap((s: any) => s.questions.map((q: any) => [q.id, q.answerIds, q.correct, q.weights, q.calibration]));
     assert.deepEqual(relationships(expanded), relationships(sourceExpanded));
     for (const stage of Object.values(copy.stages) as any[]) for (const question of Object.values(stage.questions) as any[]) {

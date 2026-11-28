@@ -6,7 +6,7 @@ import { GalleryRoute } from "@/components/article/GalleryRoute";
 import { QuizTemplate } from "@/components/QuizTemplate";
 import { SiteShell } from "@/components/SiteShell";
 import { getTopLevelContentRoutes } from "@/lib/contentCatalogue";
-import { getDefaultLocale, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { getDefaultLocale, getTranslations, isSiteLocale } from "@/lib/i18n";
 import { getGalleryBySlug } from "@/lib/galleries";
 import { getQuizBySlug } from "@/lib/quizzes";
 import { buildMetadata, galleryAlternates, getGalleryPath, getHomePath, getQuizPath, localizedHomeAlternates, quizAlternates } from "@/lib/seo";
@@ -26,7 +26,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: SegmentPageProps): Promise<Metadata> {
   const { locale: segment } = await params;
 
-  if (isSupportedLocale(segment) && segment !== getDefaultLocale()) {
+  if (isSiteLocale(segment) && segment !== getDefaultLocale()) {
     const translations = getTranslations(segment);
 
     return {
@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: SegmentPageProps): Promise<Me
 export default async function SegmentPage({ params }: SegmentPageProps) {
   const { locale: segment } = await params;
 
-  if (isSupportedLocale(segment) && segment !== getDefaultLocale()) {
+  if (isSiteLocale(segment) && segment !== getDefaultLocale()) {
     const translations = getTranslations(segment);
 
     return (

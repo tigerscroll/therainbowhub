@@ -169,8 +169,11 @@ function compareStructure(source, localized, pathParts, location) {
     return;
   }
 
-  const sourceKeys = Object.keys(source).sort();
-  const localizedKeys = Object.keys(localized).sort();
+  // A locale can intentionally omit its optional landing subtitle.
+  const optionalIntro = currentPath === "landing" && (source.intro === undefined || localized.intro === undefined);
+  const requiredKey = key => !optionalIntro || key !== "intro";
+  const sourceKeys = Object.keys(source).filter(requiredKey).sort();
+  const localizedKeys = Object.keys(localized).filter(requiredKey).sort();
   if (JSON.stringify(sourceKeys) !== JSON.stringify(localizedKeys)) {
     addError(`${location}#${currentPath}: object fields differ from English.`);
     return;
@@ -562,8 +565,11 @@ for (const localeFile of translatedLocaleFiles) {
 const actualInfoLocaleFiles = fs.readdirSync(infoPageRoot)
   .filter((file) => file.endsWith(".json"))
   .sort();
-if (JSON.stringify(actualInfoLocaleFiles) !== JSON.stringify(localeFiles)) {
-  addError(`data/info-pages: locale set must be exactly ${localeFiles.join(", ")}.`);
+const localeConfig = fs.readFileSync(path.join(root, "lib", "localeConfig.ts"), "utf8");
+const registeredSiteOptions = localeConfig.match(/const siteLocaleOptions = \[([\s\S]*?)\] as const;/)?.[1] ?? "";
+const siteLocaleFiles = Array.from(registeredSiteOptions.matchAll(/code: "([^"]+)"/g), ([, code]) => `${code}.json`).sort();
+if (JSON.stringify(actualInfoLocaleFiles) !== JSON.stringify(siteLocaleFiles)) {
+  addError(`data/info-pages: locale set must match the registered site locales: ${siteLocaleFiles.join(", ")}.`);
 } else {
   const infoEnglish = JSON.parse(fs.readFileSync(path.join(infoPageRoot, "en.json"), "utf8"));
   const staleExplanationTerms = {
@@ -577,7 +583,7 @@ if (JSON.stringify(actualInfoLocaleFiles) !== JSON.stringify(localeFiles)) {
     pt: /\bexplicações?\b/iu,
   };
 
-  for (const localeFile of localeFiles) {
+  for (const localeFile of siteLocaleFiles) {
     const locale = path.basename(localeFile, ".json");
     const location = `data/info-pages/${localeFile}`;
     const localized = JSON.parse(fs.readFileSync(path.join(infoPageRoot, localeFile), "utf8"));

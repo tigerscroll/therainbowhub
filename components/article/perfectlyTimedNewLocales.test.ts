@@ -61,7 +61,7 @@ test('Japanese article and shell retain reviewed wording with reproducible sourc
   assert.doesNotMatch(JSON.stringify(info), /QuizStart|国際送金|化学パーセント/);
 });
 
-test('new article-only languages include translated shell, footer pages and explicit Urdu RTL; Punjabi is not activated', () => {
+test('article locales include translated shell and info pages; Punjabi stays out of the article rollout', () => {
   const config = fs.readFileSync('lib/localeConfig.ts','utf8');
   for (const locale of ['tr','bn','fil','vi','ur','ms','ja']) {
     assert(config.includes(`code: "${locale}"`));
@@ -73,6 +73,6 @@ test('new article-only languages include translated shell, footer pages and expl
     assert.doesNotMatch(shared.ad.loading,/reklam|اشتہار|বিজ্ঞাপন|quảng cáo|patalastas|iklan/i,'loading remains generic, as requested');
     assert.equal(Object.keys(info).length,7);
   }
-  assert(!config.includes('code: "pa"'));
+  assert(!fs.existsSync('data/info-pages/pa.json'));
   assert(!fs.existsSync('data/galleries/perfectly-timed.pa.json'));
 });

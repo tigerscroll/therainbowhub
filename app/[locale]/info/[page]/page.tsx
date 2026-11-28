@@ -7,7 +7,7 @@ import {
   isInfoPageSlug,
 } from "@/components/InfoPageContent";
 import { SiteShell } from "@/components/SiteShell";
-import { getDefaultLocale, getSupportedLocales, getTranslations, isSupportedLocale } from "@/lib/i18n";
+import { getDefaultLocale, getSiteLocales, getTranslations, isSiteLocale } from "@/lib/i18n";
 import { buildMetadata, getInfoPath, infoAlternates } from "@/lib/seo";
 
 type LocaleInfoPageProps = {
@@ -20,7 +20,7 @@ type LocaleInfoPageProps = {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getSupportedLocales()
+  return getSiteLocales()
     .filter((locale) => locale !== getDefaultLocale())
     .flatMap((locale) => infoPageSlugs.map((page) => ({ locale, page })));
 }
@@ -28,7 +28,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocaleInfoPageProps): Promise<Metadata> {
   const { locale, page } = await params;
 
-  if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
+  if (!isSiteLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
     return {};
   }
 
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: LocaleInfoPageProps): Promise
 export default async function LocaleInfoPage({ params }: LocaleInfoPageProps) {
   const { locale, page } = await params;
 
-  if (!isSupportedLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
+  if (!isSiteLocale(locale) || locale === getDefaultLocale() || !isInfoPageSlug(page)) {
     notFound();
   }
 

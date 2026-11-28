@@ -22,11 +22,11 @@ test('Arabic Memory and Years Left translate every narrative field without direc
       assert.doesNotMatch(text, /[\u202a-\u202e\u2066-\u2069]/u, `${slug}${path}: use the renderer for bidi isolation`);
       if (path.endsWith('/question')) assert.doesNotMatch(text, /\?/u, `${slug}${path}: Arabic question punctuation`);
     }
-    for (let i = 1; i < 10; i++) assert.equal(copy.career.stages[`stage-${i}`].preAdButton, 'متابعة');
-    assert.equal(copy.career.stages['stage-10'].preAdButton, 'عرض نتيجتي');
+    const checkpoints = Object.values(copy.career.stages) as Array<{preAdButton: string}>;
+    for (const checkpoint of checkpoints.slice(0, -1)) assert.equal(checkpoint.preAdButton, 'متابعة');
+    assert.equal(checkpoints.at(-1)?.preAdButton, 'عرض نتيجتي');
   }
-  assert.equal(read('years-left', 'ar').landing.intro.split('\n').length, 2);
-  assert.equal(read('years-left', 'ar').landing.cta, 'ابدأ الاختبار');
+  assert.deepEqual(read('years-left', 'ar').landing, {cta: 'ابدأ'});
   assert.equal(read('memory', 'ar').landing.cta, 'ابدأ');
 });
 

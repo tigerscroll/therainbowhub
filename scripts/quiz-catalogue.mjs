@@ -7,14 +7,14 @@ export function getQuizSlugs(root = path.join(process.cwd(), 'data/quizzes')) {
     .filter(entry => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, 'quiz.json')))
     .map(entry => entry.name).sort();
 }
-export function getSiteLocales(root = path.join(process.cwd(), 'data/i18n')) {
+export function getSiteLocales(root = path.join(process.cwd(), 'data/info-pages')) {
   return fs.readdirSync(root).filter(file => /^[a-z]{2,3}\.json$/.test(file)).map(file => file.slice(0, -5)).sort();
 }
 
 // A quiz may launch in fewer languages than the site or the catalogue union.
 export function getQuizLocaleFiles(slug, root = path.join(process.cwd(), 'data/quizzes')) {
   return fs.readdirSync(path.join(root, slug))
-    .filter(file => /^[a-z]{2,3}\.json$/.test(file))
+    .filter(file => /^[a-z]{2,3}(?:-[a-z]{4})?\.json$/.test(file))
     .map(file => file.slice(0, -5)).sort();
 }
 
@@ -24,7 +24,7 @@ export function getQuizContentLocales(root = path.join(process.cwd(), 'data/quiz
     const directory = path.join(root, slug);
     const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'quiz.json'), 'utf8'));
     return manifest.activeLocales ?? fs.readdirSync(directory)
-      .filter(file => /^[a-z]{2,3}\.json$/.test(file))
+      .filter(file => /^[a-z]{2,3}(?:-[a-z]{4})?\.json$/.test(file))
       .map(file => file.slice(0, -5));
   }))].sort();
 }
